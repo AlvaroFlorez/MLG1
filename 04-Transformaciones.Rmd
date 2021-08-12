@@ -1,0 +1,464 @@
+# Transformaciones y mínimos cuadrados ponderados
+\rule{\textwidth}{0.4pt}
+## Ejemplo 1. Datos de la ONU {-}
+La base de datos `UN11` de la librería `alr4` contiene las siguientes estadísticas de varios miembros de las naciones unidas (y otras regiones independientes) durante los años 2009-2011:
+
+- **fertility**: Número esperado de nacidos vivos por mujer.
+- **ppgdp**: producto nacional bruto per cápita (PNB, en dólares).
+- **Purban**: el porcentaje de la población que vive en un área urbana.
+- **lifeExpF**: esperanza de vida femenina (años).
+
+El objetivo del estudio es ver la relación entre la fertilidad con las
+otras variables. Por ahora, empecemos con un modelo de la fertilidad en función del producto nacional bruto y el porcentaje de población urbana.
+
+La Figura \@ref(fig:UNdataFig) muestra la relación entre las variables. Aquí vemos que ambas covariables tienen una relación negativa con la fertilidad. Note, además, que la relación con el producto nacional bruto no es lineal. Esto último podría traer problemas a la hora de ajustar un modelo lineal.
+
+```{r UNdataFig, echo=T, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Datos de la ONU. Relación entre las variables.",warning=FALSE,message = FALSE}
+library(alr4)
+data("UN11")
+pairs(UN11[,-c(1:2,5)])
+```
+Por ahora consideremos solamente el PNB y el \% de población en área urbana como covariables. Por lo tanto, el modelo propuesto es el siguiente:
+\[
+\mbox{fertility}_{i} = \beta_{0} + \beta_{1}\mbox{ppgdp}_{i} + \beta_{2}\mbox{pctUrban}_{i} + \varepsilon_{i},
+\]
+donde $\varepsilon_{i}\sim N(0,\sigma^{2})$ y $cov(\varepsilon_{j},\varepsilon_{k})=0$.
+
+Luego de ajustar el modelo se procede a hacer un análisis de residuos. El gráfico de los residuos estudentizados (Figura \@ref(fig:Un11res) muestra que el ajuste presenta problemas de no linealidad y heterocedasticidad. En la Figura \@ref(fig:Un11resPartial) de los residuos parciales podemos observar que estos problemas se deben a la covariable PNB. 
+
+```{r Un11res, echo=T, fig.height = 3, fig.width = 4,fig.align = "center",fig.cap = "Datos de la ONU. Gráfico de los residuos estudentizados.",warning=FALSE,message = FALSE}
+mod.UN11 = lm(fertility~ppgdp+pctUrban,data=UN11)
+library(MASS)
+res.UN11 = studres(mod.UN11)
+plot(mod.UN11$fitted.values,res.UN11,
+     xlab='valores ajustados',ylab='residuos estudentizados')
+lines(lowess(res.UN11~mod.UN11$fitted.values),col=2)
+abline(h=0,lty=2)
+```
+
+```{r Un11resPartial, echo=T, fig.height = 3, fig.width = 7,fig.align = "center",fig.cap = "Datos de la ONU. Gráfico de los residuos  parciales.",warning=FALSE,message = FALSE}
+library(car)
+crPlots(mod.UN11,main='')
+```
+
+## Ejemplo 2. Datos de educación {-}
+La base de datos `education` de la librería `robustbase` contiene información sobre gastos en educación de 50 estados de los EEUU en el año 1975. Las variables observadas son:
+
+- **Y**: gasto per cápita en educación pública (dólares, proyectado para 1975).
+- **X1**: número de residentes en áreas urbanas en 1970 (en miles).
+- **X2**: ingreso per cápita en 1973 (en miles dolares).
+- **X3**: número de residentes menores de 18 años en 1974 (en miles)
+
+La relación entre las variables se observa en la Figura \@ref(fig:Educdata). Se observa una relación positiva aproximadamente lineal entre la variable respuesta y las covariables, aunque no es tan fuerte con la covariable número de residentes menores de 18 años. Además, vemos que hay por lo menos un posible valor atípico.
+
+```{r Educdata, echo=T, fig.height = 5, fig.width = 7,fig.align = "center",fig.cap = "Datos de educación. Relación entre las variables.",warning=FALSE,message = FALSE}
+library(robustbase)
+data("education")
+education$X2 = education$X2/1000 # cambio de unidad de medida (miles de dolares)
+pairs(education[,c(6,3:5)])
+```
+
+El objetivo es ajustar un modelo de regresión para el gasto per cápita en educación pública en función de las demás variables:
+\[
+Y_{i} = \beta_{0} + \beta_{1}\mbox{X1}_{i} + \beta_{2}\mbox{X2}_{i}+ \beta_{3}\mbox{X3}_{i} + \varepsilon_{i},
+\]
+donde $\varepsilon_{i}\sim N(0,\sigma^{2})$ y $cov(\varepsilon_{j},\varepsilon_{k})=0$.
+
+Antes de hacer inferencias sobre el modelo hacemos un análisis de los residuos. La Figura \@ref(fig:Educres) exhibe el gráfico de los residuos estudentizados. Aunque la relación entre la variable respuesta y covariables es aproximadamente lineal, hay presencia de heterocedasticidad. La variabilidad de los residuos aumenta con los valores ajustados.
+
+```{r Educres, echo=T, fig.height = 4, fig.width = 8,fig.align = "center",fig.cap = "Datos de educación. Gráficos de los residuos estudentizados.",warning=FALSE,message = FALSE}
+mod.educ = lm(Y~X1+X2+X3,data=education)
+library(MASS)
+res.educ = studres(mod.educ)
+par(mfrow=c(1,2))
+plot(mod.educ$fitted.values,res.educ,
+     xlab='valores ajustados',ylab='residuos estudentizados')
+lines(lowess(res.educ~mod.educ$fitted.values),col=2)
+abline(h=0,lty=2)
+plot(mod.educ$fitted.values,abs(res.educ),
+     xlab='valores ajustados',ylab='| residuos estudentizados |')
+lines(lowess(abs(res.educ)~mod.educ$fitted.values),col=2)
+```
+
+\rule{\textwidth}{0.4pt}
+
+Dado que los modelos ajustados presentan desviaciones considerables de los supuestos asumidos, las inferencias que se hagan pueden ser invalidas. Por lo tanto, en este capítulo presentaremos dos herramientas para la corrección de estos problemas: (1) transformación de variables (incluyendo la transformación de Box-Cox) y (2) mínimos cuadrados ponderados.
+
+## Transformación de los datos
+Los objetivos de realizar transformaciones sobre los datos son:
+
+- linealizar la relación de las variables,
+- estabilizar la varianza,
+- y corregir la normalidad.
+
+Las transformaciones pueden hacerse sobre la variable respuesta, las covariables, o ambas. 
+
+La desventaja de hacer transformaciones es que la interpretación del modelo estimado, así como las inferencias, se hacen sobre las variables transformadas, y no en su escala original.
+
+### Transformaciones para linealizar el modelo
+Recordemos que el modelo lineal asume que la relación entre la media y las covariables es aproximadamente lineal. En algunos casos, dada la naturaleza de los datos, este supuesto puede ser violado. Por lo tanto, para seguir utilizando la metodología de los modelos lineales, es posible linealizar funciones no-lineales por medio de transformaciones.
+
+Algunas de estas funciones linealizables y su representación gráfica, se muestran en la Tabla \@ref(tab:funciones) y Figura \@ref(fig:linealPat), respectivamente. Por ejemplo, considere que el modelo generador de los datos es:
+\[
+y_{i} = \beta_{0}\exp\left(\beta_{1}x_{i1} \right)\varepsilon_{i} \mbox{ [ver figura \ref{fig:linealPat}(b)]}.
+\]
+Esta relación no lineal se puede linealizar aplicando una transformación logaritmica a ambos lados:
+
+\[
+\log y_{i} = y_{i}^{*} = \log \left[ \beta_{0}\exp\left(\beta_{1}x_{i} \right)\varepsilon_{i} \right] = \log \beta_{0} + \beta_{1}x_{i} + \log\varepsilon_{i}.
+\]
+Note que estaríamos asumiendo que $\log\varepsilon_{i}$ está normalmente distribuido. Para que esto sea cierto, $\varepsilon_{i}$ debe seguir una distribución log-normal.
+
+
+```{r funciones, echo=F, results='asis'}
+tb1 = data.frame(x1=c("(a)","(b)","(c)",'(d)'),
+           x2= c("$y = \\beta_{0}x^{\\beta_{1}}$","$y = \\beta_{0}e^{\\beta_{1}x}$","$y = \\beta_{0}+\\beta_{1}ln(x)$",'$y = \\frac{x}{\\beta_{0}x+\\beta_{1}}$'),
+           x3=c("$y^{*}= \\log(y), x^{*} = \\log(x)$","$y^{*}= \\log(y)$","$x^{*}= \\log(x)$",'$x^{*}= \\frac{1}{x}, y^{*}= \\frac{1}{y}$'),
+           x4=c('$y^{*} =  \\log(\\beta_{0}) + \\beta_{1} x^{*}$','$y^{*} = \\log(\\beta_{0}) + \\beta_{1} x$', '$y^{*} = \\beta_{0} + \\beta_{1} x^{*}$','$y^{*} = \\beta_{0} - \\beta_{1} x^{*}$') )
+colnames(tb1) = c('','Función','Transformación','Forma lineal' )
+knitr::kable(tb1, escape = FALSE,caption ='Funciones linealizables', booktabs = TRUE)
+```
+
+```{r linealPat, echo=FALSE,fig.height = 5, fig.width = 7,fig.align = "center",fig.cap = "Diferentes patrones linealizables.",warning=FALSE,message = FALSE}
+par(mfrow=c(2,2))
+## Figura 1
+x1=seq(from=0,to=1.5,length.out = 1000)
+y11 = 2*x1^0.5
+y12 = 2*x1^2
+y13 = 2*x1^-0.1
+
+plot(x1,y11,type='l',ylim=c(0,4),xaxt='n',yaxt='n',main='(a)',
+     xlab='covariable = X',ylab = 'variable respuesta = Y',lwd=2)
+abline(v=1,lty=2)
+abline(h=2,lty=2)
+lines(x1,y12,col=2,lwd=2)
+lines(x1,y13,col=3,lwd=2)
+axis(1,c(0,1))
+axis(2,0,las=2)
+axis(2,2,label=expression(beta[0]),las=2)
+
+### Figura 2
+x2=seq(from=-5,to=5,length.out = 1000)
+y21 = 0.5*exp(x2*-1)
+y22 = 0.5*exp(x2*1)
+plot(x2,y21,type='l',xaxt='n',yaxt='n',main='(b)',
+     xlab='covariable = X',ylab = 'variable respuesta = Y',lwd=2)
+lines(x2,y22,col=2,lwd=2)
+axis(1,0)
+axis(2,0,las=2)
+
+### Figura 3
+x3=seq(from=0,to=1,length.out = 1000)
+y31 = 0.5 + log(x3)
+y32 = -2 + log(x3)*-1
+plot(x3,y31,type='l',ylim=c(-6,4.5),xaxt='n',yaxt='n',main='(c)',
+     xlab='covariable = X',ylab = 'variable respuesta = Y',lwd=2)
+abline(h=0,lty=2)
+abline(v=0,lty=2)
+lines(x3,y32,col=2,lwd=2)
+axis(1,0)
+axis(2,0)
+
+### Figura 4
+x4=seq(from=0.4,to=2,length.out = 1000)
+y41 = x4/(0.5*x4-0.2)
+y42 = x4/(-0.5*x4+1)
+plot(x4,y41,type='l',lwd=2,ylim=c(0,100),xaxt='n',yaxt='n',main='(d)',
+     xlab='covariable = X',ylab = 'variable respuesta = Y')
+abline(h=2,lty=2)
+abline(v=0.4,lty=2)
+axis(1,0.4,label=expression(beta[1]/beta[0]),las=1)
+axis(2,2,label=expression(1/beta[0]),las=1)
+```
+
+### Transformaciones para estabilizar la varianza
+Un caso frecuente es que la variable respuesta  sigue una distribución de probabilidad en la que la varianza se relaciona en forma funcional con la media:
+\[
+V(Y|X=x) = \sigma^2 g[E(Y|X=x)].
+\]
+Por ejemplo, en la distribución Poisson, la varianza es igual a la media. Algunas transformaciones comunes para estabilizar varianza se muestran en la Tabla \@ref(tab:funcionesVar) [@behar_validacion_2002].
+
+```{r funcionesVar, echo=F, results='asis'}
+tb1 = data.frame(
+  x1 = c('$\\sigma^{2} \\propto C$','$\\sigma^{2} \\propto E(y)$','$\\sigma^{2} \\propto E(y)[1-E(y)]$',
+         '$\\sigma^{2} \\propto E(y)^{2}$','$\\sigma^{2} \\propto E(y)^{3}$',
+         '$\\sigma^{2} \\propto E(y)^{4}$'),
+  x2 = c('$y^{*}=y$', '$y^{*}=\\sqrt{y}$','$y^{*}=\\sin^{-1}\\sqrt{y} (0 \\leq y_{i} \\leq 1)$',
+         '$y^{*}=\\log y$  o también  $y^{*}=\\log (y+1)$ (si $y \\geq 0$)',
+         '$y^{*}=\\frac{1}{\\sqrt{y}}$','$y^{*}=\\frac{1}{y}$'))
+
+colnames(tb1) = c('Relación entre $\\sigma^{2}$ y $E(Y)$','Transformación')
+knitr::kable(tb1, escape = FALSE,caption ='Algunas transformaciones para estabilizar la varianza', booktabs = TRUE)
+```
+
+Algunas consideraciones cuando se hacen transformaciones sobre las variables:
+
+- Transformaciones pueden ser sugeridas por experiencia (o teoría).
+En otros casos, la selección se hace empíricamente.
+- Luego de realizar las transformaciones se debe verificar si el modelo transformado cumple los supuestos. 
+- El estimador de MCO tiene propiedades de mínimos cuadrados con
+respecto a los datos transformados. 
+- Las predicciones son sobre las respuestas transformadas, no las
+originales. Devolverse a la variable respuesta original no es fácil. Recordemos que 
+\[
+E[g(y)] \neq g[E(y)].
+\]
+Al aplicar la transformación inversa a las predicciones de la respuesta transformada estamos estimando la mediana, y no la media. Por otro lado, a las estimaciones por intervalos de confianza si se les puede aplicar la transformación inversa. Esto porque los percentiles no se ven afectados por transformaciones.
+
+\rule{\textwidth}{0.4pt}
+### Datos de la ONU. Transformación para linealizar los datos {-}
+Al realizar un análisis de residuos del ajuste del modelo para los datos de la ONU, vimos que hay una relación no-lineal entre la fertilidad y las dos covariables propuestas. Particularmente, esto se debe a la covariable producto nacional bruto. 
+
+Por lo tanto, podemos aplicar una transformación logarítmica tanto a la variable respuesta, así como la covariable producto nacional bruto. En la Figura \@ref(fig:UNtransFig) vemos como al aplicar esta transformación se linealiza la relación. 
+
+```{r UNtransFig, echo=FALSE, fig.height = 4, fig.width = 8,fig.align = "center",fig.cap = "Datos de la ONU. Relación entre las variables.",warning=FALSE,message = FALSE}
+par(mfrow=c(1,2))
+plot(UN11$ppgdp,UN11$fertility,xlab='PNB per cápita (dólares)',ylab='# esperado de nacidos vivos por mujer',
+     cex.lab=0.8)
+lines(lowess(UN11$fertility~UN11$ppgdp),col=2)
+plot(log(UN11$ppgdp),log(UN11$fertility),xlab='log PNB per cápita (dólares)',ylab='log # esperado de nacidos vivos por mujer',
+     cex.lab=0.8)
+lines(lowess(log(UN11$fertility)~log(UN11$ppgdp)),col=2)
+```
+Producto de esta transformación, se propone el siguiente modelo:
+\[
+\log \mbox{fertility}_{i} = \beta_{0} + \beta_{1}\log \mbox{ppgdp}_{i} + \beta_{2}\mbox{pctUrban}_{i} + \varepsilon_{i},
+\]
+donde $\varepsilon_{i}\sim N(0,\sigma^{2})$ y $cov(\varepsilon_{j},\varepsilon_{k})=0$.
+
+La Figura \@ref(fig:UNtrans2Fig) muestra el gráfico de los residuos para este ajuste. Aquí vemos que los problemas de no linealidad y heterocedasticidad se corrigieron al realizar la transformación logarítmica.
+```{r UNtrans2Fig, echo=TRUE, fig.height = 3, fig.width = 6,fig.align = "center",fig.cap = "Datos de la ONU. Gráficos de los residuos para el modelo transformado.",warning=FALSE,message = FALSE}
+mod.UN11.trans = lm(log(fertility)~log(ppgdp)+pctUrban,data = UN11)
+res.UN11.trans = studres(mod.UN11.trans)
+par(mfrow=c(1,2))
+plot(mod.UN11.trans$fitted.values,res.UN11.trans,xlab='valores ajustados',
+     ylab='residuos estudentizados')
+lines(lowess(res.UN11.trans~mod.UN11.trans$fitted.values),col=2)
+abline(h=0,lty=2)
+plot(mod.UN11.trans$fitted.values,abs(res.UN11.trans),xlab='valores ajustados',
+     ylab='| residuos estudentizados |')
+lines(lowess(abs(res.UN11.trans)~mod.UN11.trans$fitted.values),col=2)
+```
+\rule{\textwidth}{0.4pt}
+
+## Método de Box-Cox
+Para la corrección del supuesto de normalidad y varianza constante, es posible implementar transformaciones en potencia para la variable respuesta. Esto es, $y^{*}=y^{\lambda}$. Dado que el valor de $\lambda$ es desconocido, la idea del **método de Box-Cox** es estimar el modelo lineal para diferentes valores de $\lambda$ y determinar el valor que proporciona el mejor ajuste. Sin embargo, aquí encontramos dos problemas.
+
+Primero, la transformación en potencia tiene un problema de discontinuidad en $\lambda=0$. Puesto que cuando $\lambda$ tiende a cero, $y^{*}$ se acerca a $1$. Para resolver esto, se puede utilizar $y^{*} = (y^{\lambda}-1)/\lambda$. De esta forma, cuando $\lambda$ tiende a cero, $y^{*}$ se acerca a $\log y$. Segundo, cuando $\lambda$ cambia, los valores $y^{*}$ varía drásticamente. Esto hace que los modelos ajustados no se puedan comparar fácilmente. 
+
+La transformación que permite que los modelos ajustados sean comparables es:
+\begin{equation}
+y^{(\lambda)} = \begin{cases}
+\frac{y^{\lambda}-1}{\lambda \dot{y}^{\lambda-1}}, & \mbox{si }\lambda \neq 0, \\
+\dot{y}\log y & \mbox{si } \lambda=0,
+\end{cases}
+(\#eq:boxcoxtrans)
+\end{equation}
+donde $\dot{y} = \log \left[1/n \sum_{i=1}^{n}\log y_{i}\right]$ es la media geométrica de la variable respuesta. 
+
+Entonces, el método de Box-Cox es el siguiente:
+
+1. Determinar una secuencia de valores para $\lambda$, $(\lambda_{1},\lambda_{2},\ldots,\lambda_{K})$. Por lo general, se seleccionan valores en el intervalo $[-2,2]$. 
+2. Ajustar el modelo:
+\[
+y_{ij}^{(\lambda_k)} = \beta_{0} + \beta_{1}x_{i1} + \beta_{2}x_{i2} + \ldots + \beta_{p-1}x_{i,p-1} + \varepsilon_{i},
+\]
+para cada valor de $\lambda_{k}$, $k=1,\ldots,K$. Al utilizar la transformación \@ref(eq:boxcoxtrans), las sumas de cuadrados para modelos con diferentes valores de $\lambda$ son comparables.
+3. Seleccionar el modelo que minimiza la suma de cuadrados de los residuos, $SS_{res}(\lambda)$. Equivalentemente, el $\lambda$ que maximiza la verosimilitud.
+4. Luego de encontrar el valor de $\lambda$ óptimo, se ajusta el modelo transformando la variable respuesta $y^{\lambda}$, si $\lambda\neq 0$, o $\log y$ si $\lambda =0$. Es decir que (\ref{eq:boxcoxtrans}) se utiliza solo en el paso de comparación de modelos ajustados.
+
+Puesto que $\lambda$ es una variable aleatoria, también se puede hacer una estimación por intervalos de confianza. Para esto primero consideremos la función de log-verosimilitud:
+\[
+\ell(\bbeta,\sigma^{2} | \lambda) = -\frac{2}{n}\log \left( 2\pi\sigma^{2}\right) - \frac{1}{2\sigma^{2}}\sum_{i=1}^{n}\left( y_{i}^{\lambda} - \bx_{i}'\bbeta\right)^{2} = -\frac{2}{n}\log \left( 2\pi\sigma^{2}\right) - \frac{1}{2\sigma^{2}}SS_{res}(\lambda).
+\]
+Aquí vemos que el valor de $\lambda$ que maximiza la verosimilitud es el mismo que minimiza la suma de cuadrados de los residuos.
+
+Un intervalo de confianza se puede construir a partir del siguiente estadístico de prueba:
+\[
+G_{0}^{2} = -2\left[ \ell(\bbeta,\sigma^{2} | \lambda=1) - \ell(\bbeta,\sigma^{2} | \lambda=\hatlambda) \right].
+\]
+Si $\lambda=1$, entonces asintóticamente $G_{0}^{2} \sim \chi^{2}_{1}$. Por lo tanto, el intervalo del $(1-\alpha)\times 100$\% de confianza para $\lambda$ está definido por los valores de $\lambda$ que cumplen con la condición:
+\[
+ \ell(\bbeta,\sigma^{2} | \lambda) \geq  \ell(\bbeta,\sigma^{2} | \lambda=\hatlambda) - \frac{1}{2}\chi^{2}_{1,1-\alpha}.
+\]
+
+\rule{\textwidth}{0.4pt}
+### Datos de educación. Transformación de Box-Cox
+Dado que el análisis de residuso para el ajuste del modelo para los datos de educación mostró que hay problemas de heterocedasticidad, vamos a encontrar una transformación que resuelva de problema usando el método de Box-Cox. Para esto usamos la función `boxcox` de la librería `MASS`:
+```{r educLambda, echo=TRUE, fig.height = 3.6, fig.width = 3.5,fig.align = "center",fig.cap = "\\label{fig:EducBC} Datos de educación. Perfiles de verosimilitud para $\\lambda$.",warning=FALSE,message = FALSE}
+boxcox.educ = MASS::boxcox(mod.educ,lambda=seq(-3,3,length.out = 1000),
+                               ylab='log-verosimilitud')
+boxcox.educ$x[boxcox.educ$y ==max(boxcox.educ$y)] # valor que maximiza la log-verosimilitud
+```
+Estos resultados nos indican que $\hatlambda = `r round(boxcox.educ$x[boxcox.educ$y ==max(boxcox.educ$y)],3)`$. Por lo cuál, podemos utilizar una transformación inversa $(\lambda=-1)$. Entonces, el modelo propuesto es:
+\[
+1/y_{i} = \beta_{0} + \beta_{1}\mbox{X1}_{i}+ \beta_{2}\mbox{X2}_{i} + \beta_{3}\mbox{X3}_{i} + \varepsilon_{i},
+\]
+donde $\varepsilon_{i}\sim N(0,\sigma^{2})$ y $cov(\varepsilon_{j},\varepsilon_{k})=0$.
+
+Ahora procedemos a hacer el análisis de los residuos del modelo transformado:
+```{r EducBC2Fig, echo=TRUE, fig.height = 3, fig.width = 7,fig.align = "center",fig.cap = "\\label{Datos de educación. Graficos de los residuos para el modelo transformado.",warning=FALSE,message = FALSE}
+mod.educ.trans = lm(1/Y~X1+X2+X3,data=education)
+res.educ.trans = studres(mod.educ.trans)
+par(mfrow=c(1,2))
+plot(mod.educ.trans$fitted.values,res.educ.trans,
+     xlab='valores ajustados',ylab='residuos estudentizados')
+lines(lowess(res.educ.trans~mod.educ.trans$fitted.values),col=2)
+abline(h=0,lty=2)
+plot(mod.educ.trans$fitted.values,abs(res.educ.trans),
+     xlab='valores ajustados',ylab='| residuos estudentizados |')
+lines(lowess(abs(res.educ.trans)~mod.educ.trans$fitted.values),col=2)
+```
+
+En la Figura \@ref(fig:EducBC2Fig) vemos que la transformación propuesta corrigió el problema de heterocedasticidad. Adicionalmente, por medio de la Figura \@ref(fig:EducBC3Fig) podemos verificar que el supuesto de normalidad se cumple.
+
+```{r EducBC3Fig, echo=TRUE, fig.height = 4, fig.width = 5,fig.align = "center",fig.cap = "Datos de educación. Graficos de normalidad de los residuos para el modelo transformado.",warning=FALSE,message = FALSE}
+car::qqPlot(mod.educ.trans,distribution = 'norm',ylab='residuos estudentizados')
+```
+Puesto que se cumplen los supuestos del modelo transformado, ahora procedemos a interpretar los resultados.
+
+```{r , echo=TRUE,warning=FALSE,message = FALSE}
+summary(mod.educ.trans)
+```
+A partir de estos resultados podemos concluir que la población en áreas urbanas no tiene un aporte signficativo en el modelo cuando las otras dos covariables ya están incluidas. Mientras que, el ingreso per cápita y la población menor de 18 años tienen un efecto positivo significativo sobre el gasto en educación pública (recordemos que se hizo una transformación inversa). 
+
+Puesto que hicimos transformaciones, la interpretación de los coeficientes se hace sobre la variable respuesta transformada.
+
+Ahora, supogamos que queremos hacer la predicción del gasto medio en educación pública para los estados que tengan una población de $\mbox{X1}=650$, un ingreso per cápita de $\mbox{X2=4.5}$ y una población menor de 18 años de $\mbox{X3}=320$. A partir del modelo ajustado tenemos que:
+```{r}
+x0.educ = data.frame(X1=650,X2=4.5,X3=320)
+pred.educ.trans = predict(mod.educ.trans,x0.educ,interval='confidence') 
+1/pred.educ.trans
+```
+Por lo que intervalo del 95\% de confianza para el gasto medio en educación pública para los estados con las características expresadas anteriormente es (`r round(1/pred.educ.trans[3],2)`, `r round(1/pred.educ.trans[2],2)`).
+\rule{\textwidth}{0.4pt}
+
+## Mínimos cuadrados ponderados
+El método de mínimos cuadrados ponderados (MCP) es una alternativa para estimar un modelo lineal en presencia de heterocedasticidad. La idea de esta técnica es calcular las desviaciones entre las observaciones $(y_{i})$ y los valores ajustados $(\haty_{i})$ usando pesos $(w_{i})$ inversamente proporcionales a la varianza de $y_{i}$.
+
+Asumamos que el modelo generador de los datos es:
+\begin{equation}
+\by = \bX\bbeta + \bvarepsi, \mbox{ donde }\bvarepsi\sim N(\bZERO,\sigma^{2}\bV),
+(\#eq:modV)
+\end{equation}
+donde $\bV$ es una matriz diagonal $(n \times n)$:
+\[
+\bV = \begin{pmatrix}
+v_{11} & 0 & 0 & \ldots & 0 \\
+0 & v_{22} & 0 & \ldots & 0 \\
+0 & 0 & v_{33} & \ldots & 0 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & 0 & 0 & \ldots & v_{nn}
+\end{pmatrix}.
+\]
+Esto quiere decir que tenemos presencia de hetorocedasticidad, donde $V(\varepsilon_{i}) = \sigma^{2}v_{ii}$. Recordemos que si aplicamos el estimador por MCO, las estimaciones siguen siendo insesgadas pero son ineficientes. Además, las varianzas estimadas de $\hatbbeta$, y de las predicciones, están mal calculadas. Lo que puede afectar la cobertura de los intervalos de confianza y el nivel de signficancia de las pruebas de hipótesis.
+
+La función de verosimilitud del modelo \@ref(eq:modV), asumiendo que $\bV$ es conocida, es:
+\[
+L(\bbeta,\sigma^{2} | \bV) =  \frac{1}{(2\pi)^{n/2}|\sigma^{2}\bV|^{1/2}}\exp \left[-\frac{1}{2\sigma^{2}}(\by - \bX'\bbeta)'\bV^{-1}(\by - \bX'\bbeta) \right].
+\]
+Por lo que para encontrar el estimador de $\bbeta$ debemos minimizar la suma de cuadrados ponderada:
+\begin{equation}
+SS_{Wres} = (\by - \bX'\bbeta)'\bW(\by - \bX'\bbeta) = \sum_{i=1}^{n} w_{ii}(y_{i} - \bx_{i}'\bbeta)^{2},
+(\#eq:SSWE)
+\end{equation}
+donde $\bW = \bV^{-1}$, es decir que $w_{ii}= \frac{1}{v_{ii}}$. Note que las observaciones con mayor varianza tienen menor peso en la estimación de $\bbeta$.
+
+Al minimizar \@ref(eq:SSWE) se obtiene el estimador por MCP:
+\[
+\hatbbeta_{W} = (\bX'\bW\bX)^{-1}\bX'\bW\by.
+\]
+Además, 
+\begin{equation}
+V(\hatbbeta_{W}) = \sigma^{2}(\bX'\bW\bX)^{-1}.
+(\#eq:VarBetaW)
+\end{equation}
+Si $\bV$ está correctamente especificada, se puede probar que $\hatbbeta_{W}$ es el mejor estimador insesgado de $\bbeta$.
+
+Los residuos del ajuste del modelo son:
+\[
+e_{Wi} = \sqrt{w_{ii}}(y_{i} - \haty_{i}), \mbox{ de forma matricial }\be_{W} = \bW^{1/2}(\by - \bX\hatbbeta_{W}),
+\]
+donde $\bW = \bW^{1/2}\bW^{1/2}$. De este resultado obtenemos el estimador insesgado de $\sigma^{2}$:
+\[
+\hatsigma^{2} = \frac{1}{n-p}\sum_{i=1}^{n}w_{ii}(y_{i}-\bx_{i}'\hatbbeta)^{2} = \frac{1}{n-p}(\by - \bX\hatbbeta)'\bW(\by - \bX\hatbbeta).
+\]
+  
+Aqui estamos asumiendo que los pesos $(w_{ii})$ son conocidos. Lo que en la práctica es poco común. Estos pesos pueden ser determinados por conocimiento de los datos, experiencia, o información teórica del modelo. Alternativamente, estos se pueden calcular a partir de los residuos obtenidos por el estimador MCO.
+
+Es común que $\sigma^{2}_{i}$ varíe de acuerdo a una o varias covariables, o con respecto $E(y_{i}|\bx_{i})$. Por ejemplo, en los datos de educación parece que la varianza incrementa con $E(y_{i}| \bx_{i})$. En este caso podemos aplicar el siguiente procedimiento:
+
+1. Ajustar el modelo por MCO y analizar los residuos.
+2. Ajustar un modelo para el valor absoluto de los residuos $(|e_{i}|)$, o los residuso al cuadrado $(e^{2}_{i})$, en función de las covariables:
+\[
+|e_{i}| = \gamma_{0} + \gamma_{1}x_{i1}+ \ldots + \gamma_{p-1}x_{i,p-1} + \varepsilon_{ei}.
+\]
+De esta ajuste obtenemos una estimación para la desviación estándar $(\sigma_{i})$. Si ajustamos un modelo para los residuos al cuadrado, estamos estimando la varianza $(\sigma^{2})$.
+4. Usar los valores ajustados el modelo anterior para estimar los pesos $(w_{ii})$.
+
+Si $\hatbbeta_{W}$ difiere mucho de $\hatbbeta$, es posible repetir el proceso anterior una vez más (mínimos cuadrados iterativamente ponderados).
+
+Dado que estamos estimando los pesos, la varianza de los coeficientes \@ref(eq:VarBetaW) es aproximada. Sin embargo, esta aproximación es muy buena si el tamaño de muestra no es muy pequeño.
+
+\rule{\textwidth}{0.4pt}
+### Datos de educación. Minímos cuadrados ponderados {-}
+Retomemos el modelo para los datos de educación. En la Figura \ref{fig:Educres} vemos que hay heterocedasticidad. Particularmente vemos que la variabilidad crece a medida que aumentan los valores ajustados. Ya vimos que por medio de una transformación inversa sobre la variable respuesta se corrige el problema. 
+
+El problema de hacer transformaciones es que los coeficientes estimados pierden interpretación. Así que, alternativamente, vamos a implementar el método de minímos cuadrados ponderados. Dado que desconocemos los pesos, vamos a estimarlos usando el procedimiento que se explicó anteriormente.
+
+Primero vamos a ajustar el siguiente modelo para el valor absoluto de los residuos:
+\[
+|e_{i}| = \gamma_{0} + \gamma_{1}\mbox{X1}_{i}+ \gamma_{2}\mbox{X2}_{i} + \gamma_{3}\mbox{X3}_{i} + \varepsilon_{ei}.
+\]
+```{r, echo=TRUE}
+mod.stdev.educ = lm(abs(res.educ)~X1+X2+X3,data = education)
+summary(mod.stdev.educ)
+```
+```{r, echo=F}
+stdev.coef = round(mod.stdev.educ$coefficients,3)
+```
+Por lo tanto, las estimaciones de las desviaciones estándar de los errores son:
+\[
+\widetilde{\sigma}_{i} = s_{i} = `r stdev.coef[1]`  `r stdev.coef[2]`\mbox{X1}_{i} + `r stdev.coef[3]`\mbox{X2}_{i} + `r stdev.coef[4]`\mbox{X3}_{i}.
+\]
+De este ajuste obtenemos los pesos $w_{ii} = \frac{1}{s_{i}^{2}}$, y luego, estimamos el modelo por MCP:
+```{r, echo=T}
+w = 1/mod.stdev.educ$fitted.values^2
+mod.educ.mcp = lm(Y~X1+X2+X3,data=education,weights = w)
+summary(mod.educ.mcp)
+```
+La Figura \@ref(fig:EducMCPFig) muestra los gráficos de los residuos ponderados. Aquí podemos observar que los residuos ponderados no muestra heterocedasticidad.
+
+
+```{r EducMCPFig, echo=TRUE, fig.height = 4, fig.width = 9,fig.align = "center",fig.cap = "Datos de educación. Graficos de los residuos ponderados.",warning=FALSE,message = FALSE}
+res.educ.mcp = mod.educ.mcp$residuals*sqrt(w)
+par(mfrow=c(1,2))
+plot(mod.educ.mcp$fitted.values,res.educ.mcp,
+     xlab='valores ajustados',ylab='residuos ponderados')
+lines(lowess(res.educ.mcp~mod.educ.mcp$fitted.values),col=2)
+abline(h=0,lty=2)
+plot(mod.educ.mcp$fitted.values,abs(res.educ.mcp),
+     xlab='valores ajustados',ylab='| residuos ponderados |')
+lines(lowess(abs(res.educ.mcp)~mod.educ.mcp$fitted.values),col=2)
+```
+El ajuste por mínimos cuadrados ponderados es:
+```{r}
+summary(mod.educ.mcp)
+```
+Aquí llegamos a conclusiones similares a las obtenidas por medio del modelo transformado. El efecto de la población en áreas urbanas no es significativo. Las otras dos covariables si aportan significativamente al modelo. En este caso, dado que no aplicamos transformaciones, los coeficientes si tienen interpretación. Por ejemplo de la estimación de $\beta_{3}$ podemos concluir que: el gasto per cápita medio en educación pública aumenta en 1.117 USD por cada 1000 personas menores de 18 años.
+
+Ahora, hagamos la predicción del gasto medio en educación pública para las características: $\mbox{X1}=650$, $\mbox{X2=4.5}$ y $\mbox{X3}=320$:
+```{r}
+predict(mod.educ.mcp,x0.educ,interval='confidence')
+```
+
+```{r,echo=FALSE}
+pred.mcp = predict(mod.educ.mcp,x0.educ,interval='confidence')
+
+```
+Por medio del estimador de MCP obtenemos el siguiente intervalo del 95\% de confianza: (`r round(pred.mcp[2],3)`, `r round(pred.mcp[3],3)`). Este intervalo es parecido al calculado usando el modelo transformado, aunque tiene una longitud un poco más pequeña.
+\rule{\textwidth}{0.4pt}
+
+---
+nocite: @montgomery_introduction_2012, @fox_applied_2016
+---

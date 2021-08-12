@@ -1,0 +1,762 @@
+# Modelo lineal múltiple
+
+```{r setup, include=FALSE}
+birthweight = read.csv("birthweight.csv",header = T)
+```
+\rule{\textwidth}{0.4pt}
+## Bajo peso al nacer {-}
+Retomemos la base de datos de bajo peso al nacer (disponible en el campus virtual). Aparte de la edad gestacional, el peso del recién nacido puede estar explicado con otros factores. Por ejemplo, el peso de los padres, salud de la madre, entre otros. A parte de la edad gestacional y el peso del recién nacido, vamos a observar también la variable peso de la madre antes del embarazo.
+
+La Figura \@ref(fig:BWdata2) muestra la relación entre las variables de estudio. Aquí podemos observar una relación lineal positiva fuerte entre el peso al nacer y la edad gestacional (correlación igual a `r round(cor(birthweight[,c(3,4)])[1,2],2)`). La relación entre el peso al nacer y el peso de la madre es lineal positiva, aunque no tan fuerte como la anterior (correlación igual a `r round(cor(birthweight[,c(3,8)])[1,2],2)`). 
+
+La Figura \@ref(fig:BWdata2) y la matriz de correlación se pueden hacer con los siguientes códigos:
+```{r BWdata2, fig.height = 4.5, fig.width = 6,fig.align = "center",fig.cap = "Gráfico de dispersion del peso del recien nacido y la edad gestacional."}
+birthweight = read.csv("birthweight.csv",header = T)
+pairs(birthweight[,c(3,4,8)])
+cor(birthweight[,c(3,4,8)])
+```
+Por lo tanto, junto con la edad gestacional, vamos a incluir peso de la madre antes del embarazo (en kgs, `mppwt`) como covariable. Por lo tanto, el modelo propuesto es:
+\[
+\mbox{weight}_{i} = \beta_{0} + \beta_{1}\mbox{weight}_{i} + \beta_{2}\mbox{mppwt}_{i} + \varepsilon_{i}, \mbox{ para }i=1,\ldots,42,
+\]
+con $\varepsilon_{i}\sim N(0,\sigma^{2})$, y $cov(\varepsilon_{j},\varepsilon_{k})=0$ para todo $j\neq k$.
+\rule{\textwidth}{0.4pt}
+
+## Modelo lineal múltiple
+En general, se puede relacionar la variable respuesta ($y$), con $k$ covariables o variables predictoras. El modelo lineal múltiple se expresa de la siguiente forma:
+
+\begin{equation}
+\begin{split}
+y_{i} =& \beta_{0} + \beta_{1}x_{i1} + \beta_{2}x_{i2} + \ldots + \beta_{p-1} x_{i,p-1} + \varepsilon_{i} \\
+=& \bx_{i}'\bbeta + \varepsilon_{i}, \qquad i=1,\ldots,n, \\
+\end{split}
+(\#eq:modMultiple)
+\end{equation}
+
+donde $\bx_{i} = (1,x_{i1},x_{i2},\ldots,x_{i,p-1})'$ es el vector de dimensión $p$ de covariables del individuo $i$ y $\bbeta = (\beta_{0},\beta_{1},\ldots,\beta_{p-1})'$ es el vector de dimensión $p$ de coeficientes de regresión.
+
+Los supuestos del modelo son los mismos que se plantearon en el capítulo anterior. Estos es: $\varepsilon_{i} \sim N\left(0,\sigma^{2} \right)$ y $cov(\varepsilon_{j},\varepsilon_{k})=0$, para todo $j \neq k$.
+
+Dado que $E(\varepsilon_{i})=0$, el valor esperado de $Y$ es:
+\begin{equation}
+E(Y| x_{i1},x_{i2},\ldots,x_{i,p-1}) = E(Y| \bx_{i}) = \beta_{0} + \beta_{1}x_{i1} + \beta_{2}x_{i2} + \ldots + \beta_{p-1} x_{i,p-1} = \bx_{i}'\bbeta.
+(\#eq:expValue)
+\end{equation}
+El intercepto $\beta_{0}$ es el valor esperado de $Y$ cuando $x_{i}=(1,0,0,\ldots,0)'$, es decir cuando todos las covariables toman el valor $0$. 
+
+El parámetro de pendiente $\beta_{j}$ indica el cambio en el valor esperado de $Y$ debido a un aumento unitario en la covariable $x_{j}$ cuando todas las demás variables predictoras se mantienen constantes. Sean $x_{i,j} = (1,x_{i1},\ldots,x_{ij},\ldots,x_{i,p-1})$ y $x_{i,j+1} = (1,x_{i1},\ldots,x_{ij}+1,\ldots,x_{i,p-1})$. A partir de \@ref(eq:expValue), tenemos:
+\[
+E(Y|x_{i,j}) = \beta_{0} + \beta_{1}x_{i1} + \ldots + \beta_{j}x_{ij} + \ldots + \beta_{p-1} x_{i,p-1},
+\]
+y
+\[
+E(Y|x_{i,j+1}) = \beta_{0} + \beta_{1}x_{i1} + \ldots + \beta_{j}(x_{ij}+1) + \ldots + \beta_{p-1} x_{i,p-1}.
+\]
+De aquí tenemos que:
+\[
+E(Y|x_{i,j+1}) - E(Y|x_{i,j}) = \beta_{j}.
+\]
+Es conveniente escribir el modelo de regresión múltiple \@ref(eq:modMultiple) de forma matricial:
+\[
+\by = \bX\bbeta + \bvarepsi,
+\]
+donde:
+\begin{gather}
+\begin{aligned}
+\by = \begin{pmatrix}
+y_{1} \\ y_{2} \\ \vdots \\ y_{n}
+\end{pmatrix}, & \bX = \begin{pmatrix}
+1 & x_{11} & x_{12} & \ldots & x_{1,p-1} \\ 1 & x_{21} & x_{22} & \ldots & x_{2,p-1} \\ \vdots & \vdots & \vdots & \ddots & \vdots \\ 1 & x_{n1} & x_{n2} & \ldots & x_{n,p-1}
+\end{pmatrix},
+\bbeta = \begin{pmatrix}
+\beta_{0} \\ \beta_{1} \\ \beta_{2} \\ \vdots \\ \beta_{p-1}
+\end{pmatrix}, & \bvarepsi = \begin{pmatrix}
+\varepsilon_{1} \\ \varepsilon_{2} \\ \vdots \\ \varepsilon_{n}
+\end{pmatrix}.
+\end{aligned}
+\nonumber
+\end{gather}
+Además, los supuestos sobre los errores se pueden expresar como $\bvarepsi \sim N(\bZERO, \sigma^{2}\bI)$, donde $\bZERO$ es un vector con todas las entradas iguales a cero, y $\bI$ es la matriz identidad.
+
+## Estimación de los parámetros de regresión
+La estimación de $\bbeta$ se hace a través del método de mínimos cuadrados ordinarios. Por lo tanto, debemos encontrar el vector $\hatbbeta$ que minimice:
+\[
+S(\bbeta) =  \sum_{i=1}^{n}\left(y_{i} - \bx_{i}'\bbeta \right)^2 = \sum_{i=1}^{n}\epsilon_{i}^2.
+\]
+En forma matricial, tenemos:
+\begin{equation}
+\begin{split}
+S(\bbeta) &= \bvarepsi'\bvarepsi = (\by - \bX\bbeta)'(\by - \bX\bbeta) \\
+&= \by'\by - \bbeta'\bX'\by - \by'\bX\bbeta + \bbeta'\bX'\bX\bbeta \\
+&= \by'\by - 2\bbeta'\bX'\by + \bbeta'\bX'\bX \bbeta.
+\end{split}
+\nonumber
+\end{equation}
+Por lo tanto, $\hatbbeta$ debe satisfacer:
+\[
+\left. \frac{\partial S}{\partial \bbeta} \right|_{\hatbbeta} = - 2\bX'\by + 2\bX'\bX \hatbbeta = \bZERO.
+\]
+A partir de aquí obtenemos las **ecuaciones normales**: 
+\[
+\bX'\bX \hatbbeta = \bX'\by.
+\]
+En más detalle:
+\begin{gather}
+\begin{pmatrix}
+n & \sum x_{i1} & \sum_{i=1}^{n}x_{i2} & \ldots & \sum_{i=1}^{n}x_{i,p-1} \\
+\sum x_{i1} & \sum x_{i1}^2 & \sum x_{i1}x_{i2} & \ldots & \sum x_{i1}x_{i,p-1} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+\sum x_{i,p-1} & \sum x_{i1}x_{i,p-1} & \sum x_{i2}x_{i,p-1} & \ldots & \sum x_{i,p-1}^{2} \\
+\end{pmatrix} \begin{pmatrix}
+\hatbeta_{0} \\ \hatbeta_{1} \\ \vdots \\ \hatbeta_{p-1} \end{pmatrix} = \begin{pmatrix}
+\sum y_{i} \\ \sum x_{i1}y_{i} \\ \vdots \\ \sum x_{i,p-1}y_{i}
+\end{pmatrix}
+\nonumber
+\end{gather}
+Por lo cual, el estimador por mínimos cuadrados es:
+\[
+\hatbbeta = (\bX'\bX)^{-1}\bX'\by.
+\]
+Note que es necesario que $\bX$ sea de rango completo, $\mbox{rango}(\bX) = p \leq n$. Esta restricción es necesaria para asegurar que $\bX'\bX$ sea no singular. Si $\bX'\bX$ es singular, implica que existe una combinación lineal entre las columnas de $\bX$, o que $\mbox{rango}(\bX) < p$.
+
+El valor ajustado de $y$ para el vector de covariables $\bx_{i}$ es $\haty_{i}= \bx_{i}'\hatbbeta$. Definiendo $\hatby = (\haty_{1},\haty_{2},\ldots,\haty_{n})$, tenemos que:
+\[
+\hatby = \bX\hatbbeta = \bX(\bX'\bX)^{-1}\bX'\by = \bH\by.
+\]
+La matriz $(n\times n)$ $\bH = \bX(\bX'\bX)^{-1}\bX'$ es llamada **matriz hat** (sombrero) y desempeña un papel importante en el análisis de regresión. 
+
+Los residuos del modelo $(e_{i}=y_{i}-\haty_{i})$ también se pueden expresar en forma matricial:
+\[
+\be = \by - \bX'\hatbeta = \by - \bX(\bX'\bX)^{-1}\bX'\by = \by - \bH\by = (\bI_{n} - \bH)\by.
+\]
+
+### Estimación de $\sigma^{2}$
+Al igual que en la regresión simple, el estimador de $\sigma^{2}$ es el cuadrado medio del error, definido como:
+\[
+MS_{res} = \frac{SS_{res}}{n-p},
+\]
+donde:
+\begin{equation}
+\begin{split}
+SS_{res} &= \sum_{i=1}^{n}e^{2}_{i} = \be'\be = (\by - \bX\hatbbeta)'(\by - \bX\hatbbeta) \\
+&= (\by - \bH\by)'(\by - \bH\by) = \by'(\bI_{n}-\bH)'(\bI_{n}-\bH)\by = \by'(\bI_{n} - \bH)\by.
+\end{split}
+\nonumber
+\end{equation}
+Se puede demostrar que $MS_{res}$ es un estimador insesgado de $\sigma^{2}$, es decir $E(MS_{res})=\sigma^{2}$. Para esto debemos calcular el valor esperado de $SS_{res}$.
+
+Sabemos que $E(\by) = \bX\bbeta$ y $V(\by) = \sigma^{2}\bI_{n}$, entonces:
+\[
+E(SS_{res}) = E\left[\by'(\bI - \bH)\by\right] = \sigma^{2}\tr\left( \bI - \bH \right) + \bbeta'\bX'(\bI - \bH)\bX\bbeta = (n-p)\sigma^{2}.
+\]
+Por lo tanto, $E(MS_{res}) = E(SS_{res})/(n-p) = \sigma^{2}$. 
+
+
+\rule{\textwidth}{0.4pt}
+### Bajo peso al nacer - estimación de parámetros
+Para ajustar el modelo:
+\[
+\mbox{weight}_{i} = \beta_{0} + \beta_{1}\mbox{weight}_{i} + \beta_{2}\mbox{mppwt}_{i} + \varepsilon_{i}, \mbox{ para }i=1,\ldots,42,
+\]
+con $\varepsilon_{i}\sim N(0,\sigma^{2})$, y $cov(\varepsilon_{j},\varepsilon_{k})=0$ para todo $j\neq k$, usamos la función `lm` de R:
+```{r fitBirthweight, echo=TRUE}
+mod = lm(weight ~ age + mppwt, data=birthweight)
+mod
+```
+De aquí temenos que: 
+\[
+E(\mbox{weight} | \mbox{age}, \mbox{mppwt})= -6.33824+0.16443\mbox{age}+0.01914\mbox{mheight}.
+\]
+Es decir que ambas covariables tienen un efecto positivo sobre el peso del bebé al nacer. Especificamente, tenemos que:
+
+- Si la edad gestacional aumenta en una semana y el peso de la madre se mantiene constante, el valor esperado del peso al nacer crece `r round(mod$coefficients[2],3)*1000` gramos.
+- Por cada incremento de un kilogramo en el peso de la madre y manteniendo la edad gestacional constante, el peso al nacer medio aumenta `r round(mod$coefficients[3],3)*1000` gramos.
+
+Además, la estimación de $\sigma^{2}$ es:
+```{r fitBirthweight2}
+ sqrt(sum(mod$residuals^2)/22)
+```
+Note que al adicionar la covariable `mppwt` se redujo el $MS_{res}$.
+\rule{\textwidth}{0.4pt}
+
+### Propiedades de los estimadores por MCO
+El valor esperado de $\hatbbeta$ es:
+\begin{equation}
+\begin{split}
+E(\hatbbeta) =& E\left[ (\bX'\bX)^{-1}\bX'\by \right] = E\left[ \bX'\bX)^{-1}\bX'(\bX\bbeta + \bvarepsi) \right] \\
+=& E\left[ (\bX'\bX)^{-1}\bX'\bX\bbeta + (\bX'\bX)^{-1}\bX'\bvarepsi \right] = \bbeta
+\end{split}
+\nonumber
+\end{equation}
+Por lo tanto, $\hatbbeta$ es un estimador insesgado de $\bbeta$ (si el modelo está bien espeficado).
+
+La matriz de varianzas-covarianzas de $\hatbbeta$ es:
+\begin{equation}
+\begin{split}
+V(\hatbbeta) &= V\left[ (\bX'\bX)^{-1}\bX'\by \right] = (\bX'\bX)^{-1}\bX'V(\by)\bX(\bX'\bX)^{-1}  \\
+&= \sigma^{2}(\bX'\bX)^{-1}\bX'\bX(\bX'\bX)^{-1} = \sigma^{2}(\bX'\bX)^{-1}.
+\end{split}
+\nonumber
+\end{equation}
+Si $\bC=(\bX'\bX)^{-1}$, entonces $V(\hatbeta_{j}) = \sigma^{2}c_{jj}$ y $Cov(\hatbeta_{j},\hatbeta_{k})=\sigma^{2}c_{jk}$, donde $c_{jk}$ es la entrada $(j,k)$ de la matriz $\bC$.
+
+#### Teorema de Gauss-Markov {-}
+Si, $E(\bvarepsi) = \bZERO$ y $V(\bvarepsi) = \sigma^{2}\bI_{n}$, el estimador por MCO, $\hatbbeta = (\bX'\bX)\bX'\by$, es el mejor estimador lineal insesgado de $\bbeta$. Esto quiere decir que es el estimador con menor varianza entre la clase de estimador insesgados que son combinaciones lineales de $y$. Para la demostración, ver Sección C4 de @montgomery_introduction_2012.
+
+Además, si $\bvarepsi \sim N(\bZERO, \sigma^{2}\bI_{n})$, el estimador por MCO coincide con el estimador por máxima verosimilitud.
+
+## Pruebas de hipótesis
+Después de estimar el modelo podemos preguntarnos:
+
+- ¿el modelo hace un buen ajuste de los datos?
+- ¿cuales regresores específicos parecen importantes?
+
+Para resolver estas preguntas podemos realizar pruebas de hipótesis. Generalmente, estos test requieren que $\bvarepsi \sim N(\bZERO,\sigma^{2}\bI_{n})$.
+
+### Análisis de varianza
+Para probar la significancia del modelo (determinar si que la relación entre $y$ y algunas de las covariables es lineal) se plantean las siguientes hipótesis:
+\begin{equation}
+\begin{split}
+H_{0}:& \beta_{1}=\beta_{2}=\ldots=\beta_{p-1} = 0 \\
+H_{1}:& \beta_{j}\neq 0 \mbox{ para al menos un }j.
+\end{split}
+(\#eq:HANOVA)
+\end{equation}
+El rechazo de esta hipótesis nula implica que al menos uno de los regresores $x_1, x_2,\ldots , x_{p-1}$ contribuye significativamente al modelo.
+
+Igual que en la regresión simple, el estadístico de prueba se encuentra a partir de la partición de la suma de cuadrados totales:
+\[
+SS_{T}  = SS_{R} + SS_{res},
+\]
+donde:
+
+- $SS_{T} = \sum_{i=1}^{n}(y_{i}-\bar{y})^{2} = (\by  - \frac{1}{n}\bONE'\by)'(\by  - \frac{1}{n}\bONE'\by)$,
+- $SS_{R} = \sum_{i=1}^{n}(\haty_{i}-\bar{y})^{2} = (\bH\by - \frac{1}{n}\bONE'\by)'(\bH\by - \frac{1}{n}\bONE'\by)$,
+- $SS_{res} = \sum_{i=1}^{n}(y_{i}-\haty_{i})^{2} = (\by  - \bH\by)'(\by  - \bH\by)$,
+
+y $\bONE$ es un vector cuyas entradas son iguales a $1$.
+
+Si $H_{0}$ es cierta, tenemos que:
+\[
+\frac{SS_{res}}{\sigma^{2}}\sim\chi^{2}_{n-p} \mbox{ y } \frac{SS_{R}}{\sigma^{2}} \sim \chi^{2}_{p-1},
+\]
+además, $SS_{res}$  y $SS_{R}$ son independientes. Por lo tanto,
+\[
+F_{0} = \frac{SS_{R}/(p-1)}{SS_{res}/(n-p)} = \frac{MS_{R}}{MS_{res}} \sim F_{p-1,n-p}.
+\]
+También se puede probar que:
+\[
+E(MS_{res}) =  \sigma^{2} \mbox{ y }E(MS_{R}) =  \sigma^{2} + \frac{\bbeta^{*'}\bX_{c}'\bX_{c}\bbeta^{*}}{(p-1)\sigma^{2}},
+\]
+donde $\bbeta^{*} = (\beta_{1},\beta_{2},\ldots,\beta_{p-1})'$ y
+\[
+\bX_{c} = \begin{pmatrix}
+x_{11} - \bar{x}_{1} & x_{12} - \bar{x}_{2} & \ldots & x_{1,p-1} - \bar{x}_{p-1} \\ 
+x_{21} - \bar{x}_{1} & x_{22} - \bar{x}_{2} & \ldots & x_{2,p-1} - \bar{x}_{p-1} \\ 
+\vdots & \vdots & \ddots & \vdots \\
+x_{i1} - \bar{x}_{1} & x_{i2} - \bar{x}_{2} & \ldots & x_{i,p-1} - \bar{x}_{p-1} \\ 
+\vdots & \vdots & \ddots & \vdots \\
+x_{n1} - \bar{x}_{1} & x_{n2} - \bar{x}_{2} & \ldots & x_{n,p-1} - \bar{x}_{p-1} \\ 
+\end{pmatrix}.
+\]
+
+Si $H_{0}$ no es cierta, tenemos que $F_{0}$ sigue una distribución $F$ no-central con $p-1$ y $n-p$ grados de libertad y parámetro de no centralidad:
+\[
+\lambda = \frac{\bbeta'\bX_{c}'\bX_{c}\bbeta}{\sigma^{2}}.
+\]
+Estos nos resultados nos indican que si el valor $F_{0}$ es grande, entonces al menos un $\beta_{j}$ es diferente de cero.
+
+Por lo tanto, para probar las hipótesis \@ref(eq:HANOVA) calculamos el estadístico de prueba $F_{0} = \frac{MS_{R}}{MS_{res}}$, y rechazamos $H_{0}$ si $F_{0} > F_{1-\alpha,p-1,n-p}$.
+
+A partir de las sumas de cuadrados podemos calcular el coeficiente de determinación:
+\[
+R^{2} = 1-\frac{SS_{res}}{SS_{T}}.
+\]
+A medida que agregamos mas covariables al modelo el $R^{2}$ aumenta (o permanece igual), sin importar si la covariable agregada tiene una contribución importante en el ajuste. Esto hace que sea difícil determinar si el incremento en el $R^{2}$ al agregar una covariable sea relevante. Por esta razón, también podemos usar el coeficiente de determinación ajustado:
+\[
+R^{2}_{adj} = 1-\frac{SS_{res}/(n-p)}{SS_{T}/(n-1)} = 1 - \frac{MS_{res}}{SS_T/(n-1)}.
+\]
+Aunque no tiene interpretación, el $R^{2}_{adj}$ puede usarse para comparar modelos al agregar covariables. Dado que $SS_{T}/(n-1)$ es constante, el $R^{2}_{adj}$ solo aumentará al agregar una covariable nueva al modelo si la adición de la covariable reduce el $MS_{res}$.
+
+### Pruebas individuales sobre los coeficientes
+Al rechazar $H_{0}$ de la prueba de hipótesis \@ref(eq:HANOVA) concluimos que al menos un coeficiente es diferente de cero. Por lo tanto, una o más covariables tienen un aporte significativo en el modelo. El paso que sigue es identificar estas covariables.
+
+Para esto podemos plantear las siguientes hipótesis individuales sobre los coeficientes del modelo:
+\[
+H_{0}: \beta_{j} = 0 \qquad H_{1}: \beta_{j} \neq 0.
+\]
+El estadística de prueba es:
+\[
+t_{0} = \frac{\hatbeta_{j}}{se(\hatbeta_{j})} = \frac{\hatbeta_{j}}{\sqrt{MS_{res}c_{jj}}},
+\]
+donde $c_{jj}$ es la entrada $(j,j)$ de la matriz $\bC = (\bX'\bX)^{-1}$. Rechazamos $H_{0}$ si $|t_{0}| > t_{1-\alpha/2,n-p}$.
+
+Este es una prueba parcial, puesto que estamos evaluando la significancia de $x_{j}$ cuando las demás covariables $x_{k}$, para $k\neq j$, ya están incluidas en el modelo. Por lo tanto, si no rechazamos $H_{0}$, podemos concluir que, cuando los demás regresores están en el modelo, la covariable $x_{j}$ no tiene un aporte significativo. Por lo tanto, podríamos retirarla del modelo.
+
+
+### Pruebas sobre subconjuntos de coeficientes
+Para probar la significancia de un subconjunto de coeficientes del modelo hacemos uso de la **suma de cuadrados extra**. Primero, consideremos el siguiente modelo de regresión:
+\[
+\by = \bX \bbeta + \bvarepsi,
+\]
+donde $\bX$ es una matrix $n \times p$ y $\bbeta$ es el vector de coeficientes de longitud $p$. Queremos probar si un subconjunto $r < p$ de covariables tienen un aporte significativo en el modelo. Para esto hacemos la siguiente partición del vector $\bbeta$:
+\[
+\bbeta = \begin{pmatrix} \beta_{0} \\ \beta_{1} \\ \vdots \\ \beta_{p-r-1} \\ \hline \beta_{p-r} \\ \beta_{p-r+1} \\ \vdots \\  \beta_{p} \end{pmatrix} =  \begin{pmatrix} \bbeta_{1} \\ \hline \bbeta_{2}\end{pmatrix},
+\]
+donde $\bbeta_{1}$ y $\bbeta_{2}$ son vector de dimensión $(p-r)$ y $(r)$, respectivamente. Por lo tanto, queremos realizar la siguiente prueba de hipótesis:
+\begin{equation}
+H_{0}:  \bbeta_{2} = \bZERO \qquad H_{1}:  \bbeta_{2} \neq \bZERO.
+(\#eq:Hsubset)
+\end{equation}
+El modelo anterior se puede re-escribir de la siguiente forma:
+\[
+\by = \bX \bbeta + \bvarepsi = \bX_{1}\bbeta_{1}+ \bX_{2}\bbeta_{2} + \bvarepsi,
+\]
+donde $\bX_{1}$ es la matriz $n\times (p-r)$ que contiene las columnas de $\bX$ asociadas con $\bbeta_{1}$, y $\bX_{2}$ es la matriz $n\times r$ que contiene las columnas de $\bX$ asociadas con $\bbeta_{2}$. Este es llamado el **modelo completo**.
+
+Para el modelo completo tenemos:
+
+- Estimador de $\bbeta$: 
+\[
+\hatbbeta = (\bX'\bX)^{-1}\bX'\by.
+\]
+- Suma de cuadrados del modelo: 
+\[
+SS_{R}(\bbeta) = \hatbeta'\bX'\by \mbox{ (con }p\mbox{ grados de libertad)}.
+\]
+- Cuadrado medio del error: 
+\[
+MS_{res} = \frac{\by'\by - \hatbbeta'\bX'\by}{n-p}.
+\]
+
+Para evaluar la contribución de los regresores asociados a $\bbeta_{2}$, ajustamos el modelo asumiendo que $H_{0}$ es cierta. De esta forma tenemos el **modelo reducido**:
+\[
+\by = \bX_{1}\bbeta_{1} + \bvarepsi.
+\]
+Para el modelo reducido tenemos:
+
+- Estimador de $\bbeta_{1}$: 
+\[
+\hatbbeta_{1} = (\bX_{1}'\bX_{1})^{-1}\bX_{1}'\by.
+\]
+- Suma de cuadrados del modelo: 
+\[
+SS_{R}(\bbeta_{1}) = \hatbbeta_{1}'\bX_{1}'\by \mbox{ (con $p-r$ grados de libertad)}.
+\]
+
+Entonces, la suma de cuadrados debido a $\bbeta_{2}$ dado que $\bbeta_{1}$ ya está en el modelo es:
+\[
+SS_{R}(\bbeta_{2}| \bbeta_{1}) = SS_{R}(\bbeta) - SS_{R}(\bbeta_{1}),
+\]
+con $p-(p-r)=r$ grados de libertad. Esta suma de cuadrados es llamada la suma de cuadrados extra debido a $\bbeta$ puesto que mide el incremento en la suma de cuadrados de la regresión como resultado de adicionar los regresores $\bX_{2}$ en el modelo que ya contiene $\bX_{1}$.  
+
+Dado que $SS_{R}(\bbeta_{2}| \bbeta_{1})$ y $MS_{res}$ son independientes, podemos utilizar el siguiente estadístico de prueba:
+\[
+F_{0} = \frac{SS_{R}(\bbeta_{2}|\bbeta_{1})/r}{MS_{res}}.
+\]
+Si $H_{0}$ es cierta entonces $F_{0} \sim F_{r,n-p}$. Si $H_{0}$ no es cierta, entonces $F_{0}$ sigue una distribución $F$ no-central con parámetro de no centralidad igual a:
+\[
+\lambda = \frac{1}{\sigma^{2}}\bbeta_{2}'\bX_{2}'\left[ \bI_{n} - \bX_{1}(\bX_{1}'\bX_{1})^{-1}\bX_{1}'\right]\bX_{2}\bbeta_{2}.
+\]
+Note que si hay una relación casi colineal entre $\bX_{1}$ y $\bX_{2}$ (multicolinealidad), $\lambda$ es cercano a cero pesar que $\bbeta_{2}$ sea marcadamente distinto de cero. Es decir, que la prueba tiene poca capacidad de indicar diferencias (poco poder) en presencia de multicolinealidad. Caso contrario, el máximo poder se alcanza cuando $\bX_{1}$ y $\bX_{2}$ son ortogonales (es decir $\bX_{2}'\bX_{1} = \bZERO$).
+
+Entonces, si $F_{0} > F_{1-\alpha,r,n-p}$ rechazamos $H_{0}$ y concluimos que al menos un coeficiente en $\bbeta_{2}$ es diferente de cero. Consecuentemente, al menos una de las covariables en $\bX_{2}$ tiene un aporte significativo dentro del modelo.
+
+#### Ejemplo {-}
+Considere el modelo:
+\[
+y_{i} = \beta_{0} + \beta_{1}x_{i1} + \beta_{2}x_{i2} + \beta_{3}x_{i3} + \varepsilon_{i}.
+\]
+La suma de cuadrados del modelo se puede descomponer de la siguiente forma:
+\[
+SS_{R}=SS_{R}(\beta_{1},\beta_{2},\beta_{3}| \beta_{0}) = SS_{R}(\beta_{1}|\beta_{0}) + SS_{R}(\beta_{2}|\beta_{0},\beta_{1}) + SS_{R}(\beta_{3}|\beta_{0},\beta_{1},\beta_{2}),
+\]
+donde cada suma de cuadrados en el lado derecho tiene un grado de libertad. Además, el order de los regresores en estos componentes marginales es arbitrario. Por lo que la siguiente descomposición alternativa es también válida:
+\[
+SS_{R}(\beta_{1},\beta_{2},\beta_{3}| \beta_{0})=SS_{R}(\beta_{2}|\beta_{0}) + SS_{R}(\beta_{3}|\beta_{0},\beta_{2}) + SS_{R}(\beta_{1}|\beta_{0},\beta_{2},\beta_{3}).
+\]
+
+Sin embargo, la siguiente partición de la suma de cuadrados de la regrsión es generalmente inválida:
+\[
+SS_{R}(\beta_{1},\beta_{2},\beta_{3}| \beta_{0})\neq SS_{R}(\beta_{1}|\beta_{0},\beta_{2},\beta_{3}) + SS_{R}(\beta_{2}|\beta_{0},\beta_{1},\beta_{3}) + SS_{R}(\beta_{3}|\beta_{0},\beta_{1},\beta_{2}).
+\]
+
+## Prueba de hipótesis lineal general
+Suponga que estamos interesados en las siguientes hipótesis:
+\begin{equation}
+H_{0}: \bT\bbeta=\bZERO \qquad H_{1}: \bT\bbeta\neq \bZERO,
+(\#eq:hipGeneral1)
+\end{equation}
+donde $\bT$ es una matriz $m \times p$ de constantes, tal que $r$ de las $m$ ecuaciones de $\bT\bbeta=\bZERO$ son independientes.
+
+El **modelo completo (FM)** es:
+\[
+\by=\bX\bbeta+\bvarepsi,
+\]
+El estimador de $\bbeta$ es $\hatbbeta = (\bX'\bX)^{-1}\bX'\by$, y la suma de cuadrados de los residuos es $SS_{res}(FM)$ (con $n-p$ grados de libertad). 
+
+El **modelo reducido (RM)** se obtiene al resolver las $r$ ecuaciones independientes de $\bT\bbeta = \bZERO$ para los $r$ coeficientes en el modelo completo en términos de los $p-r$ coeficientes restantes. Esto lleva al siguiente RM: 
+\[
+\by=\bZ\bgamma+\bvarepsi,
+\]
+donde $\bZ$ es una matriz $n\times (p-r)$ y $\bgamma$ es un vector de dimiensión $(p-r)$ de coeficientes de regresión. La suma de cuadrados de los residuos de este modelo es $SS_{res}(RM)$ (con $n-p+r$ grados de libertad).
+
+Dado que el modelo reducido tiene menos parámetros que el modelo completo, $SS_{res}(RM) \geq SS_{res}(FM)$. Para probar \@ref(eq:hipGeneral1) usamos la diferencia entre las sumas de cuadrados de los residuos:
+\[
+SS_{H} = SS_{res}(RM) - SS_{res}(FM),
+\]
+con $r$ grados de libertad. $SS_{H}$ es llamado la suma de cuadrados debido a $H_{0}:\bT\bbeta=\bc$. El estadístico de prueba es:
+\[
+F_{0} = \frac{SS_{H}/r}{SS_{res}(FM)/(n-p)} = \frac{\hatbeta'\bT[\bT(\bX'\bX)\bT']^{-1}\bT\hatbbeta/r}{SS_{res}(FM)/(n-p)}.
+\]
+Rechazamos $H_{0}$ si $F_{0} > F_{1-\alpha,r,n-p}$.
+
+La hipótesis anterior se puede generalizar de la siguiente forma:
+\begin{equation}
+H_{0}: \bT\bbeta=\bc \qquad H_{1}: \bT\bbeta\neq \bc,
+(\#eq:hipGeneral2)
+\end{equation}
+Para este caso, el estadístico de prueba es:
+\[
+F_{0} = \frac{(\bT\hatbbeta-\bc)'[\bT(\bX'\bX)\bT']^{-1}(\bT\hatbbeta-\bc)/r}{SS_{res}(FM)/(n-p)}.
+\]
+Si $H_{0}$ es cierta, $F_{0}\sim F_{r,n-p}$. Por lo tanto, rechazamos $H_{0}$ si $F_{0} > F_{1-\alpha,r,n-p}$.
+
+#### ejemplo {-}
+Considere el modelo:
+\[
+y_{i} = \beta_{0} + \beta_{1}x_{i1}+ \beta_{2}x_{i2}+ \beta_{3}x_{i3}+ \beta_{3}x_{i3} + \varepsilon_{i},
+\]
+y queremos probar las siguientes hipótesis:
+\begin{align*}
+H_{0}:& \beta_{1}=0 & H_{1}:&\beta_{1}\neq 0 \\
+      & 2\beta_{2}-\beta_{3}=3 & &2\beta_{2}-\beta_{3}\neq 3 \\
+\end{align*}
+De aquí tenemos que:
+\[
+\bT = \begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 2 & -1 & 0 \\
+\end{pmatrix} \mbox{ y } \bc = \begin{pmatrix} 0 \\ 3  \end{pmatrix}.
+\]
+Si no rechazamos $H_{0}$, podríamos estimar $\bbeta$ sujo a las restricciones impuestar por la hipótesis nula (usando mínimos cuadrados restringidos).
+
+\rule{\textwidth}{0.4pt}
+### Bajo peso al nacer - pruebas de hipótesis {-}
+Los resultados de las pruebas de hipótesis individuales sobre los coeficientes, análisis de varianza y coeficientes de determianción se obtiene a partir del resumen del modelo:
+```{r,echo=FALSE}
+mod.summary = summary(mod)
+F0 = mod.summary$fstatistic[1]
+R2 = mod.summary$r.squared
+t2 = mod.summary$coefficients[3,3]
+t2vp = mod.summary$coefficients[3,4]
+t1 = mod.summary$coefficients[2,3]
+t1vp = mod.summary$coefficients[2,4]
+mod0 = summary(lm(weight~age,data=birthweight))
+R20 = mod0$r.squared
+```
+
+```{r}
+summary(mod)
+```
+A partir de estos resutados tenemos que $F_{0}=`r round(F0,4)`$ con un valor-$p$ asociado de $0.000$, es decir que al menos uno de los coeficientes de regresión es diferente de cero. Además, el $`r round(R2*100)`$\% de la variabilidad del peso al nacer es explicada por la edad gestacional y el peso de la madre antes del embarazo $(R^{2}=`r round(R2,4)`)$.  Note que hubo un incremento leve en el $R^{2}$ respecto al modelo que solo incluye la edad gestacional como covariable ($R^{2} = `r round(R20,3)`$).
+
+A partir de las pruebas de hipótesis individuales, podemos decir que el peso de la madre antes del embarazo no tiene un aporte significativo cuando el modelo ya incluye la covariable edad gestacional ($t_{0}=`r round(t2,2)`$ con un valor-$p$ asociado de `r round(t2vp,4)`). Por otro lado, el efecto de la edad gestacional si es significativo ($t_{0}=`r round(t1,2)`$ con un valor-$p$ asociado de `r round(t1vp,4)`).
+
+Ahora consideremos un modelo ingresando dos covariables más:
+\[
+y_{i} = \beta_{0} + \beta_{1}\mbox{age}_{i} + \beta_{2}\mbox{mppwt}_{i} + \beta_{3}\mbox{motherage}_{i} + \beta_{2}\mbox{mnocig}_{i} + \varepsilon_{i},
+\]
+donde $\mbox{motherage}_{i}$ y $\mbox{mnocig}_{i}$ es la edad (en años) y el número medio de cigarrillos fumados por mes de la $i$-ésima madre, respectivamente. El resumen del modelo ajustado es:
+```{r}
+mod.completo = lm(weight~age + mppwt + motherage + mnocig,data=birthweight)
+summary(mod.completo)
+```
+Respecto al modelo anterior, hay un aumento del $R^{2}$ y el $R^{2}_{adj}$. Por lo cuál podemos concluir que al ingresar estas covariables el ajuste mejoró. Aunque, los efectos del peso y la edad de la madre no son significativos a partir de las pruebas individuales. 
+
+Esto no necesariamente quiere decir que podemos eliminar estas dos covariables del modelo, recordemos que las pruebas $t$ son individuales (se evalúa el efecto de la covariable cuando el modelo ya incluye las restantes). Para determinar si podemos eliminar `mppwt` y `motherage` del modelo, realizamos la siguiente prueba de hipótesis:
+\[
+H_{0}: \beta_{2} = \beta_{3} = 0 \qquad H_{0}: \beta_{j} \neq 0 \mbox{ para algún }j=2,3.
+\]
+En R podemos hacer esto a través de la función `anova`:
+```{r,echo=FALSE}
+ANOVA1= anova(mod,mod.completo)
+ANOVA1vp = round(ANOVA1$"Pr(>F)"[2],4)
+ANOVA1vpF = round(ANOVA1$F[2],3)
+```
+```{r}
+anova(mod,mod.completo)
+```
+Aquí vemos que $F_{0}= `r ANOVA1vpF`$ con un valor-$p$ asociado de $`r ANOVA1vp`$. Por lo tanto, no tenemos evidencia suficiente para rechazar $H_{0}$ y podemos retirar las dos covariables del modelo.
+\rule{\textwidth}{0.4pt}
+
+## Intervalos de confianza
+Al igual que en caso del modelo lineal simple, también podemos hacer estimaciones por intervalos de confianza para los coeficientes del modelo, valor esperado de $Y$ y observaciones futuras.
+
+Para que los intervalos de confianza sean válidos se requiere que se cumplan todos los supuestos del modelo, esto es $\bvarepsi\sim N(\bZERO, \sigma^{2}\bI_{n})$.
+
+### Intervalos de confianza para $\beta_{j}$
+El intervalo de confianza de $\beta_{j}$ parte de:
+\[
+\frac{\hatbeta_{j} - \beta_{j}}{\sqrt{V(\hatbeta_{j})}} =  \frac{\hatbeta_{j} - \beta_{j}}{\sqrt{MS_{res}c_{jj}}} \sim t_{n-p},
+\]
+donde $c_{jj}$ es la entrada $(j,j)$ de la matriz $\bC=(\bX'\bX)^{-1}$. Entonces, el intervalo del $(1-\alpha)100\%$ de confianza para $\hatbeta_{j}$ es:
+\[
+\hatbeta_{j} \pm t_{1-\alpha/2,n-p}\sqrt{MS_{res}C_{jj}}.
+\]
+
+
+### Intervalos de confianza para el valor esperado de $Y$ y una observación futura
+Ahora queremos construir un intervalo de confianza para la respuesta media de $Y$ para un punto particular $\bx_{0}=(1,x_{01},x_{02},\ldots,x_{0,p-1})$. La estimación puntual en $\bx_{0}$ es:
+\[
+\hatmu_{Y|\bx_0} = \bx_{0}'\hatbbeta.
+\]
+Además, tenemos que $\hatmu_{Y|\bx_0} \sim N[\bx_{0}\bbeta, V(\hatmu_{Y|\bx_0})]$ con:
+\[
+V(\hatmu_{Y|\bx_0}) = \sigma^{2}\bx_{0}'(\bX'\bX)^{-1}\bx_{0}.
+\]
+Por lo tanto, el intervalo del $(1-\alpha)100\%$ de confianza para $E(Y|\bx_{0})$ es:
+\[
+\hatmu_{Y|\bx_0} \pm t_{1-\alpha/2,n-p}\sqrt{MS_{res}\bx_{0}'(\bX'\bX)^{-1}\bx_{0}}.
+\]
+De igual forma, el intervalo del $(1-\alpha)100\%$ de confianza para una observación futura en $\bx_{0}$ es:
+\[
+\hatmu_{Y|\bx_0} \pm t_{1-\alpha/2,n-p}\sqrt{MS_{res}\left[1+ \bx_{0}'(\bX'\bX)^{-1}\bx_{0}\right]}.
+\]
+
+\rule{\textwidth}{0.4pt}
+### Bajo peso al nacer - intervalos de confianza {-}
+Siguiendo con el modelo inicial $y_{i}=\beta_{0}+\beta_{1}\mbox{age}_{i}+\beta_{2}\mbox{mppwt}_{i}+\varepsilon_{i}$, los intervalos del 95\% de confianza para los coeficientes son:
+```{r,echo=FALSE}
+CIbeta = confint(mod)
+x0 = data.frame(age=36,mppwt=50)
+pred0 = predict(mod,x0,interval='confidence')
+x0pred = data.frame(age=38,mppwt=65)
+pred0pred = predict(mod,x0pred,interval='prediction')
+```
+
+```{r}
+confint(mod)
+```
+Si peso de la madre permance constante, por cada aumento de una semana en la edad gestacional, el peso medio del recién nacido incrementa entre $`r round(CIbeta[2,1],3)*1000`$ y $`r round(CIbeta[2,2],3)*1000`$ gramos con un nivel de confianza del 95\%. Note que el intervalo de confianza para el coeficiente asociado al peso de la madre contiene el valor $0$ (recordemos que no rechazamos la hipótesis nula de la prueba $t$ sobre $\beta_{2}$).
+
+Queremos determinar el peso medio de los recién nacidos en la semana gestacional $36$ y de madres que pesan 50 kilogramos. Es decir $E(Y|\mbox{age}=36, \mbox{mppwt}=50)$. Para esto podemos contruir un intervalo del 95\% de confianza:
+```{r}
+x0 = data.frame(age=36,mppwt=50)
+predict(mod,x0,interval='confidence')
+```
+Por lo tanto, el peso medio de los recién nacidos en la semana gestacional 36 y de madres que pesan 50 kilogramos está entre $`r round(pred0[2],2)`$ y $`r round(pred0[3],2)`$ kilogramos con un nivel de confianza del 95\%.
+
+Ahora, estamos interesados en predecir el peso de un recién nacido en la semana $38$ y cuya madre peso $65$ kilogramos. Por lo cuál construimos un intervalo del 95\% de predicción:
+```{r}
+x0pred = data.frame(age=38,mppwt=65)
+predict(mod,x0pred,interval='prediction')
+```
+El peso del recién nacido con estas caracteristica está entre $`r round(pred0pred[2],2)`$ y $`r round(pred0pred[3],2)`$ kilogramos con un nivel de confianza del 95\%.
+\rule{\textwidth}{0.4pt}
+
+## Extrapolación oculta en regresión múltiple
+Al igual que en regresión simple, al pronosticar una nueva respuesta en un punto dado $\bx_{0}$ se debe tener cuidado de no extrapolar fuera de la región de los datos originales. En regresión múltiple es fácil extrapolar inadvertidamente, puesto que la región que contiene los datos está definida de forma conjunta por los valores que toman las covariables y no por el rango individual de cada covariable.
+
+La Figura \@ref(fig:extrapolacionOculta) muestra un ejemplo de extrapolación en el caso de un modelo de regresión con dos covariables. Se quiere hacer una predicción en el punto $(x_{01},x_{02})$ que está dentro del rango de ambos regresores, pero que fuera de la región conjunta de los datos (región roja en la figura). Por lo tanto, al realizar la predicción en este punto estaríamos extrapolando.
+
+```{r extrapolacionOculta, echo=F, fig.height = 4.5, fig.width = 6,fig.align = "center",fig.cap = "Ejemplo de extrapolación en regresión múltiple",warning=FALSE,message = FALSE}
+library(car)
+plot(c(0,2), c(0,2), type="n", main="",ylab=expression(x[2]),xlab=expression(x[1]),xaxt='n',yaxt='n')
+test = ellipse(c(1,1), matrix(c(1,0.5,0.5,1),2,2), radius=pi/4, log="", center.pch=NULL, center.cex=NULL, 
+        segments=51, draw=TRUE, xlab="", ylab="", 
+        col=2, lwd=1, fill=TRUE, fill.alpha=0.1, grid=TRUE)
+segments(range(test[,1]),c(-20,-20),range(test[,1]),c(max(test[,2]),max(test[,2])))
+segments(c(-20,-20),range(test[,2]),c(max(test[,1]),max(test[,1])),range(test[,2]))
+text(1,1,'Región conjunta de los datos',cex = 0.6)
+axis(1,min(test[,1]),labels = expression(paste("min ",x[1])),cex.axis = 0.6)
+axis(1,max(test[,1]),labels = expression(paste("max ",x[1])),cex.axis = 0.6)
+axis(2,min(test[,2]),labels = expression(paste("min ",x[2])),las=1,cex.axis = 0.6)
+axis(2,max(test[,2]),labels = expression(paste("max ",x[2])),las=1,cex.axis = 0.6)
+points(1.5,0.4,pch=19,col=1)
+segments(-20,0.4,1.5,0.4,lty=2)
+segments(1.5,-20,1.5,0.4,lty=2)
+axis(1,1.5,labels = expression(x["01"]),cex.axis = 0.6)
+axis(2,0.4,labels = expression(x["02"]),las=1,cex.axis = 0.6)
+```
+Determinar la región conjunta de los datos en regresión múltiple no es fácil, lo que hace díficil saber si se está extrapolando a la hora de hacer de una predicción. Por lo tanto, se ha propuesto determinar la región conjunta de los datos a partir del conjunto convexo mínimo que contiene todos los $n$ datos originales, $(x_{i1}; x_{i2},\ldots,x_{i,p-1})$, para $i = 1,2,\ldots,n$, como la envolvente de las covariables (RVH). Entonces, si un punto $(x_{01},x_{02}, \ldots,\ldots, x_{0,p-1})$ está dentro o en la frontera de la RVH, una prediccón o una estimación implica interpolación, mientras que si está fuera de la RVH, se está extrapolando.
+
+Una aproximación de la RVH es a través de la matriz $\bH$. El conjunto de puntos $\bx$ que satisfacen, $\bx'(\bX'\bX)^{-1}\bx \leq \max(h_{ii})$, prudcen un elipsoide que encierra todos los puntos dentro de la $RVH$.  Entonces, un punto de predicción $\bx_{0}$ está fuera de la RVH si $h_{00} > \max{h_{ii}}$, donde:
+\[
+h_{00} = \bx'_{0}(\bX'\bX)^{-1}\bx_{0}.
+\]
+
+\rule{\textwidth}{0.4pt}
+### Bajo peso al nacer - interpolación {-}
+Suponga que se quiere hacer una predicción para recién nacidos con las características que muestra la Tabla \@ref(tab:puntosPrediccion}. 
+
+```{r puntosPrediccion, echo=FALSE }
+PredPoints = data.frame(x01 = c(34,75),x02 = c(36,50),x03 = c(38,60),x04 = c(46,55))
+rownames(PredPoints) = c('Edad gestacional (semanas)','Peso de la madre (kg)')
+colnames(PredPoints) = c('1','2','3','4')
+knitr::kable(
+  PredPoints, booktabs = TRUE,label='puntosPrediccion',
+  caption = 'Bajo peso al nacer. Punto de predicción.'
+)
+```
+La Figura \@ref(fig:birthweightExtrapolacion) muestra el gráfico de dispersión de las covariables, donde los puntos rojos indican los valores donde se quieren hacer predicciones. Aquí vemos que en los puntos $\bx_{02}$ y $\bx_{03}$ no estaríamos extrapolando. Pero, es difícil de determinar para los puntos $\bx_{01}$ y $\bx_{04}$. Para esto vamos a calcular las aproximaciones de la RVH y verificar si en estos puntos estaríamos extrapolando.
+
+```{r birthweightExtrapolacion,echo=FALSE, fig.height = 4, fig.width = 4,fig.align = "center",fig.cap = "Bajo peso al nacer. Gráfico de dispersion de la edad gestacional y el peso de la madre antes del embarazo. Los puntos donde se quiere hacer predicción están en rojo."}
+newPoints = cbind(x=c(34,36,38,46),y=c(75,50,60,55))
+plot(mppwt~age,data=birthweight,xlab='edad gestacional (en semanas)',ylab='peso de la madre (en kgs)',
+     ylim=c(43,80),xlim=c(32,46))
+points(newPoints,col=2,pch=15:18)
+```
+
+```{r birthweightExtrapolacion2}
+newPoints = cbind(x0=rep(1,4),x1=c(34,36,38,46),x2=c(75,50,60,55))
+X = model.matrix(mod)
+XtX.inv = solve(t(X)%*%X)
+h.values = hatvalues(mod)
+hmax = max(h.values)
+h0 = apply(newPoints,1,function(x){t(x)%*%XtX.inv%*%x})
+h0 >hmax
+```
+Para la predicción en el punto $\bx_{01}$, tenemos que $h_{0} = (1, 34, 77)(\bX'\bX)^{-1}(1, 34, 77)' = `r round(h0[1],4)`$ $>$ $h_{max} = `r round(hmax,4)`$. Por lo tanto, aquí se estaría extrapolando. Para el resto de punto no hay problemas de extrapolación.
+\rule{\textwidth}{0.4pt}
+
+### Coeficientes normalizados de regresión
+Los coeficientes de regresión están influenciados por las unidades de medida de las covariables. Exactamente las unidades de medida de $\beta_{j}$ es:
+\[
+\frac{\mbox{la unidad de medida de }y }{\mbox{la unidad de medida de }x_{j}}.
+\]
+Dado que, por lo general, las covariables están medidas en unidades diferenes, la comparación de los coeficientes es complicada. En el ejemplo de los datos de los recién nacidos, la edad gestacional está en semanas y el peso de la madre en kilogramos.
+
+Por esta razón, en algunas ocasiones es útil escalar los valores de las covariables y la respuesta para calcular los coeficientes de regresión adimensionales. Hay varias formas de hacer este escalamiento, aquí nos centraremos en el escalamiento de longitud unitaria.
+
+#### Escalamiento de longitud unitaria
+Una opción es hacer un **escalamiento de longitud unitaria** a las covariables:
+\[
+z_{ij} = \frac{x_{ij}-\bar{x}}{\sqrt{S_{jj}}}, i=1,2,\ldots,n \quad j=1,2,\ldots,k,
+\]
+y la variable respuesta:
+\[
+y_{i}^{*} = \frac{y_{i}-\bar{y}}{\sqrt{SS_{T}}},
+\]
+donde:
+\[
+S_{jj} = \sum_{i=1}^{n}(x_{ij} - \bar{x}_{j})^{2}.
+\]
+Con estas variables transformadas, se puede ajustar el modelo:
+\[
+y_{i}^{*} = b_{1}z_{i1} + b_{2}z_{i2} + \ldots + b_{p-1}z_{i,p-1} = \bz_{i}'\bb + \bvarepsi.
+\]
+El estimador por MCO es:
+\[
+\hatbb = (\bZ'\bZ)^{-1}\bZ'\by^{*}.
+\]
+Note que con este escalamiento, la matriz $(\bZ'\bZ)$ es igual a la matriz de correlación de las covariables. Esto es:
+\[
+(\bZ'\bZ) = \bR = \begin{pmatrix}
+1 & r_{12} & r_{13} & \ldots & r_{1,p-1} \\
+r_{12} & 1 & r_{23} & \ldots & r_{2,p-1} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+r_{1,p-1} & 1 & r_{2,p-1} & \ldots & 1 \\
+\end{pmatrix},
+\]
+donde $r_{jk}$ es la correlación entre las covariables $x_{j}$ y $x_{k}$. Además, la matriz $\bZ'\by^{*}$ es el vector de correlación entre la variable respuesta y cada covariable. Esto es:
+\[
+\bZ'\by^{*} = (r_{1y},r_{2y},r_{3y},\ldots,r_{p-1,y})',
+\]
+donde $r_{jy}$ es la correlación entre la variable respuesta y la covariable $x_j$. 
+
+\rule{\textwidth}{0.4pt}
+### Bajo peso al nacer - coeficientes de regresión con variables escaladas {-}
+Para estimar los coeficientes de regresión escalados, primero debemos escalar las variables:
+```{r birthweightVarEsc}
+y = birthweight$weight
+Z = apply(X[,-1],2,function(x){(x-mean(x))/sqrt(sum((x-mean(x))^2))})
+ys = (y-mean(y))/sqrt(sum((y-mean(y))^2))
+```
+Ahora procedemos a estimar el modelo con las variables escaladas:
+```{r birthweightVarEsc2}
+mod.std = lm(ys~Z-1)
+summary(mod.std)
+```
+Las estimaciones de los coeficientes son ahora adimensionales y podemos comparar sus magnitudes. Por lo tanto, parece que la covariable edad gestacional es más importante para determinar el peso al nacer que la covariable peso de la madre. Note que, al escalar las variables, los resultados de las pruebas de hipótesis, estimación de $\sigma^{2}$, y los coeficientes de determinación no se ven alterados.
+\rule{\textwidth}{0.4pt}
+
+## Multicolinealidad
+Un problema que puede afectar enormente el ajuste de un modelo de regresión es la multicolinealidad. Este se presenta cuando hay una dependencia casi lineal entre las covariables.
+
+Recordemos que el estimador por MCO es $\hatbbeta=(\bX'\bX)^{-1}\bX'\by$. Por lo tanto es necesario que la matriz $\bX'\bX$ sea no singular. En caso contrario, no es posible encontrar la inversa y las ecuaciones normales no tendrán una única solución. Cuando sucede esto se debe a que hay al menos una columna de $\bX$ linealmente dependiente. 
+
+En regresión se utiliza las palabras multicolinealidad cuando hay una dependencia aproximada en las columnas de $\bX$. Es decir que al menos una covariable puede representarse, de forma aproximada, como una relación lineal de las otras:
+\[
+x_{ij} \approx c_{0} + c_{1}x_{i1} + \ldots + c_{j-1}x_{i,j-1} + c_{j+1}x_{i,j+1} + \ldots + + c_{p-1}x_{i,p-1},
+\]
+para $i=1,\ldots,n$.
+
+Hay que aclarar que la falta de ortogonalidad no es necesariamente un inconveniente, el problema es cuando la relación lineal entre los regresores es casi perfecta, lo que provoca problemas en las inferencias que se hagan. Uno de estos problemas se ilustra a continuación con un ejemplo. 
+
+
+### ejemplo {-}
+Considere el siguiente modelo de regresión:
+\[
+y_{i} = \beta_{0} + \beta_{1}x_{i1} + \beta_{2}x_{i2} + \varepsilon_{i}, \mbox{ con }\varepsilon_{i}\sim N(0,\sigma^{2}),
+\]
+y se plantean dos posibles matrices de diseño:
+\[
+\bX_{1} = \begin{pmatrix}
+1& 1 \\ 
+1 & 5 \\ 
+2 & 1 \\ 
+2 & 5 \\
+\end{pmatrix} \mbox{ y }
+\bX_{2} = \begin{pmatrix}
+1& 1 \\ 
+1 & 2 \\ 
+2 & 4 \\ 
+2 & 5 \\
+\end{pmatrix}.
+\]
+Haciendo el escalamiento de longitud unitaria a las covariables tenemos que:
+\[
+\bZ_{1}'\bZ_{1} = \begin{pmatrix}
+1 & 0 \\ 0 & 1
+\end{pmatrix} \mbox{ y }
+\bZ_{1}'\bZ_{1} = \begin{pmatrix}
+1 & 0.95 \\ 0.95 & 1
+\end{pmatrix}.
+\]
+Por lo tanto, la varianza de $\hatbb$ para ambos casos es:
+\[
+V(\hatbb_{1}) = \sigma^{2}(\bZ_{1}'\bZ_{1})^{-1} =  \sigma^{2} \begin{pmatrix}
+1 & 0 \\ 0 & 1
+\end{pmatrix}^{-1}  = \sigma^{2} \begin{pmatrix}
+1 & 0 \\ 0 & 1
+\end{pmatrix}.
+\]
+y 
+\[
+V(\hatbb_{2}) = \sigma^{2}_{0}(\bZ_{2}'\bZ_{2})^{-1} =  \sigma^{2} \begin{pmatrix}
+1 & 0.95 \\ 0.95 & 1
+\end{pmatrix}^{-1} = \sigma^{2} \begin{pmatrix}
+10 & 9.49 \\ 9.49 & 10
+\end{pmatrix}.
+\]
+Aquí podemos ver que la varianza de $\hatbb_{2}$ está inflada debido a la alta correlación entre las columnas de $\bX_{2}$. Es 10 veces mayor que la varianza de $\hatbb_{1}$ (las columnas de $\bX_{1}$ son independientes).
+
+En el ejemplo anterior vemos que los valores de la diagonal de la matriz $(\bZ'\bZ)^{-1}$ nos indican en cuanto aumenta la varianza de las estimaciones de los coeficientes debido a la multicolinealidad. Por esta razón, estos valores toman el nombre de **factores de inflación de varianza (VIFs)** y son uno de los indicadores para el diagnostico de este problema.
+
+Se puede demostrar que el VIF de $\beta_{j}$ se puede calcular como:
+\[
+\mbox{VIF}_{j} = \frac{1}{1-R^{2}_{j}},
+\]
+donde $R^{2}_{j}$ es el coeficiente de determinación obtenido ajustado una regresión de $x_{j}$	sobre las demás covariables. Si $x_{j}$ es casi linealmente dependiente de algunos de los otros regresores, entonces $R^{2}_{j}$ será cercano a uno y el $VIF_{j}$ será muy alto. Generalmente, un VIF mayor de 10 indica problemas graves de multicolinealidad.
+
+En un capítulo posterior ahondaremos más en este problema.
+\rule{\textwidth}{0.4pt}
+### Bajo peso al nacer - factores de inflación de varianza
+En el caso del peso de los recién nacidos, tenemos que los VIFs son:
+```{r birthweightVIF, messages=FALSE}
+library(car)
+vif(mod)
+```
+Lo que nos indica que la varianza de las estimaciones de los coeficientes no se inflan debido a multicolinealidad. Recordemos que la correlación entre las dos covariables no es alta (`r cor(birthweight$age,birthweight$mppwt)`).
+\rule{\textwidth}{0.4pt}

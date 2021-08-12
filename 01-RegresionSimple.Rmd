@@ -1,0 +1,596 @@
+# Modelo lineal simple
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::write_bib(c("knitr", "stringr"), "", width = 60)
+```
+
+```{r birthweight0, echo=FALSE,include = FALSE}
+library(pBrackets)
+birthweight = read.csv("birthweight.csv",header = T)
+```
+## Datos de peso al nacer {-}
+Los datos `birthweight` (disponible en el campus virtual) contienen el peso y la edad gestacional de $42$ recién nacidos. El objetivo del estudio es investigar cómo la edad gestational del feto influyen en el peso al nacer durante las últimas semanas del embarazo. Aunque la base de datos contiene otras variables, por ahora solo consideramos el peso y la edad gestacional.
+
+La Figura \@ref(fig:birthweightFigure) muestra la relación entre el peso (en kilogramos) y la edad gestacional (en semanas) del recién nacido. Por medio de este gráfico vemos que hay una relación aproximadamente lineal positiva (la correlación es igual a `r round(cor(birthweight$weight,birthweight$age),2)`). Es decir que cuando la edad gestacional aumenta, el peso del recién nacido también lo hace. Por lo tanto, sería razonable describir el valor esperado del peso al nacer como una función lineal de la edad gestacional:
+\[
+E(\mbox{weight}|\mbox{age}=x) = \beta_{0} + \beta_{1}x.
+\]
+
+La Figura \@ref(fig:birthweightFigure) se puede hacer con el siguiente código:
+```{r birthweightFigure, fig.height = 4, fig.width = 5,fig.align = "center",fig.cap = "Gráfico de dispersion del peso del recien nacido y la edad gestacional."}
+birthweight = read.csv("birthweight.csv",header = T)
+
+plot(weight~age,data=birthweight,pch=20,xlab="Edad gestacional(semanas)",
+     ylab='Peso(kilogramos)')
+```
+Con este conjunto de datos podemos plantear las siguientes preguntas:
+
+- ¿Cómo afecta la edad gestional al peso del neonato?
+- Si la edad gestacional aumenta en una unidad ¿en cuanto aumenta el peso del recién nacido? ¿ese aumento puede considerarse significativo?
+- ¿Se puede predecir el peso al nacer por medio de la edad gestacional?
+
+Estas preguntas se pueden resolver a partir de un análisis de regresión lineal.
+
+## Regresion lineal simple
+En una análisis de regresión simple estamos interesados en modelar la relación entre una variable de entrada (regresor, variable independiente o covariable) $X$ y una variable de salida (respuesta o variable dependiente) $Y$. 
+
+El modelo de regresión nos permite:
+
+- Evaluar cuanto cambia el valor esperado de $Y$ debido a cambios en $X$,
+- Predecir $Y$ (o su valor esperado) en función de $X$.
+
+## Modelo lineal simple
+Sea $(y_{i},x_{i})$ la i-ésima observación de la variable respuesta $(y)$ y la covariable $(x)$, para $i=1,\ldots,n$, con $n$ igual al número total de observaciones. **El modelo lineal simple** se puede expresar de la forma:
+\[
+y_{i} = \beta_{0} + \beta_{1}x_{i}+\varepsilon_{i},
+\]
+donde $\beta_{0}$ es el intercepto, $\beta_{1}$ es la pendiente y $\varepsilon_{i}$ es el componente de error. Generalmente, los supuestos que acompañan este modelo son:
+
+a. $E(\varepsilon_{i}) = 0$,
+b. $V(\varepsilon_{i}) = \sigma^{2}$,
+c. $cov(\varepsilon_{i},\varepsilon_{j}) = 0$, para todo $i \neq j$,
+d. $\varepsilon_{i}$ se distribuye normalmente.
+
+Por lo tanto, $\varepsilon_{i} \sim N(0,\sigma^{2})$. 
+
+A partir de (a) se tiene que:
+\[
+E(Y|X=x_i) = \beta_{0} + \beta_{1}x_i.
+\]
+Entonces, para $x=0$, el valor esperado de $Y$ es igual a $\beta_0$. Cuando $X$ incrementa en una unidad (de $x$ a $x+1$), el valor esperado de $Y$ incrementa en:
+\[
+E(Y|X=x+1) - E(Y|X=x) = \beta_{0} + \beta_{1}(x+1) - (\beta_{0} + \beta_{1}x) = \beta_{1}.
+\]
+Lo que indica que $\beta_{1}$ representa el cambio en el valor esperado de $Y$ por un cambio unitario en $X$.
+
+Dado (b), tenemos que $V(Y|X=x_{i}) = \sigma^{2}$. Es decir que para cualquier valor de $x$, la varianza de $Y$ es la misma (homocedasticidad). Puesto que los errores están incorrelacionados (c), entonces las observaciones de $Y$ también lo están. 
+
+Debido a (d), tenemos que la variable respuesta se distribuye de forma normal. Específicamente, tenemos que: $y_{i} \sim N(\beta_{0} + \beta_{1}x_i, \sigma^{2})$.
+
+El proceso de generación de datos del modelo de regresión lineal se ilustra en la Figura \@ref(fig:gendataFigure). El valor esperado de $Y|X$ está representado por la linea negra. Tenemos que, cada observación de $y$ (puntos negros) es una realización de la distribución de $Y|X=x_{i} \sim N(\beta_{0}+\beta_{1}x_{i},\sigma^{2})$ (curvas rojas). En esté ejemplo, suponemos que $\beta_{0}=0$, $\beta_{1}=1$, y $\sigma=0.1$.
+
+```{r gendata, echo=FALSE}
+x1 = 0.6+dnorm(seq(0.3,0.9,length.out = 100),0.6,0.1)*0.03
+y1 = seq(0.3,0.9,length.out = 100)
+x2 = 0.3+dnorm(seq(0,0.6,length.out = 100),0.3,0.1)*0.03
+y2 = seq(0,0.6,length.out = 100)
+```
+
+```{r gendataFigure,echo=FALSE, fig.height = 4.5, fig.width = 6,fig.align = "center",fig.cap = "Proceso generador datos del modelo lineal simple."}
+plot(NULL,NULL,ylim=c(0,1),xlim=c(0,1),xlab='covariable = X',ylab = 'variable respuesta = Y')
+abline(0,1,lwd=1.5)
+points(0.6,0.4,pch=20)
+points(0.3,0.4,pch=20)
+lines(x1,y1,col=2)
+segments(0.6,0.3,0.6,0.9,lty=3)
+segments(0.6,0.6,max(x1),0.6,lty=2)
+lines(x2,y2,col=2)
+segments(0.3,0,0.3,0.6,lty=3)
+segments(0.3,0.3,max(x2),0.3,lty=2)
+text(max(x2)-0.015,0.25,pos=4,bquote(Y~'|'~x~'='~x[1]~'~'~'N(0.3,0.1)'),cex=0.7,col=2)
+text(max(x1)-0.015,0.6,pos=4,bquote(Y~'|'~x~'='~x[2]~'~'~'N(0.6,0.1)'),cex=0.7,col=2)
+text(0.6,0.4,pos=2,bquote('('~y[2]~','~x[2]~')'),cex=0.7)
+text(0.3,0.4,pos=2,bquote('('~y[1]~','~x[1]~')'),cex=0.7)
+```
+
+## Estimación de los parámetros
+Los parámetros $\beta_{0}$ y $\beta_{1}$ son desconocidos y deben estimarse a partir de los datos. Para esto utilizamos el método de **mínimos cuadrados ordinarios (MCO)**. 
+
+La función objetivo es la siguiente:
+\begin{equation}
+S(\beta_{0},\beta_{1}) = \sum_{i=1}^{n} \left( y_{i} - \beta_{0} - \beta_{1}x_{i} \right)^{2} = \sum_{i=1}^{n} e_{i}^{2}.
+ (\#eq:rss)
+\end{equation}
+Entonces, tenemos que encontrar la combinación de $\beta_{0}$ y $\beta_{1}$ que minimizan \@ref(eq:rss). Para esto, primero debemos derivar $S(\beta_{0},\beta_{1})$ con respecto a $\beta_{0}$ y $\beta_{1}$, e igualar estas ecuación a cero. De esta forma obtenemos las **ecuaciones normales**:
+\begin{equation}
+\frac{\partial S(\beta_{0},\beta_{1})}{\partial \beta_{0}} = - \frac{2}{n}\sum_{i=1}^{n}\left(y_{i}-\beta_{0}-\beta_{1}x_{i} \right),
+(\#eq:normeq1)
+\end{equation}
+y
+\begin{equation}
+\frac{\partial S(\beta_{0},\beta_{1})}{\partial \beta_{1}} = - \frac{2}{n}\sum_{i=1}^{n}\left(y_{i}-\beta_{0}-\beta_{1}x_{i} \right)x_{i}.
+(\#eq:normeq2)
+\end{equation}
+
+Los estimadores por MCO ($\widehat{\beta}_{0}$ y $\widehat{\beta}_{1}$) se obtienen resolviendo el sistema de ecuaciones \@ref(eq:normeq1) y \@ref(eq:normeq2):
+\[
+\widehat{\beta}_{0} = \bar{y} - \widehat{\beta}_{1}\bar{x},
+\]
+y
+\[
+\widehat{\beta}_{1} = \frac{\sum_{i=1}^{n}(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sum_{i=1}^{n}(x_{i}-\bar{x})^2} = \frac{S_{xy}}{S_{xx}} =  cor(X,Y)\frac{s_{Y}}{s_{X}},
+\]
+donde $s_{X}$ y $s_{Y}$ son las desviaciones estándar muestrales de $X$ y $Y$.
+
+La diferencia entre el valor observado $(y_{i})$ y el valor ajustado correspondiente $(\widehat{y}_{i})$ es llamado **residuo** (o residual):
+\[
+e_{i}= y_{i} - (\hatbeta_{0} + \hatbeta_{1}x_{i}) = y_{i}-\haty_{i}, \mbox{ para }i=1,\ldots,n.
+\]
+La Figura \@ref(fig:Figresiduos) presenta los residuos de forma gráfica. Estos juegan un papel importante para la evaluar la bondad del ajuste del modelo (detectar posibles desviaciones a los supuestos asumidos).
+
+```{r Figresiduos, echo=FALSE, fig.height = 4, fig.width = 5,fig.align = "center",fig.cap = "Diagrama gráfico de un ajuste por MCO. La recta representa la estimación por MCO, y las lineas discontinuas verticales entre los puntos observados y la recta estimada son los residuos."}
+set.seed(5)     
+x<-1:10
+y<-3*x + 2 + rnorm(10,0,6)
+m<-lm(y ~ x)
+yhat<-m$fitted.values
+diff<-y-yhat  
+plot(x,y,xlab='covariable = X',ylab = 'variable respuesta = Y')
+abline(m,col=2)
+segments(x, y, x, predict(m),lty=2)
+```
+
+## Estimación de $\sigma^{2}$
+La estimación de $\sigma^{2}$ se hace a partir de la suma de cuadrados de los residuos:
+\[
+SS_{res} = \sum_{i=1}^{n}e^{2}_{i} = \sum_{i=1}^{n} (y_{i}-\widehat{\beta}_{0} - \widehat{\beta}_{1}x_{i})^{2}.
+\]
+El valor esperado de $SS_{res}$ es $E(SS_{res})=(n-2)\sigma^{2}$ (Para el caso de regresión múltiple, ver Sección C.3 de @montgomery_introduction_2012). Por lo tanto, un estimador insesgado de $\sigma^{2}$ es:
+\[
+\hatsigma_{i} = \frac{SS_{res}}{n-2} = MS_{res}.
+\]
+La cantidad $MS_{res}$ es llamada **cuadrado medio de los residuos**.
+
+\rule{\textwidth}{0.4pt}
+
+### Datos de peso al nacer. Modelo y estimación de parametros {-}
+Para los datos de peso al nacer se propone el siguiente modelo:
+\begin{equation}
+\mbox{weight}_{i}= \beta_{0} + \beta_{1}\mbox{age}_{i} + \varepsilon_{i},
+(\#eq:modBirthweight)
+\end{equation}
+donde $\varepsilon_{i} \sim N(0,\sigma^{2})$.
+
+En R, la estimación por MCO se realiza a través de la función `lm`:
+```{r MCO1}
+mod = lm(weight~age, data=birthweight)
+mod
+```
+De aquí obtenemos que $\widehat{\beta}_{0} =`r round(mod$coeff[1],2)`$ y $\widehat{\beta}_{1} =`r round(mod$coeff[2],2)`$. Note que la estimación del intercepto es negativa, lo que es físicamente imposible. Además tampoco tiene sentido una edad gestacional igual a cero. Por lo cual, este parámetro no tiene interpretación en este caso. $\beta_{0}$ solo tiene interpretación cuando las observaciones de $x$ están alrededor de cero.
+
+A partir de $\hatbeta_{1}$, podemos concluir que la edad gestacional tiene un efecto positivo sobre el peso del recién nacido (el coeficiente estimado es positivo). Por cada incremento de una semana en la edad gestacional, el valor esperado del peso del recién nacido aumenta `r round(mod$coeff[2],2)` kilogramos.
+
+La representación gráfica del modelo estimado se presenta en la Figura \@ref(fig:FigMCO2).
+
+```{r FigMCO2,fig.height = 3.5, fig.width = 4,fig.align = "center",fig.cap = "Gráfico de dispersion del peso del recien nacido y la edad gestacional. La linea representa la estimación por MCO."}
+plot(weight~age,data=birthweight,pch=20,xlab="edad gestacional(semanas)",
+     ylab='peso(kilogramos)')
+abline(mod,lwd=2)
+```
+La estimación de $\sigma$ es:
+```{r MCO3}
+ sqrt(sum(mod$residuals^2)/22)
+```
+
+\rule{\textwidth}{0.4pt}
+
+## Propiedades de los estimadores por MCO
+Los estimadores de $\hatbeta_{0}$ y $\hatbeta_{1}$ son una combinación lineal de las observaciones:
+\begin{equation}
+\hatbeta_{i} = \sum_{i=1}^{n} \frac{(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sum_{i=1}^{n}(x_{i}-\bar{x})^2} = \sum_{i=1}^{n} \frac{(x_{i}-\bar{x})}{\sum_{i=1}^{n}(x_{i}-\bar{x})^2}y_{i} = \sum_{i=1}^{n}c_{i}y_{i}.
+(\#eq:beta1cl)
+\end{equation}
+y 
+\[
+\hatbeta_{0} = \bar{y} - \hatbeta_{1}\bar{x} = \sum_{i=1}^{n}\left( \frac{1}{n} - c_{i}\bar{x} \right)y_{i} = \sum_{i=1}^{n}d_{i}y_{i}.
+\]
+Además, se tiene que $\sum_{i=1}^{n}c_{i}=0$ y $\sum_{i=1}^{n}c_{i}x_{i}=1$. Los valores ajustados también son combinaciones lineales de los datos: 
+\[
+\haty_{i} = \hatbeta_{0} + \hatbeta_{1}x_{i} = \sum_{i=1}^{n}(d_{i}+c_{i}x_{i})y_{i}.
+\]
+Puesto que los estimadores de $\beta_{0}$ y $\beta_{1}$ dependen de los errores, estos también son variables aleatorias. Por lo tanto debemos calcular el valor esperado y varianza de $\hatbeta_{0}$ y $\hatbeta_{1}$. 
+
+Si los supuestos del modelo se cumplen, tenemos que el valor esperado de $\hatbeta_{1}$ es:
+\begin{equation}
+\begin{split}
+E(\hatbeta_{1}) &= E\left( \sum_{i=1}^{n}c_{i}y_{i} \right) = \sum_{i=1}^{n}c_{i}E(y_{i}) = \sum_{i=1}^{n} c_{i}(\beta_{0} + \beta_{1}x_{i} + \varepsilon_{i}) \\
+&=\beta_{0}\sum_{i=1}^{n}c_{i} + \beta_{1}\sum_{i=1}^{n}c_{i}x_{i} = \beta_{1}.
+\end{split}
+\nonumber
+\end{equation}
+El valor esperado de $\hatbeta_{0}$ es:
+\begin{equation}
+\begin{split}
+E(\hatbeta_{0}) &= E\left(\bar{y} - \hatbeta_{1}\bar{x} \right) = \frac{1}{n}\sum_{i=1}^{n}E(y_{i}) - \beta_{1}\bar{x} \\
+&= \frac{1}{n}\sum_{i=1}^{n}\left(\beta_{0} + \beta_{1}x_{i}\right) - \beta_{1}\bar{x} = \beta_{0}.
+\end{split}
+\nonumber
+\end{equation}
+
+Es decir que $\hatbeta_{0}$ y $\hatbeta_{1}$ son estimadores insesgado de $\beta_{0}$ y $\beta_{1}$,respectivamente.
+
+La varianza de $\hatbeta_{1}$ y $\hatbeta_{0}$ son:
+\[
+V(\hatbeta_{1})= V \left( \sum_{i=1}^{n}c_{i}y_{i}\right) = \sum_{i=1}^{n}c_{i}^{2}V(y_{i}) = \sigma^{2}\sum_{i=1}^{n}c_{i}^{2} = \frac{\sigma^{2}}{S_{xx}},
+\]
+y
+\begin{equation}
+\begin{split}
+V(\hatbeta_{0}) &= V \left( \bar{y} - \hatbeta_{1}\bar{x}\right) = V (\bar{y}) + \bar{x}^{2}V(\hatbeta_{1}) - 2\bar{x}Cov(\bar{y},\hatbeta_{1}) \\
+&= \sigma^{2} \left(\frac{1}{n} + \frac{\bar{x}^{2}}{S_{xx}}. \right),
+\end{split}
+\nonumber
+\end{equation}
+respectivamente. Finalmente, la covarianza entre $\hatbeta_{0}$ y $\hatbeta_{1}$ es:
+\begin{equation}
+\begin{split}
+Cov(\hatbeta_{0},\hatbeta_{1}) &= Cov\left(\bar{y} - \hatbeta_{1}\bar{x}, \hatbeta_{1} \right) = Cov\left( \bar{y}, \hatbeta_{1}\right) - \bar{x}V\left(\hatbeta_{1}\right) \\
+&=  - \sigma^{2}\frac{\bar{x}}{S_{xx}}.
+\end{split}
+\nonumber
+\end{equation}
+
+Si se cumple que $E(\varepsilon_{i}) = 0$, $V(\varepsilon_{i}) = \sigma^{2}$ y $Cov(\varepsilon_{i},\varepsilon_{j})=0$, se puede probar que los estimadores por MCO son insesgado y de varianza mínima (**teorema de Gauss-Markov**). Para la demostración en el caso de regresión múltiple, ver Sección C4 de @montgomery_introduction_2012. Esto quiere decir que, comparado con todos los posibles estimadores insesgados que son combinación lineal de las observaciones, $\hatbeta_{0}$ y $\hatbeta_{1}$ tienen las varianzas más pequeñas. Por esto los estimadores por MCO son considerados los **mejores estimadores lineales insesgados**. 
+
+## Inferencia
+También podemos hacer pruebas de hipótesis e intervalos de confianza para los parámetros del modelo y/o pronósticos. 
+
+Por ejemplo, en los datos del peso al nacer podemos estar interesados en evaluar si la edad gestacional tiene un efecto positivo sobre el peso al nacer. Por lo tanto, debemos probar si $\beta_{1} > 0$. También podríamos estar interesados en el valor esperado de un recién nacido para cierto valor especifico de edad gestacional, por ejemplo 38 semanas. Entonces, podemos calcular un intervalo de confianza para $E(Y|x=38)$.
+
+### Pruebas de hipótesis
+Suponga la siguiente hipótesis:
+\begin{equation}
+H_{0}: \beta_{1} = \beta_{10} \mbox{  } H_{1}: \beta_{1} \neq \beta_{10}.
+(\#eq:H0beta1)
+\end{equation}
+Dado que $\hatbeta_{1}$ es una combinación lineal de $y_{i}$ \@ref(eq:beta1cl), podemos concluir que:
+\[
+\hatbeta_{1} \sim N\left(\beta_{1}, \frac{\sigma^{2}}{S_{xx}}\right).
+\]
+Además,
+\begin{equation}
+t_{0} = \frac{\hatbeta_{1}-\beta_{10}}{\sqrt{\frac{MS_{res}}{S_{xx}}}}\sim t_{n-2}.
+(\#eq:distB1)
+\end{equation}
+Por lo tanto, $t_{0}$ es el estadístico de prueba para las hipótesis \@ref(eq:H0beta1). Entonces, rechazamos $H_{0}$ si $|t_{0}| \ge t_{1-\alpha/2,n-p}$ (o por medio del valor-$p$ asociado).
+
+De igual forma, para evaluar:
+\[
+H_{0}: \beta_{0} = \beta_{00} \mbox{  } H_{1}: \beta_{0} \neq \beta_{00},
+\]
+el estadístico de prueba es:
+\begin{equation}
+t_{0} = \frac{\hatbeta_{0}-\beta_{00}}{\sqrt{MS_{res}\left(\frac{1}{n}+\frac{\bar{x}^{2}}{S_{xx}} \right)}} \sim t_{n-2}.
+ (\#eq:distB0)
+\end{equation}
+
+### Análisis de varianza
+El análisis de varianza se basa en la partición de la variabilidad total de la variable respuesta $y$ en dos componentes, uno debido al modelo ajustado y otro al error. Primero, empecemos con la siguiente identidad:
+\begin{equation}
+y_{i} - \bar{y} = (y_{i} - \haty_{i}) + (\haty_{i} - \bar{y}).
+(\#eq:decomposion)
+\end{equation}
+La Figura \@ref(fig:anovafig) muestra la partición \@ref(eq:decomposion) en el punto $i=3$. Aquí vemos que una parte de la diferencia entre $y_{3}$ y $\bar{y}$ es explicada por el modelo (línea discontinua roja).
+```{r anovafig, echo=FALSE, fig.height = 4.5, fig.width =6,fig.align = "center",fig.cap = "Representación gráfica de la partición \\@ref(eq:decomposion)."}
+plot(x,y,xlab='covariable = X',ylab = 'variable respuesta = Y')
+abline(m,col=1)
+abline(h=mean(y),lty=2)
+abline(h=y[3],lty=2)
+segments(3, y[3], 3, predict(m)[3],col=2,lty=2)
+segments(3, predict(m)[3], 3, mean(y),col=4,lty=2)
+brackets(3, y[3], 3, predict(m)[3],h=0.2,ticks=0.5,type=1,xpd=F)
+text(3-0.1,y[3]+3,expression(y[3]-hat(y)[3]),pos=2)
+brackets(3, predict(m)[3], 3, mean(y),h=0.2,ticks=0.5,type=1,xpd=F)
+text(3-0.1,predict(m)[3]+2.5,expression(hat(y)[3]-bar(y)),pos=2)
+brackets(1.7, y[3], 1.7, mean(y),h=0.2,ticks=0.5,type=1,xpd=F)
+text(1.7,predict(m)[3],expression(y[3]-bar(y)),pos=2)
+```
+
+Ahora evelavamos al cuadrado \@ref(eq:decomposion)  y sumamos todos los componentes:
+\begin{equation}
+\begin{split}
+\sum_{i=1}^{n} (y_{i} - \bar{y})^{2} &= \sum_{i=1}^{n} (y_{i} - \haty_{i})^{2} + \sum_{i=1}^{n}(\haty_{i} - \bar{y})^{2} + 2 \sum_{i=1}^{n}(y_{i} - \haty_{i})(\haty_{i} - \bar{y}) \\
+&= \sum_{i=1}^{n} (y_{i} - \haty_{i})^{2} + \sum_{i=1}^{n}(\haty_{i} - \bar{y})^{2} \\
+SST &= SS_{R} + SS_{res},
+\end{split}
+(\#eq:ss)
+\end{equation}
+donde $SST$ es llamada la **suma de cuadrados totales** (con $n-1$ grados de libertad), $SS_{R}$ es la **suma de cuadrados de la regresión** (con $1$ grados de libertad), y $SS_{res}$ es la **suma de cuadrados residual o del error** (con $n-2$ grados de libertad).
+
+El análisis de varianza nos permite evaluar la siguiente hipótesis:
+\begin{equation}
+H_{0}: \beta_{1} = 0 \mbox{  }H_{1}:  \beta_{1} \neq 0.
+(\#eq:anova)
+\end{equation}
+
+Se puede demostrar que si $H_{0}$ es cierta:
+\[
+SS_{res} = \frac{(n-2)MS_{res}}{\sigma^{2}} \sim \chi^{2}_{n-2} \mbox{,} \ \  \frac{SS_{R}}{\sigma^{2}} \sim \chi^{2}_{1},
+\]
+y que $SS_{res}$ y $SS_{R}$ son independientes. Por lo tanto:
+\[
+F_{0} = \frac{SS_{R}/1}{SS_{res}/(n-2)} = \frac{MS_{R}}{MS_{res}} \sim F_{(1,n-2)}.
+\]
+Además, $E(MS_{res})=\sigma^{2}$ y $E(MS_{res})=\sigma^{2} + \beta_{1}^{2}S_{xx}$. 
+
+Entonces, podemos utilizar $F_{0}$ como estadístico de prueba de \@ref(eq:anova). Rechazamos $H_{0}$ si $F_{0} > F_{\alpha,1,n-2}$.
+
+Si $H_{0}$ es falsa, $F_{0}$ sigue una distribución F no central con $1$ y $n-2$ grados de libertad, y parámetro de no centralidad igual a $\lambda=(\beta_{1}^{2}S_{xx})/\sigma^{2}$. 
+
+Estos resultados se pueden resumir en la Tabla \@ref(tab:tableAnova).
+
+```{r tableAnova, echo=FALSE, results='asis'}
+  cat(' Table: (\\#tab:tableAnova) Tabla de ANOVA
+  
+  | Fuente de variación | g.l. | SS | MS | $F$ |
+  |---:|---:|---:|---:|---:|
+  | regresión | 1 | $SS_{R}$ | $MS_{R}$ | $F_{0}$ | 
+  | residuos | n-2 | $SS_{res}$ | $MS_{res}$ | |
+  | Total | n-1 | $SST$ | | |')
+```
+
+La cantidad:
+\[
+R^{2} = \frac{SS_{R}}{SS_{res}} = 1 - \frac{SS_{res}}{SST},
+\]
+es llamada **coeficiente de determinación**, y cuantifica la cantidad de variabilidad de $y$ que es explicada por $x$. Dado que $0 \leq SS_{res} \leq SST$, se tiene que $0 \leq R^{2} \leq 1$. Por lo tanto, valores cercanos a $1$ implican que el modelo explica gran parte de la variabilidad de $y$.
+
+\rule{\textwidth}{0.4pt}
+### Datos de peso al nacer. Pruebas de hipótesis y ANOVA {-}
+Se quiere probar que la edad gestacional tiene influencia sobre el peso al nacer del recién nacido. Esto es: 
+\[
+H_{0}: \beta_{1} = 0 \qquad H_{1}: \beta_{1} \neq 0. 
+\]
+Tanto la prueba de hipótesis basada en $t_{0}$, el valor $F_{0}$ del ANOVA, y el $R^{2}$ se pueden observar usando la función `summary`:
+```{r summary}
+summary(mod)
+```
+
+```{r summary2, echo=FALSE}
+ANOVA = summary(mod)
+t0 = round(ANOVA$coefficients[2,3],3)
+t0.valorp = round(ANOVA$coefficients[2,4],5)
+R2 = round(ANOVA$r.squared,3)
+R2p = 100*R2
+F0 = round(ANOVA$fstatistic,2)[1]
+```
+Del resultado anterior, tenemos que:
+
+- $t_{0}=`r t0`$ con un valor-$p$ asociado de `r t0.valorp`. Por lo tanto, rechazamos $H_{0}$ y concluimos que la edad gestacional tiene un efecto significativo sobre el peso al nacer. 
+- La función `summary` no arroja como resultado una tabla ANOVA. Pero podemos observar el valor $F_{0} = `r F0`$ con un valor $p$ asociado de `r t0.valorp`.
+- $R^{2} = `r R2`$, lo que indica que el `r R2p`\% de la variabilidad del peso al nacer es explicada por la edad gestacional.
+\rule{\textwidth}{0.4pt}
+
+
+### Intervalos de confianza
+
+#### Intervalos de confianza para $\beta_{0}$, $\beta_{1}$ y $\sigma^{2}$ {-}
+Los intervalos de confianza para $\beta_{0}$ y $\beta_{1}$ se construyen a partir de las distribuciones de probabilidad de $\hatbeta_{0}$ y $\hatbeta_{1}$. Esto es, \@ref(eq:distB0) y \@ref(eq:distB1), respectivamente.
+
+Por lo tanto, el intervalo del $100(1-\alpha)\%$ de confianza para $\beta_{j}$ es:
+\[
+\hatbeta_{j} \pm t_{1-\alpha/2,n-2}\sqrt{V(\hatbeta_{j})}, \mbox{ para }j=0,1.
+\]
+Se puede demostrar que $(n-2)MS_{res}/\sigma^{2}\sim \chi^{2}_{n-2}$. Por lo tanto:
+\[
+P \left\{ \chi^{2}_{\alpha/2,n-2} \leq (n-2)MS_{res}/\sigma^{2} \leq \chi^{2}_{1-\alpha/2,n-2} \right\} = 1-\alpha.
+\]
+Entonces, el intervalo del $100(1-\alpha)\%$ de confianza para $\sigma^{2}$ es:
+\[
+\left\{ \frac{(n-2)MS_{res}}{\chi^{2}_{1-\alpha/2,n-2}}; \frac{(n-2)MS_{res}}{\chi^{2}_{\alpha/2,n-2}} \right\}.
+\]
+
+#### Intervalos de confianza para $E(y_{i})$ y una predicción futura {-}
+Cuando el objetivo de ajustar un modelo de regresión es hacer predicciones, es posible hacer intervalos de confianza para la respuesta media, esto es $E(Y|x_{0})=\mu_{Y|x_{0}}$, donde $x_{0}$ es un valor de la covariable dentro del rango de valores observados de $x$ en los datos.
+
+Una estimación insesgada de $\mu_{Y|x_{0}}$ es:
+\[
+\widehat{\mu}_{Y|x_{0}} = \hatbeta_{0} + \hatbeta_{1}x_{0}.
+\]
+La varianza de $\widehat{\mu}_{Y|x_{0}}$ es:
+\begin{equation}
+\begin{split}
+V(\widehat{\mu}_{Y|x_{0}}) &= V(\hatbeta_{0} + \hatbeta_{1}x_{0}) = V(\hatbeta_{0}) + x_{0}^{2}V(\hatbeta_{1}) + 2x_{0}Cov(\hatbeta_{0},\hatbeta_{1}) \\
+&= \sigma^{2}\left(\frac{1}{n} + \frac{\bar{x}^{2}}{S_{xx}} \right) + \sigma^{2}x_{0}^{2}\frac{1}{S_{xx}} - 2\sigma^{2}x_{0}\frac{\bar{x}}{S_{xx}} \\
+&= \sigma^{2}\left[\frac{1}{n} + \frac{(x_{0}-\bar{x})^{2}}{S_{xx}} \right].
+\end{split}
+\nonumber
+\end{equation}
+El intervalo de confianza se construye a partir de la siguiente distribución muestral:
+\[
+\frac{\widehat{\mu}_{Y|x_{0}} - E(Y|x_{0})}{\sqrt{MS_{res}[1/n+(x_{0}-\bar{x})^{2}/S_{xx}]}} \sim t_{n-2}.
+\]
+Por lo tanto, el intervalo del $100(1-\alpha)\%$ de confianza para $\mu_{Y|x_{0}}$ es:
+\begin{equation}
+\widehat{\mu}_{Y|x_{0}} \pm t_{1-\alpha/2,n-2}\sqrt{MS_{res}[1/n+(x_{0}-\bar{x})^{2}/S_{xx}]}.
+\label{eq:CImean}
+\end{equation}
+Note que la longitud del intervalo de confianza de $\widehat{\mu}_{Y|x_{0}}$ depende del punto $x_{0}$. La menor longitud se obtiene en el punto $x_{0}=\bar{x}$, y el intervalo es cada vez mas ancho a medida que nos alejamos de ese punto.
+
+Ahora consideremos hacer una predicción de una observación futura de $y$ para cierto valor de $x$. Si queremos hacer la predicción para $x=x_{0}$, entonces la predicción de la nueva observación es:
+\[
+\widetilde{y}_{0} = \hatbeta_{0} + \hatbeta_{1}x_{0}.
+\]
+Asumiendo que el modelo es correcta, el verdadero valor de $y_{0}$ es:
+\[
+\widetilde{y}_{0} = \hatbeta_{0} + \hatbeta_{1}x_{0} + \varepsilon_{0}.
+\]
+y su varianza es:
+\begin{equation}
+V(\widetilde{y}_{0}) = \sigma^{2}+\sigma^{2}\left[\frac{1}{n} + \frac{(x_{0}-\bar{x})^{2}}{S_{xx}} \right].
+(\#eq:varpred)
+\end{equation}
+El primer término a la derecha de \@ref(eq:varpred) corresponde a la variabilidad de $\varepsilon_{0}$ y el segundo al error de estimación de los coeficientes $\beta_{0}$ y $\beta_{1}$. A partir de estos resultados, el intervalo del $100(1-\alpha)\%$ de predicción de una observación futura en $x=x_{0}$ es:
+\[
+\widehat{\mu}_{Y|x_{0}} \pm t_{1-\alpha/2,n-2}\sqrt{MS_{res}[1+1/n+(x_{0}-\bar{x})^{2}/S_{xx}]}.
+\]
+
+\rule{\textwidth}{0.4pt}
+### Datos de peso al nacer. Intervalos de confianza {-}
+El intervalo del 95% de confianza para los parámetros del modelo \@ref(eq:modBirthweight) son:
+```{r ICBeta, echo=TRUE}
+confint(mod)
+```
+Para $\beta_{1}$, con un nivel de confianza del 95\% podemos decir que cuando la edad gestacional aumenta en una unidad, el peso medio del recién nacido aumenta entre 123 y 228 gramos. Como mencionamos antes, $\beta_{0}$ no tiene interpretación en este modelo.
+
+El intervalo del 95\% de confianza para $\sigma$ se calcula "a pie" de la siguiente forma:
+```{r ICSigma, echo=TRUE}
+var.limInf = sum(mod$residuals^2)/qchisq(0.975,df=mod$df.residual)
+var.limSup = sum(mod$residuals^2)/qchisq(0.025,df=mod$df.residual)
+sqrt(c(var.limInf,var.limSup))
+```
+Se quiere predecir el peso medio de los recién nacidos en la semana gestacional 36. La estimación puntual es:
+\[
+\widehat{\mu}_{Y|x_{0}=36} = \hatbeta_{0} + \hatbeta_{1}(36) = -3.6312 + 0.1751*36 = 2.672.
+\]
+El intervalo del 95\% de confianza para $\widehat{\mu}_{Y|x_{0}=36}$ se puede calcular de la siguiente forma:
+```{r ICPredMed, echo=TRUE}
+x.nuevo = data.frame(age=36)
+pred.media = predict(mod,x.nuevo,interval = 'confidence')
+pred.media
+```
+Esto quiere decir que, con un nivel de confianza del 95\%, el peso medio de los recién nacidos en la semana gestacional 36 está entre `r round(pred.media[2],2)` y `r round(pred.media[3],2)` kilogramos.
+
+Ahora, se quiere predecir el peso de un recién nacido en la semana gestacional 38, para esto calculamos un intervalo de predicción del 95\%:
+```{r ICPredPred, echo=TRUE}
+x.nuevo = data.frame(age=38)
+pred.nuevaObs = predict(mod,x.nuevo,interval = 'prediction')
+pred.nuevaObs
+```
+Por lo tanto, con un nivel de confianza del 95\% el peso de un recién nacido en la semana gestacional 38 está entre `r round(pred.nuevaObs[2],2)` y `r round(pred.nuevaObs[3],2)` kilogramos.
+
+Gráficamente, podemos ver los intervalos de confianza y predicción de la siguiente forma:
+```{r ICprevCalc, echo=FALSE}
+x.nuevo = data.frame(age=seq(from=min(birthweight$age),to=max(birthweight$age),length.out = 100))
+pred.media = predict(mod,x.nuevo,interval = 'confidence')
+pred.nuevaObs = predict(mod,x.nuevo,interval = 'prediction')
+```
+
+```{r birthweightIC, fig.height = 4, fig.width = 5,fig.align = "center",fig.cap = "\\label{fig:BWdata2} Intervalos del 95\\% de confianza (línea discontinua) y predicción (línea punteada) para el peso del recien nacido en función de la edad gestacional."}
+plot(weight~age,data=birthweight,pch=20,xlab="Edad gestacional(semanas)",
+     ylab='Peso(kilogramos)')
+abline(mod)
+lines(x.nuevo$age,pred.media[,2],lty=2)
+lines(x.nuevo$age,pred.media[,3],lty=2)
+lines(x.nuevo$age,pred.nuevaObs[,2],lty=3)
+lines(x.nuevo$age,pred.nuevaObs[,3],lty=3)
+```
+\rule{\textwidth}{0.4pt}
+
+## Estimador por máxima verosimilitud
+Si consideramos que $\varepsilon_{i}\sim N(0,\sigma^{2})$, entonces las observación también se distribuyen de forma normal $y_{i}\sim N(\beta_{0}+\beta_{1}x_{i},\sigma^{2})$. Si además asumimos que las observaciones $(y_{i},x_{i})$ son independientes, entonces la función de verosimilitud es:
+\begin{equation}
+\begin{split}
+L(\btheta) =& \prod_{i=1}^{n} \left(\sqrt{2\pi\sigma^{2}} \right)^{-1/2}\exp\left[ - \frac{1}{2\sigma^{2}}(y_{i}-\beta_{0}-\beta_{1}x_{i})^{2} \right] \\
+=& \left( \sqrt{2\pi\sigma^{2}} \right)^{-n/2}\exp\left[ - \frac{1}{2\sigma^{2}} \sum_{i=1}^{n}(y_{i}-\beta_{0}-\beta_{1}x_{i})^{2}\right],
+\end{split}
+\nonumber
+\end{equation}
+para $\btheta=(\beta_{0},\beta_{1},\sigma^{2})'$. La log-verosimilitud es:
+\[
+\ell (\btheta) = - \left(\frac{n}{2}\right)\left[ \log (2 \pi) - \log \sigma^{2}\right] - \frac{1}{2\sigma^{2}}\sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i})^{2}. 
+\]
+El estimador de máxima verosimilitud de $\btheta$ debe satisfacer:
+\[
+\left. \frac{\partial \ell(\btheta)}{\partial \beta_{0}} \right|_{\widetilde{\btheta}} = \frac{1}{\widetilde{\sigma}^{2}}\sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i}) = 0,
+\]
+\[
+\left. \frac{\partial \ell(\btheta)}{\partial \beta_{1}} \right|_{\widetilde{\btheta}} = \frac{1}{\widetilde{\sigma}^{2}}\sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i})x_{i} = 0,
+\]
+y
+\[
+\left. \frac{\partial \ell(\btheta)}{\partial \sigma^{2}} \right|_{\widetilde{\btheta}} = -\frac{n}{2\widetilde{\sigma}^{2}} + \frac{n}{2\widetilde{\sigma}^{4}}
+\sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i})^{2} = 0,
+\]
+Luego de solucionar las ecuaciones anteriores se obtienen los estimadores por máxima verosimilitud:
+\[
+\widetilde{\beta}_{0} = \bar{y} - \widetilde{\beta}_{1}\bar{x},
+\]
+\[
+\widetilde{\beta}_{1} = \frac{\sum_{i=1}^{n}y_{i}(x_{i}-\bar{x})}{\sum_{i=1}^{n}(x_{i}-\bar{x})^{2}},
+\]
+y
+\[
+\widetilde{\sigma}^{2} = \frac{\sum_{i=1}^{n}(y_{i}-\beta_{0}-\beta_{1}x_{i})^{2}}{n}.
+\]
+Aquí observamos que los estimadores por máxima verosimilitud para $\beta_{0}$ y $\beta_{1}$ son equivalente a los estimadores por MCO. El estimador de $\sigma^{2}$ es sesgado, sin embargo el sesgo disminuye a medida que $n$ crece.
+
+Por lo general, los estimadores por máxima verosimilitud tienen mejores propiedades que los estimadores por MCO. Son asintoticamente insesgados, consistentes y asintoticamente de mínima varianza. Sin embargo, estos requieren de supuestos distribucionales completos. Recordemos que los estimadores por MCO solo requieren de una correcta especificación de los dos primeros momentos (valor esperado, varianza y covarianza).
+
+
+## Algunas consideraciones finales
+
+
+- Las conclusiones sobre los modelos de regresión se hacen sobre el rango de valores observados de las covariables (interpolación). Por ejemplo, en los datos de los recién nacidos, se pueden hacer inferencias sobre el peso al nacer para bebés que nacen en entre las semanas `r min(birthweight$age)` y `r max(birthweight$age)`. Cuando hacemos predicciones fuera de este rango estaríamos extrapolando.
+
+Por extrapolación nos referimos a hacer predicciones fuera del rango observado de $x$. La Figura \@ref(fig:extrapolacion) muestra el problema que se puede cometer cuando extrapolamos. Si tenemos datos en el rango $x_{min} \leq x \leq x_{max}$, un modelo lineal es una buena aproximación de $E(Y|x)$. Pero, esa aproximación no es buena para $x>x_{max}$. Por lo tanto, se estaría cometiendo errores graves cuando hacemos predicciones de $Y$ para valores de $x$ mayores a $x_{max}$ (por ejemplo en el punto $x_{0}$).
+
+
+```{r extrapolacion, echo=F, fig.height = 4, fig.width = 5,fig.align = "center",fig.cap = "Peligro de extrapolar. La curva negra representa $E(Y|x)$ y la línea roja es el ajuste del modelo lineal con los datos observados de $x$. La predicción en el punto $x_{0}$ es bastante sesgada."}
+set.seed(2)
+x = seq(0,4,length.out = 100)
+y = sin(0.5*x[x<1.8]) + rnorm(length(x[x<1.8]),0,0.05)
+plot(x,sin(0.5*x),type='l',xlab='covariable = X',ylab = 'variable respuesta = Y',ylim=c(0,1.5),
+     xaxt='n',yaxt='n')
+points(x[x<1.8],y)
+xi = x[x<1.8]
+mod = lm(y~xi)
+abline(mod,col=2,lwd=2)
+ymin = predict(mod,data.frame(xi=0))
+y0 = predict(mod,data.frame(xi=1.8))
+y1 = predict(mod,data.frame(xi=3))
+segments(0,0,0,ymin,lty=2)
+segments(1.8,0,1.8,y0,lty=2)
+segments(3,0,3,y1,lty=2)
+points(3,y1,col=2,pch=18)
+axis(1,min(x),labels = expression(x[min]))
+axis(1,1.8,labels = expression(x[max]))
+axis(1,3,labels = expression(x[0]))
+```
+- La posición de los valores de $x$ tienen una influencia sobre el ajuste por MCO. Particularmente, la estimación de $\beta_{1}$ está fuertemente influenciada por los valores alejados de $x$ y $y$. A estos  puntos se les denomina **puntos influyentes**. En la Figura \@ref(fig:influyentes)(a) podemos ver como un solo punto tiene una influencia alta en la estimación de los parámetros del modelo.
+
+
+- Los **valores atípicos** son observaciones que difieren considerablemente del resto de los datos (generalmente en $y$). Un punto atípico puede afectar la estimación de $\beta_{0}$ (ver Figura \@ref(fig:influyentes)(b) y la estimación de $\sigma^{2}$. 
+
+```{r influyentes0, echo=FALSE}
+set.seed(2)
+x = runif(24,0,1)
+y = 1+0.05*x + rnorm(24,0,0.2)
+x = c(x,2)
+y = c(y,1+0.05*2+2)
+mod1 = lm(y[-25]~x[-25])
+mod2 = lm(y~x)
+x2 = runif(24,0,1)
+y2 = 1+2*x2 + rnorm(24,0,0.2)
+x2 = c(x2,0.5)
+y2 = c(y2,1+0.5*2+2)
+mod12 = lm(y2[-25]~x2[-25])
+mod22 = lm(y2~x2)
+```
+
+```{r influyentes, echo=F, fig.height = 4, fig.width = 8,fig.align = "center",fig.cap = "(a) Efecto de un punto influyente, la línea negra  es la estimación sin el punto A y la linea roja es la estimación incluyento el punto A. (b) Efecto de un punto atípico, la línea negra  es la estimación sin el punto B y la linea roja es la estimación incluyento el punto B."}
+par(mfrow=c(1,2))
+plot(x,y,xlab='covariable = X',ylab = 'variable respuesta = Y', xaxt='n',yaxt='n',main='(a)')
+abline(mod1,col=1,lwd=2)
+abline(mod2,col=2,lwd=2)
+text(2,1+0.05*2+2,expression(A),pos=2)
+
+plot(x2,y2,xlab='covariable = X',ylab = 'variable respuesta = Y', xaxt='n',yaxt='n',main='(b)')
+abline(mod12,col=1,lwd=2)
+abline(mod22,col=2,lwd=2)
+text(0.5,1+0.5*2+2,expression(B),pos=2)
+```
+Los métodos para la detección de puntos atípicos e influyentes se presentarán en un capítulo posterior.
+
+- Una fuerte relación entre dos variables no necesariamente implica que la relación entre las variables es de causa-efecto. Un modelo de regresión nos permite modelar variables que estén correlacionadas, pero no se puede concluir que, necesariamente, es una relación causal.

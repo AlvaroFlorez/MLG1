@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>YOUR TITLE HERE</title>
-  <meta name="description" content="YOUR TITLE HERE" />
-  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+  <title>Notas de clase: Modelo lineal general I</title>
+  <meta name="description" content="Notas de clase: Modelo lineal general I" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="YOUR TITLE HERE" />
+  <meta property="og:title" content="Notas de clase: Modelo lineal general I" />
   <meta property="og:type" content="book" />
   
   
@@ -16,15 +16,15 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="YOUR TITLE HERE" />
+  <meta name="twitter:title" content="Notas de clase: Modelo lineal general I" />
   
   
   
 
-<meta name="author" content="YOUR NAME HERE" />
+<meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2020-08-10" />
+<meta name="date" content="2021-08-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,8 @@
   
   
 
-<link rel="next" href="the-pool-of-tears.html"/>
+<link rel="next" href="modelo-lineal-simple.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,8 +51,97 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -66,12 +156,138 @@
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">SHORT TITLE HERE</a></li>
+<li><a href="./">Notas de clase MLGI</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Down the rabbit-hole</a></li>
-<li class="chapter" data-level="2" data-path="the-pool-of-tears.html"><a href="the-pool-of-tears.html"><i class="fa fa-check"></i><b>2</b> The pool of tears</a></li>
-<li class="chapter" data-level="3" data-path="a-caucus-race-and-a-long-tale.html"><a href="a-caucus-race-and-a-long-tale.html"><i class="fa fa-check"></i><b>3</b> A caucus-race and a long tale</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introducción</a></li>
+<li class="chapter" data-level="1" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html"><i class="fa fa-check"></i><b>1</b> Modelo lineal simple</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#datos-de-peso-al-nacer"><i class="fa fa-check"></i>Datos de peso al nacer</a></li>
+<li class="chapter" data-level="1.1" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#regresion-lineal-simple"><i class="fa fa-check"></i><b>1.1</b> Regresion lineal simple</a></li>
+<li class="chapter" data-level="1.2" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#modelo-lineal-simple-1"><i class="fa fa-check"></i><b>1.2</b> Modelo lineal simple</a></li>
+<li class="chapter" data-level="1.3" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#estimación-de-los-parámetros"><i class="fa fa-check"></i><b>1.3</b> Estimación de los parámetros</a></li>
+<li class="chapter" data-level="1.4" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#estimación-de-sigma2"><i class="fa fa-check"></i><b>1.4</b> Estimación de <span class="math inline">\(\sigma^{2}\)</span></a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#datos-de-peso-al-nacer.-modelo-y-estimación-de-parametros"><i class="fa fa-check"></i>Datos de peso al nacer. Modelo y estimación de parametros</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#propiedades-de-los-estimadores-por-mco"><i class="fa fa-check"></i><b>1.5</b> Propiedades de los estimadores por MCO</a></li>
+<li class="chapter" data-level="1.6" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#inferencia"><i class="fa fa-check"></i><b>1.6</b> Inferencia</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#pruebas-de-hipótesis"><i class="fa fa-check"></i><b>1.6.1</b> Pruebas de hipótesis</a></li>
+<li class="chapter" data-level="1.6.2" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#análisis-de-varianza"><i class="fa fa-check"></i><b>1.6.2</b> Análisis de varianza</a></li>
+<li class="chapter" data-level="" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#datos-de-peso-al-nacer.-pruebas-de-hipótesis-y-anova"><i class="fa fa-check"></i>Datos de peso al nacer. Pruebas de hipótesis y ANOVA</a></li>
+<li class="chapter" data-level="1.6.3" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#intervalos-de-confianza"><i class="fa fa-check"></i><b>1.6.3</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#datos-de-peso-al-nacer.-intervalos-de-confianza"><i class="fa fa-check"></i>Datos de peso al nacer. Intervalos de confianza</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#estimador-por-máxima-verosimilitud"><i class="fa fa-check"></i><b>1.7</b> Estimador por máxima verosimilitud</a></li>
+<li class="chapter" data-level="1.8" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#algunas-consideraciones-finales"><i class="fa fa-check"></i><b>1.8</b> Algunas consideraciones finales</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html"><i class="fa fa-check"></i><b>2</b> Modelo lineal múltiple</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#bajo-peso-al-nacer"><i class="fa fa-check"></i>Bajo peso al nacer</a></li>
+<li class="chapter" data-level="2.1" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#modelo-lineal-múltiple-1"><i class="fa fa-check"></i><b>2.1</b> Modelo lineal múltiple</a></li>
+<li class="chapter" data-level="2.2" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#estimación-de-los-parámetros-de-regresión"><i class="fa fa-check"></i><b>2.2</b> Estimación de los parámetros de regresión</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#estimación-de-sigma2-1"><i class="fa fa-check"></i><b>2.2.1</b> Estimación de <span class="math inline">\(\sigma^{2}\)</span></a></li>
+<li class="chapter" data-level="2.2.2" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#bajo-peso-al-nacer---estimación-de-parámetros"><i class="fa fa-check"></i><b>2.2.2</b> Bajo peso al nacer - estimación de parámetros</a></li>
+<li class="chapter" data-level="2.2.3" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#propiedades-de-los-estimadores-por-mco-1"><i class="fa fa-check"></i><b>2.2.3</b> Propiedades de los estimadores por MCO</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#pruebas-de-hipótesis-1"><i class="fa fa-check"></i><b>2.3</b> Pruebas de hipótesis</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#análisis-de-varianza-1"><i class="fa fa-check"></i><b>2.3.1</b> Análisis de varianza</a></li>
+<li class="chapter" data-level="2.3.2" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#pruebas-individuales-sobre-los-coeficientes"><i class="fa fa-check"></i><b>2.3.2</b> Pruebas individuales sobre los coeficientes</a></li>
+<li class="chapter" data-level="2.3.3" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#pruebas-sobre-subconjuntos-de-coeficientes"><i class="fa fa-check"></i><b>2.3.3</b> Pruebas sobre subconjuntos de coeficientes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#prueba-de-hipótesis-lineal-general"><i class="fa fa-check"></i><b>2.4</b> Prueba de hipótesis lineal general</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#bajo-peso-al-nacer---pruebas-de-hipótesis"><i class="fa fa-check"></i>Bajo peso al nacer - pruebas de hipótesis</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#intervalos-de-confianza-1"><i class="fa fa-check"></i><b>2.5</b> Intervalos de confianza</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#intervalos-de-confianza-para-beta_j"><i class="fa fa-check"></i><b>2.5.1</b> Intervalos de confianza para <span class="math inline">\(\beta_{j}\)</span></a></li>
+<li class="chapter" data-level="2.5.2" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#intervalos-de-confianza-para-el-valor-esperado-de-y-y-una-observación-futura"><i class="fa fa-check"></i><b>2.5.2</b> Intervalos de confianza para el valor esperado de <span class="math inline">\(Y\)</span> y una observación futura</a></li>
+<li class="chapter" data-level="" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#bajo-peso-al-nacer---intervalos-de-confianza"><i class="fa fa-check"></i>Bajo peso al nacer - intervalos de confianza</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#extrapolación-oculta-en-regresión-múltiple"><i class="fa fa-check"></i><b>2.6</b> Extrapolación oculta en regresión múltiple</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#bajo-peso-al-nacer---interpolación"><i class="fa fa-check"></i>Bajo peso al nacer - interpolación</a></li>
+<li class="chapter" data-level="2.6.1" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#coeficientes-normalizados-de-regresión"><i class="fa fa-check"></i><b>2.6.1</b> Coeficientes normalizados de regresión</a></li>
+<li class="chapter" data-level="" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#bajo-peso-al-nacer---coeficientes-de-regresión-con-variables-escaladas"><i class="fa fa-check"></i>Bajo peso al nacer - coeficientes de regresión con variables escaladas</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#multicolinealidad"><i class="fa fa-check"></i><b>2.7</b> Multicolinealidad</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#ejemplo-2"><i class="fa fa-check"></i>ejemplo</a></li>
+<li class="chapter" data-level="2.7.1" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#bajo-peso-al-nacer---factores-de-inflación-de-varianza"><i class="fa fa-check"></i><b>2.7.1</b> Bajo peso al nacer - factores de inflación de varianza</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html"><i class="fa fa-check"></i><b>3</b> Evaluación de los supuestos del modelo</a>
+<ul>
+<li class="chapter" data-level="" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#ejemplo-1.-datos-de-peso-al-nacer"><i class="fa fa-check"></i>Ejemplo 1. Datos de peso al nacer</a></li>
+<li class="chapter" data-level="" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#ejemplo-2.-ventas-de-helados"><i class="fa fa-check"></i>Ejemplo 2. Ventas de helados</a></li>
+<li class="chapter" data-level="" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#ejemplo-3.-longitud-del-pez-lobina-boca-chica"><i class="fa fa-check"></i>Ejemplo 3. Longitud del pez lobina boca chica</a></li>
+<li class="chapter" data-level="3.1" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#supuestos-del-modelo-linea-múltiple"><i class="fa fa-check"></i><b>3.1</b> Supuestos del modelo linea múltiple</a></li>
+<li class="chapter" data-level="3.2" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#efectos-del-incumplimiento-de-los-supuestos"><i class="fa fa-check"></i><b>3.2</b> Efectos del incumplimiento de los supuestos</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#sesgo-por-omisión-de-variables-relevantes"><i class="fa fa-check"></i><b>3.2.1</b> Sesgo por omisión de variables relevantes</a></li>
+<li class="chapter" data-level="3.2.2" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#incorrecta-matriz-de-varianzas-de-los-errores"><i class="fa fa-check"></i><b>3.2.2</b> Incorrecta matriz de varianzas de los errores</a></li>
+<li class="chapter" data-level="3.2.3" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#distribución-no-normal-de-los-errores"><i class="fa fa-check"></i><b>3.2.3</b> Distribución no normal de los errores</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#residuos-del-modelo"><i class="fa fa-check"></i><b>3.3</b> Residuos del modelo</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#residuos-estudentizados"><i class="fa fa-check"></i><b>3.3.1</b> Residuos estudentizados</a></li>
+<li class="chapter" data-level="3.3.2" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#residuos-press-y-r-student"><i class="fa fa-check"></i><b>3.3.2</b> Residuos PRESS y R-student</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#evaluación-del-cumplimiento-de-los-supuestos"><i class="fa fa-check"></i><b>3.4</b> Evaluación del cumplimiento de los supuestos</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#gráficos-de-residuos"><i class="fa fa-check"></i><b>3.4.1</b> Gráficos de residuos</a></li>
+<li class="chapter" data-level="3.4.2" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#gráficos-de-residuos-parciales"><i class="fa fa-check"></i><b>3.4.2</b> Gráficos de residuos parciales</a></li>
+<li class="chapter" data-level="3.4.3" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#gráficos-de-normalidad"><i class="fa fa-check"></i><b>3.4.3</b> Gráficos de normalidad</a></li>
+<li class="chapter" data-level="3.4.4" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#gráfico-de-residuos-frente-a-el-tiempo"><i class="fa fa-check"></i><b>3.4.4</b> Gráfico de residuos frente a el tiempo</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#pruebas-de-hipótesis-para-evaluar-los-supuestos"><i class="fa fa-check"></i><b>3.5</b> Pruebas de hipótesis para evaluar los supuestos</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#prueba-de-falta-de-ajuste"><i class="fa fa-check"></i><b>3.5.1</b> Prueba de falta de ajuste</a></li>
+<li class="chapter" data-level="3.5.2" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#prueba-de-heterocedasticidad"><i class="fa fa-check"></i><b>3.5.2</b> Prueba de heterocedasticidad</a></li>
+<li class="chapter" data-level="3.5.3" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#prueba-de-normalidad"><i class="fa fa-check"></i><b>3.5.3</b> Prueba de normalidad</a></li>
+<li class="chapter" data-level="3.5.4" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#prueba-de-correlación-temporal-de-los-errores"><i class="fa fa-check"></i><b>3.5.4</b> Prueba de correlación temporal de los errores</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#comentarios-finales"><i class="fa fa-check"></i><b>3.6</b> Comentarios finales</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html"><i class="fa fa-check"></i><b>4</b> Transformaciones y mínimos cuadrados ponderados</a>
+<ul>
+<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#ejemplo-1.-datos-de-la-onu"><i class="fa fa-check"></i>Ejemplo 1. Datos de la ONU</a></li>
+<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#ejemplo-2.-datos-de-educación"><i class="fa fa-check"></i>Ejemplo 2. Datos de educación</a></li>
+<li class="chapter" data-level="4.1" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#transformación-de-los-datos"><i class="fa fa-check"></i><b>4.1</b> Transformación de los datos</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#transformaciones-para-linealizar-el-modelo"><i class="fa fa-check"></i><b>4.1.1</b> Transformaciones para linealizar el modelo</a></li>
+<li class="chapter" data-level="4.1.2" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#transformaciones-para-estabilizar-la-varianza"><i class="fa fa-check"></i><b>4.1.2</b> Transformaciones para estabilizar la varianza</a></li>
+<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#datos-de-la-onu.-transformación-para-linealizar-los-datos"><i class="fa fa-check"></i>Datos de la ONU. Transformación para linealizar los datos</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#método-de-box-cox"><i class="fa fa-check"></i><b>4.2</b> Método de Box-Cox</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#datos-de-educación.-transformación-de-box-cox"><i class="fa fa-check"></i><b>4.2.1</b> Datos de educación. Transformación de Box-Cox</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#mínimos-cuadrados-ponderados"><i class="fa fa-check"></i><b>4.3</b> Mínimos cuadrados ponderados</a>
+<ul>
+<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#datos-de-educación.-minímos-cuadrados-ponderados"><i class="fa fa-check"></i>Datos de educación. Minímos cuadrados ponderados</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="evaluación-de-puntos-influyentes-y-atípicos.html"><a href="evaluación-de-puntos-influyentes-y-atípicos.html"><i class="fa fa-check"></i><b>5</b> Evaluación de puntos influyentes y atípicos</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="evaluación-de-puntos-influyentes-y-atípicos.html"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#datos-de-la-onu"><i class="fa fa-check"></i><b>5.1</b> Datos de la ONU</a></li>
+<li class="chapter" data-level="5.2" data-path="evaluación-de-puntos-influyentes-y-atípicos.html"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#importancia-de-detectar-valores-influyentes-y-atípicos"><i class="fa fa-check"></i><b>5.2</b> Importancia de detectar valores influyentes y atípicos</a></li>
+<li class="chapter" data-level="5.3" data-path="evaluación-de-puntos-influyentes-y-atípicos.html"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#valores-atípicos"><i class="fa fa-check"></i><b>5.3</b> Valores atípicos</a>
+<ul>
+<li class="chapter" data-level="" data-path="evaluación-de-puntos-influyentes-y-atípicos.html"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#datos-de-la-onu---valores-atípicos"><i class="fa fa-check"></i>Datos de la ONU - valores atípicos</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="evaluación-de-puntos-influyentes-y-atípicos.html"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#puntos-de-balanceo"><i class="fa fa-check"></i><b>5.4</b> Puntos de balanceo</a>
+<ul>
+<li class="chapter" data-level="" data-path="evaluación-de-puntos-influyentes-y-atípicos.html"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#datos-de-la-onu---diagonal-de-la-matrix-hat"><i class="fa fa-check"></i>Datos de la ONU - diagonal de la matrix hat</a></li>
+<li class="chapter" data-level="5.4.1" data-path="evaluación-de-puntos-influyentes-y-atípicos.html"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#medidas-de-influencia"><i class="fa fa-check"></i><b>5.4.1</b> Medidas de influencia</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="evaluación-de-puntos-influyentes-y-atípicos.html"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#comentarios-finales-1"><i class="fa fa-check"></i><b>5.5</b> Comentarios finales</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -83,7 +299,7 @@
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">YOUR TITLE HERE</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Notas de clase: Modelo lineal general I</a>
           </h1>
         </div>
 
@@ -92,12 +308,30 @@
 
             <section class="normal" id="section-">
 <div id="header">
-<h1 class="title">YOUR TITLE HERE</h1>
-<p class="author"><em>YOUR NAME HERE</em></p>
-<p class="date"><em>2020-08-10</em></p>
+<h1 class="title">Notas de clase: Modelo lineal general I</h1>
+<p class="author"><em>Alvaro J. Flórez</em></p>
+<p class="date" style="margin-top: 1.5em;"><em>2021-08-12</em></p>
 </div>
-<div id="down-the-rabbit-hole" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Down the rabbit-hole</h1>
+<div id="introducción" class="section level1 unnumbered">
+<h1>Introducción</h1>
+<p>Estas son las notas de clase del curso Modelo Lineal General I. Las temáticas que se tratarán son:</p>
+<ol style="list-style-type: decimal">
+<li>Modelo lineal simple</li>
+<li>Modelo lineal múltiple</li>
+<li>Evaluación de los supuestos del modelo lineal</li>
+<li>Transformaciones y mínimos cuadrados ponderados</li>
+<li>Evaluación de puntos influyentes y atípicos</li>
+</ol>
+<p>Tenga en cuenta que el propósito de estas notas de clase no es reemplazar los textos guías. Para el estudio más detallado de los temas que se tratan, se recomiendan las siguientes lecturas:</p>
+<ul>
+<li><em>Introduction to Linear Regression Analysis</em>, Fifth Ed., 2012, by Montgomery, D. C., Peck, E. A. and Vining, G. G. <strong>(Texto guía)</strong></li>
+<li><em>Applied Regression Analysis</em>, Third Ed., 1998, by Draper, N. R. and Smith, H., Wiley.</li>
+<li><em>Theory and Applications of the Linear Models</em>, 2000, by Graybill, F. A., Duxbury.</li>
+<li><em>Applied Linear Statistical Models</em>, Fifth Ed., 2005, by Kutner, M. H, Nachtsheim, C. J., Neter, J. and Li, W., McGraw-Hill.</li>
+<li><em>Análisis de Regresión. Introducción Teórica y Práctica basada en R</em>, 2011, by F. Tusell.</li>
+<li><em>Applied Linear Regression</em>, Fourth Ed., 2014, by S. Weisberg.</li>
+<li><em>Applied Regression Analysis &amp; Generalized Linear Models</em>, 2016, by J. Fox.</li>
+</ul>
 
 </div>
             </section>
@@ -106,7 +340,7 @@
         </div>
       </div>
 
-<a href="the-pool-of-tears.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="modelo-lineal-simple.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -129,6 +363,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -137,7 +372,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/YOUR GITHUB USERNAME/YOUR REPO NAME/edit/master/index.Rmd",
+"link": "https://github.com/AlvaroFlorez/MLG1/edit/master/index.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -145,7 +380,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/YOUR GITHUB USERNAME/YOUR REPO NAME/blob/master/index.Rmd",
+"link": "https://github.com/AlvaroFlorez/MLG1/blob/master/index.Rmd",
 "text": null
 },
 "download": null,
@@ -156,6 +391,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

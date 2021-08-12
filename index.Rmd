@@ -1,9 +1,73 @@
 --- 
-title: "YOUR TITLE HERE"
-author: "YOUR NAME HERE"
+title: "Notas de clase: Modelo lineal general I"
+author: "Alvaro J. Flórez"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
+documentclass: book
+bibliography: [ModeloLineal.bib]
+biblio-style: apalike
+link-citations: yes
+
+header-includes:
+- \usepackage{amsmath}
+- \usepackage{inputenc}
+- \usepackage{caption}
+- \newcommand{\bZERO}{\boldsymbol{0}}
+- \newcommand{\bONE}{\boldsymbol{1}}
+- \newcommand{\tr}{\mbox{tr}}
+
+- \newcommand{\bb}{\boldsymbol{b}}
+- \newcommand{\hatbb}{\widehat{\bb}}
+- \newcommand{\bc}{\boldsymbol{c}}
+- \newcommand{\bC}{\boldsymbol{C}}
+- \newcommand{\be}{\boldsymbol{e}}
+- \newcommand{\bH}{\boldsymbol{H}}
+- \newcommand{\bI}{\boldsymbol{I}}
+- \newcommand{\br}{\boldsymbol{r}}
+- \newcommand{\bR}{\boldsymbol{R}}
+- \newcommand{\bT}{\boldsymbol{T}}
+- \newcommand{\bx}{\boldsymbol{x}}
+- \newcommand{\bX}{\boldsymbol{X}}
+- \newcommand{\by}{\boldsymbol{y}}
+- \newcommand{\bZ}{\boldsymbol{Z}}
+- \newcommand{\bV}{\boldsymbol{V}}
+- \newcommand{\bW}{\boldsymbol{W}}
+- \newcommand{\bz}{\boldsymbol{z}}
+- \newcommand{\tildey}{\widetilde{y}}
+- \newcommand{\tildeby}{\widetilde{\by}}
+- \newcommand{\haty}{\widehat{y}}
+- \newcommand{\hatby}{\widehat{\by}}
+
+- \newcommand{\bbeta}{\boldsymbol{\beta}}
+- \newcommand{\hatbeta}{\widehat{\beta}}
+- \newcommand{\hatbbeta}{\widehat{\bbeta}}
+- \newcommand{\bgamma}{\boldsymbol{\gamma}}
+- \newcommand{\hatmu}{\widehat{\mu}}
+- \newcommand{\hatsigma}{\widehat{\sigma}}
+- \newcommand{\hatlambda}{\widehat{\lambda}}
+- \newcommand{\btheta}{\boldsymbol{\theta}}
+
+- \newcommand{\bvarepsi}{\boldsymbol{\varepsilon}}
+
+- \renewcommand{\figurename}{Figura}
+- \renewcommand{\tablename}{Tabla}
 ---
 
-# Down the rabbit-hole
+# Introducción {-}
+Estas son las notas de clase del curso Modelo Lineal General I. Las temáticas que se tratarán son:
 
+1. Modelo lineal simple
+2. Modelo lineal múltiple
+3. Evaluación de los supuestos del modelo lineal
+4. Transformaciones y mínimos cuadrados ponderados
+5. Evaluación de puntos influyentes y atípicos
+
+Tenga en cuenta que el propósito de estas notas de clase no es reemplazar los textos guías. Para el estudio más detallado de los temas que se tratan, se recomiendan las siguientes lecturas:
+
+- *Introduction to Linear Regression Analysis*, Fifth Ed., 2012, by Montgomery, D. C., Peck, E. A. and Vining, G. G. **(Texto guía)**
+- *Applied Regression Analysis*, Third Ed., 1998, by Draper, N. R. and Smith, H., Wiley.
+- *Theory and Applications of the Linear Models*, 2000, by Graybill, F. A., Duxbury.
+- *Applied Linear Statistical Models*, Fifth Ed., 2005, by Kutner, M. H, Nachtsheim, C. J., Neter, J. and Li, W., McGraw-Hill.
+- *Análisis de Regresión. Introducción Teórica y Práctica basada en R*, 2011, by F. Tusell.
+- *Applied Linear Regression*, Fourth Ed.,  2014, by S. Weisberg.
+- *Applied Regression Analysis \& Generalized Linear Models*, 2016, by J. Fox.

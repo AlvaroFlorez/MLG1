@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 3 Evaluación de los supuestos del modelo | Notas de clase: Modelo lineal general I</title>
+  <meta name="description" content="Capítulo 3 Evaluación de los supuestos del modelo | Notas de clase: Modelo lineal general I" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 3 Evaluación de los supuestos del modelo | Notas de clase: Modelo lineal general I" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 3 Evaluación de los supuestos del modelo | Notas de clase: Modelo lineal general I" />
+  
+  
+  
+
+<meta name="author" content="Alvaro J. Flórez" />
+
+
+<meta name="date" content="2021-08-12" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="modelo-lineal-múltiple.html"/>
+<link rel="next" href="transformaciones-y-mínimos-cuadrados-ponderados.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Notas de clase MLGI</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introducción</a></li>
+<li class="chapter" data-level="1" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html"><i class="fa fa-check"></i><b>1</b> Modelo lineal simple</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#datos-de-peso-al-nacer"><i class="fa fa-check"></i>Datos de peso al nacer</a></li>
+<li class="chapter" data-level="1.1" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#regresion-lineal-simple"><i class="fa fa-check"></i><b>1.1</b> Regresion lineal simple</a></li>
+<li class="chapter" data-level="1.2" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#modelo-lineal-simple-1"><i class="fa fa-check"></i><b>1.2</b> Modelo lineal simple</a></li>
+<li class="chapter" data-level="1.3" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#estimación-de-los-parámetros"><i class="fa fa-check"></i><b>1.3</b> Estimación de los parámetros</a></li>
+<li class="chapter" data-level="1.4" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#estimación-de-sigma2"><i class="fa fa-check"></i><b>1.4</b> Estimación de <span class="math inline">\(\sigma^{2}\)</span></a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#datos-de-peso-al-nacer.-modelo-y-estimación-de-parametros"><i class="fa fa-check"></i>Datos de peso al nacer. Modelo y estimación de parametros</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#propiedades-de-los-estimadores-por-mco"><i class="fa fa-check"></i><b>1.5</b> Propiedades de los estimadores por MCO</a></li>
+<li class="chapter" data-level="1.6" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#inferencia"><i class="fa fa-check"></i><b>1.6</b> Inferencia</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#pruebas-de-hipótesis"><i class="fa fa-check"></i><b>1.6.1</b> Pruebas de hipótesis</a></li>
+<li class="chapter" data-level="1.6.2" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#análisis-de-varianza"><i class="fa fa-check"></i><b>1.6.2</b> Análisis de varianza</a></li>
+<li class="chapter" data-level="" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#datos-de-peso-al-nacer.-pruebas-de-hipótesis-y-anova"><i class="fa fa-check"></i>Datos de peso al nacer. Pruebas de hipótesis y ANOVA</a></li>
+<li class="chapter" data-level="1.6.3" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#intervalos-de-confianza"><i class="fa fa-check"></i><b>1.6.3</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#datos-de-peso-al-nacer.-intervalos-de-confianza"><i class="fa fa-check"></i>Datos de peso al nacer. Intervalos de confianza</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#estimador-por-máxima-verosimilitud"><i class="fa fa-check"></i><b>1.7</b> Estimador por máxima verosimilitud</a></li>
+<li class="chapter" data-level="1.8" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#algunas-consideraciones-finales"><i class="fa fa-check"></i><b>1.8</b> Algunas consideraciones finales</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html"><i class="fa fa-check"></i><b>2</b> Modelo lineal múltiple</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#bajo-peso-al-nacer"><i class="fa fa-check"></i>Bajo peso al nacer</a></li>
+<li class="chapter" data-level="2.1" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#modelo-lineal-múltiple-1"><i class="fa fa-check"></i><b>2.1</b> Modelo lineal múltiple</a></li>
+<li class="chapter" data-level="2.2" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#estimación-de-los-parámetros-de-regresión"><i class="fa fa-check"></i><b>2.2</b> Estimación de los parámetros de regresión</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#estimación-de-sigma2-1"><i class="fa fa-check"></i><b>2.2.1</b> Estimación de <span class="math inline">\(\sigma^{2}\)</span></a></li>
+<li class="chapter" data-level="2.2.2" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#bajo-peso-al-nacer---estimación-de-parámetros"><i class="fa fa-check"></i><b>2.2.2</b> Bajo peso al nacer - estimación de parámetros</a></li>
+<li class="chapter" data-level="2.2.3" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#propiedades-de-los-estimadores-por-mco-1"><i class="fa fa-check"></i><b>2.2.3</b> Propiedades de los estimadores por MCO</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#pruebas-de-hipótesis-1"><i class="fa fa-check"></i><b>2.3</b> Pruebas de hipótesis</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#análisis-de-varianza-1"><i class="fa fa-check"></i><b>2.3.1</b> Análisis de varianza</a></li>
+<li class="chapter" data-level="2.3.2" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#pruebas-individuales-sobre-los-coeficientes"><i class="fa fa-check"></i><b>2.3.2</b> Pruebas individuales sobre los coeficientes</a></li>
+<li class="chapter" data-level="2.3.3" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#pruebas-sobre-subconjuntos-de-coeficientes"><i class="fa fa-check"></i><b>2.3.3</b> Pruebas sobre subconjuntos de coeficientes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#prueba-de-hipótesis-lineal-general"><i class="fa fa-check"></i><b>2.4</b> Prueba de hipótesis lineal general</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#bajo-peso-al-nacer---pruebas-de-hipótesis"><i class="fa fa-check"></i>Bajo peso al nacer - pruebas de hipótesis</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#intervalos-de-confianza-1"><i class="fa fa-check"></i><b>2.5</b> Intervalos de confianza</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#intervalos-de-confianza-para-beta_j"><i class="fa fa-check"></i><b>2.5.1</b> Intervalos de confianza para <span class="math inline">\(\beta_{j}\)</span></a></li>
+<li class="chapter" data-level="2.5.2" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#intervalos-de-confianza-para-el-valor-esperado-de-y-y-una-observación-futura"><i class="fa fa-check"></i><b>2.5.2</b> Intervalos de confianza para el valor esperado de <span class="math inline">\(Y\)</span> y una observación futura</a></li>
+<li class="chapter" data-level="" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#bajo-peso-al-nacer---intervalos-de-confianza"><i class="fa fa-check"></i>Bajo peso al nacer - intervalos de confianza</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#extrapolación-oculta-en-regresión-múltiple"><i class="fa fa-check"></i><b>2.6</b> Extrapolación oculta en regresión múltiple</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#bajo-peso-al-nacer---interpolación"><i class="fa fa-check"></i>Bajo peso al nacer - interpolación</a></li>
+<li class="chapter" data-level="2.6.1" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#coeficientes-normalizados-de-regresión"><i class="fa fa-check"></i><b>2.6.1</b> Coeficientes normalizados de regresión</a></li>
+<li class="chapter" data-level="" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#bajo-peso-al-nacer---coeficientes-de-regresión-con-variables-escaladas"><i class="fa fa-check"></i>Bajo peso al nacer - coeficientes de regresión con variables escaladas</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#multicolinealidad"><i class="fa fa-check"></i><b>2.7</b> Multicolinealidad</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#ejemplo-2"><i class="fa fa-check"></i>ejemplo</a></li>
+<li class="chapter" data-level="2.7.1" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#bajo-peso-al-nacer---factores-de-inflación-de-varianza"><i class="fa fa-check"></i><b>2.7.1</b> Bajo peso al nacer - factores de inflación de varianza</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html"><i class="fa fa-check"></i><b>3</b> Evaluación de los supuestos del modelo</a>
+<ul>
+<li class="chapter" data-level="" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#ejemplo-1.-datos-de-peso-al-nacer"><i class="fa fa-check"></i>Ejemplo 1. Datos de peso al nacer</a></li>
+<li class="chapter" data-level="" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#ejemplo-2.-ventas-de-helados"><i class="fa fa-check"></i>Ejemplo 2. Ventas de helados</a></li>
+<li class="chapter" data-level="" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#ejemplo-3.-longitud-del-pez-lobina-boca-chica"><i class="fa fa-check"></i>Ejemplo 3. Longitud del pez lobina boca chica</a></li>
+<li class="chapter" data-level="3.1" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#supuestos-del-modelo-linea-múltiple"><i class="fa fa-check"></i><b>3.1</b> Supuestos del modelo linea múltiple</a></li>
+<li class="chapter" data-level="3.2" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#efectos-del-incumplimiento-de-los-supuestos"><i class="fa fa-check"></i><b>3.2</b> Efectos del incumplimiento de los supuestos</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#sesgo-por-omisión-de-variables-relevantes"><i class="fa fa-check"></i><b>3.2.1</b> Sesgo por omisión de variables relevantes</a></li>
+<li class="chapter" data-level="3.2.2" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#incorrecta-matriz-de-varianzas-de-los-errores"><i class="fa fa-check"></i><b>3.2.2</b> Incorrecta matriz de varianzas de los errores</a></li>
+<li class="chapter" data-level="3.2.3" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#distribución-no-normal-de-los-errores"><i class="fa fa-check"></i><b>3.2.3</b> Distribución no normal de los errores</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#residuos-del-modelo"><i class="fa fa-check"></i><b>3.3</b> Residuos del modelo</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#residuos-estudentizados"><i class="fa fa-check"></i><b>3.3.1</b> Residuos estudentizados</a></li>
+<li class="chapter" data-level="3.3.2" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#residuos-press-y-r-student"><i class="fa fa-check"></i><b>3.3.2</b> Residuos PRESS y R-student</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#evaluación-del-cumplimiento-de-los-supuestos"><i class="fa fa-check"></i><b>3.4</b> Evaluación del cumplimiento de los supuestos</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#gráficos-de-residuos"><i class="fa fa-check"></i><b>3.4.1</b> Gráficos de residuos</a></li>
+<li class="chapter" data-level="3.4.2" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#gráficos-de-residuos-parciales"><i class="fa fa-check"></i><b>3.4.2</b> Gráficos de residuos parciales</a></li>
+<li class="chapter" data-level="3.4.3" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#gráficos-de-normalidad"><i class="fa fa-check"></i><b>3.4.3</b> Gráficos de normalidad</a></li>
+<li class="chapter" data-level="3.4.4" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#gráfico-de-residuos-frente-a-el-tiempo"><i class="fa fa-check"></i><b>3.4.4</b> Gráfico de residuos frente a el tiempo</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#pruebas-de-hipótesis-para-evaluar-los-supuestos"><i class="fa fa-check"></i><b>3.5</b> Pruebas de hipótesis para evaluar los supuestos</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#prueba-de-falta-de-ajuste"><i class="fa fa-check"></i><b>3.5.1</b> Prueba de falta de ajuste</a></li>
+<li class="chapter" data-level="3.5.2" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#prueba-de-heterocedasticidad"><i class="fa fa-check"></i><b>3.5.2</b> Prueba de heterocedasticidad</a></li>
+<li class="chapter" data-level="3.5.3" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#prueba-de-normalidad"><i class="fa fa-check"></i><b>3.5.3</b> Prueba de normalidad</a></li>
+<li class="chapter" data-level="3.5.4" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#prueba-de-correlación-temporal-de-los-errores"><i class="fa fa-check"></i><b>3.5.4</b> Prueba de correlación temporal de los errores</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#comentarios-finales"><i class="fa fa-check"></i><b>3.6</b> Comentarios finales</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html"><i class="fa fa-check"></i><b>4</b> Transformaciones y mínimos cuadrados ponderados</a>
+<ul>
+<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#ejemplo-1.-datos-de-la-onu"><i class="fa fa-check"></i>Ejemplo 1. Datos de la ONU</a></li>
+<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#ejemplo-2.-datos-de-educación"><i class="fa fa-check"></i>Ejemplo 2. Datos de educación</a></li>
+<li class="chapter" data-level="4.1" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#transformación-de-los-datos"><i class="fa fa-check"></i><b>4.1</b> Transformación de los datos</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#transformaciones-para-linealizar-el-modelo"><i class="fa fa-check"></i><b>4.1.1</b> Transformaciones para linealizar el modelo</a></li>
+<li class="chapter" data-level="4.1.2" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#transformaciones-para-estabilizar-la-varianza"><i class="fa fa-check"></i><b>4.1.2</b> Transformaciones para estabilizar la varianza</a></li>
+<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#datos-de-la-onu.-transformación-para-linealizar-los-datos"><i class="fa fa-check"></i>Datos de la ONU. Transformación para linealizar los datos</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#método-de-box-cox"><i class="fa fa-check"></i><b>4.2</b> Método de Box-Cox</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#datos-de-educación.-transformación-de-box-cox"><i class="fa fa-check"></i><b>4.2.1</b> Datos de educación. Transformación de Box-Cox</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#mínimos-cuadrados-ponderados"><i class="fa fa-check"></i><b>4.3</b> Mínimos cuadrados ponderados</a>
+<ul>
+<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#datos-de-educación.-minímos-cuadrados-ponderados"><i class="fa fa-check"></i>Datos de educación. Minímos cuadrados ponderados</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="evaluación-de-puntos-influyentes-y-atípicos.html"><a href="evaluación-de-puntos-influyentes-y-atípicos.html"><i class="fa fa-check"></i><b>5</b> Evaluación de puntos influyentes y atípicos</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="evaluación-de-puntos-influyentes-y-atípicos.html"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#datos-de-la-onu"><i class="fa fa-check"></i><b>5.1</b> Datos de la ONU</a></li>
+<li class="chapter" data-level="5.2" data-path="evaluación-de-puntos-influyentes-y-atípicos.html"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#importancia-de-detectar-valores-influyentes-y-atípicos"><i class="fa fa-check"></i><b>5.2</b> Importancia de detectar valores influyentes y atípicos</a></li>
+<li class="chapter" data-level="5.3" data-path="evaluación-de-puntos-influyentes-y-atípicos.html"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#valores-atípicos"><i class="fa fa-check"></i><b>5.3</b> Valores atípicos</a>
+<ul>
+<li class="chapter" data-level="" data-path="evaluación-de-puntos-influyentes-y-atípicos.html"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#datos-de-la-onu---valores-atípicos"><i class="fa fa-check"></i>Datos de la ONU - valores atípicos</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="evaluación-de-puntos-influyentes-y-atípicos.html"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#puntos-de-balanceo"><i class="fa fa-check"></i><b>5.4</b> Puntos de balanceo</a>
+<ul>
+<li class="chapter" data-level="" data-path="evaluación-de-puntos-influyentes-y-atípicos.html"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#datos-de-la-onu---diagonal-de-la-matrix-hat"><i class="fa fa-check"></i>Datos de la ONU - diagonal de la matrix hat</a></li>
+<li class="chapter" data-level="5.4.1" data-path="evaluación-de-puntos-influyentes-y-atípicos.html"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#medidas-de-influencia"><i class="fa fa-check"></i><b>5.4.1</b> Medidas de influencia</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="evaluación-de-puntos-influyentes-y-atípicos.html"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#comentarios-finales-1"><i class="fa fa-check"></i><b>5.5</b> Comentarios finales</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Notas de clase: Modelo lineal general I</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="evaluación-de-los-supuestos-del-modelo" class="section level1" number="3">
+<h1><span class="header-section-number">Capítulo 3</span> Evaluación de los supuestos del modelo</h1>
+<div id="ejemplo-1.-datos-de-peso-al-nacer" class="section level2 unnumbered">
+<h2>Ejemplo 1. Datos de peso al nacer</h2>
+<p>Retomemos la base de datos de bajo peso al nacer (disponible en el campus virtual), y consideremos el siguiente modelo:
+<span class="math display">\[
+\mbox{weight}_{i} = \beta_{0} + \beta_{1}\mbox{age}_{i} + \beta_{2}\mbox{motherage}_{i} + \beta_{3}\mbox{mnocig}_{i} + \beta_{4}\mbox{mppwt}_{i} + \varepsilon_{i},
+\]</span>
+con <span class="math inline">\(\varepsilon_{i} \sim N\left(0,\sigma^{2} \right)\)</span> y <span class="math inline">\(cov(\varepsilon_{j},\varepsilon_{k})=0\)</span>, para todo <span class="math inline">\(j \neq k\)</span>.</p>
+<p>El ajuste del modelo es:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb44-1" aria-hidden="true" tabindex="-1"></a>Birthweight <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&#39;birthweight.csv&#39;</span>)</span>
+<span id="cb44-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb44-2" aria-hidden="true" tabindex="-1"></a>mod.birthweight <span class="ot">=</span> <span class="fu">lm</span>(weight <span class="sc">~</span> age <span class="sc">+</span> motherage <span class="sc">+</span> mnocig <span class="sc">+</span> mppwt, <span class="at">data=</span>Birthweight)</span>
+<span id="cb44-3"><a href="evaluación-de-los-supuestos-del-modelo.html#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.birthweight)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = weight ~ age + motherage + mnocig + mppwt, data = Birthweight)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.78765 -0.35948  0.09209  0.35024  0.75018 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -4.104029   1.011723  -4.056 0.000247 ***
+## age          0.168027   0.024916   6.744 6.24e-08 ***
+## motherage    0.001751   0.012335   0.142 0.887900    
+## mnocig      -0.014417   0.005421  -2.660 0.011493 *  
+## mppwt        0.014838   0.009530   1.557 0.127966    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.4073 on 37 degrees of freedom
+## Multiple R-squared:  0.627,  Adjusted R-squared:  0.5867 
+## F-statistic: 15.55 on 4 and 37 DF,  p-value: 1.5e-07</code></pre>
+<p>La edad gestacional y el número de cigarrillos consumidos por la madre tienen efectos signficativos sobre el peso del recién nacido. El primero es un factor de protección, a mayor edad gestacional mayor será el peso del bebé. Mientras que, el consumo de cigarrillos es un factor de riesgo. A mayor consumo, menor peso tendrá el recién nacido. La edad y el peso de la madre, aunque tienen efectos positivos, no son covariables significativas cuando las otras dos covariables ya están incluidas en el modelo.</p>
+</div>
+<div id="ejemplo-2.-ventas-de-helados" class="section level2 unnumbered">
+<h2>Ejemplo 2. Ventas de helados</h2>
+La base de datos <code>icecream</code> (del paquete <code>orcutt</code> de R) recopila la siguiente información tomada cada cuatro semanas durante dos años (marzo 1951 a julio 1953):
+<p>La Figura  muestra la relación entre las variables. Aquí podemos observar que a mayor temperatura, el consumo de helado se incrementa. Por otro lado, la relación con el precio no es tan fuerte.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(orcutt)</span>
+<span id="cb46-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;icecream&quot;</span>)</span>
+<span id="cb46-3"><a href="evaluación-de-los-supuestos-del-modelo.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(icecream[,<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">4</span>)])</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:Icecream"></span>
+<img src="bookdownproj_files/figure-html/Icecream-1.png" alt="\label{fig:icecream} Relación entre las variables de los datos de ventas de helados." width="480" />
+<p class="caption">
+Figure 3.1:  Relación entre las variables de los datos de ventas de helados.
+</p>
+</div>
+<p>El objetivo del estudio es explicar el consumo de helado en función del precio y la temperatura. Para esto se propone el siguiente modelo:
+<span class="math display">\[
+\mbox{cons}_{i} = \beta_{0} + \beta_{1}\mbox{price}_{i} + \beta_{2}\mbox{temp}_{i} + \varepsilon_{i},
+\]</span>
+con <span class="math inline">\(\varepsilon_{i} \sim N\left(0,\sigma^{2} \right)\)</span> y <span class="math inline">\(cov(\varepsilon_{j},\varepsilon_{k})=0\)</span>, para todo <span class="math inline">\(j \neq k\)</span>.</p>
+<p>El resumen del modelo es el siguiente:</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb47-1" aria-hidden="true" tabindex="-1"></a>  mod.icecream <span class="ot">=</span> <span class="fu">lm</span>(cons<span class="sc">~</span>price<span class="sc">+</span>temp,<span class="at">data=</span>icecream)</span>
+<span id="cb47-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.icecream)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = cons ~ price + temp, data = icecream)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.08226 -0.02051  0.00184  0.02272  0.10076 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  0.59655    0.25831   2.309   0.0288 *  
+## price       -1.40176    0.92509  -1.515   0.1413    
+## temp         0.00303    0.00047   6.448 6.56e-07 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.04132 on 27 degrees of freedom
+## Multiple R-squared:  0.6328, Adjusted R-squared:  0.6056 
+## F-statistic: 23.27 on 2 and 27 DF,  p-value: 1.336e-06</code></pre>
+De aquí podemos concluir que alrededor del 70% de la variabilidad del consumo de helado está explicado por el modelo propuesto. Además, el efecto de la temperatura sobre el consumo de helado es signficativamente positivo. Aunque la relación con el precio es negativa, esta no es significativa.
+</div>
+<div id="ejemplo-3.-longitud-del-pez-lobina-boca-chica" class="section level2 unnumbered">
+<h2>Ejemplo 3. Longitud del pez lobina boca chica</h2>
+<p>La base de datos <code>wblake</code> (de la librería <code>alr4</code>) contiene la edad (en años) y longitud (en mm) de 439 peces lobina boca chica del lago West Bearskin en el nordeste de Minnesota en 1999. El objetivo del estudio es determinar los patrones de crecimiento de este tipo de pez.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(alr4)</span>
+<span id="cb49-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;wblake&quot;</span>)</span>
+<span id="cb49-3"><a href="evaluación-de-los-supuestos-del-modelo.html#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Length<span class="sc">~</span>Age,<span class="at">data=</span>wblake,<span class="at">xlab=</span><span class="st">&#39;edad (años)&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;longitud (mm)&#39;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:bass"></span>
+<img src="bookdownproj_files/figure-html/bass-1.png" alt="\label{fig:bass} Relación entre la edad y la longitud de los peces lobina boca chica." width="480" />
+<p class="caption">
+Figure 3.2:  Relación entre la edad y la longitud de los peces lobina boca chica.
+</p>
+</div>
+<p>La Figura  muestra que la relación entre estas dos variables se puede aproximar a una recta, por lo cuál se propone el siguiente:
+<span class="math display">\[
+\mbox{length}_{i} = \beta_{0} + \beta_{1}\mbox{age}_{i} + \varepsilon_{i}
+\]</span>
+con <span class="math inline">\(\varepsilon_{i} \sim N\left(0,\sigma^{2} \right)\)</span> y <span class="math inline">\(cov(\varepsilon_{j},\varepsilon_{k})=0\)</span>, para todo <span class="math inline">\(j \neq k\)</span>.</p>
+<p>El resumen del ajuste es el siguiente:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb50-1" aria-hidden="true" tabindex="-1"></a>mod.bass <span class="ot">=</span> <span class="fu">lm</span>(Length<span class="sc">~</span>Age,<span class="at">data=</span>wblake)</span>
+<span id="cb50-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.bass)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Length ~ Age, data = wblake)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -85.794 -19.499  -4.499  16.177  94.853 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  65.5272     3.1974   20.49   &lt;2e-16 ***
+## Age          30.3239     0.6877   44.09   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 28.65 on 437 degrees of freedom
+## Multiple R-squared:  0.8165, Adjusted R-squared:  0.8161 
+## F-statistic:  1944 on 1 and 437 DF,  p-value: &lt; 2.2e-16</code></pre>
+Estos resultados muestran que la edad del pez tiene un efecto significativamente positivo. Por cada año del pez, la longitud aumenta 30 milimetros en promedio. Adicionalmente, esta covariable explica el 81% de la variabilidad de la longitud.
+<p>La validez de las conclusiones hechas en estos ejemplos descansa en el cumplimiento de los supuestos sobre los errores. Por esta razón, es de gran importancia que tengamos herramientas para evaluar si los datos analizados no muestran ningún alejamiento de los supuestos asumidos.</p>
+</div>
+<div id="supuestos-del-modelo-linea-múltiple" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Supuestos del modelo linea múltiple</h2>
+<p>En el modelo de regresión lineal múltiple:
+<span class="math display">\[
+y_{i}=\beta_{0} + \beta_{1} x_{i1}+\beta_{2} x_{i2}+\ldots + \beta_{p-1} x_{i,p-1} +\varepsilon_{i},
+\]</span>
+asumimos que la relación entre la variable respuesta y las covariables es lineal, al menos de forma aproximada. Además,</p>
+<ol style="list-style-type: lower-alpha">
+<li><span class="math inline">\(E(\varepsilon_{i})=0\)</span>, para <span class="math inline">\(i=1,\ldots,n\)</span>,</li>
+<li><span class="math inline">\(Var(\varepsilon_{j})=\sigma^{2}\)</span>. Homogeneidad de varianza en los errores,</li>
+<li><span class="math inline">\(Cov(\varepsilon_{i},\varepsilon_{j})=0\)</span> para todo <span class="math inline">\(i\neq j\)</span>. Los errores están incorrelacionados,</li>
+<li><span class="math inline">\(\varepsilon_{j} \sim Normal(0, \sigma^{2})\)</span>. Los errores se distribuyen de forma normal.</li>
+</ol>
+<p>La importancia de realizar procedimientos para validar los supuestos, radica en que ellos inciden en las cualidades de los estimadores por MCO. En caso de no cumplirse se pueden perder propiedades importantes. Si no se cumple el supuesto (a) se obtienen estimaciones sesgadas. Si no se cumplen (b) y (c) los estimadores MCO pierden la condición de optimalidad. Si no se cumple (d) se pierde eficiencia e imposibilita la aplicación de inferencias basadas en normalidad.</p>
+<p>En general, no se puede detectar una violación a los supuestos a partir de estadísticos del ajuste del modelo (<span class="math inline">\(R^2\)</span>, <span class="math inline">\(F_0\)</span>, valores-<span class="math inline">\(t\)</span>, etc). El diagnostico se puede hacer por métodos gráficos y pruebas formales (pruebas de hipótesis). Ambos métodos son complementarios, los gráficos sugieren formas particulares de incumplimiento del supuesto, mientras las pruebas formales evalúan su importancia <span class="citation">(<a href="#ref-behar_validacion_2002" role="doc-biblioref">Behar 2002</a>)</span>.</p>
+</div>
+<div id="efectos-del-incumplimiento-de-los-supuestos" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Efectos del incumplimiento de los supuestos</h2>
+<div id="sesgo-por-omisión-de-variables-relevantes" class="section level3" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Sesgo por omisión de variables relevantes</h3>
+<p>Si <span class="math inline">\(E(\boldsymbol{\varepsilon}) = \boldsymbol{0}\)</span>, entonces <span class="math inline">\(E(\boldsymbol{y}| \boldsymbol{X}) = \boldsymbol{X}\boldsymbol{\beta}\)</span>, y el estimador por MCO es insesgado. Sin embargo, si omitimos variables relevantes dentro del modelo las estimaciones serán sesgadas. Para ver esto, supongamos que el modelo generador de los datos es:
+<span class="math display">\[
+\boldsymbol{y}= \boldsymbol{X}\boldsymbol{\beta}+ \boldsymbol{\varepsilon}=  \boldsymbol{X}_{1}\boldsymbol{\beta}_{1} + \boldsymbol{X}_{2}\boldsymbol{\beta}_{2} + \boldsymbol{\varepsilon},
+\]</span>
+donde las columnas de la matriz <span class="math inline">\(n\times p\)</span> de covariables <span class="math inline">\(\boldsymbol{X}\)</span> está divida en dos submatrices <span class="math inline">\(\boldsymbol{X}_{1}\)</span> y <span class="math inline">\(\boldsymbol{X}_{2}\)</span> de dimensiones <span class="math inline">\(n \times (p-r)\)</span> y <span class="math inline">\(n\times r\)</span>, respectivamente. Además, asumimos que <span class="math inline">\(\boldsymbol{\varepsilon}\sim N(\boldsymbol{0}, \sigma^{2}\boldsymbol{I}_{n})\)</span>.</p>
+<p>Ahora, consideramos estimar el siguiente modelo:
+<span class="math display">\[
+\boldsymbol{y}= \boldsymbol{X}_{1}\boldsymbol{\beta}_{1} + \boldsymbol{\varepsilon}^{*},
+\]</span>
+es decir estamos omitiendo las covariables contenidas en <span class="math inline">\(\boldsymbol{X}_{2}\)</span>. El estimador de <span class="math inline">\(\boldsymbol{\beta}_{1}\)</span> es:
+<span class="math display">\[
+\widehat{\boldsymbol{\beta}}_{1} = (\boldsymbol{X}_{1}&#39;\boldsymbol{X}_{1})^{-1}\boldsymbol{X}_{1}&#39;\boldsymbol{y},
+\]</span>
+y el estimador de <span class="math inline">\(\sigma^{2}\)</span> es:
+<span class="math display">\[
+\widehat{\sigma}^{2}_{1} = \frac{\boldsymbol{y}&#39;(\boldsymbol{I}_{n} - \boldsymbol{H}_{1})\boldsymbol{y}}{n-(p-r)}, \mbox{ donde }\boldsymbol{H}_{1} = \boldsymbol{X}_{1}(\boldsymbol{X}_{1}&#39;\boldsymbol{X}_{1})^{-1}\boldsymbol{X}_{1}&#39;.
+\]</span>
+El valor esperado de <span class="math inline">\(\widehat{\boldsymbol{\beta}}_{1}\)</span> es:
+<span class="math display">\[\begin{equation}
+\begin{split}
+E(\widehat{\boldsymbol{\beta}}_{1}) &amp;= E\left[(\boldsymbol{X}_{1}&#39;\boldsymbol{X}_{1})^{-1}\boldsymbol{X}_{1}&#39;\boldsymbol{y}\right] = (\boldsymbol{X}_{1}&#39;\boldsymbol{X}_{1})^{-1}\boldsymbol{X}_{1}&#39;E(\boldsymbol{y}) \\
+&amp;= (\boldsymbol{X}_{1}&#39;\boldsymbol{X}_{1})^{-1}\boldsymbol{X}_{1}&#39;E(\boldsymbol{X}_{1}\boldsymbol{\beta}_{1} + \boldsymbol{X}_{2}\boldsymbol{\beta}_{2} + \boldsymbol{\varepsilon}) = \boldsymbol{\beta}_{1} +  (\boldsymbol{X}_{1}&#39;\boldsymbol{X}_{1})^{-1}\boldsymbol{X}_{1}&#39;\boldsymbol{X}_{2}\boldsymbol{\beta}_{2}.
+\end{split}
+\nonumber
+\end{equation}\]</span>
+Evidentemente, el sesgo de <span class="math inline">\(\widehat{\boldsymbol{\beta}}_{1}\)</span> depende de la magnitud de <span class="math inline">\(\boldsymbol{\beta}_{2}\)</span>. Entre más importante sean los efectos asociados a las covariables omitidas <span class="math inline">\((\boldsymbol{\beta}_{2})\)</span>, mayor será el sesgo. Si las columnas de <span class="math inline">\(\boldsymbol{X}_{1}\)</span> son ortogonales de las columnas de <span class="math inline">\(\boldsymbol{X}_{2}\)</span>, tenemos que <span class="math inline">\(\boldsymbol{X}_{1}&#39;\boldsymbol{X}_{2} = \boldsymbol{0}\)</span>. Así que, en este caso particular, <span class="math inline">\(\widehat{\boldsymbol{\beta}}_{1}\)</span> es insesgado (así omitamos las covariables en <span class="math inline">\(\boldsymbol{X}_{2}\)</span>).</p>
+<p>El valor esperado de <span class="math inline">\(\widehat{\sigma}^{2}_{1}\)</span> es:
+<span class="math display">\[
+E(\widehat{\sigma}^{2}_{1}) = \sigma^{2} + \frac{\boldsymbol{\beta}_{2}&#39;\boldsymbol{X}&#39;_{2}(\boldsymbol{I}_{n} - \boldsymbol{H}_{1})\boldsymbol{X}_{2}\boldsymbol{\beta}_{2}}{n-p_{1}}.
+\]</span>
+Dado que <span class="math inline">\((\boldsymbol{I}- \boldsymbol{H}_{1})\)</span> es idempotente y, por lo tanto, positiva semi-definida, entonces <span class="math inline">\(E(\widehat{\sigma}_{1}^{2}) &gt; \sigma^{2}\)</span>. Esto quiere decir que <span class="math inline">\(\widehat{\sigma}^{2}_{1}\)</span> es un estimador sesgado de <span class="math inline">\(\sigma^{2}\)</span></p>
+<p>Ahora veamos el efecto de omitir covariables relevantes sobre las predicciones de <span class="math inline">\(y\)</span> en el punto <span class="math inline">\(\boldsymbol{x}_{0} = (\boldsymbol{x}_{01}&#39;, \boldsymbol{x}_{02}&#39;)&#39;\)</span>. Tenemos que:
+<span class="math display">\[
+\widehat{\boldsymbol{y}}_{0} = \boldsymbol{x}_{01}&#39;\widehat{\boldsymbol{\beta}}_{1} = \boldsymbol{x}_{01}&#39;(\boldsymbol{X}_{1}&#39;\boldsymbol{X}_{1})^{-1}\boldsymbol{X}_{1}&#39;\boldsymbol{y}.
+\]</span>
+El valor esperado de <span class="math inline">\(\widehat{\boldsymbol{y}}_{0}\)</span> es:
+<span class="math display">\[
+E(\widehat{\boldsymbol{y}}_{0}) = \boldsymbol{x}_{01}&#39;E(\widehat{\boldsymbol{\beta}}_{1}) = \boldsymbol{x}_{01}&#39;\left[ \boldsymbol{\beta}_{1} +  (\boldsymbol{X}_{1}&#39;\boldsymbol{X}_{1})^{-1}\boldsymbol{X}_{1}&#39;\boldsymbol{X}_{2}\boldsymbol{\beta}_{2} \right]. 
+\]</span>
+Por lo tanto las predicciones también son sesgadas, <span class="math inline">\(E(\widehat{\boldsymbol{y}}_{0}) \neq \boldsymbol{x}_{01}\boldsymbol{\beta}_{1} + \boldsymbol{x}_{02}\boldsymbol{\beta}_{2}\)</span>.</p>
+</div>
+<div id="incorrecta-matriz-de-varianzas-de-los-errores" class="section level3" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Incorrecta matriz de varianzas de los errores</h3>
+<p>Cuando <span class="math inline">\(V(\boldsymbol{\varepsilon}) = \sigma^{2}\boldsymbol{V}\)</span>, pero asumimos erroneamente que <span class="math inline">\(V(\boldsymbol{\varepsilon}) = \sigma^{2}\boldsymbol{I}_{n}\)</span>, el estimador <span class="math inline">\(\widehat{\boldsymbol{\beta}}\)</span> sigue siendo insesgado. Pero, tenemos que:
+<span class="math display">\[\begin{equation}
+\begin{split}
+V(\widehat{\boldsymbol{\beta}}) &amp;= V\left[ (\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\boldsymbol{X}&#39;\boldsymbol{y}\right] = (\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\boldsymbol{X}&#39;V(\boldsymbol{y})\boldsymbol{X}(\boldsymbol{X}&#39;\boldsymbol{X})^{-1} \\
+&amp;= \sigma^{2}(\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\boldsymbol{X}&#39;\boldsymbol{V}\boldsymbol{X}(\boldsymbol{X}&#39;\boldsymbol{X})^{-1},
+\end{split}
+\nonumber
+\end{equation}\]</span>
+es, generalmente, diferente de <span class="math inline">\(\sigma^{2}(\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\)</span> (la varianza que asumimos como cierta). Igualmente, el estimador por MCO pierde su condición de optimalidad. Es decir, deja de ser el mejor estimador lineal insesgado.</p>
+<p>El estimador de <span class="math inline">\(\sigma^{2}\)</span> es sesgado:
+<span class="math display">\[
+E(\widehat{\sigma}^{2}) = \frac{\sigma^{2}}{n-p}E\left[\boldsymbol{y}&#39;(\boldsymbol{I}_{n} - \boldsymbol{H})\boldsymbol{y}\right] = \frac{\sigma^{2}}{n-p} \mbox{tr}\left[ \boldsymbol{V}(\boldsymbol{I}_{n}-\boldsymbol{H})\right].
+\]</span>
+Las predicciones son insesgadas, pero:
+<span class="math display">\[
+V(\widehat{y}_{0}) = V(\boldsymbol{x}_{0}&#39;\widehat{\boldsymbol{\beta}}) = \sigma^{2}\boldsymbol{x}_{0}&#39;(\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\boldsymbol{X}&#39;\boldsymbol{V}\boldsymbol{X}(\boldsymbol{X}&#39;\boldsymbol{X})^{-1} \boldsymbol{x}_{0},
+\]</span>
+que es diferente de <span class="math inline">\(\sigma^{2}\boldsymbol{x}_{0}&#39;(\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\boldsymbol{x}_{0}\)</span> (la varianza que asumimos como cierta).</p>
+<p>Cuando <span class="math inline">\(\boldsymbol{V}\)</span> es una matriz diagonal:
+<span class="math display">\[
+\boldsymbol{V}= \begin{pmatrix}
+v_{11} &amp; 0 &amp; 0 &amp; \ldots &amp; 0 \\
+0 &amp; v_{22} &amp; 0 &amp; \ldots &amp; 0 \\
+0 &amp; 0 &amp; v_{33} &amp; \ldots &amp; 0 \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; 0 &amp; \ldots &amp; v_{nn}
+\end{pmatrix},
+\]</span>
+tenemos que hay <strong>heterocedasticidad</strong>. Cada error tiene una varianza diferente <span class="math inline">\(V(\varepsilon_{j})=\sigma^{2}v_{jj}\)</span>, pero están incorrelacionados. Si los valores fuera de la diagonal de <span class="math inline">\(\boldsymbol{V}\)</span> son diferentes de cero, entonces los errores están correlacionados.</p>
+<p>La correlación de los errores puede esperarse en algunas situaciones. Por ejemplo, si las observaciones son tomadas en el tiempo puede presentarse correlación temporal. En situaciones en las que se pueda garantizar que las observaciones <span class="math inline">\((y_{1},y_{2},\ldots,y_{n})\)</span> constituyen una muestra aleatoria, no existirá correlación entre los errores, es decir, que es posible controlar este aspecto, algunas ocasiones, controlando el procedimiento de selección de la muestra.</p>
+</div>
+<div id="distribución-no-normal-de-los-errores" class="section level3" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Distribución no normal de los errores</h3>
+<p>La normalidad de los errores permite la estimación por intervalos de confianza no sólo para los coeficientes de regresión, sino también para la predicción. Igualmente, permite el planteamiento de pruebas de hipótesis sobre los parámetros del modelo. Cuando los errores no son normales, estas inferencias no son exactas y pueden llegar a ser inválidas.</p>
+<p>Sin embargo, el teorema central del límite asegura que, bajo ciertas condiciones muy amplias, la inferencias basadas en el estimador de mínimos cuadrados son aproximadamente válidas si el tamaño de muestra es suficientemente grande. Esto significa que los niveles de las pruebas y cobertura de los intervalos de confianza son aproximadamente correctos.</p>
+<p>De la misma forma, los efectos negativos de la no normalidad dependen de que tan alejados estamos de la normalidad. Si la distribución de los errores es parecida a la normal (por ejemplo, <span class="math inline">\(t\)</span>-Student), los efectos negativos no son considerables.</p>
+</div>
+</div>
+<div id="residuos-del-modelo" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Residuos del modelo</h2>
+<p>Los residuos están definidos como:
+<span class="math display">\[
+e_{i} = y_{i}- \widehat{y}_{i}, \mbox{ en forma matricial }\boldsymbol{e}= \boldsymbol{y}- \widehat{\boldsymbol{y}}= (\boldsymbol{I}_{n} - \boldsymbol{H})\boldsymbol{y}.
+\]</span>
+Los residuos representan las desviaciones entre las observaciones y el ajuste. Además, estos son combinaciones lineales de los errores:
+<span class="math display">\[
+\boldsymbol{e}= (\boldsymbol{I}_{n} - \boldsymbol{H})(\boldsymbol{X}\boldsymbol{\beta}+\boldsymbol{\varepsilon}) = (\boldsymbol{I}_{n} - \boldsymbol{H})\boldsymbol{\varepsilon}.
+\]</span>
+Por lo tanto toda desviación de las premisas de los errores se debe reflejar en los residuales. Si <span class="math inline">\(\boldsymbol{\varepsilon}\sim N(\boldsymbol{0},\sigma^{2}\boldsymbol{I}_{n})\)</span>, entonces:
+<span class="math display">\[
+\boldsymbol{e}\sim N \left[ \boldsymbol{0}, \sigma^{2}(\boldsymbol{I}_{n} - \boldsymbol{H})  \right].
+\]</span>
+De aquí tenemos que <span class="math inline">\(V(e_{i}) = (1-h_{ii})\sigma^{2}\)</span> y <span class="math inline">\(Cov(e_{i},e_{j}) = - h_{ij}\sigma^{2}\)</span>, para todo <span class="math inline">\(i \neq j\)</span>. Lo que indica que, aún cuando los errores sean homogéneos en varianza e incorrelacionados, no implica que los residuos lo sean también. Note que los residuos asociados a puntos alejados del centro de los datos tienen menor varianza. Lo que hace difícil detectar violaciones.</p>
+<p>Cuando <span class="math inline">\(n\)</span> es grande comparado con el número de parámetros en el modelo, los residuos si reflejan a los errores en cuanto al comportamiento de su varianza y correlación. Esto es porque <span class="math inline">\(|h_{ij}| \leq 1\)</span>, <span class="math inline">\(\sum_{i=1}^{n}h_{ii} = n-p\)</span>, y <span class="math inline">\(\sum_{i=1}^{n}h_{ij}=\sum_{j=1}^{n}h_{ij}=1\)</span>. Por lo tanto, cuando <span class="math inline">\(n\rightarrow \infty\)</span>, <span class="math inline">\(V(e_{i}) = \sigma^{2}\)</span> y <span class="math inline">\(Cov(e_{i},e_{j}) = 0\)</span>.</p>
+<div id="residuos-estudentizados" class="section level3" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Residuos estudentizados</h3>
+<p>Para evitar el inconveniente de la varianza no constante de los residuos, es preferible utilizar los <strong>residuos estudentizados</strong>:
+<span class="math display">\[
+r_{i} = \frac{e_{i}}{\sqrt{\hat{\sigma}^{2}(1-h_{ii})}}, \qquad i=1,2,\ldots,n.
+\]</span>
+Entonces, <span class="math inline">\(r_{i}\)</span> tiene varianza constante (<span class="math inline">\(V(r_{i})=1\)</span>) independiente del lugar de <span class="math inline">\(\boldsymbol{x}_{i}\)</span>.</p>
+</div>
+<div id="residuos-press-y-r-student" class="section level3" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Residuos PRESS y R-student</h3>
+<p>Como veremos más adelante, los residuos estudentizados se pueden utilizar detectar puntos atípicos. El problema es que si la <span class="math inline">\(i\)</span>-ésima observación es bastante inusual, el ajuste del modelo puede estar muy influenciado por esta observación. Lo que puede producir un residuo pequeño. Por esta razón, también se pueden calcular los residuos de predicción (PRESS). Estos se calculan de la siguiente forma:
+<span class="math display">\[
+e_{(i)} = y_{i} - \widehat{y}_{(i)}, \mbox{ para }i=1,\ldots,n,
+\]</span>
+donde <span class="math inline">\(\widehat{y}_{(i)}\)</span> es el valor ajustado para la <span class="math inline">\(i\)</span>-ésima observación usando todas las observaciones excepto la <span class="math inline">\(i\)</span>-ésima. Esto implicaría que para calcular los residuos PRESS es necesario ajustar <span class="math inline">\(n\)</span> veces el modelo. Sin embargo, esto no es así, ya que se puede demostrar que:
+<span class="math display">\[
+e_{(i)} = \frac{e_{i}}{1-h_{ii}}.
+\]</span>
+La varianza de los residuos PRESS es:
+<span class="math display">\[
+V(e_{(i)}) = V\left( \frac{e_{i}}{1-h_{ii}} \right) = \frac{1}{(1-h_{ii})^{2}}V(e_{i}) = \frac{1}{(1-h_{ii})^{2}} [\sigma^{2}(1-h_{ii})] = \frac{\sigma^{2}}{(1-h_{ii})}.
+\]</span>
+Si estudentizamos los residuos PRESS obtenemos los <strong>residuos R-Student</strong>:
+<span class="math display">\[
+t_{i} = \frac{e_{i}}{\sqrt{\widehat{\sigma}^{2}_{(i)}(1-h_{ii})}},
+\]</span>
+donde <span class="math inline">\(\widehat{\sigma}^{2}_{(i)}\)</span> es la estimación de <span class="math inline">\(\sigma\)</span> usando todas las observaciones excepto la <span class="math inline">\(i\)</span>-ésima. Se puede demostrar que:
+<span class="math display">\[
+\widehat{\sigma}^{2}_{(i)} = \frac{(n-p)\widehat{\sigma}^{2} - \epsilon^{2}_{i}/(1-h_{ii})}{n-p-1}.
+\]</span></p>
+</div>
+</div>
+<div id="evaluación-del-cumplimiento-de-los-supuestos" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Evaluación del cumplimiento de los supuestos</h2>
+<p>En esta sección mostramos la evaluación de los supuestos a través del análisis de los residuos del ajuste (ya sean los residuos estudentizados o los R-Student) usando gráficos y pruebas de hipótesis.</p>
+<div id="gráficos-de-residuos" class="section level3" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> Gráficos de residuos</h3>
+<p>Un gráfico de los residuos es una forma efectiva de investigar posibles alejamientos de los supuestos. Generalmente, se grafican los residuos estudentizados <span class="math inline">\((r_{i})\)</span> contra los valores ajustados <span class="math inline">\(\widehat{y}_{i}\)</span> (o contra alguna de las covariables <span class="math inline">\(x_{ij}\)</span>). Este tipo de gráfico es de gran ayuda para detectar la correcta especificación del modelo y homocedasticidad. Algunos patrones de residuos se pueden observar en la Figura <a href="evaluación-de-los-supuestos-del-modelo.html#fig:PatronesResiduos">3.3</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:PatronesResiduos"></span>
+<img src="bookdownproj_files/figure-html/PatronesResiduos-1.png" alt="Ejemplos de posibles patrones de residuos" width="672" />
+<p class="caption">
+Figure 3.3: Ejemplos de posibles patrones de residuos
+</p>
+</div>
+<p>La Figura <a href="evaluación-de-los-supuestos-del-modelo.html#fig:PatronesResiduos">3.3</a>(a) muestra que los residuos se encuentran alrededor de cero y no se observa ningún patrón claro. Esto es un indicio que el modelo está bien especificado y hay homocedasticidad. En la Figura <a href="evaluación-de-los-supuestos-del-modelo.html#fig:PatronesResiduos">3.3</a>(b) vemos que los residuos están alrededor de cero pero la variabilidad crece a medida que los valores ajustados aumenta. Esto es un indicador de heterocedasticidad. La Figura <a href="evaluación-de-los-supuestos-del-modelo.html#fig:PatronesResiduos">3.3</a>(c) también muestra un patrón de heterocedasticidad, la variabilidad aumenta hasta cierto punto y luego decrece. En la Figura <a href="evaluación-de-los-supuestos-del-modelo.html#fig:PatronesResiduos">3.3</a>(d) observamos que los residuos no fluctuan alrededor de cero, sino que siguen una curva. Esto nos que la relación entre la variable respuesta y las covariables no es lineal.</p>
+<div class="figure" style="text-align: center"><span id="fig:patronesResiduos2"></span>
+<img src="bookdownproj_files/figure-html/patronesResiduos2-1.png" alt="Ejemplos de posibles patrones de residuos (graficando el valor absoluto de los residuos)." width="768" />
+<p class="caption">
+Figure 3.4: Ejemplos de posibles patrones de residuos (graficando el valor absoluto de los residuos).
+</p>
+</div>
+<p>Adicionalmente, para detectar más facilmente heterocedasticidad, se pueden graficar el valor absoluto de los residuos estudentizados (o al cuadrado) contra los valores ajustados (o las covariables). La Figura <a href="evaluación-de-los-supuestos-del-modelo.html#fig:patronesResiduos2">3.4</a> muestra los mismos patrones pero graficando los residuos en valor absoluto. En las Figuras <a href="evaluación-de-los-supuestos-del-modelo.html#fig:patronesResiduos2">3.4</a>(b-c) se evidencia claramente la heterocedasticidad.</p>
+<div id="bajo-peso-al-nacer---gráfico-de-residuos" class="section level4 unnumbered">
+<h4>Bajo peso al nacer - gráfico de residuos</h4>
+<p>Para el modelo ajustado para los datos de peso al nacer, el gráfico de los residuos contra los valores ajustados se obtienen de la siguiente forma:</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb52-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb52-2" aria-hidden="true" tabindex="-1"></a>res.stud.birthweight <span class="ot">=</span> <span class="fu">studres</span>(mod.birthweight)</span>
+<span id="cb52-3"><a href="evaluación-de-los-supuestos-del-modelo.html#cb52-3" aria-hidden="true" tabindex="-1"></a>mod.fit.birthweight <span class="ot">=</span> mod.birthweight<span class="sc">$</span>fitted.values</span>
+<span id="cb52-4"><a href="evaluación-de-los-supuestos-del-modelo.html#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb52-5"><a href="evaluación-de-los-supuestos-del-modelo.html#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.fit.birthweight,res.stud.birthweight, <span class="at">ylab=</span><span class="st">&#39;residuos estudentizados&#39;</span>,</span>
+<span id="cb52-6"><a href="evaluación-de-los-supuestos-del-modelo.html#cb52-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;valores ajustados&#39;</span>,<span class="at">main=</span><span class="st">&#39;(a)&#39;</span>)</span>
+<span id="cb52-7"><a href="evaluación-de-los-supuestos-del-modelo.html#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb52-8"><a href="evaluación-de-los-supuestos-del-modelo.html#cb52-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(res.stud.birthweight<span class="sc">~</span>mod.fit.birthweight), <span class="at">col =</span> <span class="dv">2</span>)</span>
+<span id="cb52-9"><a href="evaluación-de-los-supuestos-del-modelo.html#cb52-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.fit.birthweight,<span class="fu">abs</span>(res.stud.birthweight), </span>
+<span id="cb52-10"><a href="evaluación-de-los-supuestos-del-modelo.html#cb52-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&#39;valor absoluto de los residuos estudentizados&#39;</span>,</span>
+<span id="cb52-11"><a href="evaluación-de-los-supuestos-del-modelo.html#cb52-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;valores ajustados&#39;</span>,<span class="at">main=</span><span class="st">&#39;(b)&#39;</span>)</span>
+<span id="cb52-12"><a href="evaluación-de-los-supuestos-del-modelo.html#cb52-12" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(<span class="fu">abs</span>(res.stud.birthweight)<span class="sc">~</span>mod.fit.birthweight), <span class="at">col =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:residuosBWdata"></span>
+<img src="bookdownproj_files/figure-html/residuosBWdata-1.png" alt="Datos de peso al nacer. Gráfico de los residuos estudentizados contra los valores ajustados." width="768" />
+<p class="caption">
+Figure 3.5: Datos de peso al nacer. Gráfico de los residuos estudentizados contra los valores ajustados.
+</p>
+</div>
+La Figura @ref(fig:residuosBWdata})(a) muestra que los residuos están alrededor de cero sin mostrar ningún patrón. Note que este gráfico es similar a la Figura <a href="evaluación-de-los-supuestos-del-modelo.html#fig:PatronesResiduos">3.3</a>(a). La línea roja es una suaviación LOWESS (Locally weighted scatterplot smoothing, más detalle ver Apéndice A.5 de <span class="citation"><a href="#ref-weisberg_applied_2014" role="doc-biblioref">Weisberg</a> (<a href="#ref-weisberg_applied_2014" role="doc-biblioref">2014</a>)</span>). Estas suavizaciones permiten ver fácilmente patrones de comportamiento. Aquí vemos que la suavización está cerca de la recta en cero sin mostrar ninguna tendencia o curvatura muy marcada. Por lo tanto, podemos afirmar que la relación entre el peso del recién nacido y las covariables propuesta es lineal. Además, no se observa un problema notorio de heterocedasticidad en ninguno de los dos gráficos de residuos.
+</div>
+</div>
+<div id="gráficos-de-residuos-parciales" class="section level3" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> Gráficos de residuos parciales</h3>
+<p>Los gráficos de residuos parciales permiten estudiar el efecto marginal de una covariable sobre la respuesta condicionado a que los demás regresores ya están en el modelo. En caso que el gráfico de los residuos muestre posibles curvaturas (por ejemplo, Figura <a href="evaluación-de-los-supuestos-del-modelo.html#fig:PatronesResiduos">3.3</a>(d)), los residuos parciales permiten verificar si estas se presentan debido a una covariable especifica.</p>
+<p>Considere el modelo:
+<span class="math display">\[
+y_{i} = \beta_{0} +\beta_{1}x_{i1}+\beta_{2}x_{i2} + \ldots + \beta_{p-1}x_{i,p-1} + \varepsilon_{i}.
+\]</span>
+Para calcular los residuos parciales, primero estimamos los parámetros <span class="math inline">\((\widehat{\beta}_{1},\ldots,\widehat{\beta}_{p-1})\)</span> y los residuos ordinarios <span class="math inline">\((e_{1},\ldots,e_{n})\)</span>. Luego, los residuos parciales para la covariable <span class="math inline">\(x_{j}\)</span> se obtienen de la siguiente forma:
+<span class="math display">\[
+e^{*}_{i}(y|x_{j}) = e_{i} - \widehat{\beta}_{j}x_{ij}, \mbox{ para } i=1,\ldots,n.
+\]</span>
+El gráfico de residuos parciales para la covariable <span class="math inline">\(x_{j}\)</span> se obtiene graficando <span class="math inline">\(e^{*}_{i}(y|x_{j})\)</span> contra <span class="math inline">\(x_{j}\)</span>. Si la covariable <span class="math inline">\(x_{j}\)</span> entra al modelo linealmente, entonces el gráfico de residuos parciales debe mostrar una tendencia lineal. Por el contrario, si se observa una curva, <span class="math inline">\(x_{j}\)</span> no entra al modelo de forma lineal.</p>
+<div id="bajo-peso-al-nacer---gráfico-de-residuos-parciales" class="section level4 unnumbered">
+<h4>Bajo peso al nacer - gráfico de residuos parciales</h4>
+<p>El gráfico de residuos parciales se obtiene así:</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb53-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb53-3"><a href="evaluación-de-los-supuestos-del-modelo.html#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="fu">crPlots</span>(mod.birthweight,<span class="st">&#39;age&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;edad gestacional&#39;</span>)</span>
+<span id="cb53-4"><a href="evaluación-de-los-supuestos-del-modelo.html#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="fu">crPlots</span>(mod.birthweight,<span class="st">&#39;motherage&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;edad de la madre&#39;</span>)</span>
+<span id="cb53-5"><a href="evaluación-de-los-supuestos-del-modelo.html#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="fu">crPlots</span>(mod.birthweight,<span class="st">&#39;mnocig&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;número de cigarrillos por mes&#39;</span>)</span>
+<span id="cb53-6"><a href="evaluación-de-los-supuestos-del-modelo.html#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="fu">crPlots</span>(mod.birthweight,<span class="st">&#39;mppwt&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;peso de la madre&#39;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:residuosBWdata2"></span>
+<img src="bookdownproj_files/figure-html/residuosBWdata2-1.png" alt="Datos de peso al nacer. Gráfico de los residuos parciales para cada covariable." width="672" />
+<p class="caption">
+Figure 3.6: Datos de peso al nacer. Gráfico de los residuos parciales para cada covariable.
+</p>
+</div>
+Igual que en el gráfico de residuos, los residuos parciales no muestran tendencias no lineales muy marcada. Por lo que se puede asumir que la relación entre el peso al nacer y las covariables es lineal.
+</div>
+</div>
+<div id="gráficos-de-normalidad" class="section level3" number="3.4.3">
+<h3><span class="header-section-number">3.4.3</span> Gráficos de normalidad</h3>
+<p>Los gráficos cuantil-cuantil (qqplot) comparan los cuantiles muestrales contra los cuantiles que se esperarían con la distribución de probabilidad asumida para los datos (cuantiles teóricos). En el caso de regresión lineal, estamos asumiendo que los errores del modelo siguen una distribución normal. Por lo tanto, debemos comparar los cuartiles muestrales de los residuos con los cuartiles teóricos que se esperarían bajo una distribución normal.</p>
+<p>Sea <span class="math inline">\((x_{1},x_{2},\ldots,x_{n})\)</span> una muestra aleatoría de la variable <span class="math inline">\(X\)</span> con función de distribución desconocida <span class="math inline">\(F_{X}(x)\)</span>, y sean <span class="math inline">\((x_{[1]},x_{[2]},\ldots,x_{[n]})\)</span> los estadísticos de orden (observaciones ordenadas de forma creciente). La función empirica de distribución es:
+<span class="math display">\[
+S_{n}(x_{[i]}) = \frac{i}{n} = \frac{\mbox{\# de observaciones }\leq x_{[i]}}{n}.
+\]</span>
+Si asumimos que <span class="math inline">\(X\sim N(0,1)\)</span>, entonces los puntos <span class="math inline">\((x_{[i]},\Phi^{-1}\left\{S_{n}(x_{[i]})\right\})\)</span>, donde <span class="math inline">\(\Phi^{-1}()\)</span> es la inversa de la función acumulativa de una normal estándar, deben seguir aproximadamente una línea recta.</p>
+<p>La Figura <a href="evaluación-de-los-supuestos-del-modelo.html#fig:qqplots">3.7</a> muestra diferentes patrones de gráficos de normalidad para datos generados a partir de tres distribuciones diferentes: normal estándar (derecha), exponencial con <span class="math inline">\(\lambda=1\)</span> (centro), y <span class="math inline">\(t\)</span>-Student con 2 grados de libertad (derecha). Aquí vemos que para los datos normales, los cuantiles muestrales y teóricos siguen aproximadamente la linea recta de referencia. Mientras que en los otros dos casos, los puntos se alejan en los extremos. En el caso de los datos exponenciales, es al lado izquierdo, mostrando que los datos presentan asímetrica. Mientras que con los datos <span class="math inline">\(t\)</span>-Student, es a ambos lados, indicando que hay muchos valores en las colas (más de los esperados bajo normalidad).</p>
+<div class="figure" style="text-align: center"><span id="fig:qqplots"></span>
+<img src="bookdownproj_files/figure-html/qqplots-1.png" alt="Gráficos de normalidad para datos aleatorios generados a partir de una distribución normal estándar (izquierda), exponencial (centro), y t-Student con 2 grados de libertad (derecha)." width="864" />
+<p class="caption">
+Figure 3.7: Gráficos de normalidad para datos aleatorios generados a partir de una distribución normal estándar (izquierda), exponencial (centro), y t-Student con 2 grados de libertad (derecha).
+</p>
+</div>
+<div id="bajo-peso-al-nacer---gráfico-de-normalidad" class="section level4 unnumbered">
+<h4>Bajo peso al nacer - gráfico de normalidad</h4>
+<p>El gráfico cuartil-cuartil de los residuos estudentizados se obtiene así:</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb54-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">qqPlot</span>(mod.birthweight,<span class="at">xlab=</span><span class="st">&#39;cuantiles teóricos&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;residuos estudentizados&#39;</span>,</span>
+<span id="cb54-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb54-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">distribution =</span> <span class="st">&#39;norm&#39;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:qqnormBWdata1"></span>
+<img src="bookdownproj_files/figure-html/qqnormBWdata1-1.png" alt="Datos de peso al nacer. Gráfico cuantil-cuantil para normalidad." width="480" />
+<p class="caption">
+Figure 3.8: Datos de peso al nacer. Gráfico cuantil-cuantil para normalidad.
+</p>
+</div>
+<pre><code>## [1] 13 23</code></pre>
+<p>Note que la función <code>qqPlot</code> incluye intervalos del <span class="math inline">\(95\%\)</span> de confianza para los estadísticos de orden. Para más detalle de como se calculan, ver Sección 12.1.1 de <span class="citation"><a href="#ref-fox_applied_2016" role="doc-biblioref">Fox</a> (<a href="#ref-fox_applied_2016" role="doc-biblioref">2016</a>)</span>.</p>
+La Figura <a href="evaluación-de-los-supuestos-del-modelo.html#fig:qqnormBWdata1">3.8</a> muestra que los puntos siguen de forma aproximada una línea recta. Además, la mayoría de los puntos están dentro de las bandas de confianza. Por lo tanto, se estaría cumpliendo el supuesto de normalidad.
+</div>
+</div>
+<div id="gráfico-de-residuos-frente-a-el-tiempo" class="section level3" number="3.4.4">
+<h3><span class="header-section-number">3.4.4</span> Gráfico de residuos frente a el tiempo</h3>
+<p>Cómo se mencionó anteriormente, si las observaciones fueron tomadas de forma independiente, entonces se puede garantizar que los errores también lo sean. Para los datos del peso de los recién nacidos, tendríamos que asumir que los bebés fueron seleccionados de forma totalmente aleatoria, y así garantizar que los errores no están correlacionados. Por el contrario, los datos del consumo de helado fueron tomados a lo largo del tiempo (cada dos semanas), por lo que se puede presentar <strong>correlación temporal</strong>. Es decir, observaciones tomadas en tiempo cercanos se espera que estén altamente correlacionadas.</p>
+<p>En caso de posible correlación temporal, se puede hacer un gráfico de los residuos con respecto al tiempo. Alternativamente, se puede hacer un gráfico de los residuos rezagados. Es decir, los residuos en el tiempo <span class="math inline">\(t\)</span> (<span class="math inline">\(e_{t}\)</span>) contra los residuos en el tiempo inmediatamente anterior <span class="math inline">\((e_{t-1})\)</span>.</p>
+<p>La Figura <a href="evaluación-de-los-supuestos-del-modelo.html#fig:residuosCorr">3.9</a> muestra diferentes patrones de comportamiento para residuos correlacionados temporalmente. En la columna (a) vemos el comportamiento de residuos incorrelacionados. Estos fluctúan alrededor de cero sin mostrar ningún patrón claro, además el gráfico de residuos rezagados no muestra niguna tendencia. Por el contrario, en las columnas (b) y (c) vemos patrones de comportamiento de residuos correlacionados de forma positiva y negativa, respectivamente. Cuando hay correlación positiva, los valores de los residuos que están cercanos en el tiempo tienden a ser muy similares, además el gráfico de los residuos rezagados muestra una relación positiva entre <span class="math inline">\(e_{t}\)</span> y <span class="math inline">\(e_{t-1}\)</span>. Cuando la correlación es negativa, vemos que los residuos en el tiempo cambian de signo constantemente, además el gráfico de residuos rezagados muestra una tendencia negativa.</p>
+<div class="figure" style="text-align: center"><span id="fig:residuosCorr"></span>
+<img src="bookdownproj_files/figure-html/residuosCorr-1.png" alt="Patrones de correlación temporal de los residuos. En la columna (a) los residuos están incorrelacionados, (b) los residuos tienen correlación positiva, y en (c) los residuos tienen correlación negativa." width="672" />
+<p class="caption">
+Figure 3.9: Patrones de correlación temporal de los residuos. En la columna (a) los residuos están incorrelacionados, (b) los residuos tienen correlación positiva, y en (c) los residuos tienen correlación negativa.
+</p>
+</div>
+<div id="consumo-de-helado---gráfico-de-los-residuos-contra-el-tiempo" class="section level4 unnumbered">
+<h4>Consumo de helado - gráfico de los residuos contra el tiempo</h4>
+<p>Los gráficos de los residuos para el modelo ajustado a los datos de consumo de helado se observan en la Figura <a href="evaluación-de-los-supuestos-del-modelo.html#fig:heladosResiduos1">3.10</a>. Aquí vemos que la relación entre la variable respuesta y las covariables es aproximadamente lineal, no hay problemas de heterocedasticidad, y que los residuos siguen una distribución normal. Aunque se ve la presencia de un punto atípico.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb56-1" aria-hidden="true" tabindex="-1"></a>res.stud.icecream <span class="ot">=</span> <span class="fu">studres</span>(mod.icecream)</span>
+<span id="cb56-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb56-2" aria-hidden="true" tabindex="-1"></a>mod.fit.icecream <span class="ot">=</span> mod.icecream<span class="sc">$</span>fitted.values</span>
+<span id="cb56-3"><a href="evaluación-de-los-supuestos-del-modelo.html#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb56-4"><a href="evaluación-de-los-supuestos-del-modelo.html#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.fit.icecream,res.stud.icecream, <span class="at">ylab=</span><span class="st">&#39;residuos estudentizados&#39;</span>,</span>
+<span id="cb56-5"><a href="evaluación-de-los-supuestos-del-modelo.html#cb56-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;valores ajustados&#39;</span>)</span>
+<span id="cb56-6"><a href="evaluación-de-los-supuestos-del-modelo.html#cb56-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb56-7"><a href="evaluación-de-los-supuestos-del-modelo.html#cb56-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(res.stud.icecream<span class="sc">~</span>mod.fit.icecream), <span class="at">col =</span> <span class="dv">2</span>)</span>
+<span id="cb56-8"><a href="evaluación-de-los-supuestos-del-modelo.html#cb56-8" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">qqPlot</span>(mod.icecream,<span class="at">xlab=</span><span class="st">&#39;cuantiles teóricos&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;residuos estudentizados&#39;</span>,</span>
+<span id="cb56-9"><a href="evaluación-de-los-supuestos-del-modelo.html#cb56-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">distribution =</span> <span class="st">&#39;norm&#39;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:heladosResiduos1"></span>
+<img src="bookdownproj_files/figure-html/heladosResiduos1-1.png" alt="Datos de consumo de helado. Gráfico de los residuos estudentizados contra los valores ajustados (izquierda) y gráfico de normalidad (derecha)." width="864" />
+<p class="caption">
+Figure 3.10: Datos de consumo de helado. Gráfico de los residuos estudentizados contra los valores ajustados (izquierda) y gráfico de normalidad (derecha).
+</p>
+</div>
+<pre><code>## [1]  6 30</code></pre>
+<p>Dado que las observaciones del consumo de helado tienen un orden temporal (fueron tomadas cada 4 semanas), se pueden graficar los residuos contra el tiempo y de los residuos rezagados. Estos se pueden observar en la Figura <a href="evaluación-de-los-supuestos-del-modelo.html#fig:heladosResiduos2">3.11</a>. Aquí podemos ver que hay una correlación temporal positiva. Además, se tiene que <span class="math inline">\(cor(e_{t},e_{t-1}) = 0.605\)</span>.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb58-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(res.stud.icecream, <span class="at">ylab=</span><span class="st">&#39;residuos estudentizados&#39;</span>,</span>
+<span id="cb58-3"><a href="evaluación-de-los-supuestos-del-modelo.html#cb58-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;tiempo&#39;</span>,<span class="at">type=</span><span class="st">&#39;b&#39;</span>)</span>
+<span id="cb58-4"><a href="evaluación-de-los-supuestos-del-modelo.html#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb58-5"><a href="evaluación-de-los-supuestos-del-modelo.html#cb58-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(res.stud.icecream[<span class="sc">-</span><span class="dv">30</span>],res.stud.icecream[<span class="sc">-</span><span class="dv">1</span>], <span class="at">ylab=</span><span class="st">&#39;residuos estudentizados (t)&#39;</span>,</span>
+<span id="cb58-6"><a href="evaluación-de-los-supuestos-del-modelo.html#cb58-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;residuos estudentizados (t-1)&#39;</span>)</span>
+<span id="cb58-7"><a href="evaluación-de-los-supuestos-del-modelo.html#cb58-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(res.stud.icecream[<span class="sc">-</span><span class="dv">1</span>] <span class="sc">~</span> res.stud.icecream[<span class="sc">-</span><span class="dv">30</span>]),<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:heladosResiduos2"></span>
+<img src="bookdownproj_files/figure-html/heladosResiduos2-1.png" alt="Datos de consumo de helado. Gráfico de los residuos estudentizados contra el tiempo (izquierda) y gráfico de residuos rezagados (derecha)." width="672" />
+<p class="caption">
+Figure 3.11: Datos de consumo de helado. Gráfico de los residuos estudentizados contra el tiempo (izquierda) y gráfico de residuos rezagados (derecha).
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="pruebas-de-hipótesis-para-evaluar-los-supuestos" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Pruebas de hipótesis para evaluar los supuestos</h2>
+<div id="prueba-de-falta-de-ajuste" class="section level3" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> Prueba de falta de ajuste</h3>
+<p>El objetivo de la prueba de falta de ajuste es determinar si la relación entre la variable respuesta y las covariables puede asumirse cómo lineal. Hay que tener en cuenta que esta prueba es sensible a ajamientos de los supuestos de normalidad, varianza constante e independencia de los errores. Además, requiere que se tengan mútiple observaciones de <span class="math inline">\(y\)</span> para diferentes niveles de <span class="math inline">\(\boldsymbol{x}\)</span>. Por ejemplo, el test puede implementarse en los datos de la longitud de los peces puesto que tenemos varios individuos con las mismas edades. En los otros casos, no es posible, por lo menos de forma exacta. El objetivo de estas observaciones replicadas es tener una estimación independiente de <span class="math inline">\(\sigma^{2}\)</span>.</p>
+<p>En regresión lineal simple, suponga que se tienen <span class="math inline">\(n_{i}\)</span> observaciones de la variable respuesta para el <span class="math inline">\(i\)</span>-ésimo nivel de <span class="math inline">\(x_{i}\)</span>, para <span class="math inline">\(i=1,\ldots,m\)</span>, y denotemos <span class="math inline">\(y_{ij}\)</span> como la <span class="math inline">\(j\)</span>-ésima observación de la respuesta en <span class="math inline">\(x_{i}\)</span>, para <span class="math inline">\(j=1,\ldots,n_{i}\)</span>. Por lo tanto, tenemos <span class="math inline">\(n=\sum_{i=1}^{m}n_{i}\)</span> observaciones en total. Esto permite que se puede descomponer la suma de cuadrados de los residuos en dos:
+<span class="math display">\[
+SS_{res} = SS_{PE} + SS_{LOF},
+\]</span>
+donde <span class="math inline">\(SS_{PE}\)</span> y <span class="math inline">\(SS_{LOF}\)</span> son la suma de cuadrados del error puro y falta de ajuste, respectivamente.</p>
+<p>Para esto, primero observemos que los residuos se pueden descomponer así:
+<span class="math display" id="eq:ssresd">\[\begin{equation}
+y_{ij} - \widehat{y}_{i} = (y_{ij} - \bar{y}_{i}) + (\bar{y}_{i} - \widehat{y}_{i}),
+\tag{3.1}
+\end{equation}\]</span>
+donde <span class="math inline">\(\bar{y}_{i}\)</span> es el promedio de las <span class="math inline">\(n_{i}\)</span> observaciones en <span class="math inline">\(x_{i}\)</span>. Ahora, elevando al cuadrado ambos lados de <a href="evaluación-de-los-supuestos-del-modelo.html#eq:ssresd">(3.1)</a>, y sumando para todo <span class="math inline">\(i\)</span> y <span class="math inline">\(j\)</span>, tenemos:
+<span class="math display">\[\begin{equation}
+\begin{split}
+\sum_{i=1}^{m} \sum_{j=1}^{n_{i}} (y_{ij} - \widehat{y}_{i})^{2} &amp;= \sum_{i=1}^{m}\sum_{j=1}^{n_{i}}(y_{ij}-\bar{y}_{i})^{2} + \sum_{i=1}^{m}n_{i}(\bar{y}_{i}-\widehat{y}_{i})^{2}, \\
+SS_{res} &amp;= SS_{PE} + SS_{LOF}.
+\end{split}
+\nonumber
+\end{equation}\]</span></p>
+<p>Note que la suma de cuadrados de la falta de ajuste es una suma ponderada de las diferencias entre el promedio de las observaciones en cada nivel de <span class="math inline">\(x\)</span> y el correspondiente valor ajustado. Por lo tanto, si la relación entre las variables es aproximadamente lineal, entonces se espera que <span class="math inline">\(SS_{LOF}\)</span> sea cercana a cero.</p>
+<p>Los grados de libertad de <span class="math inline">\(SS_{PE}\)</span> y <span class="math inline">\(SS_{LOF}\)</span> son <span class="math inline">\(\sum_{i=1}^{m}(n_{i}-1) = n-m\)</span> y <span class="math inline">\(m-2\)</span>, respectivamente. De aquí se define el cuadrado medio del error puro y el cuadrado medio de la falta de ajuste:</p>
+<p><span class="math display">\[
+MS_{PE} = \frac{SS_{PE}}{n-m} \mbox{ y } MS_{LOF} = \frac{SS_{LOF}}{m-2},
+\]</span></p>
+<p>respectivamente. Si se cumple el supuesto de homocedasticidad, el valor esperado de <span class="math inline">\(MS_{PE}\)</span> es:
+<span class="math display">\[
+E(MS_{PE}) = \frac{1}{n-m}E\left[ \sum_{j=1}^{n_{i}}(y_{ij} - \widehat{y}_{i})^{2} \right] = \frac{1}{n-m}\sum_{j=1}^{n_{i}} E\left[ (y_{ij}-\widehat{y}_{i})^{2} \right] = \frac{\sigma^{2}}{n-m}\sum_{j=1}^{n_{i}}(n_{i}-1) = \sigma^{2}.
+\]</span>
+Es decir que el cuadrado medio del error puro es una estimación de <span class="math inline">\(\sigma^{2}\)</span> independiente del ajuste del modelo.</p>
+<p>Además, el valor esperado del cuadrado medio de la falta de ajuste es:
+<span class="math display">\[
+E(MS_{LOF}) = \sigma^{2} + \frac{\sum_{i=1}^{m}n_{i}\left[ E(y_{i}|x_{i}) - \beta_{0}-\beta_{1}x_{i} \right]^{2}}{m-2}.
+\]</span>
+Por lo tanto, si la función de la media es lineal, entonces <span class="math inline">\(E(y_{i}|x_{i}) = \beta_{0}+\beta_{1}x_{i}\)</span>, y <span class="math inline">\(E(MS_{LOF}) = \sigma^{2}\)</span>. Si la función media no es lineal, entonces <span class="math inline">\(E(MS_{LOF}) &gt; \sigma^{2}\)</span></p>
+<p>La prueba de falta de ajuste plantea las siguiente hipótesis:
+<span class="math display">\[
+H_{0}: \mbox{el lineal modelo proporciona buen ajuste} \qquad H_{1}: \mbox{el modelo lineal no proporciona buen ajuste},
+\]</span>
+El estadístico de prueba es:
+<span class="math display">\[
+F_{0}=\frac{SS_{LOF}/(m-2)}{SS_{PE}/(n-m)} = \frac{MS_{LOF}}{MS_{PE}}.
+\]</span>
+Si <span class="math inline">\(H_{0}\)</span> es cierta, <span class="math inline">\(F_{0}\)</span> sigue una distribución <span class="math inline">\(F_{m-2,n-m}\)</span>. Por lo tanto, se rechaza <span class="math inline">\(H_{0}\)</span> (es decir, la función de regresión no es lineal) si <span class="math inline">\(F_{0} &gt; F_{1-\alpha,m-2,n-m}\)</span>.</p>
+<p>Como se mencionó antes, la prueba exige que se tenga múltiples observaciones para cada nivel de <span class="math inline">\(x\)</span>. Lo cuál es un gran desventaja. En caso que esto no ocurra, se puede hacer agrupaciones de los valores de las covariables (vecinos más cercanos), y considerarlas como repeticiones; de esta manera la prueba es aproximada.</p>
+<div id="base-de-datos-de-la-longitud-de-los-peces---prueba-de-falta-de-ajuste" class="section level4" number="3.5.1.1">
+<h4><span class="header-section-number">3.5.1.1</span> Base de datos de la longitud de los peces - prueba de falta de ajuste</h4>
+<p>La Figura <a href="evaluación-de-los-supuestos-del-modelo.html#fig:pecesResiduos1">3.12</a> muestra los gráficos de los residuos para el modelo ajustado a los datos de la longitud de los peces.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb59-1" aria-hidden="true" tabindex="-1"></a>res.stud.bass <span class="ot">=</span> <span class="fu">studres</span>(mod.bass)</span>
+<span id="cb59-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb59-2" aria-hidden="true" tabindex="-1"></a>mod.fit.bass <span class="ot">=</span> mod.bass<span class="sc">$</span>fitted.values</span>
+<span id="cb59-3"><a href="evaluación-de-los-supuestos-del-modelo.html#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.fit.bass,res.stud.bass, <span class="at">ylab=</span><span class="st">&#39;residuos estudentizados&#39;</span>,</span>
+<span id="cb59-4"><a href="evaluación-de-los-supuestos-del-modelo.html#cb59-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;valores ajustados&#39;</span>)</span>
+<span id="cb59-5"><a href="evaluación-de-los-supuestos-del-modelo.html#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb59-6"><a href="evaluación-de-los-supuestos-del-modelo.html#cb59-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(res.stud.bass<span class="sc">~</span>mod.fit.bass), <span class="at">col =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:pecesResiduos1"></span>
+<img src="bookdownproj_files/figure-html/pecesResiduos1-1.png" alt="Datos de la longitud de los peces. Gráfico de los residuos estudentizados contra los valores ajustados." width="384" />
+<p class="caption">
+Figure 3.12: Datos de la longitud de los peces. Gráfico de los residuos estudentizados contra los valores ajustados.
+</p>
+</div>
+<p>La prueba de falta se ajuste se puede hacer usando la función <code>anovaPE</code> de la librería <code>EnvStats</code>:</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(EnvStats)</span>
+<span id="cb60-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaPE</span>(mod.bass)</span></code></pre></div>
+<pre><code>##                 Df  Sum Sq Mean Sq   F value Pr(&gt;F)    
+## Age              1 1595359 1595359 1973.0736 &lt;2e-16 ***
+## Lack of Fit      6   10104    1684    2.0827 0.0541 .  
+## Pure Error     431  348492     809                     
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+A partir del valor-<span class="math inline">\(p\)</span> podemos concluir que no se rechaza <span class="math inline">\(H_{0}\)</span>, por lo tanto no hay suficiente evidencia para dudar del ajuste lineal propuesto.
+</div>
+</div>
+<div id="prueba-de-heterocedasticidad" class="section level3" number="3.5.2">
+<h3><span class="header-section-number">3.5.2</span> Prueba de heterocedasticidad</h3>
+<p>Algunas pruebas de heterocedasticidad asumen que la varianza de los errores se compone de una parte constante y otra que varía según unas variables <span class="math inline">\((\boldsymbol{z})\)</span>:
+<span class="math display">\[
+\sigma^{2}_{i} = f(\sigma^{2},\boldsymbol{z}_{i}),
+\]</span>
+donde <span class="math inline">\(\sigma^{2}\)</span> es la parte fija de la varianza, <span class="math inline">\(\boldsymbol{z}_{i}\)</span> el conjunto de variables cuyos valores se asocian con los cambios en la varianza de los errores. Por lo general se asume que la función de varianza depende de algunas de las covariables del modelo, es decir que <span class="math inline">\(\boldsymbol{z}_{i}=\boldsymbol{x}_{i}\)</span>.</p>
+<p>La <strong>prueba de Breusch-Pagan</strong> asume que la varianza es una función aditiva de las covariables:
+<span class="math display">\[
+\sigma^{2}_{i} = E(\varepsilon_{i}^{2}) = \gamma_{0} + \gamma_{1}x_{i1}+ \gamma_{1}x_{i2} + \ldots  + \gamma_{p-1}x_{i,p-1}.
+\]</span></p>
+<p>Por lo tanto, se pueden plantear las siguientes hipótesis:
+<span class="math display">\[\begin{equation}
+\begin{split}
+H_{0}:&amp; \gamma_{1} = \gamma_{2} = \ldots = \gamma_{p-1} = 0 \qquad \mbox{ (homocedasticidad)}, \\
+H_{1}:&amp; \gamma_{j}\neq 0 \mbox{ para algún }j=1,\ldots,p-1 \mbox{ (heterocedasticidad)}.
+\end{split}
+\nonumber
+\end{equation}\]</span>
+Dado que los errores no son observables, el estadístico de prueba se construye a partir de los residuos del modelo estimado. Primero, se ajusta el siguiente modelo de regresión:
+<span class="math display">\[
+e_{i}^{2} = \gamma_{0} + \gamma_{1}x_{i1}+ \gamma_{1}x_{i2} + \ldots  + \gamma_{p-1}x_{i,p-1} + \upsilon_{i},
+\]</span>
+donde se asume que <span class="math inline">\(\upsilon_{i}\sim N(0,\sigma^{2}_{\upsilon})\)</span>, y se obtiene el coeficiente de determinación <span class="math inline">\(R^{2}_{e}\)</span>.</p>
+<p>si <span class="math inline">\(H_{0}\)</span> es cierta, se tiene que <span class="math inline">\(W = n R^{2}_{e} \sim \chi^{2}_{p-1}\)</span>. Entonces, si <span class="math inline">\(W &gt; \chi^{2}_{1-\alpha,p-1}\)</span> se rechaza <span class="math inline">\(H_{0}\)</span>. Por lo tanto, hay heterocedasticidad.</p>
+<p>El test de Breusch-Pagan sólo detecta formas lineales de heterocedasticidad. La <strong>prueba de White</strong> propone que la relación entre la varianza y las covariables es cuadrática:
+<span class="math display">\[\begin{equation}
+\begin{split}
+\sigma^{2}_{i} &amp;= \left(\gamma_{0}^{*} + \sum_{j=1}^{p-1}\gamma_{j}^{*}x_{ij}\right)^{2} \\
+&amp;= \gamma_{0} + \sum_{j=1}^{p-1}\gamma_{j}x_{ij} + \sum_{j=1}^{p-1}\gamma_{jj}x_{ij}^{2} + \sum_{j=1}^{p-1}\sum_{k \neq j}\gamma_{jk}x_{ij}x_{ik}.
+\end{split}
+\nonumber
+\end{equation}\]</span>
+Dado que el número de parámetros del modelo se incrementa rápidamente a medida que tengamos más covariables, se pueden omitir las interacciones entre las covariables.</p>
+<p>Por ejemplo si se tiene un modelo con tres covariables, se plantea la siguiente función para la varianza:
+<span class="math display">\[
+\sigma^{2}_{i} = \gamma_{0} + \gamma_{1}x_{i1} + \gamma_{1}x_{i2}  + \gamma_{1}x_{i3} + \gamma_{4}x_{i1}^{2}+\gamma_{5}x_{i2}^{2} + \gamma_{6}x_{i3}^{2} + \gamma_{7}x_{i1}x_{i2} + \gamma_{8}x_{i1}x_{i3} + \gamma_{9}x_{i2}x_{i3}
+\]</span>
+y las hipótesis son:
+<span class="math display">\[\begin{equation}
+\begin{split}
+H_{0}:&amp; \gamma_{1} = \gamma_{2} = \ldots = \gamma_{9} = 0 \qquad \mbox{ (homocedasticidad)}, \\
+H_{1}:&amp; \gamma_{j}\neq 0 \mbox{ para algún }j=1,\ldots,9 \mbox{ (heterocedasticidad)}.    
+\end{split}
+\nonumber
+\end{equation}\]</span>
+Para calcular el estadístico de prueba, primero ajustamos el siguiente modelo auxiliar:
+<span class="math display">\[
+e_{i}^{2} = \gamma_{0} + \gamma_{1}x_{i1} + \gamma_{1}x_{i2}  + \gamma_{1}x_{i3} + \gamma_{4}x_{i1}^{2}+\gamma_{5}x_{i2}^{2} + \gamma_{6}x_{i3}^{2} + \gamma_{7}x_{i1}x_{i2} + \gamma_{8}x_{i1}x_{i3} + \gamma_{9}x_{i2}x_{i3} + \upsilon_{i},
+\]</span>
+y el coeficiente de determinación asociado <span class="math inline">\(R_{e}^{2}\)</span>. El estadístico de prueba es <span class="math inline">\(W=nR_{e}^{2}\)</span>, y rechazamos <span class="math inline">\(H_{0}\)</span> si <span class="math inline">\(W &gt; \chi^{2}_{1-\alpha,8}\)</span>.</p>
+<div id="bajo-peso-al-nacer---prueba-de-heterocedasticidad" class="section level4 unnumbered">
+<h4>Bajo peso al nacer - prueba de heterocedasticidad</h4>
+<p>En la prueba de White se asume que:
+<span class="math display">\[\begin{equation}
+\begin{split}
+\sigma^{2}_{i} =&amp; \gamma_{0} + \gamma_{1}\mbox{age}_{i} + \gamma_{2}\mbox{motherage}_{i}  + \gamma_{3}\mbox{mnocig}_{i} + \gamma_{4}\mbox{mppwt}_{i}+ \\
+&amp; \gamma_{5}\mbox{age}_{i}^{2} + \gamma_{6}\mbox{motherage}_{i}^{2}  + \gamma_{7}\mbox{mnocig}_{i}^{2} + \gamma_{8}\mbox{mppwt}_{i}^{2}.
+\end{split}
+\nonumber
+\end{equation}\]</span>
+Dado que se tienen varias covariables, se omitieron las interacciones entre las covariables. Se plantean las siguientes hipótesis:
+<span class="math display">\[\begin{equation}
+\begin{split}
+H_{0}:&amp; \gamma_{1} = \gamma_{2} = \ldots = \gamma_{8} = 0 \qquad \mbox{ (homocedasticidad)}, \\
+H_{1}:&amp; \gamma_{j}\neq 0 \mbox{ para algún }j=1,\ldots,8 \mbox{ (heterocedasticidad)}.
+\end{split}
+\nonumber
+\end{equation}\]</span>
+El ajuste del modelo auxiliar es:</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb62-1" aria-hidden="true" tabindex="-1"></a>res.stud.birthweight<span class="ot">=</span>mod.birthweight<span class="sc">$</span>residuals</span>
+<span id="cb62-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb62-2" aria-hidden="true" tabindex="-1"></a>mod.res.birthweight <span class="ot">=</span> <span class="fu">lm</span>(res.stud.birthweight<span class="sc">^</span><span class="dv">2</span> <span class="sc">~</span> age <span class="sc">+</span> motherage <span class="sc">+</span> mnocig <span class="sc">+</span> mppwt <span class="sc">+</span></span>
+<span id="cb62-3"><a href="evaluación-de-los-supuestos-del-modelo.html#cb62-3" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">I</span>(age<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(motherage<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(mnocig<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(mppwt<span class="sc">^</span><span class="dv">2</span>), </span>
+<span id="cb62-4"><a href="evaluación-de-los-supuestos-del-modelo.html#cb62-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data=</span>birthweight)</span>
+<span id="cb62-5"><a href="evaluación-de-los-supuestos-del-modelo.html#cb62-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.res.birthweight)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = res.stud.birthweight^2 ~ age + motherage + mnocig + 
+##     mppwt + I(age^2) + I(motherage^2) + I(mnocig^2) + I(mppwt^2), 
+##     data = birthweight)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.20691 -0.08384 -0.01338  0.02286  0.41575 
+## 
+## Coefficients:
+##                  Estimate Std. Error t value Pr(&gt;|t|)  
+## (Intercept)    -6.1348535  3.4447222  -1.781   0.0841 .
+## age             0.2877513  0.1701394   1.691   0.1002  
+## motherage      -0.0406689  0.0359059  -1.133   0.2655  
+## mnocig          0.0024339  0.0051823   0.470   0.6417  
+## mppwt           0.0433585  0.0435969   0.995   0.3272  
+## I(age^2)       -0.0037481  0.0021924  -1.710   0.0967 .
+## I(motherage^2)  0.0007444  0.0006445   1.155   0.2563  
+## I(mnocig^2)    -0.0001672  0.0001335  -1.253   0.2192  
+## I(mppwt^2)     -0.0003450  0.0003688  -0.935   0.3564  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.1457 on 33 degrees of freedom
+## Multiple R-squared:  0.2397, Adjusted R-squared:  0.05544 
+## F-statistic: 1.301 on 8 and 33 DF,  p-value: 0.2772</code></pre>
+<p>Note que el estadístico <span class="math inline">\(F_{0}\)</span> es pequeño y que las pruebas individuales sobre los coeficientes no son significativas. Esto es un indicio que <span class="math inline">\(H_{0}\)</span> es cierta. El coeficiente de determinación es <span class="math inline">\(R_{e}^{2} = 0.24\)</span>. Entonces, <span class="math inline">\(W= 10.069\)</span>, con un valor-<span class="math inline">\(p\)</span> asociado de <span class="math inline">\(0.2602\)</span>. Por lo tanto, no tenemos evidencia suficiente para determinar que hay heterocedasticidad.</p>
+<p>La prueba se puede implementar directamente usando la función <code>bptest</code> de la librería <code>lmtest</code> llegando a los mismos resultados:</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bptest</span>(mod.birthweight, <span class="sc">~</span> age <span class="sc">+</span> motherage <span class="sc">+</span> mnocig <span class="sc">+</span> mppwt <span class="sc">+</span></span>
+<span id="cb64-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb64-2" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">I</span>(age<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(motherage<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(mnocig<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(mppwt<span class="sc">^</span><span class="dv">2</span>), </span>
+<span id="cb64-3"><a href="evaluación-de-los-supuestos-del-modelo.html#cb64-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data=</span>birthweight)</span></code></pre></div>
+<pre><code>## 
+##  studentized Breusch-Pagan test
+## 
+## data:  mod.birthweight
+## BP = 10.069, df = 8, p-value = 0.2602</code></pre>
+<p>Otras pruebas de heterocedasticidad que se pueden utilizar son:</p>
+<ul>
+<li>Prueba de Goldfeld–Quandt.</li>
+<li>Prueba de Barlett.</li>
+<li>Prueba de Cochran.</li>
+<li>Prueba de Hartley.</li>
+</ul>
+<p>Las últimas tres pruebas requieren que se tengan múltiples observaciones para cada nivel de <span class="math inline">\(\boldsymbol{x}\)</span>. En caso que no se tengan repeticiones, es posible agruparlas por los vecinos más cercanos e implementar la prueba de forma aproximada.</p>
+</div>
+</div>
+<div id="prueba-de-normalidad" class="section level3" number="3.5.3">
+<h3><span class="header-section-number">3.5.3</span> Prueba de normalidad</h3>
+<p>Para probar normalidad podemos utilizar la prueba de Shapiro-Wilks.</p>
+<p>Suponga que se tiene una muestra aleatoria <span class="math inline">\(x_{1},\ldots,x_{n}\)</span> que se asumen sigue una distribución normal. Por lo cuál, se plantean las siguientes hipótesis:
+<span class="math display">\[
+H_{0}: \mbox{la distribución de }X \mbox{ es normal} \qquad H_{0}: \mbox{la distribución de }X \mbox{ no es normal}
+\]</span>
+El estadístico de prueba propuestos por Shapiro y Wilks es:
+<span class="math display">\[
+W = \frac{ \sum_{i=1}^{[n/2]}a_{in}\left(x_{[n-i+1]}-x_{[i]}\right)  }{\sum_{i=1}^{n}(x_{i}-\bar{x})^{2}},
+\]</span>
+donde <span class="math inline">\((x_{[1]},x_{[2]},\ldots,x_{[n]})\)</span> son los estadísticos de orden y los valores <span class="math inline">\(a_{in}\)</span>, así como los valores críticos, están dados en tablas tabuladas por los autores.</p>
+<div id="bajo-peso-al-nacer---prueba-de-normalidad" class="section level4 unnumbered">
+<h4>Bajo peso al nacer - prueba de normalidad</h4>
+<p>La prueba de Shapiro-Wilks para ajuste de los datos de peso al nacer es:
+<code>lmtest</code>:</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(res.stud.birthweight)</span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  res.stud.birthweight
+## W = 0.96593, p-value = 0.2395</code></pre>
+<p>A partir de este resultado, no tenemos evidencia suficiente para rechazar que los errores se distribuyen normal. En esta función de R, el valor-<span class="math inline">\(p\)</span> es calculado usando una aproximación propuesta por Royston (1995).</p>
+<p>Otras pruebas de normalidad que se pueden utilizar son:</p>
+<ul>
+<li>Modificaciones de la prueba Shapiro-Wilks, como son: D’agostino o Shapiro-Francia.</li>
+<li>Pruebas de bondad de ajuste generales, como son: Kolmogorov-Smirnov, Cramer-Von Mises, Anderson-Darling.</li>
+</ul>
+</div>
+</div>
+<div id="prueba-de-correlación-temporal-de-los-errores" class="section level3" number="3.5.4">
+<h3><span class="header-section-number">3.5.4</span> Prueba de correlación temporal de los errores</h3>
+<p>Cuando la correlación es debido a que las observaciones fueron tomadas en el tiempo, se puede asumir que hay <strong>autocorrelación</strong>. Aquí se asume que los errores que están separados <span class="math inline">\(t\)</span> unidades de tiempo siempre tienen la misma correlación lineal. Además que la correlación disminuye a medida que las observaciones se separan en el tiempo.</p>
+<p>El modelo de regresión, con errores autoregresivos de orden uno, es el siguiente:
+<span class="math display">\[
+y_{t} = \boldsymbol{x}_{t}&#39;\boldsymbol{\beta}+ \varepsilon_{t}, \mbox{ con }\varepsilon_{t}= \phi\varepsilon_{t-1} + a_{t},
+\]</span>
+donde <span class="math inline">\(y_{t}\)</span> y <span class="math inline">\(\boldsymbol{x}_{t}\)</span> son la variable respuesta observada y el conjunto de covariables observadas en el tiempo <span class="math inline">\(t\)</span>, respectivamente, y <span class="math inline">\(\phi\)</span> es el parámetro de autocorrelación <span class="math inline">\((|\phi| &lt; 1)\)</span>. Además, se asume que <span class="math inline">\(a_{t} \sim N(0,\sigma^{2}_{a})\)</span> y <span class="math inline">\(cov(a_{j},a_{k})=0\)</span>, para todo <span class="math inline">\(j \neq k\)</span>. A partir de estos resultados, se tiene que:
+<span class="math display">\[
+E(\varepsilon_{t}) = 0, V(\varepsilon_{t}) = \sigma^{2}_{a}\left( \frac{1}{1-\phi^2}\right), \mbox{ y } cov(\varepsilon_{t},\varepsilon_{t \pm k})= \phi^{k}\sigma^{2}_{a}\left( \frac{1}{1-\phi^2} \right).
+\]</span>
+Por lo tanto, la correlación entre dos errores separados en <span class="math inline">\(k\)</span> periodos de tiempo es <span class="math inline">\(cor(\varepsilon_{t},\varepsilon_{t\pm k}) = \phi^{k}\)</span>. Si <span class="math inline">\(\phi &gt; 0\)</span>, los errores están correlacionados positivamente, pero la magnitud de la correlación disminuye a medida que los errores se separan más. Por otro lado, si <span class="math inline">\(\phi =0\)</span> los errores están incorrelacionados.</p>
+<p>La prueba de Durbin-Watson plantea las siguientes hipótesis:
+<span class="math display">\[
+H_{0}: \phi = 0 \mbox{ (independencia)} \qquad H_{1}:\phi \neq 0  \mbox{ (autocorrelación)}
+\]</span>
+El estadístico de prueba es:
+<span class="math display">\[
+d = \frac{\sum_{t=2}^{T}\left( e_{t} - e_{t-1}\right)^{2}}{\sum_{t=1}^{T}e_{t}^{2}}.
+\]</span>
+La distribución de probabilidad de <span class="math inline">\(d\)</span>, bajo <span class="math inline">\(H_{0}\)</span>, depende de la estructura de <span class="math inline">\(\boldsymbol{X}\)</span> y es difícil de determinar. Por lo tanto, los valores críticos están tabulados para diferentes valores de significancia, tamaño de muestra y número de parámetros. Otra alternativa, usada por los paquetes estadísticos, es calcular la significancia a través de métodos de remuestreo y aproximaciones del estadístico de prueba a la distribución normal.</p>
+<div id="ventas-de-helado---prueba-de-correlación-temporal" class="section level4 unnumbered">
+<h4>Ventas de helado - prueba de correlación temporal</h4>
+<p>La prueba de Durbin-Watson para ajuste de los datos de ventas de helado se puede hacer a través de la función <code>durbinWatsonTest</code> de la librería <code>car</code>:</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">durbinWatsonTest</span>(mod.icecream,<span class="at">method=</span><span class="st">&#39;resample&#39;</span>,<span class="at">reps=</span><span class="dv">1000</span>)</span></code></pre></div>
+<pre><code>##  lag Autocorrelation D-W Statistic p-value
+##    1       0.5412411      0.655856       0
+##  Alternative hypothesis: rho != 0</code></pre>
+Estos resultados muestran que hay correlación serial en los datos. Note que con esta función, el valor-<span class="math inline">\(p\)</span> es calculado a partir de técnicas de remuestreo usando 1000 repeticiones.
+</div>
+</div>
+</div>
+<div id="comentarios-finales" class="section level2" number="3.6">
+<h2><span class="header-section-number">3.6</span> Comentarios finales</h2>
+<p>Algunas consideraciones, muchas de ellas tomadas de <span class="citation"><a href="#ref-behar_validacion_2002" role="doc-biblioref">Behar</a> (<a href="#ref-behar_validacion_2002" role="doc-biblioref">2002</a>)</span>:</p>
+<ul>
+<li>La efectividad de las pruebas formales depende del tamaño de la muestra. Si <span class="math inline">\(n\)</span> es pequeño, la potencia es baja. Por lo tanto, es difícil detectar alejamientos de la hipótesis nula. Si por el contrario, la muestra es grande, la potencia es alta. Entonces, se rechaza la hipótesis nula ante cualquier alejamiento ligero.</li>
+<li>El incumplimiento de un supuesto puede reflejarse como el incumplimiento de otros. Por ejemplo, la falta de ajuste del modelo puede reflejarse como heterogeneidad de los errores y/o como correlación de los mismos.</li>
+<li>Hay que tener en cuenta que algunas pruebas de hipótesis suponen cierto alejamiento particular del supuesto que se quiere probar. Por ejemplo, el test de White asume que la varianza es una función cuadrática de las covariables. Por lo tanto si rechazamos esta prueba, no necesariamente podemos asegurar con total certeza que no hay heterocedasticidad. Es posible que la función de varianza tome otra forma.</li>
+<li>Adicionalmente, varias pruebas son muy sensibles al alejamiento de la suposición de normalidad. Es decir que, si los errores no son normalmente distribuidos, el nivel real de significancia puede ser muy diferente del especificado. Sin embargo, el rechazo de la hipótesis nula podría sugerir que al menos uno de los dos supuestos no se cumple.</li>
+<li>A la hora de validar el supuesto de normalidad de los errores se está interesado en saber si el alejamiento de ese modelo normal, es aceptable desde el punto de vista de la conservación de las propiedades y ventajas que se heredan de la normalidad. Las estimaciones de <span class="math inline">\(\widehat{\boldsymbol{\beta}}\)</span> son generalmente robustas a desviaciones de la normalidad (Teorema del límite central).</li>
+</ul>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-behar_validacion_2002" class="csl-entry">
+Behar, Roberto. 2002. <em>Validación de Supuestos En El Modelo de Regresión</em>.
+</div>
+<div id="ref-fox_applied_2016" class="csl-entry">
+Fox, John. 2016. <em>Applied Regression Analysis and Generalized Linear Models</em>. Third Edition. Los Angeles: <span>SAGE</span>.
+</div>
+<div id="ref-weisberg_applied_2014" class="csl-entry">
+Weisberg, Sanford. 2014. <em>Applied Linear Regression</em>. Fourth edition. Wiley Series in Probability and Statistics. Hoboken, <span>NJ</span>: Wiley.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="modelo-lineal-múltiple.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="transformaciones-y-mínimos-cuadrados-ponderados.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/AlvaroFlorez/MLG1/edit/master/03-EvaluacionSupuestos.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/AlvaroFlorez/MLG1/blob/master/03-EvaluacionSupuestos.Rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
