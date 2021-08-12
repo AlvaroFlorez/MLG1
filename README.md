@@ -37,7 +37,7 @@ This is a template for creating an [HTML GitBook style](https://bookdown.org/yih
 
 - [ ] 1. Install **bookdown** with `install.packages("bookdown")`. If you already have it, update to the [latest version](https://CRAN.R-project.org/package=bookdown).
 
-- [ ] 2. Render locally with `bookdown::render_book("index.Rmd")`.
+- [ ] 2. Render locally with `bookdown::render_book("index.Rmd", "bookdown::pdf_book")`.
 
 - [ ] 3. Use `browseURL("docs/index.html")` to view your book locally (or just open `index.html` in a browser).
 

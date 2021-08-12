@@ -290,6 +290,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
 </ul>
 
       </nav>
@@ -339,15 +340,15 @@ con <span class="math inline">\(\varepsilon_{i}\sim N(0,\sigma^{2})\)</span>, y 
 <p><span class="math display" id="eq:modMultiple">\[\begin{equation}
 \begin{split}
 y_{i} =&amp; \beta_{0} + \beta_{1}x_{i1} + \beta_{2}x_{i2} + \ldots + \beta_{p-1} x_{i,p-1} + \varepsilon_{i} \\
-=&amp; \boldsymbol{x}_{i}&#39;\boldsymbol{\beta}+ \varepsilon_{i}, \qquad i=1,\ldots,n, \\
+=&amp; \bx_{i}&#39;\bbeta + \varepsilon_{i}, \qquad i=1,\ldots,n, \\
 \end{split}
 \tag{2.1}
 \end{equation}\]</span></p>
-<p>donde <span class="math inline">\(\boldsymbol{x}_{i} = (1,x_{i1},x_{i2},\ldots,x_{i,p-1})&#39;\)</span> es el vector de dimensión <span class="math inline">\(p\)</span> de covariables del individuo <span class="math inline">\(i\)</span> y <span class="math inline">\(\boldsymbol{\beta}= (\beta_{0},\beta_{1},\ldots,\beta_{p-1})&#39;\)</span> es el vector de dimensión <span class="math inline">\(p\)</span> de coeficientes de regresión.</p>
+<p>donde <span class="math inline">\(\bx_{i} = (1,x_{i1},x_{i2},\ldots,x_{i,p-1})&#39;\)</span> es el vector de dimensión <span class="math inline">\(p\)</span> de covariables del individuo <span class="math inline">\(i\)</span> y <span class="math inline">\(\bbeta = (\beta_{0},\beta_{1},\ldots,\beta_{p-1})&#39;\)</span> es el vector de dimensión <span class="math inline">\(p\)</span> de coeficientes de regresión.</p>
 <p>Los supuestos del modelo son los mismos que se plantearon en el capítulo anterior. Estos es: <span class="math inline">\(\varepsilon_{i} \sim N\left(0,\sigma^{2} \right)\)</span> y <span class="math inline">\(cov(\varepsilon_{j},\varepsilon_{k})=0\)</span>, para todo <span class="math inline">\(j \neq k\)</span>.</p>
 <p>Dado que <span class="math inline">\(E(\varepsilon_{i})=0\)</span>, el valor esperado de <span class="math inline">\(Y\)</span> es:
 <span class="math display" id="eq:expValue">\[\begin{equation}
-E(Y| x_{i1},x_{i2},\ldots,x_{i,p-1}) = E(Y| \boldsymbol{x}_{i}) = \beta_{0} + \beta_{1}x_{i1} + \beta_{2}x_{i2} + \ldots + \beta_{p-1} x_{i,p-1} = \boldsymbol{x}_{i}&#39;\boldsymbol{\beta}.
+E(Y| x_{i1},x_{i2},\ldots,x_{i,p-1}) = E(Y| \bx_{i}) = \beta_{0} + \beta_{1}x_{i1} + \beta_{2}x_{i2} + \ldots + \beta_{p-1} x_{i,p-1} = \bx_{i}&#39;\bbeta.
 \tag{2.2}
 \end{equation}\]</span>
 El intercepto <span class="math inline">\(\beta_{0}\)</span> es el valor esperado de <span class="math inline">\(Y\)</span> cuando <span class="math inline">\(x_{i}=(1,0,0,\ldots,0)&#39;\)</span>, es decir cuando todos las covariables toman el valor <span class="math inline">\(0\)</span>.</p>
@@ -365,48 +366,48 @@ E(Y|x_{i,j+1}) - E(Y|x_{i,j}) = \beta_{j}.
 \]</span>
 Es conveniente escribir el modelo de regresión múltiple <a href="modelo-lineal-múltiple.html#eq:modMultiple">(2.1)</a> de forma matricial:
 <span class="math display">\[
-\boldsymbol{y}= \boldsymbol{X}\boldsymbol{\beta}+ \boldsymbol{\varepsilon},
+\by = \bX\bbeta + \bvarepsi,
 \]</span>
 donde:
 <span class="math display">\[\begin{gather}
 \begin{aligned}
-\boldsymbol{y}= \begin{pmatrix}
+\by = \begin{pmatrix}
 y_{1} \\ y_{2} \\ \vdots \\ y_{n}
-\end{pmatrix}, &amp; \boldsymbol{X}= \begin{pmatrix}
+\end{pmatrix}, &amp; \bX = \begin{pmatrix}
 1 &amp; x_{11} &amp; x_{12} &amp; \ldots &amp; x_{1,p-1} \\ 1 &amp; x_{21} &amp; x_{22} &amp; \ldots &amp; x_{2,p-1} \\ \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ 1 &amp; x_{n1} &amp; x_{n2} &amp; \ldots &amp; x_{n,p-1}
 \end{pmatrix},
-\boldsymbol{\beta}= \begin{pmatrix}
+\bbeta = \begin{pmatrix}
 \beta_{0} \\ \beta_{1} \\ \beta_{2} \\ \vdots \\ \beta_{p-1}
-\end{pmatrix}, &amp; \boldsymbol{\varepsilon}= \begin{pmatrix}
+\end{pmatrix}, &amp; \bvarepsi = \begin{pmatrix}
 \varepsilon_{1} \\ \varepsilon_{2} \\ \vdots \\ \varepsilon_{n}
 \end{pmatrix}.
 \end{aligned}
 \nonumber
 \end{gather}\]</span>
-Además, los supuestos sobre los errores se pueden expresar como <span class="math inline">\(\boldsymbol{\varepsilon}\sim N(\boldsymbol{0}, \sigma^{2}\boldsymbol{I})\)</span>, donde <span class="math inline">\(\boldsymbol{0}\)</span> es un vector con todas las entradas iguales a cero, y <span class="math inline">\(\boldsymbol{I}\)</span> es la matriz identidad.</p>
+Además, los supuestos sobre los errores se pueden expresar como <span class="math inline">\(\bvarepsi \sim N(\bZERO, \sigma^{2}\bI)\)</span>, donde <span class="math inline">\(\bZERO\)</span> es un vector con todas las entradas iguales a cero, y <span class="math inline">\(\bI\)</span> es la matriz identidad.</p>
 </div>
 <div id="estimación-de-los-parámetros-de-regresión" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> Estimación de los parámetros de regresión</h2>
-<p>La estimación de <span class="math inline">\(\boldsymbol{\beta}\)</span> se hace a través del método de mínimos cuadrados ordinarios. Por lo tanto, debemos encontrar el vector <span class="math inline">\(\widehat{\boldsymbol{\beta}}\)</span> que minimice:
+<p>La estimación de <span class="math inline">\(\bbeta\)</span> se hace a través del método de mínimos cuadrados ordinarios. Por lo tanto, debemos encontrar el vector <span class="math inline">\(\hatbbeta\)</span> que minimice:
 <span class="math display">\[
-S(\boldsymbol{\beta}) =  \sum_{i=1}^{n}\left(y_{i} - \boldsymbol{x}_{i}&#39;\boldsymbol{\beta}\right)^2 = \sum_{i=1}^{n}\epsilon_{i}^2.
+S(\bbeta) =  \sum_{i=1}^{n}\left(y_{i} - \bx_{i}&#39;\bbeta \right)^2 = \sum_{i=1}^{n}\epsilon_{i}^2.
 \]</span>
 En forma matricial, tenemos:
 <span class="math display">\[\begin{equation}
 \begin{split}
-S(\boldsymbol{\beta}) &amp;= \boldsymbol{\varepsilon}&#39;\boldsymbol{\varepsilon}= (\boldsymbol{y}- \boldsymbol{X}\boldsymbol{\beta})&#39;(\boldsymbol{y}- \boldsymbol{X}\boldsymbol{\beta}) \\
-&amp;= \boldsymbol{y}&#39;\boldsymbol{y}- \boldsymbol{\beta}&#39;\boldsymbol{X}&#39;\boldsymbol{y}- \boldsymbol{y}&#39;\boldsymbol{X}\boldsymbol{\beta}+ \boldsymbol{\beta}&#39;\boldsymbol{X}&#39;\boldsymbol{X}\boldsymbol{\beta}\\
-&amp;= \boldsymbol{y}&#39;\boldsymbol{y}- 2\boldsymbol{\beta}&#39;\boldsymbol{X}&#39;\boldsymbol{y}+ \boldsymbol{\beta}&#39;\boldsymbol{X}&#39;\boldsymbol{X}\boldsymbol{\beta}.
+S(\bbeta) &amp;= \bvarepsi&#39;\bvarepsi = (\by - \bX\bbeta)&#39;(\by - \bX\bbeta) \\
+&amp;= \by&#39;\by - \bbeta&#39;\bX&#39;\by - \by&#39;\bX\bbeta + \bbeta&#39;\bX&#39;\bX\bbeta \\
+&amp;= \by&#39;\by - 2\bbeta&#39;\bX&#39;\by + \bbeta&#39;\bX&#39;\bX \bbeta.
 \end{split}
 \nonumber
 \end{equation}\]</span>
-Por lo tanto, <span class="math inline">\(\widehat{\boldsymbol{\beta}}\)</span> debe satisfacer:
+Por lo tanto, <span class="math inline">\(\hatbbeta\)</span> debe satisfacer:
 <span class="math display">\[
-\left. \frac{\partial S}{\partial \boldsymbol{\beta}} \right|_{\widehat{\boldsymbol{\beta}}} = - 2\boldsymbol{X}&#39;\boldsymbol{y}+ 2\boldsymbol{X}&#39;\boldsymbol{X}\widehat{\boldsymbol{\beta}}= \boldsymbol{0}.
+\left. \frac{\partial S}{\partial \bbeta} \right|_{\hatbbeta} = - 2\bX&#39;\by + 2\bX&#39;\bX \hatbbeta = \bZERO.
 \]</span>
 A partir de aquí obtenemos las <strong>ecuaciones normales</strong>:
 <span class="math display">\[
-\boldsymbol{X}&#39;\boldsymbol{X}\widehat{\boldsymbol{\beta}}= \boldsymbol{X}&#39;\boldsymbol{y}.
+\bX&#39;\bX \hatbbeta = \bX&#39;\by.
 \]</span>
 En más detalle:
 <span class="math display">\[\begin{gather}
@@ -416,24 +417,24 @@ n &amp; \sum x_{i1} &amp; \sum_{i=1}^{n}x_{i2} &amp; \ldots &amp; \sum_{i=1}^{n}
 \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
 \sum x_{i,p-1} &amp; \sum x_{i1}x_{i,p-1} &amp; \sum x_{i2}x_{i,p-1} &amp; \ldots &amp; \sum x_{i,p-1}^{2} \\
 \end{pmatrix} \begin{pmatrix}
-\widehat{\beta}_{0} \\ \widehat{\beta}_{1} \\ \vdots \\ \widehat{\beta}_{p-1} \end{pmatrix} = \begin{pmatrix}
+\hatbeta_{0} \\ \hatbeta_{1} \\ \vdots \\ \hatbeta_{p-1} \end{pmatrix} = \begin{pmatrix}
 \sum y_{i} \\ \sum x_{i1}y_{i} \\ \vdots \\ \sum x_{i,p-1}y_{i}
 \end{pmatrix}
 \nonumber
 \end{gather}\]</span>
 Por lo cual, el estimador por mínimos cuadrados es:
 <span class="math display">\[
-\widehat{\boldsymbol{\beta}}= (\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\boldsymbol{X}&#39;\boldsymbol{y}.
+\hatbbeta = (\bX&#39;\bX)^{-1}\bX&#39;\by.
 \]</span>
-Note que es necesario que <span class="math inline">\(\boldsymbol{X}\)</span> sea de rango completo, <span class="math inline">\(\mbox{rango}(\boldsymbol{X}) = p \leq n\)</span>. Esta restricción es necesaria para asegurar que <span class="math inline">\(\boldsymbol{X}&#39;\boldsymbol{X}\)</span> sea no singular. Si <span class="math inline">\(\boldsymbol{X}&#39;\boldsymbol{X}\)</span> es singular, implica que existe una combinación lineal entre las columnas de <span class="math inline">\(\boldsymbol{X}\)</span>, o que <span class="math inline">\(\mbox{rango}(\boldsymbol{X}) &lt; p\)</span>.</p>
-<p>El valor ajustado de <span class="math inline">\(y\)</span> para el vector de covariables <span class="math inline">\(\boldsymbol{x}_{i}\)</span> es <span class="math inline">\(\widehat{y}_{i}= \boldsymbol{x}_{i}&#39;\widehat{\boldsymbol{\beta}}\)</span>. Definiendo <span class="math inline">\(\widehat{\boldsymbol{y}}= (\widehat{y}_{1},\widehat{y}_{2},\ldots,\widehat{y}_{n})\)</span>, tenemos que:
+Note que es necesario que <span class="math inline">\(\bX\)</span> sea de rango completo, <span class="math inline">\(\mbox{rango}(\bX) = p \leq n\)</span>. Esta restricción es necesaria para asegurar que <span class="math inline">\(\bX&#39;\bX\)</span> sea no singular. Si <span class="math inline">\(\bX&#39;\bX\)</span> es singular, implica que existe una combinación lineal entre las columnas de <span class="math inline">\(\bX\)</span>, o que <span class="math inline">\(\mbox{rango}(\bX) &lt; p\)</span>.</p>
+<p>El valor ajustado de <span class="math inline">\(y\)</span> para el vector de covariables <span class="math inline">\(\bx_{i}\)</span> es <span class="math inline">\(\haty_{i}= \bx_{i}&#39;\hatbbeta\)</span>. Definiendo <span class="math inline">\(\hatby = (\haty_{1},\haty_{2},\ldots,\haty_{n})\)</span>, tenemos que:
 <span class="math display">\[
-\widehat{\boldsymbol{y}}= \boldsymbol{X}\widehat{\boldsymbol{\beta}}= \boldsymbol{X}(\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\boldsymbol{X}&#39;\boldsymbol{y}= \boldsymbol{H}\boldsymbol{y}.
+\hatby = \bX\hatbbeta = \bX(\bX&#39;\bX)^{-1}\bX&#39;\by = \bH\by.
 \]</span>
-La matriz <span class="math inline">\((n\times n)\)</span> <span class="math inline">\(\boldsymbol{H}= \boldsymbol{X}(\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\boldsymbol{X}&#39;\)</span> es llamada <strong>matriz hat</strong> (sombrero) y desempeña un papel importante en el análisis de regresión.</p>
-<p>Los residuos del modelo <span class="math inline">\((e_{i}=y_{i}-\widehat{y}_{i})\)</span> también se pueden expresar en forma matricial:
+La matriz <span class="math inline">\((n\times n)\)</span> <span class="math inline">\(\bH = \bX(\bX&#39;\bX)^{-1}\bX&#39;\)</span> es llamada <strong>matriz hat</strong> (sombrero) y desempeña un papel importante en el análisis de regresión.</p>
+<p>Los residuos del modelo <span class="math inline">\((e_{i}=y_{i}-\haty_{i})\)</span> también se pueden expresar en forma matricial:
 <span class="math display">\[
-\boldsymbol{e}= \boldsymbol{y}- \boldsymbol{X}&#39;\widehat{\beta}= \boldsymbol{y}- \boldsymbol{X}(\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\boldsymbol{X}&#39;\boldsymbol{y}= \boldsymbol{y}- \boldsymbol{H}\boldsymbol{y}= (\boldsymbol{I}_{n} - \boldsymbol{H})\boldsymbol{y}.
+\be = \by - \bX&#39;\hatbeta = \by - \bX(\bX&#39;\bX)^{-1}\bX&#39;\by = \by - \bH\by = (\bI_{n} - \bH)\by.
 \]</span></p>
 <div id="estimación-de-sigma2-1" class="section level3" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> Estimación de <span class="math inline">\(\sigma^{2}\)</span></h3>
@@ -444,15 +445,15 @@ MS_{res} = \frac{SS_{res}}{n-p},
 donde:
 <span class="math display">\[\begin{equation}
 \begin{split}
-SS_{res} &amp;= \sum_{i=1}^{n}e^{2}_{i} = \boldsymbol{e}&#39;\boldsymbol{e}= (\boldsymbol{y}- \boldsymbol{X}\widehat{\boldsymbol{\beta}})&#39;(\boldsymbol{y}- \boldsymbol{X}\widehat{\boldsymbol{\beta}}) \\
-&amp;= (\boldsymbol{y}- \boldsymbol{H}\boldsymbol{y})&#39;(\boldsymbol{y}- \boldsymbol{H}\boldsymbol{y}) = \boldsymbol{y}&#39;(\boldsymbol{I}_{n}-\boldsymbol{H})&#39;(\boldsymbol{I}_{n}-\boldsymbol{H})\boldsymbol{y}= \boldsymbol{y}&#39;(\boldsymbol{I}_{n} - \boldsymbol{H})\boldsymbol{y}.
+SS_{res} &amp;= \sum_{i=1}^{n}e^{2}_{i} = \be&#39;\be = (\by - \bX\hatbbeta)&#39;(\by - \bX\hatbbeta) \\
+&amp;= (\by - \bH\by)&#39;(\by - \bH\by) = \by&#39;(\bI_{n}-\bH)&#39;(\bI_{n}-\bH)\by = \by&#39;(\bI_{n} - \bH)\by.
 \end{split}
 \nonumber
 \end{equation}\]</span>
 Se puede demostrar que <span class="math inline">\(MS_{res}\)</span> es un estimador insesgado de <span class="math inline">\(\sigma^{2}\)</span>, es decir <span class="math inline">\(E(MS_{res})=\sigma^{2}\)</span>. Para esto debemos calcular el valor esperado de <span class="math inline">\(SS_{res}\)</span>.</p>
-<p>Sabemos que <span class="math inline">\(E(\boldsymbol{y}) = \boldsymbol{X}\boldsymbol{\beta}\)</span> y <span class="math inline">\(V(\boldsymbol{y}) = \sigma^{2}\boldsymbol{I}_{n}\)</span>, entonces:
+<p>Sabemos que <span class="math inline">\(E(\by) = \bX\bbeta\)</span> y <span class="math inline">\(V(\by) = \sigma^{2}\bI_{n}\)</span>, entonces:
 <span class="math display">\[
-E(SS_{res}) = E\left[\boldsymbol{y}&#39;(\boldsymbol{I}- \boldsymbol{H})\boldsymbol{y}\right] = \sigma^{2}\mbox{tr}\left( \boldsymbol{I}- \boldsymbol{H}\right) + \boldsymbol{\beta}&#39;\boldsymbol{X}&#39;(\boldsymbol{I}- \boldsymbol{H})\boldsymbol{X}\boldsymbol{\beta}= (n-p)\sigma^{2}.
+E(SS_{res}) = E\left[\by&#39;(\bI - \bH)\by\right] = \sigma^{2}\tr\left( \bI - \bH \right) + \bbeta&#39;\bX&#39;(\bI - \bH)\bX\bbeta = (n-p)\sigma^{2}.
 \]</span>
 Por lo tanto, <span class="math inline">\(E(MS_{res}) = E(SS_{res})/(n-p) = \sigma^{2}\)</span>.</p>
 </div>
@@ -488,28 +489,28 @@ Note que al adicionar la covariable <code>mppwt</code> se redujo el <span class=
 </div>
 <div id="propiedades-de-los-estimadores-por-mco-1" class="section level3" number="2.2.3">
 <h3><span class="header-section-number">2.2.3</span> Propiedades de los estimadores por MCO</h3>
-<p>El valor esperado de <span class="math inline">\(\widehat{\boldsymbol{\beta}}\)</span> es:
+<p>El valor esperado de <span class="math inline">\(\hatbbeta\)</span> es:
 <span class="math display">\[\begin{equation}
 \begin{split}
-E(\widehat{\boldsymbol{\beta}}) =&amp; E\left[ (\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\boldsymbol{X}&#39;\boldsymbol{y}\right] = E\left[ \boldsymbol{X}&#39;\boldsymbol{X})^{-1}\boldsymbol{X}&#39;(\boldsymbol{X}\boldsymbol{\beta}+ \boldsymbol{\varepsilon}) \right] \\
-=&amp; E\left[ (\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\boldsymbol{X}&#39;\boldsymbol{X}\boldsymbol{\beta}+ (\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\boldsymbol{X}&#39;\boldsymbol{\varepsilon}\right] = \boldsymbol{\beta}
+E(\hatbbeta) =&amp; E\left[ (\bX&#39;\bX)^{-1}\bX&#39;\by \right] = E\left[ \bX&#39;\bX)^{-1}\bX&#39;(\bX\bbeta + \bvarepsi) \right] \\
+=&amp; E\left[ (\bX&#39;\bX)^{-1}\bX&#39;\bX\bbeta + (\bX&#39;\bX)^{-1}\bX&#39;\bvarepsi \right] = \bbeta
 \end{split}
 \nonumber
 \end{equation}\]</span>
-Por lo tanto, <span class="math inline">\(\widehat{\boldsymbol{\beta}}\)</span> es un estimador insesgado de <span class="math inline">\(\boldsymbol{\beta}\)</span> (si el modelo está bien espeficado).</p>
-<p>La matriz de varianzas-covarianzas de <span class="math inline">\(\widehat{\boldsymbol{\beta}}\)</span> es:
+Por lo tanto, <span class="math inline">\(\hatbbeta\)</span> es un estimador insesgado de <span class="math inline">\(\bbeta\)</span> (si el modelo está bien espeficado).</p>
+<p>La matriz de varianzas-covarianzas de <span class="math inline">\(\hatbbeta\)</span> es:
 <span class="math display">\[\begin{equation}
 \begin{split}
-V(\widehat{\boldsymbol{\beta}}) &amp;= V\left[ (\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\boldsymbol{X}&#39;\boldsymbol{y}\right] = (\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\boldsymbol{X}&#39;V(\boldsymbol{y})\boldsymbol{X}(\boldsymbol{X}&#39;\boldsymbol{X})^{-1}  \\
-&amp;= \sigma^{2}(\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\boldsymbol{X}&#39;\boldsymbol{X}(\boldsymbol{X}&#39;\boldsymbol{X})^{-1} = \sigma^{2}(\boldsymbol{X}&#39;\boldsymbol{X})^{-1}.
+V(\hatbbeta) &amp;= V\left[ (\bX&#39;\bX)^{-1}\bX&#39;\by \right] = (\bX&#39;\bX)^{-1}\bX&#39;V(\by)\bX(\bX&#39;\bX)^{-1}  \\
+&amp;= \sigma^{2}(\bX&#39;\bX)^{-1}\bX&#39;\bX(\bX&#39;\bX)^{-1} = \sigma^{2}(\bX&#39;\bX)^{-1}.
 \end{split}
 \nonumber
 \end{equation}\]</span>
-Si <span class="math inline">\(\boldsymbol{C}=(\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\)</span>, entonces <span class="math inline">\(V(\widehat{\beta}_{j}) = \sigma^{2}c_{jj}\)</span> y <span class="math inline">\(Cov(\widehat{\beta}_{j},\widehat{\beta}_{k})=\sigma^{2}c_{jk}\)</span>, donde <span class="math inline">\(c_{jk}\)</span> es la entrada <span class="math inline">\((j,k)\)</span> de la matriz <span class="math inline">\(\boldsymbol{C}\)</span>.</p>
+Si <span class="math inline">\(\bC=(\bX&#39;\bX)^{-1}\)</span>, entonces <span class="math inline">\(V(\hatbeta_{j}) = \sigma^{2}c_{jj}\)</span> y <span class="math inline">\(Cov(\hatbeta_{j},\hatbeta_{k})=\sigma^{2}c_{jk}\)</span>, donde <span class="math inline">\(c_{jk}\)</span> es la entrada <span class="math inline">\((j,k)\)</span> de la matriz <span class="math inline">\(\bC\)</span>.</p>
 <div id="teorema-de-gauss-markov" class="section level4 unnumbered">
 <h4>Teorema de Gauss-Markov</h4>
-<p>Si, <span class="math inline">\(E(\boldsymbol{\varepsilon}) = \boldsymbol{0}\)</span> y <span class="math inline">\(V(\boldsymbol{\varepsilon}) = \sigma^{2}\boldsymbol{I}_{n}\)</span>, el estimador por MCO, <span class="math inline">\(\widehat{\boldsymbol{\beta}}= (\boldsymbol{X}&#39;\boldsymbol{X})\boldsymbol{X}&#39;\boldsymbol{y}\)</span>, es el mejor estimador lineal insesgado de <span class="math inline">\(\boldsymbol{\beta}\)</span>. Esto quiere decir que es el estimador con menor varianza entre la clase de estimador insesgados que son combinaciones lineales de <span class="math inline">\(y\)</span>. Para la demostración, ver Sección C4 de <span class="citation"><a href="#ref-montgomery_introduction_2012" role="doc-biblioref">Montgomery, Peck, and Vining</a> (<a href="#ref-montgomery_introduction_2012" role="doc-biblioref">2012</a>)</span>.</p>
-<p>Además, si <span class="math inline">\(\boldsymbol{\varepsilon}\sim N(\boldsymbol{0}, \sigma^{2}\boldsymbol{I}_{n})\)</span>, el estimador por MCO coincide con el estimador por máxima verosimilitud.</p>
+<p>Si, <span class="math inline">\(E(\bvarepsi) = \bZERO\)</span> y <span class="math inline">\(V(\bvarepsi) = \sigma^{2}\bI_{n}\)</span>, el estimador por MCO, <span class="math inline">\(\hatbbeta = (\bX&#39;\bX)\bX&#39;\by\)</span>, es el mejor estimador lineal insesgado de <span class="math inline">\(\bbeta\)</span>. Esto quiere decir que es el estimador con menor varianza entre la clase de estimador insesgados que son combinaciones lineales de <span class="math inline">\(y\)</span>. Para la demostración, ver Sección C4 de <span class="citation"><a href="#ref-montgomery_introduction_2012" role="doc-biblioref">Montgomery, Peck, and Vining</a> (<a href="#ref-montgomery_introduction_2012" role="doc-biblioref">2012</a>)</span>.</p>
+<p>Además, si <span class="math inline">\(\bvarepsi \sim N(\bZERO, \sigma^{2}\bI_{n})\)</span>, el estimador por MCO coincide con el estimador por máxima verosimilitud.</p>
 </div>
 </div>
 </div>
@@ -520,7 +521,7 @@ Si <span class="math inline">\(\boldsymbol{C}=(\boldsymbol{X}&#39;\boldsymbol{X}
 <li>¿el modelo hace un buen ajuste de los datos?</li>
 <li>¿cuales regresores específicos parecen importantes?</li>
 </ul>
-<p>Para resolver estas preguntas podemos realizar pruebas de hipótesis. Generalmente, estos test requieren que <span class="math inline">\(\boldsymbol{\varepsilon}\sim N(\boldsymbol{0},\sigma^{2}\boldsymbol{I}_{n})\)</span>.</p>
+<p>Para resolver estas preguntas podemos realizar pruebas de hipótesis. Generalmente, estos test requieren que <span class="math inline">\(\bvarepsi \sim N(\bZERO,\sigma^{2}\bI_{n})\)</span>.</p>
 <div id="análisis-de-varianza-1" class="section level3" number="2.3.1">
 <h3><span class="header-section-number">2.3.1</span> Análisis de varianza</h3>
 <p>Para probar la significancia del modelo (determinar si que la relación entre <span class="math inline">\(y\)</span> y algunas de las covariables es lineal) se plantean las siguientes hipótesis:
@@ -538,11 +539,11 @@ SS_{T}  = SS_{R} + SS_{res},
 \]</span>
 donde:</p>
 <ul>
-<li><span class="math inline">\(SS_{T} = \sum_{i=1}^{n}(y_{i}-\bar{y})^{2} = (\boldsymbol{y}- \frac{1}{n}\boldsymbol{1}&#39;\boldsymbol{y})&#39;(\boldsymbol{y}- \frac{1}{n}\boldsymbol{1}&#39;\boldsymbol{y})\)</span>,</li>
-<li><span class="math inline">\(SS_{R} = \sum_{i=1}^{n}(\widehat{y}_{i}-\bar{y})^{2} = (\boldsymbol{H}\boldsymbol{y}- \frac{1}{n}\boldsymbol{1}&#39;\boldsymbol{y})&#39;(\boldsymbol{H}\boldsymbol{y}- \frac{1}{n}\boldsymbol{1}&#39;\boldsymbol{y})\)</span>,</li>
-<li><span class="math inline">\(SS_{res} = \sum_{i=1}^{n}(y_{i}-\widehat{y}_{i})^{2} = (\boldsymbol{y}- \boldsymbol{H}\boldsymbol{y})&#39;(\boldsymbol{y}- \boldsymbol{H}\boldsymbol{y})\)</span>,</li>
+<li><span class="math inline">\(SS_{T} = \sum_{i=1}^{n}(y_{i}-\bar{y})^{2} = (\by - \frac{1}{n}\bONE&#39;\by)&#39;(\by - \frac{1}{n}\bONE&#39;\by)\)</span>,</li>
+<li><span class="math inline">\(SS_{R} = \sum_{i=1}^{n}(\haty_{i}-\bar{y})^{2} = (\bH\by - \frac{1}{n}\bONE&#39;\by)&#39;(\bH\by - \frac{1}{n}\bONE&#39;\by)\)</span>,</li>
+<li><span class="math inline">\(SS_{res} = \sum_{i=1}^{n}(y_{i}-\haty_{i})^{2} = (\by - \bH\by)&#39;(\by - \bH\by)\)</span>,</li>
 </ul>
-<p>y <span class="math inline">\(\boldsymbol{1}\)</span> es un vector cuyas entradas son iguales a <span class="math inline">\(1\)</span>.</p>
+<p>y <span class="math inline">\(\bONE\)</span> es un vector cuyas entradas son iguales a <span class="math inline">\(1\)</span>.</p>
 <p>Si <span class="math inline">\(H_{0}\)</span> es cierta, tenemos que:
 <span class="math display">\[
 \frac{SS_{res}}{\sigma^{2}}\sim\chi^{2}_{n-p} \mbox{ y } \frac{SS_{R}}{\sigma^{2}} \sim \chi^{2}_{p-1},
@@ -553,11 +554,11 @@ F_{0} = \frac{SS_{R}/(p-1)}{SS_{res}/(n-p)} = \frac{MS_{R}}{MS_{res}} \sim F_{p-
 \]</span>
 También se puede probar que:
 <span class="math display">\[
-E(MS_{res}) =  \sigma^{2} \mbox{ y }E(MS_{R}) =  \sigma^{2} + \frac{\boldsymbol{\beta}^{*&#39;}\boldsymbol{X}_{c}&#39;\boldsymbol{X}_{c}\boldsymbol{\beta}^{*}}{(p-1)\sigma^{2}},
+E(MS_{res}) =  \sigma^{2} \mbox{ y }E(MS_{R}) =  \sigma^{2} + \frac{\bbeta^{*&#39;}\bX_{c}&#39;\bX_{c}\bbeta^{*}}{(p-1)\sigma^{2}},
 \]</span>
-donde <span class="math inline">\(\boldsymbol{\beta}^{*} = (\beta_{1},\beta_{2},\ldots,\beta_{p-1})&#39;\)</span> y
+donde <span class="math inline">\(\bbeta^{*} = (\beta_{1},\beta_{2},\ldots,\beta_{p-1})&#39;\)</span> y
 <span class="math display">\[
-\boldsymbol{X}_{c} = \begin{pmatrix}
+\bX_{c} = \begin{pmatrix}
 x_{11} - \bar{x}_{1} &amp; x_{12} - \bar{x}_{2} &amp; \ldots &amp; x_{1,p-1} - \bar{x}_{p-1} \\ 
 x_{21} - \bar{x}_{1} &amp; x_{22} - \bar{x}_{2} &amp; \ldots &amp; x_{2,p-1} - \bar{x}_{p-1} \\ 
 \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
@@ -568,7 +569,7 @@ x_{n1} - \bar{x}_{1} &amp; x_{n2} - \bar{x}_{2} &amp; \ldots &amp; x_{n,p-1} - \
 \]</span></p>
 <p>Si <span class="math inline">\(H_{0}\)</span> no es cierta, tenemos que <span class="math inline">\(F_{0}\)</span> sigue una distribución <span class="math inline">\(F\)</span> no-central con <span class="math inline">\(p-1\)</span> y <span class="math inline">\(n-p\)</span> grados de libertad y parámetro de no centralidad:
 <span class="math display">\[
-\lambda = \frac{\boldsymbol{\beta}&#39;\boldsymbol{X}_{c}&#39;\boldsymbol{X}_{c}\boldsymbol{\beta}}{\sigma^{2}}.
+\lambda = \frac{\bbeta&#39;\bX_{c}&#39;\bX_{c}\bbeta}{\sigma^{2}}.
 \]</span>
 Estos nos resultados nos indican que si el valor <span class="math inline">\(F_{0}\)</span> es grande, entonces al menos un <span class="math inline">\(\beta_{j}\)</span> es diferente de cero.</p>
 <p>Por lo tanto, para probar las hipótesis <a href="modelo-lineal-múltiple.html#eq:HANOVA">(2.3)</a> calculamos el estadístico de prueba <span class="math inline">\(F_{0} = \frac{MS_{R}}{MS_{res}}\)</span>, y rechazamos <span class="math inline">\(H_{0}\)</span> si <span class="math inline">\(F_{0} &gt; F_{1-\alpha,p-1,n-p}\)</span>.</p>
@@ -591,76 +592,76 @@ H_{0}: \beta_{j} = 0 \qquad H_{1}: \beta_{j} \neq 0.
 \]</span>
 El estadística de prueba es:
 <span class="math display">\[
-t_{0} = \frac{\widehat{\beta}_{j}}{se(\widehat{\beta}_{j})} = \frac{\widehat{\beta}_{j}}{\sqrt{MS_{res}c_{jj}}},
+t_{0} = \frac{\hatbeta_{j}}{se(\hatbeta_{j})} = \frac{\hatbeta_{j}}{\sqrt{MS_{res}c_{jj}}},
 \]</span>
-donde <span class="math inline">\(c_{jj}\)</span> es la entrada <span class="math inline">\((j,j)\)</span> de la matriz <span class="math inline">\(\boldsymbol{C}= (\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\)</span>. Rechazamos <span class="math inline">\(H_{0}\)</span> si <span class="math inline">\(|t_{0}| &gt; t_{1-\alpha/2,n-p}\)</span>.</p>
+donde <span class="math inline">\(c_{jj}\)</span> es la entrada <span class="math inline">\((j,j)\)</span> de la matriz <span class="math inline">\(\bC = (\bX&#39;\bX)^{-1}\)</span>. Rechazamos <span class="math inline">\(H_{0}\)</span> si <span class="math inline">\(|t_{0}| &gt; t_{1-\alpha/2,n-p}\)</span>.</p>
 <p>Este es una prueba parcial, puesto que estamos evaluando la significancia de <span class="math inline">\(x_{j}\)</span> cuando las demás covariables <span class="math inline">\(x_{k}\)</span>, para <span class="math inline">\(k\neq j\)</span>, ya están incluidas en el modelo. Por lo tanto, si no rechazamos <span class="math inline">\(H_{0}\)</span>, podemos concluir que, cuando los demás regresores están en el modelo, la covariable <span class="math inline">\(x_{j}\)</span> no tiene un aporte significativo. Por lo tanto, podríamos retirarla del modelo.</p>
 </div>
 <div id="pruebas-sobre-subconjuntos-de-coeficientes" class="section level3" number="2.3.3">
 <h3><span class="header-section-number">2.3.3</span> Pruebas sobre subconjuntos de coeficientes</h3>
 <p>Para probar la significancia de un subconjunto de coeficientes del modelo hacemos uso de la <strong>suma de cuadrados extra</strong>. Primero, consideremos el siguiente modelo de regresión:
 <span class="math display">\[
-\boldsymbol{y}= \boldsymbol{X}\boldsymbol{\beta}+ \boldsymbol{\varepsilon},
+\by = \bX \bbeta + \bvarepsi,
 \]</span>
-donde <span class="math inline">\(\boldsymbol{X}\)</span> es una matrix <span class="math inline">\(n \times p\)</span> y <span class="math inline">\(\boldsymbol{\beta}\)</span> es el vector de coeficientes de longitud <span class="math inline">\(p\)</span>. Queremos probar si un subconjunto <span class="math inline">\(r &lt; p\)</span> de covariables tienen un aporte significativo en el modelo. Para esto hacemos la siguiente partición del vector <span class="math inline">\(\boldsymbol{\beta}\)</span>:
+donde <span class="math inline">\(\bX\)</span> es una matrix <span class="math inline">\(n \times p\)</span> y <span class="math inline">\(\bbeta\)</span> es el vector de coeficientes de longitud <span class="math inline">\(p\)</span>. Queremos probar si un subconjunto <span class="math inline">\(r &lt; p\)</span> de covariables tienen un aporte significativo en el modelo. Para esto hacemos la siguiente partición del vector <span class="math inline">\(\bbeta\)</span>:
 <span class="math display">\[
-\boldsymbol{\beta}= \begin{pmatrix} \beta_{0} \\ \beta_{1} \\ \vdots \\ \beta_{p-r-1} \\ \hline \beta_{p-r} \\ \beta_{p-r+1} \\ \vdots \\  \beta_{p} \end{pmatrix} =  \begin{pmatrix} \boldsymbol{\beta}_{1} \\ \hline \boldsymbol{\beta}_{2}\end{pmatrix},
+\bbeta = \begin{pmatrix} \beta_{0} \\ \beta_{1} \\ \vdots \\ \beta_{p-r-1} \\ \hline \beta_{p-r} \\ \beta_{p-r+1} \\ \vdots \\  \beta_{p} \end{pmatrix} =  \begin{pmatrix} \bbeta_{1} \\ \hline \bbeta_{2}\end{pmatrix},
 \]</span>
-donde <span class="math inline">\(\boldsymbol{\beta}_{1}\)</span> y <span class="math inline">\(\boldsymbol{\beta}_{2}\)</span> son vector de dimensión <span class="math inline">\((p-r)\)</span> y <span class="math inline">\((r)\)</span>, respectivamente. Por lo tanto, queremos realizar la siguiente prueba de hipótesis:
+donde <span class="math inline">\(\bbeta_{1}\)</span> y <span class="math inline">\(\bbeta_{2}\)</span> son vector de dimensión <span class="math inline">\((p-r)\)</span> y <span class="math inline">\((r)\)</span>, respectivamente. Por lo tanto, queremos realizar la siguiente prueba de hipótesis:
 <span class="math display" id="eq:Hsubset">\[\begin{equation}
-H_{0}:  \boldsymbol{\beta}_{2} = \boldsymbol{0}\qquad H_{1}:  \boldsymbol{\beta}_{2} \neq \boldsymbol{0}.
+H_{0}:  \bbeta_{2} = \bZERO \qquad H_{1}:  \bbeta_{2} \neq \bZERO.
 \tag{2.4}
 \end{equation}\]</span>
 El modelo anterior se puede re-escribir de la siguiente forma:
 <span class="math display">\[
-\boldsymbol{y}= \boldsymbol{X}\boldsymbol{\beta}+ \boldsymbol{\varepsilon}= \boldsymbol{X}_{1}\boldsymbol{\beta}_{1}+ \boldsymbol{X}_{2}\boldsymbol{\beta}_{2} + \boldsymbol{\varepsilon},
+\by = \bX \bbeta + \bvarepsi = \bX_{1}\bbeta_{1}+ \bX_{2}\bbeta_{2} + \bvarepsi,
 \]</span>
-donde <span class="math inline">\(\boldsymbol{X}_{1}\)</span> es la matriz <span class="math inline">\(n\times (p-r)\)</span> que contiene las columnas de <span class="math inline">\(\boldsymbol{X}\)</span> asociadas con <span class="math inline">\(\boldsymbol{\beta}_{1}\)</span>, y <span class="math inline">\(\boldsymbol{X}_{2}\)</span> es la matriz <span class="math inline">\(n\times r\)</span> que contiene las columnas de <span class="math inline">\(\boldsymbol{X}\)</span> asociadas con <span class="math inline">\(\boldsymbol{\beta}_{2}\)</span>. Este es llamado el <strong>modelo completo</strong>.</p>
+donde <span class="math inline">\(\bX_{1}\)</span> es la matriz <span class="math inline">\(n\times (p-r)\)</span> que contiene las columnas de <span class="math inline">\(\bX\)</span> asociadas con <span class="math inline">\(\bbeta_{1}\)</span>, y <span class="math inline">\(\bX_{2}\)</span> es la matriz <span class="math inline">\(n\times r\)</span> que contiene las columnas de <span class="math inline">\(\bX\)</span> asociadas con <span class="math inline">\(\bbeta_{2}\)</span>. Este es llamado el <strong>modelo completo</strong>.</p>
 <p>Para el modelo completo tenemos:</p>
 <ul>
-<li>Estimador de <span class="math inline">\(\boldsymbol{\beta}\)</span>:
+<li>Estimador de <span class="math inline">\(\bbeta\)</span>:
 <span class="math display">\[
-\widehat{\boldsymbol{\beta}}= (\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\boldsymbol{X}&#39;\boldsymbol{y}.
+\hatbbeta = (\bX&#39;\bX)^{-1}\bX&#39;\by.
 \]</span></li>
 <li>Suma de cuadrados del modelo:
 <span class="math display">\[
-SS_{R}(\boldsymbol{\beta}) = \widehat{\beta}&#39;\boldsymbol{X}&#39;\boldsymbol{y}\mbox{ (con }p\mbox{ grados de libertad)}.
+SS_{R}(\bbeta) = \hatbeta&#39;\bX&#39;\by \mbox{ (con }p\mbox{ grados de libertad)}.
 \]</span></li>
 <li>Cuadrado medio del error:
 <span class="math display">\[
-MS_{res} = \frac{\boldsymbol{y}&#39;\boldsymbol{y}- \widehat{\boldsymbol{\beta}}&#39;\boldsymbol{X}&#39;\boldsymbol{y}}{n-p}.
+MS_{res} = \frac{\by&#39;\by - \hatbbeta&#39;\bX&#39;\by}{n-p}.
 \]</span></li>
 </ul>
-<p>Para evaluar la contribución de los regresores asociados a <span class="math inline">\(\boldsymbol{\beta}_{2}\)</span>, ajustamos el modelo asumiendo que <span class="math inline">\(H_{0}\)</span> es cierta. De esta forma tenemos el <strong>modelo reducido</strong>:
+<p>Para evaluar la contribución de los regresores asociados a <span class="math inline">\(\bbeta_{2}\)</span>, ajustamos el modelo asumiendo que <span class="math inline">\(H_{0}\)</span> es cierta. De esta forma tenemos el <strong>modelo reducido</strong>:
 <span class="math display">\[
-\boldsymbol{y}= \boldsymbol{X}_{1}\boldsymbol{\beta}_{1} + \boldsymbol{\varepsilon}.
+\by = \bX_{1}\bbeta_{1} + \bvarepsi.
 \]</span>
 Para el modelo reducido tenemos:</p>
 <ul>
-<li>Estimador de <span class="math inline">\(\boldsymbol{\beta}_{1}\)</span>:
+<li>Estimador de <span class="math inline">\(\bbeta_{1}\)</span>:
 <span class="math display">\[
-\widehat{\boldsymbol{\beta}}_{1} = (\boldsymbol{X}_{1}&#39;\boldsymbol{X}_{1})^{-1}\boldsymbol{X}_{1}&#39;\boldsymbol{y}.
+\hatbbeta_{1} = (\bX_{1}&#39;\bX_{1})^{-1}\bX_{1}&#39;\by.
 \]</span></li>
 <li>Suma de cuadrados del modelo:
 <span class="math display">\[
-SS_{R}(\boldsymbol{\beta}_{1}) = \widehat{\boldsymbol{\beta}}_{1}&#39;\boldsymbol{X}_{1}&#39;\boldsymbol{y}\mbox{ (con $p-r$ grados de libertad)}.
+SS_{R}(\bbeta_{1}) = \hatbbeta_{1}&#39;\bX_{1}&#39;\by \mbox{ (con $p-r$ grados de libertad)}.
 \]</span></li>
 </ul>
-<p>Entonces, la suma de cuadrados debido a <span class="math inline">\(\boldsymbol{\beta}_{2}\)</span> dado que <span class="math inline">\(\boldsymbol{\beta}_{1}\)</span> ya está en el modelo es:
+<p>Entonces, la suma de cuadrados debido a <span class="math inline">\(\bbeta_{2}\)</span> dado que <span class="math inline">\(\bbeta_{1}\)</span> ya está en el modelo es:
 <span class="math display">\[
-SS_{R}(\boldsymbol{\beta}_{2}| \boldsymbol{\beta}_{1}) = SS_{R}(\boldsymbol{\beta}) - SS_{R}(\boldsymbol{\beta}_{1}),
+SS_{R}(\bbeta_{2}| \bbeta_{1}) = SS_{R}(\bbeta) - SS_{R}(\bbeta_{1}),
 \]</span>
-con <span class="math inline">\(p-(p-r)=r\)</span> grados de libertad. Esta suma de cuadrados es llamada la suma de cuadrados extra debido a <span class="math inline">\(\boldsymbol{\beta}\)</span> puesto que mide el incremento en la suma de cuadrados de la regresión como resultado de adicionar los regresores <span class="math inline">\(\boldsymbol{X}_{2}\)</span> en el modelo que ya contiene <span class="math inline">\(\boldsymbol{X}_{1}\)</span>.</p>
-<p>Dado que <span class="math inline">\(SS_{R}(\boldsymbol{\beta}_{2}| \boldsymbol{\beta}_{1})\)</span> y <span class="math inline">\(MS_{res}\)</span> son independientes, podemos utilizar el siguiente estadístico de prueba:
+con <span class="math inline">\(p-(p-r)=r\)</span> grados de libertad. Esta suma de cuadrados es llamada la suma de cuadrados extra debido a <span class="math inline">\(\bbeta\)</span> puesto que mide el incremento en la suma de cuadrados de la regresión como resultado de adicionar los regresores <span class="math inline">\(\bX_{2}\)</span> en el modelo que ya contiene <span class="math inline">\(\bX_{1}\)</span>.</p>
+<p>Dado que <span class="math inline">\(SS_{R}(\bbeta_{2}| \bbeta_{1})\)</span> y <span class="math inline">\(MS_{res}\)</span> son independientes, podemos utilizar el siguiente estadístico de prueba:
 <span class="math display">\[
-F_{0} = \frac{SS_{R}(\boldsymbol{\beta}_{2}|\boldsymbol{\beta}_{1})/r}{MS_{res}}.
+F_{0} = \frac{SS_{R}(\bbeta_{2}|\bbeta_{1})/r}{MS_{res}}.
 \]</span>
 Si <span class="math inline">\(H_{0}\)</span> es cierta entonces <span class="math inline">\(F_{0} \sim F_{r,n-p}\)</span>. Si <span class="math inline">\(H_{0}\)</span> no es cierta, entonces <span class="math inline">\(F_{0}\)</span> sigue una distribución <span class="math inline">\(F\)</span> no-central con parámetro de no centralidad igual a:
 <span class="math display">\[
-\lambda = \frac{1}{\sigma^{2}}\boldsymbol{\beta}_{2}&#39;\boldsymbol{X}_{2}&#39;\left[ \boldsymbol{I}_{n} - \boldsymbol{X}_{1}(\boldsymbol{X}_{1}&#39;\boldsymbol{X}_{1})^{-1}\boldsymbol{X}_{1}&#39;\right]\boldsymbol{X}_{2}\boldsymbol{\beta}_{2}.
+\lambda = \frac{1}{\sigma^{2}}\bbeta_{2}&#39;\bX_{2}&#39;\left[ \bI_{n} - \bX_{1}(\bX_{1}&#39;\bX_{1})^{-1}\bX_{1}&#39;\right]\bX_{2}\bbeta_{2}.
 \]</span>
-Note que si hay una relación casi colineal entre <span class="math inline">\(\boldsymbol{X}_{1}\)</span> y <span class="math inline">\(\boldsymbol{X}_{2}\)</span> (multicolinealidad), <span class="math inline">\(\lambda\)</span> es cercano a cero pesar que <span class="math inline">\(\boldsymbol{\beta}_{2}\)</span> sea marcadamente distinto de cero. Es decir, que la prueba tiene poca capacidad de indicar diferencias (poco poder) en presencia de multicolinealidad. Caso contrario, el máximo poder se alcanza cuando <span class="math inline">\(\boldsymbol{X}_{1}\)</span> y <span class="math inline">\(\boldsymbol{X}_{2}\)</span> son ortogonales (es decir <span class="math inline">\(\boldsymbol{X}_{2}&#39;\boldsymbol{X}_{1} = \boldsymbol{0}\)</span>).</p>
-<p>Entonces, si <span class="math inline">\(F_{0} &gt; F_{1-\alpha,r,n-p}\)</span> rechazamos <span class="math inline">\(H_{0}\)</span> y concluimos que al menos un coeficiente en <span class="math inline">\(\boldsymbol{\beta}_{2}\)</span> es diferente de cero. Consecuentemente, al menos una de las covariables en <span class="math inline">\(\boldsymbol{X}_{2}\)</span> tiene un aporte significativo dentro del modelo.</p>
+Note que si hay una relación casi colineal entre <span class="math inline">\(\bX_{1}\)</span> y <span class="math inline">\(\bX_{2}\)</span> (multicolinealidad), <span class="math inline">\(\lambda\)</span> es cercano a cero pesar que <span class="math inline">\(\bbeta_{2}\)</span> sea marcadamente distinto de cero. Es decir, que la prueba tiene poca capacidad de indicar diferencias (poco poder) en presencia de multicolinealidad. Caso contrario, el máximo poder se alcanza cuando <span class="math inline">\(\bX_{1}\)</span> y <span class="math inline">\(\bX_{2}\)</span> son ortogonales (es decir <span class="math inline">\(\bX_{2}&#39;\bX_{1} = \bZERO\)</span>).</p>
+<p>Entonces, si <span class="math inline">\(F_{0} &gt; F_{1-\alpha,r,n-p}\)</span> rechazamos <span class="math inline">\(H_{0}\)</span> y concluimos que al menos un coeficiente en <span class="math inline">\(\bbeta_{2}\)</span> es diferente de cero. Consecuentemente, al menos una de las covariables en <span class="math inline">\(\bX_{2}\)</span> tiene un aporte significativo dentro del modelo.</p>
 <div id="ejemplo" class="section level4 unnumbered">
 <h4>Ejemplo</h4>
 <p>Considere el modelo:
@@ -686,37 +687,37 @@ SS_{R}(\beta_{1},\beta_{2},\beta_{3}| \beta_{0})\neq SS_{R}(\beta_{1}|\beta_{0},
 <h2><span class="header-section-number">2.4</span> Prueba de hipótesis lineal general</h2>
 <p>Suponga que estamos interesados en las siguientes hipótesis:
 <span class="math display" id="eq:hipGeneral1">\[\begin{equation}
-H_{0}: \boldsymbol{T}\boldsymbol{\beta}=\boldsymbol{0}\qquad H_{1}: \boldsymbol{T}\boldsymbol{\beta}\neq \boldsymbol{0},
+H_{0}: \bT\bbeta=\bZERO \qquad H_{1}: \bT\bbeta\neq \bZERO,
 \tag{2.5}
 \end{equation}\]</span>
-donde <span class="math inline">\(\boldsymbol{T}\)</span> es una matriz <span class="math inline">\(m \times p\)</span> de constantes, tal que <span class="math inline">\(r\)</span> de las <span class="math inline">\(m\)</span> ecuaciones de <span class="math inline">\(\boldsymbol{T}\boldsymbol{\beta}=\boldsymbol{0}\)</span> son independientes.</p>
+donde <span class="math inline">\(\bT\)</span> es una matriz <span class="math inline">\(m \times p\)</span> de constantes, tal que <span class="math inline">\(r\)</span> de las <span class="math inline">\(m\)</span> ecuaciones de <span class="math inline">\(\bT\bbeta=\bZERO\)</span> son independientes.</p>
 <p>El <strong>modelo completo (FM)</strong> es:
 <span class="math display">\[
-\boldsymbol{y}=\boldsymbol{X}\boldsymbol{\beta}+\boldsymbol{\varepsilon},
+\by=\bX\bbeta+\bvarepsi,
 \]</span>
-El estimador de <span class="math inline">\(\boldsymbol{\beta}\)</span> es <span class="math inline">\(\widehat{\boldsymbol{\beta}}= (\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\boldsymbol{X}&#39;\boldsymbol{y}\)</span>, y la suma de cuadrados de los residuos es <span class="math inline">\(SS_{res}(FM)\)</span> (con <span class="math inline">\(n-p\)</span> grados de libertad).</p>
-<p>El <strong>modelo reducido (RM)</strong> se obtiene al resolver las <span class="math inline">\(r\)</span> ecuaciones independientes de <span class="math inline">\(\boldsymbol{T}\boldsymbol{\beta}= \boldsymbol{0}\)</span> para los <span class="math inline">\(r\)</span> coeficientes en el modelo completo en términos de los <span class="math inline">\(p-r\)</span> coeficientes restantes. Esto lleva al siguiente RM:
+El estimador de <span class="math inline">\(\bbeta\)</span> es <span class="math inline">\(\hatbbeta = (\bX&#39;\bX)^{-1}\bX&#39;\by\)</span>, y la suma de cuadrados de los residuos es <span class="math inline">\(SS_{res}(FM)\)</span> (con <span class="math inline">\(n-p\)</span> grados de libertad).</p>
+<p>El <strong>modelo reducido (RM)</strong> se obtiene al resolver las <span class="math inline">\(r\)</span> ecuaciones independientes de <span class="math inline">\(\bT\bbeta = \bZERO\)</span> para los <span class="math inline">\(r\)</span> coeficientes en el modelo completo en términos de los <span class="math inline">\(p-r\)</span> coeficientes restantes. Esto lleva al siguiente RM:
 <span class="math display">\[
-\boldsymbol{y}=\boldsymbol{Z}\boldsymbol{\gamma}+\boldsymbol{\varepsilon},
+\by=\bZ\bgamma+\bvarepsi,
 \]</span>
-donde <span class="math inline">\(\boldsymbol{Z}\)</span> es una matriz <span class="math inline">\(n\times (p-r)\)</span> y <span class="math inline">\(\boldsymbol{\gamma}\)</span> es un vector de dimiensión <span class="math inline">\((p-r)\)</span> de coeficientes de regresión. La suma de cuadrados de los residuos de este modelo es <span class="math inline">\(SS_{res}(RM)\)</span> (con <span class="math inline">\(n-p+r\)</span> grados de libertad).</p>
+donde <span class="math inline">\(\bZ\)</span> es una matriz <span class="math inline">\(n\times (p-r)\)</span> y <span class="math inline">\(\bgamma\)</span> es un vector de dimiensión <span class="math inline">\((p-r)\)</span> de coeficientes de regresión. La suma de cuadrados de los residuos de este modelo es <span class="math inline">\(SS_{res}(RM)\)</span> (con <span class="math inline">\(n-p+r\)</span> grados de libertad).</p>
 <p>Dado que el modelo reducido tiene menos parámetros que el modelo completo, <span class="math inline">\(SS_{res}(RM) \geq SS_{res}(FM)\)</span>. Para probar <a href="modelo-lineal-múltiple.html#eq:hipGeneral1">(2.5)</a> usamos la diferencia entre las sumas de cuadrados de los residuos:
 <span class="math display">\[
 SS_{H} = SS_{res}(RM) - SS_{res}(FM),
 \]</span>
-con <span class="math inline">\(r\)</span> grados de libertad. <span class="math inline">\(SS_{H}\)</span> es llamado la suma de cuadrados debido a <span class="math inline">\(H_{0}:\boldsymbol{T}\boldsymbol{\beta}=\boldsymbol{c}\)</span>. El estadístico de prueba es:
+con <span class="math inline">\(r\)</span> grados de libertad. <span class="math inline">\(SS_{H}\)</span> es llamado la suma de cuadrados debido a <span class="math inline">\(H_{0}:\bT\bbeta=\bc\)</span>. El estadístico de prueba es:
 <span class="math display">\[
-F_{0} = \frac{SS_{H}/r}{SS_{res}(FM)/(n-p)} = \frac{\widehat{\beta}&#39;\boldsymbol{T}[\boldsymbol{T}(\boldsymbol{X}&#39;\boldsymbol{X})\boldsymbol{T}&#39;]^{-1}\boldsymbol{T}\widehat{\boldsymbol{\beta}}/r}{SS_{res}(FM)/(n-p)}.
+F_{0} = \frac{SS_{H}/r}{SS_{res}(FM)/(n-p)} = \frac{\hatbeta&#39;\bT[\bT(\bX&#39;\bX)\bT&#39;]^{-1}\bT\hatbbeta/r}{SS_{res}(FM)/(n-p)}.
 \]</span>
 Rechazamos <span class="math inline">\(H_{0}\)</span> si <span class="math inline">\(F_{0} &gt; F_{1-\alpha,r,n-p}\)</span>.</p>
 <p>La hipótesis anterior se puede generalizar de la siguiente forma:
 <span class="math display" id="eq:hipGeneral2">\[\begin{equation}
-H_{0}: \boldsymbol{T}\boldsymbol{\beta}=\boldsymbol{c}\qquad H_{1}: \boldsymbol{T}\boldsymbol{\beta}\neq \boldsymbol{c},
+H_{0}: \bT\bbeta=\bc \qquad H_{1}: \bT\bbeta\neq \bc,
 \tag{2.6}
 \end{equation}\]</span>
 Para este caso, el estadístico de prueba es:
 <span class="math display">\[
-F_{0} = \frac{(\boldsymbol{T}\widehat{\boldsymbol{\beta}}-\boldsymbol{c})&#39;[\boldsymbol{T}(\boldsymbol{X}&#39;\boldsymbol{X})\boldsymbol{T}&#39;]^{-1}(\boldsymbol{T}\widehat{\boldsymbol{\beta}}-\boldsymbol{c})/r}{SS_{res}(FM)/(n-p)}.
+F_{0} = \frac{(\bT\hatbbeta-\bc)&#39;[\bT(\bX&#39;\bX)\bT&#39;]^{-1}(\bT\hatbbeta-\bc)/r}{SS_{res}(FM)/(n-p)}.
 \]</span>
 Si <span class="math inline">\(H_{0}\)</span> es cierta, <span class="math inline">\(F_{0}\sim F_{r,n-p}\)</span>. Por lo tanto, rechazamos <span class="math inline">\(H_{0}\)</span> si <span class="math inline">\(F_{0} &gt; F_{1-\alpha,r,n-p}\)</span>.</p>
 <div id="ejemplo-1" class="section level4 unnumbered">
@@ -732,12 +733,12 @@ H_{0}:&amp; \beta_{1}=0 &amp; H_{1}:&amp;\beta_{1}\neq 0 \\
 \end{align*}\]</span>
 De aquí tenemos que:
 <span class="math display">\[
-\boldsymbol{T}= \begin{pmatrix}
+\bT = \begin{pmatrix}
 1 &amp; 0 &amp; 0 &amp; 0 \\
 0 &amp; 2 &amp; -1 &amp; 0 \\
-\end{pmatrix} \mbox{ y } \boldsymbol{c}= \begin{pmatrix} 0 \\ 3  \end{pmatrix}.
+\end{pmatrix} \mbox{ y } \bc = \begin{pmatrix} 0 \\ 3  \end{pmatrix}.
 \]</span>
-Si no rechazamos <span class="math inline">\(H_{0}\)</span>, podríamos estimar <span class="math inline">\(\boldsymbol{\beta}\)</span> sujo a las restricciones impuestar por la hipótesis nula (usando mínimos cuadrados restringidos).</p>
+Si no rechazamos <span class="math inline">\(H_{0}\)</span>, podríamos estimar <span class="math inline">\(\bbeta\)</span> sujo a las restricciones impuestar por la hipótesis nula (usando mínimos cuadrados restringidos).</p>
 </div>
 <div id="bajo-peso-al-nacer---pruebas-de-hipótesis" class="section level3 unnumbered">
 <h3>Bajo peso al nacer - pruebas de hipótesis</h3>
@@ -814,35 +815,35 @@ Aquí vemos que <span class="math inline">\(F_{0}= 3.804\)</span> con un valor-<
 <div id="intervalos-de-confianza-1" class="section level2" number="2.5">
 <h2><span class="header-section-number">2.5</span> Intervalos de confianza</h2>
 <p>Al igual que en caso del modelo lineal simple, también podemos hacer estimaciones por intervalos de confianza para los coeficientes del modelo, valor esperado de <span class="math inline">\(Y\)</span> y observaciones futuras.</p>
-<p>Para que los intervalos de confianza sean válidos se requiere que se cumplan todos los supuestos del modelo, esto es <span class="math inline">\(\boldsymbol{\varepsilon}\sim N(\boldsymbol{0}, \sigma^{2}\boldsymbol{I}_{n})\)</span>.</p>
+<p>Para que los intervalos de confianza sean válidos se requiere que se cumplan todos los supuestos del modelo, esto es <span class="math inline">\(\bvarepsi\sim N(\bZERO, \sigma^{2}\bI_{n})\)</span>.</p>
 <div id="intervalos-de-confianza-para-beta_j" class="section level3" number="2.5.1">
 <h3><span class="header-section-number">2.5.1</span> Intervalos de confianza para <span class="math inline">\(\beta_{j}\)</span></h3>
 <p>El intervalo de confianza de <span class="math inline">\(\beta_{j}\)</span> parte de:
 <span class="math display">\[
-\frac{\widehat{\beta}_{j} - \beta_{j}}{\sqrt{V(\widehat{\beta}_{j})}} =  \frac{\widehat{\beta}_{j} - \beta_{j}}{\sqrt{MS_{res}c_{jj}}} \sim t_{n-p},
+\frac{\hatbeta_{j} - \beta_{j}}{\sqrt{V(\hatbeta_{j})}} =  \frac{\hatbeta_{j} - \beta_{j}}{\sqrt{MS_{res}c_{jj}}} \sim t_{n-p},
 \]</span>
-donde <span class="math inline">\(c_{jj}\)</span> es la entrada <span class="math inline">\((j,j)\)</span> de la matriz <span class="math inline">\(\boldsymbol{C}=(\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\)</span>. Entonces, el intervalo del <span class="math inline">\((1-\alpha)100\%\)</span> de confianza para <span class="math inline">\(\widehat{\beta}_{j}\)</span> es:
+donde <span class="math inline">\(c_{jj}\)</span> es la entrada <span class="math inline">\((j,j)\)</span> de la matriz <span class="math inline">\(\bC=(\bX&#39;\bX)^{-1}\)</span>. Entonces, el intervalo del <span class="math inline">\((1-\alpha)100\%\)</span> de confianza para <span class="math inline">\(\hatbeta_{j}\)</span> es:
 <span class="math display">\[
-\widehat{\beta}_{j} \pm t_{1-\alpha/2,n-p}\sqrt{MS_{res}C_{jj}}.
+\hatbeta_{j} \pm t_{1-\alpha/2,n-p}\sqrt{MS_{res}C_{jj}}.
 \]</span></p>
 </div>
 <div id="intervalos-de-confianza-para-el-valor-esperado-de-y-y-una-observación-futura" class="section level3" number="2.5.2">
 <h3><span class="header-section-number">2.5.2</span> Intervalos de confianza para el valor esperado de <span class="math inline">\(Y\)</span> y una observación futura</h3>
-<p>Ahora queremos construir un intervalo de confianza para la respuesta media de <span class="math inline">\(Y\)</span> para un punto particular <span class="math inline">\(\boldsymbol{x}_{0}=(1,x_{01},x_{02},\ldots,x_{0,p-1})\)</span>. La estimación puntual en <span class="math inline">\(\boldsymbol{x}_{0}\)</span> es:
+<p>Ahora queremos construir un intervalo de confianza para la respuesta media de <span class="math inline">\(Y\)</span> para un punto particular <span class="math inline">\(\bx_{0}=(1,x_{01},x_{02},\ldots,x_{0,p-1})\)</span>. La estimación puntual en <span class="math inline">\(\bx_{0}\)</span> es:
 <span class="math display">\[
-\widehat{\mu}_{Y|\boldsymbol{x}_0} = \boldsymbol{x}_{0}&#39;\widehat{\boldsymbol{\beta}}.
+\hatmu_{Y|\bx_0} = \bx_{0}&#39;\hatbbeta.
 \]</span>
-Además, tenemos que <span class="math inline">\(\widehat{\mu}_{Y|\boldsymbol{x}_0} \sim N[\boldsymbol{x}_{0}\boldsymbol{\beta}, V(\widehat{\mu}_{Y|\boldsymbol{x}_0})]\)</span> con:
+Además, tenemos que <span class="math inline">\(\hatmu_{Y|\bx_0} \sim N[\bx_{0}\bbeta, V(\hatmu_{Y|\bx_0})]\)</span> con:
 <span class="math display">\[
-V(\widehat{\mu}_{Y|\boldsymbol{x}_0}) = \sigma^{2}\boldsymbol{x}_{0}&#39;(\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\boldsymbol{x}_{0}.
+V(\hatmu_{Y|\bx_0}) = \sigma^{2}\bx_{0}&#39;(\bX&#39;\bX)^{-1}\bx_{0}.
 \]</span>
-Por lo tanto, el intervalo del <span class="math inline">\((1-\alpha)100\%\)</span> de confianza para <span class="math inline">\(E(Y|\boldsymbol{x}_{0})\)</span> es:
+Por lo tanto, el intervalo del <span class="math inline">\((1-\alpha)100\%\)</span> de confianza para <span class="math inline">\(E(Y|\bx_{0})\)</span> es:
 <span class="math display">\[
-\widehat{\mu}_{Y|\boldsymbol{x}_0} \pm t_{1-\alpha/2,n-p}\sqrt{MS_{res}\boldsymbol{x}_{0}&#39;(\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\boldsymbol{x}_{0}}.
+\hatmu_{Y|\bx_0} \pm t_{1-\alpha/2,n-p}\sqrt{MS_{res}\bx_{0}&#39;(\bX&#39;\bX)^{-1}\bx_{0}}.
 \]</span>
-De igual forma, el intervalo del <span class="math inline">\((1-\alpha)100\%\)</span> de confianza para una observación futura en <span class="math inline">\(\boldsymbol{x}_{0}\)</span> es:
+De igual forma, el intervalo del <span class="math inline">\((1-\alpha)100\%\)</span> de confianza para una observación futura en <span class="math inline">\(\bx_{0}\)</span> es:
 <span class="math display">\[
-\widehat{\mu}_{Y|\boldsymbol{x}_0} \pm t_{1-\alpha/2,n-p}\sqrt{MS_{res}\left[1+ \boldsymbol{x}_{0}&#39;(\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\boldsymbol{x}_{0}\right]}.
+\hatmu_{Y|\bx_0} \pm t_{1-\alpha/2,n-p}\sqrt{MS_{res}\left[1+ \bx_{0}&#39;(\bX&#39;\bX)^{-1}\bx_{0}\right]}.
 \]</span></p>
 </div>
 <div id="bajo-peso-al-nacer---intervalos-de-confianza" class="section level3 unnumbered">
@@ -870,7 +871,7 @@ El peso del recién nacido con estas caracteristica está entre <span class="mat
 </div>
 <div id="extrapolación-oculta-en-regresión-múltiple" class="section level2" number="2.6">
 <h2><span class="header-section-number">2.6</span> Extrapolación oculta en regresión múltiple</h2>
-<p>Al igual que en regresión simple, al pronosticar una nueva respuesta en un punto dado <span class="math inline">\(\boldsymbol{x}_{0}\)</span> se debe tener cuidado de no extrapolar fuera de la región de los datos originales. En regresión múltiple es fácil extrapolar inadvertidamente, puesto que la región que contiene los datos está definida de forma conjunta por los valores que toman las covariables y no por el rango individual de cada covariable.</p>
+<p>Al igual que en regresión simple, al pronosticar una nueva respuesta en un punto dado <span class="math inline">\(\bx_{0}\)</span> se debe tener cuidado de no extrapolar fuera de la región de los datos originales. En regresión múltiple es fácil extrapolar inadvertidamente, puesto que la región que contiene los datos está definida de forma conjunta por los valores que toman las covariables y no por el rango individual de cada covariable.</p>
 <p>La Figura <a href="modelo-lineal-múltiple.html#fig:extrapolacionOculta">2.2</a> muestra un ejemplo de extrapolación en el caso de un modelo de regresión con dos covariables. Se quiere hacer una predicción en el punto <span class="math inline">\((x_{01},x_{02})\)</span> que está dentro del rango de ambos regresores, pero que fuera de la región conjunta de los datos (región roja en la figura). Por lo tanto, al realizar la predicción en este punto estaríamos extrapolando.</p>
 <div class="figure" style="text-align: center"><span id="fig:extrapolacionOculta"></span>
 <img src="bookdownproj_files/figure-html/extrapolacionOculta-1.png" alt="Ejemplo de extrapolación en regresión múltiple" width="576" />
@@ -879,9 +880,9 @@ Figure 2.2: Ejemplo de extrapolación en regresión múltiple
 </p>
 </div>
 <p>Determinar la región conjunta de los datos en regresión múltiple no es fácil, lo que hace díficil saber si se está extrapolando a la hora de hacer de una predicción. Por lo tanto, se ha propuesto determinar la región conjunta de los datos a partir del conjunto convexo mínimo que contiene todos los <span class="math inline">\(n\)</span> datos originales, <span class="math inline">\((x_{i1}; x_{i2},\ldots,x_{i,p-1})\)</span>, para <span class="math inline">\(i = 1,2,\ldots,n\)</span>, como la envolvente de las covariables (RVH). Entonces, si un punto <span class="math inline">\((x_{01},x_{02}, \ldots,\ldots, x_{0,p-1})\)</span> está dentro o en la frontera de la RVH, una prediccón o una estimación implica interpolación, mientras que si está fuera de la RVH, se está extrapolando.</p>
-<p>Una aproximación de la RVH es a través de la matriz <span class="math inline">\(\boldsymbol{H}\)</span>. El conjunto de puntos <span class="math inline">\(\boldsymbol{x}\)</span> que satisfacen, <span class="math inline">\(\boldsymbol{x}&#39;(\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\boldsymbol{x}\leq \max(h_{ii})\)</span>, prudcen un elipsoide que encierra todos los puntos dentro de la <span class="math inline">\(RVH\)</span>. Entonces, un punto de predicción <span class="math inline">\(\boldsymbol{x}_{0}\)</span> está fuera de la RVH si <span class="math inline">\(h_{00} &gt; \max{h_{ii}}\)</span>, donde:
+<p>Una aproximación de la RVH es a través de la matriz <span class="math inline">\(\bH\)</span>. El conjunto de puntos <span class="math inline">\(\bx\)</span> que satisfacen, <span class="math inline">\(\bx&#39;(\bX&#39;\bX)^{-1}\bx \leq \max(h_{ii})\)</span>, prudcen un elipsoide que encierra todos los puntos dentro de la <span class="math inline">\(RVH\)</span>. Entonces, un punto de predicción <span class="math inline">\(\bx_{0}\)</span> está fuera de la RVH si <span class="math inline">\(h_{00} &gt; \max{h_{ii}}\)</span>, donde:
 <span class="math display">\[
-h_{00} = \boldsymbol{x}&#39;_{0}(\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\boldsymbol{x}_{0}.
+h_{00} = \bx&#39;_{0}(\bX&#39;\bX)^{-1}\bx_{0}.
 \]</span></p>
 <div id="bajo-peso-al-nacer---interpolación" class="section level3 unnumbered">
 <h3>Bajo peso al nacer - interpolación</h3>
@@ -914,7 +915,7 @@ h_{00} = \boldsymbol{x}&#39;_{0}(\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\boldsym
 </tr>
 </tbody>
 </table>
-<p>La Figura <a href="modelo-lineal-múltiple.html#fig:birthweightExtrapolacion">2.3</a> muestra el gráfico de dispersión de las covariables, donde los puntos rojos indican los valores donde se quieren hacer predicciones. Aquí vemos que en los puntos <span class="math inline">\(\boldsymbol{x}_{02}\)</span> y <span class="math inline">\(\boldsymbol{x}_{03}\)</span> no estaríamos extrapolando. Pero, es difícil de determinar para los puntos <span class="math inline">\(\boldsymbol{x}_{01}\)</span> y <span class="math inline">\(\boldsymbol{x}_{04}\)</span>. Para esto vamos a calcular las aproximaciones de la RVH y verificar si en estos puntos estaríamos extrapolando.</p>
+<p>La Figura <a href="modelo-lineal-múltiple.html#fig:birthweightExtrapolacion">2.3</a> muestra el gráfico de dispersión de las covariables, donde los puntos rojos indican los valores donde se quieren hacer predicciones. Aquí vemos que en los puntos <span class="math inline">\(\bx_{02}\)</span> y <span class="math inline">\(\bx_{03}\)</span> no estaríamos extrapolando. Pero, es difícil de determinar para los puntos <span class="math inline">\(\bx_{01}\)</span> y <span class="math inline">\(\bx_{04}\)</span>. Para esto vamos a calcular las aproximaciones de la RVH y verificar si en estos puntos estaríamos extrapolando.</p>
 <div class="figure" style="text-align: center"><span id="fig:birthweightExtrapolacion"></span>
 <img src="bookdownproj_files/figure-html/birthweightExtrapolacion-1.png" alt="Bajo peso al nacer. Gráfico de dispersion de la edad gestacional y el peso de la madre antes del embarazo. Los puntos donde se quiere hacer predicción están en rojo." width="384" />
 <p class="caption">
@@ -929,7 +930,7 @@ Figure 2.3: Bajo peso al nacer. Gráfico de dispersion de la edad gestacional y 
 <span id="cb37-6"><a href="modelo-lineal-múltiple.html#cb37-6" aria-hidden="true" tabindex="-1"></a>h0 <span class="ot">=</span> <span class="fu">apply</span>(newPoints,<span class="dv">1</span>,<span class="cf">function</span>(x){<span class="fu">t</span>(x)<span class="sc">%*%</span>XtX.inv<span class="sc">%*%</span>x})</span>
 <span id="cb37-7"><a href="modelo-lineal-múltiple.html#cb37-7" aria-hidden="true" tabindex="-1"></a>h0 <span class="sc">&gt;</span>hmax</span></code></pre></div>
 <pre><code>## [1]  TRUE FALSE FALSE FALSE</code></pre>
-Para la predicción en el punto <span class="math inline">\(\boldsymbol{x}_{01}\)</span>, tenemos que <span class="math inline">\(h_{0} = (1, 34, 77)(\boldsymbol{X}&#39;\boldsymbol{X})^{-1}(1, 34, 77)&#39; = 0.3487\)</span> <span class="math inline">\(&gt;\)</span> <span class="math inline">\(h_{max} = 0.2276\)</span>. Por lo tanto, aquí se estaría extrapolando. Para el resto de punto no hay problemas de extrapolación.
+Para la predicción en el punto <span class="math inline">\(\bx_{01}\)</span>, tenemos que <span class="math inline">\(h_{0} = (1, 34, 77)(\bX&#39;\bX)^{-1}(1, 34, 77)&#39; = 0.3487\)</span> <span class="math inline">\(&gt;\)</span> <span class="math inline">\(h_{max} = 0.2276\)</span>. Por lo tanto, aquí se estaría extrapolando. Para el resto de punto no hay problemas de extrapolación.
 </div>
 <div id="coeficientes-normalizados-de-regresión" class="section level3" number="2.6.1">
 <h3><span class="header-section-number">2.6.1</span> Coeficientes normalizados de regresión</h3>
@@ -955,24 +956,24 @@ S_{jj} = \sum_{i=1}^{n}(x_{ij} - \bar{x}_{j})^{2}.
 \]</span>
 Con estas variables transformadas, se puede ajustar el modelo:
 <span class="math display">\[
-y_{i}^{*} = b_{1}z_{i1} + b_{2}z_{i2} + \ldots + b_{p-1}z_{i,p-1} = \boldsymbol{z}_{i}&#39;\boldsymbol{b}+ \boldsymbol{\varepsilon}.
+y_{i}^{*} = b_{1}z_{i1} + b_{2}z_{i2} + \ldots + b_{p-1}z_{i,p-1} = \bz_{i}&#39;\bb + \bvarepsi.
 \]</span>
 El estimador por MCO es:
 <span class="math display">\[
-\widehat{\boldsymbol{b}}= (\boldsymbol{Z}&#39;\boldsymbol{Z})^{-1}\boldsymbol{Z}&#39;\boldsymbol{y}^{*}.
+\hatbb = (\bZ&#39;\bZ)^{-1}\bZ&#39;\by^{*}.
 \]</span>
-Note que con este escalamiento, la matriz <span class="math inline">\((\boldsymbol{Z}&#39;\boldsymbol{Z})\)</span> es igual a la matriz de correlación de las covariables. Esto es:
+Note que con este escalamiento, la matriz <span class="math inline">\((\bZ&#39;\bZ)\)</span> es igual a la matriz de correlación de las covariables. Esto es:
 <span class="math display">\[
-(\boldsymbol{Z}&#39;\boldsymbol{Z}) = \boldsymbol{R}= \begin{pmatrix}
+(\bZ&#39;\bZ) = \bR = \begin{pmatrix}
 1 &amp; r_{12} &amp; r_{13} &amp; \ldots &amp; r_{1,p-1} \\
 r_{12} &amp; 1 &amp; r_{23} &amp; \ldots &amp; r_{2,p-1} \\
 \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
 r_{1,p-1} &amp; 1 &amp; r_{2,p-1} &amp; \ldots &amp; 1 \\
 \end{pmatrix},
 \]</span>
-donde <span class="math inline">\(r_{jk}\)</span> es la correlación entre las covariables <span class="math inline">\(x_{j}\)</span> y <span class="math inline">\(x_{k}\)</span>. Además, la matriz <span class="math inline">\(\boldsymbol{Z}&#39;\boldsymbol{y}^{*}\)</span> es el vector de correlación entre la variable respuesta y cada covariable. Esto es:
+donde <span class="math inline">\(r_{jk}\)</span> es la correlación entre las covariables <span class="math inline">\(x_{j}\)</span> y <span class="math inline">\(x_{k}\)</span>. Además, la matriz <span class="math inline">\(\bZ&#39;\by^{*}\)</span> es el vector de correlación entre la variable respuesta y cada covariable. Esto es:
 <span class="math display">\[
-\boldsymbol{Z}&#39;\boldsymbol{y}^{*} = (r_{1y},r_{2y},r_{3y},\ldots,r_{p-1,y})&#39;,
+\bZ&#39;\by^{*} = (r_{1y},r_{2y},r_{3y},\ldots,r_{p-1,y})&#39;,
 \]</span>
 donde <span class="math inline">\(r_{jy}\)</span> es la correlación entre la variable respuesta y la covariable <span class="math inline">\(x_j\)</span>.</p>
 </div>
@@ -1010,8 +1011,8 @@ Las estimaciones de los coeficientes son ahora adimensionales y podemos comparar
 <div id="multicolinealidad" class="section level2" number="2.7">
 <h2><span class="header-section-number">2.7</span> Multicolinealidad</h2>
 <p>Un problema que puede afectar enormente el ajuste de un modelo de regresión es la multicolinealidad. Este se presenta cuando hay una dependencia casi lineal entre las covariables.</p>
-<p>Recordemos que el estimador por MCO es <span class="math inline">\(\widehat{\boldsymbol{\beta}}=(\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\boldsymbol{X}&#39;\boldsymbol{y}\)</span>. Por lo tanto es necesario que la matriz <span class="math inline">\(\boldsymbol{X}&#39;\boldsymbol{X}\)</span> sea no singular. En caso contrario, no es posible encontrar la inversa y las ecuaciones normales no tendrán una única solución. Cuando sucede esto se debe a que hay al menos una columna de <span class="math inline">\(\boldsymbol{X}\)</span> linealmente dependiente.</p>
-<p>En regresión se utiliza las palabras multicolinealidad cuando hay una dependencia aproximada en las columnas de <span class="math inline">\(\boldsymbol{X}\)</span>. Es decir que al menos una covariable puede representarse, de forma aproximada, como una relación lineal de las otras:
+<p>Recordemos que el estimador por MCO es <span class="math inline">\(\hatbbeta=(\bX&#39;\bX)^{-1}\bX&#39;\by\)</span>. Por lo tanto es necesario que la matriz <span class="math inline">\(\bX&#39;\bX\)</span> sea no singular. En caso contrario, no es posible encontrar la inversa y las ecuaciones normales no tendrán una única solución. Cuando sucede esto se debe a que hay al menos una columna de <span class="math inline">\(\bX\)</span> linealmente dependiente.</p>
+<p>En regresión se utiliza las palabras multicolinealidad cuando hay una dependencia aproximada en las columnas de <span class="math inline">\(\bX\)</span>. Es decir que al menos una covariable puede representarse, de forma aproximada, como una relación lineal de las otras:
 <span class="math display">\[
 x_{ij} \approx c_{0} + c_{1}x_{i1} + \ldots + c_{j-1}x_{i,j-1} + c_{j+1}x_{i,j+1} + \ldots + + c_{p-1}x_{i,p-1},
 \]</span>
@@ -1025,13 +1026,13 @@ y_{i} = \beta_{0} + \beta_{1}x_{i1} + \beta_{2}x_{i2} + \varepsilon_{i}, \mbox{ 
 \]</span>
 y se plantean dos posibles matrices de diseño:
 <span class="math display">\[
-\boldsymbol{X}_{1} = \begin{pmatrix}
+\bX_{1} = \begin{pmatrix}
 1&amp; 1 \\ 
 1 &amp; 5 \\ 
 2 &amp; 1 \\ 
 2 &amp; 5 \\
 \end{pmatrix} \mbox{ y }
-\boldsymbol{X}_{2} = \begin{pmatrix}
+\bX_{2} = \begin{pmatrix}
 1&amp; 1 \\ 
 1 &amp; 2 \\ 
 2 &amp; 4 \\ 
@@ -1040,16 +1041,16 @@ y se plantean dos posibles matrices de diseño:
 \]</span>
 Haciendo el escalamiento de longitud unitaria a las covariables tenemos que:
 <span class="math display">\[
-\boldsymbol{Z}_{1}&#39;\boldsymbol{Z}_{1} = \begin{pmatrix}
+\bZ_{1}&#39;\bZ_{1} = \begin{pmatrix}
 1 &amp; 0 \\ 0 &amp; 1
 \end{pmatrix} \mbox{ y }
-\boldsymbol{Z}_{1}&#39;\boldsymbol{Z}_{1} = \begin{pmatrix}
+\bZ_{1}&#39;\bZ_{1} = \begin{pmatrix}
 1 &amp; 0.95 \\ 0.95 &amp; 1
 \end{pmatrix}.
 \]</span>
-Por lo tanto, la varianza de <span class="math inline">\(\widehat{\boldsymbol{b}}\)</span> para ambos casos es:
+Por lo tanto, la varianza de <span class="math inline">\(\hatbb\)</span> para ambos casos es:
 <span class="math display">\[
-V(\widehat{\boldsymbol{b}}_{1}) = \sigma^{2}(\boldsymbol{Z}_{1}&#39;\boldsymbol{Z}_{1})^{-1} =  \sigma^{2} \begin{pmatrix}
+V(\hatbb_{1}) = \sigma^{2}(\bZ_{1}&#39;\bZ_{1})^{-1} =  \sigma^{2} \begin{pmatrix}
 1 &amp; 0 \\ 0 &amp; 1
 \end{pmatrix}^{-1}  = \sigma^{2} \begin{pmatrix}
 1 &amp; 0 \\ 0 &amp; 1
@@ -1057,14 +1058,14 @@ V(\widehat{\boldsymbol{b}}_{1}) = \sigma^{2}(\boldsymbol{Z}_{1}&#39;\boldsymbol{
 \]</span>
 y
 <span class="math display">\[
-V(\widehat{\boldsymbol{b}}_{2}) = \sigma^{2}_{0}(\boldsymbol{Z}_{2}&#39;\boldsymbol{Z}_{2})^{-1} =  \sigma^{2} \begin{pmatrix}
+V(\hatbb_{2}) = \sigma^{2}_{0}(\bZ_{2}&#39;\bZ_{2})^{-1} =  \sigma^{2} \begin{pmatrix}
 1 &amp; 0.95 \\ 0.95 &amp; 1
 \end{pmatrix}^{-1} = \sigma^{2} \begin{pmatrix}
 10 &amp; 9.49 \\ 9.49 &amp; 10
 \end{pmatrix}.
 \]</span>
-Aquí podemos ver que la varianza de <span class="math inline">\(\widehat{\boldsymbol{b}}_{2}\)</span> está inflada debido a la alta correlación entre las columnas de <span class="math inline">\(\boldsymbol{X}_{2}\)</span>. Es 10 veces mayor que la varianza de <span class="math inline">\(\widehat{\boldsymbol{b}}_{1}\)</span> (las columnas de <span class="math inline">\(\boldsymbol{X}_{1}\)</span> son independientes).</p>
-<p>En el ejemplo anterior vemos que los valores de la diagonal de la matriz <span class="math inline">\((\boldsymbol{Z}&#39;\boldsymbol{Z})^{-1}\)</span> nos indican en cuanto aumenta la varianza de las estimaciones de los coeficientes debido a la multicolinealidad. Por esta razón, estos valores toman el nombre de <strong>factores de inflación de varianza (VIFs)</strong> y son uno de los indicadores para el diagnostico de este problema.</p>
+Aquí podemos ver que la varianza de <span class="math inline">\(\hatbb_{2}\)</span> está inflada debido a la alta correlación entre las columnas de <span class="math inline">\(\bX_{2}\)</span>. Es 10 veces mayor que la varianza de <span class="math inline">\(\hatbb_{1}\)</span> (las columnas de <span class="math inline">\(\bX_{1}\)</span> son independientes).</p>
+<p>En el ejemplo anterior vemos que los valores de la diagonal de la matriz <span class="math inline">\((\bZ&#39;\bZ)^{-1}\)</span> nos indican en cuanto aumenta la varianza de las estimaciones de los coeficientes debido a la multicolinealidad. Por esta razón, estos valores toman el nombre de <strong>factores de inflación de varianza (VIFs)</strong> y son uno de los indicadores para el diagnostico de este problema.</p>
 <p>Se puede demostrar que el VIF de <span class="math inline">\(\beta_{j}\)</span> se puede calcular como:
 <span class="math display">\[
 \mbox{VIF}_{j} = \frac{1}{1-R^{2}_{j}},
@@ -1139,7 +1140,7 @@ gitbook.start({
 "link": "https://github.com/AlvaroFlorez/MLG1/blob/master/02-RegresionMultiple.Rmd",
 "text": null
 },
-"download": null,
+"download": ["bookdownproj.pdf", "bookdownproj.epub"],
 "toc": {
 "collapse": "subsection"
 }

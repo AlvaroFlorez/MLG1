@@ -290,6 +290,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
 </ul>
 
       </nav>
@@ -596,16 +597,16 @@ para cada valor de <span class="math inline">\(\lambda_{k}\)</span>, <span class
 </ol>
 <p>Puesto que <span class="math inline">\(\lambda\)</span> es una variable aleatoria, también se puede hacer una estimación por intervalos de confianza. Para esto primero consideremos la función de log-verosimilitud:
 <span class="math display">\[
-\ell(\boldsymbol{\beta},\sigma^{2} | \lambda) = -\frac{2}{n}\log \left( 2\pi\sigma^{2}\right) - \frac{1}{2\sigma^{2}}\sum_{i=1}^{n}\left( y_{i}^{\lambda} - \boldsymbol{x}_{i}&#39;\boldsymbol{\beta}\right)^{2} = -\frac{2}{n}\log \left( 2\pi\sigma^{2}\right) - \frac{1}{2\sigma^{2}}SS_{res}(\lambda).
+\ell(\bbeta,\sigma^{2} | \lambda) = -\frac{2}{n}\log \left( 2\pi\sigma^{2}\right) - \frac{1}{2\sigma^{2}}\sum_{i=1}^{n}\left( y_{i}^{\lambda} - \bx_{i}&#39;\bbeta\right)^{2} = -\frac{2}{n}\log \left( 2\pi\sigma^{2}\right) - \frac{1}{2\sigma^{2}}SS_{res}(\lambda).
 \]</span>
 Aquí vemos que el valor de <span class="math inline">\(\lambda\)</span> que maximiza la verosimilitud es el mismo que minimiza la suma de cuadrados de los residuos.</p>
 <p>Un intervalo de confianza se puede construir a partir del siguiente estadístico de prueba:
 <span class="math display">\[
-G_{0}^{2} = -2\left[ \ell(\boldsymbol{\beta},\sigma^{2} | \lambda=1) - \ell(\boldsymbol{\beta},\sigma^{2} | \lambda=\widehat{\lambda}) \right].
+G_{0}^{2} = -2\left[ \ell(\bbeta,\sigma^{2} | \lambda=1) - \ell(\bbeta,\sigma^{2} | \lambda=\hatlambda) \right].
 \]</span>
 Si <span class="math inline">\(\lambda=1\)</span>, entonces asintóticamente <span class="math inline">\(G_{0}^{2} \sim \chi^{2}_{1}\)</span>. Por lo tanto, el intervalo del <span class="math inline">\((1-\alpha)\times 100\)</span>% de confianza para <span class="math inline">\(\lambda\)</span> está definido por los valores de <span class="math inline">\(\lambda\)</span> que cumplen con la condición:
 <span class="math display">\[
- \ell(\boldsymbol{\beta},\sigma^{2} | \lambda) \geq  \ell(\boldsymbol{\beta},\sigma^{2} | \lambda=\widehat{\lambda}) - \frac{1}{2}\chi^{2}_{1,1-\alpha}.
+ \ell(\bbeta,\sigma^{2} | \lambda) \geq  \ell(\bbeta,\sigma^{2} | \lambda=\hatlambda) - \frac{1}{2}\chi^{2}_{1,1-\alpha}.
 \]</span></p>
 <div id="datos-de-educación.-transformación-de-box-cox" class="section level3" number="4.2.1">
 <h3><span class="header-section-number">4.2.1</span> Datos de educación. Transformación de Box-Cox</h3>
@@ -620,7 +621,7 @@ Figure 4.9:  Datos de educación. Perfiles de verosimilitud para <span class="ma
 </div>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#cb77-1" aria-hidden="true" tabindex="-1"></a>boxcox.educ<span class="sc">$</span>x[boxcox.educ<span class="sc">$</span>y <span class="sc">==</span><span class="fu">max</span>(boxcox.educ<span class="sc">$</span>y)] <span class="co"># valor que maximiza la log-verosimilitud</span></span></code></pre></div>
 <pre><code>## [1] -1.09009</code></pre>
-<p>Estos resultados nos indican que <span class="math inline">\(\widehat{\lambda}= -1.09\)</span>. Por lo cuál, podemos utilizar una transformación inversa <span class="math inline">\((\lambda=-1)\)</span>. Entonces, el modelo propuesto es:
+<p>Estos resultados nos indican que <span class="math inline">\(\hatlambda = -1.09\)</span>. Por lo cuál, podemos utilizar una transformación inversa <span class="math inline">\((\lambda=-1)\)</span>. Entonces, el modelo propuesto es:
 <span class="math display">\[
 1/y_{i} = \beta_{0} + \beta_{1}\mbox{X1}_{i}+ \beta_{2}\mbox{X2}_{i} + \beta_{3}\mbox{X3}_{i} + \varepsilon_{i},
 \]</span>
@@ -686,15 +687,15 @@ Por lo que intervalo del 95% de confianza para el gasto medio en educación púb
 </div>
 <div id="mínimos-cuadrados-ponderados" class="section level2" number="4.3">
 <h2><span class="header-section-number">4.3</span> Mínimos cuadrados ponderados</h2>
-<p>El método de mínimos cuadrados ponderados (MCP) es una alternativa para estimar un modelo lineal en presencia de heterocedasticidad. La idea de esta técnica es calcular las desviaciones entre las observaciones <span class="math inline">\((y_{i})\)</span> y los valores ajustados <span class="math inline">\((\widehat{y}_{i})\)</span> usando pesos <span class="math inline">\((w_{i})\)</span> inversamente proporcionales a la varianza de <span class="math inline">\(y_{i}\)</span>.</p>
+<p>El método de mínimos cuadrados ponderados (MCP) es una alternativa para estimar un modelo lineal en presencia de heterocedasticidad. La idea de esta técnica es calcular las desviaciones entre las observaciones <span class="math inline">\((y_{i})\)</span> y los valores ajustados <span class="math inline">\((\haty_{i})\)</span> usando pesos <span class="math inline">\((w_{i})\)</span> inversamente proporcionales a la varianza de <span class="math inline">\(y_{i}\)</span>.</p>
 <p>Asumamos que el modelo generador de los datos es:
 <span class="math display" id="eq:modV">\[\begin{equation}
-\boldsymbol{y}= \boldsymbol{X}\boldsymbol{\beta}+ \boldsymbol{\varepsilon}, \mbox{ donde }\boldsymbol{\varepsilon}\sim N(\boldsymbol{0},\sigma^{2}\boldsymbol{V}),
+\by = \bX\bbeta + \bvarepsi, \mbox{ donde }\bvarepsi\sim N(\bZERO,\sigma^{2}\bV),
 \tag{4.2}
 \end{equation}\]</span>
-donde <span class="math inline">\(\boldsymbol{V}\)</span> es una matriz diagonal <span class="math inline">\((n \times n)\)</span>:
+donde <span class="math inline">\(\bV\)</span> es una matriz diagonal <span class="math inline">\((n \times n)\)</span>:
 <span class="math display">\[
-\boldsymbol{V}= \begin{pmatrix}
+\bV = \begin{pmatrix}
 v_{11} &amp; 0 &amp; 0 &amp; \ldots &amp; 0 \\
 0 &amp; v_{22} &amp; 0 &amp; \ldots &amp; 0 \\
 0 &amp; 0 &amp; v_{33} &amp; \ldots &amp; 0 \\
@@ -702,37 +703,37 @@ v_{11} &amp; 0 &amp; 0 &amp; \ldots &amp; 0 \\
 0 &amp; 0 &amp; 0 &amp; \ldots &amp; v_{nn}
 \end{pmatrix}.
 \]</span>
-Esto quiere decir que tenemos presencia de hetorocedasticidad, donde <span class="math inline">\(V(\varepsilon_{i}) = \sigma^{2}v_{ii}\)</span>. Recordemos que si aplicamos el estimador por MCO, las estimaciones siguen siendo insesgadas pero son ineficientes. Además, las varianzas estimadas de <span class="math inline">\(\widehat{\boldsymbol{\beta}}\)</span>, y de las predicciones, están mal calculadas. Lo que puede afectar la cobertura de los intervalos de confianza y el nivel de signficancia de las pruebas de hipótesis.</p>
-<p>La función de verosimilitud del modelo <a href="transformaciones-y-mínimos-cuadrados-ponderados.html#eq:modV">(4.2)</a>, asumiendo que <span class="math inline">\(\boldsymbol{V}\)</span> es conocida, es:
+Esto quiere decir que tenemos presencia de hetorocedasticidad, donde <span class="math inline">\(V(\varepsilon_{i}) = \sigma^{2}v_{ii}\)</span>. Recordemos que si aplicamos el estimador por MCO, las estimaciones siguen siendo insesgadas pero son ineficientes. Además, las varianzas estimadas de <span class="math inline">\(\hatbbeta\)</span>, y de las predicciones, están mal calculadas. Lo que puede afectar la cobertura de los intervalos de confianza y el nivel de signficancia de las pruebas de hipótesis.</p>
+<p>La función de verosimilitud del modelo <a href="transformaciones-y-mínimos-cuadrados-ponderados.html#eq:modV">(4.2)</a>, asumiendo que <span class="math inline">\(\bV\)</span> es conocida, es:
 <span class="math display">\[
-L(\boldsymbol{\beta},\sigma^{2} | \boldsymbol{V}) =  \frac{1}{(2\pi)^{n/2}|\sigma^{2}\boldsymbol{V}|^{1/2}}\exp \left[-\frac{1}{2\sigma^{2}}(\boldsymbol{y}- \boldsymbol{X}&#39;\boldsymbol{\beta})&#39;\boldsymbol{V}^{-1}(\boldsymbol{y}- \boldsymbol{X}&#39;\boldsymbol{\beta}) \right].
+L(\bbeta,\sigma^{2} | \bV) =  \frac{1}{(2\pi)^{n/2}|\sigma^{2}\bV|^{1/2}}\exp \left[-\frac{1}{2\sigma^{2}}(\by - \bX&#39;\bbeta)&#39;\bV^{-1}(\by - \bX&#39;\bbeta) \right].
 \]</span>
-Por lo que para encontrar el estimador de <span class="math inline">\(\boldsymbol{\beta}\)</span> debemos minimizar la suma de cuadrados ponderada:
+Por lo que para encontrar el estimador de <span class="math inline">\(\bbeta\)</span> debemos minimizar la suma de cuadrados ponderada:
 <span class="math display" id="eq:SSWE">\[\begin{equation}
-SS_{Wres} = (\boldsymbol{y}- \boldsymbol{X}&#39;\boldsymbol{\beta})&#39;\boldsymbol{W}(\boldsymbol{y}- \boldsymbol{X}&#39;\boldsymbol{\beta}) = \sum_{i=1}^{n} w_{ii}(y_{i} - \boldsymbol{x}_{i}&#39;\boldsymbol{\beta})^{2},
+SS_{Wres} = (\by - \bX&#39;\bbeta)&#39;\bW(\by - \bX&#39;\bbeta) = \sum_{i=1}^{n} w_{ii}(y_{i} - \bx_{i}&#39;\bbeta)^{2},
 \tag{4.3}
 \end{equation}\]</span>
-donde <span class="math inline">\(\boldsymbol{W}= \boldsymbol{V}^{-1}\)</span>, es decir que <span class="math inline">\(w_{ii}= \frac{1}{v_{ii}}\)</span>. Note que las observaciones con mayor varianza tienen menor peso en la estimación de <span class="math inline">\(\boldsymbol{\beta}\)</span>.</p>
+donde <span class="math inline">\(\bW = \bV^{-1}\)</span>, es decir que <span class="math inline">\(w_{ii}= \frac{1}{v_{ii}}\)</span>. Note que las observaciones con mayor varianza tienen menor peso en la estimación de <span class="math inline">\(\bbeta\)</span>.</p>
 <p>Al minimizar <a href="transformaciones-y-mínimos-cuadrados-ponderados.html#eq:SSWE">(4.3)</a> se obtiene el estimador por MCP:
 <span class="math display">\[
-\widehat{\boldsymbol{\beta}}_{W} = (\boldsymbol{X}&#39;\boldsymbol{W}\boldsymbol{X})^{-1}\boldsymbol{X}&#39;\boldsymbol{W}\boldsymbol{y}.
+\hatbbeta_{W} = (\bX&#39;\bW\bX)^{-1}\bX&#39;\bW\by.
 \]</span>
 Además,
 <span class="math display" id="eq:VarBetaW">\[\begin{equation}
-V(\widehat{\boldsymbol{\beta}}_{W}) = \sigma^{2}(\boldsymbol{X}&#39;\boldsymbol{W}\boldsymbol{X})^{-1}.
+V(\hatbbeta_{W}) = \sigma^{2}(\bX&#39;\bW\bX)^{-1}.
 \tag{4.4}
 \end{equation}\]</span>
-Si <span class="math inline">\(\boldsymbol{V}\)</span> está correctamente especificada, se puede probar que <span class="math inline">\(\widehat{\boldsymbol{\beta}}_{W}\)</span> es el mejor estimador insesgado de <span class="math inline">\(\boldsymbol{\beta}\)</span>.</p>
+Si <span class="math inline">\(\bV\)</span> está correctamente especificada, se puede probar que <span class="math inline">\(\hatbbeta_{W}\)</span> es el mejor estimador insesgado de <span class="math inline">\(\bbeta\)</span>.</p>
 <p>Los residuos del ajuste del modelo son:
 <span class="math display">\[
-e_{Wi} = \sqrt{w_{ii}}(y_{i} - \widehat{y}_{i}), \mbox{ de forma matricial }\boldsymbol{e}_{W} = \boldsymbol{W}^{1/2}(\boldsymbol{y}- \boldsymbol{X}\widehat{\boldsymbol{\beta}}_{W}),
+e_{Wi} = \sqrt{w_{ii}}(y_{i} - \haty_{i}), \mbox{ de forma matricial }\be_{W} = \bW^{1/2}(\by - \bX\hatbbeta_{W}),
 \]</span>
-donde <span class="math inline">\(\boldsymbol{W}= \boldsymbol{W}^{1/2}\boldsymbol{W}^{1/2}\)</span>. De este resultado obtenemos el estimador insesgado de <span class="math inline">\(\sigma^{2}\)</span>:
+donde <span class="math inline">\(\bW = \bW^{1/2}\bW^{1/2}\)</span>. De este resultado obtenemos el estimador insesgado de <span class="math inline">\(\sigma^{2}\)</span>:
 <span class="math display">\[
-\widehat{\sigma}^{2} = \frac{1}{n-p}\sum_{i=1}^{n}w_{ii}(y_{i}-\boldsymbol{x}_{i}&#39;\widehat{\boldsymbol{\beta}})^{2} = \frac{1}{n-p}(\boldsymbol{y}- \boldsymbol{X}\widehat{\boldsymbol{\beta}})&#39;\boldsymbol{W}(\boldsymbol{y}- \boldsymbol{X}\widehat{\boldsymbol{\beta}}).
+\hatsigma^{2} = \frac{1}{n-p}\sum_{i=1}^{n}w_{ii}(y_{i}-\bx_{i}&#39;\hatbbeta)^{2} = \frac{1}{n-p}(\by - \bX\hatbbeta)&#39;\bW(\by - \bX\hatbbeta).
 \]</span></p>
 <p>Aqui estamos asumiendo que los pesos <span class="math inline">\((w_{ii})\)</span> son conocidos. Lo que en la práctica es poco común. Estos pesos pueden ser determinados por conocimiento de los datos, experiencia, o información teórica del modelo. Alternativamente, estos se pueden calcular a partir de los residuos obtenidos por el estimador MCO.</p>
-<p>Es común que <span class="math inline">\(\sigma^{2}_{i}\)</span> varíe de acuerdo a una o varias covariables, o con respecto <span class="math inline">\(E(y_{i}|\boldsymbol{x}_{i})\)</span>. Por ejemplo, en los datos de educación parece que la varianza incrementa con <span class="math inline">\(E(y_{i}| \boldsymbol{x}_{i})\)</span>. En este caso podemos aplicar el siguiente procedimiento:</p>
+<p>Es común que <span class="math inline">\(\sigma^{2}_{i}\)</span> varíe de acuerdo a una o varias covariables, o con respecto <span class="math inline">\(E(y_{i}|\bx_{i})\)</span>. Por ejemplo, en los datos de educación parece que la varianza incrementa con <span class="math inline">\(E(y_{i}| \bx_{i})\)</span>. En este caso podemos aplicar el siguiente procedimiento:</p>
 <ol style="list-style-type: decimal">
 <li>Ajustar el modelo por MCO y analizar los residuos.</li>
 <li>Ajustar un modelo para el valor absoluto de los residuos <span class="math inline">\((|e_{i}|)\)</span>, o los residuso al cuadrado <span class="math inline">\((e^{2}_{i})\)</span>, en función de las covariables:
@@ -742,7 +743,7 @@ donde <span class="math inline">\(\boldsymbol{W}= \boldsymbol{W}^{1/2}\boldsymbo
 De esta ajuste obtenemos una estimación para la desviación estándar <span class="math inline">\((\sigma_{i})\)</span>. Si ajustamos un modelo para los residuos al cuadrado, estamos estimando la varianza <span class="math inline">\((\sigma^{2})\)</span>.</li>
 <li>Usar los valores ajustados el modelo anterior para estimar los pesos <span class="math inline">\((w_{ii})\)</span>.</li>
 </ol>
-<p>Si <span class="math inline">\(\widehat{\boldsymbol{\beta}}_{W}\)</span> difiere mucho de <span class="math inline">\(\widehat{\boldsymbol{\beta}}\)</span>, es posible repetir el proceso anterior una vez más (mínimos cuadrados iterativamente ponderados).</p>
+<p>Si <span class="math inline">\(\hatbbeta_{W}\)</span> difiere mucho de <span class="math inline">\(\hatbbeta\)</span>, es posible repetir el proceso anterior una vez más (mínimos cuadrados iterativamente ponderados).</p>
 <p>Dado que estamos estimando los pesos, la varianza de los coeficientes <a href="transformaciones-y-mínimos-cuadrados-ponderados.html#eq:VarBetaW">(4.4)</a> es aproximada. Sin embargo, esta aproximación es muy buena si el tamaño de muestra no es muy pequeño.</p>
 <div id="datos-de-educación.-minímos-cuadrados-ponderados" class="section level3 unnumbered">
 <h3>Datos de educación. Minímos cuadrados ponderados</h3>
@@ -918,7 +919,7 @@ gitbook.start({
 "link": "https://github.com/AlvaroFlorez/MLG1/blob/master/04-Transformaciones.Rmd",
 "text": null
 },
-"download": null,
+"download": ["bookdownproj.pdf", "bookdownproj.epub"],
 "toc": {
 "collapse": "subsection"
 }

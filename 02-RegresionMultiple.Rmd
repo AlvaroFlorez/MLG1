@@ -7,10 +7,10 @@ birthweight = read.csv("birthweight.csv",header = T)
 ## Bajo peso al nacer {-}
 Retomemos la base de datos de bajo peso al nacer (disponible en el campus virtual). Aparte de la edad gestacional, el peso del recién nacido puede estar explicado con otros factores. Por ejemplo, el peso de los padres, salud de la madre, entre otros. A parte de la edad gestacional y el peso del recién nacido, vamos a observar también la variable peso de la madre antes del embarazo.
 
-La Figura \@ref(fig:BWdata2) muestra la relación entre las variables de estudio. Aquí podemos observar una relación lineal positiva fuerte entre el peso al nacer y la edad gestacional (correlación igual a `r round(cor(birthweight[,c(3,4)])[1,2],2)`). La relación entre el peso al nacer y el peso de la madre es lineal positiva, aunque no tan fuerte como la anterior (correlación igual a `r round(cor(birthweight[,c(3,8)])[1,2],2)`). 
+La Figura \@ref(fig:BWdataFig) muestra la relación entre las variables de estudio. Aquí podemos observar una relación lineal positiva fuerte entre el peso al nacer y la edad gestacional (correlación igual a `r round(cor(birthweight[,c(3,4)])[1,2],2)`). La relación entre el peso al nacer y el peso de la madre es lineal positiva, aunque no tan fuerte como la anterior (correlación igual a `r round(cor(birthweight[,c(3,8)])[1,2],2)`). 
 
-La Figura \@ref(fig:BWdata2) y la matriz de correlación se pueden hacer con los siguientes códigos:
-```{r BWdata2, fig.height = 4.5, fig.width = 6,fig.align = "center",fig.cap = "Gráfico de dispersion del peso del recien nacido y la edad gestacional."}
+La Figura \@ref(fig:BWdataFig) y la matriz de correlación se pueden hacer con los siguientes códigos:
+```{r BWdataFig, fig.height = 4.5, fig.width = 6,fig.align = "center",fig.cap = "Gráfico de dispersion del peso del recien nacido y la edad gestacional."}
 birthweight = read.csv("birthweight.csv",header = T)
 pairs(birthweight[,c(3,4,8)])
 cor(birthweight[,c(3,4,8)])

@@ -290,6 +290,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
 </ul>
 
       </nav>
@@ -446,70 +447,70 @@ asumimos que la relación entre la variable respuesta y las covariables es linea
 <h2><span class="header-section-number">3.2</span> Efectos del incumplimiento de los supuestos</h2>
 <div id="sesgo-por-omisión-de-variables-relevantes" class="section level3" number="3.2.1">
 <h3><span class="header-section-number">3.2.1</span> Sesgo por omisión de variables relevantes</h3>
-<p>Si <span class="math inline">\(E(\boldsymbol{\varepsilon}) = \boldsymbol{0}\)</span>, entonces <span class="math inline">\(E(\boldsymbol{y}| \boldsymbol{X}) = \boldsymbol{X}\boldsymbol{\beta}\)</span>, y el estimador por MCO es insesgado. Sin embargo, si omitimos variables relevantes dentro del modelo las estimaciones serán sesgadas. Para ver esto, supongamos que el modelo generador de los datos es:
+<p>Si <span class="math inline">\(E(\bvarepsi) = \bZERO\)</span>, entonces <span class="math inline">\(E(\by | \bX) = \bX\bbeta\)</span>, y el estimador por MCO es insesgado. Sin embargo, si omitimos variables relevantes dentro del modelo las estimaciones serán sesgadas. Para ver esto, supongamos que el modelo generador de los datos es:
 <span class="math display">\[
-\boldsymbol{y}= \boldsymbol{X}\boldsymbol{\beta}+ \boldsymbol{\varepsilon}=  \boldsymbol{X}_{1}\boldsymbol{\beta}_{1} + \boldsymbol{X}_{2}\boldsymbol{\beta}_{2} + \boldsymbol{\varepsilon},
+\by = \bX\bbeta + \bvarepsi =  \bX_{1}\bbeta_{1} + \bX_{2}\bbeta_{2} + \bvarepsi,
 \]</span>
-donde las columnas de la matriz <span class="math inline">\(n\times p\)</span> de covariables <span class="math inline">\(\boldsymbol{X}\)</span> está divida en dos submatrices <span class="math inline">\(\boldsymbol{X}_{1}\)</span> y <span class="math inline">\(\boldsymbol{X}_{2}\)</span> de dimensiones <span class="math inline">\(n \times (p-r)\)</span> y <span class="math inline">\(n\times r\)</span>, respectivamente. Además, asumimos que <span class="math inline">\(\boldsymbol{\varepsilon}\sim N(\boldsymbol{0}, \sigma^{2}\boldsymbol{I}_{n})\)</span>.</p>
+donde las columnas de la matriz <span class="math inline">\(n\times p\)</span> de covariables <span class="math inline">\(\bX\)</span> está divida en dos submatrices <span class="math inline">\(\bX_{1}\)</span> y <span class="math inline">\(\bX_{2}\)</span> de dimensiones <span class="math inline">\(n \times (p-r)\)</span> y <span class="math inline">\(n\times r\)</span>, respectivamente. Además, asumimos que <span class="math inline">\(\bvarepsi \sim N(\bZERO, \sigma^{2}\bI_{n})\)</span>.</p>
 <p>Ahora, consideramos estimar el siguiente modelo:
 <span class="math display">\[
-\boldsymbol{y}= \boldsymbol{X}_{1}\boldsymbol{\beta}_{1} + \boldsymbol{\varepsilon}^{*},
+\by = \bX_{1}\bbeta_{1} + \bvarepsi^{*},
 \]</span>
-es decir estamos omitiendo las covariables contenidas en <span class="math inline">\(\boldsymbol{X}_{2}\)</span>. El estimador de <span class="math inline">\(\boldsymbol{\beta}_{1}\)</span> es:
+es decir estamos omitiendo las covariables contenidas en <span class="math inline">\(\bX_{2}\)</span>. El estimador de <span class="math inline">\(\bbeta_{1}\)</span> es:
 <span class="math display">\[
-\widehat{\boldsymbol{\beta}}_{1} = (\boldsymbol{X}_{1}&#39;\boldsymbol{X}_{1})^{-1}\boldsymbol{X}_{1}&#39;\boldsymbol{y},
+\hatbbeta_{1} = (\bX_{1}&#39;\bX_{1})^{-1}\bX_{1}&#39;\by,
 \]</span>
 y el estimador de <span class="math inline">\(\sigma^{2}\)</span> es:
 <span class="math display">\[
-\widehat{\sigma}^{2}_{1} = \frac{\boldsymbol{y}&#39;(\boldsymbol{I}_{n} - \boldsymbol{H}_{1})\boldsymbol{y}}{n-(p-r)}, \mbox{ donde }\boldsymbol{H}_{1} = \boldsymbol{X}_{1}(\boldsymbol{X}_{1}&#39;\boldsymbol{X}_{1})^{-1}\boldsymbol{X}_{1}&#39;.
+\hatsigma^{2}_{1} = \frac{\by&#39;(\bI_{n} - \bH_{1})\by}{n-(p-r)}, \mbox{ donde }\bH_{1} = \bX_{1}(\bX_{1}&#39;\bX_{1})^{-1}\bX_{1}&#39;.
 \]</span>
-El valor esperado de <span class="math inline">\(\widehat{\boldsymbol{\beta}}_{1}\)</span> es:
+El valor esperado de <span class="math inline">\(\hatbbeta_{1}\)</span> es:
 <span class="math display">\[\begin{equation}
 \begin{split}
-E(\widehat{\boldsymbol{\beta}}_{1}) &amp;= E\left[(\boldsymbol{X}_{1}&#39;\boldsymbol{X}_{1})^{-1}\boldsymbol{X}_{1}&#39;\boldsymbol{y}\right] = (\boldsymbol{X}_{1}&#39;\boldsymbol{X}_{1})^{-1}\boldsymbol{X}_{1}&#39;E(\boldsymbol{y}) \\
-&amp;= (\boldsymbol{X}_{1}&#39;\boldsymbol{X}_{1})^{-1}\boldsymbol{X}_{1}&#39;E(\boldsymbol{X}_{1}\boldsymbol{\beta}_{1} + \boldsymbol{X}_{2}\boldsymbol{\beta}_{2} + \boldsymbol{\varepsilon}) = \boldsymbol{\beta}_{1} +  (\boldsymbol{X}_{1}&#39;\boldsymbol{X}_{1})^{-1}\boldsymbol{X}_{1}&#39;\boldsymbol{X}_{2}\boldsymbol{\beta}_{2}.
+E(\hatbbeta_{1}) &amp;= E\left[(\bX_{1}&#39;\bX_{1})^{-1}\bX_{1}&#39;\by\right] = (\bX_{1}&#39;\bX_{1})^{-1}\bX_{1}&#39;E(\by) \\
+&amp;= (\bX_{1}&#39;\bX_{1})^{-1}\bX_{1}&#39;E(\bX_{1}\bbeta_{1} + \bX_{2}\bbeta_{2} + \bvarepsi) = \bbeta_{1} +  (\bX_{1}&#39;\bX_{1})^{-1}\bX_{1}&#39;\bX_{2}\bbeta_{2}.
 \end{split}
 \nonumber
 \end{equation}\]</span>
-Evidentemente, el sesgo de <span class="math inline">\(\widehat{\boldsymbol{\beta}}_{1}\)</span> depende de la magnitud de <span class="math inline">\(\boldsymbol{\beta}_{2}\)</span>. Entre más importante sean los efectos asociados a las covariables omitidas <span class="math inline">\((\boldsymbol{\beta}_{2})\)</span>, mayor será el sesgo. Si las columnas de <span class="math inline">\(\boldsymbol{X}_{1}\)</span> son ortogonales de las columnas de <span class="math inline">\(\boldsymbol{X}_{2}\)</span>, tenemos que <span class="math inline">\(\boldsymbol{X}_{1}&#39;\boldsymbol{X}_{2} = \boldsymbol{0}\)</span>. Así que, en este caso particular, <span class="math inline">\(\widehat{\boldsymbol{\beta}}_{1}\)</span> es insesgado (así omitamos las covariables en <span class="math inline">\(\boldsymbol{X}_{2}\)</span>).</p>
-<p>El valor esperado de <span class="math inline">\(\widehat{\sigma}^{2}_{1}\)</span> es:
+Evidentemente, el sesgo de <span class="math inline">\(\hatbbeta_{1}\)</span> depende de la magnitud de <span class="math inline">\(\bbeta_{2}\)</span>. Entre más importante sean los efectos asociados a las covariables omitidas <span class="math inline">\((\bbeta_{2})\)</span>, mayor será el sesgo. Si las columnas de <span class="math inline">\(\bX_{1}\)</span> son ortogonales de las columnas de <span class="math inline">\(\bX_{2}\)</span>, tenemos que <span class="math inline">\(\bX_{1}&#39;\bX_{2} = \bZERO\)</span>. Así que, en este caso particular, <span class="math inline">\(\hatbbeta_{1}\)</span> es insesgado (así omitamos las covariables en <span class="math inline">\(\bX_{2}\)</span>).</p>
+<p>El valor esperado de <span class="math inline">\(\hatsigma^{2}_{1}\)</span> es:
 <span class="math display">\[
-E(\widehat{\sigma}^{2}_{1}) = \sigma^{2} + \frac{\boldsymbol{\beta}_{2}&#39;\boldsymbol{X}&#39;_{2}(\boldsymbol{I}_{n} - \boldsymbol{H}_{1})\boldsymbol{X}_{2}\boldsymbol{\beta}_{2}}{n-p_{1}}.
+E(\hatsigma^{2}_{1}) = \sigma^{2} + \frac{\bbeta_{2}&#39;\bX&#39;_{2}(\bI_{n} - \bH_{1})\bX_{2}\bbeta_{2}}{n-p_{1}}.
 \]</span>
-Dado que <span class="math inline">\((\boldsymbol{I}- \boldsymbol{H}_{1})\)</span> es idempotente y, por lo tanto, positiva semi-definida, entonces <span class="math inline">\(E(\widehat{\sigma}_{1}^{2}) &gt; \sigma^{2}\)</span>. Esto quiere decir que <span class="math inline">\(\widehat{\sigma}^{2}_{1}\)</span> es un estimador sesgado de <span class="math inline">\(\sigma^{2}\)</span></p>
-<p>Ahora veamos el efecto de omitir covariables relevantes sobre las predicciones de <span class="math inline">\(y\)</span> en el punto <span class="math inline">\(\boldsymbol{x}_{0} = (\boldsymbol{x}_{01}&#39;, \boldsymbol{x}_{02}&#39;)&#39;\)</span>. Tenemos que:
+Dado que <span class="math inline">\((\bI - \bH_{1})\)</span> es idempotente y, por lo tanto, positiva semi-definida, entonces <span class="math inline">\(E(\hatsigma_{1}^{2}) &gt; \sigma^{2}\)</span>. Esto quiere decir que <span class="math inline">\(\hatsigma^{2}_{1}\)</span> es un estimador sesgado de <span class="math inline">\(\sigma^{2}\)</span></p>
+<p>Ahora veamos el efecto de omitir covariables relevantes sobre las predicciones de <span class="math inline">\(y\)</span> en el punto <span class="math inline">\(\bx_{0} = (\bx_{01}&#39;, \bx_{02}&#39;)&#39;\)</span>. Tenemos que:
 <span class="math display">\[
-\widehat{\boldsymbol{y}}_{0} = \boldsymbol{x}_{01}&#39;\widehat{\boldsymbol{\beta}}_{1} = \boldsymbol{x}_{01}&#39;(\boldsymbol{X}_{1}&#39;\boldsymbol{X}_{1})^{-1}\boldsymbol{X}_{1}&#39;\boldsymbol{y}.
+\hatby_{0} = \bx_{01}&#39;\hatbbeta_{1} = \bx_{01}&#39;(\bX_{1}&#39;\bX_{1})^{-1}\bX_{1}&#39;\by.
 \]</span>
-El valor esperado de <span class="math inline">\(\widehat{\boldsymbol{y}}_{0}\)</span> es:
+El valor esperado de <span class="math inline">\(\hatby_{0}\)</span> es:
 <span class="math display">\[
-E(\widehat{\boldsymbol{y}}_{0}) = \boldsymbol{x}_{01}&#39;E(\widehat{\boldsymbol{\beta}}_{1}) = \boldsymbol{x}_{01}&#39;\left[ \boldsymbol{\beta}_{1} +  (\boldsymbol{X}_{1}&#39;\boldsymbol{X}_{1})^{-1}\boldsymbol{X}_{1}&#39;\boldsymbol{X}_{2}\boldsymbol{\beta}_{2} \right]. 
+E(\hatby_{0}) = \bx_{01}&#39;E(\hatbbeta_{1}) = \bx_{01}&#39;\left[ \bbeta_{1} +  (\bX_{1}&#39;\bX_{1})^{-1}\bX_{1}&#39;\bX_{2}\bbeta_{2} \right]. 
 \]</span>
-Por lo tanto las predicciones también son sesgadas, <span class="math inline">\(E(\widehat{\boldsymbol{y}}_{0}) \neq \boldsymbol{x}_{01}\boldsymbol{\beta}_{1} + \boldsymbol{x}_{02}\boldsymbol{\beta}_{2}\)</span>.</p>
+Por lo tanto las predicciones también son sesgadas, <span class="math inline">\(E(\hatby_{0}) \neq \bx_{01}\bbeta_{1} + \bx_{02}\bbeta_{2}\)</span>.</p>
 </div>
 <div id="incorrecta-matriz-de-varianzas-de-los-errores" class="section level3" number="3.2.2">
 <h3><span class="header-section-number">3.2.2</span> Incorrecta matriz de varianzas de los errores</h3>
-<p>Cuando <span class="math inline">\(V(\boldsymbol{\varepsilon}) = \sigma^{2}\boldsymbol{V}\)</span>, pero asumimos erroneamente que <span class="math inline">\(V(\boldsymbol{\varepsilon}) = \sigma^{2}\boldsymbol{I}_{n}\)</span>, el estimador <span class="math inline">\(\widehat{\boldsymbol{\beta}}\)</span> sigue siendo insesgado. Pero, tenemos que:
+<p>Cuando <span class="math inline">\(V(\bvarepsi) = \sigma^{2}\bV\)</span>, pero asumimos erroneamente que <span class="math inline">\(V(\bvarepsi) = \sigma^{2}\bI_{n}\)</span>, el estimador <span class="math inline">\(\hatbbeta\)</span> sigue siendo insesgado. Pero, tenemos que:
 <span class="math display">\[\begin{equation}
 \begin{split}
-V(\widehat{\boldsymbol{\beta}}) &amp;= V\left[ (\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\boldsymbol{X}&#39;\boldsymbol{y}\right] = (\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\boldsymbol{X}&#39;V(\boldsymbol{y})\boldsymbol{X}(\boldsymbol{X}&#39;\boldsymbol{X})^{-1} \\
-&amp;= \sigma^{2}(\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\boldsymbol{X}&#39;\boldsymbol{V}\boldsymbol{X}(\boldsymbol{X}&#39;\boldsymbol{X})^{-1},
+V(\hatbbeta) &amp;= V\left[ (\bX&#39;\bX)^{-1}\bX&#39;\by \right] = (\bX&#39;\bX)^{-1}\bX&#39;V(\by)\bX(\bX&#39;\bX)^{-1} \\
+&amp;= \sigma^{2}(\bX&#39;\bX)^{-1}\bX&#39;\bV\bX(\bX&#39;\bX)^{-1},
 \end{split}
 \nonumber
 \end{equation}\]</span>
-es, generalmente, diferente de <span class="math inline">\(\sigma^{2}(\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\)</span> (la varianza que asumimos como cierta). Igualmente, el estimador por MCO pierde su condición de optimalidad. Es decir, deja de ser el mejor estimador lineal insesgado.</p>
+es, generalmente, diferente de <span class="math inline">\(\sigma^{2}(\bX&#39;\bX)^{-1}\)</span> (la varianza que asumimos como cierta). Igualmente, el estimador por MCO pierde su condición de optimalidad. Es decir, deja de ser el mejor estimador lineal insesgado.</p>
 <p>El estimador de <span class="math inline">\(\sigma^{2}\)</span> es sesgado:
 <span class="math display">\[
-E(\widehat{\sigma}^{2}) = \frac{\sigma^{2}}{n-p}E\left[\boldsymbol{y}&#39;(\boldsymbol{I}_{n} - \boldsymbol{H})\boldsymbol{y}\right] = \frac{\sigma^{2}}{n-p} \mbox{tr}\left[ \boldsymbol{V}(\boldsymbol{I}_{n}-\boldsymbol{H})\right].
+E(\hatsigma^{2}) = \frac{\sigma^{2}}{n-p}E\left[\by&#39;(\bI_{n} - \bH)\by\right] = \frac{\sigma^{2}}{n-p} \tr\left[ \bV(\bI_{n}-\bH)\right].
 \]</span>
 Las predicciones son insesgadas, pero:
 <span class="math display">\[
-V(\widehat{y}_{0}) = V(\boldsymbol{x}_{0}&#39;\widehat{\boldsymbol{\beta}}) = \sigma^{2}\boldsymbol{x}_{0}&#39;(\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\boldsymbol{X}&#39;\boldsymbol{V}\boldsymbol{X}(\boldsymbol{X}&#39;\boldsymbol{X})^{-1} \boldsymbol{x}_{0},
+V(\haty_{0}) = V(\bx_{0}&#39;\hatbbeta) = \sigma^{2}\bx_{0}&#39;(\bX&#39;\bX)^{-1}\bX&#39;\bV\bX(\bX&#39;\bX)^{-1} \bx_{0},
 \]</span>
-que es diferente de <span class="math inline">\(\sigma^{2}\boldsymbol{x}_{0}&#39;(\boldsymbol{X}&#39;\boldsymbol{X})^{-1}\boldsymbol{x}_{0}\)</span> (la varianza que asumimos como cierta).</p>
-<p>Cuando <span class="math inline">\(\boldsymbol{V}\)</span> es una matriz diagonal:
+que es diferente de <span class="math inline">\(\sigma^{2}\bx_{0}&#39;(\bX&#39;\bX)^{-1}\bx_{0}\)</span> (la varianza que asumimos como cierta).</p>
+<p>Cuando <span class="math inline">\(\bV\)</span> es una matriz diagonal:
 <span class="math display">\[
-\boldsymbol{V}= \begin{pmatrix}
+\bV = \begin{pmatrix}
 v_{11} &amp; 0 &amp; 0 &amp; \ldots &amp; 0 \\
 0 &amp; v_{22} &amp; 0 &amp; \ldots &amp; 0 \\
 0 &amp; 0 &amp; v_{33} &amp; \ldots &amp; 0 \\
@@ -517,7 +518,7 @@ v_{11} &amp; 0 &amp; 0 &amp; \ldots &amp; 0 \\
 0 &amp; 0 &amp; 0 &amp; \ldots &amp; v_{nn}
 \end{pmatrix},
 \]</span>
-tenemos que hay <strong>heterocedasticidad</strong>. Cada error tiene una varianza diferente <span class="math inline">\(V(\varepsilon_{j})=\sigma^{2}v_{jj}\)</span>, pero están incorrelacionados. Si los valores fuera de la diagonal de <span class="math inline">\(\boldsymbol{V}\)</span> son diferentes de cero, entonces los errores están correlacionados.</p>
+tenemos que hay <strong>heterocedasticidad</strong>. Cada error tiene una varianza diferente <span class="math inline">\(V(\varepsilon_{j})=\sigma^{2}v_{jj}\)</span>, pero están incorrelacionados. Si los valores fuera de la diagonal de <span class="math inline">\(\bV\)</span> son diferentes de cero, entonces los errores están correlacionados.</p>
 <p>La correlación de los errores puede esperarse en algunas situaciones. Por ejemplo, si las observaciones son tomadas en el tiempo puede presentarse correlación temporal. En situaciones en las que se pueda garantizar que las observaciones <span class="math inline">\((y_{1},y_{2},\ldots,y_{n})\)</span> constituyen una muestra aleatoria, no existirá correlación entre los errores, es decir, que es posible controlar este aspecto, algunas ocasiones, controlando el procedimiento de selección de la muestra.</p>
 </div>
 <div id="distribución-no-normal-de-los-errores" class="section level3" number="3.2.3">
@@ -531,15 +532,15 @@ tenemos que hay <strong>heterocedasticidad</strong>. Cada error tiene una varian
 <h2><span class="header-section-number">3.3</span> Residuos del modelo</h2>
 <p>Los residuos están definidos como:
 <span class="math display">\[
-e_{i} = y_{i}- \widehat{y}_{i}, \mbox{ en forma matricial }\boldsymbol{e}= \boldsymbol{y}- \widehat{\boldsymbol{y}}= (\boldsymbol{I}_{n} - \boldsymbol{H})\boldsymbol{y}.
+e_{i} = y_{i}- \haty_{i}, \mbox{ en forma matricial }\be = \by - \hatby = (\bI_{n} - \bH)\by .
 \]</span>
 Los residuos representan las desviaciones entre las observaciones y el ajuste. Además, estos son combinaciones lineales de los errores:
 <span class="math display">\[
-\boldsymbol{e}= (\boldsymbol{I}_{n} - \boldsymbol{H})(\boldsymbol{X}\boldsymbol{\beta}+\boldsymbol{\varepsilon}) = (\boldsymbol{I}_{n} - \boldsymbol{H})\boldsymbol{\varepsilon}.
+\be = (\bI_{n} - \bH)(\bX\bbeta +\bvarepsi) = (\bI_{n} - \bH)\bvarepsi.
 \]</span>
-Por lo tanto toda desviación de las premisas de los errores se debe reflejar en los residuales. Si <span class="math inline">\(\boldsymbol{\varepsilon}\sim N(\boldsymbol{0},\sigma^{2}\boldsymbol{I}_{n})\)</span>, entonces:
+Por lo tanto toda desviación de las premisas de los errores se debe reflejar en los residuales. Si <span class="math inline">\(\bvarepsi \sim N(\bZERO,\sigma^{2}\bI_{n})\)</span>, entonces:
 <span class="math display">\[
-\boldsymbol{e}\sim N \left[ \boldsymbol{0}, \sigma^{2}(\boldsymbol{I}_{n} - \boldsymbol{H})  \right].
+\be \sim N \left[ \bZERO , \sigma^{2}(\bI_{n} - \bH)  \right].
 \]</span>
 De aquí tenemos que <span class="math inline">\(V(e_{i}) = (1-h_{ii})\sigma^{2}\)</span> y <span class="math inline">\(Cov(e_{i},e_{j}) = - h_{ij}\sigma^{2}\)</span>, para todo <span class="math inline">\(i \neq j\)</span>. Lo que indica que, aún cuando los errores sean homogéneos en varianza e incorrelacionados, no implica que los residuos lo sean también. Note que los residuos asociados a puntos alejados del centro de los datos tienen menor varianza. Lo que hace difícil detectar violaciones.</p>
 <p>Cuando <span class="math inline">\(n\)</span> es grande comparado con el número de parámetros en el modelo, los residuos si reflejan a los errores en cuanto al comportamiento de su varianza y correlación. Esto es porque <span class="math inline">\(|h_{ij}| \leq 1\)</span>, <span class="math inline">\(\sum_{i=1}^{n}h_{ii} = n-p\)</span>, y <span class="math inline">\(\sum_{i=1}^{n}h_{ij}=\sum_{j=1}^{n}h_{ij}=1\)</span>. Por lo tanto, cuando <span class="math inline">\(n\rightarrow \infty\)</span>, <span class="math inline">\(V(e_{i}) = \sigma^{2}\)</span> y <span class="math inline">\(Cov(e_{i},e_{j}) = 0\)</span>.</p>
@@ -549,15 +550,15 @@ De aquí tenemos que <span class="math inline">\(V(e_{i}) = (1-h_{ii})\sigma^{2}
 <span class="math display">\[
 r_{i} = \frac{e_{i}}{\sqrt{\hat{\sigma}^{2}(1-h_{ii})}}, \qquad i=1,2,\ldots,n.
 \]</span>
-Entonces, <span class="math inline">\(r_{i}\)</span> tiene varianza constante (<span class="math inline">\(V(r_{i})=1\)</span>) independiente del lugar de <span class="math inline">\(\boldsymbol{x}_{i}\)</span>.</p>
+Entonces, <span class="math inline">\(r_{i}\)</span> tiene varianza constante (<span class="math inline">\(V(r_{i})=1\)</span>) independiente del lugar de <span class="math inline">\(\bx_{i}\)</span>.</p>
 </div>
 <div id="residuos-press-y-r-student" class="section level3" number="3.3.2">
 <h3><span class="header-section-number">3.3.2</span> Residuos PRESS y R-student</h3>
 <p>Como veremos más adelante, los residuos estudentizados se pueden utilizar detectar puntos atípicos. El problema es que si la <span class="math inline">\(i\)</span>-ésima observación es bastante inusual, el ajuste del modelo puede estar muy influenciado por esta observación. Lo que puede producir un residuo pequeño. Por esta razón, también se pueden calcular los residuos de predicción (PRESS). Estos se calculan de la siguiente forma:
 <span class="math display">\[
-e_{(i)} = y_{i} - \widehat{y}_{(i)}, \mbox{ para }i=1,\ldots,n,
+e_{(i)} = y_{i} - \haty_{(i)}, \mbox{ para }i=1,\ldots,n,
 \]</span>
-donde <span class="math inline">\(\widehat{y}_{(i)}\)</span> es el valor ajustado para la <span class="math inline">\(i\)</span>-ésima observación usando todas las observaciones excepto la <span class="math inline">\(i\)</span>-ésima. Esto implicaría que para calcular los residuos PRESS es necesario ajustar <span class="math inline">\(n\)</span> veces el modelo. Sin embargo, esto no es así, ya que se puede demostrar que:
+donde <span class="math inline">\(\haty_{(i)}\)</span> es el valor ajustado para la <span class="math inline">\(i\)</span>-ésima observación usando todas las observaciones excepto la <span class="math inline">\(i\)</span>-ésima. Esto implicaría que para calcular los residuos PRESS es necesario ajustar <span class="math inline">\(n\)</span> veces el modelo. Sin embargo, esto no es así, ya que se puede demostrar que:
 <span class="math display">\[
 e_{(i)} = \frac{e_{i}}{1-h_{ii}}.
 \]</span>
@@ -567,11 +568,11 @@ V(e_{(i)}) = V\left( \frac{e_{i}}{1-h_{ii}} \right) = \frac{1}{(1-h_{ii})^{2}}V(
 \]</span>
 Si estudentizamos los residuos PRESS obtenemos los <strong>residuos R-Student</strong>:
 <span class="math display">\[
-t_{i} = \frac{e_{i}}{\sqrt{\widehat{\sigma}^{2}_{(i)}(1-h_{ii})}},
+t_{i} = \frac{e_{i}}{\sqrt{\hatsigma^{2}_{(i)}(1-h_{ii})}},
 \]</span>
-donde <span class="math inline">\(\widehat{\sigma}^{2}_{(i)}\)</span> es la estimación de <span class="math inline">\(\sigma\)</span> usando todas las observaciones excepto la <span class="math inline">\(i\)</span>-ésima. Se puede demostrar que:
+donde <span class="math inline">\(\hatsigma^{2}_{(i)}\)</span> es la estimación de <span class="math inline">\(\sigma\)</span> usando todas las observaciones excepto la <span class="math inline">\(i\)</span>-ésima. Se puede demostrar que:
 <span class="math display">\[
-\widehat{\sigma}^{2}_{(i)} = \frac{(n-p)\widehat{\sigma}^{2} - \epsilon^{2}_{i}/(1-h_{ii})}{n-p-1}.
+\hatsigma^{2}_{(i)} = \frac{(n-p)\hatsigma^{2} - \epsilon^{2}_{i}/(1-h_{ii})}{n-p-1}.
 \]</span></p>
 </div>
 </div>
@@ -580,7 +581,7 @@ donde <span class="math inline">\(\widehat{\sigma}^{2}_{(i)}\)</span> es la esti
 <p>En esta sección mostramos la evaluación de los supuestos a través del análisis de los residuos del ajuste (ya sean los residuos estudentizados o los R-Student) usando gráficos y pruebas de hipótesis.</p>
 <div id="gráficos-de-residuos" class="section level3" number="3.4.1">
 <h3><span class="header-section-number">3.4.1</span> Gráficos de residuos</h3>
-<p>Un gráfico de los residuos es una forma efectiva de investigar posibles alejamientos de los supuestos. Generalmente, se grafican los residuos estudentizados <span class="math inline">\((r_{i})\)</span> contra los valores ajustados <span class="math inline">\(\widehat{y}_{i}\)</span> (o contra alguna de las covariables <span class="math inline">\(x_{ij}\)</span>). Este tipo de gráfico es de gran ayuda para detectar la correcta especificación del modelo y homocedasticidad. Algunos patrones de residuos se pueden observar en la Figura <a href="evaluación-de-los-supuestos-del-modelo.html#fig:PatronesResiduos">3.3</a>.</p>
+<p>Un gráfico de los residuos es una forma efectiva de investigar posibles alejamientos de los supuestos. Generalmente, se grafican los residuos estudentizados <span class="math inline">\((r_{i})\)</span> contra los valores ajustados <span class="math inline">\(\haty_{i}\)</span> (o contra alguna de las covariables <span class="math inline">\(x_{ij}\)</span>). Este tipo de gráfico es de gran ayuda para detectar la correcta especificación del modelo y homocedasticidad. Algunos patrones de residuos se pueden observar en la Figura <a href="evaluación-de-los-supuestos-del-modelo.html#fig:PatronesResiduos">3.3</a>.</p>
 <div class="figure" style="text-align: center"><span id="fig:PatronesResiduos"></span>
 <img src="bookdownproj_files/figure-html/PatronesResiduos-1.png" alt="Ejemplos de posibles patrones de residuos" width="672" />
 <p class="caption">
@@ -626,9 +627,9 @@ La Figura @ref(fig:residuosBWdata})(a) muestra que los residuos están alrededor
 <span class="math display">\[
 y_{i} = \beta_{0} +\beta_{1}x_{i1}+\beta_{2}x_{i2} + \ldots + \beta_{p-1}x_{i,p-1} + \varepsilon_{i}.
 \]</span>
-Para calcular los residuos parciales, primero estimamos los parámetros <span class="math inline">\((\widehat{\beta}_{1},\ldots,\widehat{\beta}_{p-1})\)</span> y los residuos ordinarios <span class="math inline">\((e_{1},\ldots,e_{n})\)</span>. Luego, los residuos parciales para la covariable <span class="math inline">\(x_{j}\)</span> se obtienen de la siguiente forma:
+Para calcular los residuos parciales, primero estimamos los parámetros <span class="math inline">\((\hatbeta_{1},\ldots,\hatbeta_{p-1})\)</span> y los residuos ordinarios <span class="math inline">\((e_{1},\ldots,e_{n})\)</span>. Luego, los residuos parciales para la covariable <span class="math inline">\(x_{j}\)</span> se obtienen de la siguiente forma:
 <span class="math display">\[
-e^{*}_{i}(y|x_{j}) = e_{i} - \widehat{\beta}_{j}x_{ij}, \mbox{ para } i=1,\ldots,n.
+e^{*}_{i}(y|x_{j}) = e_{i} - \hatbeta_{j}x_{ij}, \mbox{ para } i=1,\ldots,n.
 \]</span>
 El gráfico de residuos parciales para la covariable <span class="math inline">\(x_{j}\)</span> se obtiene graficando <span class="math inline">\(e^{*}_{i}(y|x_{j})\)</span> contra <span class="math inline">\(x_{j}\)</span>. Si la covariable <span class="math inline">\(x_{j}\)</span> entra al modelo linealmente, entonces el gráfico de residuos parciales debe mostrar una tendencia lineal. Por el contrario, si se observa una curva, <span class="math inline">\(x_{j}\)</span> no entra al modelo de forma lineal.</p>
 <div id="bajo-peso-al-nacer---gráfico-de-residuos-parciales" class="section level4 unnumbered">
@@ -731,7 +732,7 @@ Figure 3.11: Datos de consumo de helado. Gráfico de los residuos estudentizados
 <h2><span class="header-section-number">3.5</span> Pruebas de hipótesis para evaluar los supuestos</h2>
 <div id="prueba-de-falta-de-ajuste" class="section level3" number="3.5.1">
 <h3><span class="header-section-number">3.5.1</span> Prueba de falta de ajuste</h3>
-<p>El objetivo de la prueba de falta de ajuste es determinar si la relación entre la variable respuesta y las covariables puede asumirse cómo lineal. Hay que tener en cuenta que esta prueba es sensible a ajamientos de los supuestos de normalidad, varianza constante e independencia de los errores. Además, requiere que se tengan mútiple observaciones de <span class="math inline">\(y\)</span> para diferentes niveles de <span class="math inline">\(\boldsymbol{x}\)</span>. Por ejemplo, el test puede implementarse en los datos de la longitud de los peces puesto que tenemos varios individuos con las mismas edades. En los otros casos, no es posible, por lo menos de forma exacta. El objetivo de estas observaciones replicadas es tener una estimación independiente de <span class="math inline">\(\sigma^{2}\)</span>.</p>
+<p>El objetivo de la prueba de falta de ajuste es determinar si la relación entre la variable respuesta y las covariables puede asumirse cómo lineal. Hay que tener en cuenta que esta prueba es sensible a ajamientos de los supuestos de normalidad, varianza constante e independencia de los errores. Además, requiere que se tengan mútiple observaciones de <span class="math inline">\(y\)</span> para diferentes niveles de <span class="math inline">\(\bx\)</span>. Por ejemplo, el test puede implementarse en los datos de la longitud de los peces puesto que tenemos varios individuos con las mismas edades. En los otros casos, no es posible, por lo menos de forma exacta. El objetivo de estas observaciones replicadas es tener una estimación independiente de <span class="math inline">\(\sigma^{2}\)</span>.</p>
 <p>En regresión lineal simple, suponga que se tienen <span class="math inline">\(n_{i}\)</span> observaciones de la variable respuesta para el <span class="math inline">\(i\)</span>-ésimo nivel de <span class="math inline">\(x_{i}\)</span>, para <span class="math inline">\(i=1,\ldots,m\)</span>, y denotemos <span class="math inline">\(y_{ij}\)</span> como la <span class="math inline">\(j\)</span>-ésima observación de la respuesta en <span class="math inline">\(x_{i}\)</span>, para <span class="math inline">\(j=1,\ldots,n_{i}\)</span>. Por lo tanto, tenemos <span class="math inline">\(n=\sum_{i=1}^{m}n_{i}\)</span> observaciones en total. Esto permite que se puede descomponer la suma de cuadrados de los residuos en dos:
 <span class="math display">\[
 SS_{res} = SS_{PE} + SS_{LOF},
@@ -739,13 +740,13 @@ SS_{res} = SS_{PE} + SS_{LOF},
 donde <span class="math inline">\(SS_{PE}\)</span> y <span class="math inline">\(SS_{LOF}\)</span> son la suma de cuadrados del error puro y falta de ajuste, respectivamente.</p>
 <p>Para esto, primero observemos que los residuos se pueden descomponer así:
 <span class="math display" id="eq:ssresd">\[\begin{equation}
-y_{ij} - \widehat{y}_{i} = (y_{ij} - \bar{y}_{i}) + (\bar{y}_{i} - \widehat{y}_{i}),
+y_{ij} - \haty_{i} = (y_{ij} - \bar{y}_{i}) + (\bar{y}_{i} - \haty_{i}),
 \tag{3.1}
 \end{equation}\]</span>
 donde <span class="math inline">\(\bar{y}_{i}\)</span> es el promedio de las <span class="math inline">\(n_{i}\)</span> observaciones en <span class="math inline">\(x_{i}\)</span>. Ahora, elevando al cuadrado ambos lados de <a href="evaluación-de-los-supuestos-del-modelo.html#eq:ssresd">(3.1)</a>, y sumando para todo <span class="math inline">\(i\)</span> y <span class="math inline">\(j\)</span>, tenemos:
 <span class="math display">\[\begin{equation}
 \begin{split}
-\sum_{i=1}^{m} \sum_{j=1}^{n_{i}} (y_{ij} - \widehat{y}_{i})^{2} &amp;= \sum_{i=1}^{m}\sum_{j=1}^{n_{i}}(y_{ij}-\bar{y}_{i})^{2} + \sum_{i=1}^{m}n_{i}(\bar{y}_{i}-\widehat{y}_{i})^{2}, \\
+\sum_{i=1}^{m} \sum_{j=1}^{n_{i}} (y_{ij} - \haty_{i})^{2} &amp;= \sum_{i=1}^{m}\sum_{j=1}^{n_{i}}(y_{ij}-\bar{y}_{i})^{2} + \sum_{i=1}^{m}n_{i}(\bar{y}_{i}-\haty_{i})^{2}, \\
 SS_{res} &amp;= SS_{PE} + SS_{LOF}.
 \end{split}
 \nonumber
@@ -757,7 +758,7 @@ MS_{PE} = \frac{SS_{PE}}{n-m} \mbox{ y } MS_{LOF} = \frac{SS_{LOF}}{m-2},
 \]</span></p>
 <p>respectivamente. Si se cumple el supuesto de homocedasticidad, el valor esperado de <span class="math inline">\(MS_{PE}\)</span> es:
 <span class="math display">\[
-E(MS_{PE}) = \frac{1}{n-m}E\left[ \sum_{j=1}^{n_{i}}(y_{ij} - \widehat{y}_{i})^{2} \right] = \frac{1}{n-m}\sum_{j=1}^{n_{i}} E\left[ (y_{ij}-\widehat{y}_{i})^{2} \right] = \frac{\sigma^{2}}{n-m}\sum_{j=1}^{n_{i}}(n_{i}-1) = \sigma^{2}.
+E(MS_{PE}) = \frac{1}{n-m}E\left[ \sum_{j=1}^{n_{i}}(y_{ij} - \haty_{i})^{2} \right] = \frac{1}{n-m}\sum_{j=1}^{n_{i}} E\left[ (y_{ij}-\haty_{i})^{2} \right] = \frac{\sigma^{2}}{n-m}\sum_{j=1}^{n_{i}}(n_{i}-1) = \sigma^{2}.
 \]</span>
 Es decir que el cuadrado medio del error puro es una estimación de <span class="math inline">\(\sigma^{2}\)</span> independiente del ajuste del modelo.</p>
 <p>Además, el valor esperado del cuadrado medio de la falta de ajuste es:
@@ -804,11 +805,11 @@ A partir del valor-<span class="math inline">\(p\)</span> podemos concluir que n
 </div>
 <div id="prueba-de-heterocedasticidad" class="section level3" number="3.5.2">
 <h3><span class="header-section-number">3.5.2</span> Prueba de heterocedasticidad</h3>
-<p>Algunas pruebas de heterocedasticidad asumen que la varianza de los errores se compone de una parte constante y otra que varía según unas variables <span class="math inline">\((\boldsymbol{z})\)</span>:
+<p>Algunas pruebas de heterocedasticidad asumen que la varianza de los errores se compone de una parte constante y otra que varía según unas variables <span class="math inline">\((\bz)\)</span>:
 <span class="math display">\[
-\sigma^{2}_{i} = f(\sigma^{2},\boldsymbol{z}_{i}),
+\sigma^{2}_{i} = f(\sigma^{2},\bz_{i}),
 \]</span>
-donde <span class="math inline">\(\sigma^{2}\)</span> es la parte fija de la varianza, <span class="math inline">\(\boldsymbol{z}_{i}\)</span> el conjunto de variables cuyos valores se asocian con los cambios en la varianza de los errores. Por lo general se asume que la función de varianza depende de algunas de las covariables del modelo, es decir que <span class="math inline">\(\boldsymbol{z}_{i}=\boldsymbol{x}_{i}\)</span>.</p>
+donde <span class="math inline">\(\sigma^{2}\)</span> es la parte fija de la varianza, <span class="math inline">\(\bz_{i}\)</span> el conjunto de variables cuyos valores se asocian con los cambios en la varianza de los errores. Por lo general se asume que la función de varianza depende de algunas de las covariables del modelo, es decir que <span class="math inline">\(\bz_{i}=\bx_{i}\)</span>.</p>
 <p>La <strong>prueba de Breusch-Pagan</strong> asume que la varianza es una función aditiva de las covariables:
 <span class="math display">\[
 \sigma^{2}_{i} = E(\varepsilon_{i}^{2}) = \gamma_{0} + \gamma_{1}x_{i1}+ \gamma_{1}x_{i2} + \ldots  + \gamma_{p-1}x_{i,p-1}.
@@ -921,7 +922,7 @@ El ajuste del modelo auxiliar es:</p>
 <li>Prueba de Cochran.</li>
 <li>Prueba de Hartley.</li>
 </ul>
-<p>Las últimas tres pruebas requieren que se tengan múltiples observaciones para cada nivel de <span class="math inline">\(\boldsymbol{x}\)</span>. En caso que no se tengan repeticiones, es posible agruparlas por los vecinos más cercanos e implementar la prueba de forma aproximada.</p>
+<p>Las últimas tres pruebas requieren que se tengan múltiples observaciones para cada nivel de <span class="math inline">\(\bx\)</span>. En caso que no se tengan repeticiones, es posible agruparlas por los vecinos más cercanos e implementar la prueba de forma aproximada.</p>
 </div>
 </div>
 <div id="prueba-de-normalidad" class="section level3" number="3.5.3">
@@ -959,9 +960,9 @@ donde <span class="math inline">\((x_{[1]},x_{[2]},\ldots,x_{[n]})\)</span> son 
 <p>Cuando la correlación es debido a que las observaciones fueron tomadas en el tiempo, se puede asumir que hay <strong>autocorrelación</strong>. Aquí se asume que los errores que están separados <span class="math inline">\(t\)</span> unidades de tiempo siempre tienen la misma correlación lineal. Además que la correlación disminuye a medida que las observaciones se separan en el tiempo.</p>
 <p>El modelo de regresión, con errores autoregresivos de orden uno, es el siguiente:
 <span class="math display">\[
-y_{t} = \boldsymbol{x}_{t}&#39;\boldsymbol{\beta}+ \varepsilon_{t}, \mbox{ con }\varepsilon_{t}= \phi\varepsilon_{t-1} + a_{t},
+y_{t} = \bx_{t}&#39;\bbeta + \varepsilon_{t}, \mbox{ con }\varepsilon_{t}= \phi\varepsilon_{t-1} + a_{t},
 \]</span>
-donde <span class="math inline">\(y_{t}\)</span> y <span class="math inline">\(\boldsymbol{x}_{t}\)</span> son la variable respuesta observada y el conjunto de covariables observadas en el tiempo <span class="math inline">\(t\)</span>, respectivamente, y <span class="math inline">\(\phi\)</span> es el parámetro de autocorrelación <span class="math inline">\((|\phi| &lt; 1)\)</span>. Además, se asume que <span class="math inline">\(a_{t} \sim N(0,\sigma^{2}_{a})\)</span> y <span class="math inline">\(cov(a_{j},a_{k})=0\)</span>, para todo <span class="math inline">\(j \neq k\)</span>. A partir de estos resultados, se tiene que:
+donde <span class="math inline">\(y_{t}\)</span> y <span class="math inline">\(\bx_{t}\)</span> son la variable respuesta observada y el conjunto de covariables observadas en el tiempo <span class="math inline">\(t\)</span>, respectivamente, y <span class="math inline">\(\phi\)</span> es el parámetro de autocorrelación <span class="math inline">\((|\phi| &lt; 1)\)</span>. Además, se asume que <span class="math inline">\(a_{t} \sim N(0,\sigma^{2}_{a})\)</span> y <span class="math inline">\(cov(a_{j},a_{k})=0\)</span>, para todo <span class="math inline">\(j \neq k\)</span>. A partir de estos resultados, se tiene que:
 <span class="math display">\[
 E(\varepsilon_{t}) = 0, V(\varepsilon_{t}) = \sigma^{2}_{a}\left( \frac{1}{1-\phi^2}\right), \mbox{ y } cov(\varepsilon_{t},\varepsilon_{t \pm k})= \phi^{k}\sigma^{2}_{a}\left( \frac{1}{1-\phi^2} \right).
 \]</span>
@@ -974,7 +975,7 @@ El estadístico de prueba es:
 <span class="math display">\[
 d = \frac{\sum_{t=2}^{T}\left( e_{t} - e_{t-1}\right)^{2}}{\sum_{t=1}^{T}e_{t}^{2}}.
 \]</span>
-La distribución de probabilidad de <span class="math inline">\(d\)</span>, bajo <span class="math inline">\(H_{0}\)</span>, depende de la estructura de <span class="math inline">\(\boldsymbol{X}\)</span> y es difícil de determinar. Por lo tanto, los valores críticos están tabulados para diferentes valores de significancia, tamaño de muestra y número de parámetros. Otra alternativa, usada por los paquetes estadísticos, es calcular la significancia a través de métodos de remuestreo y aproximaciones del estadístico de prueba a la distribución normal.</p>
+La distribución de probabilidad de <span class="math inline">\(d\)</span>, bajo <span class="math inline">\(H_{0}\)</span>, depende de la estructura de <span class="math inline">\(\bX\)</span> y es difícil de determinar. Por lo tanto, los valores críticos están tabulados para diferentes valores de significancia, tamaño de muestra y número de parámetros. Otra alternativa, usada por los paquetes estadísticos, es calcular la significancia a través de métodos de remuestreo y aproximaciones del estadístico de prueba a la distribución normal.</p>
 <div id="ventas-de-helado---prueba-de-correlación-temporal" class="section level4 unnumbered">
 <h4>Ventas de helado - prueba de correlación temporal</h4>
 <p>La prueba de Durbin-Watson para ajuste de los datos de ventas de helado se puede hacer a través de la función <code>durbinWatsonTest</code> de la librería <code>car</code>:</p>
@@ -994,7 +995,7 @@ Estos resultados muestran que hay correlación serial en los datos. Note que con
 <li>El incumplimiento de un supuesto puede reflejarse como el incumplimiento de otros. Por ejemplo, la falta de ajuste del modelo puede reflejarse como heterogeneidad de los errores y/o como correlación de los mismos.</li>
 <li>Hay que tener en cuenta que algunas pruebas de hipótesis suponen cierto alejamiento particular del supuesto que se quiere probar. Por ejemplo, el test de White asume que la varianza es una función cuadrática de las covariables. Por lo tanto si rechazamos esta prueba, no necesariamente podemos asegurar con total certeza que no hay heterocedasticidad. Es posible que la función de varianza tome otra forma.</li>
 <li>Adicionalmente, varias pruebas son muy sensibles al alejamiento de la suposición de normalidad. Es decir que, si los errores no son normalmente distribuidos, el nivel real de significancia puede ser muy diferente del especificado. Sin embargo, el rechazo de la hipótesis nula podría sugerir que al menos uno de los dos supuestos no se cumple.</li>
-<li>A la hora de validar el supuesto de normalidad de los errores se está interesado en saber si el alejamiento de ese modelo normal, es aceptable desde el punto de vista de la conservación de las propiedades y ventajas que se heredan de la normalidad. Las estimaciones de <span class="math inline">\(\widehat{\boldsymbol{\beta}}\)</span> son generalmente robustas a desviaciones de la normalidad (Teorema del límite central).</li>
+<li>A la hora de validar el supuesto de normalidad de los errores se está interesado en saber si el alejamiento de ese modelo normal, es aceptable desde el punto de vista de la conservación de las propiedades y ventajas que se heredan de la normalidad. Las estimaciones de <span class="math inline">\(\hatbbeta\)</span> son generalmente robustas a desviaciones de la normalidad (Teorema del límite central).</li>
 </ul>
 
 </div>
@@ -1060,7 +1061,7 @@ gitbook.start({
 "link": "https://github.com/AlvaroFlorez/MLG1/blob/master/03-EvaluacionSupuestos.Rmd",
 "text": null
 },
-"download": null,
+"download": ["bookdownproj.pdf", "bookdownproj.epub"],
 "toc": {
 "collapse": "subsection"
 }

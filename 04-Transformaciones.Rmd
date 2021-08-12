@@ -297,7 +297,7 @@ Estos resultados nos indican que $\hatlambda = `r round(boxcox.educ$x[boxcox.edu
 donde $\varepsilon_{i}\sim N(0,\sigma^{2})$ y $cov(\varepsilon_{j},\varepsilon_{k})=0$.
 
 Ahora procedemos a hacer el análisis de los residuos del modelo transformado:
-```{r EducBC2Fig, echo=TRUE, fig.height = 3, fig.width = 7,fig.align = "center",fig.cap = "\\label{Datos de educación. Graficos de los residuos para el modelo transformado.",warning=FALSE,message = FALSE}
+```{r EducBC2Fig, echo=TRUE, fig.height = 3, fig.width = 7,fig.align = "center",fig.cap = "Datos de educación. Graficos de los residuos para el modelo transformado.",warning=FALSE,message = FALSE}
 mod.educ.trans = lm(1/Y~X1+X2+X3,data=education)
 res.educ.trans = studres(mod.educ.trans)
 par(mfrow=c(1,2))

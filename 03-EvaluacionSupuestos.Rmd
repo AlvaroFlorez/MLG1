@@ -53,13 +53,13 @@ De aquí podemos concluir que alrededor del 70\% de la variabilidad del consumo 
 ## Ejemplo 3. Longitud del pez lobina boca chica {-}
 La base de datos `wblake` (de la librería `alr4`) contiene la edad (en años) y longitud (en mm) de 439 peces lobina boca chica del lago West Bearskin en el nordeste de Minnesota en 1999. El objetivo del estudio es determinar los patrones de crecimiento de este tipo de pez. 
 
-```{r bass, echo=T, fig.height = 4, fig.width = 5,fig.align = "center",fig.cap = "\\label{fig:bass} Relación entre la edad y la longitud de los peces lobina boca chica.",warning=FALSE,message = FALSE}
+```{r bassFig, echo=T, fig.height = 4, fig.width = 5,fig.align = "center",fig.cap = "\\label{fig:bass} Relación entre la edad y la longitud de los peces lobina boca chica.",warning=FALSE,message = FALSE}
 library(alr4)
 data("wblake")
 plot(Length~Age,data=wblake,xlab='edad (años)',ylab='longitud (mm)')
 ```
 
-La Figura \ref{fig:bass} muestra que la relación entre estas dos variables se puede aproximar a una recta, por lo cuál se propone el siguiente:
+La Figura \ref{fig:bassFig} muestra que la relación entre estas dos variables se puede aproximar a una recta, por lo cuál se propone el siguiente:
 \[
 \mbox{length}_{i} = \beta_{0} + \beta_{1}\mbox{age}_{i} + \varepsilon_{i}
 \]
