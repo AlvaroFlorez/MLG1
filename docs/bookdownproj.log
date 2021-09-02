@@ -1,13 +1,13 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.12.8)  12 AUG 2021 17:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.12.8)  12 AUG 2021 22:21
 entering extended mode
 **./bookdownproj.tex
 (bookdownproj.tex
 LaTeX2e <2020-10-01> patch level 2
 L3 programming layer <2020-12-03> xparse <2020-03-03>
-("C:\Program Files\MiKTeX\tex/latex/base\book.cls"
-Document Class: book 2020/04/10 v1.4m Standard LaTeX document class
-("C:\Program Files\MiKTeX\tex/latex/base\bk10.clo"
-File: bk10.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
+("C:\Program Files\MiKTeX\tex/latex/base\report.cls"
+Document Class: report 2020/04/10 v1.4m Standard LaTeX document class
+("C:\Program Files\MiKTeX\tex/latex/base\size10.clo"
+File: size10.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
 )
 \c@part=\count177
 \c@chapter=\count178
@@ -482,39 +482,46 @@ File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
 \l__kernel_color_stack_int=\count296
 \l__pdf_internal_box=\box57
 )
-No file bookdownproj.aux.
+(bookdownproj.aux
+
+LaTeX Warning: Label `fig:BWdata2' multiply defined.
+
+
+LaTeX Warning: Label `fig:bass' multiply defined.
+
+)
 \openout1 = `bookdownproj.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 163.
-LaTeX Font Info:    ... okay on input line 163.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 163.
-LaTeX Font Info:    ... okay on input line 163.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 163.
-LaTeX Font Info:    ... okay on input line 163.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 163.
-LaTeX Font Info:    ... okay on input line 163.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 163.
-LaTeX Font Info:    ... okay on input line 163.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 163.
-LaTeX Font Info:    ... okay on input line 163.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 163.
-LaTeX Font Info:    ... okay on input line 163.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 163.
-LaTeX Font Info:    ... okay on input line 163.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 163.
-LaTeX Font Info:    ... okay on input line 163.
-LaTeX Info: Redefining \microtypecontext on input line 163.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 170.
+LaTeX Font Info:    ... okay on input line 170.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 170.
+LaTeX Font Info:    ... okay on input line 170.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 170.
+LaTeX Font Info:    ... okay on input line 170.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 170.
+LaTeX Font Info:    ... okay on input line 170.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 170.
+LaTeX Font Info:    ... okay on input line 170.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 170.
+LaTeX Font Info:    ... okay on input line 170.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 170.
+LaTeX Font Info:    ... okay on input line 170.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 170.
+LaTeX Font Info:    ... okay on input line 170.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 170.
+LaTeX Font Info:    ... okay on input line 170.
+LaTeX Info: Redefining \microtypecontext on input line 170.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 163.
+LaTeX Info: Redefining \showhyphens on input line 170.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
-("C:\Program Files\MiKTeX\tex/latex/microtype\mt-cmr.cfg"
+ ("C:\Program Files\MiKTeX\tex/latex/microtype\mt-cmr.cfg"
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
@@ -536,7 +543,7 @@ Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
 )
-Package hyperref Info: Link coloring OFF on input line 163.
+Package hyperref Info: Link coloring OFF on input line 170.
 
 ("C:\Program Files\MiKTeX\tex/latex/hyperref\nameref.sty"
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
@@ -549,42 +556,42 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count303
 )
-LaTeX Info: Redefining \ref on input line 163.
-LaTeX Info: Redefining \pageref on input line 163.
-LaTeX Info: Redefining \nameref on input line 163.
+LaTeX Info: Redefining \ref on input line 170.
+LaTeX Info: Redefining \pageref on input line 170.
+LaTeX Info: Redefining \nameref on input line 170.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
-65.
+72.
 
 ("C:\Program Files\MiKTeX\tex/latex/lm\ot1lmr.fd"
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-65.
+72.
 
 ("C:\Program Files\MiKTeX\tex/latex/lm\omllmm.fd"
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-165.
+172.
 
 ("C:\Program Files\MiKTeX\tex/latex/lm\omslmsy.fd"
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-165.
+172.
 
 ("C:\Program Files\MiKTeX\tex/latex/lm\omxlmex.fd"
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 165.
+(Font)              <12> on input line 172.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 165.
+(Font)              <8> on input line 172.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 165.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 165
+(Font)              <6> on input line 172.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 172
 .
 
 ("C:\Program Files\MiKTeX\tex/latex/amsfonts\umsa.fd"
@@ -593,7 +600,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ("C:\Program Files\MiKTeX\tex/latex/microtype\mt-msa.cfg"
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 165
+LaTeX Font Info:    Trying to load font information for U+msb on input line 172
 .
 
 ("C:\Program Files\MiKTeX\tex/latex/amsfonts\umsb.fd"
@@ -603,47 +610,43 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 ) [1
 
+{C:/Users/Alvaro Florez/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] (bookdo
+wnproj.toc
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 3.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 3.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 3.
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.90 ...os influyentes y atÃ­picos}{79}{chapter.5}
+                                                  % [1
 
-{C:/Users/Alvaro Florez/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [2
-
-]
+])
 \tf@toc=\write4
 \openout4 = `bookdownproj.toc'.
 
- [3] [4
-
-]
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
-96.
+ [2]
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 2
+03.
 
 ("C:\Program Files\MiKTeX\tex/latex/lm\ts1lmr.fd"
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [5] [6
+) [3
 
 ]
 Chapter 1.
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 2
-18.
+25.
 ("C:\Program Files\MiKTeX\tex/latex/lm\t1lmtt.fd"
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 218.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 218.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 218.
-
-
-LaTeX Warning: Reference `fig:birthweightFigure' on page 7 undefined on input l
-ine 220.
-
-
-LaTeX Warning: Reference `fig:birthweightFigure' on page 7 undefined on input l
-ine 225.
-
 LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
-232.
+239.
+
 ("C:\Program Files\MiKTeX\tex/latex/lm\ts1lmtt.fd"
 File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -655,18 +658,16 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.238 ...j_files/figure-latex/birthweightFigure-1}
+l.245 ...j_files/figure-latex/birthweightFigure-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-[7] [8]
+[4
 
-LaTeX Warning: Reference `fig:gendataFigure' on page 9 undefined on input line 
-312.
-
+]
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/gendataFigure-1' not found
 .
@@ -675,26 +676,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.316 ...nproj_files/figure-latex/gendataFigure-1}
+l.323 ...nproj_files/figure-latex/gendataFigure-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-
-LaTeX Warning: Reference `eq:rss' on page 9 undefined on input line 333.
-
-
-LaTeX Warning: Reference `eq:normeq1' on page 9 undefined on input line 344.
-
-
-LaTeX Warning: Reference `eq:normeq2' on page 9 undefined on input line 344.
-
-
-LaTeX Warning: Reference `fig:Figresiduos' on page 9 undefined on input line 35
-8.
-
+[5]
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/Figresiduos-1' not found.
 
@@ -702,7 +691,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.362 ...ownproj_files/figure-latex/Figresiduos-1}
+l.369 ...ownproj_files/figure-latex/Figresiduos-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
@@ -710,16 +699,12 @@ Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 370.
-[9]
+(Font)              <14.4> on input line 377.
 
-Package natbib Warning: Citation `montgomery_introduction_2012' on page 10 unde
-fined on input line 376.
+Package natbib Warning: Citation `montgomery_introduction_2012' on page 6 undef
+ined on input line 383.
 
-[10]
-
-LaTeX Warning: Reference `fig:FigMCO2' on page 11 undefined on input line 418.
-
+[6]
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/FigMCO2-1' not found.
 
@@ -727,78 +712,34 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.430 ...ookdownproj_files/figure-latex/FigMCO2-1}
+l.437 ...ookdownproj_files/figure-latex/FigMCO2-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-[11]pdfTeX warning (ext4): destination with the same identifier (name{equation.
-1.5.6}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.493 \begin{equation}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.1.5.6}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.493 \begin{equation}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.1.5.6}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.493 \begin{equation}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.1.5.6}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.493 \begin{equation}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.1.5.6}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.501 \begin{equation}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.1.5.6}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.501 \begin{equation}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.1.5.6}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.501 \begin{equation}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.1.5.6}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.501 \begin{equation}
-                      
+[7]
 
-Package natbib Warning: Citation `montgomery_introduction_2012' on page 12 unde
-fined on input line 509.
+Package natbib Warning: Citation `montgomery_introduction_2012' on page 8 undef
+ined on input line 516.
 
-[12pdfTeX warning (ext4): destination with the same identifier (name{equation.1
-.5.6}) has been already used, duplicate ignored
+[8pdfTeX warning (ext4): destination with the same identifier (name{equation.1.
+5.6}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.525 \end{equation}
-                    ]
-
-LaTeX Warning: Reference `eq:beta1cl' on page 13 undefined on input line 526.
-
-
-LaTeX Warning: Reference `eq:H0beta1' on page 13 undefined on input line 535.
-
-
-LaTeX Warning: Reference `fig:anovafig' on page 13 undefined on input line 555.
-
-
-
-LaTeX Warning: Reference `eq:decomposion' on page 13 undefined on input line 55
-5.
-
+l.536 \]
+        pdfTeX warning (ext4): destination with the same identifier (name{equat
+ion.1.5.6}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.536 \]
+        pdfTeX warning (ext4): destination with the same identifier (name{equat
+ion.1.5.6}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.536 \]
+        ]
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/anovafig-1' not found.
 
@@ -806,57 +747,39 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.559 ...okdownproj_files/figure-latex/anovafig-1}
+l.566 ...okdownproj_files/figure-latex/anovafig-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-
-LaTeX Warning: Reference `eq:decomposion' on page 13 undefined on input line 56
-6.
-
-[13]
-
-LaTeX Warning: Reference `eq:anova' on page 14 undefined on input line 593.
-
-
-LaTeX Warning: Reference `tab:tableAnova' on page 14 undefined on input line 59
-7.
-
-
-Package longtable Warning: Column widths have changed
-(longtable)                in table 1.1 on input line 613.
-
-
-Underfull \vbox (badness 1466) has occurred while \output is active []
-
- [14]
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 671--672
+[9] [10]
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 678--679
 [][] 
  []
 
-
-LaTeX Warning: Reference `eq:distB0' on page 15 undefined on input line 681.
-
-
-LaTeX Warning: Reference `eq:distB1' on page 15 undefined on input line 681.
-
-[15] [16pdfTeX warning (ext4): destination with the same identifier (name{equat
-ion.1.6.12}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  
-l.733 \]
-        ]
-
-LaTeX Warning: Reference `eq:varpred' on page 17 undefined on input line 739.
-
-
-LaTeX Warning: Reference `eq:modBirthweight' on page 17 undefined on input line
- 750.
-
-[17]
+[11]pdfTeX warning (ext4): destination with the same identifier (name{equation.
+1.6.12}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.727 \begin{equation}
+                      pdfTeX warning (ext4): destination with the same identifi
+er (name{equation.1.6.12}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.727 \begin{equation}
+                      pdfTeX warning (ext4): destination with the same identifi
+er (name{equation.1.6.12}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.727 \begin{equation}
+                      pdfTeX warning (ext4): destination with the same identifi
+er (name{equation.1.6.12}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.727 \begin{equation}
+                       [12]
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/birthweightIC-1' not found
 .
@@ -865,19 +788,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.834 ...nproj_files/figure-latex/birthweightIC-1}
+l.841 ...nproj_files/figure-latex/birthweightIC-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-[18]
-
-LaTeX Warning: Reference `fig:extrapolacion' on page 19 undefined on input line
- 893.
-
-[19]
+[13]
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/extrapolacion-1' not found
 .
@@ -886,20 +804,12 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.897 ...nproj_files/figure-latex/extrapolacion-1}
+l.904 ...nproj_files/figure-latex/extrapolacion-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: Reference `fig:influyentes' on page 20 undefined on input line 9
-06.
-
-
-LaTeX Warning: Reference `fig:influyentes' on page 20 undefined on input line 9
-08.
 
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/influyentes-1' not found.
@@ -908,160 +818,90 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.913 ...ownproj_files/figure-latex/influyentes-1}
+l.920 ...ownproj_files/figure-latex/influyentes-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-[20]
+[14] [15]
 Chapter 2.
 
-LaTeX Warning: Reference `fig:BWdata2' on page 21 undefined on input line 939.
+LaTeX Warning: Reference `fig:BWdataFig' on page 16 undefined on input line 946
+.
 
 
-LaTeX Warning: Reference `fig:BWdata2' on page 21 undefined on input line 941.
+LaTeX Warning: Reference `fig:BWdataFig' on page 16 undefined on input line 948
+.
 
 
-! LaTeX Error: File `bookdownproj_files/figure-latex/BWdata2-1' not found.
+! LaTeX Error: File `bookdownproj_files/figure-latex/BWdataFig-1' not found.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.952 ...ookdownproj_files/figure-latex/BWdata2-1}
+l.959 ...kdownproj_files/figure-latex/BWdataFig-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-[21
+[16
 
-]
-Overfull \hbox (1.70274pt too wide) detected at line 1001
-[]\OML/lmm/m/it/10 E\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 Y\OMS/lmsy/m/n/10 j\OML/l
-mm/m/it/10 x[]; x[]; [] ; x[]\OT1/lmr/m/n/10 ) = \OML/lmm/m/it/10 E\OT1/lmr/m/n
-/10 (\OML/lmm/m/it/10 Y\OMS/lmsy/m/n/10 j[][]\OT1/lmr/m/n/10 ) = \OML/lmm/m/it/
-10 [] \OT1/lmr/m/n/10 + \OML/lmm/m/it/10 []x[] \OT1/lmr/m/n/10 + \OML/lmm/m/i
-t/10 []x[] \OT1/lmr/m/n/10 + [] + \OML/lmm/m/it/10 []x[] \OT1/lmr/m/n/10 = []
-[][]\OML/lmm/m/it/10 :
- []
-
-
-LaTeX Warning: Reference `eq:expValue' on page 22 undefined on input line 1004.
-
-
-
-LaTeX Warning: Reference `eq:modMultiple' on page 22 undefined on input line 10
-16.
-
-[22]
-Overfull \hbox (32.42952pt too wide) detected at line 1074
-[]
- []
-
-[23]pdfTeX warning (ext4): destination with the same identifier (name{equation.
-2.2.3}) has been already used, duplicate ignored
+] [17] [18pdfTeX warning (ext4): destination with the same identifier (name{equ
+ation.2.2.3}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.1130 \]
+         ]pdfTeX warning (ext4): destination with the same identifier (name{equ
+ation.2.2.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1100 \begin{equation}
+l.1184 \begin{equation}
                        pdfTeX warning (ext4): destination with the same identif
 ier (name{equation.2.2.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1100 \begin{equation}
+l.1184 \begin{equation}
                        pdfTeX warning (ext4): destination with the same identif
 ier (name{equation.2.2.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1100 \begin{equation}
+l.1184 \begin{equation}
                        pdfTeX warning (ext4): destination with the same identif
 ier (name{equation.2.2.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1100 \begin{equation}
-                        [24]pdfTeX warning (ext4): destination with the same id
-entifier (name{equation.2.2.3}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1177 \begin{equation}
+l.1184 \begin{equation}
                        pdfTeX warning (ext4): destination with the same identif
 ier (name{equation.2.2.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1177 \begin{equation}
+l.1194 \begin{equation}
                        pdfTeX warning (ext4): destination with the same identif
 ier (name{equation.2.2.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1177 \begin{equation}
+l.1194 \begin{equation}
                        pdfTeX warning (ext4): destination with the same identif
 ier (name{equation.2.2.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1177 \begin{equation}
+l.1194 \begin{equation}
                        pdfTeX warning (ext4): destination with the same identif
 ier (name{equation.2.2.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1187 \begin{equation}
-                       pdfTeX warning (ext4): destination with the same identif
-ier (name{equation.2.2.3}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1187 \begin{equation}
-                       pdfTeX warning (ext4): destination with the same identif
-ier (name{equation.2.2.3}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1187 \begin{equation}
-                       pdfTeX warning (ext4): destination with the same identif
-ier (name{equation.2.2.3}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1187 \begin{equation}
+l.1194 \begin{equation}
                        
 
-Package natbib Warning: Citation `montgomery_introduction_2012' on page 25 unde
-fined on input line 1200.
+Package natbib Warning: Citation `montgomery_introduction_2012' on page 19 unde
+fined on input line 1207.
 
-[25] [26]
-
-LaTeX Warning: Reference `eq:HANOVA' on page 27 undefined on input line 1280.
-
-
-LaTeX Warning: Reference `eq:HANOVA' on page 27 undefined on input line 1295.
-
-[27] [28] [29]
-Overfull \hbox (4.32292pt too wide) detected at line 1410
-\OML/lmm/m/it/10 SS[]\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 []; []; []\OMS/lmsy/m
-/n/10 j\OML/lmm/m/it/10 []\OT1/lmr/m/n/10 ) \OMS/lmsy/m/n/10 6\OT1/lmr/m/n/10 
-= \OML/lmm/m/it/10 SS[]\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 []\OMS/lmsy/m/n/10 j\
-OML/lmm/m/it/10 []; []; []\OT1/lmr/m/n/10 ) + \OML/lmm/m/it/10 SS[]\OT1/lmr/
-m/n/10 (\OML/lmm/m/it/10 []\OMS/lmsy/m/n/10 j\OML/lmm/m/it/10 []; []; []\OT
-1/lmr/m/n/10 ) + \OML/lmm/m/it/10 SS[]\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 []\OMS
-/lmsy/m/n/10 j\OML/lmm/m/it/10 []; []; []\OT1/lmr/m/n/10 )\OML/lmm/m/it/10 :
-
- []
-
-[30]
-
-LaTeX Warning: Reference `eq:hipGeneral1' on page 31 undefined on input line 14
-34.
-
-[31] [32]
-Overfull \hbox (64.49881pt too wide) in paragraph at lines 1552--1552
-[]\T1/lmtt/m/n/10 ## lm(formula = weight ~ age + mppwt + motherage + mnocig, da
-ta = birthweight)[] 
- []
-
-[33] [34] [35]
-
-LaTeX Warning: Reference `fig:extrapolacionOculta' on page 36 undefined on inpu
-t line 1685.
-
+[19] [20] [21] [22] [23] [24] [25] [26] [27]
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/extrapolacionOculta-1' not
  found.
@@ -1070,16 +910,12 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1689 ...iles/figure-latex/extrapolacionOculta-1}
+l.1696 ...iles/figure-latex/extrapolacionOculta-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: Reference `fig:birthweightExtrapolacion' on page 36 undefined on
- input line 1725.
 
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/birthweightExtrapolacion-1
@@ -1089,39 +925,21 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1729 ...figure-latex/birthweightExtrapolacion-1}
+l.1736 ...figure-latex/birthweightExtrapolacion-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-[36]
+[28]
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 1743.
-
-Overfull \hbox (16.07458pt too wide) in paragraph at lines 1752--1753
-[]\T1/lmr/m/n/10 (-20) Para la predic-ción en el punto $[][]$, ten-emos que $\O
-ML/lmm/m/it/10 h[] \OT1/lmr/m/n/10 (-20) = (1\OML/lmm/m/it/10 ; \OT1/lmr/m/n/10
- (-20) 34\OML/lmm/m/it/10 ; \OT1/lmr/m/n/10 (-20) 77)([][][])[](1\OML/lmm/m/it/
-10 ; \OT1/lmr/m/n/10 (-20) 34\OML/lmm/m/it/10 ; \OT1/lmr/m/n/10 (-20) 77)[] =
- []
-
-[37] [38] [39] [40] [41] [42
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 1750.
+ [29] [30] [31] [32]
+Chapter 3.
+[33
 
 ]
-Chapter 3.
-
-Overfull \hbox (64.49881pt too wide) in paragraph at lines 2000--2000
-[]\T1/lmtt/m/n/10 ## lm(formula = weight ~ age + motherage + mnocig + mppwt, da
-ta = Birthweight)[] 
- []
-
-[43]
-
-LaTeX Warning: Reference `fig:icecream' on page 44 undefined on input line 2018
-.
-
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/Icecream-1' not found.
 
@@ -1129,22 +947,22 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.2030 ...kdownproj_files/figure-latex/Icecream-1}
+l.2037 ...kdownproj_files/figure-latex/Icecream-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-[44]
+[34]
 
-! LaTeX Error: File `bookdownproj_files/figure-latex/bass-1' not found.
+! LaTeX Error: File `bookdownproj_files/figure-latex/bassFig-1' not found.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.2094 ...{bookdownproj_files/figure-latex/bass-1}
+l.2101 ...okdownproj_files/figure-latex/bassFig-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
@@ -1152,42 +970,20 @@ Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-LaTeX Warning: Reference `fig:bass' on page 45 undefined on input line 2101.
-
-[45] [46]
-
-Package natbib Warning: Citation `behar_validacion_2002' on page 47 undefined o
-n input line 2167.
-
-[47]pdfTeX warning (ext4): destination with the same identifier (name{equation.
-3.2.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.2223 \begin{equation}
-                       pdfTeX warning (ext4): destination with the same identif
-ier (name{equation.3.2.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.2223 \begin{equation}
-                       pdfTeX warning (ext4): destination with the same identif
-ier (name{equation.3.2.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.2223 \begin{equation}
-                       pdfTeX warning (ext4): destination with the same identif
-ier (name{equation.3.2.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.2223 \begin{equation}
-                        [48] [49] [50]
-Overfull \hbox (0.55147pt too wide) in paragraph at lines 2318--2318
-[]\T1/lmr/bx/n/14.4 (-20) Evaluación del cumplim-iento de los supuestos 
- []
+LaTeX Warning: Reference `fig:bassFig' on page 35 undefined on input line 2108.
 
 
-LaTeX Warning: Reference `fig:PatronesResiduos' on page 51 undefined on input l
-ine 2325.
+[35]
 
+Package natbib Warning: Citation `behar_validacion_2002' on page 36 undefined o
+n input line 2174.
+
+[36] [37pdfTeX warning (ext4): destination with the same identifier (name{equat
+ion.3.2.1}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.2262 
+       ] [38]
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/PatronesResiduos-1' not fo
 und.
@@ -1196,28 +992,12 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.2329 ...j_files/figure-latex/PatronesResiduos-1}
+l.2336 ...j_files/figure-latex/PatronesResiduos-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: Reference `fig:PatronesResiduos' on page 51 undefined on input l
-ine 2336.
-
-
-LaTeX Warning: Reference `fig:PatronesResiduos' on page 51 undefined on input l
-ine 2336.
-
-
-LaTeX Warning: Reference `fig:PatronesResiduos' on page 51 undefined on input l
-ine 2336.
-
-
-LaTeX Warning: Reference `fig:PatronesResiduos' on page 51 undefined on input l
-ine 2336.
 
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/patronesResiduos2-1' not f
@@ -1227,22 +1007,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.2340 ..._files/figure-latex/patronesResiduos2-1}
+l.2347 ..._files/figure-latex/patronesResiduos2-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-
-LaTeX Warning: Reference `fig:patronesResiduos2' on page 51 undefined on input 
-line 2347.
-
-
-LaTeX Warning: Reference `fig:patronesResiduos2' on page 51 undefined on input 
-line 2347.
-
-[51]
+[39]
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/residuosBWdata-1' not foun
 d.
@@ -1251,7 +1023,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.2376 ...roj_files/figure-latex/residuosBWdata-1}
+l.2383 ...roj_files/figure-latex/residuosBWdata-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
@@ -1259,23 +1031,10 @@ Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-LaTeX Warning: Reference `fig:PatronesResiduos' on page 52 undefined on input l
-ine 2383.
+Package natbib Warning: Citation `weisberg_applied_2014' on page 40 undefined o
+n input line 2390.
 
-
-Package natbib Warning: Citation `weisberg_applied_2014' on page 52 undefined o
-n input line 2383.
-
-
-LaTeX Warning: Reference `fig:PatronesResiduos' on page 52 undefined on input l
-ine 2390.
-
-[52]
-Underfull \hbox (badness 1087) in paragraph at lines 2395--2397
-\T1/lmr/m/n/10 (+20) Para cal-cu-lar los resid-uos par-ciales, primero es-ti-ma
-mos los parámet-ros
- []
-
+[40]
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/residuosBWdata2-1' not fou
 nd.
@@ -1284,17 +1043,12 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.2423 ...oj_files/figure-latex/residuosBWdata2-1}
+l.2430 ...oj_files/figure-latex/residuosBWdata2-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
-
-[53]
-
-LaTeX Warning: Reference `fig:qqplots' on page 54 undefined on input line 2445.
-
 
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/qqplots-1' not found.
@@ -1303,7 +1057,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.2449 ...okdownproj_files/figure-latex/qqplots-1}
+l.2456 ...okdownproj_files/figure-latex/qqplots-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
@@ -1318,7 +1072,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.2473 ...proj_files/figure-latex/qqnormBWdata1-1}
+l.2480 ...proj_files/figure-latex/qqnormBWdata1-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
@@ -1326,18 +1080,10 @@ Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Package natbib Warning: Citation `fox_applied_2016' on page 54 undefined on inp
-ut line 2484.
+Package natbib Warning: Citation `fox_applied_2016' on page 41 undefined on inp
+ut line 2491.
 
-
-LaTeX Warning: Reference `fig:qqnormBWdata1' on page 54 undefined on input line
- 2486.
-
-[54]
-
-LaTeX Warning: Reference `fig:residuosCorr' on page 55 undefined on input line 
-2497.
-
+[41]
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/residuosCorr-1' not found.
 
@@ -1346,18 +1092,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.2501 ...nproj_files/figure-latex/residuosCorr-1}
+l.2508 ...nproj_files/figure-latex/residuosCorr-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-
-LaTeX Warning: Reference `fig:heladosResiduos1' on page 55 undefined on input l
-ine 2513.
-
-[55]
+[42]
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/heladosResiduos1-1' not fo
 und.
@@ -1366,16 +1108,12 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.2531 ...j_files/figure-latex/heladosResiduos1-1}
+l.2538 ...j_files/figure-latex/heladosResiduos1-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: Reference `fig:heladosResiduos2' on page 56 undefined on input l
-ine 2542.
 
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/heladosResiduos2-1' not fo
@@ -1385,41 +1123,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.2558 ...j_files/figure-latex/heladosResiduos2-1}
+l.2565 ...j_files/figure-latex/heladosResiduos2-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-
-Underfull \hbox (badness 2469) in paragraph at lines 2567--2567
-[]\T1/lmr/bx/n/14.4 (+20) Pruebas de hipóte-sis para eval-uar los
- []
-
-[56]
-
-LaTeX Warning: Reference `eq:ssresd' on page 57 undefined on input line 2585.
-
-
-Overfull \hbox (63.93256pt too wide) detected at line 2605
-\OML/lmm/m/it/10 E\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 MS[]\OT1/lmr/m/n/10 ) = []\
-OML/lmm/m/it/10 E [] \OT1/lmr/m/n/10 = [] [] \OML/lmm/m/it/10 E [] \OT1/lmr/m/n
-/10 = [] [](\OML/lmm/m/it/10 n[] \OMS/lmsy/m/n/10   \OT1/lmr/m/n/10 1) = \OML/l
-mm/m/it/10 []:
- []
-
-
-Overfull \hbox (89.70665pt too wide) detected at line 2617
-\OML/lmm/m/it/10 H[] \OT1/lmr/m/n/10 : [] \OML/lmm/m/it/10 H[] \OT1/lmr/m/n/10 
-: []\OML/lmm/m/it/10 ;
- []
-
-[57]
-
-LaTeX Warning: Reference `fig:pecesResiduos1' on page 58 undefined on input lin
-e 2631.
-
+[43] [44]
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/pecesResiduos1-1' not foun
 d.
@@ -1428,157 +1139,120 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.2646 ...roj_files/figure-latex/pecesResiduos1-1}
+l.2653 ...roj_files/figure-latex/pecesResiduos1-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-[58]pdfTeX warning (ext4): destination with the same identifier (name{equation.
-3.5.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.2690 \begin{equation}
-                       pdfTeX warning (ext4): destination with the same identif
-ier (name{equation.3.5.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.2690 \begin{equation}
-                       pdfTeX warning (ext4): destination with the same identif
-ier (name{equation.3.5.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.2690 \begin{equation}
-                       pdfTeX warning (ext4): destination with the same identif
-ier (name{equation.3.5.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.2690 \begin{equation}
-                       pdfTeX warning (ext4): destination with the same identif
-ier (name{equation.3.5.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.2706 \begin{equation}
-                       pdfTeX warning (ext4): destination with the same identif
-ier (name{equation.3.5.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.2706 \begin{equation}
-                       pdfTeX warning (ext4): destination with the same identif
-ier (name{equation.3.5.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.2706 \begin{equation}
-                       pdfTeX warning (ext4): destination with the same identif
-ier (name{equation.3.5.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.2706 \begin{equation}
-                        [59]
-Overfull \hbox (1.89374pt too wide) detected at line 2718
-\OML/lmm/m/it/10 [] \OT1/lmr/m/n/10 = \OML/lmm/m/it/10 [] \OT1/lmr/m/n/10 + \
-OML/lmm/m/it/10 []x[] \OT1/lmr/m/n/10 + \OML/lmm/m/it/10 []x[] \OT1/lmr/m/n/1
-0 + \OML/lmm/m/it/10 []x[] \OT1/lmr/m/n/10 + \OML/lmm/m/it/10 []x[] \OT1/lmr/
-m/n/10 + \OML/lmm/m/it/10 []x[] \OT1/lmr/m/n/10 + \OML/lmm/m/it/10 []x[] \OT1
-/lmr/m/n/10 + \OML/lmm/m/it/10 []x[]x[] \OT1/lmr/m/n/10 + \OML/lmm/m/it/10 []
-x[]x[] \OT1/lmr/m/n/10 + \OML/lmm/m/it/10 []x[]x[]
- []
-
 pdfTeX warning (ext4): destination with the same identifier (name{equation.3.5.
 2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.2720 \begin{equation}
+l.2697 \begin{equation}
                        pdfTeX warning (ext4): destination with the same identif
 ier (name{equation.3.5.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.2720 \begin{equation}
+l.2697 \begin{equation}
                        pdfTeX warning (ext4): destination with the same identif
 ier (name{equation.3.5.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.2720 \begin{equation}
+l.2697 \begin{equation}
                        pdfTeX warning (ext4): destination with the same identif
 ier (name{equation.3.5.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.2720 \begin{equation}
-                       
-Overfull \hbox (19.76495pt too wide) detected at line 2730
-\OML/lmm/m/it/10 e[] \OT1/lmr/m/n/10 = \OML/lmm/m/it/10 [] \OT1/lmr/m/n/10 + \
-OML/lmm/m/it/10 []x[] \OT1/lmr/m/n/10 + \OML/lmm/m/it/10 []x[] \OT1/lmr/m/n/1
-0 + \OML/lmm/m/it/10 []x[] \OT1/lmr/m/n/10 + \OML/lmm/m/it/10 []x[] \OT1/lmr/
-m/n/10 + \OML/lmm/m/it/10 []x[] \OT1/lmr/m/n/10 + \OML/lmm/m/it/10 []x[] \OT1
-/lmr/m/n/10 + \OML/lmm/m/it/10 []x[]x[] \OT1/lmr/m/n/10 + \OML/lmm/m/it/10 []
-x[]x[] \OT1/lmr/m/n/10 + \OML/lmm/m/it/10 []x[]x[] \OT1/lmr/m/n/10 + \OML/lmm/
-m/it/10 [];
- []
+l.2697 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{equation.3.5.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2713 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{equation.3.5.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2713 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{equation.3.5.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2713 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{equation.3.5.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2713 \begin{equation}
+                        [45]pdfTeX warning (ext4): destination with the same id
+entifier (name{equation.3.5.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2727 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{equation.3.5.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2727 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{equation.3.5.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2727 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{equation.3.5.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2727 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{equation.3.5.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2747 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{equation.3.5.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2747 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{equation.3.5.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2747 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{equation.3.5.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2747 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{equation.3.5.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2755 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{equation.3.5.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2755 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{equation.3.5.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2755 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{equation.3.5.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2755 \begin{equation}
+                        [46] [47] [48]
 
-pdfTeX warning (ext4): destination with the same identifier (name{equation.3.5.
-2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.2740 \begin{equation}
-                       pdfTeX warning (ext4): destination with the same identif
-ier (name{equation.3.5.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.2740 \begin{equation}
-                       pdfTeX warning (ext4): destination with the same identif
-ier (name{equation.3.5.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.2740 \begin{equation}
-                       pdfTeX warning (ext4): destination with the same identif
-ier (name{equation.3.5.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.2740 \begin{equation}
-                       pdfTeX warning (ext4): destination with the same identif
-ier (name{equation.3.5.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.2748 \begin{equation}
-                       pdfTeX warning (ext4): destination with the same identif
-ier (name{equation.3.5.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.2748 \begin{equation}
-                       pdfTeX warning (ext4): destination with the same identif
-ier (name{equation.3.5.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.2748 \begin{equation}
-                       pdfTeX warning (ext4): destination with the same identif
-ier (name{equation.3.5.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.2748 \begin{equation}
-                       
-Overfull \hbox (6.74898pt too wide) in paragraph at lines 2795--2795
-[]\T1/lmtt/m/n/10 ## lm(formula = res.stud.birthweight^2 ~ age + motherage + mn
-ocig +[] 
- []
+Package natbib Warning: Citation `behar_validacion_2002' on page 49 undefined o
+n input line 2946.
 
-
-Overfull \hbox (11.99896pt too wide) in paragraph at lines 2795--2795
-[]\T1/lmtt/m/n/10 ##     mppwt + I(age^2) + I(motherage^2) + I(mnocig^2) + I(mp
-pwt^2),[] 
- []
-
-[60] [61] [62] [63]
-
-Package natbib Warning: Citation `behar_validacion_2002' on page 64 undefined o
-n input line 2939.
-
-[64]
+[49]
 Chapter 4.
-
-LaTeX Warning: Reference `fig:UNdataFig' on page 65 undefined on input line 298
-1.
-
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/UNdataFig-1' not found.
 
@@ -1586,24 +1260,16 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.2993 ...downproj_files/figure-latex/UNdataFig-1}
+l.3000 ...downproj_files/figure-latex/UNdataFig-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-[65
+[50
 
 ]
-
-LaTeX Warning: Reference `fig:Un11res' on page 66 undefined on input line 3006.
-
-
-
-LaTeX Warning: Reference `fig:Un11resPartial' on page 66 undefined on input lin
-e 3006.
-
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/Un11res-1' not found.
 
@@ -1611,7 +1277,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3022 ...okdownproj_files/figure-latex/Un11res-1}
+l.3029 ...okdownproj_files/figure-latex/Un11res-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
@@ -1626,24 +1292,13 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3038 ...roj_files/figure-latex/Un11resPartial-1}
+l.3045 ...roj_files/figure-latex/Un11resPartial-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-
-LaTeX Warning: Reference `fig:Educdata' on page 66 undefined on input line 3063
-.
-
-
-Overfull \hbox (43.93095pt too wide) has occurred while \output is active
-\T1/lmr/m/n/10 66 \T1/lmr/m/sl/10 CHAPTER 4.  TRANSFORMACIONES Y MÍNIMOS CUADRA
-DOS PONDERADOS
- []
-
-[66]
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/Educdata-1' not found.
 
@@ -1651,17 +1306,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3076 ...kdownproj_files/figure-latex/Educdata-1}
+l.3083 ...kdownproj_files/figure-latex/Educdata-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-
-LaTeX Warning: Reference `fig:Educres' on page 67 undefined on input line 3089.
-
-
+[51]
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/Educres-1' not found.
 
@@ -1669,25 +1321,12 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3109 ...okdownproj_files/figure-latex/Educres-1}
+l.3116 ...okdownproj_files/figure-latex/Educres-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
-
-[67]
-
-LaTeX Warning: Reference `tab:funciones' on page 68 undefined on input line 314
-4.
-
-
-LaTeX Warning: Reference `fig:linealPat' on page 68 undefined on input line 314
-4.
-
-
-LaTeX Warning: Reference `fig:linealPat' on page 68 undefined on input line 314
-6.
 
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/linealPat-1' not found.
@@ -1696,33 +1335,18 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3173 ...downproj_files/figure-latex/linealPat-1}
+l.3180 ...downproj_files/figure-latex/linealPat-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
+[52]
 
-Overfull \hbox (43.93095pt too wide) has occurred while \output is active
-\T1/lmr/m/n/10 68 \T1/lmr/m/sl/10 CHAPTER 4.  TRANSFORMACIONES Y MÍNIMOS CUADRA
-DOS PONDERADOS
- []
+Package natbib Warning: Citation `behar_validacion_2002' on page 53 undefined o
+n input line 3194.
 
-[68]
-
-LaTeX Warning: Reference `tab:funcionesVar' on page 69 undefined on input line 
-3187.
-
-
-Package natbib Warning: Citation `behar_validacion_2002' on page 69 undefined o
-n input line 3187.
-
-
-LaTeX Warning: Reference `fig:UNtransFig' on page 69 undefined on input line 32
-37.
-
-[69]
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/UNtransFig-1' not found.
 
@@ -1730,17 +1354,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3241 ...ownproj_files/figure-latex/UNtransFig-1}
+l.3248 ...ownproj_files/figure-latex/UNtransFig-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-
-LaTeX Warning: Reference `fig:UNtrans2Fig' on page 70 undefined on input line 3
-254.
-
+[53]
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/UNtrans2Fig-1' not found.
 
@@ -1748,37 +1369,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3273 ...wnproj_files/figure-latex/UNtrans2Fig-1}
+l.3280 ...wnproj_files/figure-latex/UNtrans2Fig-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-
-Overfull \hbox (43.93095pt too wide) has occurred while \output is active
-\T1/lmr/m/n/10 70 \T1/lmr/m/sl/10 CHAPTER 4.  TRANSFORMACIONES Y MÍNIMOS CUADRA
-DOS PONDERADOS
- []
-
-[70]
-
-LaTeX Warning: Reference `eq:boxcoxtrans' on page 71 undefined on input line 33
-10.
-
-
-LaTeX Warning: Reference `eq:boxcoxtrans' on page 71 undefined on input line 33
-14.
-
-
-Overfull \hbox (14.28436pt too wide) detected at line 3320
-\OML/lmm/m/it/10 `\OT1/lmr/m/n/10 ([]\OML/lmm/m/it/10 ; []\OMS/lmsy/m/n/10 j\O
-ML/lmm/m/it/10 \OT1/lmr/m/n/10 ) = \OMS/lmsy/m/n/10  [] [] []   [] [] [][] \OT
-1/lmr/m/n/10 = \OMS/lmsy/m/n/10  [] [] []   []\OML/lmm/m/it/10 SS[]\OT1/lmr/m/n
-/10 (\OML/lmm/m/it/10 \OT1/lmr/m/n/10 )\OML/lmm/m/it/10 :
- []
-
-[71]
+[54]
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/educLambda-1' not found.
 
@@ -1786,13 +1384,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3348 ...ownproj_files/figure-latex/educLambda-1}
+l.3355 ...ownproj_files/figure-latex/educLambda-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
+[55]
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/EducBC2Fig-1' not found.
 
@@ -1800,20 +1399,12 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3390 ...ownproj_files/figure-latex/EducBC2Fig-1}
+l.3397 ...ownproj_files/figure-latex/EducBC2Fig-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: Reference `fig:EducBC2Fig' on page 72 undefined on input line 33
-97.
-
-
-LaTeX Warning: Reference `fig:EducBC3Fig' on page 72 undefined on input line 33
-97.
 
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/EducBC3Fig-1' not found.
@@ -1822,52 +1413,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3407 ...ownproj_files/figure-latex/EducBC3Fig-1}
+l.3414 ...ownproj_files/figure-latex/EducBC3Fig-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-
-Overfull \hbox (43.93095pt too wide) has occurred while \output is active
-\T1/lmr/m/n/10 72 \T1/lmr/m/sl/10 CHAPTER 4.  TRANSFORMACIONES Y MÍNIMOS CUADRA
-DOS PONDERADOS
- []
-
-[72] [73]
-
-LaTeX Warning: Reference `eq:modV' on page 74 undefined on input line 3494.
-
-
-LaTeX Warning: Reference `eq:SSWE' on page 74 undefined on input line 3505.
-
-
-Overfull \hbox (43.93095pt too wide) has occurred while \output is active
-\T1/lmr/m/n/10 74 \T1/lmr/m/sl/10 CHAPTER 4.  TRANSFORMACIONES Y MÍNIMOS CUADRA
-DOS PONDERADOS
- []
-
-[74]
-
-LaTeX Warning: Reference `eq:VarBetaW' on page 75 undefined on input line 3546.
-
-
-
-LaTeX Warning: Reference `fig:Educres' on page 75 undefined on input line 3554.
-
-
-[75]
-Overfull \hbox (43.93095pt too wide) has occurred while \output is active
-\T1/lmr/m/n/10 76 \T1/lmr/m/sl/10 CHAPTER 4.  TRANSFORMACIONES Y MÍNIMOS CUADRA
-DOS PONDERADOS
- []
-
-[76]
-
-LaTeX Warning: Reference `fig:EducMCPFig' on page 77 undefined on input line 36
-30.
-
+[56] [57] [58] [59]
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/EducMCPFig-1' not found.
 
@@ -1875,38 +1428,23 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3648 ...ownproj_files/figure-latex/EducMCPFig-1}
+l.3655 ...ownproj_files/figure-latex/EducMCPFig-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-[77]
 
-Package natbib Warning: Citation `montgomery_introduction_2012' on page 78 unde
-fined on input line 3708.
-
-
-Package natbib Warning: Citation `fox_applied_2016' on page 78 undefined on inp
-ut line 3708.
+Package natbib Warning: Citation `montgomery_introduction_2012' on page 60 unde
+fined on input line 3715.
 
 
-Package longtable Warning: Column widths have changed
-(longtable)                in table 4.3 on input line 3710.
+Package natbib Warning: Citation `fox_applied_2016' on page 60 undefined on inp
+ut line 3715.
 
-
-Overfull \hbox (43.93095pt too wide) has occurred while \output is active
-\T1/lmr/m/n/10 78 \T1/lmr/m/sl/10 CHAPTER 4.  TRANSFORMACIONES Y MÍNIMOS CUADRA
-DOS PONDERADOS
- []
-
-[78]
+[60]
 Chapter 5.
-
-LaTeX Warning: Reference `fig:Un11resFig' on page 79 undefined on input line 37
-27.
-
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/Un11resFig-1' not found.
 
@@ -1914,20 +1452,13 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3731 ...ownproj_files/figure-latex/Un11resFig-1}
+l.3738 ...ownproj_files/figure-latex/Un11resFig-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-
-LaTeX Warning: Reference `fig:puntosAI' on page 79 undefined on input line 3742
-.
-
-[79
-
-]
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/puntosAI-1' not found.
 
@@ -1935,25 +1466,16 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3758 ...kdownproj_files/figure-latex/puntosAI-1}
+l.3765 ...kdownproj_files/figure-latex/puntosAI-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
+[61
 
-LaTeX Warning: Reference `fig:puntosAIw' on page 80 undefined on input line 376
-5.
-
-
-LaTeX Warning: Reference `fig:puntosAIw' on page 80 undefined on input line 376
-5.
-
-
-LaTeX Warning: Reference `fig:puntosAIw' on page 80 undefined on input line 376
-7.
-
+]
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/puntosAIw-1' not found.
 
@@ -1961,34 +1483,21 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3771 ...downproj_files/figure-latex/puntosAIw-1}
+l.3778 ...downproj_files/figure-latex/puntosAIw-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-[80]
-
-LaTeX Warning: Reference `fig:Un11res' on page 81 undefined on input line 3801.
-
-
-[81]
-
-LaTeX Warning: Reference `eq:hij' on page 82 undefined on input line 3827.
-
-
-LaTeX Warning: Reference `fig:Un11Hdiag' on page 82 undefined on input line 383
-7.
-
-
-Overfull \hbox (190.49844pt too wide) in paragraph at lines 3858--3858
+[62]
+Overfull \hbox (80.25436pt too wide) in paragraph at lines 3865--3865
 []\T1/lmtt/m/n/10 ##            Djibouti             Liberia               Naur
 u         North Korea             Somalia[] 
  []
 
 
-Overfull \hbox (190.49844pt too wide) in paragraph at lines 3858--3858
+Overfull \hbox (80.25436pt too wide) in paragraph at lines 3865--3865
 []\T1/lmtt/m/n/10 ##          0.03105290          0.03747901          0.0370851
 3          0.03105839          0.04390710[] 
  []
@@ -2000,22 +1509,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3871 ...downproj_files/figure-latex/Un11Hdiag-1}
+l.3878 ...downproj_files/figure-latex/Un11Hdiag-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-
-LaTeX Warning: Reference `fig:Un11Hdiag' on page 82 undefined on input line 387
-8.
-
-[82]
-
-LaTeX Warning: Reference `fig:Un11valAtip' on page 83 undefined on input line 3
-880.
-
+[63]
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/Un11valAtip-1' not found.
 
@@ -2023,18 +1524,13 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3905 ...wnproj_files/figure-latex/Un11valAtip-1}
+l.3912 ...wnproj_files/figure-latex/Un11valAtip-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-
-LaTeX Warning: Reference `fig:Un11valAtipElim' on page 83 undefined on input li
-ne 3918.
-
-[83]
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/Un11valAtipElim-1' not fou
 nd.
@@ -2043,24 +1539,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3923 ...oj_files/figure-latex/Un11valAtipElim-1}
+l.3930 ...oj_files/figure-latex/Un11valAtipElim-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-[84]
-Underfull \hbox (badness 1082) in paragraph at lines 3994--3995
-\T1/lmr/m/n/10 (+20) En R las me-di-das de in-flu-en-cia se pueden cal-cu-lar u
-s-ando la fun-ción
- []
-
-
-LaTeX Warning: Reference `fig:Un11Cook' on page 85 undefined on input line 3996
-.
-
-[85]
+[64] [65]
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/Un11Cook-1' not found.
 
@@ -2068,16 +1554,12 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4010 ...kdownproj_files/figure-latex/Un11Cook-1}
+l.4017 ...kdownproj_files/figure-latex/Un11Cook-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: Reference `fig:UNdataDfBetas' on page 86 undefined on input line
- 4017.
 
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/UNdataDfBetas-1' not found
@@ -2087,18 +1569,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4038 ...proj_files/figure-latex/UNdataDfBetas-1}
+l.4045 ...proj_files/figure-latex/UNdataDfBetas-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-
-LaTeX Warning: Reference `fig:UNdataOtros' on page 86 undefined on input line 4
-045.
-
-[86]
+[66]
 
 ! LaTeX Error: File `bookdownproj_files/figure-latex/UNdataOtros-1' not found.
 
@@ -2106,39 +1584,39 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4068 ...wnproj_files/figure-latex/UNdataOtros-1}
+l.4075 ...wnproj_files/figure-latex/UNdataOtros-1}
                                                   
 I could not locate the file with any of these extensions:
 .pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
+(bookdownproj.bbl [67]
 
-LaTeX Warning: Reference `eq:modUN' on page 87 undefined on input line 4075.
+Package natbib Warning: Empty `thebibliography' environment on input line 3.
 
-No file bookdownproj.bbl.
+)
 
 Package natbib Warning: There were undefined citations.
 
+[68
 
-Package longtable Warning: Table widths have changed. Rerun LaTeX.
-
-[87] (bookdownproj.aux)
+] (bookdownproj.aux)
 
 LaTeX Warning: There were undefined references.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 16550 strings out of 479697
- 271722 string characters out of 2876983
- 561988 words of memory out of 3000000
- 32656 multiletter control sequences out of 15000+200000
- 496611 words of font info for 228 fonts, out of 3000000 for 9000
+ 16503 strings out of 479697
+ 271563 string characters out of 2876983
+ 579287 words of memory out of 3000000
+ 32654 multiletter control sequences out of 15000+200000
+ 492052 words of font info for 211 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 79i,22n,85p,948b,480s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 79i,22n,85p,939b,478s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program Files/MiKTe
 X/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/
 lm-mathsy.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program
@@ -2156,14 +1634,14 @@ pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Program Files/
 MiKTeX/fonts/type1/public/lm/lmr5.pfb><C:/Program Files/MiKTeX/fonts/type1/publ
 ic/lm/lmr7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Prog
 ram Files/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Program Files/MiKTeX/font
-s/type1/public/lm/lmro10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lms
-y10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy5.pfb><C:/Program Fi
-les/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/Program Files/MiKTeX/fonts/type1
-/public/lm/lmtk10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmtt10.pfb
-><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmtti10.pfb>
-Output written on bookdownproj.pdf (87 pages, 760024 bytes).
+s/type1/public/lm/lmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lms
+y5.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/Program Fil
+es/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Program Files/MiKTeX/fonts/type1
+/public/lm/lmtt10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmtti10.pf
+b>
+Output written on bookdownproj.pdf (69 pages, 722478 bytes).
 PDF statistics:
- 997 PDF objects out of 1000 (max. 8388607)
- 396 named destinations out of 1000 (max. 500000)
- 49489 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 1037 PDF objects out of 1200 (max. 8388607)
+ 378 named destinations out of 1000 (max. 500000)
+ 47441 words of extra memory for PDF output out of 51595 (max. 10000000)
 

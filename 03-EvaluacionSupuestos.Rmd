@@ -232,7 +232,7 @@ En esta sección mostramos la evaluación de los supuestos a través del anális
 ### Gráficos de residuos
 Un gráfico de los residuos es una forma efectiva de investigar posibles alejamientos de los supuestos. Generalmente, se grafican los residuos estudentizados $(r_{i})$ contra los valores ajustados $\haty_{i}$ (o contra alguna de las covariables $x_{ij}$). Este tipo de gráfico es de gran ayuda para detectar la correcta especificación del modelo y homocedasticidad. Algunos patrones de residuos se pueden observar en la Figura \@ref(fig:PatronesResiduos). 
 
-```{r PatronesResiduos, echo=F, fig.height = 5, fig.width = 7,fig.align = "center",fig.cap = "Ejemplos de posibles patrones de residuos",warning=FALSE,message = FALSE}
+```{r PatronesResiduos, echo=F, fig.height = 4, fig.width = 8,fig.align = "center",fig.cap = "Ejemplos de posibles patrones de residuos",warning=FALSE,message = FALSE}
 set.seed(1)
 x1= runif(100,0,1)
 e1 = rnorm(100)
@@ -485,7 +485,7 @@ Como se mencionó antes, la prueba exige que se tenga múltiples observaciones p
 \rule{\textwidth}{0.4pt}
 #### Base de datos de la longitud de los peces - prueba de falta de ajuste
 La Figura \@ref(fig:pecesResiduos1) muestra los gráficos de los residuos para el modelo ajustado a los datos de la longitud de los peces.
-```{r pecesResiduos1, message=FALSE, warning=FALSE, fig.height = 3.5, fig.width = 4,fig.align = "center",fig.cap = "Datos de la longitud de los peces. Gráfico de los residuos estudentizados contra los valores ajustados."}
+```{r pecesResiduos1, message=FALSE, warning=FALSE, fig.height =4, fig.width = 5,fig.align = "center",fig.cap = "Datos de la longitud de los peces. Gráfico de los residuos estudentizados contra los valores ajustados."}
 res.stud.bass = studres(mod.bass)
 mod.fit.bass = mod.bass$fitted.values
 plot(mod.fit.bass,res.stud.bass, ylab='residuos estudentizados',
@@ -623,7 +623,7 @@ La prueba de Shapiro-Wilks para ajuste de los datos de peso al nacer es:
 ```{r}
 shapiro.test(res.stud.birthweight)
 ```
-A partir de este resultado, no tenemos evidencia suficiente para rechazar que los errores se distribuyen normal. En esta función de R, el valor-$p$ es calculado usando una aproximación propuesta por Royston (1995).
+A partir de este resultado, no tenemos evidencia suficiente para rechazar que los errores se distribuyen normal. En esta función de R, el valor-$p$ es calculado usando una aproximación.
 
 \rule{\textwidth}{0.4pt}
 

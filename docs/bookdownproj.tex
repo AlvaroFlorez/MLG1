@@ -3,7 +3,7 @@
 \PassOptionsToPackage{hyphens}{url}
 %
 \documentclass[
-]{book}
+]{article}
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
 \usepackage{ifxetex,ifluatex}
@@ -41,6 +41,7 @@
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -109,52 +110,50 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
 \usepackage{booktabs}
-\usepackage{amsmath}
-\usepackage{inputenc}
 \usepackage{caption}
 \usepackage{natbib}
-
 \parindent=0cm
 %\itemsep=0.7cm
 \parskip=0.2cm
 %\baselineskip=1cm
 \textheight=22.5cm \textwidth=16cm \setlength{\oddsidemargin}{0cm}
 \setlength{\evensidemargin}{0cm} \setlength{\topmargin}{-1cm}
-
-\newcommand{\bZERO}{\boldsymbol{0}}
-\newcommand{\bONE}{\boldsymbol{1}}
+\usepackage{amsmath}
+\usepackage{inputenc}
+\usepackage{bm}
+\newcommand{\bx}{\bm{x}}
+\newcommand{\bX}{\bm{X}}
+\newcommand{\bZERO}{\bm{0}}
+\newcommand{\bONE}{\bm{1}}
 \newcommand{\tr}{\mbox{tr}}
-
-\newcommand{\bb}{\boldsymbol{b}}
+\newcommand{\bb}{\bm{b}}
 \newcommand{\hatbb}{\widehat{\bb}}
-\newcommand{\bc}{\boldsymbol{c}}
-\newcommand{\bC}{\boldsymbol{C}}
-\newcommand{\be}{\boldsymbol{e}}
-\newcommand{\bH}{\boldsymbol{H}}
-\newcommand{\bI}{\boldsymbol{I}}
-\newcommand{\br}{\boldsymbol{r}}
-\newcommand{\bR}{\boldsymbol{R}}
-\newcommand{\bT}{\boldsymbol{T}}
-\newcommand{\bx}{\boldsymbol{x}}
-\newcommand{\bX}{\boldsymbol{X}}
-\newcommand{\by}{\boldsymbol{y}}
-\newcommand{\bZ}{\boldsymbol{Z}}
-\newcommand{\bV}{\boldsymbol{V}}
-\newcommand{\bW}{\boldsymbol{W}}
-\newcommand{\bz}{\boldsymbol{z}}
+\newcommand{\bc}{\bm{c}}
+\newcommand{\bC}{\bm{C}}
+\newcommand{\be}{\bm{e}}
+\newcommand{\bH}{\bm{H}}
+\newcommand{\bI}{\bm{I}}
+\newcommand{\br}{\bm{r}}
+\newcommand{\bR}{\bm{R}}
+\newcommand{\bT}{\bm{T}}
+\newcommand{\by}{\bm{y}}
+\newcommand{\bZ}{\bm{Z}}
+\newcommand{\bV}{\bm{V}}
+\newcommand{\bW}{\bm{W}}
+\newcommand{\bz}{\bm{z}}
 \newcommand{\tildey}{\widetilde{y}}
 \newcommand{\tildeby}{\widetilde{\by}}
 \newcommand{\haty}{\widehat{y}}
 \newcommand{\hatby}{\widehat{\by}}
-\newcommand{\bbeta}{\boldsymbol{\beta}}
+\newcommand{\bbeta}{\bm{\beta}}
 \newcommand{\hatbeta}{\widehat{\beta}}
 \newcommand{\hatbbeta}{\widehat{\bbeta}}
-\newcommand{\bgamma}{\boldsymbol{\gamma}}
+\newcommand{\bgamma}{\bm{\gamma}}
 \newcommand{\hatmu}{\widehat{\mu}}
 \newcommand{\hatsigma}{\widehat{\sigma}}
 \newcommand{\hatlambda}{\widehat{\lambda}}
-\newcommand{\btheta}{\boldsymbol{\theta}}
-\newcommand{\bvarepsi}{\boldsymbol{\varepsilon}}
+\newcommand{\boldtheta}{\bm{\theta}}
+\newcommand{\bvarepsi}{\bm{\varepsilon}}
 \renewcommand{\figurename}{Figura}
 \renewcommand{\tablename}{Tabla}
 \ifluatex
@@ -171,12 +170,12 @@
 \maketitle
 
 {
-\setcounter{tocdepth}{1}
+\setcounter{tocdepth}{2}
 \tableofcontents
 }
 \hypertarget{introducciuxf3n}{%
-\chapter*{Introducción}\label{introducciuxf3n}}
-\addcontentsline{toc}{chapter}{Introducción}
+\section*{Introducción}\label{introducciuxf3n}}
+\addcontentsline{toc}{section}{Introducción}
 
 Estas son las notas de clase del curso Modelo Lineal General I. Las temáticas que se tratarán son:
 
@@ -216,11 +215,11 @@ Tenga en cuenta que el propósito de estas notas de clase no es reemplazar los t
 \end{itemize}
 
 \hypertarget{modelo-lineal-simple}{%
-\chapter{Modelo lineal simple}\label{modelo-lineal-simple}}
+\section{Modelo lineal simple}\label{modelo-lineal-simple}}
 
 \hypertarget{datos-de-peso-al-nacer}{%
-\section*{Datos de peso al nacer}\label{datos-de-peso-al-nacer}}
-\addcontentsline{toc}{section}{Datos de peso al nacer}
+\subsection*{Datos de peso al nacer}\label{datos-de-peso-al-nacer}}
+\addcontentsline{toc}{subsection}{Datos de peso al nacer}
 
 Los datos \texttt{birthweight} (disponible en el campus virtual) contienen el peso y la edad gestacional de \(42\) recién nacidos. El objetivo del estudio es investigar cómo la edad gestational del feto influyen en el peso al nacer durante las últimas semanas del embarazo. Aunque la base de datos contiene otras variables, por ahora solo consideramos el peso y la edad gestacional.
 
@@ -264,7 +263,7 @@ Con este conjunto de datos podemos plantear las siguientes preguntas:
 Estas preguntas se pueden resolver a partir de un análisis de regresión lineal.
 
 \hypertarget{regresion-lineal-simple}{%
-\section{Regresion lineal simple}\label{regresion-lineal-simple}}
+\subsection{Regresion lineal simple}\label{regresion-lineal-simple}}
 
 En una análisis de regresión simple estamos interesados en modelar la relación entre una variable de entrada (regresor, variable independiente o covariable) \(X\) y una variable de salida (respuesta o variable dependiente) \(Y\).
 
@@ -279,7 +278,7 @@ El modelo de regresión nos permite:
 \end{itemize}
 
 \hypertarget{modelo-lineal-simple-1}{%
-\section{Modelo lineal simple}\label{modelo-lineal-simple-1}}
+\subsection{Modelo lineal simple}\label{modelo-lineal-simple-1}}
 
 Sea \((y_{i},x_{i})\) la i-ésima observación de la variable respuesta \((y)\) y la covariable \((x)\), para \(i=1,\ldots,n\), con \(n\) igual al número total de observaciones. \textbf{El modelo lineal simple} se puede expresar de la forma:
 \[
@@ -328,7 +327,7 @@ El proceso de generación de datos del modelo de regresión lineal se ilustra en
 \end{figure}
 
 \hypertarget{estimaciuxf3n-de-los-paruxe1metros}{%
-\section{Estimación de los parámetros}\label{estimaciuxf3n-de-los-paruxe1metros}}
+\subsection{Estimación de los parámetros}\label{estimaciuxf3n-de-los-paruxe1metros}}
 
 Los parámetros \(\beta_{0}\) y \(\beta_{1}\) son desconocidos y deben estimarse a partir de los datos. Para esto utilizamos el método de \textbf{mínimos cuadrados ordinarios (MCO)}.
 
@@ -360,7 +359,7 @@ donde \(s_{X}\) y \(s_{Y}\) son las desviaciones estándar muestrales de \(X\) y
 
 La diferencia entre el valor observado \((y_{i})\) y el valor ajustado correspondiente \((\widehat{y}_{i})\) es llamado \textbf{residuo} (o residual):
 \[
-e_{i}= y_{i} - (\hatbeta_{0} + \hatbeta_{1}x_{i}) = y_{i}-\haty_{i}, \mbox{ para }i=1,\ldots,n.
+e_{i}= y_{i} - (\widehat{\beta}_{0} + \widehat{\beta}_{1}x_{i}) = y_{i}-\widehat{y}_{i}, \mbox{ para }i=1,\ldots,n.
 \]
 La Figura \ref{fig:Figresiduos} presenta los residuos de forma gráfica. Estos juegan un papel importante para la evaluar la bondad del ajuste del modelo (detectar posibles desviaciones a los supuestos asumidos).
 
@@ -374,7 +373,7 @@ La Figura \ref{fig:Figresiduos} presenta los residuos de forma gráfica. Estos j
 \end{figure}
 
 \hypertarget{estimaciuxf3n-de-sigma2}{%
-\section{\texorpdfstring{Estimación de \(\sigma^{2}\)}{Estimación de \textbackslash sigma\^{}\{2\}}}\label{estimaciuxf3n-de-sigma2}}
+\subsection{\texorpdfstring{Estimación de \(\sigma^{2}\)}{Estimación de \textbackslash sigma\^{}\{2\}}}\label{estimaciuxf3n-de-sigma2}}
 
 La estimación de \(\sigma^{2}\) se hace a partir de la suma de cuadrados de los residuos:
 \[
@@ -382,15 +381,15 @@ SS_{res} = \sum_{i=1}^{n}e^{2}_{i} = \sum_{i=1}^{n} (y_{i}-\widehat{\beta}_{0} -
 \]
 El valor esperado de \(SS_{res}\) es \(E(SS_{res})=(n-2)\sigma^{2}\) (Para el caso de regresión múltiple, ver Sección C.3 de \citet{montgomery_introduction_2012}). Por lo tanto, un estimador insesgado de \(\sigma^{2}\) es:
 \[
-\hatsigma_{i} = \frac{SS_{res}}{n-2} = MS_{res}.
+\widehat{\sigma}_{i} = \frac{SS_{res}}{n-2} = MS_{res}.
 \]
 La cantidad \(MS_{res}\) es llamada \textbf{cuadrado medio de los residuos}.
 
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{datos-de-peso-al-nacer.-modelo-y-estimaciuxf3n-de-parametros}{%
-\subsection*{Datos de peso al nacer. Modelo y estimación de parametros}\label{datos-de-peso-al-nacer.-modelo-y-estimaciuxf3n-de-parametros}}
-\addcontentsline{toc}{subsection}{Datos de peso al nacer. Modelo y estimación de parametros}
+\subsubsection*{Datos de peso al nacer. Modelo y estimación de parametros}\label{datos-de-peso-al-nacer.-modelo-y-estimaciuxf3n-de-parametros}}
+\addcontentsline{toc}{subsubsection}{Datos de peso al nacer. Modelo y estimación de parametros}
 
 Para los datos de peso al nacer se propone el siguiente modelo:
 \begin{equation}
@@ -420,7 +419,7 @@ En R, la estimación por MCO se realiza a través de la función \texttt{lm}:
 
 De aquí obtenemos que \(\widehat{\beta}_{0} =-3.63\) y \(\widehat{\beta}_{1} =0.18\). Note que la estimación del intercepto es negativa, lo que es físicamente imposible. Además tampoco tiene sentido una edad gestacional igual a cero. Por lo cual, este parámetro no tiene interpretación en este caso. \(\beta_{0}\) solo tiene interpretación cuando las observaciones de \(x\) están alrededor de cero.
 
-A partir de \(\hatbeta_{1}\), podemos concluir que la edad gestacional tiene un efecto positivo sobre el peso del recién nacido (el coeficiente estimado es positivo). Por cada incremento de una semana en la edad gestacional, el valor esperado del peso del recién nacido aumenta 0.18 kilogramos.
+A partir de \(\widehat{\beta}_{1}\), podemos concluir que la edad gestacional tiene un efecto positivo sobre el peso del recién nacido (el coeficiente estimado es positivo). Por cada incremento de una semana en la edad gestacional, el valor esperado del peso del recién nacido aumenta 0.18 kilogramos.
 
 La representación gráfica del modelo estimado se presenta en la Figura \ref{fig:FigMCO2}.
 
@@ -456,87 +455,87 @@ La estimación de \(\sigma\) es:
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{propiedades-de-los-estimadores-por-mco}{%
-\section{Propiedades de los estimadores por MCO}\label{propiedades-de-los-estimadores-por-mco}}
+\subsection{Propiedades de los estimadores por MCO}\label{propiedades-de-los-estimadores-por-mco}}
 
-Los estimadores de \(\hatbeta_{0}\) y \(\hatbeta_{1}\) son una combinación lineal de las observaciones:
+Los estimadores de \(\widehat{\beta}_{0}\) y \(\widehat{\beta}_{1}\) son una combinación lineal de las observaciones:
 \begin{equation}
-\hatbeta_{i} = \sum_{i=1}^{n} \frac{(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sum_{i=1}^{n}(x_{i}-\bar{x})^2} = \sum_{i=1}^{n} \frac{(x_{i}-\bar{x})}{\sum_{i=1}^{n}(x_{i}-\bar{x})^2}y_{i} = \sum_{i=1}^{n}c_{i}y_{i}.
+\widehat{\beta}_{i} = \sum_{i=1}^{n} \frac{(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sum_{i=1}^{n}(x_{i}-\bar{x})^2} = \sum_{i=1}^{n} \frac{(x_{i}-\bar{x})}{\sum_{i=1}^{n}(x_{i}-\bar{x})^2}y_{i} = \sum_{i=1}^{n}c_{i}y_{i}.
 \label{eq:beta1cl}
 \end{equation}
 y
 \[
-\hatbeta_{0} = \bar{y} - \hatbeta_{1}\bar{x} = \sum_{i=1}^{n}\left( \frac{1}{n} - c_{i}\bar{x} \right)y_{i} = \sum_{i=1}^{n}d_{i}y_{i}.
+\widehat{\beta}_{0} = \bar{y} - \widehat{\beta}_{1}\bar{x} = \sum_{i=1}^{n}\left( \frac{1}{n} - c_{i}\bar{x} \right)y_{i} = \sum_{i=1}^{n}d_{i}y_{i}.
 \]
 Además, se tiene que \(\sum_{i=1}^{n}c_{i}=0\) y \(\sum_{i=1}^{n}c_{i}x_{i}=1\). Los valores ajustados también son combinaciones lineales de los datos:
 \[
-\haty_{i} = \hatbeta_{0} + \hatbeta_{1}x_{i} = \sum_{i=1}^{n}(d_{i}+c_{i}x_{i})y_{i}.
+\widehat{y}_{i} = \widehat{\beta}_{0} + \widehat{\beta}_{1}x_{i} = \sum_{i=1}^{n}(d_{i}+c_{i}x_{i})y_{i}.
 \]
-Puesto que los estimadores de \(\beta_{0}\) y \(\beta_{1}\) dependen de los errores, estos también son variables aleatorias. Por lo tanto debemos calcular el valor esperado y varianza de \(\hatbeta_{0}\) y \(\hatbeta_{1}\).
+Puesto que los estimadores de \(\beta_{0}\) y \(\beta_{1}\) dependen de los errores, estos también son variables aleatorias. Por lo tanto debemos calcular el valor esperado y varianza de \(\widehat{\beta}_{0}\) y \(\widehat{\beta}_{1}\).
 
-Si los supuestos del modelo se cumplen, tenemos que el valor esperado de \(\hatbeta_{1}\) es:
+Si los supuestos del modelo se cumplen, tenemos que el valor esperado de \(\widehat{\beta}_{1}\) es:
 \begin{equation}
 \begin{split}
-E(\hatbeta_{1}) &= E\left( \sum_{i=1}^{n}c_{i}y_{i} \right) = \sum_{i=1}^{n}c_{i}E(y_{i}) = \sum_{i=1}^{n} c_{i}(\beta_{0} + \beta_{1}x_{i} + \varepsilon_{i}) \\
+E(\widehat{\beta}_{1}) &= E\left( \sum_{i=1}^{n}c_{i}y_{i} \right) = \sum_{i=1}^{n}c_{i}E(y_{i}) = \sum_{i=1}^{n} c_{i}(\beta_{0} + \beta_{1}x_{i} + \varepsilon_{i}) \\
 &=\beta_{0}\sum_{i=1}^{n}c_{i} + \beta_{1}\sum_{i=1}^{n}c_{i}x_{i} = \beta_{1}.
 \end{split}
 \nonumber
 \end{equation}
-El valor esperado de \(\hatbeta_{0}\) es:
+El valor esperado de \(\widehat{\beta}_{0}\) es:
 \begin{equation}
 \begin{split}
-E(\hatbeta_{0}) &= E\left(\bar{y} - \hatbeta_{1}\bar{x} \right) = \frac{1}{n}\sum_{i=1}^{n}E(y_{i}) - \beta_{1}\bar{x} \\
+E(\widehat{\beta}_{0}) &= E\left(\bar{y} - \widehat{\beta}_{1}\bar{x} \right) = \frac{1}{n}\sum_{i=1}^{n}E(y_{i}) - \beta_{1}\bar{x} \\
 &= \frac{1}{n}\sum_{i=1}^{n}\left(\beta_{0} + \beta_{1}x_{i}\right) - \beta_{1}\bar{x} = \beta_{0}.
 \end{split}
 \nonumber
 \end{equation}
 
-Es decir que \(\hatbeta_{0}\) y \(\hatbeta_{1}\) son estimadores insesgado de \(\beta_{0}\) y \(\beta_{1}\),respectivamente.
+Es decir que \(\widehat{\beta}_{0}\) y \(\widehat{\beta}_{1}\) son estimadores insesgado de \(\beta_{0}\) y \(\beta_{1}\),respectivamente.
 
-La varianza de \(\hatbeta_{1}\) y \(\hatbeta_{0}\) son:
+La varianza de \(\widehat{\beta}_{1}\) y \(\widehat{\beta}_{0}\) son:
 \[
-V(\hatbeta_{1})= V \left( \sum_{i=1}^{n}c_{i}y_{i}\right) = \sum_{i=1}^{n}c_{i}^{2}V(y_{i}) = \sigma^{2}\sum_{i=1}^{n}c_{i}^{2} = \frac{\sigma^{2}}{S_{xx}},
+V(\widehat{\beta}_{1})= V \left( \sum_{i=1}^{n}c_{i}y_{i}\right) = \sum_{i=1}^{n}c_{i}^{2}V(y_{i}) = \sigma^{2}\sum_{i=1}^{n}c_{i}^{2} = \frac{\sigma^{2}}{S_{xx}},
 \]
 y
 \begin{equation}
 \begin{split}
-V(\hatbeta_{0}) &= V \left( \bar{y} - \hatbeta_{1}\bar{x}\right) = V (\bar{y}) + \bar{x}^{2}V(\hatbeta_{1}) - 2\bar{x}Cov(\bar{y},\hatbeta_{1}) \\
+V(\widehat{\beta}_{0}) &= V \left( \bar{y} - \widehat{\beta}_{1}\bar{x}\right) = V (\bar{y}) + \bar{x}^{2}V(\widehat{\beta}_{1}) - 2\bar{x}Cov(\bar{y},\widehat{\beta}_{1}) \\
 &= \sigma^{2} \left(\frac{1}{n} + \frac{\bar{x}^{2}}{S_{xx}}. \right),
 \end{split}
 \nonumber
 \end{equation}
-respectivamente. Finalmente, la covarianza entre \(\hatbeta_{0}\) y \(\hatbeta_{1}\) es:
+respectivamente. Finalmente, la covarianza entre \(\widehat{\beta}_{0}\) y \(\widehat{\beta}_{1}\) es:
 \begin{equation}
 \begin{split}
-Cov(\hatbeta_{0},\hatbeta_{1}) &= Cov\left(\bar{y} - \hatbeta_{1}\bar{x}, \hatbeta_{1} \right) = Cov\left( \bar{y}, \hatbeta_{1}\right) - \bar{x}V\left(\hatbeta_{1}\right) \\
+Cov(\widehat{\beta}_{0},\widehat{\beta}_{1}) &= Cov\left(\bar{y} - \widehat{\beta}_{1}\bar{x}, \widehat{\beta}_{1} \right) = Cov\left( \bar{y}, \widehat{\beta}_{1}\right) - \bar{x}V\left(\widehat{\beta}_{1}\right) \\
 &=  - \sigma^{2}\frac{\bar{x}}{S_{xx}}.
 \end{split}
 \nonumber
 \end{equation}
 
-Si se cumple que \(E(\varepsilon_{i}) = 0\), \(V(\varepsilon_{i}) = \sigma^{2}\) y \(Cov(\varepsilon_{i},\varepsilon_{j})=0\), se puede probar que los estimadores por MCO son insesgado y de varianza mínima (\textbf{teorema de Gauss-Markov}). Para la demostración en el caso de regresión múltiple, ver Sección C4 de \citet{montgomery_introduction_2012}. Esto quiere decir que, comparado con todos los posibles estimadores insesgados que son combinación lineal de las observaciones, \(\hatbeta_{0}\) y \(\hatbeta_{1}\) tienen las varianzas más pequeñas. Por esto los estimadores por MCO son considerados los \textbf{mejores estimadores lineales insesgados}.
+Si se cumple que \(E(\varepsilon_{i}) = 0\), \(V(\varepsilon_{i}) = \sigma^{2}\) y \(Cov(\varepsilon_{i},\varepsilon_{j})=0\), se puede probar que los estimadores por MCO son insesgado y de varianza mínima (\textbf{teorema de Gauss-Markov}). Para la demostración en el caso de regresión múltiple, ver Sección C4 de \citet{montgomery_introduction_2012}. Esto quiere decir que, comparado con todos los posibles estimadores insesgados que son combinación lineal de las observaciones, \(\widehat{\beta}_{0}\) y \(\widehat{\beta}_{1}\) tienen las varianzas más pequeñas. Por esto los estimadores por MCO son considerados los \textbf{mejores estimadores lineales insesgados}.
 
 \hypertarget{inferencia}{%
-\section{Inferencia}\label{inferencia}}
+\subsection{Inferencia}\label{inferencia}}
 
 También podemos hacer pruebas de hipótesis e intervalos de confianza para los parámetros del modelo y/o pronósticos.
 
 Por ejemplo, en los datos del peso al nacer podemos estar interesados en evaluar si la edad gestacional tiene un efecto positivo sobre el peso al nacer. Por lo tanto, debemos probar si \(\beta_{1} > 0\). También podríamos estar interesados en el valor esperado de un recién nacido para cierto valor especifico de edad gestacional, por ejemplo 38 semanas. Entonces, podemos calcular un intervalo de confianza para \(E(Y|x=38)\).
 
 \hypertarget{pruebas-de-hipuxf3tesis}{%
-\subsection{Pruebas de hipótesis}\label{pruebas-de-hipuxf3tesis}}
+\subsubsection{Pruebas de hipótesis}\label{pruebas-de-hipuxf3tesis}}
 
 Suponga la siguiente hipótesis:
 \begin{equation}
 H_{0}: \beta_{1} = \beta_{10} \mbox{  } H_{1}: \beta_{1} \neq \beta_{10}.
 \label{eq:H0beta1}
 \end{equation}
-Dado que \(\hatbeta_{1}\) es una combinación lineal de \(y_{i}\) \eqref{eq:beta1cl}, podemos concluir que:
+Dado que \(\widehat{\beta}_{1}\) es una combinación lineal de \(y_{i}\) \eqref{eq:beta1cl}, podemos concluir que:
 \[
-\hatbeta_{1} \sim N\left(\beta_{1}, \frac{\sigma^{2}}{S_{xx}}\right).
+\widehat{\beta}_{1} \sim N\left(\beta_{1}, \frac{\sigma^{2}}{S_{xx}}\right).
 \]
 Además,
 \begin{equation}
-t_{0} = \frac{\hatbeta_{1}-\beta_{10}}{\sqrt{\frac{MS_{res}}{S_{xx}}}}\sim t_{n-2}.
+t_{0} = \frac{\widehat{\beta}_{1}-\beta_{10}}{\sqrt{\frac{MS_{res}}{S_{xx}}}}\sim t_{n-2}.
 \label{eq:distB1}
 \end{equation}
 Por lo tanto, \(t_{0}\) es el estadístico de prueba para las hipótesis \eqref{eq:H0beta1}. Entonces, rechazamos \(H_{0}\) si \(|t_{0}| \ge t_{1-\alpha/2,n-p}\) (o por medio del valor-\(p\) asociado).
@@ -547,16 +546,16 @@ H_{0}: \beta_{0} = \beta_{00} \mbox{  } H_{1}: \beta_{0} \neq \beta_{00},
 \]
 el estadístico de prueba es:
 \begin{equation}
-t_{0} = \frac{\hatbeta_{0}-\beta_{00}}{\sqrt{MS_{res}\left(\frac{1}{n}+\frac{\bar{x}^{2}}{S_{xx}} \right)}} \sim t_{n-2}.
+t_{0} = \frac{\widehat{\beta}_{0}-\beta_{00}}{\sqrt{MS_{res}\left(\frac{1}{n}+\frac{\bar{x}^{2}}{S_{xx}} \right)}} \sim t_{n-2}.
  \label{eq:distB0}
 \end{equation}
 
 \hypertarget{anuxe1lisis-de-varianza}{%
-\subsection{Análisis de varianza}\label{anuxe1lisis-de-varianza}}
+\subsubsection{Análisis de varianza}\label{anuxe1lisis-de-varianza}}
 
 El análisis de varianza se basa en la partición de la variabilidad total de la variable respuesta \(y\) en dos componentes, uno debido al modelo ajustado y otro al error. Primero, empecemos con la siguiente identidad:
 \begin{equation}
-y_{i} - \bar{y} = (y_{i} - \haty_{i}) + (\haty_{i} - \bar{y}).
+y_{i} - \bar{y} = (y_{i} - \widehat{y}_{i}) + (\widehat{y}_{i} - \bar{y}).
 \label{eq:decomposion}
 \end{equation}
 La Figura \ref{fig:anovafig} muestra la partición \eqref{eq:decomposion} en el punto \(i=3\). Aquí vemos que una parte de la diferencia entre \(y_{3}\) y \(\bar{y}\) es explicada por el modelo (línea discontinua roja).
@@ -573,8 +572,8 @@ La Figura \ref{fig:anovafig} muestra la partición \eqref{eq:decomposion} en el 
 Ahora evelavamos al cuadrado \eqref{eq:decomposion} y sumamos todos los componentes:
 \begin{equation}
 \begin{split}
-\sum_{i=1}^{n} (y_{i} - \bar{y})^{2} &= \sum_{i=1}^{n} (y_{i} - \haty_{i})^{2} + \sum_{i=1}^{n}(\haty_{i} - \bar{y})^{2} + 2 \sum_{i=1}^{n}(y_{i} - \haty_{i})(\haty_{i} - \bar{y}) \\
-&= \sum_{i=1}^{n} (y_{i} - \haty_{i})^{2} + \sum_{i=1}^{n}(\haty_{i} - \bar{y})^{2} \\
+\sum_{i=1}^{n} (y_{i} - \bar{y})^{2} &= \sum_{i=1}^{n} (y_{i} - \widehat{y}_{i})^{2} + \sum_{i=1}^{n}(\widehat{y}_{i} - \bar{y})^{2} + 2 \sum_{i=1}^{n}(y_{i} - \widehat{y}_{i})(\widehat{y}_{i} - \bar{y}) \\
+&= \sum_{i=1}^{n} (y_{i} - \widehat{y}_{i})^{2} + \sum_{i=1}^{n}(\widehat{y}_{i} - \bar{y})^{2} \\
 SST &= SS_{R} + SS_{res},
 \end{split}
 \label{eq:ss}
@@ -628,8 +627,8 @@ es llamada \textbf{coeficiente de determinación}, y cuantifica la cantidad de v
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{datos-de-peso-al-nacer.-pruebas-de-hipuxf3tesis-y-anova}{%
-\subsection*{Datos de peso al nacer. Pruebas de hipótesis y ANOVA}\label{datos-de-peso-al-nacer.-pruebas-de-hipuxf3tesis-y-anova}}
-\addcontentsline{toc}{subsection}{Datos de peso al nacer. Pruebas de hipótesis y ANOVA}
+\subsubsection*{Datos de peso al nacer. Pruebas de hipótesis y ANOVA}\label{datos-de-peso-al-nacer.-pruebas-de-hipuxf3tesis-y-anova}}
+\addcontentsline{toc}{subsubsection}{Datos de peso al nacer. Pruebas de hipótesis y ANOVA}
 
 Se quiere probar que la edad gestacional tiene influencia sobre el peso al nacer del recién nacido. Esto es:
 \[
@@ -679,17 +678,17 @@ Del resultado anterior, tenemos que:
 \end{itemize}
 
 \hypertarget{intervalos-de-confianza}{%
-\subsection{Intervalos de confianza}\label{intervalos-de-confianza}}
+\subsubsection{Intervalos de confianza}\label{intervalos-de-confianza}}
 
 \hypertarget{intervalos-de-confianza-para-beta_0-beta_1-y-sigma2}{%
-\subsubsection*{\texorpdfstring{Intervalos de confianza para \(\beta_{0}\), \(\beta_{1}\) y \(\sigma^{2}\)}{Intervalos de confianza para \textbackslash beta\_\{0\}, \textbackslash beta\_\{1\} y \textbackslash sigma\^{}\{2\}}}\label{intervalos-de-confianza-para-beta_0-beta_1-y-sigma2}}
-\addcontentsline{toc}{subsubsection}{Intervalos de confianza para \(\beta_{0}\), \(\beta_{1}\) y \(\sigma^{2}\)}
+\paragraph*{\texorpdfstring{Intervalos de confianza para \(\beta_{0}\), \(\beta_{1}\) y \(\sigma^{2}\)}{Intervalos de confianza para \textbackslash beta\_\{0\}, \textbackslash beta\_\{1\} y \textbackslash sigma\^{}\{2\}}}\label{intervalos-de-confianza-para-beta_0-beta_1-y-sigma2}}
+\addcontentsline{toc}{paragraph}{Intervalos de confianza para \(\beta_{0}\), \(\beta_{1}\) y \(\sigma^{2}\)}
 
-Los intervalos de confianza para \(\beta_{0}\) y \(\beta_{1}\) se construyen a partir de las distribuciones de probabilidad de \(\hatbeta_{0}\) y \(\hatbeta_{1}\). Esto es, \eqref{eq:distB0} y \eqref{eq:distB1}, respectivamente.
+Los intervalos de confianza para \(\beta_{0}\) y \(\beta_{1}\) se construyen a partir de las distribuciones de probabilidad de \(\widehat{\beta}_{0}\) y \(\widehat{\beta}_{1}\). Esto es, \eqref{eq:distB0} y \eqref{eq:distB1}, respectivamente.
 
 Por lo tanto, el intervalo del \(100(1-\alpha)\%\) de confianza para \(\beta_{j}\) es:
 \[
-\hatbeta_{j} \pm t_{1-\alpha/2,n-2}\sqrt{V(\hatbeta_{j})}, \mbox{ para }j=0,1.
+\widehat{\beta}_{j} \pm t_{1-\alpha/2,n-2}\sqrt{V(\widehat{\beta}_{j})}, \mbox{ para }j=0,1.
 \]
 Se puede demostrar que \((n-2)MS_{res}/\sigma^{2}\sim \chi^{2}_{n-2}\). Por lo tanto:
 \[
@@ -701,19 +700,19 @@ Entonces, el intervalo del \(100(1-\alpha)\%\) de confianza para \(\sigma^{2}\) 
 \]
 
 \hypertarget{intervalos-de-confianza-para-ey_i-y-una-predicciuxf3n-futura}{%
-\subsubsection*{\texorpdfstring{Intervalos de confianza para \(E(y_{i})\) y una predicción futura}{Intervalos de confianza para E(y\_\{i\}) y una predicción futura}}\label{intervalos-de-confianza-para-ey_i-y-una-predicciuxf3n-futura}}
-\addcontentsline{toc}{subsubsection}{Intervalos de confianza para \(E(y_{i})\) y una predicción futura}
+\paragraph*{\texorpdfstring{Intervalos de confianza para \(E(y_{i})\) y una predicción futura}{Intervalos de confianza para E(y\_\{i\}) y una predicción futura}}\label{intervalos-de-confianza-para-ey_i-y-una-predicciuxf3n-futura}}
+\addcontentsline{toc}{paragraph}{Intervalos de confianza para \(E(y_{i})\) y una predicción futura}
 
 Cuando el objetivo de ajustar un modelo de regresión es hacer predicciones, es posible hacer intervalos de confianza para la respuesta media, esto es \(E(Y|x_{0})=\mu_{Y|x_{0}}\), donde \(x_{0}\) es un valor de la covariable dentro del rango de valores observados de \(x\) en los datos.
 
 Una estimación insesgada de \(\mu_{Y|x_{0}}\) es:
 \[
-\widehat{\mu}_{Y|x_{0}} = \hatbeta_{0} + \hatbeta_{1}x_{0}.
+\widehat{\mu}_{Y|x_{0}} = \widehat{\beta}_{0} + \widehat{\beta}_{1}x_{0}.
 \]
 La varianza de \(\widehat{\mu}_{Y|x_{0}}\) es:
 \begin{equation}
 \begin{split}
-V(\widehat{\mu}_{Y|x_{0}}) &= V(\hatbeta_{0} + \hatbeta_{1}x_{0}) = V(\hatbeta_{0}) + x_{0}^{2}V(\hatbeta_{1}) + 2x_{0}Cov(\hatbeta_{0},\hatbeta_{1}) \\
+V(\widehat{\mu}_{Y|x_{0}}) &= V(\widehat{\beta}_{0} + \widehat{\beta}_{1}x_{0}) = V(\widehat{\beta}_{0}) + x_{0}^{2}V(\widehat{\beta}_{1}) + 2x_{0}Cov(\widehat{\beta}_{0},\widehat{\beta}_{1}) \\
 &= \sigma^{2}\left(\frac{1}{n} + \frac{\bar{x}^{2}}{S_{xx}} \right) + \sigma^{2}x_{0}^{2}\frac{1}{S_{xx}} - 2\sigma^{2}x_{0}\frac{\bar{x}}{S_{xx}} \\
 &= \sigma^{2}\left[\frac{1}{n} + \frac{(x_{0}-\bar{x})^{2}}{S_{xx}} \right].
 \end{split}
@@ -732,11 +731,11 @@ Note que la longitud del intervalo de confianza de \(\widehat{\mu}_{Y|x_{0}}\) d
 
 Ahora consideremos hacer una predicción de una observación futura de \(y\) para cierto valor de \(x\). Si queremos hacer la predicción para \(x=x_{0}\), entonces la predicción de la nueva observación es:
 \[
-\widetilde{y}_{0} = \hatbeta_{0} + \hatbeta_{1}x_{0}.
+\widetilde{y}_{0} = \widehat{\beta}_{0} + \widehat{\beta}_{1}x_{0}.
 \]
 Asumiendo que el modelo es correcta, el verdadero valor de \(y_{0}\) es:
 \[
-\widetilde{y}_{0} = \hatbeta_{0} + \hatbeta_{1}x_{0} + \varepsilon_{0}.
+\widetilde{y}_{0} = \widehat{\beta}_{0} + \widehat{\beta}_{1}x_{0} + \varepsilon_{0}.
 \]
 y su varianza es:
 \begin{equation}
@@ -751,8 +750,8 @@ El primer término a la derecha de \eqref{eq:varpred} corresponde a la variabili
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{datos-de-peso-al-nacer.-intervalos-de-confianza}{%
-\subsection*{Datos de peso al nacer. Intervalos de confianza}\label{datos-de-peso-al-nacer.-intervalos-de-confianza}}
-\addcontentsline{toc}{subsection}{Datos de peso al nacer. Intervalos de confianza}
+\subsubsection*{Datos de peso al nacer. Intervalos de confianza}\label{datos-de-peso-al-nacer.-intervalos-de-confianza}}
+\addcontentsline{toc}{subsubsection}{Datos de peso al nacer. Intervalos de confianza}
 
 El intervalo del 95\% de confianza para los parámetros del modelo \eqref{eq:modBirthweight} son:
 
@@ -786,7 +785,7 @@ El intervalo del 95\% de confianza para \(\sigma\) se calcula ``a pie'' de la si
 
 Se quiere predecir el peso medio de los recién nacidos en la semana gestacional 36. La estimación puntual es:
 \[
-\widehat{\mu}_{Y|x_{0}=36} = \hatbeta_{0} + \hatbeta_{1}(36) = -3.6312 + 0.1751*36 = 2.672.
+\widehat{\mu}_{Y|x_{0}=36} = \widehat{\beta}_{0} + \widehat{\beta}_{1}(36) = -3.6312 + 0.1751*36 = 2.672.
 \]
 El intervalo del 95\% de confianza para \(\widehat{\mu}_{Y|x_{0}=36}\) se puede calcular de la siguiente forma:
 
@@ -847,30 +846,30 @@ Gráficamente, podemos ver los intervalos de confianza y predicción de la sigui
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{estimador-por-muxe1xima-verosimilitud}{%
-\section{Estimador por máxima verosimilitud}\label{estimador-por-muxe1xima-verosimilitud}}
+\subsection{Estimador por máxima verosimilitud}\label{estimador-por-muxe1xima-verosimilitud}}
 
 Si consideramos que \(\varepsilon_{i}\sim N(0,\sigma^{2})\), entonces las observación también se distribuyen de forma normal \(y_{i}\sim N(\beta_{0}+\beta_{1}x_{i},\sigma^{2})\). Si además asumimos que las observaciones \((y_{i},x_{i})\) son independientes, entonces la función de verosimilitud es:
 \begin{equation}
 \begin{split}
-L(\btheta) =& \prod_{i=1}^{n} \left(\sqrt{2\pi\sigma^{2}} \right)^{-1/2}\exp\left[ - \frac{1}{2\sigma^{2}}(y_{i}-\beta_{0}-\beta_{1}x_{i})^{2} \right] \\
+L(\bm{\theta}) =& \prod_{i=1}^{n} \left(\sqrt{2\pi\sigma^{2}} \right)^{-1/2}\exp\left[ - \frac{1}{2\sigma^{2}}(y_{i}-\beta_{0}-\beta_{1}x_{i})^{2} \right] \\
 =& \left( \sqrt{2\pi\sigma^{2}} \right)^{-n/2}\exp\left[ - \frac{1}{2\sigma^{2}} \sum_{i=1}^{n}(y_{i}-\beta_{0}-\beta_{1}x_{i})^{2}\right],
 \end{split}
 \nonumber
 \end{equation}
-para \(\btheta=(\beta_{0},\beta_{1},\sigma^{2})'\). La log-verosimilitud es:
+para \(\bm{\theta}=(\beta_{0},\beta_{1},\sigma^{2})'\). La log-verosimilitud es:
 \[
-\ell (\btheta) = - \left(\frac{n}{2}\right)\left[ \log (2 \pi) - \log \sigma^{2}\right] - \frac{1}{2\sigma^{2}}\sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i})^{2}. 
+\ell (\bm{\theta}) = - \left(\frac{n}{2}\right)\left[ \log (2 \pi) - \log \sigma^{2}\right] - \frac{1}{2\sigma^{2}}\sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i})^{2}. 
 \]
-El estimador de máxima verosimilitud de \(\btheta\) debe satisfacer:
+El estimador de máxima verosimilitud de \(\bm{\theta}\) debe satisfacer:
 \[
-\left. \frac{\partial \ell(\btheta)}{\partial \beta_{0}} \right|_{\widetilde{\btheta}} = \frac{1}{\widetilde{\sigma}^{2}}\sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i}) = 0,
+\left. \frac{\partial \ell(\bm{\theta})}{\partial \beta_{0}} \right|_{\widetilde{\bm{\theta}}} = \frac{1}{\widetilde{\sigma}^{2}}\sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i}) = 0,
 \]
 \[
-\left. \frac{\partial \ell(\btheta)}{\partial \beta_{1}} \right|_{\widetilde{\btheta}} = \frac{1}{\widetilde{\sigma}^{2}}\sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i})x_{i} = 0,
+\left. \frac{\partial \ell(\bm{\theta})}{\partial \beta_{1}} \right|_{\widetilde{\bm{\theta}}} = \frac{1}{\widetilde{\sigma}^{2}}\sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i})x_{i} = 0,
 \]
 y
 \[
-\left. \frac{\partial \ell(\btheta)}{\partial \sigma^{2}} \right|_{\widetilde{\btheta}} = -\frac{n}{2\widetilde{\sigma}^{2}} + \frac{n}{2\widetilde{\sigma}^{4}}
+\left. \frac{\partial \ell(\bm{\theta})}{\partial \sigma^{2}} \right|_{\widetilde{\bm{\theta}}} = -\frac{n}{2\widetilde{\sigma}^{2}} + \frac{n}{2\widetilde{\sigma}^{4}}
 \sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i})^{2} = 0,
 \]
 Luego de solucionar las ecuaciones anteriores se obtienen los estimadores por máxima verosimilitud:
@@ -889,7 +888,7 @@ Aquí observamos que los estimadores por máxima verosimilitud para \(\beta_{0}\
 Por lo general, los estimadores por máxima verosimilitud tienen mejores propiedades que los estimadores por MCO. Son asintoticamente insesgados, consistentes y asintoticamente de mínima varianza. Sin embargo, estos requieren de supuestos distribucionales completos. Recordemos que los estimadores por MCO solo requieren de una correcta especificación de los dos primeros momentos (valor esperado, varianza y covarianza).
 
 \hypertarget{algunas-consideraciones-finales}{%
-\section{Algunas consideraciones finales}\label{algunas-consideraciones-finales}}
+\subsection{Algunas consideraciones finales}\label{algunas-consideraciones-finales}}
 
 \begin{itemize}
 \tightlist
@@ -933,13 +932,13 @@ Los métodos para la detección de puntos atípicos e influyentes se presentará
 \end{itemize}
 
 \hypertarget{modelo-lineal-muxfaltiple}{%
-\chapter{Modelo lineal múltiple}\label{modelo-lineal-muxfaltiple}}
+\section{Modelo lineal múltiple}\label{modelo-lineal-muxfaltiple}}
 
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{bajo-peso-al-nacer}{%
-\section*{Bajo peso al nacer}\label{bajo-peso-al-nacer}}
-\addcontentsline{toc}{section}{Bajo peso al nacer}
+\subsection*{Bajo peso al nacer}\label{bajo-peso-al-nacer}}
+\addcontentsline{toc}{subsection}{Bajo peso al nacer}
 
 Retomemos la base de datos de bajo peso al nacer (disponible en el campus virtual). Aparte de la edad gestacional, el peso del recién nacido puede estar explicado con otros factores. Por ejemplo, el peso de los padres, salud de la madre, entre otros. A parte de la edad gestacional y el peso del recién nacido, vamos a observar también la variable peso de la madre antes del embarazo.
 
@@ -985,25 +984,25 @@ con \(\varepsilon_{i}\sim N(0,\sigma^{2})\), y \(cov(\varepsilon_{j},\varepsilon
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{modelo-lineal-muxfaltiple-1}{%
-\section{Modelo lineal múltiple}\label{modelo-lineal-muxfaltiple-1}}
+\subsection{Modelo lineal múltiple}\label{modelo-lineal-muxfaltiple-1}}
 
 En general, se puede relacionar la variable respuesta (\(y\)), con \(k\) covariables o variables predictoras. El modelo lineal múltiple se expresa de la siguiente forma:
 
 \begin{equation}
 \begin{split}
 y_{i} =& \beta_{0} + \beta_{1}x_{i1} + \beta_{2}x_{i2} + \ldots + \beta_{p-1} x_{i,p-1} + \varepsilon_{i} \\
-=& \bx_{i}'\bbeta + \varepsilon_{i}, \qquad i=1,\ldots,n, \\
+=& \bm{x}_{i}'\bm{\beta}+ \varepsilon_{i}, \qquad i=1,\ldots,n, \\
 \end{split}
 \label{eq:modMultiple}
 \end{equation}
 
-donde \(\bx_{i} = (1,x_{i1},x_{i2},\ldots,x_{i,p-1})'\) es el vector de dimensión \(p\) de covariables del individuo \(i\) y \(\bbeta = (\beta_{0},\beta_{1},\ldots,\beta_{p-1})'\) es el vector de dimensión \(p\) de coeficientes de regresión.
+donde \(\bm{x}_{i} = (1,x_{i1},x_{i2},\ldots,x_{i,p-1})'\) es el vector de dimensión \(p\) de covariables del individuo \(i\) y \(\bm{\beta}= (\beta_{0},\beta_{1},\ldots,\beta_{p-1})'\) es el vector de dimensión \(p\) de coeficientes de regresión.
 
 Los supuestos del modelo son los mismos que se plantearon en el capítulo anterior. Estos es: \(\varepsilon_{i} \sim N\left(0,\sigma^{2} \right)\) y \(cov(\varepsilon_{j},\varepsilon_{k})=0\), para todo \(j \neq k\).
 
 Dado que \(E(\varepsilon_{i})=0\), el valor esperado de \(Y\) es:
 \begin{equation}
-E(Y| x_{i1},x_{i2},\ldots,x_{i,p-1}) = E(Y| \bx_{i}) = \beta_{0} + \beta_{1}x_{i1} + \beta_{2}x_{i2} + \ldots + \beta_{p-1} x_{i,p-1} = \bx_{i}'\bbeta.
+E(Y| x_{i1},x_{i2},\ldots,x_{i,p-1}) = E(Y| \bm{x}_{i}) = \beta_{0} + \beta_{1}x_{i1} + \beta_{2}x_{i2} + \ldots + \beta_{p-1} x_{i,p-1} = \bm{x}_{i}'\bm{\beta}.
 \label{eq:expValue}
 \end{equation}
 El intercepto \(\beta_{0}\) es el valor esperado de \(Y\) cuando \(x_{i}=(1,0,0,\ldots,0)'\), es decir cuando todos las covariables toman el valor \(0\).
@@ -1022,49 +1021,49 @@ E(Y|x_{i,j+1}) - E(Y|x_{i,j}) = \beta_{j}.
 \]
 Es conveniente escribir el modelo de regresión múltiple \eqref{eq:modMultiple} de forma matricial:
 \[
-\by = \bX\bbeta + \bvarepsi,
+\bm{y}= \bm{X}\bm{\beta}+ \bm{\varepsilon},
 \]
 donde:
 \begin{gather}
 \begin{aligned}
-\by = \begin{pmatrix}
+\bm{y}= \begin{pmatrix}
 y_{1} \\ y_{2} \\ \vdots \\ y_{n}
-\end{pmatrix}, & \bX = \begin{pmatrix}
+\end{pmatrix}, & \bm{X}= \begin{pmatrix}
 1 & x_{11} & x_{12} & \ldots & x_{1,p-1} \\ 1 & x_{21} & x_{22} & \ldots & x_{2,p-1} \\ \vdots & \vdots & \vdots & \ddots & \vdots \\ 1 & x_{n1} & x_{n2} & \ldots & x_{n,p-1}
 \end{pmatrix},
-\bbeta = \begin{pmatrix}
+\bm{\beta}= \begin{pmatrix}
 \beta_{0} \\ \beta_{1} \\ \beta_{2} \\ \vdots \\ \beta_{p-1}
-\end{pmatrix}, & \bvarepsi = \begin{pmatrix}
+\end{pmatrix}, & \bm{\varepsilon}= \begin{pmatrix}
 \varepsilon_{1} \\ \varepsilon_{2} \\ \vdots \\ \varepsilon_{n}
 \end{pmatrix}.
 \end{aligned}
 \nonumber
 \end{gather}
-Además, los supuestos sobre los errores se pueden expresar como \(\bvarepsi \sim N(\bZERO, \sigma^{2}\bI)\), donde \(\bZERO\) es un vector con todas las entradas iguales a cero, y \(\bI\) es la matriz identidad.
+Además, los supuestos sobre los errores se pueden expresar como \(\bm{\varepsilon}\sim N(\bm{0}, \sigma^{2}\bm{I})\), donde \(\bm{0}\) es un vector con todas las entradas iguales a cero, y \(\bm{I}\) es la matriz identidad.
 
 \hypertarget{estimaciuxf3n-de-los-paruxe1metros-de-regresiuxf3n}{%
-\section{Estimación de los parámetros de regresión}\label{estimaciuxf3n-de-los-paruxe1metros-de-regresiuxf3n}}
+\subsection{Estimación de los parámetros de regresión}\label{estimaciuxf3n-de-los-paruxe1metros-de-regresiuxf3n}}
 
-La estimación de \(\bbeta\) se hace a través del método de mínimos cuadrados ordinarios. Por lo tanto, debemos encontrar el vector \(\hatbbeta\) que minimice:
+La estimación de \(\bm{\beta}\) se hace a través del método de mínimos cuadrados ordinarios. Por lo tanto, debemos encontrar el vector \(\widehat{\bm{\beta}}\) que minimice:
 \[
-S(\bbeta) =  \sum_{i=1}^{n}\left(y_{i} - \bx_{i}'\bbeta \right)^2 = \sum_{i=1}^{n}\epsilon_{i}^2.
+S(\bm{\beta}) =  \sum_{i=1}^{n}\left(y_{i} - \bm{x}_{i}'\bm{\beta}\right)^2 = \sum_{i=1}^{n}\epsilon_{i}^2.
 \]
 En forma matricial, tenemos:
 \begin{equation}
 \begin{split}
-S(\bbeta) &= \bvarepsi'\bvarepsi = (\by - \bX\bbeta)'(\by - \bX\bbeta) \\
-&= \by'\by - \bbeta'\bX'\by - \by'\bX\bbeta + \bbeta'\bX'\bX\bbeta \\
-&= \by'\by - 2\bbeta'\bX'\by + \bbeta'\bX'\bX \bbeta.
+S(\bm{\beta}) &= \bm{\varepsilon}'\bm{\varepsilon}= (\bm{y}- \bm{X}\bm{\beta})'(\bm{y}- \bm{X}\bm{\beta}) \\
+&= \bm{y}'\bm{y}- \bm{\beta}'\bm{X}'\bm{y}- \bm{y}'\bm{X}\bm{\beta}+ \bm{\beta}'\bm{X}'\bm{X}\bm{\beta}\\
+&= \bm{y}'\bm{y}- 2\bm{\beta}'\bm{X}'\bm{y}+ \bm{\beta}'\bm{X}'\bm{X}\bm{\beta}.
 \end{split}
 \nonumber
 \end{equation}
-Por lo tanto, \(\hatbbeta\) debe satisfacer:
+Por lo tanto, \(\widehat{\bm{\beta}}\) debe satisfacer:
 \[
-\left. \frac{\partial S}{\partial \bbeta} \right|_{\hatbbeta} = - 2\bX'\by + 2\bX'\bX \hatbbeta = \bZERO.
+\left. \frac{\partial S}{\partial \bm{\beta}} \right|_{\widehat{\bm{\beta}}} = - 2\bm{X}'\bm{y}+ 2\bm{X}'\bm{X}\widehat{\bm{\beta}}= \bm{0}.
 \]
 A partir de aquí obtenemos las \textbf{ecuaciones normales}:
 \[
-\bX'\bX \hatbbeta = \bX'\by.
+\bm{X}'\bm{X}\widehat{\bm{\beta}}= \bm{X}'\bm{y}.
 \]
 En más detalle:
 \begin{gather}
@@ -1074,30 +1073,30 @@ n & \sum x_{i1} & \sum_{i=1}^{n}x_{i2} & \ldots & \sum_{i=1}^{n}x_{i,p-1} \\
 \vdots & \vdots & \vdots & \ddots & \vdots \\
 \sum x_{i,p-1} & \sum x_{i1}x_{i,p-1} & \sum x_{i2}x_{i,p-1} & \ldots & \sum x_{i,p-1}^{2} \\
 \end{pmatrix} \begin{pmatrix}
-\hatbeta_{0} \\ \hatbeta_{1} \\ \vdots \\ \hatbeta_{p-1} \end{pmatrix} = \begin{pmatrix}
+\widehat{\beta}_{0} \\ \widehat{\beta}_{1} \\ \vdots \\ \widehat{\beta}_{p-1} \end{pmatrix} = \begin{pmatrix}
 \sum y_{i} \\ \sum x_{i1}y_{i} \\ \vdots \\ \sum x_{i,p-1}y_{i}
 \end{pmatrix}
 \nonumber
 \end{gather}
 Por lo cual, el estimador por mínimos cuadrados es:
 \[
-\hatbbeta = (\bX'\bX)^{-1}\bX'\by.
+\widehat{\bm{\beta}}= (\bm{X}'\bm{X})^{-1}\bm{X}'\bm{y}.
 \]
-Note que es necesario que \(\bX\) sea de rango completo, \(\mbox{rango}(\bX) = p \leq n\). Esta restricción es necesaria para asegurar que \(\bX'\bX\) sea no singular. Si \(\bX'\bX\) es singular, implica que existe una combinación lineal entre las columnas de \(\bX\), o que \(\mbox{rango}(\bX) < p\).
+Note que es necesario que \(\bm{X}\) sea de rango completo, \(\mbox{rango}(\bm{X}) = p \leq n\). Esta restricción es necesaria para asegurar que \(\bm{X}'\bm{X}\) sea no singular. Si \(\bm{X}'\bm{X}\) es singular, implica que existe una combinación lineal entre las columnas de \(\bm{X}\), o que \(\mbox{rango}(\bm{X}) < p\).
 
-El valor ajustado de \(y\) para el vector de covariables \(\bx_{i}\) es \(\haty_{i}= \bx_{i}'\hatbbeta\). Definiendo \(\hatby = (\haty_{1},\haty_{2},\ldots,\haty_{n})\), tenemos que:
+El valor ajustado de \(y\) para el vector de covariables \(\bm{x}_{i}\) es \(\widehat{y}_{i}= \bm{x}_{i}'\widehat{\bm{\beta}}\). Definiendo \(\widehat{\bm{y}}= (\widehat{y}_{1},\widehat{y}_{2},\ldots,\widehat{y}_{n})\), tenemos que:
 \[
-\hatby = \bX\hatbbeta = \bX(\bX'\bX)^{-1}\bX'\by = \bH\by.
+\widehat{\bm{y}}= \bm{X}\widehat{\bm{\beta}}= \bm{X}(\bm{X}'\bm{X})^{-1}\bm{X}'\bm{y}= \bm{H}\bm{y}.
 \]
-La matriz \((n\times n)\) \(\bH = \bX(\bX'\bX)^{-1}\bX'\) es llamada \textbf{matriz hat} (sombrero) y desempeña un papel importante en el análisis de regresión.
+La matriz \((n\times n)\) \(\bm{H}= \bm{X}(\bm{X}'\bm{X})^{-1}\bm{X}'\) es llamada \textbf{matriz hat} (sombrero) y desempeña un papel importante en el análisis de regresión.
 
-Los residuos del modelo \((e_{i}=y_{i}-\haty_{i})\) también se pueden expresar en forma matricial:
+Los residuos del modelo \((e_{i}=y_{i}-\widehat{y}_{i})\) también se pueden expresar en forma matricial:
 \[
-\be = \by - \bX'\hatbeta = \by - \bX(\bX'\bX)^{-1}\bX'\by = \by - \bH\by = (\bI_{n} - \bH)\by.
+\bm{e}= \bm{y}- \bm{X}'\widehat{\beta}= \bm{y}- \bm{X}(\bm{X}'\bm{X})^{-1}\bm{X}'\bm{y}= \bm{y}- \bm{H}\bm{y}= (\bm{I}_{n} - \bm{H})\bm{y}.
 \]
 
 \hypertarget{estimaciuxf3n-de-sigma2-1}{%
-\subsection{\texorpdfstring{Estimación de \(\sigma^{2}\)}{Estimación de \textbackslash sigma\^{}\{2\}}}\label{estimaciuxf3n-de-sigma2-1}}
+\subsubsection{\texorpdfstring{Estimación de \(\sigma^{2}\)}{Estimación de \textbackslash sigma\^{}\{2\}}}\label{estimaciuxf3n-de-sigma2-1}}
 
 Al igual que en la regresión simple, el estimador de \(\sigma^{2}\) es el cuadrado medio del error, definido como:
 \[
@@ -1106,23 +1105,23 @@ MS_{res} = \frac{SS_{res}}{n-p},
 donde:
 \begin{equation}
 \begin{split}
-SS_{res} &= \sum_{i=1}^{n}e^{2}_{i} = \be'\be = (\by - \bX\hatbbeta)'(\by - \bX\hatbbeta) \\
-&= (\by - \bH\by)'(\by - \bH\by) = \by'(\bI_{n}-\bH)'(\bI_{n}-\bH)\by = \by'(\bI_{n} - \bH)\by.
+SS_{res} &= \sum_{i=1}^{n}e^{2}_{i} = \bm{e}'\bm{e}= (\bm{y}- \bm{X}\widehat{\bm{\beta}})'(\bm{y}- \bm{X}\widehat{\bm{\beta}}) \\
+&= (\bm{y}- \bm{H}\bm{y})'(\bm{y}- \bm{H}\bm{y}) = \bm{y}'(\bm{I}_{n}-\bm{H})'(\bm{I}_{n}-\bm{H})\bm{y}= \bm{y}'(\bm{I}_{n} - \bm{H})\bm{y}.
 \end{split}
 \nonumber
 \end{equation}
 Se puede demostrar que \(MS_{res}\) es un estimador insesgado de \(\sigma^{2}\), es decir \(E(MS_{res})=\sigma^{2}\). Para esto debemos calcular el valor esperado de \(SS_{res}\).
 
-Sabemos que \(E(\by) = \bX\bbeta\) y \(V(\by) = \sigma^{2}\bI_{n}\), entonces:
+Sabemos que \(E(\bm{y}) = \bm{X}\bm{\beta}\) y \(V(\bm{y}) = \sigma^{2}\bm{I}_{n}\), entonces:
 \[
-E(SS_{res}) = E\left[\by'(\bI - \bH)\by\right] = \sigma^{2}\tr\left( \bI - \bH \right) + \bbeta'\bX'(\bI - \bH)\bX\bbeta = (n-p)\sigma^{2}.
+E(SS_{res}) = E\left[\bm{y}'(\bm{I}- \bm{H})\bm{y}\right] = \sigma^{2}\mbox{tr}\left( \bm{I}- \bm{H}\right) + \bm{\beta}'\bm{X}'(\bm{I}- \bm{H})\bm{X}\bm{\beta}= (n-p)\sigma^{2}.
 \]
 Por lo tanto, \(E(MS_{res}) = E(SS_{res})/(n-p) = \sigma^{2}\).
 
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{bajo-peso-al-nacer---estimaciuxf3n-de-paruxe1metros}{%
-\subsection{Bajo peso al nacer - estimación de parámetros}\label{bajo-peso-al-nacer---estimaciuxf3n-de-paruxe1metros}}
+\subsubsection{Bajo peso al nacer - estimación de parámetros}\label{bajo-peso-al-nacer---estimaciuxf3n-de-paruxe1metros}}
 
 Para ajustar el modelo:
 \[
@@ -1178,38 +1177,38 @@ Note que al adicionar la covariable \texttt{mppwt} se redujo el \(MS_{res}\).
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{propiedades-de-los-estimadores-por-mco-1}{%
-\subsection{Propiedades de los estimadores por MCO}\label{propiedades-de-los-estimadores-por-mco-1}}
+\subsubsection{Propiedades de los estimadores por MCO}\label{propiedades-de-los-estimadores-por-mco-1}}
 
-El valor esperado de \(\hatbbeta\) es:
+El valor esperado de \(\widehat{\bm{\beta}}\) es:
 \begin{equation}
 \begin{split}
-E(\hatbbeta) =& E\left[ (\bX'\bX)^{-1}\bX'\by \right] = E\left[ \bX'\bX)^{-1}\bX'(\bX\bbeta + \bvarepsi) \right] \\
-=& E\left[ (\bX'\bX)^{-1}\bX'\bX\bbeta + (\bX'\bX)^{-1}\bX'\bvarepsi \right] = \bbeta
+E(\widehat{\bm{\beta}}) =& E\left[ (\bm{X}'\bm{X})^{-1}\bm{X}'\bm{y}\right] = E\left[ \bm{X}'\bm{X})^{-1}\bm{X}'(\bm{X}\bm{\beta}+ \bm{\varepsilon}) \right] \\
+=& E\left[ (\bm{X}'\bm{X})^{-1}\bm{X}'\bm{X}\bm{\beta}+ (\bm{X}'\bm{X})^{-1}\bm{X}'\bm{\varepsilon}\right] = \bm{\beta}
 \end{split}
 \nonumber
 \end{equation}
-Por lo tanto, \(\hatbbeta\) es un estimador insesgado de \(\bbeta\) (si el modelo está bien espeficado).
+Por lo tanto, \(\widehat{\bm{\beta}}\) es un estimador insesgado de \(\bm{\beta}\) (si el modelo está bien espeficado).
 
-La matriz de varianzas-covarianzas de \(\hatbbeta\) es:
+La matriz de varianzas-covarianzas de \(\widehat{\bm{\beta}}\) es:
 \begin{equation}
 \begin{split}
-V(\hatbbeta) &= V\left[ (\bX'\bX)^{-1}\bX'\by \right] = (\bX'\bX)^{-1}\bX'V(\by)\bX(\bX'\bX)^{-1}  \\
-&= \sigma^{2}(\bX'\bX)^{-1}\bX'\bX(\bX'\bX)^{-1} = \sigma^{2}(\bX'\bX)^{-1}.
+V(\widehat{\bm{\beta}}) &= V\left[ (\bm{X}'\bm{X})^{-1}\bm{X}'\bm{y}\right] = (\bm{X}'\bm{X})^{-1}\bm{X}'V(\bm{y})\bm{X}(\bm{X}'\bm{X})^{-1}  \\
+&= \sigma^{2}(\bm{X}'\bm{X})^{-1}\bm{X}'\bm{X}(\bm{X}'\bm{X})^{-1} = \sigma^{2}(\bm{X}'\bm{X})^{-1}.
 \end{split}
 \nonumber
 \end{equation}
-Si \(\bC=(\bX'\bX)^{-1}\), entonces \(V(\hatbeta_{j}) = \sigma^{2}c_{jj}\) y \(Cov(\hatbeta_{j},\hatbeta_{k})=\sigma^{2}c_{jk}\), donde \(c_{jk}\) es la entrada \((j,k)\) de la matriz \(\bC\).
+Si \(\bm{C}=(\bm{X}'\bm{X})^{-1}\), entonces \(V(\widehat{\beta}_{j}) = \sigma^{2}c_{jj}\) y \(Cov(\widehat{\beta}_{j},\widehat{\beta}_{k})=\sigma^{2}c_{jk}\), donde \(c_{jk}\) es la entrada \((j,k)\) de la matriz \(\bm{C}\).
 
 \hypertarget{teorema-de-gauss-markov}{%
-\subsubsection*{Teorema de Gauss-Markov}\label{teorema-de-gauss-markov}}
-\addcontentsline{toc}{subsubsection}{Teorema de Gauss-Markov}
+\paragraph*{Teorema de Gauss-Markov}\label{teorema-de-gauss-markov}}
+\addcontentsline{toc}{paragraph}{Teorema de Gauss-Markov}
 
-Si, \(E(\bvarepsi) = \bZERO\) y \(V(\bvarepsi) = \sigma^{2}\bI_{n}\), el estimador por MCO, \(\hatbbeta = (\bX'\bX)\bX'\by\), es el mejor estimador lineal insesgado de \(\bbeta\). Esto quiere decir que es el estimador con menor varianza entre la clase de estimador insesgados que son combinaciones lineales de \(y\). Para la demostración, ver Sección C4 de \citet{montgomery_introduction_2012}.
+Si, \(E(\bm{\varepsilon}) = \bm{0}\) y \(V(\bm{\varepsilon}) = \sigma^{2}\bm{I}_{n}\), el estimador por MCO, \(\widehat{\bm{\beta}}= (\bm{X}'\bm{X})\bm{X}'\bm{y}\), es el mejor estimador lineal insesgado de \(\bm{\beta}\). Esto quiere decir que es el estimador con menor varianza entre la clase de estimador insesgados que son combinaciones lineales de \(y\). Para la demostración, ver Sección C4 de \citet{montgomery_introduction_2012}.
 
-Además, si \(\bvarepsi \sim N(\bZERO, \sigma^{2}\bI_{n})\), el estimador por MCO coincide con el estimador por máxima verosimilitud.
+Además, si \(\bm{\varepsilon}\sim N(\bm{0}, \sigma^{2}\bm{I}_{n})\), el estimador por MCO coincide con el estimador por máxima verosimilitud.
 
 \hypertarget{pruebas-de-hipuxf3tesis-1}{%
-\section{Pruebas de hipótesis}\label{pruebas-de-hipuxf3tesis-1}}
+\subsection{Pruebas de hipótesis}\label{pruebas-de-hipuxf3tesis-1}}
 
 Después de estimar el modelo podemos preguntarnos:
 
@@ -1221,10 +1220,10 @@ Después de estimar el modelo podemos preguntarnos:
   ¿cuales regresores específicos parecen importantes?
 \end{itemize}
 
-Para resolver estas preguntas podemos realizar pruebas de hipótesis. Generalmente, estos test requieren que \(\bvarepsi \sim N(\bZERO,\sigma^{2}\bI_{n})\).
+Para resolver estas preguntas podemos realizar pruebas de hipótesis. Generalmente, estos test requieren que \(\bm{\varepsilon}\sim N(\bm{0},\sigma^{2}\bm{I}_{n})\).
 
 \hypertarget{anuxe1lisis-de-varianza-1}{%
-\subsection{Análisis de varianza}\label{anuxe1lisis-de-varianza-1}}
+\subsubsection{Análisis de varianza}\label{anuxe1lisis-de-varianza-1}}
 
 Para probar la significancia del modelo (determinar si que la relación entre \(y\) y algunas de las covariables es lineal) se plantean las siguientes hipótesis:
 \begin{equation}
@@ -1245,14 +1244,14 @@ donde:
 \begin{itemize}
 \tightlist
 \item
-  \(SS_{T} = \sum_{i=1}^{n}(y_{i}-\bar{y})^{2} = (\by - \frac{1}{n}\bONE'\by)'(\by - \frac{1}{n}\bONE'\by)\),
+  \(SS_{T} = \sum_{i=1}^{n}(y_{i}-\bar{y})^{2} = (\bm{y}- \frac{1}{n}\bm{1}'\bm{y})'(\bm{y}- \frac{1}{n}\bm{1}'\bm{y})\),
 \item
-  \(SS_{R} = \sum_{i=1}^{n}(\haty_{i}-\bar{y})^{2} = (\bH\by - \frac{1}{n}\bONE'\by)'(\bH\by - \frac{1}{n}\bONE'\by)\),
+  \(SS_{R} = \sum_{i=1}^{n}(\widehat{y}_{i}-\bar{y})^{2} = (\bm{H}\bm{y}- \frac{1}{n}\bm{1}'\bm{y})'(\bm{H}\bm{y}- \frac{1}{n}\bm{1}'\bm{y})\),
 \item
-  \(SS_{res} = \sum_{i=1}^{n}(y_{i}-\haty_{i})^{2} = (\by - \bH\by)'(\by - \bH\by)\),
+  \(SS_{res} = \sum_{i=1}^{n}(y_{i}-\widehat{y}_{i})^{2} = (\bm{y}- \bm{H}\bm{y})'(\bm{y}- \bm{H}\bm{y})\),
 \end{itemize}
 
-y \(\bONE\) es un vector cuyas entradas son iguales a \(1\).
+y \(\bm{1}\) es un vector cuyas entradas son iguales a \(1\).
 
 Si \(H_{0}\) es cierta, tenemos que:
 \[
@@ -1264,11 +1263,11 @@ F_{0} = \frac{SS_{R}/(p-1)}{SS_{res}/(n-p)} = \frac{MS_{R}}{MS_{res}} \sim F_{p-
 \]
 También se puede probar que:
 \[
-E(MS_{res}) =  \sigma^{2} \mbox{ y }E(MS_{R}) =  \sigma^{2} + \frac{\bbeta^{*'}\bX_{c}'\bX_{c}\bbeta^{*}}{(p-1)\sigma^{2}},
+E(MS_{res}) =  \sigma^{2} \mbox{ y }E(MS_{R}) =  \sigma^{2} + \frac{\bm{\beta}^{*'}\bm{X}_{c}'\bm{X}_{c}\bm{\beta}^{*}}{(p-1)\sigma^{2}},
 \]
-donde \(\bbeta^{*} = (\beta_{1},\beta_{2},\ldots,\beta_{p-1})'\) y
+donde \(\bm{\beta}^{*} = (\beta_{1},\beta_{2},\ldots,\beta_{p-1})'\) y
 \[
-\bX_{c} = \begin{pmatrix}
+\bm{X}_{c} = \begin{pmatrix}
 x_{11} - \bar{x}_{1} & x_{12} - \bar{x}_{2} & \ldots & x_{1,p-1} - \bar{x}_{p-1} \\ 
 x_{21} - \bar{x}_{1} & x_{22} - \bar{x}_{2} & \ldots & x_{2,p-1} - \bar{x}_{p-1} \\ 
 \vdots & \vdots & \ddots & \vdots \\
@@ -1280,7 +1279,7 @@ x_{n1} - \bar{x}_{1} & x_{n2} - \bar{x}_{2} & \ldots & x_{n,p-1} - \bar{x}_{p-1}
 
 Si \(H_{0}\) no es cierta, tenemos que \(F_{0}\) sigue una distribución \(F\) no-central con \(p-1\) y \(n-p\) grados de libertad y parámetro de no centralidad:
 \[
-\lambda = \frac{\bbeta'\bX_{c}'\bX_{c}\bbeta}{\sigma^{2}}.
+\lambda = \frac{\bm{\beta}'\bm{X}_{c}'\bm{X}_{c}\bm{\beta}}{\sigma^{2}}.
 \]
 Estos nos resultados nos indican que si el valor \(F_{0}\) es grande, entonces al menos un \(\beta_{j}\) es diferente de cero.
 
@@ -1297,7 +1296,7 @@ R^{2}_{adj} = 1-\frac{SS_{res}/(n-p)}{SS_{T}/(n-1)} = 1 - \frac{MS_{res}}{SS_T/(
 Aunque no tiene interpretación, el \(R^{2}_{adj}\) puede usarse para comparar modelos al agregar covariables. Dado que \(SS_{T}/(n-1)\) es constante, el \(R^{2}_{adj}\) solo aumentará al agregar una covariable nueva al modelo si la adición de la covariable reduce el \(MS_{res}\).
 
 \hypertarget{pruebas-individuales-sobre-los-coeficientes}{%
-\subsection{Pruebas individuales sobre los coeficientes}\label{pruebas-individuales-sobre-los-coeficientes}}
+\subsubsection{Pruebas individuales sobre los coeficientes}\label{pruebas-individuales-sobre-los-coeficientes}}
 
 Al rechazar \(H_{0}\) de la prueba de hipótesis \eqref{eq:HANOVA} concluimos que al menos un coeficiente es diferente de cero. Por lo tanto, una o más covariables tienen un aporte significativo en el modelo. El paso que sigue es identificar estas covariables.
 
@@ -1307,96 +1306,96 @@ H_{0}: \beta_{j} = 0 \qquad H_{1}: \beta_{j} \neq 0.
 \]
 El estadística de prueba es:
 \[
-t_{0} = \frac{\hatbeta_{j}}{se(\hatbeta_{j})} = \frac{\hatbeta_{j}}{\sqrt{MS_{res}c_{jj}}},
+t_{0} = \frac{\widehat{\beta}_{j}}{se(\widehat{\beta}_{j})} = \frac{\widehat{\beta}_{j}}{\sqrt{MS_{res}c_{jj}}},
 \]
-donde \(c_{jj}\) es la entrada \((j,j)\) de la matriz \(\bC = (\bX'\bX)^{-1}\). Rechazamos \(H_{0}\) si \(|t_{0}| > t_{1-\alpha/2,n-p}\).
+donde \(c_{jj}\) es la entrada \((j,j)\) de la matriz \(\bm{C}= (\bm{X}'\bm{X})^{-1}\). Rechazamos \(H_{0}\) si \(|t_{0}| > t_{1-\alpha/2,n-p}\).
 
 Este es una prueba parcial, puesto que estamos evaluando la significancia de \(x_{j}\) cuando las demás covariables \(x_{k}\), para \(k\neq j\), ya están incluidas en el modelo. Por lo tanto, si no rechazamos \(H_{0}\), podemos concluir que, cuando los demás regresores están en el modelo, la covariable \(x_{j}\) no tiene un aporte significativo. Por lo tanto, podríamos retirarla del modelo.
 
 \hypertarget{pruebas-sobre-subconjuntos-de-coeficientes}{%
-\subsection{Pruebas sobre subconjuntos de coeficientes}\label{pruebas-sobre-subconjuntos-de-coeficientes}}
+\subsubsection{Pruebas sobre subconjuntos de coeficientes}\label{pruebas-sobre-subconjuntos-de-coeficientes}}
 
 Para probar la significancia de un subconjunto de coeficientes del modelo hacemos uso de la \textbf{suma de cuadrados extra}. Primero, consideremos el siguiente modelo de regresión:
 \[
-\by = \bX \bbeta + \bvarepsi,
+\bm{y}= \bm{X}\bm{\beta}+ \bm{\varepsilon},
 \]
-donde \(\bX\) es una matrix \(n \times p\) y \(\bbeta\) es el vector de coeficientes de longitud \(p\). Queremos probar si un subconjunto \(r < p\) de covariables tienen un aporte significativo en el modelo. Para esto hacemos la siguiente partición del vector \(\bbeta\):
+donde \(\bm{X}\) es una matrix \(n \times p\) y \(\bm{\beta}\) es el vector de coeficientes de longitud \(p\). Queremos probar si un subconjunto \(r < p\) de covariables tienen un aporte significativo en el modelo. Para esto hacemos la siguiente partición del vector \(\bm{\beta}\):
 \[
-\bbeta = \begin{pmatrix} \beta_{0} \\ \beta_{1} \\ \vdots \\ \beta_{p-r-1} \\ \hline \beta_{p-r} \\ \beta_{p-r+1} \\ \vdots \\  \beta_{p} \end{pmatrix} =  \begin{pmatrix} \bbeta_{1} \\ \hline \bbeta_{2}\end{pmatrix},
+\bm{\beta}= \begin{pmatrix} \beta_{0} \\ \beta_{1} \\ \vdots \\ \beta_{p-r-1} \\ \hline \beta_{p-r} \\ \beta_{p-r+1} \\ \vdots \\  \beta_{p} \end{pmatrix} =  \begin{pmatrix} \bm{\beta}_{1} \\ \hline \bm{\beta}_{2}\end{pmatrix},
 \]
-donde \(\bbeta_{1}\) y \(\bbeta_{2}\) son vector de dimensión \((p-r)\) y \((r)\), respectivamente. Por lo tanto, queremos realizar la siguiente prueba de hipótesis:
+donde \(\bm{\beta}_{1}\) y \(\bm{\beta}_{2}\) son vector de dimensión \((p-r)\) y \((r)\), respectivamente. Por lo tanto, queremos realizar la siguiente prueba de hipótesis:
 \begin{equation}
-H_{0}:  \bbeta_{2} = \bZERO \qquad H_{1}:  \bbeta_{2} \neq \bZERO.
+H_{0}:  \bm{\beta}_{2} = \bm{0}\qquad H_{1}:  \bm{\beta}_{2} \neq \bm{0}.
 \label{eq:Hsubset}
 \end{equation}
 El modelo anterior se puede re-escribir de la siguiente forma:
 \[
-\by = \bX \bbeta + \bvarepsi = \bX_{1}\bbeta_{1}+ \bX_{2}\bbeta_{2} + \bvarepsi,
+\bm{y}= \bm{X}\bm{\beta}+ \bm{\varepsilon}= \bm{X}_{1}\bm{\beta}_{1}+ \bm{X}_{2}\bm{\beta}_{2} + \bm{\varepsilon},
 \]
-donde \(\bX_{1}\) es la matriz \(n\times (p-r)\) que contiene las columnas de \(\bX\) asociadas con \(\bbeta_{1}\), y \(\bX_{2}\) es la matriz \(n\times r\) que contiene las columnas de \(\bX\) asociadas con \(\bbeta_{2}\). Este es llamado el \textbf{modelo completo}.
+donde \(\bm{X}_{1}\) es la matriz \(n\times (p-r)\) que contiene las columnas de \(\bm{X}\) asociadas con \(\bm{\beta}_{1}\), y \(\bm{X}_{2}\) es la matriz \(n\times r\) que contiene las columnas de \(\bm{X}\) asociadas con \(\bm{\beta}_{2}\). Este es llamado el \textbf{modelo completo}.
 
 Para el modelo completo tenemos:
 
 \begin{itemize}
 \tightlist
 \item
-  Estimador de \(\bbeta\):
+  Estimador de \(\bm{\beta}\):
   \[
-  \hatbbeta = (\bX'\bX)^{-1}\bX'\by.
+  \widehat{\bm{\beta}}= (\bm{X}'\bm{X})^{-1}\bm{X}'\bm{y}.
   \]
 \item
   Suma de cuadrados del modelo:
   \[
-  SS_{R}(\bbeta) = \hatbeta'\bX'\by \mbox{ (con }p\mbox{ grados de libertad)}.
+  SS_{R}(\bm{\beta}) = \widehat{\beta}'\bm{X}'\bm{y}\mbox{ (con }p\mbox{ grados de libertad)}.
   \]
 \item
   Cuadrado medio del error:
   \[
-  MS_{res} = \frac{\by'\by - \hatbbeta'\bX'\by}{n-p}.
+  MS_{res} = \frac{\bm{y}'\bm{y}- \widehat{\bm{\beta}}'\bm{X}'\bm{y}}{n-p}.
   \]
 \end{itemize}
 
-Para evaluar la contribución de los regresores asociados a \(\bbeta_{2}\), ajustamos el modelo asumiendo que \(H_{0}\) es cierta. De esta forma tenemos el \textbf{modelo reducido}:
+Para evaluar la contribución de los regresores asociados a \(\bm{\beta}_{2}\), ajustamos el modelo asumiendo que \(H_{0}\) es cierta. De esta forma tenemos el \textbf{modelo reducido}:
 \[
-\by = \bX_{1}\bbeta_{1} + \bvarepsi.
+\bm{y}= \bm{X}_{1}\bm{\beta}_{1} + \bm{\varepsilon}.
 \]
 Para el modelo reducido tenemos:
 
 \begin{itemize}
 \tightlist
 \item
-  Estimador de \(\bbeta_{1}\):
+  Estimador de \(\bm{\beta}_{1}\):
   \[
-  \hatbbeta_{1} = (\bX_{1}'\bX_{1})^{-1}\bX_{1}'\by.
+  \widehat{\bm{\beta}}_{1} = (\bm{X}_{1}'\bm{X}_{1})^{-1}\bm{X}_{1}'\bm{y}.
   \]
 \item
   Suma de cuadrados del modelo:
   \[
-  SS_{R}(\bbeta_{1}) = \hatbbeta_{1}'\bX_{1}'\by \mbox{ (con $p-r$ grados de libertad)}.
+  SS_{R}(\bm{\beta}_{1}) = \widehat{\bm{\beta}}_{1}'\bm{X}_{1}'\bm{y}\mbox{ (con $p-r$ grados de libertad)}.
   \]
 \end{itemize}
 
-Entonces, la suma de cuadrados debido a \(\bbeta_{2}\) dado que \(\bbeta_{1}\) ya está en el modelo es:
+Entonces, la suma de cuadrados debido a \(\bm{\beta}_{2}\) dado que \(\bm{\beta}_{1}\) ya está en el modelo es:
 \[
-SS_{R}(\bbeta_{2}| \bbeta_{1}) = SS_{R}(\bbeta) - SS_{R}(\bbeta_{1}),
+SS_{R}(\bm{\beta}_{2}| \bm{\beta}_{1}) = SS_{R}(\bm{\beta}) - SS_{R}(\bm{\beta}_{1}),
 \]
-con \(p-(p-r)=r\) grados de libertad. Esta suma de cuadrados es llamada la suma de cuadrados extra debido a \(\bbeta\) puesto que mide el incremento en la suma de cuadrados de la regresión como resultado de adicionar los regresores \(\bX_{2}\) en el modelo que ya contiene \(\bX_{1}\).
+con \(p-(p-r)=r\) grados de libertad. Esta suma de cuadrados es llamada la suma de cuadrados extra debido a \(\bm{\beta}\) puesto que mide el incremento en la suma de cuadrados de la regresión como resultado de adicionar los regresores \(\bm{X}_{2}\) en el modelo que ya contiene \(\bm{X}_{1}\).
 
-Dado que \(SS_{R}(\bbeta_{2}| \bbeta_{1})\) y \(MS_{res}\) son independientes, podemos utilizar el siguiente estadístico de prueba:
+Dado que \(SS_{R}(\bm{\beta}_{2}| \bm{\beta}_{1})\) y \(MS_{res}\) son independientes, podemos utilizar el siguiente estadístico de prueba:
 \[
-F_{0} = \frac{SS_{R}(\bbeta_{2}|\bbeta_{1})/r}{MS_{res}}.
+F_{0} = \frac{SS_{R}(\bm{\beta}_{2}|\bm{\beta}_{1})/r}{MS_{res}}.
 \]
 Si \(H_{0}\) es cierta entonces \(F_{0} \sim F_{r,n-p}\). Si \(H_{0}\) no es cierta, entonces \(F_{0}\) sigue una distribución \(F\) no-central con parámetro de no centralidad igual a:
 \[
-\lambda = \frac{1}{\sigma^{2}}\bbeta_{2}'\bX_{2}'\left[ \bI_{n} - \bX_{1}(\bX_{1}'\bX_{1})^{-1}\bX_{1}'\right]\bX_{2}\bbeta_{2}.
+\lambda = \frac{1}{\sigma^{2}}\bm{\beta}_{2}'\bm{X}_{2}'\left[ \bm{I}_{n} - \bm{X}_{1}(\bm{X}_{1}'\bm{X}_{1})^{-1}\bm{X}_{1}'\right]\bm{X}_{2}\bm{\beta}_{2}.
 \]
-Note que si hay una relación casi colineal entre \(\bX_{1}\) y \(\bX_{2}\) (multicolinealidad), \(\lambda\) es cercano a cero pesar que \(\bbeta_{2}\) sea marcadamente distinto de cero. Es decir, que la prueba tiene poca capacidad de indicar diferencias (poco poder) en presencia de multicolinealidad. Caso contrario, el máximo poder se alcanza cuando \(\bX_{1}\) y \(\bX_{2}\) son ortogonales (es decir \(\bX_{2}'\bX_{1} = \bZERO\)).
+Note que si hay una relación casi colineal entre \(\bm{X}_{1}\) y \(\bm{X}_{2}\) (multicolinealidad), \(\lambda\) es cercano a cero pesar que \(\bm{\beta}_{2}\) sea marcadamente distinto de cero. Es decir, que la prueba tiene poca capacidad de indicar diferencias (poco poder) en presencia de multicolinealidad. Caso contrario, el máximo poder se alcanza cuando \(\bm{X}_{1}\) y \(\bm{X}_{2}\) son ortogonales (es decir \(\bm{X}_{2}'\bm{X}_{1} = \bm{0}\)).
 
-Entonces, si \(F_{0} > F_{1-\alpha,r,n-p}\) rechazamos \(H_{0}\) y concluimos que al menos un coeficiente en \(\bbeta_{2}\) es diferente de cero. Consecuentemente, al menos una de las covariables en \(\bX_{2}\) tiene un aporte significativo dentro del modelo.
+Entonces, si \(F_{0} > F_{1-\alpha,r,n-p}\) rechazamos \(H_{0}\) y concluimos que al menos un coeficiente en \(\bm{\beta}_{2}\) es diferente de cero. Consecuentemente, al menos una de las covariables en \(\bm{X}_{2}\) tiene un aporte significativo dentro del modelo.
 
 \hypertarget{ejemplo}{%
-\subsubsection*{Ejemplo}\label{ejemplo}}
-\addcontentsline{toc}{subsubsection}{Ejemplo}
+\paragraph*{Ejemplo}\label{ejemplo}}
+\addcontentsline{toc}{paragraph}{Ejemplo}
 
 Considere el modelo:
 \[
@@ -1417,51 +1416,51 @@ SS_{R}(\beta_{1},\beta_{2},\beta_{3}| \beta_{0})\neq SS_{R}(\beta_{1}|\beta_{0},
 \]
 
 \hypertarget{prueba-de-hipuxf3tesis-lineal-general}{%
-\section{Prueba de hipótesis lineal general}\label{prueba-de-hipuxf3tesis-lineal-general}}
+\subsection{Prueba de hipótesis lineal general}\label{prueba-de-hipuxf3tesis-lineal-general}}
 
 Suponga que estamos interesados en las siguientes hipótesis:
 \begin{equation}
-H_{0}: \bT\bbeta=\bZERO \qquad H_{1}: \bT\bbeta\neq \bZERO,
+H_{0}: \bm{T}\bm{\beta}=\bm{0}\qquad H_{1}: \bm{T}\bm{\beta}\neq \bm{0},
 \label{eq:hipGeneral1}
 \end{equation}
-donde \(\bT\) es una matriz \(m \times p\) de constantes, tal que \(r\) de las \(m\) ecuaciones de \(\bT\bbeta=\bZERO\) son independientes.
+donde \(\bm{T}\) es una matriz \(m \times p\) de constantes, tal que \(r\) de las \(m\) ecuaciones de \(\bm{T}\bm{\beta}=\bm{0}\) son independientes.
 
 El \textbf{modelo completo (FM)} es:
 \[
-\by=\bX\bbeta+\bvarepsi,
+\bm{y}=\bm{X}\bm{\beta}+\bm{\varepsilon},
 \]
-El estimador de \(\bbeta\) es \(\hatbbeta = (\bX'\bX)^{-1}\bX'\by\), y la suma de cuadrados de los residuos es \(SS_{res}(FM)\) (con \(n-p\) grados de libertad).
+El estimador de \(\bm{\beta}\) es \(\widehat{\bm{\beta}}= (\bm{X}'\bm{X})^{-1}\bm{X}'\bm{y}\), y la suma de cuadrados de los residuos es \(SS_{res}(FM)\) (con \(n-p\) grados de libertad).
 
-El \textbf{modelo reducido (RM)} se obtiene al resolver las \(r\) ecuaciones independientes de \(\bT\bbeta = \bZERO\) para los \(r\) coeficientes en el modelo completo en términos de los \(p-r\) coeficientes restantes. Esto lleva al siguiente RM:
+El \textbf{modelo reducido (RM)} se obtiene al resolver las \(r\) ecuaciones independientes de \(\bm{T}\bm{\beta}= \bm{0}\) para los \(r\) coeficientes en el modelo completo en términos de los \(p-r\) coeficientes restantes. Esto lleva al siguiente RM:
 \[
-\by=\bZ\bgamma+\bvarepsi,
+\bm{y}=\bm{Z}\bm{\gamma}+\bm{\varepsilon},
 \]
-donde \(\bZ\) es una matriz \(n\times (p-r)\) y \(\bgamma\) es un vector de dimiensión \((p-r)\) de coeficientes de regresión. La suma de cuadrados de los residuos de este modelo es \(SS_{res}(RM)\) (con \(n-p+r\) grados de libertad).
+donde \(\bm{Z}\) es una matriz \(n\times (p-r)\) y \(\bm{\gamma}\) es un vector de dimiensión \((p-r)\) de coeficientes de regresión. La suma de cuadrados de los residuos de este modelo es \(SS_{res}(RM)\) (con \(n-p+r\) grados de libertad).
 
 Dado que el modelo reducido tiene menos parámetros que el modelo completo, \(SS_{res}(RM) \geq SS_{res}(FM)\). Para probar \eqref{eq:hipGeneral1} usamos la diferencia entre las sumas de cuadrados de los residuos:
 \[
 SS_{H} = SS_{res}(RM) - SS_{res}(FM),
 \]
-con \(r\) grados de libertad. \(SS_{H}\) es llamado la suma de cuadrados debido a \(H_{0}:\bT\bbeta=\bc\). El estadístico de prueba es:
+con \(r\) grados de libertad. \(SS_{H}\) es llamado la suma de cuadrados debido a \(H_{0}:\bm{T}\bm{\beta}=\bm{c}\). El estadístico de prueba es:
 \[
-F_{0} = \frac{SS_{H}/r}{SS_{res}(FM)/(n-p)} = \frac{\hatbeta'\bT[\bT(\bX'\bX)\bT']^{-1}\bT\hatbbeta/r}{SS_{res}(FM)/(n-p)}.
+F_{0} = \frac{SS_{H}/r}{SS_{res}(FM)/(n-p)} = \frac{\widehat{\beta}'\bm{T}[\bm{T}(\bm{X}'\bm{X})\bm{T}']^{-1}\bm{T}\widehat{\bm{\beta}}/r}{SS_{res}(FM)/(n-p)}.
 \]
 Rechazamos \(H_{0}\) si \(F_{0} > F_{1-\alpha,r,n-p}\).
 
 La hipótesis anterior se puede generalizar de la siguiente forma:
 \begin{equation}
-H_{0}: \bT\bbeta=\bc \qquad H_{1}: \bT\bbeta\neq \bc,
+H_{0}: \bm{T}\bm{\beta}=\bm{c}\qquad H_{1}: \bm{T}\bm{\beta}\neq \bm{c},
 \label{eq:hipGeneral2}
 \end{equation}
 Para este caso, el estadístico de prueba es:
 \[
-F_{0} = \frac{(\bT\hatbbeta-\bc)'[\bT(\bX'\bX)\bT']^{-1}(\bT\hatbbeta-\bc)/r}{SS_{res}(FM)/(n-p)}.
+F_{0} = \frac{(\bm{T}\widehat{\bm{\beta}}-\bm{c})'[\bm{T}(\bm{X}'\bm{X})\bm{T}']^{-1}(\bm{T}\widehat{\bm{\beta}}-\bm{c})/r}{SS_{res}(FM)/(n-p)}.
 \]
 Si \(H_{0}\) es cierta, \(F_{0}\sim F_{r,n-p}\). Por lo tanto, rechazamos \(H_{0}\) si \(F_{0} > F_{1-\alpha,r,n-p}\).
 
 \hypertarget{ejemplo-1}{%
-\subsubsection*{ejemplo}\label{ejemplo-1}}
-\addcontentsline{toc}{subsubsection}{ejemplo}
+\paragraph*{ejemplo}\label{ejemplo-1}}
+\addcontentsline{toc}{paragraph}{ejemplo}
 
 Considere el modelo:
 \[
@@ -1474,18 +1473,18 @@ H_{0}:& \beta_{1}=0 & H_{1}:&\beta_{1}\neq 0 \\
 \end{align*}
 De aquí tenemos que:
 \[
-\bT = \begin{pmatrix}
+\bm{T}= \begin{pmatrix}
 1 & 0 & 0 & 0 \\
 0 & 2 & -1 & 0 \\
-\end{pmatrix} \mbox{ y } \bc = \begin{pmatrix} 0 \\ 3  \end{pmatrix}.
+\end{pmatrix} \mbox{ y } \bm{c}= \begin{pmatrix} 0 \\ 3  \end{pmatrix}.
 \]
-Si no rechazamos \(H_{0}\), podríamos estimar \(\bbeta\) sujo a las restricciones impuestar por la hipótesis nula (usando mínimos cuadrados restringidos).
+Si no rechazamos \(H_{0}\), podríamos estimar \(\bm{\beta}\) sujo a las restricciones impuestar por la hipótesis nula (usando mínimos cuadrados restringidos).
 
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{bajo-peso-al-nacer---pruebas-de-hipuxf3tesis}{%
-\subsection*{Bajo peso al nacer - pruebas de hipótesis}\label{bajo-peso-al-nacer---pruebas-de-hipuxf3tesis}}
-\addcontentsline{toc}{subsection}{Bajo peso al nacer - pruebas de hipótesis}
+\subsubsection*{Bajo peso al nacer - pruebas de hipótesis}\label{bajo-peso-al-nacer---pruebas-de-hipuxf3tesis}}
+\addcontentsline{toc}{subsubsection}{Bajo peso al nacer - pruebas de hipótesis}
 
 Los resultados de las pruebas de hipótesis individuales sobre los coeficientes, análisis de varianza y coeficientes de determianción se obtiene a partir del resumen del modelo:
 
@@ -1589,49 +1588,49 @@ Aquí vemos que \(F_{0}= 3.804\) con un valor-\(p\) asociado de \(0.0314\). Por 
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{intervalos-de-confianza-1}{%
-\section{Intervalos de confianza}\label{intervalos-de-confianza-1}}
+\subsection{Intervalos de confianza}\label{intervalos-de-confianza-1}}
 
 Al igual que en caso del modelo lineal simple, también podemos hacer estimaciones por intervalos de confianza para los coeficientes del modelo, valor esperado de \(Y\) y observaciones futuras.
 
-Para que los intervalos de confianza sean válidos se requiere que se cumplan todos los supuestos del modelo, esto es \(\bvarepsi\sim N(\bZERO, \sigma^{2}\bI_{n})\).
+Para que los intervalos de confianza sean válidos se requiere que se cumplan todos los supuestos del modelo, esto es \(\bm{\varepsilon}\sim N(\bm{0}, \sigma^{2}\bm{I}_{n})\).
 
 \hypertarget{intervalos-de-confianza-para-beta_j}{%
-\subsection{\texorpdfstring{Intervalos de confianza para \(\beta_{j}\)}{Intervalos de confianza para \textbackslash beta\_\{j\}}}\label{intervalos-de-confianza-para-beta_j}}
+\subsubsection{\texorpdfstring{Intervalos de confianza para \(\beta_{j}\)}{Intervalos de confianza para \textbackslash beta\_\{j\}}}\label{intervalos-de-confianza-para-beta_j}}
 
 El intervalo de confianza de \(\beta_{j}\) parte de:
 \[
-\frac{\hatbeta_{j} - \beta_{j}}{\sqrt{V(\hatbeta_{j})}} =  \frac{\hatbeta_{j} - \beta_{j}}{\sqrt{MS_{res}c_{jj}}} \sim t_{n-p},
+\frac{\widehat{\beta}_{j} - \beta_{j}}{\sqrt{V(\widehat{\beta}_{j})}} =  \frac{\widehat{\beta}_{j} - \beta_{j}}{\sqrt{MS_{res}c_{jj}}} \sim t_{n-p},
 \]
-donde \(c_{jj}\) es la entrada \((j,j)\) de la matriz \(\bC=(\bX'\bX)^{-1}\). Entonces, el intervalo del \((1-\alpha)100\%\) de confianza para \(\hatbeta_{j}\) es:
+donde \(c_{jj}\) es la entrada \((j,j)\) de la matriz \(\bm{C}=(\bm{X}'\bm{X})^{-1}\). Entonces, el intervalo del \((1-\alpha)100\%\) de confianza para \(\widehat{\beta}_{j}\) es:
 \[
-\hatbeta_{j} \pm t_{1-\alpha/2,n-p}\sqrt{MS_{res}C_{jj}}.
+\widehat{\beta}_{j} \pm t_{1-\alpha/2,n-p}\sqrt{MS_{res}C_{jj}}.
 \]
 
 \hypertarget{intervalos-de-confianza-para-el-valor-esperado-de-y-y-una-observaciuxf3n-futura}{%
-\subsection{\texorpdfstring{Intervalos de confianza para el valor esperado de \(Y\) y una observación futura}{Intervalos de confianza para el valor esperado de Y y una observación futura}}\label{intervalos-de-confianza-para-el-valor-esperado-de-y-y-una-observaciuxf3n-futura}}
+\subsubsection{\texorpdfstring{Intervalos de confianza para el valor esperado de \(Y\) y una observación futura}{Intervalos de confianza para el valor esperado de Y y una observación futura}}\label{intervalos-de-confianza-para-el-valor-esperado-de-y-y-una-observaciuxf3n-futura}}
 
-Ahora queremos construir un intervalo de confianza para la respuesta media de \(Y\) para un punto particular \(\bx_{0}=(1,x_{01},x_{02},\ldots,x_{0,p-1})\). La estimación puntual en \(\bx_{0}\) es:
+Ahora queremos construir un intervalo de confianza para la respuesta media de \(Y\) para un punto particular \(\bm{x}_{0}=(1,x_{01},x_{02},\ldots,x_{0,p-1})\). La estimación puntual en \(\bm{x}_{0}\) es:
 \[
-\hatmu_{Y|\bx_0} = \bx_{0}'\hatbbeta.
+\widehat{\mu}_{Y|\bm{x}_0} = \bm{x}_{0}'\widehat{\bm{\beta}}.
 \]
-Además, tenemos que \(\hatmu_{Y|\bx_0} \sim N[\bx_{0}\bbeta, V(\hatmu_{Y|\bx_0})]\) con:
+Además, tenemos que \(\widehat{\mu}_{Y|\bm{x}_0} \sim N[\bm{x}_{0}\bm{\beta}, V(\widehat{\mu}_{Y|\bm{x}_0})]\) con:
 \[
-V(\hatmu_{Y|\bx_0}) = \sigma^{2}\bx_{0}'(\bX'\bX)^{-1}\bx_{0}.
+V(\widehat{\mu}_{Y|\bm{x}_0}) = \sigma^{2}\bm{x}_{0}'(\bm{X}'\bm{X})^{-1}\bm{x}_{0}.
 \]
-Por lo tanto, el intervalo del \((1-\alpha)100\%\) de confianza para \(E(Y|\bx_{0})\) es:
+Por lo tanto, el intervalo del \((1-\alpha)100\%\) de confianza para \(E(Y|\bm{x}_{0})\) es:
 \[
-\hatmu_{Y|\bx_0} \pm t_{1-\alpha/2,n-p}\sqrt{MS_{res}\bx_{0}'(\bX'\bX)^{-1}\bx_{0}}.
+\widehat{\mu}_{Y|\bm{x}_0} \pm t_{1-\alpha/2,n-p}\sqrt{MS_{res}\bm{x}_{0}'(\bm{X}'\bm{X})^{-1}\bm{x}_{0}}.
 \]
-De igual forma, el intervalo del \((1-\alpha)100\%\) de confianza para una observación futura en \(\bx_{0}\) es:
+De igual forma, el intervalo del \((1-\alpha)100\%\) de confianza para una observación futura en \(\bm{x}_{0}\) es:
 \[
-\hatmu_{Y|\bx_0} \pm t_{1-\alpha/2,n-p}\sqrt{MS_{res}\left[1+ \bx_{0}'(\bX'\bX)^{-1}\bx_{0}\right]}.
+\widehat{\mu}_{Y|\bm{x}_0} \pm t_{1-\alpha/2,n-p}\sqrt{MS_{res}\left[1+ \bm{x}_{0}'(\bm{X}'\bm{X})^{-1}\bm{x}_{0}\right]}.
 \]
 
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{bajo-peso-al-nacer---intervalos-de-confianza}{%
-\subsection*{Bajo peso al nacer - intervalos de confianza}\label{bajo-peso-al-nacer---intervalos-de-confianza}}
-\addcontentsline{toc}{subsection}{Bajo peso al nacer - intervalos de confianza}
+\subsubsection*{Bajo peso al nacer - intervalos de confianza}\label{bajo-peso-al-nacer---intervalos-de-confianza}}
+\addcontentsline{toc}{subsubsection}{Bajo peso al nacer - intervalos de confianza}
 
 Siguiendo con el modelo inicial \(y_{i}=\beta_{0}+\beta_{1}\mbox{age}_{i}+\beta_{2}\mbox{mppwt}_{i}+\varepsilon_{i}\), los intervalos del 95\% de confianza para los coeficientes son:
 
@@ -1685,9 +1684,9 @@ El peso del recién nacido con estas caracteristica está entre \(2.22\) y \(4.0
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{extrapolaciuxf3n-oculta-en-regresiuxf3n-muxfaltiple}{%
-\section{Extrapolación oculta en regresión múltiple}\label{extrapolaciuxf3n-oculta-en-regresiuxf3n-muxfaltiple}}
+\subsection{Extrapolación oculta en regresión múltiple}\label{extrapolaciuxf3n-oculta-en-regresiuxf3n-muxfaltiple}}
 
-Al igual que en regresión simple, al pronosticar una nueva respuesta en un punto dado \(\bx_{0}\) se debe tener cuidado de no extrapolar fuera de la región de los datos originales. En regresión múltiple es fácil extrapolar inadvertidamente, puesto que la región que contiene los datos está definida de forma conjunta por los valores que toman las covariables y no por el rango individual de cada covariable.
+Al igual que en regresión simple, al pronosticar una nueva respuesta en un punto dado \(\bm{x}_{0}\) se debe tener cuidado de no extrapolar fuera de la región de los datos originales. En regresión múltiple es fácil extrapolar inadvertidamente, puesto que la región que contiene los datos está definida de forma conjunta por los valores que toman las covariables y no por el rango individual de cada covariable.
 
 La Figura \ref{fig:extrapolacionOculta} muestra un ejemplo de extrapolación en el caso de un modelo de regresión con dos covariables. Se quiere hacer una predicción en el punto \((x_{01},x_{02})\) que está dentro del rango de ambos regresores, pero que fuera de la región conjunta de los datos (región roja en la figura). Por lo tanto, al realizar la predicción en este punto estaríamos extrapolando.
 
@@ -1702,16 +1701,16 @@ La Figura \ref{fig:extrapolacionOculta} muestra un ejemplo de extrapolación en 
 
 Determinar la región conjunta de los datos en regresión múltiple no es fácil, lo que hace díficil saber si se está extrapolando a la hora de hacer de una predicción. Por lo tanto, se ha propuesto determinar la región conjunta de los datos a partir del conjunto convexo mínimo que contiene todos los \(n\) datos originales, \((x_{i1}; x_{i2},\ldots,x_{i,p-1})\), para \(i = 1,2,\ldots,n\), como la envolvente de las covariables (RVH). Entonces, si un punto \((x_{01},x_{02}, \ldots,\ldots, x_{0,p-1})\) está dentro o en la frontera de la RVH, una prediccón o una estimación implica interpolación, mientras que si está fuera de la RVH, se está extrapolando.
 
-Una aproximación de la RVH es a través de la matriz \(\bH\). El conjunto de puntos \(\bx\) que satisfacen, \(\bx'(\bX'\bX)^{-1}\bx \leq \max(h_{ii})\), prudcen un elipsoide que encierra todos los puntos dentro de la \(RVH\). Entonces, un punto de predicción \(\bx_{0}\) está fuera de la RVH si \(h_{00} > \max{h_{ii}}\), donde:
+Una aproximación de la RVH es a través de la matriz \(\bm{H}\). El conjunto de puntos \(\bm{x}\) que satisfacen, \(\bm{x}'(\bm{X}'\bm{X})^{-1}\bm{x}\leq \max(h_{ii})\), prudcen un elipsoide que encierra todos los puntos dentro de la \(RVH\). Entonces, un punto de predicción \(\bm{x}_{0}\) está fuera de la RVH si \(h_{00} > \max{h_{ii}}\), donde:
 \[
-h_{00} = \bx'_{0}(\bX'\bX)^{-1}\bx_{0}.
+h_{00} = \bm{x}'_{0}(\bm{X}'\bm{X})^{-1}\bm{x}_{0}.
 \]
 
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{bajo-peso-al-nacer---interpolaciuxf3n}{%
-\subsection*{Bajo peso al nacer - interpolación}\label{bajo-peso-al-nacer---interpolaciuxf3n}}
-\addcontentsline{toc}{subsection}{Bajo peso al nacer - interpolación}
+\subsubsection*{Bajo peso al nacer - interpolación}\label{bajo-peso-al-nacer---interpolaciuxf3n}}
+\addcontentsline{toc}{subsubsection}{Bajo peso al nacer - interpolación}
 
 Suponga que se quiere hacer una predicción para recién nacidos con las características que muestra la Tabla @ref(tab:puntosPrediccion\}.
 
@@ -1729,7 +1728,7 @@ Peso de la madre (kg) & 75 & 50 & 60 & 55\\
 \end{tabular}
 \end{table}
 
-La Figura \ref{fig:birthweightExtrapolacion} muestra el gráfico de dispersión de las covariables, donde los puntos rojos indican los valores donde se quieren hacer predicciones. Aquí vemos que en los puntos \(\bx_{02}\) y \(\bx_{03}\) no estaríamos extrapolando. Pero, es difícil de determinar para los puntos \(\bx_{01}\) y \(\bx_{04}\). Para esto vamos a calcular las aproximaciones de la RVH y verificar si en estos puntos estaríamos extrapolando.
+La Figura \ref{fig:birthweightExtrapolacion} muestra el gráfico de dispersión de las covariables, donde los puntos rojos indican los valores donde se quieren hacer predicciones. Aquí vemos que en los puntos \(\bm{x}_{02}\) y \(\bm{x}_{03}\) no estaríamos extrapolando. Pero, es difícil de determinar para los puntos \(\bm{x}_{01}\) y \(\bm{x}_{04}\). Para esto vamos a calcular las aproximaciones de la RVH y verificar si en estos puntos estaríamos extrapolando.
 
 \begin{figure}
 
@@ -1756,12 +1755,12 @@ La Figura \ref{fig:birthweightExtrapolacion} muestra el gráfico de dispersión 
 ## [1]  TRUE FALSE FALSE FALSE
 \end{verbatim}
 
-Para la predicción en el punto \(\bx_{01}\), tenemos que \(h_{0} = (1, 34, 77)(\bX'\bX)^{-1}(1, 34, 77)' = 0.3487\) \(>\) \(h_{max} = 0.2276\). Por lo tanto, aquí se estaría extrapolando. Para el resto de punto no hay problemas de extrapolación.
+Para la predicción en el punto \(\bm{x}_{01}\), tenemos que \(h_{0} = (1, 34, 77)(\bm{X}'\bm{X})^{-1}(1, 34, 77)' = 0.3487\) \(>\) \(h_{max} = 0.2276\). Por lo tanto, aquí se estaría extrapolando. Para el resto de punto no hay problemas de extrapolación.
 
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{coeficientes-normalizados-de-regresiuxf3n}{%
-\subsection{Coeficientes normalizados de regresión}\label{coeficientes-normalizados-de-regresiuxf3n}}
+\subsubsection{Coeficientes normalizados de regresión}\label{coeficientes-normalizados-de-regresiuxf3n}}
 
 Los coeficientes de regresión están influenciados por las unidades de medida de las covariables. Exactamente las unidades de medida de \(\beta_{j}\) es:
 \[
@@ -1772,7 +1771,7 @@ Dado que, por lo general, las covariables están medidas en unidades diferenes, 
 Por esta razón, en algunas ocasiones es útil escalar los valores de las covariables y la respuesta para calcular los coeficientes de regresión adimensionales. Hay varias formas de hacer este escalamiento, aquí nos centraremos en el escalamiento de longitud unitaria.
 
 \hypertarget{escalamiento-de-longitud-unitaria}{%
-\subsubsection{Escalamiento de longitud unitaria}\label{escalamiento-de-longitud-unitaria}}
+\paragraph{Escalamiento de longitud unitaria}\label{escalamiento-de-longitud-unitaria}}
 
 Una opción es hacer un \textbf{escalamiento de longitud unitaria} a las covariables:
 \[
@@ -1788,32 +1787,32 @@ S_{jj} = \sum_{i=1}^{n}(x_{ij} - \bar{x}_{j})^{2}.
 \]
 Con estas variables transformadas, se puede ajustar el modelo:
 \[
-y_{i}^{*} = b_{1}z_{i1} + b_{2}z_{i2} + \ldots + b_{p-1}z_{i,p-1} = \bz_{i}'\bb + \bvarepsi.
+y_{i}^{*} = b_{1}z_{i1} + b_{2}z_{i2} + \ldots + b_{p-1}z_{i,p-1} = \bm{z}_{i}'\bm{b}+ \bm{\varepsilon}.
 \]
 El estimador por MCO es:
 \[
-\hatbb = (\bZ'\bZ)^{-1}\bZ'\by^{*}.
+\widehat{\bm{b}}= (\bm{Z}'\bm{Z})^{-1}\bm{Z}'\bm{y}^{*}.
 \]
-Note que con este escalamiento, la matriz \((\bZ'\bZ)\) es igual a la matriz de correlación de las covariables. Esto es:
+Note que con este escalamiento, la matriz \((\bm{Z}'\bm{Z})\) es igual a la matriz de correlación de las covariables. Esto es:
 \[
-(\bZ'\bZ) = \bR = \begin{pmatrix}
+(\bm{Z}'\bm{Z}) = \bm{R}= \begin{pmatrix}
 1 & r_{12} & r_{13} & \ldots & r_{1,p-1} \\
 r_{12} & 1 & r_{23} & \ldots & r_{2,p-1} \\
 \vdots & \vdots & \vdots & \ddots & \vdots \\
 r_{1,p-1} & 1 & r_{2,p-1} & \ldots & 1 \\
 \end{pmatrix},
 \]
-donde \(r_{jk}\) es la correlación entre las covariables \(x_{j}\) y \(x_{k}\). Además, la matriz \(\bZ'\by^{*}\) es el vector de correlación entre la variable respuesta y cada covariable. Esto es:
+donde \(r_{jk}\) es la correlación entre las covariables \(x_{j}\) y \(x_{k}\). Además, la matriz \(\bm{Z}'\bm{y}^{*}\) es el vector de correlación entre la variable respuesta y cada covariable. Esto es:
 \[
-\bZ'\by^{*} = (r_{1y},r_{2y},r_{3y},\ldots,r_{p-1,y})',
+\bm{Z}'\bm{y}^{*} = (r_{1y},r_{2y},r_{3y},\ldots,r_{p-1,y})',
 \]
 donde \(r_{jy}\) es la correlación entre la variable respuesta y la covariable \(x_j\).
 
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{bajo-peso-al-nacer---coeficientes-de-regresiuxf3n-con-variables-escaladas}{%
-\subsection*{Bajo peso al nacer - coeficientes de regresión con variables escaladas}\label{bajo-peso-al-nacer---coeficientes-de-regresiuxf3n-con-variables-escaladas}}
-\addcontentsline{toc}{subsection}{Bajo peso al nacer - coeficientes de regresión con variables escaladas}
+\subsubsection*{Bajo peso al nacer - coeficientes de regresión con variables escaladas}\label{bajo-peso-al-nacer---coeficientes-de-regresiuxf3n-con-variables-escaladas}}
+\addcontentsline{toc}{subsubsection}{Bajo peso al nacer - coeficientes de regresión con variables escaladas}
 
 Para estimar los coeficientes de regresión escalados, primero debemos escalar las variables:
 
@@ -1860,13 +1859,13 @@ Las estimaciones de los coeficientes son ahora adimensionales y podemos comparar
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{multicolinealidad}{%
-\section{Multicolinealidad}\label{multicolinealidad}}
+\subsection{Multicolinealidad}\label{multicolinealidad}}
 
 Un problema que puede afectar enormente el ajuste de un modelo de regresión es la multicolinealidad. Este se presenta cuando hay una dependencia casi lineal entre las covariables.
 
-Recordemos que el estimador por MCO es \(\hatbbeta=(\bX'\bX)^{-1}\bX'\by\). Por lo tanto es necesario que la matriz \(\bX'\bX\) sea no singular. En caso contrario, no es posible encontrar la inversa y las ecuaciones normales no tendrán una única solución. Cuando sucede esto se debe a que hay al menos una columna de \(\bX\) linealmente dependiente.
+Recordemos que el estimador por MCO es \(\widehat{\bm{\beta}}=(\bm{X}'\bm{X})^{-1}\bm{X}'\bm{y}\). Por lo tanto es necesario que la matriz \(\bm{X}'\bm{X}\) sea no singular. En caso contrario, no es posible encontrar la inversa y las ecuaciones normales no tendrán una única solución. Cuando sucede esto se debe a que hay al menos una columna de \(\bm{X}\) linealmente dependiente.
 
-En regresión se utiliza las palabras multicolinealidad cuando hay una dependencia aproximada en las columnas de \(\bX\). Es decir que al menos una covariable puede representarse, de forma aproximada, como una relación lineal de las otras:
+En regresión se utiliza las palabras multicolinealidad cuando hay una dependencia aproximada en las columnas de \(\bm{X}\). Es decir que al menos una covariable puede representarse, de forma aproximada, como una relación lineal de las otras:
 \[
 x_{ij} \approx c_{0} + c_{1}x_{i1} + \ldots + c_{j-1}x_{i,j-1} + c_{j+1}x_{i,j+1} + \ldots + + c_{p-1}x_{i,p-1},
 \]
@@ -1875,8 +1874,8 @@ para \(i=1,\ldots,n\).
 Hay que aclarar que la falta de ortogonalidad no es necesariamente un inconveniente, el problema es cuando la relación lineal entre los regresores es casi perfecta, lo que provoca problemas en las inferencias que se hagan. Uno de estos problemas se ilustra a continuación con un ejemplo.
 
 \hypertarget{ejemplo-2}{%
-\subsection*{ejemplo}\label{ejemplo-2}}
-\addcontentsline{toc}{subsection}{ejemplo}
+\subsubsection*{ejemplo}\label{ejemplo-2}}
+\addcontentsline{toc}{subsubsection}{ejemplo}
 
 Considere el siguiente modelo de regresión:
 \[
@@ -1884,13 +1883,13 @@ y_{i} = \beta_{0} + \beta_{1}x_{i1} + \beta_{2}x_{i2} + \varepsilon_{i}, \mbox{ 
 \]
 y se plantean dos posibles matrices de diseño:
 \[
-\bX_{1} = \begin{pmatrix}
+\bm{X}_{1} = \begin{pmatrix}
 1& 1 \\ 
 1 & 5 \\ 
 2 & 1 \\ 
 2 & 5 \\
 \end{pmatrix} \mbox{ y }
-\bX_{2} = \begin{pmatrix}
+\bm{X}_{2} = \begin{pmatrix}
 1& 1 \\ 
 1 & 2 \\ 
 2 & 4 \\ 
@@ -1899,16 +1898,16 @@ y se plantean dos posibles matrices de diseño:
 \]
 Haciendo el escalamiento de longitud unitaria a las covariables tenemos que:
 \[
-\bZ_{1}'\bZ_{1} = \begin{pmatrix}
+\bm{Z}_{1}'\bm{Z}_{1} = \begin{pmatrix}
 1 & 0 \\ 0 & 1
 \end{pmatrix} \mbox{ y }
-\bZ_{1}'\bZ_{1} = \begin{pmatrix}
+\bm{Z}_{1}'\bm{Z}_{1} = \begin{pmatrix}
 1 & 0.95 \\ 0.95 & 1
 \end{pmatrix}.
 \]
-Por lo tanto, la varianza de \(\hatbb\) para ambos casos es:
+Por lo tanto, la varianza de \(\widehat{\bm{b}}\) para ambos casos es:
 \[
-V(\hatbb_{1}) = \sigma^{2}(\bZ_{1}'\bZ_{1})^{-1} =  \sigma^{2} \begin{pmatrix}
+V(\widehat{\bm{b}}_{1}) = \sigma^{2}(\bm{Z}_{1}'\bm{Z}_{1})^{-1} =  \sigma^{2} \begin{pmatrix}
 1 & 0 \\ 0 & 1
 \end{pmatrix}^{-1}  = \sigma^{2} \begin{pmatrix}
 1 & 0 \\ 0 & 1
@@ -1916,15 +1915,15 @@ V(\hatbb_{1}) = \sigma^{2}(\bZ_{1}'\bZ_{1})^{-1} =  \sigma^{2} \begin{pmatrix}
 \]
 y
 \[
-V(\hatbb_{2}) = \sigma^{2}_{0}(\bZ_{2}'\bZ_{2})^{-1} =  \sigma^{2} \begin{pmatrix}
+V(\widehat{\bm{b}}_{2}) = \sigma^{2}_{0}(\bm{Z}_{2}'\bm{Z}_{2})^{-1} =  \sigma^{2} \begin{pmatrix}
 1 & 0.95 \\ 0.95 & 1
 \end{pmatrix}^{-1} = \sigma^{2} \begin{pmatrix}
 10 & 9.49 \\ 9.49 & 10
 \end{pmatrix}.
 \]
-Aquí podemos ver que la varianza de \(\hatbb_{2}\) está inflada debido a la alta correlación entre las columnas de \(\bX_{2}\). Es 10 veces mayor que la varianza de \(\hatbb_{1}\) (las columnas de \(\bX_{1}\) son independientes).
+Aquí podemos ver que la varianza de \(\widehat{\bm{b}}_{2}\) está inflada debido a la alta correlación entre las columnas de \(\bm{X}_{2}\). Es 10 veces mayor que la varianza de \(\widehat{\bm{b}}_{1}\) (las columnas de \(\bm{X}_{1}\) son independientes).
 
-En el ejemplo anterior vemos que los valores de la diagonal de la matriz \((\bZ'\bZ)^{-1}\) nos indican en cuanto aumenta la varianza de las estimaciones de los coeficientes debido a la multicolinealidad. Por esta razón, estos valores toman el nombre de \textbf{factores de inflación de varianza (VIFs)} y son uno de los indicadores para el diagnostico de este problema.
+En el ejemplo anterior vemos que los valores de la diagonal de la matriz \((\bm{Z}'\bm{Z})^{-1}\) nos indican en cuanto aumenta la varianza de las estimaciones de los coeficientes debido a la multicolinealidad. Por esta razón, estos valores toman el nombre de \textbf{factores de inflación de varianza (VIFs)} y son uno de los indicadores para el diagnostico de este problema.
 
 Se puede demostrar que el VIF de \(\beta_{j}\) se puede calcular como:
 \[
@@ -1937,7 +1936,7 @@ En un capítulo posterior ahondaremos más en este problema.
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{bajo-peso-al-nacer---factores-de-inflaciuxf3n-de-varianza}{%
-\subsection{Bajo peso al nacer - factores de inflación de varianza}\label{bajo-peso-al-nacer---factores-de-inflaciuxf3n-de-varianza}}
+\subsubsection{Bajo peso al nacer - factores de inflación de varianza}\label{bajo-peso-al-nacer---factores-de-inflaciuxf3n-de-varianza}}
 
 En el caso del peso de los recién nacidos, tenemos que los VIFs son:
 
@@ -1958,13 +1957,13 @@ Lo que nos indica que la varianza de las estimaciones de los coeficientes no se 
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{evaluaciuxf3n-de-los-supuestos-del-modelo}{%
-\chapter{Evaluación de los supuestos del modelo}\label{evaluaciuxf3n-de-los-supuestos-del-modelo}}
+\section{Evaluación de los supuestos del modelo}\label{evaluaciuxf3n-de-los-supuestos-del-modelo}}
 
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{ejemplo-1.-datos-de-peso-al-nacer}{%
-\section*{Ejemplo 1. Datos de peso al nacer}\label{ejemplo-1.-datos-de-peso-al-nacer}}
-\addcontentsline{toc}{section}{Ejemplo 1. Datos de peso al nacer}
+\subsection*{Ejemplo 1. Datos de peso al nacer}\label{ejemplo-1.-datos-de-peso-al-nacer}}
+\addcontentsline{toc}{subsection}{Ejemplo 1. Datos de peso al nacer}
 
 Retomemos la base de datos de bajo peso al nacer (disponible en el campus virtual), y consideremos el siguiente modelo:
 \[
@@ -2011,8 +2010,8 @@ La edad gestacional y el número de cigarrillos consumidos por la madre tienen e
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{ejemplo-2.-ventas-de-helados}{%
-\section*{Ejemplo 2. Ventas de helados}\label{ejemplo-2.-ventas-de-helados}}
-\addcontentsline{toc}{section}{Ejemplo 2. Ventas de helados}
+\subsection*{Ejemplo 2. Ventas de helados}\label{ejemplo-2.-ventas-de-helados}}
+\addcontentsline{toc}{subsection}{Ejemplo 2. Ventas de helados}
 
 La base de datos \texttt{icecream} (del paquete \texttt{orcutt} de R) recopila la siguiente información tomada cada cuatro semanas durante dos años (marzo 1951 a julio 1953):
 
@@ -2083,8 +2082,8 @@ De aquí podemos concluir que alrededor del 70\% de la variabilidad del consumo 
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{ejemplo-3.-longitud-del-pez-lobina-boca-chica}{%
-\section*{Ejemplo 3. Longitud del pez lobina boca chica}\label{ejemplo-3.-longitud-del-pez-lobina-boca-chica}}
-\addcontentsline{toc}{section}{Ejemplo 3. Longitud del pez lobina boca chica}
+\subsection*{Ejemplo 3. Longitud del pez lobina boca chica}\label{ejemplo-3.-longitud-del-pez-lobina-boca-chica}}
+\addcontentsline{toc}{subsection}{Ejemplo 3. Longitud del pez lobina boca chica}
 
 La base de datos \texttt{wblake} (de la librería \texttt{alr4}) contiene la edad (en años) y longitud (en mm) de 439 peces lobina boca chica del lago West Bearskin en el nordeste de Minnesota en 1999. El objetivo del estudio es determinar los patrones de crecimiento de este tipo de pez.
 
@@ -2148,7 +2147,7 @@ Estos resultados muestran que la edad del pez tiene un efecto significativamente
 La validez de las conclusiones hechas en estos ejemplos descansa en el cumplimiento de los supuestos sobre los errores. Por esta razón, es de gran importancia que tengamos herramientas para evaluar si los datos analizados no muestran ningún alejamiento de los supuestos asumidos.
 
 \hypertarget{supuestos-del-modelo-linea-muxfaltiple}{%
-\section{Supuestos del modelo linea múltiple}\label{supuestos-del-modelo-linea-muxfaltiple}}
+\subsection{Supuestos del modelo linea múltiple}\label{supuestos-del-modelo-linea-muxfaltiple}}
 
 En el modelo de regresión lineal múltiple:
 \[
@@ -2174,81 +2173,81 @@ La importancia de realizar procedimientos para validar los supuestos, radica en 
 En general, no se puede detectar una violación a los supuestos a partir de estadísticos del ajuste del modelo (\(R^2\), \(F_0\), valores-\(t\), etc). El diagnostico se puede hacer por métodos gráficos y pruebas formales (pruebas de hipótesis). Ambos métodos son complementarios, los gráficos sugieren formas particulares de incumplimiento del supuesto, mientras las pruebas formales evalúan su importancia \citep{behar_validacion_2002}.
 
 \hypertarget{efectos-del-incumplimiento-de-los-supuestos}{%
-\section{Efectos del incumplimiento de los supuestos}\label{efectos-del-incumplimiento-de-los-supuestos}}
+\subsection{Efectos del incumplimiento de los supuestos}\label{efectos-del-incumplimiento-de-los-supuestos}}
 
 \hypertarget{sesgo-por-omisiuxf3n-de-variables-relevantes}{%
-\subsection{Sesgo por omisión de variables relevantes}\label{sesgo-por-omisiuxf3n-de-variables-relevantes}}
+\subsubsection{Sesgo por omisión de variables relevantes}\label{sesgo-por-omisiuxf3n-de-variables-relevantes}}
 
-Si \(E(\bvarepsi) = \bZERO\), entonces \(E(\by | \bX) = \bX\bbeta\), y el estimador por MCO es insesgado. Sin embargo, si omitimos variables relevantes dentro del modelo las estimaciones serán sesgadas. Para ver esto, supongamos que el modelo generador de los datos es:
+Si \(E(\bm{\varepsilon}) = \bm{0}\), entonces \(E(\bm{y}| \bm{X}) = \bm{X}\bm{\beta}\), y el estimador por MCO es insesgado. Sin embargo, si omitimos variables relevantes dentro del modelo las estimaciones serán sesgadas. Para ver esto, supongamos que el modelo generador de los datos es:
 \[
-\by = \bX\bbeta + \bvarepsi =  \bX_{1}\bbeta_{1} + \bX_{2}\bbeta_{2} + \bvarepsi,
+\bm{y}= \bm{X}\bm{\beta}+ \bm{\varepsilon}=  \bm{X}_{1}\bm{\beta}_{1} + \bm{X}_{2}\bm{\beta}_{2} + \bm{\varepsilon},
 \]
-donde las columnas de la matriz \(n\times p\) de covariables \(\bX\) está divida en dos submatrices \(\bX_{1}\) y \(\bX_{2}\) de dimensiones \(n \times (p-r)\) y \(n\times r\), respectivamente. Además, asumimos que \(\bvarepsi \sim N(\bZERO, \sigma^{2}\bI_{n})\).
+donde las columnas de la matriz \(n\times p\) de covariables \(\bm{X}\) está divida en dos submatrices \(\bm{X}_{1}\) y \(\bm{X}_{2}\) de dimensiones \(n \times (p-r)\) y \(n\times r\), respectivamente. Además, asumimos que \(\bm{\varepsilon}\sim N(\bm{0}, \sigma^{2}\bm{I}_{n})\).
 
 Ahora, consideramos estimar el siguiente modelo:
 \[
-\by = \bX_{1}\bbeta_{1} + \bvarepsi^{*},
+\bm{y}= \bm{X}_{1}\bm{\beta}_{1} + \bm{\varepsilon}^{*},
 \]
-es decir estamos omitiendo las covariables contenidas en \(\bX_{2}\). El estimador de \(\bbeta_{1}\) es:
+es decir estamos omitiendo las covariables contenidas en \(\bm{X}_{2}\). El estimador de \(\bm{\beta}_{1}\) es:
 \[
-\hatbbeta_{1} = (\bX_{1}'\bX_{1})^{-1}\bX_{1}'\by,
+\widehat{\bm{\beta}}_{1} = (\bm{X}_{1}'\bm{X}_{1})^{-1}\bm{X}_{1}'\bm{y},
 \]
 y el estimador de \(\sigma^{2}\) es:
 \[
-\hatsigma^{2}_{1} = \frac{\by'(\bI_{n} - \bH_{1})\by}{n-(p-r)}, \mbox{ donde }\bH_{1} = \bX_{1}(\bX_{1}'\bX_{1})^{-1}\bX_{1}'.
+\widehat{\sigma}^{2}_{1} = \frac{\bm{y}'(\bm{I}_{n} - \bm{H}_{1})\bm{y}}{n-(p-r)}, \mbox{ donde }\bm{H}_{1} = \bm{X}_{1}(\bm{X}_{1}'\bm{X}_{1})^{-1}\bm{X}_{1}'.
 \]
-El valor esperado de \(\hatbbeta_{1}\) es:
+El valor esperado de \(\widehat{\bm{\beta}}_{1}\) es:
 \begin{equation}
 \begin{split}
-E(\hatbbeta_{1}) &= E\left[(\bX_{1}'\bX_{1})^{-1}\bX_{1}'\by\right] = (\bX_{1}'\bX_{1})^{-1}\bX_{1}'E(\by) \\
-&= (\bX_{1}'\bX_{1})^{-1}\bX_{1}'E(\bX_{1}\bbeta_{1} + \bX_{2}\bbeta_{2} + \bvarepsi) = \bbeta_{1} +  (\bX_{1}'\bX_{1})^{-1}\bX_{1}'\bX_{2}\bbeta_{2}.
+E(\widehat{\bm{\beta}}_{1}) &= E\left[(\bm{X}_{1}'\bm{X}_{1})^{-1}\bm{X}_{1}'\bm{y}\right] = (\bm{X}_{1}'\bm{X}_{1})^{-1}\bm{X}_{1}'E(\bm{y}) \\
+&= (\bm{X}_{1}'\bm{X}_{1})^{-1}\bm{X}_{1}'E(\bm{X}_{1}\bm{\beta}_{1} + \bm{X}_{2}\bm{\beta}_{2} + \bm{\varepsilon}) = \bm{\beta}_{1} +  (\bm{X}_{1}'\bm{X}_{1})^{-1}\bm{X}_{1}'\bm{X}_{2}\bm{\beta}_{2}.
 \end{split}
 \nonumber
 \end{equation}
-Evidentemente, el sesgo de \(\hatbbeta_{1}\) depende de la magnitud de \(\bbeta_{2}\). Entre más importante sean los efectos asociados a las covariables omitidas \((\bbeta_{2})\), mayor será el sesgo. Si las columnas de \(\bX_{1}\) son ortogonales de las columnas de \(\bX_{2}\), tenemos que \(\bX_{1}'\bX_{2} = \bZERO\). Así que, en este caso particular, \(\hatbbeta_{1}\) es insesgado (así omitamos las covariables en \(\bX_{2}\)).
+Evidentemente, el sesgo de \(\widehat{\bm{\beta}}_{1}\) depende de la magnitud de \(\bm{\beta}_{2}\). Entre más importante sean los efectos asociados a las covariables omitidas \((\bm{\beta}_{2})\), mayor será el sesgo. Si las columnas de \(\bm{X}_{1}\) son ortogonales de las columnas de \(\bm{X}_{2}\), tenemos que \(\bm{X}_{1}'\bm{X}_{2} = \bm{0}\). Así que, en este caso particular, \(\widehat{\bm{\beta}}_{1}\) es insesgado (así omitamos las covariables en \(\bm{X}_{2}\)).
 
-El valor esperado de \(\hatsigma^{2}_{1}\) es:
+El valor esperado de \(\widehat{\sigma}^{2}_{1}\) es:
 \[
-E(\hatsigma^{2}_{1}) = \sigma^{2} + \frac{\bbeta_{2}'\bX'_{2}(\bI_{n} - \bH_{1})\bX_{2}\bbeta_{2}}{n-p_{1}}.
+E(\widehat{\sigma}^{2}_{1}) = \sigma^{2} + \frac{\bm{\beta}_{2}'\bm{X}'_{2}(\bm{I}_{n} - \bm{H}_{1})\bm{X}_{2}\bm{\beta}_{2}}{n-p_{1}}.
 \]
-Dado que \((\bI - \bH_{1})\) es idempotente y, por lo tanto, positiva semi-definida, entonces \(E(\hatsigma_{1}^{2}) > \sigma^{2}\). Esto quiere decir que \(\hatsigma^{2}_{1}\) es un estimador sesgado de \(\sigma^{2}\)
+Dado que \((\bm{I}- \bm{H}_{1})\) es idempotente y, por lo tanto, positiva semi-definida, entonces \(E(\widehat{\sigma}_{1}^{2}) > \sigma^{2}\). Esto quiere decir que \(\widehat{\sigma}^{2}_{1}\) es un estimador sesgado de \(\sigma^{2}\)
 
-Ahora veamos el efecto de omitir covariables relevantes sobre las predicciones de \(y\) en el punto \(\bx_{0} = (\bx_{01}', \bx_{02}')'\). Tenemos que:
+Ahora veamos el efecto de omitir covariables relevantes sobre las predicciones de \(y\) en el punto \(\bm{x}_{0} = (\bm{x}_{01}', \bm{x}_{02}')'\). Tenemos que:
 \[
-\hatby_{0} = \bx_{01}'\hatbbeta_{1} = \bx_{01}'(\bX_{1}'\bX_{1})^{-1}\bX_{1}'\by.
+\widehat{\bm{y}}_{0} = \bm{x}_{01}'\widehat{\bm{\beta}}_{1} = \bm{x}_{01}'(\bm{X}_{1}'\bm{X}_{1})^{-1}\bm{X}_{1}'\bm{y}.
 \]
-El valor esperado de \(\hatby_{0}\) es:
+El valor esperado de \(\widehat{\bm{y}}_{0}\) es:
 \[
-E(\hatby_{0}) = \bx_{01}'E(\hatbbeta_{1}) = \bx_{01}'\left[ \bbeta_{1} +  (\bX_{1}'\bX_{1})^{-1}\bX_{1}'\bX_{2}\bbeta_{2} \right]. 
+E(\widehat{\bm{y}}_{0}) = \bm{x}_{01}'E(\widehat{\bm{\beta}}_{1}) = \bm{x}_{01}'\left[ \bm{\beta}_{1} +  (\bm{X}_{1}'\bm{X}_{1})^{-1}\bm{X}_{1}'\bm{X}_{2}\bm{\beta}_{2} \right]. 
 \]
-Por lo tanto las predicciones también son sesgadas, \(E(\hatby_{0}) \neq \bx_{01}\bbeta_{1} + \bx_{02}\bbeta_{2}\).
+Por lo tanto las predicciones también son sesgadas, \(E(\widehat{\bm{y}}_{0}) \neq \bm{x}_{01}\bm{\beta}_{1} + \bm{x}_{02}\bm{\beta}_{2}\).
 
 \hypertarget{incorrecta-matriz-de-varianzas-de-los-errores}{%
-\subsection{Incorrecta matriz de varianzas de los errores}\label{incorrecta-matriz-de-varianzas-de-los-errores}}
+\subsubsection{Incorrecta matriz de varianzas de los errores}\label{incorrecta-matriz-de-varianzas-de-los-errores}}
 
-Cuando \(V(\bvarepsi) = \sigma^{2}\bV\), pero asumimos erroneamente que \(V(\bvarepsi) = \sigma^{2}\bI_{n}\), el estimador \(\hatbbeta\) sigue siendo insesgado. Pero, tenemos que:
+Cuando \(V(\bm{\varepsilon}) = \sigma^{2}\bm{V}\), pero asumimos erroneamente que \(V(\bm{\varepsilon}) = \sigma^{2}\bm{I}_{n}\), el estimador \(\widehat{\bm{\beta}}\) sigue siendo insesgado. Pero, tenemos que:
 \begin{equation}
 \begin{split}
-V(\hatbbeta) &= V\left[ (\bX'\bX)^{-1}\bX'\by \right] = (\bX'\bX)^{-1}\bX'V(\by)\bX(\bX'\bX)^{-1} \\
-&= \sigma^{2}(\bX'\bX)^{-1}\bX'\bV\bX(\bX'\bX)^{-1},
+V(\widehat{\bm{\beta}}) &= V\left[ (\bm{X}'\bm{X})^{-1}\bm{X}'\bm{y}\right] = (\bm{X}'\bm{X})^{-1}\bm{X}'V(\bm{y})\bm{X}(\bm{X}'\bm{X})^{-1} \\
+&= \sigma^{2}(\bm{X}'\bm{X})^{-1}\bm{X}'\bm{V}\bm{X}(\bm{X}'\bm{X})^{-1},
 \end{split}
 \nonumber
 \end{equation}
-es, generalmente, diferente de \(\sigma^{2}(\bX'\bX)^{-1}\) (la varianza que asumimos como cierta). Igualmente, el estimador por MCO pierde su condición de optimalidad. Es decir, deja de ser el mejor estimador lineal insesgado.
+es, generalmente, diferente de \(\sigma^{2}(\bm{X}'\bm{X})^{-1}\) (la varianza que asumimos como cierta). Igualmente, el estimador por MCO pierde su condición de optimalidad. Es decir, deja de ser el mejor estimador lineal insesgado.
 
 El estimador de \(\sigma^{2}\) es sesgado:
 \[
-E(\hatsigma^{2}) = \frac{\sigma^{2}}{n-p}E\left[\by'(\bI_{n} - \bH)\by\right] = \frac{\sigma^{2}}{n-p} \tr\left[ \bV(\bI_{n}-\bH)\right].
+E(\widehat{\sigma}^{2}) = \frac{\sigma^{2}}{n-p}E\left[\bm{y}'(\bm{I}_{n} - \bm{H})\bm{y}\right] = \frac{\sigma^{2}}{n-p} \mbox{tr}\left[ \bm{V}(\bm{I}_{n}-\bm{H})\right].
 \]
 Las predicciones son insesgadas, pero:
 \[
-V(\haty_{0}) = V(\bx_{0}'\hatbbeta) = \sigma^{2}\bx_{0}'(\bX'\bX)^{-1}\bX'\bV\bX(\bX'\bX)^{-1} \bx_{0},
+V(\widehat{y}_{0}) = V(\bm{x}_{0}'\widehat{\bm{\beta}}) = \sigma^{2}\bm{x}_{0}'(\bm{X}'\bm{X})^{-1}\bm{X}'\bm{V}\bm{X}(\bm{X}'\bm{X})^{-1} \bm{x}_{0},
 \]
-que es diferente de \(\sigma^{2}\bx_{0}'(\bX'\bX)^{-1}\bx_{0}\) (la varianza que asumimos como cierta).
+que es diferente de \(\sigma^{2}\bm{x}_{0}'(\bm{X}'\bm{X})^{-1}\bm{x}_{0}\) (la varianza que asumimos como cierta).
 
-Cuando \(\bV\) es una matriz diagonal:
+Cuando \(\bm{V}\) es una matriz diagonal:
 \[
-\bV = \begin{pmatrix}
+\bm{V}= \begin{pmatrix}
 v_{11} & 0 & 0 & \ldots & 0 \\
 0 & v_{22} & 0 & \ldots & 0 \\
 0 & 0 & v_{33} & \ldots & 0 \\
@@ -2256,12 +2255,12 @@ v_{11} & 0 & 0 & \ldots & 0 \\
 0 & 0 & 0 & \ldots & v_{nn}
 \end{pmatrix},
 \]
-tenemos que hay \textbf{heterocedasticidad}. Cada error tiene una varianza diferente \(V(\varepsilon_{j})=\sigma^{2}v_{jj}\), pero están incorrelacionados. Si los valores fuera de la diagonal de \(\bV\) son diferentes de cero, entonces los errores están correlacionados.
+tenemos que hay \textbf{heterocedasticidad}. Cada error tiene una varianza diferente \(V(\varepsilon_{j})=\sigma^{2}v_{jj}\), pero están incorrelacionados. Si los valores fuera de la diagonal de \(\bm{V}\) son diferentes de cero, entonces los errores están correlacionados.
 
 La correlación de los errores puede esperarse en algunas situaciones. Por ejemplo, si las observaciones son tomadas en el tiempo puede presentarse correlación temporal. En situaciones en las que se pueda garantizar que las observaciones \((y_{1},y_{2},\ldots,y_{n})\) constituyen una muestra aleatoria, no existirá correlación entre los errores, es decir, que es posible controlar este aspecto, algunas ocasiones, controlando el procedimiento de selección de la muestra.
 
 \hypertarget{distribuciuxf3n-no-normal-de-los-errores}{%
-\subsection{Distribución no normal de los errores}\label{distribuciuxf3n-no-normal-de-los-errores}}
+\subsubsection{Distribución no normal de los errores}\label{distribuciuxf3n-no-normal-de-los-errores}}
 
 La normalidad de los errores permite la estimación por intervalos de confianza no sólo para los coeficientes de regresión, sino también para la predicción. Igualmente, permite el planteamiento de pruebas de hipótesis sobre los parámetros del modelo. Cuando los errores no son normales, estas inferencias no son exactas y pueden llegar a ser inválidas.
 
@@ -2270,41 +2269,41 @@ Sin embargo, el teorema central del límite asegura que, bajo ciertas condicione
 De la misma forma, los efectos negativos de la no normalidad dependen de que tan alejados estamos de la normalidad. Si la distribución de los errores es parecida a la normal (por ejemplo, \(t\)-Student), los efectos negativos no son considerables.
 
 \hypertarget{residuos-del-modelo}{%
-\section{Residuos del modelo}\label{residuos-del-modelo}}
+\subsection{Residuos del modelo}\label{residuos-del-modelo}}
 
 Los residuos están definidos como:
 \[
-e_{i} = y_{i}- \haty_{i}, \mbox{ en forma matricial }\be = \by - \hatby = (\bI_{n} - \bH)\by .
+e_{i} = y_{i}- \widehat{y}_{i}, \mbox{ en forma matricial }\bm{e}= \bm{y}- \widehat{\bm{y}}= (\bm{I}_{n} - \bm{H})\bm{y}.
 \]
 Los residuos representan las desviaciones entre las observaciones y el ajuste. Además, estos son combinaciones lineales de los errores:
 \[
-\be = (\bI_{n} - \bH)(\bX\bbeta +\bvarepsi) = (\bI_{n} - \bH)\bvarepsi.
+\bm{e}= (\bm{I}_{n} - \bm{H})(\bm{X}\bm{\beta}+\bm{\varepsilon}) = (\bm{I}_{n} - \bm{H})\bm{\varepsilon}.
 \]
-Por lo tanto toda desviación de las premisas de los errores se debe reflejar en los residuales. Si \(\bvarepsi \sim N(\bZERO,\sigma^{2}\bI_{n})\), entonces:
+Por lo tanto toda desviación de las premisas de los errores se debe reflejar en los residuales. Si \(\bm{\varepsilon}\sim N(\bm{0},\sigma^{2}\bm{I}_{n})\), entonces:
 \[
-\be \sim N \left[ \bZERO , \sigma^{2}(\bI_{n} - \bH)  \right].
+\bm{e}\sim N \left[ \bm{0}, \sigma^{2}(\bm{I}_{n} - \bm{H})  \right].
 \]
 De aquí tenemos que \(V(e_{i}) = (1-h_{ii})\sigma^{2}\) y \(Cov(e_{i},e_{j}) = - h_{ij}\sigma^{2}\), para todo \(i \neq j\). Lo que indica que, aún cuando los errores sean homogéneos en varianza e incorrelacionados, no implica que los residuos lo sean también. Note que los residuos asociados a puntos alejados del centro de los datos tienen menor varianza. Lo que hace difícil detectar violaciones.
 
 Cuando \(n\) es grande comparado con el número de parámetros en el modelo, los residuos si reflejan a los errores en cuanto al comportamiento de su varianza y correlación. Esto es porque \(|h_{ij}| \leq 1\), \(\sum_{i=1}^{n}h_{ii} = n-p\), y \(\sum_{i=1}^{n}h_{ij}=\sum_{j=1}^{n}h_{ij}=1\). Por lo tanto, cuando \(n\rightarrow \infty\), \(V(e_{i}) = \sigma^{2}\) y \(Cov(e_{i},e_{j}) = 0\).
 
 \hypertarget{residuos-estudentizados}{%
-\subsection{Residuos estudentizados}\label{residuos-estudentizados}}
+\subsubsection{Residuos estudentizados}\label{residuos-estudentizados}}
 
 Para evitar el inconveniente de la varianza no constante de los residuos, es preferible utilizar los \textbf{residuos estudentizados}:
 \[
 r_{i} = \frac{e_{i}}{\sqrt{\hat{\sigma}^{2}(1-h_{ii})}}, \qquad i=1,2,\ldots,n.
 \]
-Entonces, \(r_{i}\) tiene varianza constante (\(V(r_{i})=1\)) independiente del lugar de \(\bx_{i}\).
+Entonces, \(r_{i}\) tiene varianza constante (\(V(r_{i})=1\)) independiente del lugar de \(\bm{x}_{i}\).
 
 \hypertarget{residuos-press-y-r-student}{%
-\subsection{Residuos PRESS y R-student}\label{residuos-press-y-r-student}}
+\subsubsection{Residuos PRESS y R-student}\label{residuos-press-y-r-student}}
 
 Como veremos más adelante, los residuos estudentizados se pueden utilizar detectar puntos atípicos. El problema es que si la \(i\)-ésima observación es bastante inusual, el ajuste del modelo puede estar muy influenciado por esta observación. Lo que puede producir un residuo pequeño. Por esta razón, también se pueden calcular los residuos de predicción (PRESS). Estos se calculan de la siguiente forma:
 \[
-e_{(i)} = y_{i} - \haty_{(i)}, \mbox{ para }i=1,\ldots,n,
+e_{(i)} = y_{i} - \widehat{y}_{(i)}, \mbox{ para }i=1,\ldots,n,
 \]
-donde \(\haty_{(i)}\) es el valor ajustado para la \(i\)-ésima observación usando todas las observaciones excepto la \(i\)-ésima. Esto implicaría que para calcular los residuos PRESS es necesario ajustar \(n\) veces el modelo. Sin embargo, esto no es así, ya que se puede demostrar que:
+donde \(\widehat{y}_{(i)}\) es el valor ajustado para la \(i\)-ésima observación usando todas las observaciones excepto la \(i\)-ésima. Esto implicaría que para calcular los residuos PRESS es necesario ajustar \(n\) veces el modelo. Sin embargo, esto no es así, ya que se puede demostrar que:
 \[
 e_{(i)} = \frac{e_{i}}{1-h_{ii}}.
 \]
@@ -2314,22 +2313,22 @@ V(e_{(i)}) = V\left( \frac{e_{i}}{1-h_{ii}} \right) = \frac{1}{(1-h_{ii})^{2}}V(
 \]
 Si estudentizamos los residuos PRESS obtenemos los \textbf{residuos R-Student}:
 \[
-t_{i} = \frac{e_{i}}{\sqrt{\hatsigma^{2}_{(i)}(1-h_{ii})}},
+t_{i} = \frac{e_{i}}{\sqrt{\widehat{\sigma}^{2}_{(i)}(1-h_{ii})}},
 \]
-donde \(\hatsigma^{2}_{(i)}\) es la estimación de \(\sigma\) usando todas las observaciones excepto la \(i\)-ésima. Se puede demostrar que:
+donde \(\widehat{\sigma}^{2}_{(i)}\) es la estimación de \(\sigma\) usando todas las observaciones excepto la \(i\)-ésima. Se puede demostrar que:
 \[
-\hatsigma^{2}_{(i)} = \frac{(n-p)\hatsigma^{2} - \epsilon^{2}_{i}/(1-h_{ii})}{n-p-1}.
+\widehat{\sigma}^{2}_{(i)} = \frac{(n-p)\widehat{\sigma}^{2} - \epsilon^{2}_{i}/(1-h_{ii})}{n-p-1}.
 \]
 
 \hypertarget{evaluaciuxf3n-del-cumplimiento-de-los-supuestos}{%
-\section{Evaluación del cumplimiento de los supuestos}\label{evaluaciuxf3n-del-cumplimiento-de-los-supuestos}}
+\subsection{Evaluación del cumplimiento de los supuestos}\label{evaluaciuxf3n-del-cumplimiento-de-los-supuestos}}
 
 En esta sección mostramos la evaluación de los supuestos a través del análisis de los residuos del ajuste (ya sean los residuos estudentizados o los R-Student) usando gráficos y pruebas de hipótesis.
 
 \hypertarget{gruxe1ficos-de-residuos}{%
-\subsection{Gráficos de residuos}\label{gruxe1ficos-de-residuos}}
+\subsubsection{Gráficos de residuos}\label{gruxe1ficos-de-residuos}}
 
-Un gráfico de los residuos es una forma efectiva de investigar posibles alejamientos de los supuestos. Generalmente, se grafican los residuos estudentizados \((r_{i})\) contra los valores ajustados \(\haty_{i}\) (o contra alguna de las covariables \(x_{ij}\)). Este tipo de gráfico es de gran ayuda para detectar la correcta especificación del modelo y homocedasticidad. Algunos patrones de residuos se pueden observar en la Figura \ref{fig:PatronesResiduos}.
+Un gráfico de los residuos es una forma efectiva de investigar posibles alejamientos de los supuestos. Generalmente, se grafican los residuos estudentizados \((r_{i})\) contra los valores ajustados \(\widehat{y}_{i}\) (o contra alguna de las covariables \(x_{ij}\)). Este tipo de gráfico es de gran ayuda para detectar la correcta especificación del modelo y homocedasticidad. Algunos patrones de residuos se pueden observar en la Figura \ref{fig:PatronesResiduos}.
 
 \begin{figure}
 
@@ -2356,8 +2355,8 @@ Adicionalmente, para detectar más facilmente heterocedasticidad, se pueden graf
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{bajo-peso-al-nacer---gruxe1fico-de-residuos}{%
-\subsubsection*{Bajo peso al nacer - gráfico de residuos}\label{bajo-peso-al-nacer---gruxe1fico-de-residuos}}
-\addcontentsline{toc}{subsubsection}{Bajo peso al nacer - gráfico de residuos}
+\paragraph*{Bajo peso al nacer - gráfico de residuos}\label{bajo-peso-al-nacer---gruxe1fico-de-residuos}}
+\addcontentsline{toc}{paragraph}{Bajo peso al nacer - gráfico de residuos}
 
 Para el modelo ajustado para los datos de peso al nacer, el gráfico de los residuos contra los valores ajustados se obtienen de la siguiente forma:
 
@@ -2392,7 +2391,7 @@ La Figura @ref(fig:residuosBWdata\})(a) muestra que los residuos están alrededo
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{gruxe1ficos-de-residuos-parciales}{%
-\subsection{Gráficos de residuos parciales}\label{gruxe1ficos-de-residuos-parciales}}
+\subsubsection{Gráficos de residuos parciales}\label{gruxe1ficos-de-residuos-parciales}}
 
 Los gráficos de residuos parciales permiten estudiar el efecto marginal de una covariable sobre la respuesta condicionado a que los demás regresores ya están en el modelo. En caso que el gráfico de los residuos muestre posibles curvaturas (por ejemplo, Figura \ref{fig:PatronesResiduos}(d)), los residuos parciales permiten verificar si estas se presentan debido a una covariable especifica.
 
@@ -2400,17 +2399,17 @@ Considere el modelo:
 \[
 y_{i} = \beta_{0} +\beta_{1}x_{i1}+\beta_{2}x_{i2} + \ldots + \beta_{p-1}x_{i,p-1} + \varepsilon_{i}.
 \]
-Para calcular los residuos parciales, primero estimamos los parámetros \((\hatbeta_{1},\ldots,\hatbeta_{p-1})\) y los residuos ordinarios \((e_{1},\ldots,e_{n})\). Luego, los residuos parciales para la covariable \(x_{j}\) se obtienen de la siguiente forma:
+Para calcular los residuos parciales, primero estimamos los parámetros \((\widehat{\beta}_{1},\ldots,\widehat{\beta}_{p-1})\) y los residuos ordinarios \((e_{1},\ldots,e_{n})\). Luego, los residuos parciales para la covariable \(x_{j}\) se obtienen de la siguiente forma:
 \[
-e^{*}_{i}(y|x_{j}) = e_{i} - \hatbeta_{j}x_{ij}, \mbox{ para } i=1,\ldots,n.
+e^{*}_{i}(y|x_{j}) = e_{i} - \widehat{\beta}_{j}x_{ij}, \mbox{ para } i=1,\ldots,n.
 \]
 El gráfico de residuos parciales para la covariable \(x_{j}\) se obtiene graficando \(e^{*}_{i}(y|x_{j})\) contra \(x_{j}\). Si la covariable \(x_{j}\) entra al modelo linealmente, entonces el gráfico de residuos parciales debe mostrar una tendencia lineal. Por el contrario, si se observa una curva, \(x_{j}\) no entra al modelo de forma lineal.
 
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{bajo-peso-al-nacer---gruxe1fico-de-residuos-parciales}{%
-\subsubsection*{Bajo peso al nacer - gráfico de residuos parciales}\label{bajo-peso-al-nacer---gruxe1fico-de-residuos-parciales}}
-\addcontentsline{toc}{subsubsection}{Bajo peso al nacer - gráfico de residuos parciales}
+\paragraph*{Bajo peso al nacer - gráfico de residuos parciales}\label{bajo-peso-al-nacer---gruxe1fico-de-residuos-parciales}}
+\addcontentsline{toc}{paragraph}{Bajo peso al nacer - gráfico de residuos parciales}
 
 El gráfico de residuos parciales se obtiene así:
 
@@ -2439,7 +2438,7 @@ Igual que en el gráfico de residuos, los residuos parciales no muestran tendenc
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{gruxe1ficos-de-normalidad}{%
-\subsection{Gráficos de normalidad}\label{gruxe1ficos-de-normalidad}}
+\subsubsection{Gráficos de normalidad}\label{gruxe1ficos-de-normalidad}}
 
 Los gráficos cuantil-cuantil (qqplot) comparan los cuantiles muestrales contra los cuantiles que se esperarían con la distribución de probabilidad asumida para los datos (cuantiles teóricos). En el caso de regresión lineal, estamos asumiendo que los errores del modelo siguen una distribución normal. Por lo tanto, debemos comparar los cuartiles muestrales de los residuos con los cuartiles teóricos que se esperarían bajo una distribución normal.
 
@@ -2463,8 +2462,8 @@ La Figura \ref{fig:qqplots} muestra diferentes patrones de gráficos de normalid
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{bajo-peso-al-nacer---gruxe1fico-de-normalidad}{%
-\subsubsection*{Bajo peso al nacer - gráfico de normalidad}\label{bajo-peso-al-nacer---gruxe1fico-de-normalidad}}
-\addcontentsline{toc}{subsubsection}{Bajo peso al nacer - gráfico de normalidad}
+\paragraph*{Bajo peso al nacer - gráfico de normalidad}\label{bajo-peso-al-nacer---gruxe1fico-de-normalidad}}
+\addcontentsline{toc}{paragraph}{Bajo peso al nacer - gráfico de normalidad}
 
 El gráfico cuartil-cuartil de los residuos estudentizados se obtiene así:
 
@@ -2495,7 +2494,7 @@ La Figura \ref{fig:qqnormBWdata1} muestra que los puntos siguen de forma aproxim
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{gruxe1fico-de-residuos-frente-a-el-tiempo}{%
-\subsection{Gráfico de residuos frente a el tiempo}\label{gruxe1fico-de-residuos-frente-a-el-tiempo}}
+\subsubsection{Gráfico de residuos frente a el tiempo}\label{gruxe1fico-de-residuos-frente-a-el-tiempo}}
 
 Cómo se mencionó anteriormente, si las observaciones fueron tomadas de forma independiente, entonces se puede garantizar que los errores también lo sean. Para los datos del peso de los recién nacidos, tendríamos que asumir que los bebés fueron seleccionados de forma totalmente aleatoria, y así garantizar que los errores no están correlacionados. Por el contrario, los datos del consumo de helado fueron tomados a lo largo del tiempo (cada dos semanas), por lo que se puede presentar \textbf{correlación temporal}. Es decir, observaciones tomadas en tiempo cercanos se espera que estén altamente correlacionadas.
 
@@ -2514,8 +2513,8 @@ La Figura \ref{fig:residuosCorr} muestra diferentes patrones de comportamiento p
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{consumo-de-helado---gruxe1fico-de-los-residuos-contra-el-tiempo}{%
-\subsubsection*{Consumo de helado - gráfico de los residuos contra el tiempo}\label{consumo-de-helado---gruxe1fico-de-los-residuos-contra-el-tiempo}}
-\addcontentsline{toc}{subsubsection}{Consumo de helado - gráfico de los residuos contra el tiempo}
+\paragraph*{Consumo de helado - gráfico de los residuos contra el tiempo}\label{consumo-de-helado---gruxe1fico-de-los-residuos-contra-el-tiempo}}
+\addcontentsline{toc}{paragraph}{Consumo de helado - gráfico de los residuos contra el tiempo}
 
 Los gráficos de los residuos para el modelo ajustado a los datos de consumo de helado se observan en la Figura \ref{fig:heladosResiduos1}. Aquí vemos que la relación entre la variable respuesta y las covariables es aproximadamente lineal, no hay problemas de heterocedasticidad, y que los residuos siguen una distribución normal. Aunque se ve la presencia de un punto atípico.
 
@@ -2571,12 +2570,12 @@ Dado que las observaciones del consumo de helado tienen un orden temporal (fuero
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{pruebas-de-hipuxf3tesis-para-evaluar-los-supuestos}{%
-\section{Pruebas de hipótesis para evaluar los supuestos}\label{pruebas-de-hipuxf3tesis-para-evaluar-los-supuestos}}
+\subsection{Pruebas de hipótesis para evaluar los supuestos}\label{pruebas-de-hipuxf3tesis-para-evaluar-los-supuestos}}
 
 \hypertarget{prueba-de-falta-de-ajuste}{%
-\subsection{Prueba de falta de ajuste}\label{prueba-de-falta-de-ajuste}}
+\subsubsection{Prueba de falta de ajuste}\label{prueba-de-falta-de-ajuste}}
 
-El objetivo de la prueba de falta de ajuste es determinar si la relación entre la variable respuesta y las covariables puede asumirse cómo lineal. Hay que tener en cuenta que esta prueba es sensible a ajamientos de los supuestos de normalidad, varianza constante e independencia de los errores. Además, requiere que se tengan mútiple observaciones de \(y\) para diferentes niveles de \(\bx\). Por ejemplo, el test puede implementarse en los datos de la longitud de los peces puesto que tenemos varios individuos con las mismas edades. En los otros casos, no es posible, por lo menos de forma exacta. El objetivo de estas observaciones replicadas es tener una estimación independiente de \(\sigma^{2}\).
+El objetivo de la prueba de falta de ajuste es determinar si la relación entre la variable respuesta y las covariables puede asumirse cómo lineal. Hay que tener en cuenta que esta prueba es sensible a ajamientos de los supuestos de normalidad, varianza constante e independencia de los errores. Además, requiere que se tengan mútiple observaciones de \(y\) para diferentes niveles de \(\bm{x}\). Por ejemplo, el test puede implementarse en los datos de la longitud de los peces puesto que tenemos varios individuos con las mismas edades. En los otros casos, no es posible, por lo menos de forma exacta. El objetivo de estas observaciones replicadas es tener una estimación independiente de \(\sigma^{2}\).
 
 En regresión lineal simple, suponga que se tienen \(n_{i}\) observaciones de la variable respuesta para el \(i\)-ésimo nivel de \(x_{i}\), para \(i=1,\ldots,m\), y denotemos \(y_{ij}\) como la \(j\)-ésima observación de la respuesta en \(x_{i}\), para \(j=1,\ldots,n_{i}\). Por lo tanto, tenemos \(n=\sum_{i=1}^{m}n_{i}\) observaciones en total. Esto permite que se puede descomponer la suma de cuadrados de los residuos en dos:
 \[
@@ -2586,13 +2585,13 @@ donde \(SS_{PE}\) y \(SS_{LOF}\) son la suma de cuadrados del error puro y falta
 
 Para esto, primero observemos que los residuos se pueden descomponer así:
 \begin{equation}
-y_{ij} - \haty_{i} = (y_{ij} - \bar{y}_{i}) + (\bar{y}_{i} - \haty_{i}),
+y_{ij} - \widehat{y}_{i} = (y_{ij} - \bar{y}_{i}) + (\bar{y}_{i} - \widehat{y}_{i}),
 \label{eq:ssresd}
 \end{equation}
 donde \(\bar{y}_{i}\) es el promedio de las \(n_{i}\) observaciones en \(x_{i}\). Ahora, elevando al cuadrado ambos lados de \eqref{eq:ssresd}, y sumando para todo \(i\) y \(j\), tenemos:
 \begin{equation}
 \begin{split}
-\sum_{i=1}^{m} \sum_{j=1}^{n_{i}} (y_{ij} - \haty_{i})^{2} &= \sum_{i=1}^{m}\sum_{j=1}^{n_{i}}(y_{ij}-\bar{y}_{i})^{2} + \sum_{i=1}^{m}n_{i}(\bar{y}_{i}-\haty_{i})^{2}, \\
+\sum_{i=1}^{m} \sum_{j=1}^{n_{i}} (y_{ij} - \widehat{y}_{i})^{2} &= \sum_{i=1}^{m}\sum_{j=1}^{n_{i}}(y_{ij}-\bar{y}_{i})^{2} + \sum_{i=1}^{m}n_{i}(\bar{y}_{i}-\widehat{y}_{i})^{2}, \\
 SS_{res} &= SS_{PE} + SS_{LOF}.
 \end{split}
 \nonumber
@@ -2608,7 +2607,7 @@ MS_{PE} = \frac{SS_{PE}}{n-m} \mbox{ y } MS_{LOF} = \frac{SS_{LOF}}{m-2},
 
 respectivamente. Si se cumple el supuesto de homocedasticidad, el valor esperado de \(MS_{PE}\) es:
 \[
-E(MS_{PE}) = \frac{1}{n-m}E\left[ \sum_{j=1}^{n_{i}}(y_{ij} - \haty_{i})^{2} \right] = \frac{1}{n-m}\sum_{j=1}^{n_{i}} E\left[ (y_{ij}-\haty_{i})^{2} \right] = \frac{\sigma^{2}}{n-m}\sum_{j=1}^{n_{i}}(n_{i}-1) = \sigma^{2}.
+E(MS_{PE}) = \frac{1}{n-m}E\left[ \sum_{j=1}^{n_{i}}(y_{ij} - \widehat{y}_{i})^{2} \right] = \frac{1}{n-m}\sum_{j=1}^{n_{i}} E\left[ (y_{ij}-\widehat{y}_{i})^{2} \right] = \frac{\sigma^{2}}{n-m}\sum_{j=1}^{n_{i}}(n_{i}-1) = \sigma^{2}.
 \]
 Es decir que el cuadrado medio del error puro es una estimación de \(\sigma^{2}\) independiente del ajuste del modelo.
 
@@ -2633,7 +2632,7 @@ Como se mencionó antes, la prueba exige que se tenga múltiples observaciones p
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{base-de-datos-de-la-longitud-de-los-peces---prueba-de-falta-de-ajuste}{%
-\subsubsection{Base de datos de la longitud de los peces - prueba de falta de ajuste}\label{base-de-datos-de-la-longitud-de-los-peces---prueba-de-falta-de-ajuste}}
+\paragraph{Base de datos de la longitud de los peces - prueba de falta de ajuste}\label{base-de-datos-de-la-longitud-de-los-peces---prueba-de-falta-de-ajuste}}
 
 La Figura \ref{fig:pecesResiduos1} muestra los gráficos de los residuos para el modelo ajustado a los datos de la longitud de los peces.
 
@@ -2680,13 +2679,13 @@ A partir del valor-\(p\) podemos concluir que no se rechaza \(H_{0}\), por lo ta
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{prueba-de-heterocedasticidad}{%
-\subsection{Prueba de heterocedasticidad}\label{prueba-de-heterocedasticidad}}
+\subsubsection{Prueba de heterocedasticidad}\label{prueba-de-heterocedasticidad}}
 
-Algunas pruebas de heterocedasticidad asumen que la varianza de los errores se compone de una parte constante y otra que varía según unas variables \((\bz)\):
+Algunas pruebas de heterocedasticidad asumen que la varianza de los errores se compone de una parte constante y otra que varía según unas variables \((\bm{z})\):
 \[
-\sigma^{2}_{i} = f(\sigma^{2},\bz_{i}),
+\sigma^{2}_{i} = f(\sigma^{2},\bm{z}_{i}),
 \]
-donde \(\sigma^{2}\) es la parte fija de la varianza, \(\bz_{i}\) el conjunto de variables cuyos valores se asocian con los cambios en la varianza de los errores. Por lo general se asume que la función de varianza depende de algunas de las covariables del modelo, es decir que \(\bz_{i}=\bx_{i}\).
+donde \(\sigma^{2}\) es la parte fija de la varianza, \(\bm{z}_{i}\) el conjunto de variables cuyos valores se asocian con los cambios en la varianza de los errores. Por lo general se asume que la función de varianza depende de algunas de las covariables del modelo, es decir que \(\bm{z}_{i}=\bm{x}_{i}\).
 
 La \textbf{prueba de Breusch-Pagan} asume que la varianza es una función aditiva de las covariables:
 \[
@@ -2740,8 +2739,8 @@ y el coeficiente de determinación asociado \(R_{e}^{2}\). El estadístico de pr
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{bajo-peso-al-nacer---prueba-de-heterocedasticidad}{%
-\subsubsection*{Bajo peso al nacer - prueba de heterocedasticidad}\label{bajo-peso-al-nacer---prueba-de-heterocedasticidad}}
-\addcontentsline{toc}{subsubsection}{Bajo peso al nacer - prueba de heterocedasticidad}
+\paragraph*{Bajo peso al nacer - prueba de heterocedasticidad}\label{bajo-peso-al-nacer---prueba-de-heterocedasticidad}}
+\addcontentsline{toc}{paragraph}{Bajo peso al nacer - prueba de heterocedasticidad}
 
 En la prueba de White se asume que:
 \begin{equation}
@@ -2837,10 +2836,10 @@ Otras pruebas de heterocedasticidad que se pueden utilizar son:
   Prueba de Hartley.
 \end{itemize}
 
-Las últimas tres pruebas requieren que se tengan múltiples observaciones para cada nivel de \(\bx\). En caso que no se tengan repeticiones, es posible agruparlas por los vecinos más cercanos e implementar la prueba de forma aproximada.
+Las últimas tres pruebas requieren que se tengan múltiples observaciones para cada nivel de \(\bm{x}\). En caso que no se tengan repeticiones, es posible agruparlas por los vecinos más cercanos e implementar la prueba de forma aproximada.
 
 \hypertarget{prueba-de-normalidad}{%
-\subsection{Prueba de normalidad}\label{prueba-de-normalidad}}
+\subsubsection{Prueba de normalidad}\label{prueba-de-normalidad}}
 
 Para probar normalidad podemos utilizar la prueba de Shapiro-Wilks.
 
@@ -2857,8 +2856,8 @@ donde \((x_{[1]},x_{[2]},\ldots,x_{[n]})\) son los estadísticos de orden y los 
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{bajo-peso-al-nacer---prueba-de-normalidad}{%
-\subsubsection*{Bajo peso al nacer - prueba de normalidad}\label{bajo-peso-al-nacer---prueba-de-normalidad}}
-\addcontentsline{toc}{subsubsection}{Bajo peso al nacer - prueba de normalidad}
+\paragraph*{Bajo peso al nacer - prueba de normalidad}\label{bajo-peso-al-nacer---prueba-de-normalidad}}
+\addcontentsline{toc}{paragraph}{Bajo peso al nacer - prueba de normalidad}
 
 La prueba de Shapiro-Wilks para ajuste de los datos de peso al nacer es:
 \texttt{lmtest}:
@@ -2892,15 +2891,15 @@ Otras pruebas de normalidad que se pueden utilizar son:
 \end{itemize}
 
 \hypertarget{prueba-de-correlaciuxf3n-temporal-de-los-errores}{%
-\subsection{Prueba de correlación temporal de los errores}\label{prueba-de-correlaciuxf3n-temporal-de-los-errores}}
+\subsubsection{Prueba de correlación temporal de los errores}\label{prueba-de-correlaciuxf3n-temporal-de-los-errores}}
 
 Cuando la correlación es debido a que las observaciones fueron tomadas en el tiempo, se puede asumir que hay \textbf{autocorrelación}. Aquí se asume que los errores que están separados \(t\) unidades de tiempo siempre tienen la misma correlación lineal. Además que la correlación disminuye a medida que las observaciones se separan en el tiempo.
 
 El modelo de regresión, con errores autoregresivos de orden uno, es el siguiente:
 \[
-y_{t} = \bx_{t}'\bbeta + \varepsilon_{t}, \mbox{ con }\varepsilon_{t}= \phi\varepsilon_{t-1} + a_{t},
+y_{t} = \bm{x}_{t}'\bm{\beta}+ \varepsilon_{t}, \mbox{ con }\varepsilon_{t}= \phi\varepsilon_{t-1} + a_{t},
 \]
-donde \(y_{t}\) y \(\bx_{t}\) son la variable respuesta observada y el conjunto de covariables observadas en el tiempo \(t\), respectivamente, y \(\phi\) es el parámetro de autocorrelación \((|\phi| < 1)\). Además, se asume que \(a_{t} \sim N(0,\sigma^{2}_{a})\) y \(cov(a_{j},a_{k})=0\), para todo \(j \neq k\). A partir de estos resultados, se tiene que:
+donde \(y_{t}\) y \(\bm{x}_{t}\) son la variable respuesta observada y el conjunto de covariables observadas en el tiempo \(t\), respectivamente, y \(\phi\) es el parámetro de autocorrelación \((|\phi| < 1)\). Además, se asume que \(a_{t} \sim N(0,\sigma^{2}_{a})\) y \(cov(a_{j},a_{k})=0\), para todo \(j \neq k\). A partir de estos resultados, se tiene que:
 \[
 E(\varepsilon_{t}) = 0, V(\varepsilon_{t}) = \sigma^{2}_{a}\left( \frac{1}{1-\phi^2}\right), \mbox{ y } cov(\varepsilon_{t},\varepsilon_{t \pm k})= \phi^{k}\sigma^{2}_{a}\left( \frac{1}{1-\phi^2} \right).
 \]
@@ -2914,13 +2913,13 @@ El estadístico de prueba es:
 \[
 d = \frac{\sum_{t=2}^{T}\left( e_{t} - e_{t-1}\right)^{2}}{\sum_{t=1}^{T}e_{t}^{2}}.
 \]
-La distribución de probabilidad de \(d\), bajo \(H_{0}\), depende de la estructura de \(\bX\) y es difícil de determinar. Por lo tanto, los valores críticos están tabulados para diferentes valores de significancia, tamaño de muestra y número de parámetros. Otra alternativa, usada por los paquetes estadísticos, es calcular la significancia a través de métodos de remuestreo y aproximaciones del estadístico de prueba a la distribución normal.
+La distribución de probabilidad de \(d\), bajo \(H_{0}\), depende de la estructura de \(\bm{X}\) y es difícil de determinar. Por lo tanto, los valores críticos están tabulados para diferentes valores de significancia, tamaño de muestra y número de parámetros. Otra alternativa, usada por los paquetes estadísticos, es calcular la significancia a través de métodos de remuestreo y aproximaciones del estadístico de prueba a la distribución normal.
 
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{ventas-de-helado---prueba-de-correlaciuxf3n-temporal}{%
-\subsubsection*{Ventas de helado - prueba de correlación temporal}\label{ventas-de-helado---prueba-de-correlaciuxf3n-temporal}}
-\addcontentsline{toc}{subsubsection}{Ventas de helado - prueba de correlación temporal}
+\paragraph*{Ventas de helado - prueba de correlación temporal}\label{ventas-de-helado---prueba-de-correlaciuxf3n-temporal}}
+\addcontentsline{toc}{paragraph}{Ventas de helado - prueba de correlación temporal}
 
 La prueba de Durbin-Watson para ajuste de los datos de ventas de helado se puede hacer a través de la función \texttt{durbinWatsonTest} de la librería \texttt{car}:
 
@@ -2941,7 +2940,7 @@ Estos resultados muestran que hay correlación serial en los datos. Note que con
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{comentarios-finales}{%
-\section{Comentarios finales}\label{comentarios-finales}}
+\subsection{Comentarios finales}\label{comentarios-finales}}
 
 Algunas consideraciones, muchas de ellas tomadas de \citet{behar_validacion_2002}:
 
@@ -2956,17 +2955,17 @@ Algunas consideraciones, muchas de ellas tomadas de \citet{behar_validacion_2002
 \item
   Adicionalmente, varias pruebas son muy sensibles al alejamiento de la suposición de normalidad. Es decir que, si los errores no son normalmente distribuidos, el nivel real de significancia puede ser muy diferente del especificado. Sin embargo, el rechazo de la hipótesis nula podría sugerir que al menos uno de los dos supuestos no se cumple.
 \item
-  A la hora de validar el supuesto de normalidad de los errores se está interesado en saber si el alejamiento de ese modelo normal, es aceptable desde el punto de vista de la conservación de las propiedades y ventajas que se heredan de la normalidad. Las estimaciones de \(\hatbbeta\) son generalmente robustas a desviaciones de la normalidad (Teorema del límite central).
+  A la hora de validar el supuesto de normalidad de los errores se está interesado en saber si el alejamiento de ese modelo normal, es aceptable desde el punto de vista de la conservación de las propiedades y ventajas que se heredan de la normalidad. Las estimaciones de \(\widehat{\bm{\beta}}\) son generalmente robustas a desviaciones de la normalidad (Teorema del límite central).
 \end{itemize}
 
 \hypertarget{transformaciones-y-muxednimos-cuadrados-ponderados}{%
-\chapter{Transformaciones y mínimos cuadrados ponderados}\label{transformaciones-y-muxednimos-cuadrados-ponderados}}
+\section{Transformaciones y mínimos cuadrados ponderados}\label{transformaciones-y-muxednimos-cuadrados-ponderados}}
 
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{ejemplo-1.-datos-de-la-onu}{%
-\section*{Ejemplo 1. Datos de la ONU}\label{ejemplo-1.-datos-de-la-onu}}
-\addcontentsline{toc}{section}{Ejemplo 1. Datos de la ONU}
+\subsection*{Ejemplo 1. Datos de la ONU}\label{ejemplo-1.-datos-de-la-onu}}
+\addcontentsline{toc}{subsection}{Ejemplo 1. Datos de la ONU}
 
 La base de datos \texttt{UN11} de la librería \texttt{alr4} contiene las siguientes estadísticas de varios miembros de las naciones unidas (y otras regiones independientes) durante los años 2009-2011:
 
@@ -3050,8 +3049,8 @@ Luego de ajustar el modelo se procede a hacer un análisis de residuos. El gráf
 \end{figure}
 
 \hypertarget{ejemplo-2.-datos-de-educaciuxf3n}{%
-\section*{Ejemplo 2. Datos de educación}\label{ejemplo-2.-datos-de-educaciuxf3n}}
-\addcontentsline{toc}{section}{Ejemplo 2. Datos de educación}
+\subsection*{Ejemplo 2. Datos de educación}\label{ejemplo-2.-datos-de-educaciuxf3n}}
+\addcontentsline{toc}{subsection}{Ejemplo 2. Datos de educación}
 
 La base de datos \texttt{education} de la librería \texttt{robustbase} contiene información sobre gastos en educación de 50 estados de los EEUU en el año 1975. Las variables observadas son:
 
@@ -3125,7 +3124,7 @@ Antes de hacer inferencias sobre el modelo hacemos un análisis de los residuos.
 Dado que los modelos ajustados presentan desviaciones considerables de los supuestos asumidos, las inferencias que se hagan pueden ser invalidas. Por lo tanto, en este capítulo presentaremos dos herramientas para la corrección de estos problemas: (1) transformación de variables (incluyendo la transformación de Box-Cox) y (2) mínimos cuadrados ponderados.
 
 \hypertarget{transformaciuxf3n-de-los-datos}{%
-\section{Transformación de los datos}\label{transformaciuxf3n-de-los-datos}}
+\subsection{Transformación de los datos}\label{transformaciuxf3n-de-los-datos}}
 
 Los objetivos de realizar transformaciones sobre los datos son:
 
@@ -3144,7 +3143,7 @@ Las transformaciones pueden hacerse sobre la variable respuesta, las covariables
 La desventaja de hacer transformaciones es que la interpretación del modelo estimado, así como las inferencias, se hacen sobre las variables transformadas, y no en su escala original.
 
 \hypertarget{transformaciones-para-linealizar-el-modelo}{%
-\subsection{Transformaciones para linealizar el modelo}\label{transformaciones-para-linealizar-el-modelo}}
+\subsubsection{Transformaciones para linealizar el modelo}\label{transformaciones-para-linealizar-el-modelo}}
 
 Recordemos que el modelo lineal asume que la relación entre la media y las covariables es aproximadamente lineal. En algunos casos, dada la naturaleza de los datos, este supuesto puede ser violado. Por lo tanto, para seguir utilizando la metodología de los modelos lineales, es posible linealizar funciones no-lineales por medio de transformaciones.
 
@@ -3185,7 +3184,7 @@ Note que estaríamos asumiendo que \(\log\varepsilon_{i}\) está normalmente dis
 \end{figure}
 
 \hypertarget{transformaciones-para-estabilizar-la-varianza}{%
-\subsection{Transformaciones para estabilizar la varianza}\label{transformaciones-para-estabilizar-la-varianza}}
+\subsubsection{Transformaciones para estabilizar la varianza}\label{transformaciones-para-estabilizar-la-varianza}}
 
 Un caso frecuente es que la variable respuesta sigue una distribución de probabilidad en la que la varianza se relaciona en forma funcional con la media:
 \[
@@ -3236,8 +3235,8 @@ Algunas consideraciones cuando se hacen transformaciones sobre las variables:
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{datos-de-la-onu.-transformaciuxf3n-para-linealizar-los-datos}{%
-\subsection*{Datos de la ONU. Transformación para linealizar los datos}\label{datos-de-la-onu.-transformaciuxf3n-para-linealizar-los-datos}}
-\addcontentsline{toc}{subsection}{Datos de la ONU. Transformación para linealizar los datos}
+\subsubsection*{Datos de la ONU. Transformación para linealizar los datos}\label{datos-de-la-onu.-transformaciuxf3n-para-linealizar-los-datos}}
+\addcontentsline{toc}{subsubsection}{Datos de la ONU. Transformación para linealizar los datos}
 
 Al realizar un análisis de residuos del ajuste del modelo para los datos de la ONU, vimos que hay una relación no-lineal entre la fertilidad y las dos covariables propuestas. Particularmente, esto se debe a la covariable producto nacional bruto.
 
@@ -3286,7 +3285,7 @@ La Figura \ref{fig:UNtrans2Fig} muestra el gráfico de los residuos para este aj
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{muxe9todo-de-box-cox}{%
-\section{Método de Box-Cox}\label{muxe9todo-de-box-cox}}
+\subsection{Método de Box-Cox}\label{muxe9todo-de-box-cox}}
 
 Para la corrección del supuesto de normalidad y varianza constante, es posible implementar transformaciones en potencia para la variable respuesta. Esto es, \(y^{*}=y^{\lambda}\). Dado que el valor de \(\lambda\) es desconocido, la idea del \textbf{método de Box-Cox} es estimar el modelo lineal para diferentes valores de \(\lambda\) y determinar el valor que proporciona el mejor ajuste. Sin embargo, aquí encontramos dos problemas.
 
@@ -3323,23 +3322,23 @@ Entonces, el método de Box-Cox es el siguiente:
 
 Puesto que \(\lambda\) es una variable aleatoria, también se puede hacer una estimación por intervalos de confianza. Para esto primero consideremos la función de log-verosimilitud:
 \[
-\ell(\bbeta,\sigma^{2} | \lambda) = -\frac{2}{n}\log \left( 2\pi\sigma^{2}\right) - \frac{1}{2\sigma^{2}}\sum_{i=1}^{n}\left( y_{i}^{\lambda} - \bx_{i}'\bbeta\right)^{2} = -\frac{2}{n}\log \left( 2\pi\sigma^{2}\right) - \frac{1}{2\sigma^{2}}SS_{res}(\lambda).
+\ell(\bm{\beta},\sigma^{2} | \lambda) = -\frac{2}{n}\log \left( 2\pi\sigma^{2}\right) - \frac{1}{2\sigma^{2}}\sum_{i=1}^{n}\left( y_{i}^{\lambda} - \bm{x}_{i}'\bm{\beta}\right)^{2} = -\frac{2}{n}\log \left( 2\pi\sigma^{2}\right) - \frac{1}{2\sigma^{2}}SS_{res}(\lambda).
 \]
 Aquí vemos que el valor de \(\lambda\) que maximiza la verosimilitud es el mismo que minimiza la suma de cuadrados de los residuos.
 
 Un intervalo de confianza se puede construir a partir del siguiente estadístico de prueba:
 \[
-G_{0}^{2} = -2\left[ \ell(\bbeta,\sigma^{2} | \lambda=1) - \ell(\bbeta,\sigma^{2} | \lambda=\hatlambda) \right].
+G_{0}^{2} = -2\left[ \ell(\bm{\beta},\sigma^{2} | \lambda=1) - \ell(\bm{\beta},\sigma^{2} | \lambda=\widehat{\lambda}) \right].
 \]
 Si \(\lambda=1\), entonces asintóticamente \(G_{0}^{2} \sim \chi^{2}_{1}\). Por lo tanto, el intervalo del \((1-\alpha)\times 100\)\% de confianza para \(\lambda\) está definido por los valores de \(\lambda\) que cumplen con la condición:
 \[
- \ell(\bbeta,\sigma^{2} | \lambda) \geq  \ell(\bbeta,\sigma^{2} | \lambda=\hatlambda) - \frac{1}{2}\chi^{2}_{1,1-\alpha}.
+ \ell(\bm{\beta},\sigma^{2} | \lambda) \geq  \ell(\bm{\beta},\sigma^{2} | \lambda=\widehat{\lambda}) - \frac{1}{2}\chi^{2}_{1,1-\alpha}.
 \]
 
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{datos-de-educaciuxf3n.-transformaciuxf3n-de-box-cox}{%
-\subsection{Datos de educación. Transformación de Box-Cox}\label{datos-de-educaciuxf3n.-transformaciuxf3n-de-box-cox}}
+\subsubsection{Datos de educación. Transformación de Box-Cox}\label{datos-de-educaciuxf3n.-transformaciuxf3n-de-box-cox}}
 
 Dado que el análisis de residuso para el ajuste del modelo para los datos de educación mostró que hay problemas de heterocedasticidad, vamos a encontrar una transformación que resuelva de problema usando el método de Box-Cox. Para esto usamos la función \texttt{boxcox} de la librería \texttt{MASS}:
 
@@ -3369,7 +3368,7 @@ Dado que el análisis de residuso para el ajuste del modelo para los datos de ed
 ## [1] -1.09009
 \end{verbatim}
 
-Estos resultados nos indican que \(\hatlambda = -1.09\). Por lo cuál, podemos utilizar una transformación inversa \((\lambda=-1)\). Entonces, el modelo propuesto es:
+Estos resultados nos indican que \(\widehat{\lambda}= -1.09\). Por lo cuál, podemos utilizar una transformación inversa \((\lambda=-1)\). Entonces, el modelo propuesto es:
 \[
 1/y_{i} = \beta_{0} + \beta_{1}\mbox{X1}_{i}+ \beta_{2}\mbox{X2}_{i} + \beta_{3}\mbox{X3}_{i} + \varepsilon_{i},
 \]
@@ -3477,18 +3476,18 @@ Por lo que intervalo del 95\% de confianza para el gasto medio en educación pú
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{muxednimos-cuadrados-ponderados}{%
-\section{Mínimos cuadrados ponderados}\label{muxednimos-cuadrados-ponderados}}
+\subsection{Mínimos cuadrados ponderados}\label{muxednimos-cuadrados-ponderados}}
 
-El método de mínimos cuadrados ponderados (MCP) es una alternativa para estimar un modelo lineal en presencia de heterocedasticidad. La idea de esta técnica es calcular las desviaciones entre las observaciones \((y_{i})\) y los valores ajustados \((\haty_{i})\) usando pesos \((w_{i})\) inversamente proporcionales a la varianza de \(y_{i}\).
+El método de mínimos cuadrados ponderados (MCP) es una alternativa para estimar un modelo lineal en presencia de heterocedasticidad. La idea de esta técnica es calcular las desviaciones entre las observaciones \((y_{i})\) y los valores ajustados \((\widehat{y}_{i})\) usando pesos \((w_{i})\) inversamente proporcionales a la varianza de \(y_{i}\).
 
 Asumamos que el modelo generador de los datos es:
 \begin{equation}
-\by = \bX\bbeta + \bvarepsi, \mbox{ donde }\bvarepsi\sim N(\bZERO,\sigma^{2}\bV),
+\bm{y}= \bm{X}\bm{\beta}+ \bm{\varepsilon}, \mbox{ donde }\bm{\varepsilon}\sim N(\bm{0},\sigma^{2}\bm{V}),
 \label{eq:modV}
 \end{equation}
-donde \(\bV\) es una matriz diagonal \((n \times n)\):
+donde \(\bm{V}\) es una matriz diagonal \((n \times n)\):
 \[
-\bV = \begin{pmatrix}
+\bm{V}= \begin{pmatrix}
 v_{11} & 0 & 0 & \ldots & 0 \\
 0 & v_{22} & 0 & \ldots & 0 \\
 0 & 0 & v_{33} & \ldots & 0 \\
@@ -3496,42 +3495,42 @@ v_{11} & 0 & 0 & \ldots & 0 \\
 0 & 0 & 0 & \ldots & v_{nn}
 \end{pmatrix}.
 \]
-Esto quiere decir que tenemos presencia de hetorocedasticidad, donde \(V(\varepsilon_{i}) = \sigma^{2}v_{ii}\). Recordemos que si aplicamos el estimador por MCO, las estimaciones siguen siendo insesgadas pero son ineficientes. Además, las varianzas estimadas de \(\hatbbeta\), y de las predicciones, están mal calculadas. Lo que puede afectar la cobertura de los intervalos de confianza y el nivel de signficancia de las pruebas de hipótesis.
+Esto quiere decir que tenemos presencia de hetorocedasticidad, donde \(V(\varepsilon_{i}) = \sigma^{2}v_{ii}\). Recordemos que si aplicamos el estimador por MCO, las estimaciones siguen siendo insesgadas pero son ineficientes. Además, las varianzas estimadas de \(\widehat{\bm{\beta}}\), y de las predicciones, están mal calculadas. Lo que puede afectar la cobertura de los intervalos de confianza y el nivel de signficancia de las pruebas de hipótesis.
 
-La función de verosimilitud del modelo \eqref{eq:modV}, asumiendo que \(\bV\) es conocida, es:
+La función de verosimilitud del modelo \eqref{eq:modV}, asumiendo que \(\bm{V}\) es conocida, es:
 \[
-L(\bbeta,\sigma^{2} | \bV) =  \frac{1}{(2\pi)^{n/2}|\sigma^{2}\bV|^{1/2}}\exp \left[-\frac{1}{2\sigma^{2}}(\by - \bX'\bbeta)'\bV^{-1}(\by - \bX'\bbeta) \right].
+L(\bm{\beta},\sigma^{2} | \bm{V}) =  \frac{1}{(2\pi)^{n/2}|\sigma^{2}\bm{V}|^{1/2}}\exp \left[-\frac{1}{2\sigma^{2}}(\bm{y}- \bm{X}'\bm{\beta})'\bm{V}^{-1}(\bm{y}- \bm{X}'\bm{\beta}) \right].
 \]
-Por lo que para encontrar el estimador de \(\bbeta\) debemos minimizar la suma de cuadrados ponderada:
+Por lo que para encontrar el estimador de \(\bm{\beta}\) debemos minimizar la suma de cuadrados ponderada:
 \begin{equation}
-SS_{Wres} = (\by - \bX'\bbeta)'\bW(\by - \bX'\bbeta) = \sum_{i=1}^{n} w_{ii}(y_{i} - \bx_{i}'\bbeta)^{2},
+SS_{Wres} = (\bm{y}- \bm{X}'\bm{\beta})'\bm{W}(\bm{y}- \bm{X}'\bm{\beta}) = \sum_{i=1}^{n} w_{ii}(y_{i} - \bm{x}_{i}'\bm{\beta})^{2},
 \label{eq:SSWE}
 \end{equation}
-donde \(\bW = \bV^{-1}\), es decir que \(w_{ii}= \frac{1}{v_{ii}}\). Note que las observaciones con mayor varianza tienen menor peso en la estimación de \(\bbeta\).
+donde \(\bm{W}= \bm{V}^{-1}\), es decir que \(w_{ii}= \frac{1}{v_{ii}}\). Note que las observaciones con mayor varianza tienen menor peso en la estimación de \(\bm{\beta}\).
 
 Al minimizar \eqref{eq:SSWE} se obtiene el estimador por MCP:
 \[
-\hatbbeta_{W} = (\bX'\bW\bX)^{-1}\bX'\bW\by.
+\widehat{\bm{\beta}}_{W} = (\bm{X}'\bm{W}\bm{X})^{-1}\bm{X}'\bm{W}\bm{y}.
 \]
 Además,
 \begin{equation}
-V(\hatbbeta_{W}) = \sigma^{2}(\bX'\bW\bX)^{-1}.
+V(\widehat{\bm{\beta}}_{W}) = \sigma^{2}(\bm{X}'\bm{W}\bm{X})^{-1}.
 \label{eq:VarBetaW}
 \end{equation}
-Si \(\bV\) está correctamente especificada, se puede probar que \(\hatbbeta_{W}\) es el mejor estimador insesgado de \(\bbeta\).
+Si \(\bm{V}\) está correctamente especificada, se puede probar que \(\widehat{\bm{\beta}}_{W}\) es el mejor estimador insesgado de \(\bm{\beta}\).
 
 Los residuos del ajuste del modelo son:
 \[
-e_{Wi} = \sqrt{w_{ii}}(y_{i} - \haty_{i}), \mbox{ de forma matricial }\be_{W} = \bW^{1/2}(\by - \bX\hatbbeta_{W}),
+e_{Wi} = \sqrt{w_{ii}}(y_{i} - \widehat{y}_{i}), \mbox{ de forma matricial }\bm{e}_{W} = \bm{W}^{1/2}(\bm{y}- \bm{X}\widehat{\bm{\beta}}_{W}),
 \]
-donde \(\bW = \bW^{1/2}\bW^{1/2}\). De este resultado obtenemos el estimador insesgado de \(\sigma^{2}\):
+donde \(\bm{W}= \bm{W}^{1/2}\bm{W}^{1/2}\). De este resultado obtenemos el estimador insesgado de \(\sigma^{2}\):
 \[
-\hatsigma^{2} = \frac{1}{n-p}\sum_{i=1}^{n}w_{ii}(y_{i}-\bx_{i}'\hatbbeta)^{2} = \frac{1}{n-p}(\by - \bX\hatbbeta)'\bW(\by - \bX\hatbbeta).
+\widehat{\sigma}^{2} = \frac{1}{n-p}\sum_{i=1}^{n}w_{ii}(y_{i}-\bm{x}_{i}'\widehat{\bm{\beta}})^{2} = \frac{1}{n-p}(\bm{y}- \bm{X}\widehat{\bm{\beta}})'\bm{W}(\bm{y}- \bm{X}\widehat{\bm{\beta}}).
 \]
 
 Aqui estamos asumiendo que los pesos \((w_{ii})\) son conocidos. Lo que en la práctica es poco común. Estos pesos pueden ser determinados por conocimiento de los datos, experiencia, o información teórica del modelo. Alternativamente, estos se pueden calcular a partir de los residuos obtenidos por el estimador MCO.
 
-Es común que \(\sigma^{2}_{i}\) varíe de acuerdo a una o varias covariables, o con respecto \(E(y_{i}|\bx_{i})\). Por ejemplo, en los datos de educación parece que la varianza incrementa con \(E(y_{i}| \bx_{i})\). En este caso podemos aplicar el siguiente procedimiento:
+Es común que \(\sigma^{2}_{i}\) varíe de acuerdo a una o varias covariables, o con respecto \(E(y_{i}|\bm{x}_{i})\). Por ejemplo, en los datos de educación parece que la varianza incrementa con \(E(y_{i}| \bm{x}_{i})\). En este caso podemos aplicar el siguiente procedimiento:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3548,15 +3547,15 @@ Es común que \(\sigma^{2}_{i}\) varíe de acuerdo a una o varias covariables, o
   Usar los valores ajustados el modelo anterior para estimar los pesos \((w_{ii})\).
 \end{enumerate}
 
-Si \(\hatbbeta_{W}\) difiere mucho de \(\hatbbeta\), es posible repetir el proceso anterior una vez más (mínimos cuadrados iterativamente ponderados).
+Si \(\widehat{\bm{\beta}}_{W}\) difiere mucho de \(\widehat{\bm{\beta}}\), es posible repetir el proceso anterior una vez más (mínimos cuadrados iterativamente ponderados).
 
 Dado que estamos estimando los pesos, la varianza de los coeficientes \eqref{eq:VarBetaW} es aproximada. Sin embargo, esta aproximación es muy buena si el tamaño de muestra no es muy pequeño.
 
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{datos-de-educaciuxf3n.-minuxedmos-cuadrados-ponderados}{%
-\subsection*{Datos de educación. Minímos cuadrados ponderados}\label{datos-de-educaciuxf3n.-minuxedmos-cuadrados-ponderados}}
-\addcontentsline{toc}{subsection}{Datos de educación. Minímos cuadrados ponderados}
+\subsubsection*{Datos de educación. Minímos cuadrados ponderados}\label{datos-de-educaciuxf3n.-minuxedmos-cuadrados-ponderados}}
+\addcontentsline{toc}{subsubsection}{Datos de educación. Minímos cuadrados ponderados}
 
 Retomemos el modelo para los datos de educación. En la Figura \ref{fig:Educres} vemos que hay heterocedasticidad. Particularmente vemos que la variabilidad crece a medida que aumentan los valores ajustados. Ya vimos que por medio de una transformación inversa sobre la variable respuesta se corrige el problema.
 
@@ -3717,12 +3716,12 @@ nocite: \citet{montgomery_introduction_2012}, \citet{fox_applied_2016} \\
 \end{longtable}
 
 \hypertarget{evaluaciuxf3n-de-puntos-influyentes-y-atuxedpicos}{%
-\chapter{Evaluación de puntos influyentes y atípicos}\label{evaluaciuxf3n-de-puntos-influyentes-y-atuxedpicos}}
+\section{Evaluación de puntos influyentes y atípicos}\label{evaluaciuxf3n-de-puntos-influyentes-y-atuxedpicos}}
 
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{datos-de-la-onu}{%
-\section{Datos de la ONU}\label{datos-de-la-onu}}
+\subsection{Datos de la ONU}\label{datos-de-la-onu}}
 
 Retomemos los datos de la ONU (\texttt{UN11} de la librería \texttt{alr4}). El modelo propuesto es:
 \begin{equation}
@@ -3744,7 +3743,7 @@ El análisis de los residuos (ver Figura \ref{fig:Un11resFig}) muestra que el mo
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{importancia-de-detectar-valores-influyentes-y-atuxedpicos}{%
-\section{Importancia de detectar valores influyentes y atípicos}\label{importancia-de-detectar-valores-influyentes-y-atuxedpicos}}
+\subsection{Importancia de detectar valores influyentes y atípicos}\label{importancia-de-detectar-valores-influyentes-y-atuxedpicos}}
 
 En el análisis de datos pueden observarse algunos valores atípicos. Como atípicas nos referimos a las observaciones que no siguen el patrón de la mayoría de los datos. En un análisis de regresión, pueden presentarse valores atípicos sobre la variable respuesta y/o sobre algunas covariables. Por lo tanto, se podría identificar diferentes tipos de puntos ``atípicos'\,'. Estos se pueden identificar en la Figura \ref{fig:puntosAI} para el caso de una regresión simple:
 
@@ -3769,9 +3768,9 @@ Estos puntos inusuales pueden ser problemáticos a la hora de ajustar un modelo 
 \caption{Diferentes tipos de datos. A: Punto atípico, B: punto de balanceo, C: punto influyente.}\label{fig:puntosAI}
 \end{figure}
 
-En la Figura \ref{fig:puntosAIw}(a) vemos que un punto atípico no tiene un efecto grande en la estimación de la recta de regresión. Sin embargo, dado que los puntos atípicos generan valores altos (en valor absoluto) para los residuos, estas observaciones inflan la varianza de las estimaciones y afectan las inferencias. En este caso, la estimación de la varianza con todos los datos es de \(\hatsigma^{2}=6.37\), y si se omite el dato \(A\), tenemos que \(\hatsigma^{2}=1.55\). Como vemos en la Figura \ref{fig:puntosAIw}(b) los puntos de balanceo tampoco tienen mucha influencia sobre las estimaciones por MCO ya que estos están en línea con el resto de los datos.
+En la Figura \ref{fig:puntosAIw}(a) vemos que un punto atípico no tiene un efecto grande en la estimación de la recta de regresión. Sin embargo, dado que los puntos atípicos generan valores altos (en valor absoluto) para los residuos, estas observaciones inflan la varianza de las estimaciones y afectan las inferencias. En este caso, la estimación de la varianza con todos los datos es de \(\widehat{\sigma}^{2}=6.37\), y si se omite el dato \(A\), tenemos que \(\widehat{\sigma}^{2}=1.55\). Como vemos en la Figura \ref{fig:puntosAIw}(b) los puntos de balanceo tampoco tienen mucha influencia sobre las estimaciones por MCO ya que estos están en línea con el resto de los datos.
 
-Por el otro lado, en la Figura \ref{fig:puntosAIw}(c) vemos que los puntos influyentes afectan notablemente las estimaciones por MCO. Además, también inflan considerablemente la variabilidad. Con todos los datos tenemos que \(\hatsigma^{2}=3.09\). Mientras que \(\hatsigma^{2}=1.55\) al eliminar la observación C.
+Por el otro lado, en la Figura \ref{fig:puntosAIw}(c) vemos que los puntos influyentes afectan notablemente las estimaciones por MCO. Además, también inflan considerablemente la variabilidad. Con todos los datos tenemos que \(\widehat{\sigma}^{2}=3.09\). Mientras que \(\widehat{\sigma}^{2}=1.55\) al eliminar la observación C.
 
 \begin{figure}
 
@@ -3783,17 +3782,17 @@ Por el otro lado, en la Figura \ref{fig:puntosAIw}(c) vemos que los puntos influ
 \end{figure}
 
 \hypertarget{valores-atuxedpicos}{%
-\section{Valores atípicos}\label{valores-atuxedpicos}}
+\subsection{Valores atípicos}\label{valores-atuxedpicos}}
 
 Para identificar valores atípicos podemos hacer uso de los residuos del ajuste. Recordemos que, aunque los errores tenga varianza constante y sean incorrelacionados, los residuos no cumplen con estas propiedades. Por lo tanto, es recomendado usar los residuos estudentizados (o los residuos R-Student):
 \[
-r_{i} = \frac{e_{i}}{\sqrt{\hatsigma^{2}(1-h_{ii})}}, i=1,\ldots,n,
+r_{i} = \frac{e_{i}}{\sqrt{\widehat{\sigma}^{2}(1-h_{ii})}}, i=1,\ldots,n,
 \]
 o los residuos R-Student:
 \[
-t_{i} = \frac{e_{i}}{\sqrt{\hatsigma^{2}_{(i)}(1-h_{ii})}} = r_{i} \sqrt{\frac{n-p-1}{n-p-r_{i}^{2}}},
+t_{i} = \frac{e_{i}}{\sqrt{\widehat{\sigma}^{2}_{(i)}(1-h_{ii})}} = r_{i} \sqrt{\frac{n-p-1}{n-p-r_{i}^{2}}},
 \]
-donde \(\hatsigma^{2}_{(i)}\) es la estimación de \(\sigma\) usando todas las observaciones excepto la \(i\)-ésima.
+donde \(\widehat{\sigma}^{2}_{(i)}\) es la estimación de \(\sigma\) usando todas las observaciones excepto la \(i\)-ésima.
 
 Si se cumplen los supuestos del modelo, se puede demostrar que \(r_{i}\sim t_{n-p-1}\). Los residuos estudentizados siguen también está distribución pero de forma aproximada. Por lo tanto, se pueden identificar posibles valores atípicos haciendo un gráfico de los R-Student (o residuos estudentizados) contra los valores ajustados y trazar líneas de referencia en los percentiles \(0.025\) y \(0.975\) de la distribución \(t\) con \(n-p-1\) grados de libertad.
 
@@ -3802,46 +3801,46 @@ Esta verificación no es estrictamente una prueba de hipótesis. Puesto que esta
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{datos-de-la-onu---valores-atuxedpicos}{%
-\subsection*{Datos de la ONU - valores atípicos}\label{datos-de-la-onu---valores-atuxedpicos}}
-\addcontentsline{toc}{subsection}{Datos de la ONU - valores atípicos}
+\subsubsection*{Datos de la ONU - valores atípicos}\label{datos-de-la-onu---valores-atuxedpicos}}
+\addcontentsline{toc}{subsubsection}{Datos de la ONU - valores atípicos}
 
 En la Figura \ref{fig:Un11res} podemos observar que hay varios residuos que sobrepasan los puntos de corte. Particularmente, la observación de Guinea Ecuatorial presenta un residuo muy alto.
 
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{puntos-de-balanceo}{%
-\section{Puntos de balanceo}\label{puntos-de-balanceo}}
+\subsection{Puntos de balanceo}\label{puntos-de-balanceo}}
 
 Recordemos que la estimación de la recta de regresión es un promedio ponderado de las observaciones:
 \[
-\hatby = \bX\hatbbeta = \bX(\bX'\bX)^{-1}\bX'\by = \bH\by.
+\widehat{\bm{y}}= \bm{X}\widehat{\bm{\beta}}= \bm{X}(\bm{X}'\bm{X})^{-1}\bm{X}'\bm{y}= \bm{H}\bm{y}.
 \]
-Para la observación \(y_{i}\) tenemos que \(\haty_{i} = h_{ii}y_{i} + \sum_{k\neq i}h_{ik}y_{j}\). Particularmente, el elemento \(h_{ij}\) pueden ser visto como la cantidad de balanceo o palanqueo ejercido por la j-ésima observación \((y_i)\) sobre el \(i\)-ésimo valor ajustado (\(\haty_{i}\)).
+Para la observación \(y_{i}\) tenemos que \(\widehat{y}_{i} = h_{ii}y_{i} + \sum_{k\neq i}h_{ik}y_{j}\). Particularmente, el elemento \(h_{ij}\) pueden ser visto como la cantidad de balanceo o palanqueo ejercido por la j-ésima observación \((y_i)\) sobre el \(i\)-ésimo valor ajustado (\(\widehat{y}_{i}\)).
 
-Entonces, para detectar valores influyentes vamos a centrarnos en la matriz \textit{hat} \((\bH)\). El elemento \(h_{ij}\) de esta matriz se calcula como:
+Entonces, para detectar valores influyentes vamos a centrarnos en la matriz \textit{hat} \((\bm{H})\). El elemento \(h_{ij}\) de esta matriz se calcula como:
 \begin{equation}
-h_{ij} = \bx_{i}'(\bX'\bX)\bx_{j}.
+h_{ij} = \bm{x}_{i}'(\bm{X}'\bm{X})\bm{x}_{j}.
 \label{eq:hij}
 \end{equation}
-Algunas propiedades de la matriz \(\bH\) son:
+Algunas propiedades de la matriz \(\bm{H}\) son:
 
 \begin{itemize}
 \item $\sum_{i=1}^{n} = p$.
 \item $\sum_{i=1}^{n}h_{ij} = \sum_{j=1}^{n}h_{ij} = 1$
-\item Cada valor $h_{ii}$ está acotado entre $1/n$ y $1/r$ ($r$ es el número de columnas de $\bX$ iguales a $\bx_{i}$).
+\item Cada valor $h_{ii}$ está acotado entre $1/n$ y $1/r$ ($r$ es el número de columnas de $\bm{X}$ iguales a $\bm{x}_{i}$).
 \end{itemize}
 
-Además, la diagonal de la matriz \(\bH\) es una medida estandarizada de la distancia de las observaciones al centro (centroide) del espacio de \(\bx\). Por lo tanto, valores altos en la diagonal de \(\bH\) pueden indicarnos observaciones que son potencialmente influyentes porque están alejadas en el espacio de las covariables. Viendo \eqref{eq:hij}, si \(h_{ii}\) es muy cercano a uno, \(\haty_{i}\) estará muy cerca de \(y_{i}\) (dado que el peso de las demás observaciones será casi cero).
+Además, la diagonal de la matriz \(\bm{H}\) es una medida estandarizada de la distancia de las observaciones al centro (centroide) del espacio de \(\bm{x}\). Por lo tanto, valores altos en la diagonal de \(\bm{H}\) pueden indicarnos observaciones que son potencialmente influyentes porque están alejadas en el espacio de las covariables. Viendo \eqref{eq:hij}, si \(h_{ii}\) es muy cercano a uno, \(\widehat{y}_{i}\) estará muy cerca de \(y_{i}\) (dado que el peso de las demás observaciones será casi cero).
 
 Dado que \(\bar{h} = p/n\), observaciones con \(h_{ii}\) superiores a \(2p/n\) son considerados \textbf{puntos de balanceo} (y posibles puntos influyentes). Note que, si \(2p/n > 1\), el punto de corte no aplica.
 
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{datos-de-la-onu---diagonal-de-la-matrix-hat}{%
-\subsection*{Datos de la ONU - diagonal de la matrix hat}\label{datos-de-la-onu---diagonal-de-la-matrix-hat}}
-\addcontentsline{toc}{subsection}{Datos de la ONU - diagonal de la matrix hat}
+\subsubsection*{Datos de la ONU - diagonal de la matrix hat}\label{datos-de-la-onu---diagonal-de-la-matrix-hat}}
+\addcontentsline{toc}{subsubsection}{Datos de la ONU - diagonal de la matrix hat}
 
-La Figura \ref{fig:Un11Hdiag}(a) muestra los valores de la diagonal de la matrix \(\bH\). Aquí podemos observar que algunos países presentan valores más altos del punto de corte (\(2\frac{p}{n} = 0.0302\)). Comparado con los demás valores, el valor asociado a Trinidad y Tobago es muy alto. Por lo cuál este país lo podemos considerar como un punto de balanceo.
+La Figura \ref{fig:Un11Hdiag}(a) muestra los valores de la diagonal de la matrix \(\bm{H}\). Aquí podemos observar que algunos países presentan valores más altos del punto de corte (\(2\frac{p}{n} = 0.0302\)). Comparado con los demás valores, el valor asociado a Trinidad y Tobago es muy alto. Por lo cuál este país lo podemos considerar como un punto de balanceo.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3884,7 +3883,7 @@ La Figura \ref{fig:Un11Hdiag}(a) muestra los valores de la diagonal de la matrix
 
 En laFigura \ref{fig:Un11Hdiag}(b) podemos observar que Trinidad y Tobago tiene un porcentaje muy pequeño de población en áreas urbanas y valor del PNB per cápita relativamente alto. Por esta razón el valor \(h_{ii}\) asociado es alto.
 
-La Figura \ref{fig:Un11valAtip} muestra los valores de la diagonal de \(\bH\) contra los residuos estudentizados. Aquí vemos que aunque Trinidad y Tobago tiene un valor \(h_{ii}\) alto, el R-Student asociado es bajo. Por lo que no se puede considerar como un punto influyente. Por el contrario, Guinea Ecuatorial y Corea del Norte presentan ambos valores altos (residuos y \(h_{ii}\)), por lo que se pueden considerar como puntos influyentes. Las observaciones que tienen residuos altos pero valores \(h_{ii}\) bajos se consideran como atípicos.
+La Figura \ref{fig:Un11valAtip} muestra los valores de la diagonal de \(\bm{H}\) contra los residuos estudentizados. Aquí vemos que aunque Trinidad y Tobago tiene un valor \(h_{ii}\) alto, el R-Student asociado es bajo. Por lo que no se puede considerar como un punto influyente. Por el contrario, Guinea Ecuatorial y Corea del Norte presentan ambos valores altos (residuos y \(h_{ii}\)), por lo que se pueden considerar como puntos influyentes. Las observaciones que tienen residuos altos pero valores \(h_{ii}\) bajos se consideran como atípicos.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3918,7 +3917,7 @@ La Figura \ref{fig:Un11valAtip} muestra los valores de la diagonal de \(\bH\) co
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{medidas-de-influencia}{%
-\subsection{Medidas de influencia}\label{medidas-de-influencia}}
+\subsubsection{Medidas de influencia}\label{medidas-de-influencia}}
 
 El procedimiento para determinar si un punto es influyente se puede hacer evaluando los cambios que ocurren en el modelo ajustado cuando se elimina dicha observación.
 
@@ -3934,40 +3933,40 @@ Por ejemplo, la Figura \ref{fig:Un11valAtipElim} muestra cuanto cambian las esti
 \caption{Datos de la ONU. Diferencias entre las estimaciones con todos los datos y las estimaciones obtenidas al eliminar una observación a la vez}\label{fig:Un11valAtipElim}
 \end{figure}
 
-De igual forma se podría evaluar cuanto cambian las estimaciones de \(E(y|\bx_{i})\) o las varianzas de los coeficientes \(V(\beta_{j})\) al eliminar observaciones una a una.
+De igual forma se podría evaluar cuanto cambian las estimaciones de \(E(y|\bm{x}_{i})\) o las varianzas de los coeficientes \(V(\beta_{j})\) al eliminar observaciones una a una.
 
 A continuación se presentan algunos indicadores estadísticos para detectar puntos influyentes:
 
 \hypertarget{distancia-de-cook}{%
-\subsubsection{Distancia de Cook}\label{distancia-de-cook}}
+\paragraph{Distancia de Cook}\label{distancia-de-cook}}
 
-Esta es una medida de la distancia entre las estimaciones por MCO basado en los \(n\) puntos (\(\hat{\bbeta}\)), y el estimado obtenido eliminando el \(i\)-ésimo punto (\(\hat{\bbeta}_{(i)}\)). Es decir que es un indicador global de cuanto cambian todas las estimaciones de los coeficientes de regresión en conjunto. Esta medida se expresa de la siguiente forma:
+Esta es una medida de la distancia entre las estimaciones por MCO basado en los \(n\) puntos (\(\hat{\bm{\beta}}\)), y el estimado obtenido eliminando el \(i\)-ésimo punto (\(\hat{\bm{\beta}}_{(i)}\)). Es decir que es un indicador global de cuanto cambian todas las estimaciones de los coeficientes de regresión en conjunto. Esta medida se expresa de la siguiente forma:
 
 \begin{equation}
 \begin{split}
-D_{i} &= \frac{(\hat{\bbeta}_{(i)}-\hat{\bbeta})'\bX'\bX(\hat{\bbeta}_{(i)}-\hat{\bbeta})'}{p \hat{\sigma}^{2}}   \\
-      &= \frac{(\hat{\by}_{(i)} - \hat{\by} )'(\hat{\by}_{(i)} - \hat{\by} )}{p\hat{\sigma}^{2}} = \frac{r_{i}^{2}}{p}\frac{h_{ii}}{1-h_{ii}}, \qquad i=1,2,\ldots,n.
+D_{i} &= \frac{(\hat{\bm{\beta}}_{(i)}-\hat{\bm{\beta}})'\bm{X}'\bm{X}(\hat{\bm{\beta}}_{(i)}-\hat{\bm{\beta}})'}{p \hat{\sigma}^{2}}   \\
+      &= \frac{(\hat{\bm{y}}_{(i)} - \hat{\bm{y}} )'(\hat{\bm{y}}_{(i)} - \hat{\bm{y}} )}{p\hat{\sigma}^{2}} = \frac{r_{i}^{2}}{p}\frac{h_{ii}}{1-h_{ii}}, \qquad i=1,2,\ldots,n.
 \end{split} \nonumber
 \end{equation}
 
-Aquí podemos observar que \(D_{i}\) consta de dos componentes, uno asociado a el residuo \((r_{i})\) y otro a la distancia del vector \(\bx_{i}\) al centroide de la matriz de las covariables. Ambos (o alguno de ellos) puede contribuir a valores altos de este indicador.
+Aquí podemos observar que \(D_{i}\) consta de dos componentes, uno asociado a el residuo \((r_{i})\) y otro a la distancia del vector \(\bm{x}_{i}\) al centroide de la matriz de las covariables. Ambos (o alguno de ellos) puede contribuir a valores altos de este indicador.
 
-Entonces, los puntos asociados a valores altos de \(D_{i}\) tienen gran influencia sobre la estimación de \(\bbeta\) por MCO. Se considera como un punto influyente si tiene asociado un \(D_{i} > 4/n\) (algunos textos sugieren \(D_{i} > 1\)).
+Entonces, los puntos asociados a valores altos de \(D_{i}\) tienen gran influencia sobre la estimación de \(\bm{\beta}\) por MCO. Se considera como un punto influyente si tiene asociado un \(D_{i} > 4/n\) (algunos textos sugieren \(D_{i} > 1\)).
 
 \hypertarget{dfbetas}{%
-\subsubsection{DFBETAS}\label{dfbetas}}
+\paragraph{DFBETAS}\label{dfbetas}}
 
 Esta medida indica cuánto cambia el coeficiente de regresión \(\hat{\beta}_{j}\), en unidades de desviaciones estándar, si se omitiera la \(i\)-ésima observación. Se calcula como:
 \[
-DFBETAS_{(i,j)} = \frac{\hat{\beta}_{j} - \hat{\beta}_{j(i)}}{\hat{\sigma}^{2}_{(i)}C_{jj}} = \frac{r_{(j,i)}}{\sqrt{\br_{j}'\br_{j}}}\frac{t_{i}}{\sqrt{1-h_{ii}}},
+DFBETAS_{(i,j)} = \frac{\hat{\beta}_{j} - \hat{\beta}_{j(i)}}{\hat{\sigma}^{2}_{(i)}C_{jj}} = \frac{r_{(j,i)}}{\sqrt{\bm{r}_{j}'\bm{r}_{j}}}\frac{t_{i}}{\sqrt{1-h_{ii}}},
 \]
 
-donde \(C_{jj}\) es el \(j\)-ésimo valor de la diagonal de \((\bX'\bX)^{2}\). \(\br_{j}\) es la \(j\)-ésima fila de \(\bR=(\bX'\bX)^{-1}\bX\).
+donde \(C_{jj}\) es el \(j\)-ésimo valor de la diagonal de \((\bm{X}'\bm{X})^{2}\). \(\bm{r}_{j}\) es la \(j\)-ésima fila de \(\bm{R}=(\bm{X}'\bm{X})^{-1}\bm{X}\).
 
 Un valor grande de \(DFBETAS_{(j,i)}\) indica que la observación \(i\) tiene gran influencia sobre el \(j\)-ésimo coeficiente de regresión. Se sugiere que si \(|DFBETAS_{(j,i)}| > 2/\sqrt{n}\) es necesario examinar la \(i\)-ésima observación.
 
 \hypertarget{dffits}{%
-\subsubsection{DFFITS}\label{dffits}}
+\paragraph{DFFITS}\label{dffits}}
 
 Una medida que indica la influencia de la observación \(i\)-ésima sobre el valor ajustado (\(\hat{y}_{i}\)). Esta se calcula así:
 
@@ -3978,25 +3977,25 @@ DFFITS_{i} = \frac{\hat{y}_{i} - \hat{y}_{(i)}}{\hat{\sigma}_{(i)}^{2}h_{ii}} = 
 El \(DFFITS_{i}\) puede ser grande si el dato es atípico (\(t_{i}\) grande) o si el dato tiene gran balanceo (\(h_{ii}\) grande). Se sugiere que si \(|DFFITS_{(j,i)}| > 2\sqrt{p/n}\) es necesario examinar la \(i\)-ésima observación.
 
 \hypertarget{covratio}{%
-\subsubsection{COVRATIO}\label{covratio}}
+\paragraph{COVRATIO}\label{covratio}}
 
-Los diagnósticos anteriores permiten ver el efecto de las observaciones sobre \(\hat{\bbeta}\) o \(\hat{\by}\). Pero no proporcionan información sobre la precisión general de la estimación. Una medida global de la precisión es la varianza generalizada:
+Los diagnósticos anteriores permiten ver el efecto de las observaciones sobre \(\hat{\bm{\beta}}\) o \(\hat{\bm{y}}\). Pero no proporcionan información sobre la precisión general de la estimación. Una medida global de la precisión es la varianza generalizada:
 
-\[ GV(\hat{\bbeta}) = | Var(\hat {\bbeta}) | = |\sigma^{2}(\bX'\bX)^{-1}|.\]
+\[ GV(\hat{\bm{\beta}}) = | Var(\hat {\bm{\beta}}) | = |\sigma^{2}(\bm{X}'\bm{X})^{-1}|.\]
 
 Para determinar la influencia de la \(i\)-ésima observación en la precisión de la estimación se define la razón de covarianzas:
 
 \[
-COVRATIO_{i} = \frac{|(\bX'_{(i)}\bX_{(i)})^{-1}\hat{\sigma}_{(i)}^{2}|}{| (\bX'\bX)^{-1}\hat{\sigma}^{2} |}= \left( \frac{S^{2}_{(i)}}{S^{2}} \right)^{p} \left( \frac{1}{1-h_{ii}} \right).
+COVRATIO_{i} = \frac{|(\bm{X}'_{(i)}\bm{X}_{(i)})^{-1}\hat{\sigma}_{(i)}^{2}|}{| (\bm{X}'\bm{X})^{-1}\hat{\sigma}^{2} |}= \left( \frac{S^{2}_{(i)}}{S^{2}} \right)^{p} \left( \frac{1}{1-h_{ii}} \right).
 \]
 
-Si \(COVRATIO_{i} > 1 + 3p/n\) o \(COVRATIO_{i} > 1 - 3p/n\) se debería considerar a la \(i\)-ésima observación como influyente para la precisión de \(\hatbbeta\).
+Si \(COVRATIO_{i} > 1 + 3p/n\) o \(COVRATIO_{i} > 1 - 3p/n\) se debería considerar a la \(i\)-ésima observación como influyente para la precisión de \(\widehat{\bm{\beta}}\).
 
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{datos-de-la-onu---medidas-de-influencia}{%
-\subsubsection*{Datos de la ONU - medidas de influencia}\label{datos-de-la-onu---medidas-de-influencia}}
-\addcontentsline{toc}{subsubsection}{Datos de la ONU - medidas de influencia}
+\paragraph*{Datos de la ONU - medidas de influencia}\label{datos-de-la-onu---medidas-de-influencia}}
+\addcontentsline{toc}{paragraph}{Datos de la ONU - medidas de influencia}
 
 En R las medidas de influencia se pueden calcular usando la función \texttt{influence.measures}. Aunque también se pueden calcular cada indicador de forma independiente.
 
@@ -4086,7 +4085,7 @@ Para disminuir la influencia de estos países se pueden incorporar nuevas covari
 \rule{\textwidth}{0.4pt}
 
 \hypertarget{comentarios-finales-1}{%
-\section{Comentarios finales}\label{comentarios-finales-1}}
+\subsection{Comentarios finales}\label{comentarios-finales-1}}
 
 \begin{itemize}
 \tightlist

@@ -9,8 +9,9 @@ knitr::write_bib(c("knitr", "stringr"), "", width = 60)
 library(pBrackets)
 birthweight = read.csv("birthweight.csv",header = T)
 ```
+
 ## Datos de peso al nacer {-}
-Los datos `birthweight` (disponible en el campus virtual) contienen el peso y la edad gestacional de $42$ recién nacidos. El objetivo del estudio es investigar cómo la edad gestational del feto influyen en el peso al nacer durante las últimas semanas del embarazo. Aunque la base de datos contiene otras variables, por ahora solo consideramos el peso y la edad gestacional.
+Los datos `birthweight` (Disponible [aquí](https://raw.githubusercontent.com/AlvaroFlorez/MLG1/master/Birthweight.csv){target="_blank"}) contienen el peso y la edad gestacional de $42$ recién nacidos. El objetivo del estudio es investigar cómo la edad gestational del feto influyen en el peso al nacer durante las últimas semanas del embarazo. Aunque la base de datos contiene otras variables, por ahora solo consideramos el peso y la edad gestacional.
 
 La Figura \@ref(fig:birthweightFigure) muestra la relación entre el peso (en kilogramos) y la edad gestacional (en semanas) del recién nacido. Por medio de este gráfico vemos que hay una relación aproximadamente lineal positiva (la correlación es igual a `r round(cor(birthweight$weight,birthweight$age),2)`). Es decir que cuando la edad gestacional aumenta, el peso del recién nacido también lo hace. Por lo tanto, sería razonable describir el valor esperado del peso al nacer como una función lineal de la edad gestacional:
 \[
@@ -77,7 +78,7 @@ x2 = 0.3+dnorm(seq(0,0.6,length.out = 100),0.3,0.1)*0.03
 y2 = seq(0,0.6,length.out = 100)
 ```
 
-```{r gendataFigure,echo=FALSE, fig.height = 4.5, fig.width = 6,fig.align = "center",fig.cap = "Proceso generador datos del modelo lineal simple."}
+```{r gendataFigure,echo=FALSE, fig.height = 4, fig.width = 5,fig.align = "center",fig.cap = "Proceso generador datos del modelo lineal simple."}
 plot(NULL,NULL,ylim=c(0,1),xlim=c(0,1),xlab='covariable = X',ylab = 'variable respuesta = Y')
 abline(0,1,lwd=1.5)
 points(0.6,0.4,pch=20)
@@ -282,7 +283,7 @@ y_{i} - \bar{y} = (y_{i} - \haty_{i}) + (\haty_{i} - \bar{y}).
 (\#eq:decomposion)
 \end{equation}
 La Figura \@ref(fig:anovafig) muestra la partición \@ref(eq:decomposion) en el punto $i=3$. Aquí vemos que una parte de la diferencia entre $y_{3}$ y $\bar{y}$ es explicada por el modelo (línea discontinua roja).
-```{r anovafig, echo=FALSE, fig.height = 4.5, fig.width =6,fig.align = "center",fig.cap = "Representación gráfica de la partición \\@ref(eq:decomposion)."}
+```{r anovafig, echo=FALSE, fig.height = 4, fig.width =5,fig.align = "center",fig.cap = "Representación gráfica de la partición \\@ref(eq:decomposion)."}
 plot(x,y,xlab='covariable = X',ylab = 'variable respuesta = Y')
 abline(m,col=1)
 abline(h=mean(y),lty=2)
@@ -492,25 +493,25 @@ lines(x.nuevo$age,pred.nuevaObs[,3],lty=3)
 Si consideramos que $\varepsilon_{i}\sim N(0,\sigma^{2})$, entonces las observación también se distribuyen de forma normal $y_{i}\sim N(\beta_{0}+\beta_{1}x_{i},\sigma^{2})$. Si además asumimos que las observaciones $(y_{i},x_{i})$ son independientes, entonces la función de verosimilitud es:
 \begin{equation}
 \begin{split}
-L(\btheta) =& \prod_{i=1}^{n} \left(\sqrt{2\pi\sigma^{2}} \right)^{-1/2}\exp\left[ - \frac{1}{2\sigma^{2}}(y_{i}-\beta_{0}-\beta_{1}x_{i})^{2} \right] \\
+L(\boldtheta) =& \prod_{i=1}^{n} \left(\sqrt{2\pi\sigma^{2}} \right)^{-1/2}\exp\left[ - \frac{1}{2\sigma^{2}}(y_{i}-\beta_{0}-\beta_{1}x_{i})^{2} \right] \\
 =& \left( \sqrt{2\pi\sigma^{2}} \right)^{-n/2}\exp\left[ - \frac{1}{2\sigma^{2}} \sum_{i=1}^{n}(y_{i}-\beta_{0}-\beta_{1}x_{i})^{2}\right],
 \end{split}
 \nonumber
 \end{equation}
-para $\btheta=(\beta_{0},\beta_{1},\sigma^{2})'$. La log-verosimilitud es:
+para $\boldtheta=(\beta_{0},\beta_{1},\sigma^{2})'$. La log-verosimilitud es:
 \[
-\ell (\btheta) = - \left(\frac{n}{2}\right)\left[ \log (2 \pi) - \log \sigma^{2}\right] - \frac{1}{2\sigma^{2}}\sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i})^{2}. 
+\ell (\boldtheta) = - \left(\frac{n}{2}\right)\left[ \log (2 \pi) - \log \sigma^{2}\right] - \frac{1}{2\sigma^{2}}\sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i})^{2}. 
 \]
-El estimador de máxima verosimilitud de $\btheta$ debe satisfacer:
+El estimador de máxima verosimilitud de $\boldtheta$ debe satisfacer:
 \[
-\left. \frac{\partial \ell(\btheta)}{\partial \beta_{0}} \right|_{\widetilde{\btheta}} = \frac{1}{\widetilde{\sigma}^{2}}\sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i}) = 0,
+\left. \frac{\partial \ell(\boldtheta)}{\partial \beta_{0}} \right|_{\widetilde{\boldtheta}} = \frac{1}{\widetilde{\sigma}^{2}}\sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i}) = 0,
 \]
 \[
-\left. \frac{\partial \ell(\btheta)}{\partial \beta_{1}} \right|_{\widetilde{\btheta}} = \frac{1}{\widetilde{\sigma}^{2}}\sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i})x_{i} = 0,
+\left. \frac{\partial \ell(\boldtheta)}{\partial \beta_{1}} \right|_{\widetilde{\boldtheta}} = \frac{1}{\widetilde{\sigma}^{2}}\sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i})x_{i} = 0,
 \]
 y
 \[
-\left. \frac{\partial \ell(\btheta)}{\partial \sigma^{2}} \right|_{\widetilde{\btheta}} = -\frac{n}{2\widetilde{\sigma}^{2}} + \frac{n}{2\widetilde{\sigma}^{4}}
+\left. \frac{\partial \ell(\boldtheta)}{\partial \sigma^{2}} \right|_{\widetilde{\boldtheta}} = -\frac{n}{2\widetilde{\sigma}^{2}} + \frac{n}{2\widetilde{\sigma}^{4}}
 \sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i})^{2} = 0,
 \]
 Luego de solucionar las ecuaciones anteriores se obtienen los estimadores por máxima verosimilitud:

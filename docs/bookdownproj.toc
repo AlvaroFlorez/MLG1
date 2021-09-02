@@ -1,103 +1,103 @@
-\contentsline {chapter}{Introducción}{5}{chapter*.2}%
-\contentsline {chapter}{\numberline {1}Modelo lineal simple}{7}{chapter.1}%
-\contentsline {section}{Datos de peso al nacer}{7}{section*.3}%
-\contentsline {section}{\numberline {1.1}Regresion lineal simple}{8}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Modelo lineal simple}{8}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Estimación de los parámetros}{9}{section.1.3}%
-\contentsline {section}{\numberline {1.4}Estimación de \(\sigma ^{2}\)}{10}{section.1.4}%
-\contentsline {subsection}{Datos de peso al nacer. Modelo y estimación de parametros}{10}{section*.7}%
-\contentsline {section}{\numberline {1.5}Propiedades de los estimadores por MCO}{11}{section.1.5}%
-\contentsline {section}{\numberline {1.6}Inferencia}{12}{section.1.6}%
-\contentsline {subsection}{\numberline {1.6.1}Pruebas de hipótesis}{13}{subsection.1.6.1}%
-\contentsline {subsection}{\numberline {1.6.2}Análisis de varianza}{13}{subsection.1.6.2}%
-\contentsline {subsection}{Datos de peso al nacer. Pruebas de hipótesis y ANOVA}{15}{section*.10}%
-\contentsline {subsection}{\numberline {1.6.3}Intervalos de confianza}{15}{subsection.1.6.3}%
-\contentsline {subsubsection}{Intervalos de confianza para \(\beta _{0}\), \(\beta _{1}\) y \(\sigma ^{2}\)}{15}{section*.11}%
-\contentsline {subsubsection}{Intervalos de confianza para \(E(y_{i})\) y una predicción futura}{16}{section*.12}%
-\contentsline {subsection}{Datos de peso al nacer. Intervalos de confianza}{17}{section*.13}%
-\contentsline {section}{\numberline {1.7}Estimador por máxima verosimilitud}{18}{section.1.7}%
-\contentsline {section}{\numberline {1.8}Algunas consideraciones finales}{19}{section.1.8}%
-\contentsline {chapter}{\numberline {2}Modelo lineal múltiple}{21}{chapter.2}%
-\contentsline {section}{Bajo peso al nacer}{21}{section*.17}%
-\contentsline {section}{\numberline {2.1}Modelo lineal múltiple}{22}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Estimación de los parámetros de regresión}{23}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Estimación de \(\sigma ^{2}\)}{24}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Bajo peso al nacer - estimación de parámetros}{24}{subsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.2.3}Propiedades de los estimadores por MCO}{25}{subsection.2.2.3}%
-\contentsline {subsubsection}{Teorema de Gauss-Markov}{26}{section*.19}%
-\contentsline {section}{\numberline {2.3}Pruebas de hipótesis}{26}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Análisis de varianza}{26}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Pruebas individuales sobre los coeficientes}{27}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Pruebas sobre subconjuntos de coeficientes}{28}{subsection.2.3.3}%
-\contentsline {subsubsection}{Ejemplo}{30}{section*.20}%
-\contentsline {section}{\numberline {2.4}Prueba de hipótesis lineal general}{30}{section.2.4}%
-\contentsline {subsubsection}{ejemplo}{31}{section*.21}%
-\contentsline {subsection}{Bajo peso al nacer - pruebas de hipótesis}{32}{section*.22}%
-\contentsline {section}{\numberline {2.5}Intervalos de confianza}{34}{section.2.5}%
-\contentsline {subsection}{\numberline {2.5.1}Intervalos de confianza para \(\beta _{j}\)}{34}{subsection.2.5.1}%
-\contentsline {subsection}{\numberline {2.5.2}Intervalos de confianza para el valor esperado de \(Y\) y una observación futura}{34}{subsection.2.5.2}%
-\contentsline {subsection}{Bajo peso al nacer - intervalos de confianza}{35}{section*.23}%
-\contentsline {section}{\numberline {2.6}Extrapolación oculta en regresión múltiple}{36}{section.2.6}%
-\contentsline {subsection}{Bajo peso al nacer - interpolación}{36}{section*.25}%
-\contentsline {subsection}{\numberline {2.6.1}Coeficientes normalizados de regresión}{37}{subsection.2.6.1}%
-\contentsline {subsubsection}{\numberline {2.6.1.1}Escalamiento de longitud unitaria}{38}{subsubsection.2.6.1.1}%
-\contentsline {subsection}{Bajo peso al nacer - coeficientes de regresión con variables escaladas}{38}{section*.28}%
-\contentsline {section}{\numberline {2.7}Multicolinealidad}{39}{section.2.7}%
-\contentsline {subsection}{ejemplo}{40}{section*.29}%
-\contentsline {subsection}{\numberline {2.7.1}Bajo peso al nacer - factores de inflación de varianza}{41}{subsection.2.7.1}%
-\contentsline {chapter}{\numberline {3}Evaluación de los supuestos del modelo}{43}{chapter.3}%
-\contentsline {section}{Ejemplo 1. Datos de peso al nacer}{43}{section*.30}%
-\contentsline {section}{Ejemplo 2. Ventas de helados}{44}{section*.31}%
-\contentsline {section}{Ejemplo 3. Longitud del pez lobina boca chica}{45}{section*.33}%
-\contentsline {section}{\numberline {3.1}Supuestos del modelo linea múltiple}{46}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Efectos del incumplimiento de los supuestos}{47}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Sesgo por omisión de variables relevantes}{47}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Incorrecta matriz de varianzas de los errores}{48}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Distribución no normal de los errores}{49}{subsection.3.2.3}%
-\contentsline {section}{\numberline {3.3}Residuos del modelo}{49}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Residuos estudentizados}{50}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Residuos PRESS y R-student}{50}{subsection.3.3.2}%
-\contentsline {section}{\numberline {3.4}Evaluación del cumplimiento de los supuestos}{51}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Gráficos de residuos}{51}{subsection.3.4.1}%
-\contentsline {subsubsection}{Bajo peso al nacer - gráfico de residuos}{52}{section*.37}%
-\contentsline {subsection}{\numberline {3.4.2}Gráficos de residuos parciales}{52}{subsection.3.4.2}%
-\contentsline {subsubsection}{Bajo peso al nacer - gráfico de residuos parciales}{53}{section*.39}%
-\contentsline {subsection}{\numberline {3.4.3}Gráficos de normalidad}{53}{subsection.3.4.3}%
-\contentsline {subsubsection}{Bajo peso al nacer - gráfico de normalidad}{54}{section*.42}%
-\contentsline {subsection}{\numberline {3.4.4}Gráfico de residuos frente a el tiempo}{55}{subsection.3.4.4}%
-\contentsline {subsubsection}{Consumo de helado - gráfico de los residuos contra el tiempo}{55}{section*.45}%
-\contentsline {section}{\numberline {3.5}Pruebas de hipótesis para evaluar los supuestos}{56}{section.3.5}%
-\contentsline {subsection}{\numberline {3.5.1}Prueba de falta de ajuste}{56}{subsection.3.5.1}%
-\contentsline {subsubsection}{\numberline {3.5.1.1}Base de datos de la longitud de los peces - prueba de falta de ajuste}{58}{subsubsection.3.5.1.1}%
-\contentsline {subsection}{\numberline {3.5.2}Prueba de heterocedasticidad}{59}{subsection.3.5.2}%
-\contentsline {subsubsection}{Bajo peso al nacer - prueba de heterocedasticidad}{60}{section*.49}%
-\contentsline {subsection}{\numberline {3.5.3}Prueba de normalidad}{62}{subsection.3.5.3}%
-\contentsline {subsubsection}{Bajo peso al nacer - prueba de normalidad}{62}{section*.50}%
-\contentsline {subsection}{\numberline {3.5.4}Prueba de correlación temporal de los errores}{63}{subsection.3.5.4}%
-\contentsline {subsubsection}{Ventas de helado - prueba de correlación temporal}{63}{section*.51}%
-\contentsline {section}{\numberline {3.6}Comentarios finales}{64}{section.3.6}%
-\contentsline {chapter}{\numberline {4}Transformaciones y mínimos cuadrados ponderados}{65}{chapter.4}%
-\contentsline {section}{Ejemplo 1. Datos de la ONU}{65}{section*.52}%
-\contentsline {section}{Ejemplo 2. Datos de educación}{66}{section*.56}%
-\contentsline {section}{\numberline {4.1}Transformación de los datos}{67}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Transformaciones para linealizar el modelo}{68}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Transformaciones para estabilizar la varianza}{69}{subsection.4.1.2}%
-\contentsline {subsection}{Datos de la ONU. Transformación para linealizar los datos}{69}{section*.62}%
-\contentsline {section}{\numberline {4.2}Método de Box-Cox}{70}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Datos de educación. Transformación de Box-Cox}{72}{subsection.4.2.1}%
-\contentsline {section}{\numberline {4.3}Mínimos cuadrados ponderados}{74}{section.4.3}%
-\contentsline {subsection}{Datos de educación. Minímos cuadrados ponderados}{76}{section*.68}%
-\contentsline {chapter}{\numberline {5}Evaluación de puntos influyentes y atípicos}{79}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Datos de la ONU}{79}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Importancia de detectar valores influyentes y atípicos}{79}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Valores atípicos}{80}{section.5.3}%
-\contentsline {subsection}{Datos de la ONU - valores atípicos}{81}{section*.73}%
-\contentsline {section}{\numberline {5.4}Puntos de balanceo}{81}{section.5.4}%
-\contentsline {subsection}{Datos de la ONU - diagonal de la matrix hat}{82}{section*.74}%
-\contentsline {subsection}{\numberline {5.4.1}Medidas de influencia}{83}{subsection.5.4.1}%
-\contentsline {subsubsection}{\numberline {5.4.1.1}Distancia de Cook}{84}{subsubsection.5.4.1.1}%
-\contentsline {subsubsection}{\numberline {5.4.1.2}DFBETAS}{84}{subsubsection.5.4.1.2}%
-\contentsline {subsubsection}{\numberline {5.4.1.3}DFFITS}{85}{subsubsection.5.4.1.3}%
-\contentsline {subsubsection}{\numberline {5.4.1.4}COVRATIO}{85}{subsubsection.5.4.1.4}%
-\contentsline {subsubsection}{Datos de la ONU - medidas de influencia}{85}{section*.78}%
-\contentsline {section}{\numberline {5.5}Comentarios finales}{87}{section.5.5}%
+\contentsline {chapter}{Introducción}{3}{chapter*.2}%
+\contentsline {chapter}{\numberline {1}Modelo lineal simple}{4}{chapter.1}%
+\contentsline {section}{Datos de peso al nacer}{4}{section*.3}%
+\contentsline {section}{\numberline {1.1}Regresion lineal simple}{4}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Modelo lineal simple}{5}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Estimación de los parámetros}{5}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Estimación de \(\sigma ^{2}\)}{6}{section.1.4}%
+\contentsline {subsection}{Datos de peso al nacer. Modelo y estimación de parametros}{6}{section*.7}%
+\contentsline {section}{\numberline {1.5}Propiedades de los estimadores por MCO}{7}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Inferencia}{8}{section.1.6}%
+\contentsline {subsection}{\numberline {1.6.1}Pruebas de hipótesis}{9}{subsection.1.6.1}%
+\contentsline {subsection}{\numberline {1.6.2}Análisis de varianza}{9}{subsection.1.6.2}%
+\contentsline {subsection}{Datos de peso al nacer. Pruebas de hipótesis y ANOVA}{10}{section*.10}%
+\contentsline {subsection}{\numberline {1.6.3}Intervalos de confianza}{11}{subsection.1.6.3}%
+\contentsline {subsubsection}{Intervalos de confianza para \(\beta _{0}\), \(\beta _{1}\) y \(\sigma ^{2}\)}{11}{section*.11}%
+\contentsline {subsubsection}{Intervalos de confianza para \(E(y_{i})\) y una predicción futura}{11}{section*.12}%
+\contentsline {subsection}{Datos de peso al nacer. Intervalos de confianza}{12}{section*.13}%
+\contentsline {section}{\numberline {1.7}Estimador por máxima verosimilitud}{13}{section.1.7}%
+\contentsline {section}{\numberline {1.8}Algunas consideraciones finales}{14}{section.1.8}%
+\contentsline {chapter}{\numberline {2}Modelo lineal múltiple}{16}{chapter.2}%
+\contentsline {section}{Bajo peso al nacer}{16}{section*.17}%
+\contentsline {section}{\numberline {2.1}Modelo lineal múltiple}{17}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Estimación de los parámetros de regresión}{17}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Estimación de \(\sigma ^{2}\)}{18}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Bajo peso al nacer - estimación de parámetros}{19}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Propiedades de los estimadores por MCO}{19}{subsection.2.2.3}%
+\contentsline {subsubsection}{Teorema de Gauss-Markov}{20}{section*.19}%
+\contentsline {section}{\numberline {2.3}Pruebas de hipótesis}{20}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Análisis de varianza}{20}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Pruebas individuales sobre los coeficientes}{21}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Pruebas sobre subconjuntos de coeficientes}{22}{subsection.2.3.3}%
+\contentsline {subsubsection}{Ejemplo}{23}{section*.20}%
+\contentsline {section}{\numberline {2.4}Prueba de hipótesis lineal general}{23}{section.2.4}%
+\contentsline {subsubsection}{ejemplo}{24}{section*.21}%
+\contentsline {subsection}{Bajo peso al nacer - pruebas de hipótesis}{24}{section*.22}%
+\contentsline {section}{\numberline {2.5}Intervalos de confianza}{26}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Intervalos de confianza para \(\beta _{j}\)}{26}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Intervalos de confianza para el valor esperado de \(Y\) y una observación futura}{27}{subsection.2.5.2}%
+\contentsline {subsection}{Bajo peso al nacer - intervalos de confianza}{27}{section*.23}%
+\contentsline {section}{\numberline {2.6}Extrapolación oculta en regresión múltiple}{28}{section.2.6}%
+\contentsline {subsection}{Bajo peso al nacer - interpolación}{28}{section*.25}%
+\contentsline {subsection}{\numberline {2.6.1}Coeficientes normalizados de regresión}{29}{subsection.2.6.1}%
+\contentsline {subsubsection}{\numberline {2.6.1.1}Escalamiento de longitud unitaria}{29}{subsubsection.2.6.1.1}%
+\contentsline {subsection}{Bajo peso al nacer - coeficientes de regresión con variables escaladas}{30}{section*.28}%
+\contentsline {section}{\numberline {2.7}Multicolinealidad}{31}{section.2.7}%
+\contentsline {subsection}{ejemplo}{31}{section*.29}%
+\contentsline {subsection}{\numberline {2.7.1}Bajo peso al nacer - factores de inflación de varianza}{32}{subsection.2.7.1}%
+\contentsline {chapter}{\numberline {3}Evaluación de los supuestos del modelo}{33}{chapter.3}%
+\contentsline {section}{Ejemplo 1. Datos de peso al nacer}{33}{section*.30}%
+\contentsline {section}{Ejemplo 2. Ventas de helados}{34}{section*.31}%
+\contentsline {section}{Ejemplo 3. Longitud del pez lobina boca chica}{35}{section*.33}%
+\contentsline {section}{\numberline {3.1}Supuestos del modelo linea múltiple}{36}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Efectos del incumplimiento de los supuestos}{36}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Sesgo por omisión de variables relevantes}{36}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Incorrecta matriz de varianzas de los errores}{37}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Distribución no normal de los errores}{38}{subsection.3.2.3}%
+\contentsline {section}{\numberline {3.3}Residuos del modelo}{38}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Residuos estudentizados}{38}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Residuos PRESS y R-student}{39}{subsection.3.3.2}%
+\contentsline {section}{\numberline {3.4}Evaluación del cumplimiento de los supuestos}{39}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Gráficos de residuos}{39}{subsection.3.4.1}%
+\contentsline {subsubsection}{Bajo peso al nacer - gráfico de residuos}{40}{section*.37}%
+\contentsline {subsection}{\numberline {3.4.2}Gráficos de residuos parciales}{40}{subsection.3.4.2}%
+\contentsline {subsubsection}{Bajo peso al nacer - gráfico de residuos parciales}{41}{section*.39}%
+\contentsline {subsection}{\numberline {3.4.3}Gráficos de normalidad}{41}{subsection.3.4.3}%
+\contentsline {subsubsection}{Bajo peso al nacer - gráfico de normalidad}{41}{section*.42}%
+\contentsline {subsection}{\numberline {3.4.4}Gráfico de residuos frente a el tiempo}{42}{subsection.3.4.4}%
+\contentsline {subsubsection}{Consumo de helado - gráfico de los residuos contra el tiempo}{42}{section*.45}%
+\contentsline {section}{\numberline {3.5}Pruebas de hipótesis para evaluar los supuestos}{43}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Prueba de falta de ajuste}{43}{subsection.3.5.1}%
+\contentsline {subsubsection}{\numberline {3.5.1.1}Base de datos de la longitud de los peces - prueba de falta de ajuste}{44}{subsubsection.3.5.1.1}%
+\contentsline {subsection}{\numberline {3.5.2}Prueba de heterocedasticidad}{45}{subsection.3.5.2}%
+\contentsline {subsubsection}{Bajo peso al nacer - prueba de heterocedasticidad}{46}{section*.49}%
+\contentsline {subsection}{\numberline {3.5.3}Prueba de normalidad}{47}{subsection.3.5.3}%
+\contentsline {subsubsection}{Bajo peso al nacer - prueba de normalidad}{48}{section*.50}%
+\contentsline {subsection}{\numberline {3.5.4}Prueba de correlación temporal de los errores}{48}{subsection.3.5.4}%
+\contentsline {subsubsection}{Ventas de helado - prueba de correlación temporal}{49}{section*.51}%
+\contentsline {section}{\numberline {3.6}Comentarios finales}{49}{section.3.6}%
+\contentsline {chapter}{\numberline {4}Transformaciones y mínimos cuadrados ponderados}{50}{chapter.4}%
+\contentsline {section}{Ejemplo 1. Datos de la ONU}{50}{section*.52}%
+\contentsline {section}{Ejemplo 2. Datos de educación}{51}{section*.56}%
+\contentsline {section}{\numberline {4.1}Transformación de los datos}{52}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Transformaciones para linealizar el modelo}{52}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Transformaciones para estabilizar la varianza}{53}{subsection.4.1.2}%
+\contentsline {subsection}{Datos de la ONU. Transformación para linealizar los datos}{53}{section*.62}%
+\contentsline {section}{\numberline {4.2}Método de Box-Cox}{54}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Datos de educación. Transformación de Box-Cox}{55}{subsection.4.2.1}%
+\contentsline {section}{\numberline {4.3}Mínimos cuadrados ponderados}{57}{section.4.3}%
+\contentsline {subsection}{Datos de educación. Minímos cuadrados ponderados}{58}{section*.68}%
+\contentsline {chapter}{\numberline {5}Evaluación de puntos influyentes y atípicos}{61}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Datos de la ONU}{61}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Importancia de detectar valores influyentes y atípicos}{61}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Valores atípicos}{62}{section.5.3}%
+\contentsline {subsection}{Datos de la ONU - valores atípicos}{62}{section*.73}%
+\contentsline {section}{\numberline {5.4}Puntos de balanceo}{63}{section.5.4}%
+\contentsline {subsection}{Datos de la ONU - diagonal de la matrix hat}{63}{section*.74}%
+\contentsline {subsection}{\numberline {5.4.1}Medidas de influencia}{64}{subsection.5.4.1}%
+\contentsline {subsubsection}{\numberline {5.4.1.1}Distancia de Cook}{65}{subsubsection.5.4.1.1}%
+\contentsline {subsubsection}{\numberline {5.4.1.2}DFBETAS}{65}{subsubsection.5.4.1.2}%
+\contentsline {subsubsection}{\numberline {5.4.1.3}DFFITS}{65}{subsubsection.5.4.1.3}%
+\contentsline {subsubsection}{\numberline {5.4.1.4}COVRATIO}{65}{subsubsection.5.4.1.4}%
+\contentsline {subsubsection}{Datos de la ONU - medidas de influencia}{66}{section*.78}%
+\contentsline {section}{\numberline {5.5}Comentarios finales}{67}{section.5.5}%

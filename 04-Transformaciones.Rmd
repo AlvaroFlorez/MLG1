@@ -26,7 +26,7 @@ donde $\varepsilon_{i}\sim N(0,\sigma^{2})$ y $cov(\varepsilon_{j},\varepsilon_{
 
 Luego de ajustar el modelo se procede a hacer un análisis de residuos. El gráfico de los residuos estudentizados (Figura \@ref(fig:Un11res) muestra que el ajuste presenta problemas de no linealidad y heterocedasticidad. En la Figura \@ref(fig:Un11resPartial) de los residuos parciales podemos observar que estos problemas se deben a la covariable PNB. 
 
-```{r Un11res, echo=T, fig.height = 3, fig.width = 4,fig.align = "center",fig.cap = "Datos de la ONU. Gráfico de los residuos estudentizados.",warning=FALSE,message = FALSE}
+```{r Un11res, echo=T, fig.height = 4, fig.width = 5,fig.align = "center",fig.cap = "Datos de la ONU. Gráfico de los residuos estudentizados.",warning=FALSE,message = FALSE}
 mod.UN11 = lm(fertility~ppgdp+pctUrban,data=UN11)
 library(MASS)
 res.UN11 = studres(mod.UN11)
@@ -36,7 +36,7 @@ lines(lowess(res.UN11~mod.UN11$fitted.values),col=2)
 abline(h=0,lty=2)
 ```
 
-```{r Un11resPartial, echo=T, fig.height = 3, fig.width = 7,fig.align = "center",fig.cap = "Datos de la ONU. Gráfico de los residuos  parciales.",warning=FALSE,message = FALSE}
+```{r Un11resPartial, echo=T, fig.height = 4, fig.width = 8,fig.align = "center",fig.cap = "Datos de la ONU. Gráfico de los residuos  parciales.",warning=FALSE,message = FALSE}
 library(car)
 crPlots(mod.UN11,main='')
 ```
@@ -227,7 +227,7 @@ Producto de esta transformación, se propone el siguiente modelo:
 donde $\varepsilon_{i}\sim N(0,\sigma^{2})$ y $cov(\varepsilon_{j},\varepsilon_{k})=0$.
 
 La Figura \@ref(fig:UNtrans2Fig) muestra el gráfico de los residuos para este ajuste. Aquí vemos que los problemas de no linealidad y heterocedasticidad se corrigieron al realizar la transformación logarítmica.
-```{r UNtrans2Fig, echo=TRUE, fig.height = 3, fig.width = 6,fig.align = "center",fig.cap = "Datos de la ONU. Gráficos de los residuos para el modelo transformado.",warning=FALSE,message = FALSE}
+```{r UNtrans2Fig, echo=TRUE, fig.height = 4, fig.width = 8,fig.align = "center",fig.cap = "Datos de la ONU. Gráficos de los residuos para el modelo transformado.",warning=FALSE,message = FALSE}
 mod.UN11.trans = lm(log(fertility)~log(ppgdp)+pctUrban,data = UN11)
 res.UN11.trans = studres(mod.UN11.trans)
 par(mfrow=c(1,2))
@@ -285,7 +285,7 @@ Si $\lambda=1$, entonces asintóticamente $G_{0}^{2} \sim \chi^{2}_{1}$. Por lo 
 \rule{\textwidth}{0.4pt}
 ### Datos de educación. Transformación de Box-Cox
 Dado que el análisis de residuso para el ajuste del modelo para los datos de educación mostró que hay problemas de heterocedasticidad, vamos a encontrar una transformación que resuelva de problema usando el método de Box-Cox. Para esto usamos la función `boxcox` de la librería `MASS`:
-```{r educLambda, echo=TRUE, fig.height = 3.6, fig.width = 3.5,fig.align = "center",fig.cap = "\\label{fig:EducBC} Datos de educación. Perfiles de verosimilitud para $\\lambda$.",warning=FALSE,message = FALSE}
+```{r educLambda, echo=TRUE, fig.height = 4, fig.width = 5,fig.align = "center",fig.cap = "\\label{fig:EducBC} Datos de educación. Perfiles de verosimilitud para $\\lambda$.",warning=FALSE,message = FALSE}
 boxcox.educ = MASS::boxcox(mod.educ,lambda=seq(-3,3,length.out = 1000),
                                ylab='log-verosimilitud')
 boxcox.educ$x[boxcox.educ$y ==max(boxcox.educ$y)] # valor que maximiza la log-verosimilitud
@@ -297,7 +297,7 @@ Estos resultados nos indican que $\hatlambda = `r round(boxcox.educ$x[boxcox.edu
 donde $\varepsilon_{i}\sim N(0,\sigma^{2})$ y $cov(\varepsilon_{j},\varepsilon_{k})=0$.
 
 Ahora procedemos a hacer el análisis de los residuos del modelo transformado:
-```{r EducBC2Fig, echo=TRUE, fig.height = 3, fig.width = 7,fig.align = "center",fig.cap = "Datos de educación. Graficos de los residuos para el modelo transformado.",warning=FALSE,message = FALSE}
+```{r EducBC2Fig, echo=TRUE, fig.height = 4, fig.width = 8,fig.align = "center",fig.cap = "Datos de educación. Graficos de los residuos para el modelo transformado.",warning=FALSE,message = FALSE}
 mod.educ.trans = lm(1/Y~X1+X2+X3,data=education)
 res.educ.trans = studres(mod.educ.trans)
 par(mfrow=c(1,2))

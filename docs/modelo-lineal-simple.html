@@ -24,7 +24,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2021-08-12" />
+<meta name="date" content="2021-08-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -312,7 +312,7 @@ div.csl-indent {
 <h1><span class="header-section-number">Capítulo 1</span> Modelo lineal simple</h1>
 <div id="datos-de-peso-al-nacer" class="section level2 unnumbered">
 <h2>Datos de peso al nacer</h2>
-<p>Los datos <code>birthweight</code> (disponible en el campus virtual) contienen el peso y la edad gestacional de <span class="math inline">\(42\)</span> recién nacidos. El objetivo del estudio es investigar cómo la edad gestational del feto influyen en el peso al nacer durante las últimas semanas del embarazo. Aunque la base de datos contiene otras variables, por ahora solo consideramos el peso y la edad gestacional.</p>
+<p>Los datos <code>birthweight</code> (Disponible <a href="https://raw.githubusercontent.com/AlvaroFlorez/MLG1/master/Birthweight.csv" target="_blank">aquí</a>) contienen el peso y la edad gestacional de <span class="math inline">\(42\)</span> recién nacidos. El objetivo del estudio es investigar cómo la edad gestational del feto influyen en el peso al nacer durante las últimas semanas del embarazo. Aunque la base de datos contiene otras variables, por ahora solo consideramos el peso y la edad gestacional.</p>
 <p>La Figura <a href="modelo-lineal-simple.html#fig:birthweightFigure">1.1</a> muestra la relación entre el peso (en kilogramos) y la edad gestacional (en semanas) del recién nacido. Por medio de este gráfico vemos que hay una relación aproximadamente lineal positiva (la correlación es igual a 0.73). Es decir que cuando la edad gestacional aumenta, el peso del recién nacido también lo hace. Por lo tanto, sería razonable describir el valor esperado del peso al nacer como una función lineal de la edad gestacional:
 <span class="math display">\[
 E(\mbox{weight}|\mbox{age}=x) = \beta_{0} + \beta_{1}x.
@@ -323,7 +323,7 @@ E(\mbox{weight}|\mbox{age}=x) = \beta_{0} + \beta_{1}x.
 <span id="cb1-3"><a href="modelo-lineal-simple.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(weight<span class="sc">~</span>age,<span class="at">data=</span>birthweight,<span class="at">pch=</span><span class="dv">20</span>,<span class="at">xlab=</span><span class="st">&quot;Edad gestacional(semanas)&quot;</span>,</span>
 <span id="cb1-4"><a href="modelo-lineal-simple.html#cb1-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&#39;Peso(kilogramos)&#39;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:birthweightFigure"></span>
-<img src="bookdownproj_files/figure-html/birthweightFigure-1.png" alt="Gráfico de dispersion del peso del recien nacido y la edad gestacional." width="480" />
+<img src="MLGI_files/figure-html/birthweightFigure-1.png" alt="Gráfico de dispersion del peso del recien nacido y la edad gestacional." width="480" />
 <p class="caption">
 Figure 1.1: Gráfico de dispersion del peso del recien nacido y la edad gestacional.
 </p>
@@ -372,7 +372,7 @@ Lo que indica que <span class="math inline">\(\beta_{1}\)</span> representa el c
 <p>Debido a (d), tenemos que la variable respuesta se distribuye de forma normal. Específicamente, tenemos que: <span class="math inline">\(y_{i} \sim N(\beta_{0} + \beta_{1}x_i, \sigma^{2})\)</span>.</p>
 <p>El proceso de generación de datos del modelo de regresión lineal se ilustra en la Figura <a href="modelo-lineal-simple.html#fig:gendataFigure">1.2</a>. El valor esperado de <span class="math inline">\(Y|X\)</span> está representado por la linea negra. Tenemos que, cada observación de <span class="math inline">\(y\)</span> (puntos negros) es una realización de la distribución de <span class="math inline">\(Y|X=x_{i} \sim N(\beta_{0}+\beta_{1}x_{i},\sigma^{2})\)</span> (curvas rojas). En esté ejemplo, suponemos que <span class="math inline">\(\beta_{0}=0\)</span>, <span class="math inline">\(\beta_{1}=1\)</span>, y <span class="math inline">\(\sigma=0.1\)</span>.</p>
 <div class="figure" style="text-align: center"><span id="fig:gendataFigure"></span>
-<img src="bookdownproj_files/figure-html/gendataFigure-1.png" alt="Proceso generador datos del modelo lineal simple." width="576" />
+<img src="MLGI_files/figure-html/gendataFigure-1.png" alt="Proceso generador datos del modelo lineal simple." width="480" />
 <p class="caption">
 Figure 1.2: Proceso generador datos del modelo lineal simple.
 </p>
@@ -407,11 +407,11 @@ y
 donde <span class="math inline">\(s_{X}\)</span> y <span class="math inline">\(s_{Y}\)</span> son las desviaciones estándar muestrales de <span class="math inline">\(X\)</span> y <span class="math inline">\(Y\)</span>.</p>
 <p>La diferencia entre el valor observado <span class="math inline">\((y_{i})\)</span> y el valor ajustado correspondiente <span class="math inline">\((\widehat{y}_{i})\)</span> es llamado <strong>residuo</strong> (o residual):
 <span class="math display">\[
-e_{i}= y_{i} - (\hatbeta_{0} + \hatbeta_{1}x_{i}) = y_{i}-\haty_{i}, \mbox{ para }i=1,\ldots,n.
+e_{i}= y_{i} - (\widehat{\beta}_{0} + \widehat{\beta}_{1}x_{i}) = y_{i}-\widehat{y}_{i}, \mbox{ para }i=1,\ldots,n.
 \]</span>
 La Figura <a href="modelo-lineal-simple.html#fig:Figresiduos">1.3</a> presenta los residuos de forma gráfica. Estos juegan un papel importante para la evaluar la bondad del ajuste del modelo (detectar posibles desviaciones a los supuestos asumidos).</p>
 <div class="figure" style="text-align: center"><span id="fig:Figresiduos"></span>
-<img src="bookdownproj_files/figure-html/Figresiduos-1.png" alt="Diagrama gráfico de un ajuste por MCO. La recta representa la estimación por MCO, y las lineas discontinuas verticales entre los puntos observados y la recta estimada son los residuos." width="480" />
+<img src="MLGI_files/figure-html/Figresiduos-1.png" alt="Diagrama gráfico de un ajuste por MCO. La recta representa la estimación por MCO, y las lineas discontinuas verticales entre los puntos observados y la recta estimada son los residuos." width="480" />
 <p class="caption">
 Figure 1.3: Diagrama gráfico de un ajuste por MCO. La recta representa la estimación por MCO, y las lineas discontinuas verticales entre los puntos observados y la recta estimada son los residuos.
 </p>
@@ -425,7 +425,7 @@ SS_{res} = \sum_{i=1}^{n}e^{2}_{i} = \sum_{i=1}^{n} (y_{i}-\widehat{\beta}_{0} -
 \]</span>
 El valor esperado de <span class="math inline">\(SS_{res}\)</span> es <span class="math inline">\(E(SS_{res})=(n-2)\sigma^{2}\)</span> (Para el caso de regresión múltiple, ver Sección C.3 de <span class="citation"><a href="#ref-montgomery_introduction_2012" role="doc-biblioref">Montgomery, Peck, and Vining</a> (<a href="#ref-montgomery_introduction_2012" role="doc-biblioref">2012</a>)</span>). Por lo tanto, un estimador insesgado de <span class="math inline">\(\sigma^{2}\)</span> es:
 <span class="math display">\[
-\hatsigma_{i} = \frac{SS_{res}}{n-2} = MS_{res}.
+\widehat{\sigma}_{i} = \frac{SS_{res}}{n-2} = MS_{res}.
 \]</span>
 La cantidad <span class="math inline">\(MS_{res}\)</span> es llamada <strong>cuadrado medio de los residuos</strong>.</p>
 <div id="datos-de-peso-al-nacer.-modelo-y-estimación-de-parametros" class="section level3 unnumbered">
@@ -447,13 +447,13 @@ donde <span class="math inline">\(\varepsilon_{i} \sim N(0,\sigma^{2})\)</span>.
 ## (Intercept)          age  
 ##     -3.6312       0.1752</code></pre>
 <p>De aquí obtenemos que <span class="math inline">\(\widehat{\beta}_{0} =-3.63\)</span> y <span class="math inline">\(\widehat{\beta}_{1} =0.18\)</span>. Note que la estimación del intercepto es negativa, lo que es físicamente imposible. Además tampoco tiene sentido una edad gestacional igual a cero. Por lo cual, este parámetro no tiene interpretación en este caso. <span class="math inline">\(\beta_{0}\)</span> solo tiene interpretación cuando las observaciones de <span class="math inline">\(x\)</span> están alrededor de cero.</p>
-<p>A partir de <span class="math inline">\(\hatbeta_{1}\)</span>, podemos concluir que la edad gestacional tiene un efecto positivo sobre el peso del recién nacido (el coeficiente estimado es positivo). Por cada incremento de una semana en la edad gestacional, el valor esperado del peso del recién nacido aumenta 0.18 kilogramos.</p>
+<p>A partir de <span class="math inline">\(\widehat{\beta}_{1}\)</span>, podemos concluir que la edad gestacional tiene un efecto positivo sobre el peso del recién nacido (el coeficiente estimado es positivo). Por cada incremento de una semana en la edad gestacional, el valor esperado del peso del recién nacido aumenta 0.18 kilogramos.</p>
 <p>La representación gráfica del modelo estimado se presenta en la Figura <a href="modelo-lineal-simple.html#fig:FigMCO2">1.4</a>.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="modelo-lineal-simple.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(weight<span class="sc">~</span>age,<span class="at">data=</span>birthweight,<span class="at">pch=</span><span class="dv">20</span>,<span class="at">xlab=</span><span class="st">&quot;edad gestacional(semanas)&quot;</span>,</span>
 <span id="cb4-2"><a href="modelo-lineal-simple.html#cb4-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&#39;peso(kilogramos)&#39;</span>)</span>
 <span id="cb4-3"><a href="modelo-lineal-simple.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(mod,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:FigMCO2"></span>
-<img src="bookdownproj_files/figure-html/FigMCO2-1.png" alt="Gráfico de dispersion del peso del recien nacido y la edad gestacional. La linea representa la estimación por MCO." width="384" />
+<img src="MLGI_files/figure-html/FigMCO2-1.png" alt="Gráfico de dispersion del peso del recien nacido y la edad gestacional. La linea representa la estimación por MCO." width="384" />
 <p class="caption">
 Figure 1.4: Gráfico de dispersion del peso del recien nacido y la edad gestacional. La linea representa la estimación por MCO.
 </p>
@@ -465,58 +465,58 @@ Figure 1.4: Gráfico de dispersion del peso del recien nacido y la edad gestacio
 </div>
 <div id="propiedades-de-los-estimadores-por-mco" class="section level2" number="1.5">
 <h2><span class="header-section-number">1.5</span> Propiedades de los estimadores por MCO</h2>
-<p>Los estimadores de <span class="math inline">\(\hatbeta_{0}\)</span> y <span class="math inline">\(\hatbeta_{1}\)</span> son una combinación lineal de las observaciones:
+<p>Los estimadores de <span class="math inline">\(\widehat{\beta}_{0}\)</span> y <span class="math inline">\(\widehat{\beta}_{1}\)</span> son una combinación lineal de las observaciones:
 <span class="math display" id="eq:beta1cl">\[\begin{equation}
-\hatbeta_{i} = \sum_{i=1}^{n} \frac{(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sum_{i=1}^{n}(x_{i}-\bar{x})^2} = \sum_{i=1}^{n} \frac{(x_{i}-\bar{x})}{\sum_{i=1}^{n}(x_{i}-\bar{x})^2}y_{i} = \sum_{i=1}^{n}c_{i}y_{i}.
+\widehat{\beta}_{i} = \sum_{i=1}^{n} \frac{(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sum_{i=1}^{n}(x_{i}-\bar{x})^2} = \sum_{i=1}^{n} \frac{(x_{i}-\bar{x})}{\sum_{i=1}^{n}(x_{i}-\bar{x})^2}y_{i} = \sum_{i=1}^{n}c_{i}y_{i}.
 \tag{1.5}
 \end{equation}\]</span>
 y
 <span class="math display">\[
-\hatbeta_{0} = \bar{y} - \hatbeta_{1}\bar{x} = \sum_{i=1}^{n}\left( \frac{1}{n} - c_{i}\bar{x} \right)y_{i} = \sum_{i=1}^{n}d_{i}y_{i}.
+\widehat{\beta}_{0} = \bar{y} - \widehat{\beta}_{1}\bar{x} = \sum_{i=1}^{n}\left( \frac{1}{n} - c_{i}\bar{x} \right)y_{i} = \sum_{i=1}^{n}d_{i}y_{i}.
 \]</span>
 Además, se tiene que <span class="math inline">\(\sum_{i=1}^{n}c_{i}=0\)</span> y <span class="math inline">\(\sum_{i=1}^{n}c_{i}x_{i}=1\)</span>. Los valores ajustados también son combinaciones lineales de los datos:
 <span class="math display">\[
-\haty_{i} = \hatbeta_{0} + \hatbeta_{1}x_{i} = \sum_{i=1}^{n}(d_{i}+c_{i}x_{i})y_{i}.
+\widehat{y}_{i} = \widehat{\beta}_{0} + \widehat{\beta}_{1}x_{i} = \sum_{i=1}^{n}(d_{i}+c_{i}x_{i})y_{i}.
 \]</span>
-Puesto que los estimadores de <span class="math inline">\(\beta_{0}\)</span> y <span class="math inline">\(\beta_{1}\)</span> dependen de los errores, estos también son variables aleatorias. Por lo tanto debemos calcular el valor esperado y varianza de <span class="math inline">\(\hatbeta_{0}\)</span> y <span class="math inline">\(\hatbeta_{1}\)</span>.</p>
-<p>Si los supuestos del modelo se cumplen, tenemos que el valor esperado de <span class="math inline">\(\hatbeta_{1}\)</span> es:
+Puesto que los estimadores de <span class="math inline">\(\beta_{0}\)</span> y <span class="math inline">\(\beta_{1}\)</span> dependen de los errores, estos también son variables aleatorias. Por lo tanto debemos calcular el valor esperado y varianza de <span class="math inline">\(\widehat{\beta}_{0}\)</span> y <span class="math inline">\(\widehat{\beta}_{1}\)</span>.</p>
+<p>Si los supuestos del modelo se cumplen, tenemos que el valor esperado de <span class="math inline">\(\widehat{\beta}_{1}\)</span> es:
 <span class="math display">\[\begin{equation}
 \begin{split}
-E(\hatbeta_{1}) &amp;= E\left( \sum_{i=1}^{n}c_{i}y_{i} \right) = \sum_{i=1}^{n}c_{i}E(y_{i}) = \sum_{i=1}^{n} c_{i}(\beta_{0} + \beta_{1}x_{i} + \varepsilon_{i}) \\
+E(\widehat{\beta}_{1}) &amp;= E\left( \sum_{i=1}^{n}c_{i}y_{i} \right) = \sum_{i=1}^{n}c_{i}E(y_{i}) = \sum_{i=1}^{n} c_{i}(\beta_{0} + \beta_{1}x_{i} + \varepsilon_{i}) \\
 &amp;=\beta_{0}\sum_{i=1}^{n}c_{i} + \beta_{1}\sum_{i=1}^{n}c_{i}x_{i} = \beta_{1}.
 \end{split}
 \nonumber
 \end{equation}\]</span>
-El valor esperado de <span class="math inline">\(\hatbeta_{0}\)</span> es:
+El valor esperado de <span class="math inline">\(\widehat{\beta}_{0}\)</span> es:
 <span class="math display">\[\begin{equation}
 \begin{split}
-E(\hatbeta_{0}) &amp;= E\left(\bar{y} - \hatbeta_{1}\bar{x} \right) = \frac{1}{n}\sum_{i=1}^{n}E(y_{i}) - \beta_{1}\bar{x} \\
+E(\widehat{\beta}_{0}) &amp;= E\left(\bar{y} - \widehat{\beta}_{1}\bar{x} \right) = \frac{1}{n}\sum_{i=1}^{n}E(y_{i}) - \beta_{1}\bar{x} \\
 &amp;= \frac{1}{n}\sum_{i=1}^{n}\left(\beta_{0} + \beta_{1}x_{i}\right) - \beta_{1}\bar{x} = \beta_{0}.
 \end{split}
 \nonumber
 \end{equation}\]</span></p>
-<p>Es decir que <span class="math inline">\(\hatbeta_{0}\)</span> y <span class="math inline">\(\hatbeta_{1}\)</span> son estimadores insesgado de <span class="math inline">\(\beta_{0}\)</span> y <span class="math inline">\(\beta_{1}\)</span>,respectivamente.</p>
-<p>La varianza de <span class="math inline">\(\hatbeta_{1}\)</span> y <span class="math inline">\(\hatbeta_{0}\)</span> son:
+<p>Es decir que <span class="math inline">\(\widehat{\beta}_{0}\)</span> y <span class="math inline">\(\widehat{\beta}_{1}\)</span> son estimadores insesgado de <span class="math inline">\(\beta_{0}\)</span> y <span class="math inline">\(\beta_{1}\)</span>,respectivamente.</p>
+<p>La varianza de <span class="math inline">\(\widehat{\beta}_{1}\)</span> y <span class="math inline">\(\widehat{\beta}_{0}\)</span> son:
 <span class="math display">\[
-V(\hatbeta_{1})= V \left( \sum_{i=1}^{n}c_{i}y_{i}\right) = \sum_{i=1}^{n}c_{i}^{2}V(y_{i}) = \sigma^{2}\sum_{i=1}^{n}c_{i}^{2} = \frac{\sigma^{2}}{S_{xx}},
+V(\widehat{\beta}_{1})= V \left( \sum_{i=1}^{n}c_{i}y_{i}\right) = \sum_{i=1}^{n}c_{i}^{2}V(y_{i}) = \sigma^{2}\sum_{i=1}^{n}c_{i}^{2} = \frac{\sigma^{2}}{S_{xx}},
 \]</span>
 y
 <span class="math display">\[\begin{equation}
 \begin{split}
-V(\hatbeta_{0}) &amp;= V \left( \bar{y} - \hatbeta_{1}\bar{x}\right) = V (\bar{y}) + \bar{x}^{2}V(\hatbeta_{1}) - 2\bar{x}Cov(\bar{y},\hatbeta_{1}) \\
+V(\widehat{\beta}_{0}) &amp;= V \left( \bar{y} - \widehat{\beta}_{1}\bar{x}\right) = V (\bar{y}) + \bar{x}^{2}V(\widehat{\beta}_{1}) - 2\bar{x}Cov(\bar{y},\widehat{\beta}_{1}) \\
 &amp;= \sigma^{2} \left(\frac{1}{n} + \frac{\bar{x}^{2}}{S_{xx}}. \right),
 \end{split}
 \nonumber
 \end{equation}\]</span>
-respectivamente. Finalmente, la covarianza entre <span class="math inline">\(\hatbeta_{0}\)</span> y <span class="math inline">\(\hatbeta_{1}\)</span> es:
+respectivamente. Finalmente, la covarianza entre <span class="math inline">\(\widehat{\beta}_{0}\)</span> y <span class="math inline">\(\widehat{\beta}_{1}\)</span> es:
 <span class="math display">\[\begin{equation}
 \begin{split}
-Cov(\hatbeta_{0},\hatbeta_{1}) &amp;= Cov\left(\bar{y} - \hatbeta_{1}\bar{x}, \hatbeta_{1} \right) = Cov\left( \bar{y}, \hatbeta_{1}\right) - \bar{x}V\left(\hatbeta_{1}\right) \\
+Cov(\widehat{\beta}_{0},\widehat{\beta}_{1}) &amp;= Cov\left(\bar{y} - \widehat{\beta}_{1}\bar{x}, \widehat{\beta}_{1} \right) = Cov\left( \bar{y}, \widehat{\beta}_{1}\right) - \bar{x}V\left(\widehat{\beta}_{1}\right) \\
 &amp;=  - \sigma^{2}\frac{\bar{x}}{S_{xx}}.
 \end{split}
 \nonumber
 \end{equation}\]</span></p>
-<p>Si se cumple que <span class="math inline">\(E(\varepsilon_{i}) = 0\)</span>, <span class="math inline">\(V(\varepsilon_{i}) = \sigma^{2}\)</span> y <span class="math inline">\(Cov(\varepsilon_{i},\varepsilon_{j})=0\)</span>, se puede probar que los estimadores por MCO son insesgado y de varianza mínima (<strong>teorema de Gauss-Markov</strong>). Para la demostración en el caso de regresión múltiple, ver Sección C4 de <span class="citation"><a href="#ref-montgomery_introduction_2012" role="doc-biblioref">Montgomery, Peck, and Vining</a> (<a href="#ref-montgomery_introduction_2012" role="doc-biblioref">2012</a>)</span>. Esto quiere decir que, comparado con todos los posibles estimadores insesgados que son combinación lineal de las observaciones, <span class="math inline">\(\hatbeta_{0}\)</span> y <span class="math inline">\(\hatbeta_{1}\)</span> tienen las varianzas más pequeñas. Por esto los estimadores por MCO son considerados los <strong>mejores estimadores lineales insesgados</strong>.</p>
+<p>Si se cumple que <span class="math inline">\(E(\varepsilon_{i}) = 0\)</span>, <span class="math inline">\(V(\varepsilon_{i}) = \sigma^{2}\)</span> y <span class="math inline">\(Cov(\varepsilon_{i},\varepsilon_{j})=0\)</span>, se puede probar que los estimadores por MCO son insesgado y de varianza mínima (<strong>teorema de Gauss-Markov</strong>). Para la demostración en el caso de regresión múltiple, ver Sección C4 de <span class="citation"><a href="#ref-montgomery_introduction_2012" role="doc-biblioref">Montgomery, Peck, and Vining</a> (<a href="#ref-montgomery_introduction_2012" role="doc-biblioref">2012</a>)</span>. Esto quiere decir que, comparado con todos los posibles estimadores insesgados que son combinación lineal de las observaciones, <span class="math inline">\(\widehat{\beta}_{0}\)</span> y <span class="math inline">\(\widehat{\beta}_{1}\)</span> tienen las varianzas más pequeñas. Por esto los estimadores por MCO son considerados los <strong>mejores estimadores lineales insesgados</strong>.</p>
 </div>
 <div id="inferencia" class="section level2" number="1.6">
 <h2><span class="header-section-number">1.6</span> Inferencia</h2>
@@ -529,13 +529,13 @@ Cov(\hatbeta_{0},\hatbeta_{1}) &amp;= Cov\left(\bar{y} - \hatbeta_{1}\bar{x}, \h
 H_{0}: \beta_{1} = \beta_{10} \mbox{  } H_{1}: \beta_{1} \neq \beta_{10}.
 \tag{1.6}
 \end{equation}\]</span>
-Dado que <span class="math inline">\(\hatbeta_{1}\)</span> es una combinación lineal de <span class="math inline">\(y_{i}\)</span> <a href="modelo-lineal-simple.html#eq:beta1cl">(1.5)</a>, podemos concluir que:
+Dado que <span class="math inline">\(\widehat{\beta}_{1}\)</span> es una combinación lineal de <span class="math inline">\(y_{i}\)</span> <a href="modelo-lineal-simple.html#eq:beta1cl">(1.5)</a>, podemos concluir que:
 <span class="math display">\[
-\hatbeta_{1} \sim N\left(\beta_{1}, \frac{\sigma^{2}}{S_{xx}}\right).
+\widehat{\beta}_{1} \sim N\left(\beta_{1}, \frac{\sigma^{2}}{S_{xx}}\right).
 \]</span>
 Además,
 <span class="math display" id="eq:distB1">\[\begin{equation}
-t_{0} = \frac{\hatbeta_{1}-\beta_{10}}{\sqrt{\frac{MS_{res}}{S_{xx}}}}\sim t_{n-2}.
+t_{0} = \frac{\widehat{\beta}_{1}-\beta_{10}}{\sqrt{\frac{MS_{res}}{S_{xx}}}}\sim t_{n-2}.
 \tag{1.7}
 \end{equation}\]</span>
 Por lo tanto, <span class="math inline">\(t_{0}\)</span> es el estadístico de prueba para las hipótesis <a href="modelo-lineal-simple.html#eq:H0beta1">(1.6)</a>. Entonces, rechazamos <span class="math inline">\(H_{0}\)</span> si <span class="math inline">\(|t_{0}| \ge t_{1-\alpha/2,n-p}\)</span> (o por medio del valor-<span class="math inline">\(p\)</span> asociado).</p>
@@ -545,7 +545,7 @@ H_{0}: \beta_{0} = \beta_{00} \mbox{  } H_{1}: \beta_{0} \neq \beta_{00},
 \]</span>
 el estadístico de prueba es:
 <span class="math display" id="eq:distB0">\[\begin{equation}
-t_{0} = \frac{\hatbeta_{0}-\beta_{00}}{\sqrt{MS_{res}\left(\frac{1}{n}+\frac{\bar{x}^{2}}{S_{xx}} \right)}} \sim t_{n-2}.
+t_{0} = \frac{\widehat{\beta}_{0}-\beta_{00}}{\sqrt{MS_{res}\left(\frac{1}{n}+\frac{\bar{x}^{2}}{S_{xx}} \right)}} \sim t_{n-2}.
  \tag{1.8}
 \end{equation}\]</span></p>
 </div>
@@ -553,12 +553,12 @@ t_{0} = \frac{\hatbeta_{0}-\beta_{00}}{\sqrt{MS_{res}\left(\frac{1}{n}+\frac{\ba
 <h3><span class="header-section-number">1.6.2</span> Análisis de varianza</h3>
 El análisis de varianza se basa en la partición de la variabilidad total de la variable respuesta <span class="math inline">\(y\)</span> en dos componentes, uno debido al modelo ajustado y otro al error. Primero, empecemos con la siguiente identidad:
 <span class="math display" id="eq:decomposion">\[\begin{equation}
-y_{i} - \bar{y} = (y_{i} - \haty_{i}) + (\haty_{i} - \bar{y}).
+y_{i} - \bar{y} = (y_{i} - \widehat{y}_{i}) + (\widehat{y}_{i} - \bar{y}).
 \tag{1.9}
 \end{equation}\]</span>
 La Figura <a href="modelo-lineal-simple.html#fig:anovafig">1.5</a> muestra la partición <a href="modelo-lineal-simple.html#eq:decomposion">(1.9)</a> en el punto <span class="math inline">\(i=3\)</span>. Aquí vemos que una parte de la diferencia entre <span class="math inline">\(y_{3}\)</span> y <span class="math inline">\(\bar{y}\)</span> es explicada por el modelo (línea discontinua roja).
 <div class="figure" style="text-align: center"><span id="fig:anovafig"></span>
-<img src="bookdownproj_files/figure-html/anovafig-1.png" alt="Representación gráfica de la partición \@ref(eq:decomposion)." width="576" />
+<img src="MLGI_files/figure-html/anovafig-1.png" alt="Representación gráfica de la partición \@ref(eq:decomposion)." width="480" />
 <p class="caption">
 Figure 1.5: Representación gráfica de la partición <a href="modelo-lineal-simple.html#eq:decomposion">(1.9)</a>.
 </p>
@@ -566,8 +566,8 @@ Figure 1.5: Representación gráfica de la partición <a href="modelo-lineal-sim
 <p>Ahora evelavamos al cuadrado <a href="modelo-lineal-simple.html#eq:decomposion">(1.9)</a> y sumamos todos los componentes:
 <span class="math display" id="eq:ss">\[\begin{equation}
 \begin{split}
-\sum_{i=1}^{n} (y_{i} - \bar{y})^{2} &amp;= \sum_{i=1}^{n} (y_{i} - \haty_{i})^{2} + \sum_{i=1}^{n}(\haty_{i} - \bar{y})^{2} + 2 \sum_{i=1}^{n}(y_{i} - \haty_{i})(\haty_{i} - \bar{y}) \\
-&amp;= \sum_{i=1}^{n} (y_{i} - \haty_{i})^{2} + \sum_{i=1}^{n}(\haty_{i} - \bar{y})^{2} \\
+\sum_{i=1}^{n} (y_{i} - \bar{y})^{2} &amp;= \sum_{i=1}^{n} (y_{i} - \widehat{y}_{i})^{2} + \sum_{i=1}^{n}(\widehat{y}_{i} - \bar{y})^{2} + 2 \sum_{i=1}^{n}(y_{i} - \widehat{y}_{i})(\widehat{y}_{i} - \bar{y}) \\
+&amp;= \sum_{i=1}^{n} (y_{i} - \widehat{y}_{i})^{2} + \sum_{i=1}^{n}(\widehat{y}_{i} - \bar{y})^{2} \\
 SST &amp;= SS_{R} + SS_{res},
 \end{split}
 \tag{1.10}
@@ -668,10 +668,10 @@ Tanto la prueba de hipótesis basada en <span class="math inline">\(t_{0}\)</spa
 <h3><span class="header-section-number">1.6.3</span> Intervalos de confianza</h3>
 <div id="intervalos-de-confianza-para-beta_0-beta_1-y-sigma2" class="section level4 unnumbered">
 <h4>Intervalos de confianza para <span class="math inline">\(\beta_{0}\)</span>, <span class="math inline">\(\beta_{1}\)</span> y <span class="math inline">\(\sigma^{2}\)</span></h4>
-<p>Los intervalos de confianza para <span class="math inline">\(\beta_{0}\)</span> y <span class="math inline">\(\beta_{1}\)</span> se construyen a partir de las distribuciones de probabilidad de <span class="math inline">\(\hatbeta_{0}\)</span> y <span class="math inline">\(\hatbeta_{1}\)</span>. Esto es, <a href="modelo-lineal-simple.html#eq:distB0">(1.8)</a> y <a href="modelo-lineal-simple.html#eq:distB1">(1.7)</a>, respectivamente.</p>
+<p>Los intervalos de confianza para <span class="math inline">\(\beta_{0}\)</span> y <span class="math inline">\(\beta_{1}\)</span> se construyen a partir de las distribuciones de probabilidad de <span class="math inline">\(\widehat{\beta}_{0}\)</span> y <span class="math inline">\(\widehat{\beta}_{1}\)</span>. Esto es, <a href="modelo-lineal-simple.html#eq:distB0">(1.8)</a> y <a href="modelo-lineal-simple.html#eq:distB1">(1.7)</a>, respectivamente.</p>
 <p>Por lo tanto, el intervalo del <span class="math inline">\(100(1-\alpha)\%\)</span> de confianza para <span class="math inline">\(\beta_{j}\)</span> es:
 <span class="math display">\[
-\hatbeta_{j} \pm t_{1-\alpha/2,n-2}\sqrt{V(\hatbeta_{j})}, \mbox{ para }j=0,1.
+\widehat{\beta}_{j} \pm t_{1-\alpha/2,n-2}\sqrt{V(\widehat{\beta}_{j})}, \mbox{ para }j=0,1.
 \]</span>
 Se puede demostrar que <span class="math inline">\((n-2)MS_{res}/\sigma^{2}\sim \chi^{2}_{n-2}\)</span>. Por lo tanto:
 <span class="math display">\[
@@ -687,12 +687,12 @@ Entonces, el intervalo del <span class="math inline">\(100(1-\alpha)\%\)</span> 
 <p>Cuando el objetivo de ajustar un modelo de regresión es hacer predicciones, es posible hacer intervalos de confianza para la respuesta media, esto es <span class="math inline">\(E(Y|x_{0})=\mu_{Y|x_{0}}\)</span>, donde <span class="math inline">\(x_{0}\)</span> es un valor de la covariable dentro del rango de valores observados de <span class="math inline">\(x\)</span> en los datos.</p>
 <p>Una estimación insesgada de <span class="math inline">\(\mu_{Y|x_{0}}\)</span> es:
 <span class="math display">\[
-\widehat{\mu}_{Y|x_{0}} = \hatbeta_{0} + \hatbeta_{1}x_{0}.
+\widehat{\mu}_{Y|x_{0}} = \widehat{\beta}_{0} + \widehat{\beta}_{1}x_{0}.
 \]</span>
 La varianza de <span class="math inline">\(\widehat{\mu}_{Y|x_{0}}\)</span> es:
 <span class="math display">\[\begin{equation}
 \begin{split}
-V(\widehat{\mu}_{Y|x_{0}}) &amp;= V(\hatbeta_{0} + \hatbeta_{1}x_{0}) = V(\hatbeta_{0}) + x_{0}^{2}V(\hatbeta_{1}) + 2x_{0}Cov(\hatbeta_{0},\hatbeta_{1}) \\
+V(\widehat{\mu}_{Y|x_{0}}) &amp;= V(\widehat{\beta}_{0} + \widehat{\beta}_{1}x_{0}) = V(\widehat{\beta}_{0}) + x_{0}^{2}V(\widehat{\beta}_{1}) + 2x_{0}Cov(\widehat{\beta}_{0},\widehat{\beta}_{1}) \\
 &amp;= \sigma^{2}\left(\frac{1}{n} + \frac{\bar{x}^{2}}{S_{xx}} \right) + \sigma^{2}x_{0}^{2}\frac{1}{S_{xx}} - 2\sigma^{2}x_{0}\frac{\bar{x}}{S_{xx}} \\
 &amp;= \sigma^{2}\left[\frac{1}{n} + \frac{(x_{0}-\bar{x})^{2}}{S_{xx}} \right].
 \end{split}
@@ -710,11 +710,11 @@ Por lo tanto, el intervalo del <span class="math inline">\(100(1-\alpha)\%\)</sp
 Note que la longitud del intervalo de confianza de <span class="math inline">\(\widehat{\mu}_{Y|x_{0}}\)</span> depende del punto <span class="math inline">\(x_{0}\)</span>. La menor longitud se obtiene en el punto <span class="math inline">\(x_{0}=\bar{x}\)</span>, y el intervalo es cada vez mas ancho a medida que nos alejamos de ese punto.</p>
 <p>Ahora consideremos hacer una predicción de una observación futura de <span class="math inline">\(y\)</span> para cierto valor de <span class="math inline">\(x\)</span>. Si queremos hacer la predicción para <span class="math inline">\(x=x_{0}\)</span>, entonces la predicción de la nueva observación es:
 <span class="math display">\[
-\widetilde{y}_{0} = \hatbeta_{0} + \hatbeta_{1}x_{0}.
+\widetilde{y}_{0} = \widehat{\beta}_{0} + \widehat{\beta}_{1}x_{0}.
 \]</span>
 Asumiendo que el modelo es correcta, el verdadero valor de <span class="math inline">\(y_{0}\)</span> es:
 <span class="math display">\[
-\widetilde{y}_{0} = \hatbeta_{0} + \hatbeta_{1}x_{0} + \varepsilon_{0}.
+\widetilde{y}_{0} = \widehat{\beta}_{0} + \widehat{\beta}_{1}x_{0} + \varepsilon_{0}.
 \]</span>
 y su varianza es:
 <span class="math display" id="eq:varpred">\[\begin{equation}
@@ -742,7 +742,7 @@ El primer término a la derecha de <a href="modelo-lineal-simple.html#eq:varpred
 <pre><code>## [1] 0.3593008 0.5599503</code></pre>
 <p>Se quiere predecir el peso medio de los recién nacidos en la semana gestacional 36. La estimación puntual es:
 <span class="math display">\[
-\widehat{\mu}_{Y|x_{0}=36} = \hatbeta_{0} + \hatbeta_{1}(36) = -3.6312 + 0.1751*36 = 2.672.
+\widehat{\mu}_{Y|x_{0}=36} = \widehat{\beta}_{0} + \widehat{\beta}_{1}(36) = -3.6312 + 0.1751*36 = 2.672.
 \]</span>
 El intervalo del 95% de confianza para <span class="math inline">\(\widehat{\mu}_{Y|x_{0}=36}\)</span> se puede calcular de la siguiente forma:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="modelo-lineal-simple.html#cb13-1" aria-hidden="true" tabindex="-1"></a>x.nuevo <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">age=</span><span class="dv">36</span>)</span>
@@ -767,7 +767,7 @@ El intervalo del 95% de confianza para <span class="math inline">\(\widehat{\mu}
 <span id="cb17-6"><a href="modelo-lineal-simple.html#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x.nuevo<span class="sc">$</span>age,pred.nuevaObs[,<span class="dv">2</span>],<span class="at">lty=</span><span class="dv">3</span>)</span>
 <span id="cb17-7"><a href="modelo-lineal-simple.html#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x.nuevo<span class="sc">$</span>age,pred.nuevaObs[,<span class="dv">3</span>],<span class="at">lty=</span><span class="dv">3</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:birthweightIC"></span>
-<img src="bookdownproj_files/figure-html/birthweightIC-1.png" alt="\label{fig:BWdata2} Intervalos del 95\% de confianza (línea discontinua) y predicción (línea punteada) para el peso del recien nacido en función de la edad gestacional." width="480" />
+<img src="MLGI_files/figure-html/birthweightIC-1.png" alt="\label{fig:BWdata2} Intervalos del 95\% de confianza (línea discontinua) y predicción (línea punteada) para el peso del recien nacido en función de la edad gestacional." width="480" />
 <p class="caption">
 Figure 1.6:  Intervalos del 95% de confianza (línea discontinua) y predicción (línea punteada) para el peso del recien nacido en función de la edad gestacional.
 </p>
@@ -779,25 +779,25 @@ Figure 1.6:  Intervalos del 95% de confianza (línea discontinua) y predicción 
 <p>Si consideramos que <span class="math inline">\(\varepsilon_{i}\sim N(0,\sigma^{2})\)</span>, entonces las observación también se distribuyen de forma normal <span class="math inline">\(y_{i}\sim N(\beta_{0}+\beta_{1}x_{i},\sigma^{2})\)</span>. Si además asumimos que las observaciones <span class="math inline">\((y_{i},x_{i})\)</span> son independientes, entonces la función de verosimilitud es:
 <span class="math display">\[\begin{equation}
 \begin{split}
-L(\btheta) =&amp; \prod_{i=1}^{n} \left(\sqrt{2\pi\sigma^{2}} \right)^{-1/2}\exp\left[ - \frac{1}{2\sigma^{2}}(y_{i}-\beta_{0}-\beta_{1}x_{i})^{2} \right] \\
+L(\boldsymbol \theta) =&amp; \prod_{i=1}^{n} \left(\sqrt{2\pi\sigma^{2}} \right)^{-1/2}\exp\left[ - \frac{1}{2\sigma^{2}}(y_{i}-\beta_{0}-\beta_{1}x_{i})^{2} \right] \\
 =&amp; \left( \sqrt{2\pi\sigma^{2}} \right)^{-n/2}\exp\left[ - \frac{1}{2\sigma^{2}} \sum_{i=1}^{n}(y_{i}-\beta_{0}-\beta_{1}x_{i})^{2}\right],
 \end{split}
 \nonumber
 \end{equation}\]</span>
-para <span class="math inline">\(\btheta=(\beta_{0},\beta_{1},\sigma^{2})&#39;\)</span>. La log-verosimilitud es:
+para <span class="math inline">\(\boldsymbol \theta=(\beta_{0},\beta_{1},\sigma^{2})&#39;\)</span>. La log-verosimilitud es:
 <span class="math display">\[
-\ell (\btheta) = - \left(\frac{n}{2}\right)\left[ \log (2 \pi) - \log \sigma^{2}\right] - \frac{1}{2\sigma^{2}}\sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i})^{2}. 
+\ell (\boldsymbol \theta) = - \left(\frac{n}{2}\right)\left[ \log (2 \pi) - \log \sigma^{2}\right] - \frac{1}{2\sigma^{2}}\sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i})^{2}. 
 \]</span>
-El estimador de máxima verosimilitud de <span class="math inline">\(\btheta\)</span> debe satisfacer:
+El estimador de máxima verosimilitud de <span class="math inline">\(\boldsymbol \theta\)</span> debe satisfacer:
 <span class="math display">\[
-\left. \frac{\partial \ell(\btheta)}{\partial \beta_{0}} \right|_{\widetilde{\btheta}} = \frac{1}{\widetilde{\sigma}^{2}}\sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i}) = 0,
+\left. \frac{\partial \ell(\boldsymbol \theta)}{\partial \beta_{0}} \right|_{\widetilde{\boldsymbol \theta}} = \frac{1}{\widetilde{\sigma}^{2}}\sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i}) = 0,
 \]</span>
 <span class="math display">\[
-\left. \frac{\partial \ell(\btheta)}{\partial \beta_{1}} \right|_{\widetilde{\btheta}} = \frac{1}{\widetilde{\sigma}^{2}}\sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i})x_{i} = 0,
+\left. \frac{\partial \ell(\boldsymbol \theta)}{\partial \beta_{1}} \right|_{\widetilde{\boldsymbol \theta}} = \frac{1}{\widetilde{\sigma}^{2}}\sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i})x_{i} = 0,
 \]</span>
 y
 <span class="math display">\[
-\left. \frac{\partial \ell(\btheta)}{\partial \sigma^{2}} \right|_{\widetilde{\btheta}} = -\frac{n}{2\widetilde{\sigma}^{2}} + \frac{n}{2\widetilde{\sigma}^{4}}
+\left. \frac{\partial \ell(\boldsymbol \theta)}{\partial \sigma^{2}} \right|_{\widetilde{\boldsymbol \theta}} = -\frac{n}{2\widetilde{\sigma}^{2}} + \frac{n}{2\widetilde{\sigma}^{4}}
 \sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i})^{2} = 0,
 \]</span>
 Luego de solucionar las ecuaciones anteriores se obtienen los estimadores por máxima verosimilitud:
@@ -821,7 +821,7 @@ Aquí observamos que los estimadores por máxima verosimilitud para <span class=
 </ul>
 <p>Por extrapolación nos referimos a hacer predicciones fuera del rango observado de <span class="math inline">\(x\)</span>. La Figura <a href="modelo-lineal-simple.html#fig:extrapolacion">1.7</a> muestra el problema que se puede cometer cuando extrapolamos. Si tenemos datos en el rango <span class="math inline">\(x_{min} \leq x \leq x_{max}\)</span>, un modelo lineal es una buena aproximación de <span class="math inline">\(E(Y|x)\)</span>. Pero, esa aproximación no es buena para <span class="math inline">\(x&gt;x_{max}\)</span>. Por lo tanto, se estaría cometiendo errores graves cuando hacemos predicciones de <span class="math inline">\(Y\)</span> para valores de <span class="math inline">\(x\)</span> mayores a <span class="math inline">\(x_{max}\)</span> (por ejemplo en el punto <span class="math inline">\(x_{0}\)</span>).</p>
 <div class="figure" style="text-align: center"><span id="fig:extrapolacion"></span>
-<img src="bookdownproj_files/figure-html/extrapolacion-1.png" alt="Peligro de extrapolar. La curva negra representa $E(Y|x)$ y la línea roja es el ajuste del modelo lineal con los datos observados de $x$. La predicción en el punto $x_{0}$ es bastante sesgada." width="480" />
+<img src="MLGI_files/figure-html/extrapolacion-1.png" alt="Peligro de extrapolar. La curva negra representa $E(Y|x)$ y la línea roja es el ajuste del modelo lineal con los datos observados de $x$. La predicción en el punto $x_{0}$ es bastante sesgada." width="480" />
 <p class="caption">
 Figure 1.7: Peligro de extrapolar. La curva negra representa <span class="math inline">\(E(Y|x)\)</span> y la línea roja es el ajuste del modelo lineal con los datos observados de <span class="math inline">\(x\)</span>. La predicción en el punto <span class="math inline">\(x_{0}\)</span> es bastante sesgada.
 </p>
@@ -831,7 +831,7 @@ Figure 1.7: Peligro de extrapolar. La curva negra representa <span class="math i
 <li><p>Los <strong>valores atípicos</strong> son observaciones que difieren considerablemente del resto de los datos (generalmente en <span class="math inline">\(y\)</span>). Un punto atípico puede afectar la estimación de <span class="math inline">\(\beta_{0}\)</span> (ver Figura <a href="modelo-lineal-simple.html#fig:influyentes">1.8</a>(b) y la estimación de <span class="math inline">\(\sigma^{2}\)</span>.</p></li>
 </ul>
 <div class="figure" style="text-align: center"><span id="fig:influyentes"></span>
-<img src="bookdownproj_files/figure-html/influyentes-1.png" alt="(a) Efecto de un punto influyente, la línea negra  es la estimación sin el punto A y la linea roja es la estimación incluyento el punto A. (b) Efecto de un punto atípico, la línea negra  es la estimación sin el punto B y la linea roja es la estimación incluyento el punto B." width="768" />
+<img src="MLGI_files/figure-html/influyentes-1.png" alt="(a) Efecto de un punto influyente, la línea negra  es la estimación sin el punto A y la linea roja es la estimación incluyento el punto A. (b) Efecto de un punto atípico, la línea negra  es la estimación sin el punto B y la linea roja es la estimación incluyento el punto B." width="768" />
 <p class="caption">
 Figure 1.8: (a) Efecto de un punto influyente, la línea negra es la estimación sin el punto A y la linea roja es la estimación incluyento el punto A. (b) Efecto de un punto atípico, la línea negra es la estimación sin el punto B y la linea roja es la estimación incluyento el punto B.
 </p>
@@ -846,7 +846,7 @@ Figure 1.8: (a) Efecto de un punto influyente, la línea negra es la estimación
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-montgomery_introduction_2012" class="csl-entry">
-Montgomery, Douglas C., Elizabeth A. Peck, and G. Geoffrey Vining. 2012. <em>Introduction to Linear Regression Analysis</em>. 5th ed. Wiley Series in Probability and Statistics 821. Hoboken, <span>NJ</span>: Wiley.
+Montgomery, Douglas C., Elizabeth A. Peck, and G. Geoffrey Vining. 2012. <em>Introduction to Linear Regression Analysis</em>. 5th ed. Wiley.
 </div>
 </div>
             </section>
@@ -887,8 +887,8 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/AlvaroFlorez/MLG1/edit/master/01-RegresionSimple.Rmd",
-"text": "Edit"
+"link": null,
+"text": null
 },
 "history": {
 "link": null,
@@ -898,7 +898,7 @@ gitbook.start({
 "link": "https://github.com/AlvaroFlorez/MLG1/blob/master/01-RegresionSimple.Rmd",
 "text": null
 },
-"download": ["bookdownproj.pdf", "bookdownproj.epub"],
+"download": ["MLGI.pdf"],
 "toc": {
 "collapse": "subsection"
 }

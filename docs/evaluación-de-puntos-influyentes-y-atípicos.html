@@ -24,7 +24,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2021-08-12" />
+<meta name="date" content="2021-08-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -320,7 +320,7 @@ div.csl-indent {
 donde <span class="math inline">\(\varepsilon_{i}\sim N(0,\sigma^{2})\)</span> y <span class="math inline">\(cov(\varepsilon_{j},\varepsilon_{k})=0\)</span>.</p>
 <p>El análisis de los residuos (ver Figura <a href="evaluación-de-puntos-influyentes-y-atípicos.html#fig:Un11resFig">5.1</a>) muestra que el modelo está bien especificado y no hay problemas de heterocedasticidad. Sin embargo, podemos observar que algunos residuos presentan valores muy altos. La estimación de la <span class="math inline">\(\log \mbox{fertility}\)</span> para Guinea Ecuatorial es considerablemente baja en comparación con el valor observado. Caso contrario pasa con Corea del Norte, Bosnia y Herzegovina, y Moldavia.</p>
 <div class="figure" style="text-align: center"><span id="fig:Un11resFig"></span>
-<img src="bookdownproj_files/figure-html/Un11resFig-1.png" alt="Datos de la ONU. Gráfico de los residuos estudentizados." width="576" />
+<img src="MLGI_files/figure-html/Un11resFig-1.png" alt="Datos de la ONU. Gráfico de los residuos estudentizados." width="576" />
 <p class="caption">
 Figure 5.1: Datos de la ONU. Gráfico de los residuos estudentizados.
 </p>
@@ -336,15 +336,15 @@ Figure 5.1: Datos de la ONU. Gráfico de los residuos estudentizados.
 </ul>
 <p>Estos puntos inusuales pueden ser problemáticos a la hora de ajustar un modelo lineal por MCO, ya que pueden tener mucha influencia en los resultados, y su presencia puede ser una señal de que el modelo no captura caraterísticas importantes de los datos.</p>
 <div class="figure" style="text-align: center"><span id="fig:puntosAI"></span>
-<img src="bookdownproj_files/figure-html/puntosAI-1.png" alt="Diferentes tipos de datos. A: Punto atípico, B: punto de balanceo, C: punto influyente." width="480" />
+<img src="MLGI_files/figure-html/puntosAI-1.png" alt="Diferentes tipos de datos. A: Punto atípico, B: punto de balanceo, C: punto influyente." width="480" />
 <p class="caption">
 Figure 5.2: Diferentes tipos de datos. A: Punto atípico, B: punto de balanceo, C: punto influyente.
 </p>
 </div>
-<p>En la Figura <a href="evaluación-de-puntos-influyentes-y-atípicos.html#fig:puntosAIw">5.3</a>(a) vemos que un punto atípico no tiene un efecto grande en la estimación de la recta de regresión. Sin embargo, dado que los puntos atípicos generan valores altos (en valor absoluto) para los residuos, estas observaciones inflan la varianza de las estimaciones y afectan las inferencias. En este caso, la estimación de la varianza con todos los datos es de <span class="math inline">\(\hatsigma^{2}=6.37\)</span>, y si se omite el dato <span class="math inline">\(A\)</span>, tenemos que <span class="math inline">\(\hatsigma^{2}=1.55\)</span>. Como vemos en la Figura (b) los puntos de balanceo tampoco tienen mucha influencia sobre las estimaciones por MCO ya que estos están en línea con el resto de los datos.</p>
-<p>Por el otro lado, en la Figura <a href="evaluación-de-puntos-influyentes-y-atípicos.html#fig:puntosAIw">5.3</a>(c) vemos que los puntos influyentes afectan notablemente las estimaciones por MCO. Además, también inflan considerablemente la variabilidad. Con todos los datos tenemos que <span class="math inline">\(\hatsigma^{2}=3.09\)</span>. Mientras que <span class="math inline">\(\hatsigma^{2}=1.55\)</span> al eliminar la observación C.</p>
+<p>En la Figura <a href="evaluación-de-puntos-influyentes-y-atípicos.html#fig:puntosAIw">5.3</a>(a) vemos que un punto atípico no tiene un efecto grande en la estimación de la recta de regresión. Sin embargo, dado que los puntos atípicos generan valores altos (en valor absoluto) para los residuos, estas observaciones inflan la varianza de las estimaciones y afectan las inferencias. En este caso, la estimación de la varianza con todos los datos es de <span class="math inline">\(\widehat{\sigma}^{2}=6.37\)</span>, y si se omite el dato <span class="math inline">\(A\)</span>, tenemos que <span class="math inline">\(\widehat{\sigma}^{2}=1.55\)</span>. Como vemos en la Figura (b) los puntos de balanceo tampoco tienen mucha influencia sobre las estimaciones por MCO ya que estos están en línea con el resto de los datos.</p>
+<p>Por el otro lado, en la Figura <a href="evaluación-de-puntos-influyentes-y-atípicos.html#fig:puntosAIw">5.3</a>(c) vemos que los puntos influyentes afectan notablemente las estimaciones por MCO. Además, también inflan considerablemente la variabilidad. Con todos los datos tenemos que <span class="math inline">\(\widehat{\sigma}^{2}=3.09\)</span>. Mientras que <span class="math inline">\(\widehat{\sigma}^{2}=1.55\)</span> al eliminar la observación C.</p>
 <div class="figure" style="text-align: center"><span id="fig:puntosAIw"></span>
-<img src="bookdownproj_files/figure-html/puntosAIw-1.png" alt="Efecto de los puntos inusuales. En cada gráfico, la línea continua es la estimación por MCO con todos los datos, mientras que la línea discontinua es la estimación por MCO omitiendo el punto inusual (circulo rojo). Izquierda: efecto de un punto atípico. Centro: efecto de un punto de balanceo. Derecha: efecto de un punto influyente." width="864" />
+<img src="MLGI_files/figure-html/puntosAIw-1.png" alt="Efecto de los puntos inusuales. En cada gráfico, la línea continua es la estimación por MCO con todos los datos, mientras que la línea discontinua es la estimación por MCO omitiendo el punto inusual (circulo rojo). Izquierda: efecto de un punto atípico. Centro: efecto de un punto de balanceo. Derecha: efecto de un punto influyente." width="864" />
 <p class="caption">
 Figure 5.3: Efecto de los puntos inusuales. En cada gráfico, la línea continua es la estimación por MCO con todos los datos, mientras que la línea discontinua es la estimación por MCO omitiendo el punto inusual (circulo rojo). Izquierda: efecto de un punto atípico. Centro: efecto de un punto de balanceo. Derecha: efecto de un punto influyente.
 </p>
@@ -354,13 +354,13 @@ Figure 5.3: Efecto de los puntos inusuales. En cada gráfico, la línea continua
 <h2><span class="header-section-number">5.3</span> Valores atípicos</h2>
 <p>Para identificar valores atípicos podemos hacer uso de los residuos del ajuste. Recordemos que, aunque los errores tenga varianza constante y sean incorrelacionados, los residuos no cumplen con estas propiedades. Por lo tanto, es recomendado usar los residuos estudentizados (o los residuos R-Student):
 <span class="math display">\[
-r_{i} = \frac{e_{i}}{\sqrt{\hatsigma^{2}(1-h_{ii})}}, i=1,\ldots,n,
+r_{i} = \frac{e_{i}}{\sqrt{\widehat{\sigma}^{2}(1-h_{ii})}}, i=1,\ldots,n,
 \]</span>
 o los residuos R-Student:
 <span class="math display">\[
-t_{i} = \frac{e_{i}}{\sqrt{\hatsigma^{2}_{(i)}(1-h_{ii})}} = r_{i} \sqrt{\frac{n-p-1}{n-p-r_{i}^{2}}},
+t_{i} = \frac{e_{i}}{\sqrt{\widehat{\sigma}^{2}_{(i)}(1-h_{ii})}} = r_{i} \sqrt{\frac{n-p-1}{n-p-r_{i}^{2}}},
 \]</span>
-donde <span class="math inline">\(\hatsigma^{2}_{(i)}\)</span> es la estimación de <span class="math inline">\(\sigma\)</span> usando todas las observaciones excepto la <span class="math inline">\(i\)</span>-ésima.</p>
+donde <span class="math inline">\(\widehat{\sigma}^{2}_{(i)}\)</span> es la estimación de <span class="math inline">\(\sigma\)</span> usando todas las observaciones excepto la <span class="math inline">\(i\)</span>-ésima.</p>
 <p>Si se cumplen los supuestos del modelo, se puede demostrar que <span class="math inline">\(r_{i}\sim t_{n-p-1}\)</span>. Los residuos estudentizados siguen también está distribución pero de forma aproximada. Por lo tanto, se pueden identificar posibles valores atípicos haciendo un gráfico de los R-Student (o residuos estudentizados) contra los valores ajustados y trazar líneas de referencia en los percentiles <span class="math inline">\(0.025\)</span> y <span class="math inline">\(0.975\)</span> de la distribución <span class="math inline">\(t\)</span> con <span class="math inline">\(n-p-1\)</span> grados de libertad.</p>
 <p>Esta verificación no es estrictamente una prueba de hipótesis. Puesto que estamos haciendo múltiplescomparaciones de los residuos R-Student con los valores criticos de la distribución <span class="math inline">\(t\)</span>. Por lo que es necesario hacer una corrección utilizando el método de Bonferroni.</p>
 <div id="datos-de-la-onu---valores-atípicos" class="section level3 unnumbered">
@@ -372,20 +372,20 @@ En la Figura <a href="transformaciones-y-mínimos-cuadrados-ponderados.html#fig:
 <h2><span class="header-section-number">5.4</span> Puntos de balanceo</h2>
 <p>Recordemos que la estimación de la recta de regresión es un promedio ponderado de las observaciones:
 <span class="math display">\[
-\hatby = \bX\hatbbeta = \bX(\bX&#39;\bX)^{-1}\bX&#39;\by = \bH\by.
+\widehat{\boldsymbol y}= \boldsymbol X\widehat{\boldsymbol \beta}= \boldsymbol X(\boldsymbol X&#39;\boldsymbol X)^{-1}\boldsymbol X&#39;\boldsymbol y= \boldsymbol H\boldsymbol y.
 \]</span>
-Para la observación <span class="math inline">\(y_{i}\)</span> tenemos que <span class="math inline">\(\haty_{i} = h_{ii}y_{i} + \sum_{k\neq i}h_{ik}y_{j}\)</span>. Particularmente, el elemento <span class="math inline">\(h_{ij}\)</span> pueden ser visto como la cantidad de balanceo o palanqueo ejercido por la j-ésima observación <span class="math inline">\((y_i)\)</span> sobre el <span class="math inline">\(i\)</span>-ésimo valor ajustado (<span class="math inline">\(\haty_{i}\)</span>).</p>
-Entonces, para detectar valores influyentes vamos a centrarnos en la matriz  <span class="math inline">\((\bH)\)</span>. El elemento <span class="math inline">\(h_{ij}\)</span> de esta matriz se calcula como:
+Para la observación <span class="math inline">\(y_{i}\)</span> tenemos que <span class="math inline">\(\widehat{y}_{i} = h_{ii}y_{i} + \sum_{k\neq i}h_{ik}y_{j}\)</span>. Particularmente, el elemento <span class="math inline">\(h_{ij}\)</span> pueden ser visto como la cantidad de balanceo o palanqueo ejercido por la j-ésima observación <span class="math inline">\((y_i)\)</span> sobre el <span class="math inline">\(i\)</span>-ésimo valor ajustado (<span class="math inline">\(\widehat{y}_{i}\)</span>).</p>
+Entonces, para detectar valores influyentes vamos a centrarnos en la matriz  <span class="math inline">\((\boldsymbol H)\)</span>. El elemento <span class="math inline">\(h_{ij}\)</span> de esta matriz se calcula como:
 <span class="math display" id="eq:hij">\[\begin{equation}
-h_{ij} = \bx_{i}&#39;(\bX&#39;\bX)\bx_{j}.
+h_{ij} = \boldsymbol x_{i}&#39;(\boldsymbol X&#39;\boldsymbol X)\boldsymbol x_{j}.
 \tag{5.2}
 \end{equation}\]</span>
-Algunas propiedades de la matriz <span class="math inline">\(\bH\)</span> son:
-<p>Además, la diagonal de la matriz <span class="math inline">\(\bH\)</span> es una medida estandarizada de la distancia de las observaciones al centro (centroide) del espacio de <span class="math inline">\(\bx\)</span>. Por lo tanto, valores altos en la diagonal de <span class="math inline">\(\bH\)</span> pueden indicarnos observaciones que son potencialmente influyentes porque están alejadas en el espacio de las covariables. Viendo <a href="evaluación-de-puntos-influyentes-y-atípicos.html#eq:hij">(5.2)</a>, si <span class="math inline">\(h_{ii}\)</span> es muy cercano a uno, <span class="math inline">\(\haty_{i}\)</span> estará muy cerca de <span class="math inline">\(y_{i}\)</span> (dado que el peso de las demás observaciones será casi cero).</p>
+Algunas propiedades de la matriz <span class="math inline">\(\boldsymbol H\)</span> son:
+<p>Además, la diagonal de la matriz <span class="math inline">\(\boldsymbol H\)</span> es una medida estandarizada de la distancia de las observaciones al centro (centroide) del espacio de <span class="math inline">\(\boldsymbol x\)</span>. Por lo tanto, valores altos en la diagonal de <span class="math inline">\(\boldsymbol H\)</span> pueden indicarnos observaciones que son potencialmente influyentes porque están alejadas en el espacio de las covariables. Viendo <a href="evaluación-de-puntos-influyentes-y-atípicos.html#eq:hij">(5.2)</a>, si <span class="math inline">\(h_{ii}\)</span> es muy cercano a uno, <span class="math inline">\(\widehat{y}_{i}\)</span> estará muy cerca de <span class="math inline">\(y_{i}\)</span> (dado que el peso de las demás observaciones será casi cero).</p>
 <p>Dado que <span class="math inline">\(\bar{h} = p/n\)</span>, observaciones con <span class="math inline">\(h_{ii}\)</span> superiores a <span class="math inline">\(2p/n\)</span> son considerados <strong>puntos de balanceo</strong> (y posibles puntos influyentes). Note que, si <span class="math inline">\(2p/n &gt; 1\)</span>, el punto de corte no aplica.</p>
 <div id="datos-de-la-onu---diagonal-de-la-matrix-hat" class="section level3 unnumbered">
 <h3>Datos de la ONU - diagonal de la matrix hat</h3>
-<p>La Figura <a href="evaluación-de-puntos-influyentes-y-atípicos.html#fig:Un11Hdiag">5.4</a>(a) muestra los valores de la diagonal de la matrix <span class="math inline">\(\bH\)</span>. Aquí podemos observar que algunos países presentan valores más altos del punto de corte (<span class="math inline">\(2\frac{p}{n} = 0.0302\)</span>). Comparado con los demás valores, el valor asociado a Trinidad y Tobago es muy alto. Por lo cuál este país lo podemos considerar como un punto de balanceo.</p>
+<p>La Figura <a href="evaluación-de-puntos-influyentes-y-atípicos.html#fig:Un11Hdiag">5.4</a>(a) muestra los valores de la diagonal de la matrix <span class="math inline">\(\boldsymbol H\)</span>. Aquí podemos observar que algunos países presentan valores más altos del punto de corte (<span class="math inline">\(2\frac{p}{n} = 0.0302\)</span>). Comparado con los demás valores, el valor asociado a Trinidad y Tobago es muy alto. Por lo cuál este país lo podemos considerar como un punto de balanceo.</p>
 <div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(alr4)</span>
 <span id="cb95-2"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(UN11)</span>
 <span id="cb95-3"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb95-3" aria-hidden="true" tabindex="-1"></a>Names <span class="ot">=</span> <span class="fu">rownames</span>(UN11)</span>
@@ -404,13 +404,13 @@ Algunas propiedades de la matriz <span class="math inline">\(\bH\)</span> son:
 <span id="cb97-3"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fu">log</span>(UN11<span class="sc">$</span>ppgdp)[Names<span class="sc">==</span><span class="st">&#39;Trinidad and Tobago&#39;</span>],</span>
 <span id="cb97-4"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb97-4" aria-hidden="true" tabindex="-1"></a>       UN11<span class="sc">$</span>pctUrban[Names<span class="sc">==</span><span class="st">&#39;Trinidad and Tobago&#39;</span>],<span class="at">col=</span><span class="dv">2</span>,<span class="at">pch=</span><span class="dv">19</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:Un11Hdiag"></span>
-<img src="bookdownproj_files/figure-html/Un11Hdiag-1.png" alt="Datos de la ONU. (a) Valores de la diagonal de lam matriz hat. (b) Diagrama de dispersión de las covariables (derecha). El punto rojo indica a Trinidad y Tobago." width="768" />
+<img src="MLGI_files/figure-html/Un11Hdiag-1.png" alt="Datos de la ONU. (a) Valores de la diagonal de lam matriz hat. (b) Diagrama de dispersión de las covariables (derecha). El punto rojo indica a Trinidad y Tobago." width="768" />
 <p class="caption">
 Figure 5.4: Datos de la ONU. (a) Valores de la diagonal de lam matriz hat. (b) Diagrama de dispersión de las covariables (derecha). El punto rojo indica a Trinidad y Tobago.
 </p>
 </div>
 <p>En laFigura <a href="evaluación-de-puntos-influyentes-y-atípicos.html#fig:Un11Hdiag">5.4</a>(b) podemos observar que Trinidad y Tobago tiene un porcentaje muy pequeño de población en áreas urbanas y valor del PNB per cápita relativamente alto. Por esta razón el valor <span class="math inline">\(h_{ii}\)</span> asociado es alto.</p>
-<p>La Figura <a href="evaluación-de-puntos-influyentes-y-atípicos.html#fig:Un11valAtip">5.5</a> muestra los valores de la diagonal de <span class="math inline">\(\bH\)</span> contra los residuos estudentizados. Aquí vemos que aunque Trinidad y Tobago tiene un valor <span class="math inline">\(h_{ii}\)</span> alto, el R-Student asociado es bajo. Por lo que no se puede considerar como un punto influyente. Por el contrario, Guinea Ecuatorial y Corea del Norte presentan ambos valores altos (residuos y <span class="math inline">\(h_{ii}\)</span>), por lo que se pueden considerar como puntos influyentes. Las observaciones que tienen residuos altos pero valores <span class="math inline">\(h_{ii}\)</span> bajos se consideran como atípicos.</p>
+<p>La Figura <a href="evaluación-de-puntos-influyentes-y-atípicos.html#fig:Un11valAtip">5.5</a> muestra los valores de la diagonal de <span class="math inline">\(\boldsymbol H\)</span> contra los residuos estudentizados. Aquí vemos que aunque Trinidad y Tobago tiene un valor <span class="math inline">\(h_{ii}\)</span> alto, el R-Student asociado es bajo. Por lo que no se puede considerar como un punto influyente. Por el contrario, Guinea Ecuatorial y Corea del Norte presentan ambos valores altos (residuos y <span class="math inline">\(h_{ii}\)</span>), por lo que se pueden considerar como puntos influyentes. Las observaciones que tienen residuos altos pero valores <span class="math inline">\(h_{ii}\)</span> bajos se consideran como atípicos.</p>
 <div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb98-1" aria-hidden="true" tabindex="-1"></a>rstud.UN11 <span class="ot">=</span> res.UN11<span class="sc">*</span><span class="fu">sqrt</span>( (<span class="dv">199-3-1</span>)<span class="sc">/</span>(<span class="dv">199-3</span><span class="sc">-</span>res.UN11<span class="sc">^</span><span class="dv">2</span>) )</span>
 <span id="cb98-2"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hii,rstud.UN11,<span class="at">ylab=</span><span class="st">&#39;r Student&#39;</span>,</span>
 <span id="cb98-3"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb98-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;valores de la diagonal de la matrix hat&#39;</span>)</span>
@@ -428,7 +428,7 @@ Figure 5.4: Datos de la ONU. (a) Valores de la diagonal de lam matriz hat. (b) D
 <span id="cb98-15"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb98-15" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(hii[Names<span class="sc">==</span><span class="st">&quot;Bosnia and Herzegovina&quot;</span>],</span>
 <span id="cb98-16"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb98-16" aria-hidden="true" tabindex="-1"></a>     rstud.UN11[Names<span class="sc">==</span><span class="st">&#39;Bosnia and Herzegovina&#39;</span>],<span class="st">&#39;Bosnia y Herz.&#39;</span>,<span class="at">pos=</span><span class="dv">4</span>,<span class="at">cex=</span><span class="fl">0.8</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:Un11valAtip"></span>
-<img src="bookdownproj_files/figure-html/Un11valAtip-1.png" alt="Datos de la ONU. Gráfico de valores influyentes" width="480" />
+<img src="MLGI_files/figure-html/Un11valAtip-1.png" alt="Datos de la ONU. Gráfico de valores influyentes" width="480" />
 <p class="caption">
 Figure 5.5: Datos de la ONU. Gráfico de valores influyentes
 </p>
@@ -440,32 +440,32 @@ Figure 5.5: Datos de la ONU. Gráfico de valores influyentes
 Por ejemplo, la Figura <a href="evaluación-de-puntos-influyentes-y-atípicos.html#fig:Un11valAtipElim">5.6</a> muestra cuanto cambian las estimaciones de <span class="math inline">\(\beta_{1}\)</span> y <span class="math inline">\(\beta_{2}\)</span> al eliminar un país a la vez. Aquí vemos que los cambios mas grandes ocurren cuando se eliminan a Guinea Ecuatorial o a Corea del Norte. Mientras que los países que identificamos como puntos de balanceo (Trinidad y Tobago y Somalia) o atípicos (Bosnia y Herzegovina) no tienen mucha influencia sobre las estimaciones.
 ….
 <div class="figure" style="text-align: center"><span id="fig:Un11valAtipElim"></span>
-<img src="bookdownproj_files/figure-html/Un11valAtipElim-1.png" alt="Datos de la ONU. Diferencias entre las estimaciones con todos los datos y las estimaciones obtenidas al eliminar una observación a la vez" width="480" />
+<img src="MLGI_files/figure-html/Un11valAtipElim-1.png" alt="Datos de la ONU. Diferencias entre las estimaciones con todos los datos y las estimaciones obtenidas al eliminar una observación a la vez" width="480" />
 <p class="caption">
 Figure 5.6: Datos de la ONU. Diferencias entre las estimaciones con todos los datos y las estimaciones obtenidas al eliminar una observación a la vez
 </p>
 </div>
-<p>De igual forma se podría evaluar cuanto cambian las estimaciones de <span class="math inline">\(E(y|\bx_{i})\)</span> o las varianzas de los coeficientes <span class="math inline">\(V(\beta_{j})\)</span> al eliminar observaciones una a una.</p>
+<p>De igual forma se podría evaluar cuanto cambian las estimaciones de <span class="math inline">\(E(y|\boldsymbol x_{i})\)</span> o las varianzas de los coeficientes <span class="math inline">\(V(\beta_{j})\)</span> al eliminar observaciones una a una.</p>
 <p>A continuación se presentan algunos indicadores estadísticos para detectar puntos influyentes:</p>
 <div id="distancia-de-cook" class="section level4" number="5.4.1.1">
 <h4><span class="header-section-number">5.4.1.1</span> Distancia de Cook</h4>
-<p>Esta es una medida de la distancia entre las estimaciones por MCO basado en los <span class="math inline">\(n\)</span> puntos (<span class="math inline">\(\hat{\bbeta}\)</span>), y el estimado obtenido eliminando el <span class="math inline">\(i\)</span>-ésimo punto (<span class="math inline">\(\hat{\bbeta}_{(i)}\)</span>). Es decir que es un indicador global de cuanto cambian todas las estimaciones de los coeficientes de regresión en conjunto. Esta medida se expresa de la siguiente forma:</p>
+<p>Esta es una medida de la distancia entre las estimaciones por MCO basado en los <span class="math inline">\(n\)</span> puntos (<span class="math inline">\(\hat{\boldsymbol \beta}\)</span>), y el estimado obtenido eliminando el <span class="math inline">\(i\)</span>-ésimo punto (<span class="math inline">\(\hat{\boldsymbol \beta}_{(i)}\)</span>). Es decir que es un indicador global de cuanto cambian todas las estimaciones de los coeficientes de regresión en conjunto. Esta medida se expresa de la siguiente forma:</p>
 <p><span class="math display">\[\begin{equation}
 \begin{split}
-D_{i} &amp;= \frac{(\hat{\bbeta}_{(i)}-\hat{\bbeta})&#39;\bX&#39;\bX(\hat{\bbeta}_{(i)}-\hat{\bbeta})&#39;}{p \hat{\sigma}^{2}}   \\
-      &amp;= \frac{(\hat{\by}_{(i)} - \hat{\by} )&#39;(\hat{\by}_{(i)} - \hat{\by} )}{p\hat{\sigma}^{2}} = \frac{r_{i}^{2}}{p}\frac{h_{ii}}{1-h_{ii}}, \qquad i=1,2,\ldots,n.
+D_{i} &amp;= \frac{(\hat{\boldsymbol \beta}_{(i)}-\hat{\boldsymbol \beta})&#39;\boldsymbol X&#39;\boldsymbol X(\hat{\boldsymbol \beta}_{(i)}-\hat{\boldsymbol \beta})&#39;}{p \hat{\sigma}^{2}}   \\
+      &amp;= \frac{(\hat{\boldsymbol y}_{(i)} - \hat{\boldsymbol y} )&#39;(\hat{\boldsymbol y}_{(i)} - \hat{\boldsymbol y} )}{p\hat{\sigma}^{2}} = \frac{r_{i}^{2}}{p}\frac{h_{ii}}{1-h_{ii}}, \qquad i=1,2,\ldots,n.
 \end{split} \nonumber
 \end{equation}\]</span></p>
-<p>Aquí podemos observar que <span class="math inline">\(D_{i}\)</span> consta de dos componentes, uno asociado a el residuo <span class="math inline">\((r_{i})\)</span> y otro a la distancia del vector <span class="math inline">\(\bx_{i}\)</span> al centroide de la matriz de las covariables. Ambos (o alguno de ellos) puede contribuir a valores altos de este indicador.</p>
-<p>Entonces, los puntos asociados a valores altos de <span class="math inline">\(D_{i}\)</span> tienen gran influencia sobre la estimación de <span class="math inline">\(\bbeta\)</span> por MCO. Se considera como un punto influyente si tiene asociado un <span class="math inline">\(D_{i} &gt; 4/n\)</span> (algunos textos sugieren <span class="math inline">\(D_{i} &gt; 1\)</span>).</p>
+<p>Aquí podemos observar que <span class="math inline">\(D_{i}\)</span> consta de dos componentes, uno asociado a el residuo <span class="math inline">\((r_{i})\)</span> y otro a la distancia del vector <span class="math inline">\(\boldsymbol x_{i}\)</span> al centroide de la matriz de las covariables. Ambos (o alguno de ellos) puede contribuir a valores altos de este indicador.</p>
+<p>Entonces, los puntos asociados a valores altos de <span class="math inline">\(D_{i}\)</span> tienen gran influencia sobre la estimación de <span class="math inline">\(\boldsymbol \beta\)</span> por MCO. Se considera como un punto influyente si tiene asociado un <span class="math inline">\(D_{i} &gt; 4/n\)</span> (algunos textos sugieren <span class="math inline">\(D_{i} &gt; 1\)</span>).</p>
 </div>
 <div id="dfbetas" class="section level4" number="5.4.1.2">
 <h4><span class="header-section-number">5.4.1.2</span> DFBETAS</h4>
 <p>Esta medida indica cuánto cambia el coeficiente de regresión <span class="math inline">\(\hat{\beta}_{j}\)</span>, en unidades de desviaciones estándar, si se omitiera la <span class="math inline">\(i\)</span>-ésima observación. Se calcula como:
 <span class="math display">\[
-DFBETAS_{(i,j)} = \frac{\hat{\beta}_{j} - \hat{\beta}_{j(i)}}{\hat{\sigma}^{2}_{(i)}C_{jj}} = \frac{r_{(j,i)}}{\sqrt{\br_{j}&#39;\br_{j}}}\frac{t_{i}}{\sqrt{1-h_{ii}}},
+DFBETAS_{(i,j)} = \frac{\hat{\beta}_{j} - \hat{\beta}_{j(i)}}{\hat{\sigma}^{2}_{(i)}C_{jj}} = \frac{r_{(j,i)}}{\sqrt{\boldsymbol r_{j}&#39;\boldsymbol r_{j}}}\frac{t_{i}}{\sqrt{1-h_{ii}}},
 \]</span></p>
-<p>donde <span class="math inline">\(C_{jj}\)</span> es el <span class="math inline">\(j\)</span>-ésimo valor de la diagonal de <span class="math inline">\((\bX&#39;\bX)^{2}\)</span>. <span class="math inline">\(\br_{j}\)</span> es la <span class="math inline">\(j\)</span>-ésima fila de <span class="math inline">\(\bR=(\bX&#39;\bX)^{-1}\bX\)</span>.</p>
+<p>donde <span class="math inline">\(C_{jj}\)</span> es el <span class="math inline">\(j\)</span>-ésimo valor de la diagonal de <span class="math inline">\((\boldsymbol X&#39;\boldsymbol X)^{2}\)</span>. <span class="math inline">\(\boldsymbol r_{j}\)</span> es la <span class="math inline">\(j\)</span>-ésima fila de <span class="math inline">\(\boldsymbol R=(\boldsymbol X&#39;\boldsymbol X)^{-1}\boldsymbol X\)</span>.</p>
 <p>Un valor grande de <span class="math inline">\(DFBETAS_{(j,i)}\)</span> indica que la observación <span class="math inline">\(i\)</span> tiene gran influencia sobre el <span class="math inline">\(j\)</span>-ésimo coeficiente de regresión. Se sugiere que si <span class="math inline">\(|DFBETAS_{(j,i)}| &gt; 2/\sqrt{n}\)</span> es necesario examinar la <span class="math inline">\(i\)</span>-ésima observación.</p>
 </div>
 <div id="dffits" class="section level4" number="5.4.1.3">
@@ -478,13 +478,13 @@ DFFITS_{i} = \frac{\hat{y}_{i} - \hat{y}_{(i)}}{\hat{\sigma}_{(i)}^{2}h_{ii}} = 
 </div>
 <div id="covratio" class="section level4" number="5.4.1.4">
 <h4><span class="header-section-number">5.4.1.4</span> COVRATIO</h4>
-<p>Los diagnósticos anteriores permiten ver el efecto de las observaciones sobre <span class="math inline">\(\hat{\bbeta}\)</span> o <span class="math inline">\(\hat{\by}\)</span>. Pero no proporcionan información sobre la precisión general de la estimación. Una medida global de la precisión es la varianza generalizada:</p>
-<p><span class="math display">\[ GV(\hat{\bbeta}) = | Var(\hat {\bbeta}) | = |\sigma^{2}(\bX&#39;\bX)^{-1}|.\]</span></p>
+<p>Los diagnósticos anteriores permiten ver el efecto de las observaciones sobre <span class="math inline">\(\hat{\boldsymbol \beta}\)</span> o <span class="math inline">\(\hat{\boldsymbol y}\)</span>. Pero no proporcionan información sobre la precisión general de la estimación. Una medida global de la precisión es la varianza generalizada:</p>
+<p><span class="math display">\[ GV(\hat{\boldsymbol \beta}) = | Var(\hat {\boldsymbol \beta}) | = |\sigma^{2}(\boldsymbol X&#39;\boldsymbol X)^{-1}|.\]</span></p>
 <p>Para determinar la influencia de la <span class="math inline">\(i\)</span>-ésima observación en la precisión de la estimación se define la razón de covarianzas:</p>
 <p><span class="math display">\[
-COVRATIO_{i} = \frac{|(\bX&#39;_{(i)}\bX_{(i)})^{-1}\hat{\sigma}_{(i)}^{2}|}{| (\bX&#39;\bX)^{-1}\hat{\sigma}^{2} |}= \left( \frac{S^{2}_{(i)}}{S^{2}} \right)^{p} \left( \frac{1}{1-h_{ii}} \right).
+COVRATIO_{i} = \frac{|(\boldsymbol X&#39;_{(i)}\boldsymbol X_{(i)})^{-1}\hat{\sigma}_{(i)}^{2}|}{| (\boldsymbol X&#39;\boldsymbol X)^{-1}\hat{\sigma}^{2} |}= \left( \frac{S^{2}_{(i)}}{S^{2}} \right)^{p} \left( \frac{1}{1-h_{ii}} \right).
 \]</span></p>
-<p>Si <span class="math inline">\(COVRATIO_{i} &gt; 1 + 3p/n\)</span> o <span class="math inline">\(COVRATIO_{i} &gt; 1 - 3p/n\)</span> se debería considerar a la <span class="math inline">\(i\)</span>-ésima observación como influyente para la precisión de <span class="math inline">\(\hatbbeta\)</span>.</p>
+<p>Si <span class="math inline">\(COVRATIO_{i} &gt; 1 + 3p/n\)</span> o <span class="math inline">\(COVRATIO_{i} &gt; 1 - 3p/n\)</span> se debería considerar a la <span class="math inline">\(i\)</span>-ésima observación como influyente para la precisión de <span class="math inline">\(\widehat{\boldsymbol \beta}\)</span>.</p>
 </div>
 <div id="datos-de-la-onu---medidas-de-influencia" class="section level4 unnumbered">
 <h4>Datos de la ONU - medidas de influencia</h4>
@@ -496,7 +496,7 @@ COVRATIO_{i} = \frac{|(\bX&#39;_{(i)}\bX_{(i)})^{-1}\hat{\sigma}_{(i)}^{2}|}{| (
 <span id="cb99-4"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb99-4" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(OrderCD.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],CD.UN11[OrderCD.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]],Names[OrderCD.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]],<span class="at">pos=</span><span class="dv">4</span>,<span class="at">cex=</span><span class="fl">0.6</span>)</span>
 <span id="cb99-5"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb99-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">4</span><span class="sc">/</span><span class="dv">199</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:Un11Cook"></span>
-<img src="bookdownproj_files/figure-html/Un11Cook-1.png" alt="Datos de la ONU. Distancia de Cook." width="480" />
+<img src="MLGI_files/figure-html/Un11Cook-1.png" alt="Datos de la ONU. Distancia de Cook." width="480" />
 <p class="caption">
 Figure 5.7: Datos de la ONU. Distancia de Cook.
 </p>
@@ -515,7 +515,7 @@ Figure 5.7: Datos de la ONU. Distancia de Cook.
 <span id="cb100-11"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb100-11" aria-hidden="true" tabindex="-1"></a>     Names[OrderDB2.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]],<span class="at">pos=</span><span class="dv">4</span>,<span class="at">cex=</span><span class="fl">0.6</span>)</span>
 <span id="cb100-12"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb100-12" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">199</span>),<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:UNdataDfBetas"></span>
-<img src="bookdownproj_files/figure-html/UNdataDfBetas-1.png" alt="Datos de la ONU. DFBetas." width="768" />
+<img src="MLGI_files/figure-html/UNdataDfBetas-1.png" alt="Datos de la ONU. DFBetas." width="768" />
 <p class="caption">
 Figure 5.8: Datos de la ONU. DFBetas.
 </p>
@@ -536,7 +536,7 @@ Figure 5.8: Datos de la ONU. DFBetas.
 <span id="cb101-13"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb101-13" aria-hidden="true" tabindex="-1"></a>     Names[OrderCR.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]],<span class="at">pos=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">4</span>),<span class="at">cex=</span><span class="fl">0.6</span>)</span>
 <span id="cb101-14"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb101-14" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">1</span><span class="sc">+</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="sc">*</span><span class="dv">3</span><span class="sc">*</span><span class="dv">3</span><span class="sc">/</span><span class="dv">199</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:UNdataOtros"></span>
-<img src="bookdownproj_files/figure-html/UNdataOtros-1.png" alt="Datos de la ONU. DFFITS y COVRATIO." width="768" />
+<img src="MLGI_files/figure-html/UNdataOtros-1.png" alt="Datos de la ONU. DFFITS y COVRATIO." width="768" />
 <p class="caption">
 Figure 5.9: Datos de la ONU. DFFITS y COVRATIO.
 </p>
@@ -594,8 +594,8 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/AlvaroFlorez/MLG1/edit/master/05-PuntosInfluyentes.Rmd",
-"text": "Edit"
+"link": null,
+"text": null
 },
 "history": {
 "link": null,
@@ -605,7 +605,7 @@ gitbook.start({
 "link": "https://github.com/AlvaroFlorez/MLG1/blob/master/05-PuntosInfluyentes.Rmd",
 "text": null
 },
-"download": ["bookdownproj.pdf", "bookdownproj.epub"],
+"download": ["MLGI.pdf"],
 "toc": {
 "collapse": "subsection"
 }

@@ -1,7 +1,6 @@
-book_filename: "bookdownproj"
+book_filename: "MLGI"
 output_dir: docs
 delete_merged_file: true
-edit: https://github.com/AlvaroFlorez/MLG1/edit/master/%s
 view: https://github.com/AlvaroFlorez/MLG1/blob/master/%s
 language:
   ui:
