@@ -283,7 +283,7 @@ y_{i} - \bar{y} = (y_{i} - \haty_{i}) + (\haty_{i} - \bar{y}).
 (\#eq:decomposion)
 \end{equation}
 La Figura \@ref(fig:anovafig) muestra la partición \@ref(eq:decomposion) en el punto $i=3$. Aquí vemos que una parte de la diferencia entre $y_{3}$ y $\bar{y}$ es explicada por el modelo (línea discontinua roja).
-```{r anovafig, echo=FALSE, fig.height = 5, fig.width =7,fig.align = "center",fig.cap = "Representación gráfica de la partición \\@ref(eq:decomposion)."}
+```{r anovafig, echo=FALSE, fig.height = 5, fig.width =10,fig.align = "center",fig.cap = "Representación gráfica de la descompocisión \\@ref(eq:decomposion)."}
 plot(x,y,xlab='covariable = X',ylab = 'variable respuesta = Y')
 abline(m,col=1)
 abline(h=mean(y),lty=2)
