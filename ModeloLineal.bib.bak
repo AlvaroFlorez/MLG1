@@ -10,29 +10,16 @@
 
 @Book{weisberg_applied_2014,
   author    = {Weisberg, Sanford},
-  publisher = {Wiley},
   title     = {Applied linear regression},
   year      = {2014},
   edition   = {Fourth edition},
-  isbn      = {978-1-118-38608-8},
-  series    = {Wiley series in probability and statistics},
-  abstract  = {"Providing a coherent set of basic methodology for applied linear regression without being encyclopedic, the fourth edition of Applied Linear Regression is thoroughly updated to help students master the theory and applications of linear regression modeling. Focusing on model building, assessing fit and reliability, and drawing conclusions, the text demonstrates how to develop estimation, confidence, and testing procedures primarily through the use of least squares regression. To facilitate quick learning, this updated edition stresses the use of graphical methods in an effort to find appropriate models and to better understand them"--},
-  file      = {Sanford Weisberg - Applied Linear Regression (2013, Wiley) - libgen.lc.pdf:D\:\\Libros\\Modelos lineales\\Sanford Weisberg - Applied Linear Regression (2013, Wiley) - libgen.lc.pdf:application/pdf},
-  keywords  = {{MATHEMATICS} / Probability \& Statistics / General, Regression analysis, {MATHEMATICS} / Applied, {MATHEMATICS} / Probability \& Statistics / Regression Analysis},
-  location  = {Hoboken, {NJ}},
-  pagetotal = {340},
 }
 
 @Book{seber_linear_2003,
   author    = {Seber, G. A. F. and Lee, A. J.},
-  publisher = {Wiley-Interscience},
   title     = {Linear regression analysis},
   year      = {2003},
   edition   = {2nd ed},
-  note      = {{OCLC}: ocm51635479},
-  file      = {George A. F. Seber, Alan J. Lee - Linear Regression Analysis, 2nd edition (Wiley Series in Probability and Statistics) (2003, Wiley) - libgen.lc.pdf:D\:\\Libros\\Modelos lineales\\George A. F. Seber, Alan J. Lee - Linear Regression Analysis, 2nd edition (Wiley Series in Probability and Statistics) (2003, Wiley) - libgen.lc.pdf:application/pdf},
-  keywords  = {Regression analysis},
-  pagetotal = {557},
 }
 
 @Book{fox_applied_2016,
@@ -45,7 +32,7 @@
 @Book{behar_validacion_2002,
   author = {Behar, Roberto},
   title  = {Validaci\'{o}n de supuestos en el modelo de regresi\'{o}n},
-  date   = {2002},
+  year   = {2002},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}

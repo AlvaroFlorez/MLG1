@@ -24,7 +24,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2021-08-13" />
+<meta name="date" content="2021-11-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -425,7 +425,7 @@ SS_{res} = \sum_{i=1}^{n}e^{2}_{i} = \sum_{i=1}^{n} (y_{i}-\widehat{\beta}_{0} -
 \]</span>
 El valor esperado de <span class="math inline">\(SS_{res}\)</span> es <span class="math inline">\(E(SS_{res})=(n-2)\sigma^{2}\)</span> (Para el caso de regresión múltiple, ver Sección C.3 de <span class="citation"><a href="#ref-montgomery_introduction_2012" role="doc-biblioref">Montgomery, Peck, and Vining</a> (<a href="#ref-montgomery_introduction_2012" role="doc-biblioref">2012</a>)</span>). Por lo tanto, un estimador insesgado de <span class="math inline">\(\sigma^{2}\)</span> es:
 <span class="math display">\[
-\widehat{\sigma}_{i} = \frac{SS_{res}}{n-2} = MS_{res}.
+\widehat{\sigma}^{2} = \frac{SS_{res}}{n-2} = MS_{res}.
 \]</span>
 La cantidad <span class="math inline">\(MS_{res}\)</span> es llamada <strong>cuadrado medio de los residuos</strong>.</p>
 <div id="datos-de-peso-al-nacer.-modelo-y-estimación-de-parametros" class="section level3 unnumbered">
@@ -459,15 +459,15 @@ Figure 1.4: Gráfico de dispersion del peso del recien nacido y la edad gestacio
 </p>
 </div>
 <p>La estimación de <span class="math inline">\(\sigma\)</span> es:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="modelo-lineal-simple.html#cb5-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">sqrt</span>(<span class="fu">sum</span>(mod<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="dv">22</span>)</span></code></pre></div>
-<pre><code>## [1] 0.5901017</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="modelo-lineal-simple.html#cb5-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">sqrt</span>(<span class="fu">sum</span>(mod<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="dv">40</span>)</span></code></pre></div>
+<pre><code>## [1] 0.4376311</code></pre>
 </div>
 </div>
 <div id="propiedades-de-los-estimadores-por-mco" class="section level2" number="1.5">
 <h2><span class="header-section-number">1.5</span> Propiedades de los estimadores por MCO</h2>
 <p>Los estimadores de <span class="math inline">\(\widehat{\beta}_{0}\)</span> y <span class="math inline">\(\widehat{\beta}_{1}\)</span> son una combinación lineal de las observaciones:
 <span class="math display" id="eq:beta1cl">\[\begin{equation}
-\widehat{\beta}_{i} = \sum_{i=1}^{n} \frac{(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sum_{i=1}^{n}(x_{i}-\bar{x})^2} = \sum_{i=1}^{n} \frac{(x_{i}-\bar{x})}{\sum_{i=1}^{n}(x_{i}-\bar{x})^2}y_{i} = \sum_{i=1}^{n}c_{i}y_{i}.
+\widehat{\beta}_{1} = \sum_{i=1}^{n} \frac{(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sum_{i=1}^{n}(x_{i}-\bar{x})^2} = \sum_{i=1}^{n} \frac{(x_{i}-\bar{x})}{\sum_{i=1}^{n}(x_{i}-\bar{x})^2}y_{i} = \sum_{i=1}^{n}c_{i}y_{i}.
 \tag{1.5}
 \end{equation}\]</span>
 y
@@ -482,7 +482,7 @@ Puesto que los estimadores de <span class="math inline">\(\beta_{0}\)</span> y <
 <p>Si los supuestos del modelo se cumplen, tenemos que el valor esperado de <span class="math inline">\(\widehat{\beta}_{1}\)</span> es:
 <span class="math display">\[\begin{equation}
 \begin{split}
-E(\widehat{\beta}_{1}) &amp;= E\left( \sum_{i=1}^{n}c_{i}y_{i} \right) = \sum_{i=1}^{n}c_{i}E(y_{i}) = \sum_{i=1}^{n} c_{i}(\beta_{0} + \beta_{1}x_{i} + \varepsilon_{i}) \\
+E(\widehat{\beta}_{1}) &amp;= E\left( \sum_{i=1}^{n}c_{i}y_{i} \right) = \sum_{i=1}^{n}c_{i}E(y_{i}) = \sum_{i=1}^{n} c_{i}(\beta_{0} + \beta_{1}x_{i}) \\
 &amp;=\beta_{0}\sum_{i=1}^{n}c_{i} + \beta_{1}\sum_{i=1}^{n}c_{i}x_{i} = \beta_{1}.
 \end{split}
 \nonumber
@@ -504,7 +504,7 @@ y
 <span class="math display">\[\begin{equation}
 \begin{split}
 V(\widehat{\beta}_{0}) &amp;= V \left( \bar{y} - \widehat{\beta}_{1}\bar{x}\right) = V (\bar{y}) + \bar{x}^{2}V(\widehat{\beta}_{1}) - 2\bar{x}Cov(\bar{y},\widehat{\beta}_{1}) \\
-&amp;= \sigma^{2} \left(\frac{1}{n} + \frac{\bar{x}^{2}}{S_{xx}}. \right),
+&amp;= \sigma^{2} \left(\frac{1}{n} + \frac{\bar{x}^{2}}{S_{xx}} \right),
 \end{split}
 \nonumber
 \end{equation}\]</span>
@@ -558,9 +558,9 @@ y_{i} - \bar{y} = (y_{i} - \widehat{y}_{i}) + (\widehat{y}_{i} - \bar{y}).
 \end{equation}\]</span>
 La Figura <a href="modelo-lineal-simple.html#fig:anovafig">1.5</a> muestra la partición <a href="modelo-lineal-simple.html#eq:decomposion">(1.9)</a> en el punto <span class="math inline">\(i=3\)</span>. Aquí vemos que una parte de la diferencia entre <span class="math inline">\(y_{3}\)</span> y <span class="math inline">\(\bar{y}\)</span> es explicada por el modelo (línea discontinua roja).
 <div class="figure" style="text-align: center"><span id="fig:anovafig"></span>
-<img src="MLGI_files/figure-html/anovafig-1.png" alt="Representación gráfica de la partición \@ref(eq:decomposion)." width="480" />
+<img src="MLGI_files/figure-html/anovafig-1.png" alt="Representación gráfica de la descompocisión \@ref(eq:decomposion)." width="1056" />
 <p class="caption">
-Figure 1.5: Representación gráfica de la partición <a href="modelo-lineal-simple.html#eq:decomposion">(1.9)</a>.
+Figure 1.5: Representación gráfica de la descompocisión <a href="modelo-lineal-simple.html#eq:decomposion">(1.9)</a>.
 </p>
 </div>
 <p>Ahora evelavamos al cuadrado <a href="modelo-lineal-simple.html#eq:decomposion">(1.9)</a> y sumamos todos los componentes:
@@ -580,7 +580,7 @@ H_{0}: \beta_{1} = 0 \mbox{  }H_{1}:  \beta_{1} \neq 0.
 \end{equation}\]</span></p>
 <p>Se puede demostrar que si <span class="math inline">\(H_{0}\)</span> es cierta:
 <span class="math display">\[
-SS_{res} = \frac{(n-2)MS_{res}}{\sigma^{2}} \sim \chi^{2}_{n-2} \mbox{,} \ \  \frac{SS_{R}}{\sigma^{2}} \sim \chi^{2}_{1},
+\frac{SS_{res}}{\sigma^{2}} = \frac{(n-2)MS_{res}}{\sigma^{2}} \sim \chi^{2}_{n-2} \mbox{,} \ \  \frac{SS_{R}}{\sigma^{2}} \sim \chi^{2}_{1},
 \]</span>
 y que <span class="math inline">\(SS_{res}\)</span> y <span class="math inline">\(SS_{R}\)</span> son independientes. Por lo tanto:
 <span class="math display">\[

@@ -149,7 +149,7 @@ SS_{res} = \sum_{i=1}^{n}e^{2}_{i} = \sum_{i=1}^{n} (y_{i}-\widehat{\beta}_{0} -
 \]
 El valor esperado de $SS_{res}$ es $E(SS_{res})=(n-2)\sigma^{2}$ (Para el caso de regresión múltiple, ver Sección C.3 de @montgomery_introduction_2012). Por lo tanto, un estimador insesgado de $\sigma^{2}$ es:
 \[
-\hatsigma_{i} = \frac{SS_{res}}{n-2} = MS_{res}.
+\hatsigma^{2} = \frac{SS_{res}}{n-2} = MS_{res}.
 \]
 La cantidad $MS_{res}$ es llamada **cuadrado medio de los residuos**.
 
@@ -181,7 +181,7 @@ abline(mod,lwd=2)
 ```
 La estimación de $\sigma$ es:
 ```{r MCO3}
- sqrt(sum(mod$residuals^2)/22)
+ sqrt(sum(mod$residuals^2)/40)
 ```
 
 \rule{\textwidth}{0.4pt}
@@ -189,7 +189,7 @@ La estimación de $\sigma$ es:
 ## Propiedades de los estimadores por MCO
 Los estimadores de $\hatbeta_{0}$ y $\hatbeta_{1}$ son una combinación lineal de las observaciones:
 \begin{equation}
-\hatbeta_{i} = \sum_{i=1}^{n} \frac{(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sum_{i=1}^{n}(x_{i}-\bar{x})^2} = \sum_{i=1}^{n} \frac{(x_{i}-\bar{x})}{\sum_{i=1}^{n}(x_{i}-\bar{x})^2}y_{i} = \sum_{i=1}^{n}c_{i}y_{i}.
+\hatbeta_{1} = \sum_{i=1}^{n} \frac{(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sum_{i=1}^{n}(x_{i}-\bar{x})^2} = \sum_{i=1}^{n} \frac{(x_{i}-\bar{x})}{\sum_{i=1}^{n}(x_{i}-\bar{x})^2}y_{i} = \sum_{i=1}^{n}c_{i}y_{i}.
 (\#eq:beta1cl)
 \end{equation}
 y 
@@ -198,14 +198,14 @@ y
 \]
 Además, se tiene que $\sum_{i=1}^{n}c_{i}=0$ y $\sum_{i=1}^{n}c_{i}x_{i}=1$. Los valores ajustados también son combinaciones lineales de los datos: 
 \[
-\haty_{i} = \hatbeta_{0} + \hatbeta_{1}x_{i} = \sum_{i=1}^{n}(d_{i}+c_{i}x_{i})y_{i}.
+\widehat{y}_{i} = \hatbeta_{0} + \hatbeta_{1}x_{i} = \sum_{i=1}^{n}(d_{i}+c_{i}x_{i})y_{i}.
 \]
 Puesto que los estimadores de $\beta_{0}$ y $\beta_{1}$ dependen de los errores, estos también son variables aleatorias. Por lo tanto debemos calcular el valor esperado y varianza de $\hatbeta_{0}$ y $\hatbeta_{1}$. 
 
 Si los supuestos del modelo se cumplen, tenemos que el valor esperado de $\hatbeta_{1}$ es:
 \begin{equation}
 \begin{split}
-E(\hatbeta_{1}) &= E\left( \sum_{i=1}^{n}c_{i}y_{i} \right) = \sum_{i=1}^{n}c_{i}E(y_{i}) = \sum_{i=1}^{n} c_{i}(\beta_{0} + \beta_{1}x_{i} + \varepsilon_{i}) \\
+E(\hatbeta_{1}) &= E\left( \sum_{i=1}^{n}c_{i}y_{i} \right) = \sum_{i=1}^{n}c_{i}E(y_{i}) = \sum_{i=1}^{n} c_{i}(\beta_{0} + \beta_{1}x_{i}) \\
 &=\beta_{0}\sum_{i=1}^{n}c_{i} + \beta_{1}\sum_{i=1}^{n}c_{i}x_{i} = \beta_{1}.
 \end{split}
 \nonumber
@@ -229,7 +229,7 @@ y
 \begin{equation}
 \begin{split}
 V(\hatbeta_{0}) &= V \left( \bar{y} - \hatbeta_{1}\bar{x}\right) = V (\bar{y}) + \bar{x}^{2}V(\hatbeta_{1}) - 2\bar{x}Cov(\bar{y},\hatbeta_{1}) \\
-&= \sigma^{2} \left(\frac{1}{n} + \frac{\bar{x}^{2}}{S_{xx}}. \right),
+&= \sigma^{2} \left(\frac{1}{n} + \frac{\bar{x}^{2}}{S_{xx}} \right),
 \end{split}
 \nonumber
 \end{equation}
@@ -283,7 +283,7 @@ y_{i} - \bar{y} = (y_{i} - \haty_{i}) + (\haty_{i} - \bar{y}).
 (\#eq:decomposion)
 \end{equation}
 La Figura \@ref(fig:anovafig) muestra la partición \@ref(eq:decomposion) en el punto $i=3$. Aquí vemos que una parte de la diferencia entre $y_{3}$ y $\bar{y}$ es explicada por el modelo (línea discontinua roja).
-```{r anovafig, echo=FALSE, fig.height = 5, fig.width =10,fig.align = "center",fig.cap = "Representación gráfica de la descompocisión \\@ref(eq:decomposion)."}
+```{r anovafig, echo=FALSE, fig.height = 7, fig.width =11,fig.align = "center",fig.cap = "Representación gráfica de la descompocisión \\@ref(eq:decomposion)."}
 plot(x,y,xlab='covariable = X',ylab = 'variable respuesta = Y')
 abline(m,col=1)
 abline(h=mean(y),lty=2)
@@ -317,7 +317,7 @@ H_{0}: \beta_{1} = 0 \mbox{  }H_{1}:  \beta_{1} \neq 0.
 
 Se puede demostrar que si $H_{0}$ es cierta:
 \[
-SS_{res} = \frac{(n-2)MS_{res}}{\sigma^{2}} \sim \chi^{2}_{n-2} \mbox{,} \ \  \frac{SS_{R}}{\sigma^{2}} \sim \chi^{2}_{1},
+\frac{SS_{res}}{\sigma^{2}} = \frac{(n-2)MS_{res}}{\sigma^{2}} \sim \chi^{2}_{n-2} \mbox{,} \ \  \frac{SS_{R}}{\sigma^{2}} \sim \chi^{2}_{1},
 \]
 y que $SS_{res}$ y $SS_{R}$ son independientes. Por lo tanto:
 \[

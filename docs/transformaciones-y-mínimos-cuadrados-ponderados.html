@@ -24,7 +24,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2021-08-12" />
+<meta name="date" content="2021-08-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -326,7 +326,7 @@ otras variables. Por ahora, empecemos con un modelo de la fertilidad en función
 <span id="cb70-2"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;UN11&quot;</span>)</span>
 <span id="cb70-3"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(UN11[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,<span class="dv">5</span>)])</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:UNdataFig"></span>
-<img src="bookdownproj_files/figure-html/UNdataFig-1.png" alt="Datos de la ONU. Relación entre las variables." width="576" />
+<img src="MLGI_files/figure-html/UNdataFig-1.png" alt="Datos de la ONU. Relación entre las variables." width="576" />
 <p class="caption">
 Figure 4.1: Datos de la ONU. Relación entre las variables.
 </p>
@@ -345,7 +345,7 @@ donde <span class="math inline">\(\varepsilon_{i}\sim N(0,\sigma^{2})\)</span> y
 <span id="cb71-6"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(res.UN11<span class="sc">~</span>mod.UN11<span class="sc">$</span>fitted.values),<span class="at">col=</span><span class="dv">2</span>)</span>
 <span id="cb71-7"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#cb71-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:Un11res"></span>
-<img src="bookdownproj_files/figure-html/Un11res-1.png" alt="Datos de la ONU. Gráfico de los residuos estudentizados." width="384" />
+<img src="MLGI_files/figure-html/Un11res-1.png" alt="Datos de la ONU. Gráfico de los residuos estudentizados." width="480" />
 <p class="caption">
 Figure 4.2: Datos de la ONU. Gráfico de los residuos estudentizados.
 </p>
@@ -353,7 +353,7 @@ Figure 4.2: Datos de la ONU. Gráfico de los residuos estudentizados.
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
 <span id="cb72-2"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">crPlots</span>(mod.UN11,<span class="at">main=</span><span class="st">&#39;&#39;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:Un11resPartial"></span>
-<img src="bookdownproj_files/figure-html/Un11resPartial-1.png" alt="Datos de la ONU. Gráfico de los residuos  parciales." width="672" />
+<img src="MLGI_files/figure-html/Un11resPartial-1.png" alt="Datos de la ONU. Gráfico de los residuos  parciales." width="768" />
 <p class="caption">
 Figure 4.3: Datos de la ONU. Gráfico de los residuos parciales.
 </p>
@@ -374,7 +374,7 @@ Figure 4.3: Datos de la ONU. Gráfico de los residuos parciales.
 <span id="cb73-3"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#cb73-3" aria-hidden="true" tabindex="-1"></a>education<span class="sc">$</span>X2 <span class="ot">=</span> education<span class="sc">$</span>X2<span class="sc">/</span><span class="dv">1000</span> <span class="co"># cambio de unidad de medida (miles de dolares)</span></span>
 <span id="cb73-4"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#cb73-4" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(education[,<span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>)])</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:Educdata"></span>
-<img src="bookdownproj_files/figure-html/Educdata-1.png" alt="Datos de educación. Relación entre las variables." width="672" />
+<img src="MLGI_files/figure-html/Educdata-1.png" alt="Datos de educación. Relación entre las variables." width="672" />
 <p class="caption">
 Figure 4.4: Datos de educación. Relación entre las variables.
 </p>
@@ -397,7 +397,7 @@ donde <span class="math inline">\(\varepsilon_{i}\sim N(0,\sigma^{2})\)</span> y
 <span id="cb74-10"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#cb74-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;valores ajustados&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;| residuos estudentizados |&#39;</span>)</span>
 <span id="cb74-11"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#cb74-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(<span class="fu">abs</span>(res.educ)<span class="sc">~</span>mod.educ<span class="sc">$</span>fitted.values),<span class="at">col=</span><span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:Educres"></span>
-<img src="bookdownproj_files/figure-html/Educres-1.png" alt="Datos de educación. Gráficos de los residuos estudentizados." width="768" />
+<img src="MLGI_files/figure-html/Educres-1.png" alt="Datos de educación. Gráficos de los residuos estudentizados." width="768" />
 <p class="caption">
 Figure 4.5: Datos de educación. Gráficos de los residuos estudentizados.
 </p>
@@ -470,7 +470,7 @@ Note que estaríamos asumiendo que <span class="math inline">\(\log\varepsilon_{
 </tbody>
 </table>
 <div class="figure" style="text-align: center"><span id="fig:linealPat"></span>
-<img src="bookdownproj_files/figure-html/linealPat-1.png" alt="Diferentes patrones linealizables." width="672" />
+<img src="MLGI_files/figure-html/linealPat-1.png" alt="Diferentes patrones linealizables." width="672" />
 <p class="caption">
 Figure 4.6: Diferentes patrones linealizables.
 </p>
@@ -542,7 +542,7 @@ Al aplicar la transformación inversa a las predicciones de la respuesta transfo
 <p>Al realizar un análisis de residuos del ajuste del modelo para los datos de la ONU, vimos que hay una relación no-lineal entre la fertilidad y las dos covariables propuestas. Particularmente, esto se debe a la covariable producto nacional bruto.</p>
 <p>Por lo tanto, podemos aplicar una transformación logarítmica tanto a la variable respuesta, así como la covariable producto nacional bruto. En la Figura <a href="transformaciones-y-mínimos-cuadrados-ponderados.html#fig:UNtransFig">4.7</a> vemos como al aplicar esta transformación se linealiza la relación.</p>
 <div class="figure" style="text-align: center"><span id="fig:UNtransFig"></span>
-<img src="bookdownproj_files/figure-html/UNtransFig-1.png" alt="Datos de la ONU. Relación entre las variables." width="768" />
+<img src="MLGI_files/figure-html/UNtransFig-1.png" alt="Datos de la ONU. Relación entre las variables." width="768" />
 <p class="caption">
 Figure 4.7: Datos de la ONU. Relación entre las variables.
 </p>
@@ -564,7 +564,7 @@ donde <span class="math inline">\(\varepsilon_{i}\sim N(0,\sigma^{2})\)</span> y
 <span id="cb75-9"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#cb75-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&#39;| residuos estudentizados |&#39;</span>)</span>
 <span id="cb75-10"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#cb75-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(<span class="fu">abs</span>(res.UN11.trans)<span class="sc">~</span>mod.UN11.trans<span class="sc">$</span>fitted.values),<span class="at">col=</span><span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:UNtrans2Fig"></span>
-<img src="bookdownproj_files/figure-html/UNtrans2Fig-1.png" alt="Datos de la ONU. Gráficos de los residuos para el modelo transformado." width="576" />
+<img src="MLGI_files/figure-html/UNtrans2Fig-1.png" alt="Datos de la ONU. Gráficos de los residuos para el modelo transformado." width="768" />
 <p class="caption">
 Figure 4.8: Datos de la ONU. Gráficos de los residuos para el modelo transformado.
 </p>
@@ -597,16 +597,16 @@ para cada valor de <span class="math inline">\(\lambda_{k}\)</span>, <span class
 </ol>
 <p>Puesto que <span class="math inline">\(\lambda\)</span> es una variable aleatoria, también se puede hacer una estimación por intervalos de confianza. Para esto primero consideremos la función de log-verosimilitud:
 <span class="math display">\[
-\ell(\bbeta,\sigma^{2} | \lambda) = -\frac{2}{n}\log \left( 2\pi\sigma^{2}\right) - \frac{1}{2\sigma^{2}}\sum_{i=1}^{n}\left( y_{i}^{\lambda} - \bx_{i}&#39;\bbeta\right)^{2} = -\frac{2}{n}\log \left( 2\pi\sigma^{2}\right) - \frac{1}{2\sigma^{2}}SS_{res}(\lambda).
+\ell(\boldsymbol \beta,\sigma^{2} | \lambda) = -\frac{2}{n}\log \left( 2\pi\sigma^{2}\right) - \frac{1}{2\sigma^{2}}\sum_{i=1}^{n}\left( y_{i}^{\lambda} - \boldsymbol x_{i}&#39;\boldsymbol \beta\right)^{2} = -\frac{2}{n}\log \left( 2\pi\sigma^{2}\right) - \frac{1}{2\sigma^{2}}SS_{res}(\lambda).
 \]</span>
 Aquí vemos que el valor de <span class="math inline">\(\lambda\)</span> que maximiza la verosimilitud es el mismo que minimiza la suma de cuadrados de los residuos.</p>
 <p>Un intervalo de confianza se puede construir a partir del siguiente estadístico de prueba:
 <span class="math display">\[
-G_{0}^{2} = -2\left[ \ell(\bbeta,\sigma^{2} | \lambda=1) - \ell(\bbeta,\sigma^{2} | \lambda=\hatlambda) \right].
+G_{0}^{2} = -2\left[ \ell(\boldsymbol \beta,\sigma^{2} | \lambda=1) - \ell(\boldsymbol \beta,\sigma^{2} | \lambda=\widehat{\lambda}) \right].
 \]</span>
 Si <span class="math inline">\(\lambda=1\)</span>, entonces asintóticamente <span class="math inline">\(G_{0}^{2} \sim \chi^{2}_{1}\)</span>. Por lo tanto, el intervalo del <span class="math inline">\((1-\alpha)\times 100\)</span>% de confianza para <span class="math inline">\(\lambda\)</span> está definido por los valores de <span class="math inline">\(\lambda\)</span> que cumplen con la condición:
 <span class="math display">\[
- \ell(\bbeta,\sigma^{2} | \lambda) \geq  \ell(\bbeta,\sigma^{2} | \lambda=\hatlambda) - \frac{1}{2}\chi^{2}_{1,1-\alpha}.
+ \ell(\boldsymbol \beta,\sigma^{2} | \lambda) \geq  \ell(\boldsymbol \beta,\sigma^{2} | \lambda=\widehat{\lambda}) - \frac{1}{2}\chi^{2}_{1,1-\alpha}.
 \]</span></p>
 <div id="datos-de-educación.-transformación-de-box-cox" class="section level3" number="4.2.1">
 <h3><span class="header-section-number">4.2.1</span> Datos de educación. Transformación de Box-Cox</h3>
@@ -614,14 +614,14 @@ Si <span class="math inline">\(\lambda=1\)</span>, entonces asintóticamente <sp
 <div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#cb76-1" aria-hidden="true" tabindex="-1"></a>boxcox.educ <span class="ot">=</span> MASS<span class="sc">::</span><span class="fu">boxcox</span>(mod.educ,<span class="at">lambda=</span><span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>,<span class="dv">3</span>,<span class="at">length.out =</span> <span class="dv">1000</span>),</span>
 <span id="cb76-2"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#cb76-2" aria-hidden="true" tabindex="-1"></a>                               <span class="at">ylab=</span><span class="st">&#39;log-verosimilitud&#39;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:educLambda"></span>
-<img src="bookdownproj_files/figure-html/educLambda-1.png" alt="\label{fig:EducBC} Datos de educación. Perfiles de verosimilitud para $\lambda$." width="336" />
+<img src="MLGI_files/figure-html/educLambda-1.png" alt="\label{fig:EducBC} Datos de educación. Perfiles de verosimilitud para $\lambda$." width="480" />
 <p class="caption">
 Figure 4.9:  Datos de educación. Perfiles de verosimilitud para <span class="math inline">\(\lambda\)</span>.
 </p>
 </div>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#cb77-1" aria-hidden="true" tabindex="-1"></a>boxcox.educ<span class="sc">$</span>x[boxcox.educ<span class="sc">$</span>y <span class="sc">==</span><span class="fu">max</span>(boxcox.educ<span class="sc">$</span>y)] <span class="co"># valor que maximiza la log-verosimilitud</span></span></code></pre></div>
 <pre><code>## [1] -1.09009</code></pre>
-<p>Estos resultados nos indican que <span class="math inline">\(\hatlambda = -1.09\)</span>. Por lo cuál, podemos utilizar una transformación inversa <span class="math inline">\((\lambda=-1)\)</span>. Entonces, el modelo propuesto es:
+<p>Estos resultados nos indican que <span class="math inline">\(\widehat{\lambda}= -1.09\)</span>. Por lo cuál, podemos utilizar una transformación inversa <span class="math inline">\((\lambda=-1)\)</span>. Entonces, el modelo propuesto es:
 <span class="math display">\[
 1/y_{i} = \beta_{0} + \beta_{1}\mbox{X1}_{i}+ \beta_{2}\mbox{X2}_{i} + \beta_{3}\mbox{X3}_{i} + \varepsilon_{i},
 \]</span>
@@ -638,15 +638,15 @@ donde <span class="math inline">\(\varepsilon_{i}\sim N(0,\sigma^{2})\)</span> y
 <span id="cb79-9"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#cb79-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;valores ajustados&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;| residuos estudentizados |&#39;</span>)</span>
 <span id="cb79-10"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#cb79-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(<span class="fu">abs</span>(res.educ.trans)<span class="sc">~</span>mod.educ.trans<span class="sc">$</span>fitted.values),<span class="at">col=</span><span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:EducBC2Fig"></span>
-<img src="bookdownproj_files/figure-html/EducBC2Fig-1.png" alt="\label{Datos de educación. Graficos de los residuos para el modelo transformado." width="672" />
+<img src="MLGI_files/figure-html/EducBC2Fig-1.png" alt="Datos de educación. Graficos de los residuos para el modelo transformado." width="768" />
 <p class="caption">
-Figure 4.10: \label{Datos de educación. Graficos de los residuos para el modelo transformado.
+Figure 4.10: Datos de educación. Graficos de los residuos para el modelo transformado.
 </p>
 </div>
 <p>En la Figura <a href="transformaciones-y-mínimos-cuadrados-ponderados.html#fig:EducBC2Fig">4.10</a> vemos que la transformación propuesta corrigió el problema de heterocedasticidad. Adicionalmente, por medio de la Figura <a href="transformaciones-y-mínimos-cuadrados-ponderados.html#fig:EducBC3Fig">4.11</a> podemos verificar que el supuesto de normalidad se cumple.</p>
 <div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#cb80-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">qqPlot</span>(mod.educ.trans,<span class="at">distribution =</span> <span class="st">&#39;norm&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;residuos estudentizados&#39;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:EducBC3Fig"></span>
-<img src="bookdownproj_files/figure-html/EducBC3Fig-1.png" alt="Datos de educación. Graficos de normalidad de los residuos para el modelo transformado." width="480" />
+<img src="MLGI_files/figure-html/EducBC3Fig-1.png" alt="Datos de educación. Graficos de normalidad de los residuos para el modelo transformado." width="480" />
 <p class="caption">
 Figure 4.11: Datos de educación. Graficos de normalidad de los residuos para el modelo transformado.
 </p>
@@ -687,15 +687,15 @@ Por lo que intervalo del 95% de confianza para el gasto medio en educación púb
 </div>
 <div id="mínimos-cuadrados-ponderados" class="section level2" number="4.3">
 <h2><span class="header-section-number">4.3</span> Mínimos cuadrados ponderados</h2>
-<p>El método de mínimos cuadrados ponderados (MCP) es una alternativa para estimar un modelo lineal en presencia de heterocedasticidad. La idea de esta técnica es calcular las desviaciones entre las observaciones <span class="math inline">\((y_{i})\)</span> y los valores ajustados <span class="math inline">\((\haty_{i})\)</span> usando pesos <span class="math inline">\((w_{i})\)</span> inversamente proporcionales a la varianza de <span class="math inline">\(y_{i}\)</span>.</p>
+<p>El método de mínimos cuadrados ponderados (MCP) es una alternativa para estimar un modelo lineal en presencia de heterocedasticidad. La idea de esta técnica es calcular las desviaciones entre las observaciones <span class="math inline">\((y_{i})\)</span> y los valores ajustados <span class="math inline">\((\widehat{y}_{i})\)</span> usando pesos <span class="math inline">\((w_{i})\)</span> inversamente proporcionales a la varianza de <span class="math inline">\(y_{i}\)</span>.</p>
 <p>Asumamos que el modelo generador de los datos es:
 <span class="math display" id="eq:modV">\[\begin{equation}
-\by = \bX\bbeta + \bvarepsi, \mbox{ donde }\bvarepsi\sim N(\bZERO,\sigma^{2}\bV),
+\boldsymbol y= \boldsymbol X\boldsymbol \beta+ \boldsymbol \varepsilon, \mbox{ donde }\boldsymbol \varepsilon\sim N(\boldsymbol 0,\sigma^{2}\boldsymbol V),
 \tag{4.2}
 \end{equation}\]</span>
-donde <span class="math inline">\(\bV\)</span> es una matriz diagonal <span class="math inline">\((n \times n)\)</span>:
+donde <span class="math inline">\(\boldsymbol V\)</span> es una matriz diagonal <span class="math inline">\((n \times n)\)</span>:
 <span class="math display">\[
-\bV = \begin{pmatrix}
+\boldsymbol V= \begin{pmatrix}
 v_{11} &amp; 0 &amp; 0 &amp; \ldots &amp; 0 \\
 0 &amp; v_{22} &amp; 0 &amp; \ldots &amp; 0 \\
 0 &amp; 0 &amp; v_{33} &amp; \ldots &amp; 0 \\
@@ -703,37 +703,37 @@ v_{11} &amp; 0 &amp; 0 &amp; \ldots &amp; 0 \\
 0 &amp; 0 &amp; 0 &amp; \ldots &amp; v_{nn}
 \end{pmatrix}.
 \]</span>
-Esto quiere decir que tenemos presencia de hetorocedasticidad, donde <span class="math inline">\(V(\varepsilon_{i}) = \sigma^{2}v_{ii}\)</span>. Recordemos que si aplicamos el estimador por MCO, las estimaciones siguen siendo insesgadas pero son ineficientes. Además, las varianzas estimadas de <span class="math inline">\(\hatbbeta\)</span>, y de las predicciones, están mal calculadas. Lo que puede afectar la cobertura de los intervalos de confianza y el nivel de signficancia de las pruebas de hipótesis.</p>
-<p>La función de verosimilitud del modelo <a href="transformaciones-y-mínimos-cuadrados-ponderados.html#eq:modV">(4.2)</a>, asumiendo que <span class="math inline">\(\bV\)</span> es conocida, es:
+Esto quiere decir que tenemos presencia de hetorocedasticidad, donde <span class="math inline">\(V(\varepsilon_{i}) = \sigma^{2}v_{ii}\)</span>. Recordemos que si aplicamos el estimador por MCO, las estimaciones siguen siendo insesgadas pero son ineficientes. Además, las varianzas estimadas de <span class="math inline">\(\widehat{\boldsymbol \beta}\)</span>, y de las predicciones, están mal calculadas. Lo que puede afectar la cobertura de los intervalos de confianza y el nivel de signficancia de las pruebas de hipótesis.</p>
+<p>La función de verosimilitud del modelo <a href="transformaciones-y-mínimos-cuadrados-ponderados.html#eq:modV">(4.2)</a>, asumiendo que <span class="math inline">\(\boldsymbol V\)</span> es conocida, es:
 <span class="math display">\[
-L(\bbeta,\sigma^{2} | \bV) =  \frac{1}{(2\pi)^{n/2}|\sigma^{2}\bV|^{1/2}}\exp \left[-\frac{1}{2\sigma^{2}}(\by - \bX&#39;\bbeta)&#39;\bV^{-1}(\by - \bX&#39;\bbeta) \right].
+L(\boldsymbol \beta,\sigma^{2} | \boldsymbol V) =  \frac{1}{(2\pi)^{n/2}|\sigma^{2}\boldsymbol V|^{1/2}}\exp \left[-\frac{1}{2\sigma^{2}}(\boldsymbol y- \boldsymbol X&#39;\boldsymbol \beta)&#39;\boldsymbol V^{-1}(\boldsymbol y- \boldsymbol X&#39;\boldsymbol \beta) \right].
 \]</span>
-Por lo que para encontrar el estimador de <span class="math inline">\(\bbeta\)</span> debemos minimizar la suma de cuadrados ponderada:
+Por lo que para encontrar el estimador de <span class="math inline">\(\boldsymbol \beta\)</span> debemos minimizar la suma de cuadrados ponderada:
 <span class="math display" id="eq:SSWE">\[\begin{equation}
-SS_{Wres} = (\by - \bX&#39;\bbeta)&#39;\bW(\by - \bX&#39;\bbeta) = \sum_{i=1}^{n} w_{ii}(y_{i} - \bx_{i}&#39;\bbeta)^{2},
+SS_{Wres} = (\boldsymbol y- \boldsymbol X&#39;\boldsymbol \beta)&#39;\boldsymbol W(\boldsymbol y- \boldsymbol X&#39;\boldsymbol \beta) = \sum_{i=1}^{n} w_{ii}(y_{i} - \boldsymbol x_{i}&#39;\boldsymbol \beta)^{2},
 \tag{4.3}
 \end{equation}\]</span>
-donde <span class="math inline">\(\bW = \bV^{-1}\)</span>, es decir que <span class="math inline">\(w_{ii}= \frac{1}{v_{ii}}\)</span>. Note que las observaciones con mayor varianza tienen menor peso en la estimación de <span class="math inline">\(\bbeta\)</span>.</p>
+donde <span class="math inline">\(\boldsymbol W= \boldsymbol V^{-1}\)</span>, es decir que <span class="math inline">\(w_{ii}= \frac{1}{v_{ii}}\)</span>. Note que las observaciones con mayor varianza tienen menor peso en la estimación de <span class="math inline">\(\boldsymbol \beta\)</span>.</p>
 <p>Al minimizar <a href="transformaciones-y-mínimos-cuadrados-ponderados.html#eq:SSWE">(4.3)</a> se obtiene el estimador por MCP:
 <span class="math display">\[
-\hatbbeta_{W} = (\bX&#39;\bW\bX)^{-1}\bX&#39;\bW\by.
+\widehat{\boldsymbol \beta}_{W} = (\boldsymbol X&#39;\boldsymbol W\boldsymbol X)^{-1}\boldsymbol X&#39;\boldsymbol W\boldsymbol y.
 \]</span>
 Además,
 <span class="math display" id="eq:VarBetaW">\[\begin{equation}
-V(\hatbbeta_{W}) = \sigma^{2}(\bX&#39;\bW\bX)^{-1}.
+V(\widehat{\boldsymbol \beta}_{W}) = \sigma^{2}(\boldsymbol X&#39;\boldsymbol W\boldsymbol X)^{-1}.
 \tag{4.4}
 \end{equation}\]</span>
-Si <span class="math inline">\(\bV\)</span> está correctamente especificada, se puede probar que <span class="math inline">\(\hatbbeta_{W}\)</span> es el mejor estimador insesgado de <span class="math inline">\(\bbeta\)</span>.</p>
+Si <span class="math inline">\(\boldsymbol V\)</span> está correctamente especificada, se puede probar que <span class="math inline">\(\widehat{\boldsymbol \beta}_{W}\)</span> es el mejor estimador insesgado de <span class="math inline">\(\boldsymbol \beta\)</span>.</p>
 <p>Los residuos del ajuste del modelo son:
 <span class="math display">\[
-e_{Wi} = \sqrt{w_{ii}}(y_{i} - \haty_{i}), \mbox{ de forma matricial }\be_{W} = \bW^{1/2}(\by - \bX\hatbbeta_{W}),
+e_{Wi} = \sqrt{w_{ii}}(y_{i} - \widehat{y}_{i}), \mbox{ de forma matricial }\boldsymbol e_{W} = \boldsymbol W^{1/2}(\boldsymbol y- \boldsymbol X\widehat{\boldsymbol \beta}_{W}),
 \]</span>
-donde <span class="math inline">\(\bW = \bW^{1/2}\bW^{1/2}\)</span>. De este resultado obtenemos el estimador insesgado de <span class="math inline">\(\sigma^{2}\)</span>:
+donde <span class="math inline">\(\boldsymbol W= \boldsymbol W^{1/2}\boldsymbol W^{1/2}\)</span>. De este resultado obtenemos el estimador insesgado de <span class="math inline">\(\sigma^{2}\)</span>:
 <span class="math display">\[
-\hatsigma^{2} = \frac{1}{n-p}\sum_{i=1}^{n}w_{ii}(y_{i}-\bx_{i}&#39;\hatbbeta)^{2} = \frac{1}{n-p}(\by - \bX\hatbbeta)&#39;\bW(\by - \bX\hatbbeta).
+\widehat{\sigma}^{2} = \frac{1}{n-p}\sum_{i=1}^{n}w_{ii}(y_{i}-\boldsymbol x_{i}&#39;\widehat{\boldsymbol \beta})^{2} = \frac{1}{n-p}(\boldsymbol y- \boldsymbol X\widehat{\boldsymbol \beta})&#39;\boldsymbol W(\boldsymbol y- \boldsymbol X\widehat{\boldsymbol \beta}).
 \]</span></p>
 <p>Aqui estamos asumiendo que los pesos <span class="math inline">\((w_{ii})\)</span> son conocidos. Lo que en la práctica es poco común. Estos pesos pueden ser determinados por conocimiento de los datos, experiencia, o información teórica del modelo. Alternativamente, estos se pueden calcular a partir de los residuos obtenidos por el estimador MCO.</p>
-<p>Es común que <span class="math inline">\(\sigma^{2}_{i}\)</span> varíe de acuerdo a una o varias covariables, o con respecto <span class="math inline">\(E(y_{i}|\bx_{i})\)</span>. Por ejemplo, en los datos de educación parece que la varianza incrementa con <span class="math inline">\(E(y_{i}| \bx_{i})\)</span>. En este caso podemos aplicar el siguiente procedimiento:</p>
+<p>Es común que <span class="math inline">\(\sigma^{2}_{i}\)</span> varíe de acuerdo a una o varias covariables, o con respecto <span class="math inline">\(E(y_{i}|\boldsymbol x_{i})\)</span>. Por ejemplo, en los datos de educación parece que la varianza incrementa con <span class="math inline">\(E(y_{i}| \boldsymbol x_{i})\)</span>. En este caso podemos aplicar el siguiente procedimiento:</p>
 <ol style="list-style-type: decimal">
 <li>Ajustar el modelo por MCO y analizar los residuos.</li>
 <li>Ajustar un modelo para el valor absoluto de los residuos <span class="math inline">\((|e_{i}|)\)</span>, o los residuso al cuadrado <span class="math inline">\((e^{2}_{i})\)</span>, en función de las covariables:
@@ -743,7 +743,7 @@ donde <span class="math inline">\(\bW = \bW^{1/2}\bW^{1/2}\)</span>. De este res
 De esta ajuste obtenemos una estimación para la desviación estándar <span class="math inline">\((\sigma_{i})\)</span>. Si ajustamos un modelo para los residuos al cuadrado, estamos estimando la varianza <span class="math inline">\((\sigma^{2})\)</span>.</li>
 <li>Usar los valores ajustados el modelo anterior para estimar los pesos <span class="math inline">\((w_{ii})\)</span>.</li>
 </ol>
-<p>Si <span class="math inline">\(\hatbbeta_{W}\)</span> difiere mucho de <span class="math inline">\(\hatbbeta\)</span>, es posible repetir el proceso anterior una vez más (mínimos cuadrados iterativamente ponderados).</p>
+<p>Si <span class="math inline">\(\widehat{\boldsymbol \beta}_{W}\)</span> difiere mucho de <span class="math inline">\(\widehat{\boldsymbol \beta}\)</span>, es posible repetir el proceso anterior una vez más (mínimos cuadrados iterativamente ponderados).</p>
 <p>Dado que estamos estimando los pesos, la varianza de los coeficientes <a href="transformaciones-y-mínimos-cuadrados-ponderados.html#eq:VarBetaW">(4.4)</a> es aproximada. Sin embargo, esta aproximación es muy buena si el tamaño de muestra no es muy pequeño.</p>
 <div id="datos-de-educación.-minímos-cuadrados-ponderados" class="section level3 unnumbered">
 <h3>Datos de educación. Minímos cuadrados ponderados</h3>
@@ -814,7 +814,7 @@ De este ajuste obtenemos los pesos <span class="math inline">\(w_{ii} = \frac{1}
 <span id="cb90-8"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#cb90-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;valores ajustados&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;| residuos ponderados |&#39;</span>)</span>
 <span id="cb90-9"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#cb90-9" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(<span class="fu">abs</span>(res.educ.mcp)<span class="sc">~</span>mod.educ.mcp<span class="sc">$</span>fitted.values),<span class="at">col=</span><span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:EducMCPFig"></span>
-<img src="bookdownproj_files/figure-html/EducMCPFig-1.png" alt="Datos de educación. Graficos de los residuos ponderados." width="864" />
+<img src="MLGI_files/figure-html/EducMCPFig-1.png" alt="Datos de educación. Graficos de los residuos ponderados." width="864" />
 <p class="caption">
 Figure 4.12: Datos de educación. Graficos de los residuos ponderados.
 </p>
@@ -864,10 +864,10 @@ Por medio del estimador de MCP obtenemos el siguiente intervalo del 95% de confi
 Behar, Roberto. 2002. <em>Validación de Supuestos En El Modelo de Regresión</em>.
 </div>
 <div id="ref-fox_applied_2016" class="csl-entry">
-Fox, John. 2016. <em>Applied Regression Analysis and Generalized Linear Models</em>. Third Edition. Los Angeles: <span>SAGE</span>.
+Fox, John. 2016. <em>Applied Regression Analysis and Generalized Linear Models</em>. Third Edition.
 </div>
 <div id="ref-montgomery_introduction_2012" class="csl-entry">
-Montgomery, Douglas C., Elizabeth A. Peck, and G. Geoffrey Vining. 2012. <em>Introduction to Linear Regression Analysis</em>. 5th ed. Wiley Series in Probability and Statistics 821. Hoboken, <span>NJ</span>: Wiley.
+Montgomery, Douglas C., Elizabeth A. Peck, and G. Geoffrey Vining. 2012. <em>Introduction to Linear Regression Analysis</em>. 5th ed. Wiley.
 </div>
 </div>
             </section>
@@ -908,8 +908,8 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/AlvaroFlorez/MLG1/edit/master/04-Transformaciones.Rmd",
-"text": "Edit"
+"link": null,
+"text": null
 },
 "history": {
 "link": null,
@@ -919,7 +919,7 @@ gitbook.start({
 "link": "https://github.com/AlvaroFlorez/MLG1/blob/master/04-Transformaciones.Rmd",
 "text": null
 },
-"download": ["bookdownproj.pdf", "bookdownproj.epub"],
+"download": ["MLGI.pdf"],
 "toc": {
 "collapse": "subsection"
 }
