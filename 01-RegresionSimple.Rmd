@@ -291,11 +291,11 @@ abline(h=y[3],lty=2)
 segments(3, y[3], 3, predict(m)[3],col=2,lty=2)
 segments(3, predict(m)[3], 3, mean(y),col=4,lty=2)
 brackets(3, y[3], 3, predict(m)[3],h=0.2,ticks=0.5,type=1,xpd=F)
-text(3-0.1,y[3]+3,expression(y[3]-hat(y)[3]),pos=2,cex=0.8)
+text(3-0.1,y[3]+3,expression(y[3]-hat(y)[3]),pos=2,cex=0.9)
 brackets(3, predict(m)[3], 3, mean(y),h=0.2,ticks=0.5,type=1,xpd=F)
-text(3-0.1,predict(m)[3]+2.5,expression(hat(y)[3]-bar(y)),pos=2,cex=0.8)
+text(3-0.1,predict(m)[3]+2.5,expression(hat(y)[3]-bar(y)),pos=2,cex=0.9)
 brackets(1.7, y[3], 1.7, mean(y),h=0.2,ticks=0.5,type=1,xpd=F)
-text(1.7,predict(m)[3],expression(y[3]-bar(y)),pos=2,cex=0.8)
+text(1.7,predict(m)[3],expression(y[3]-bar(y)),pos=2,cex=0.9)
 ```
 
 Ahora evelavamos al cuadrado \@ref(eq:decomposion)  y sumamos todos los componentes:
