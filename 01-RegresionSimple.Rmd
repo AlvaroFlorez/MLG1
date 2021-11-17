@@ -343,7 +343,7 @@ Estos resultados se pueden resumir en la Tabla \@ref(tab:tableAnova).
 
 La cantidad:
 \[
-R^{2} = \frac{SS_{R}}{SS_{res}} = 1 - \frac{SS_{res}}{SST},
+R^{2} = \frac{SS_{R}}{SST} = 1 - \frac{SS_{res}}{SST},
 \]
 es llamada **coeficiente de determinación**, y cuantifica la cantidad de variabilidad de $y$ que es explicada por $x$. Dado que $0 \leq SS_{res} \leq SST$, se tiene que $0 \leq R^{2} \leq 1$. Por lo tanto, valores cercanos a $1$ implican que el modelo explica gran parte de la variabilidad de $y$.
 
@@ -471,13 +471,13 @@ pred.nuevaObs
 ```
 Por lo tanto, con un nivel de confianza del 95\% el peso de un recién nacido en la semana gestacional 38 está entre `r round(pred.nuevaObs[2],2)` y `r round(pred.nuevaObs[3],2)` kilogramos.
 
-Gráficamente, podemos ver los intervalos de confianza y predicción de la siguiente forma:
-```{r ICprevCalc, echo=FALSE}
-x.nuevo = data.frame(age=seq(from=min(birthweight$age),to=max(birthweight$age),length.out = 100))
+Gráficamente, podemos ver los intervalos de confianza y predicción de la siguiente forma. Primero hacemos la predicciones para edades gestacionales entre 33 y 45 semanas:
+```{r ICprevCalc, echo=TRUE}
+x.nuevo = data.frame(age=seq(from=33,to=45,length.out = 100))
 pred.media = predict(mod,x.nuevo,interval = 'confidence')
 pred.nuevaObs = predict(mod,x.nuevo,interval = 'prediction')
 ```
-
+Luego hacemos el gráfico:
 ```{r birthweightIC, fig.height = 4, fig.width = 5,fig.align = "center",fig.cap = "\\label{fig:BWdata2} Intervalos del 95\\% de confianza (línea discontinua) y predicción (línea punteada) para el peso del recien nacido en función de la edad gestacional."}
 plot(weight~age,data=birthweight,pch=20,xlab="Edad gestacional(semanas)",
      ylab='Peso(kilogramos)')
