@@ -303,7 +303,7 @@ Ahora evelavamos al cuadrado \@ref(eq:decomposion)  y sumamos todos los componen
 \begin{split}
 \sum_{i=1}^{n} (y_{i} - \bar{y})^{2} &= \sum_{i=1}^{n} (y_{i} - \haty_{i})^{2} + \sum_{i=1}^{n}(\haty_{i} - \bar{y})^{2} + 2 \sum_{i=1}^{n}(y_{i} - \haty_{i})(\haty_{i} - \bar{y}) \\
 &= \sum_{i=1}^{n} (y_{i} - \haty_{i})^{2} + \sum_{i=1}^{n}(\haty_{i} - \bar{y})^{2} \\
-SST &= SS_{R} + SS_{res},
+SST &=  SS_{res} + SS_{R},
 \end{split}
 (\#eq:ss)
 \end{equation}
@@ -323,7 +323,7 @@ y que $SS_{res}$ y $SS_{R}$ son independientes. Por lo tanto:
 \[
 F_{0} = \frac{SS_{R}/1}{SS_{res}/(n-2)} = \frac{MS_{R}}{MS_{res}} \sim F_{(1,n-2)}.
 \]
-Además, $E(MS_{res})=\sigma^{2}$ y $E(MS_{res})=\sigma^{2} + \beta_{1}^{2}S_{xx}$. 
+Además, $E(MS_{res})=\sigma^{2}$ y $E(MS_{R})=\sigma^{2} + \beta_{1}^{2}S_{xx}$. 
 
 Entonces, podemos utilizar $F_{0}$ como estadístico de prueba de \@ref(eq:anova). Rechazamos $H_{0}$ si $F_{0} > F_{\alpha,1,n-2}$.
 

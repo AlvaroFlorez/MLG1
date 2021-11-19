@@ -24,7 +24,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2021-11-17" />
+<meta name="date" content="2021-11-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -568,7 +568,7 @@ Figure 1.5: Representación gráfica de la descompocisión <a href="modelo-linea
 \begin{split}
 \sum_{i=1}^{n} (y_{i} - \bar{y})^{2} &amp;= \sum_{i=1}^{n} (y_{i} - \widehat{y}_{i})^{2} + \sum_{i=1}^{n}(\widehat{y}_{i} - \bar{y})^{2} + 2 \sum_{i=1}^{n}(y_{i} - \widehat{y}_{i})(\widehat{y}_{i} - \bar{y}) \\
 &amp;= \sum_{i=1}^{n} (y_{i} - \widehat{y}_{i})^{2} + \sum_{i=1}^{n}(\widehat{y}_{i} - \bar{y})^{2} \\
-SST &amp;= SS_{R} + SS_{res},
+SST &amp;=  SS_{res} + SS_{R},
 \end{split}
 \tag{1.10}
 \end{equation}\]</span>
@@ -586,7 +586,7 @@ y que <span class="math inline">\(SS_{res}\)</span> y <span class="math inline">
 <span class="math display">\[
 F_{0} = \frac{SS_{R}/1}{SS_{res}/(n-2)} = \frac{MS_{R}}{MS_{res}} \sim F_{(1,n-2)}.
 \]</span>
-Además, <span class="math inline">\(E(MS_{res})=\sigma^{2}\)</span> y <span class="math inline">\(E(MS_{res})=\sigma^{2} + \beta_{1}^{2}S_{xx}\)</span>.</p>
+Además, <span class="math inline">\(E(MS_{res})=\sigma^{2}\)</span> y <span class="math inline">\(E(MS_{R})=\sigma^{2} + \beta_{1}^{2}S_{xx}\)</span>.</p>
 <p>Entonces, podemos utilizar <span class="math inline">\(F_{0}\)</span> como estadístico de prueba de <a href="modelo-lineal-simple.html#eq:anova">(1.11)</a>. Rechazamos <span class="math inline">\(H_{0}\)</span> si <span class="math inline">\(F_{0} &gt; F_{\alpha,1,n-2}\)</span>.</p>
 <p>Si <span class="math inline">\(H_{0}\)</span> es falsa, <span class="math inline">\(F_{0}\)</span> sigue una distribución F no central con <span class="math inline">\(1\)</span> y <span class="math inline">\(n-2\)</span> grados de libertad, y parámetro de no centralidad igual a <span class="math inline">\(\lambda=(\beta_{1}^{2}S_{xx})/\sigma^{2}\)</span>.</p>
 <p>Estos resultados se pueden resumir en la Tabla <a href="modelo-lineal-simple.html#tab:tableAnova">1.1</a>.</p>
