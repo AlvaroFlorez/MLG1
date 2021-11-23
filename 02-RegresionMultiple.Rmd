@@ -23,7 +23,7 @@ con $\varepsilon_{i}\sim N(0,\sigma^{2})$, y $cov(\varepsilon_{j},\varepsilon_{k
 \rule{\textwidth}{0.4pt}
 
 ## Modelo lineal múltiple
-En general, se puede relacionar la variable respuesta ($y$), con $k$ covariables o variables predictoras. El modelo lineal múltiple se expresa de la siguiente forma:
+En general, se puede relacionar la variable respuesta ($y$), con $p-1$ covariables o variables predictoras. El modelo lineal múltiple se expresa de la siguiente forma:
 
 \begin{equation}
 \begin{split}
@@ -81,12 +81,12 @@ Además, los supuestos sobre los errores se pueden expresar como $\bvarepsi \sim
 ## Estimación de los parámetros de regresión
 La estimación de $\bbeta$ se hace a través del método de mínimos cuadrados ordinarios. Por lo tanto, debemos encontrar el vector $\hatbbeta$ que minimice:
 \[
-S(\bbeta) =  \sum_{i=1}^{n}\left(y_{i} - \bx_{i}'\bbeta \right)^2 = \sum_{i=1}^{n}\epsilon_{i}^2.
+S(\bbeta) =  \sum_{i=1}^{n}\left(y_{i} - \bx_{i}'\bbeta \right)^2 = \sum_{i=1}^{n}e_{i}^2.
 \]
 En forma matricial, tenemos:
 \begin{equation}
 \begin{split}
-S(\bbeta) &= \bvarepsi'\bvarepsi = (\by - \bX\bbeta)'(\by - \bX\bbeta) \\
+S(\bbeta) &= \be'\be = (\by - \bX\bbeta)'(\by - \bX\bbeta) \\
 &= \by'\by - \bbeta'\bX'\by - \by'\bX\bbeta + \bbeta'\bX'\bX\bbeta \\
 &= \by'\by - 2\bbeta'\bX'\by + \bbeta'\bX'\bX \bbeta.
 \end{split}
@@ -105,6 +105,7 @@ En más detalle:
 \begin{pmatrix}
 n & \sum x_{i1} & \sum_{i=1}^{n}x_{i2} & \ldots & \sum_{i=1}^{n}x_{i,p-1} \\
 \sum x_{i1} & \sum x_{i1}^2 & \sum x_{i1}x_{i2} & \ldots & \sum x_{i1}x_{i,p-1} \\
+\sum x_{i2} & \sum x_{i1}x_{i2} & \sum x_{i2}^2 & \ldots & \sum x_{i2}x_{i,p-1} \\
 \vdots & \vdots & \vdots & \ddots & \vdots \\
 \sum x_{i,p-1} & \sum x_{i1}x_{i,p-1} & \sum x_{i2}x_{i,p-1} & \ldots & \sum x_{i,p-1}^{2} \\
 \end{pmatrix} \begin{pmatrix}
@@ -147,7 +148,7 @@ Se puede demostrar que $MS_{res}$ es un estimador insesgado de $\sigma^{2}$, es 
 
 Sabemos que $E(\by) = \bX\bbeta$ y $V(\by) = \sigma^{2}\bI_{n}$, entonces:
 \[
-E(SS_{res}) = E\left[\by'(\bI - \bH)\by\right] = \sigma^{2}\tr\left( \bI - \bH \right) + \bbeta'\bX'(\bI - \bH)\bX\bbeta = (n-p)\sigma^{2}.
+E(SS_{res}) = E\left[\by'(\bI_{n} - \bH)\by\right] = \sigma^{2}\tr\left( \bI_{n} - \bH \right) + \bbeta'\bX'(\bI_{n} - \bH)\bX\bbeta = (n-p)\sigma^{2}.
 \]
 Por lo tanto, $E(MS_{res}) = E(SS_{res})/(n-p) = \sigma^{2}$. 
 
@@ -174,7 +175,7 @@ Es decir que ambas covariables tienen un efecto positivo sobre el peso del bebé
 
 Además, la estimación de $\sigma^{2}$ es:
 ```{r fitBirthweight2}
- sqrt(sum(mod$residuals^2)/22)
+ sqrt(sum(mod$residuals^2)/39)
 ```
 Note que al adicionar la covariable `mppwt` se redujo el $MS_{res}$.
 \rule{\textwidth}{0.4pt}
@@ -502,7 +503,7 @@ El intervalo de confianza de $\beta_{j}$ parte de:
 \]
 donde $c_{jj}$ es la entrada $(j,j)$ de la matriz $\bC=(\bX'\bX)^{-1}$. Entonces, el intervalo del $(1-\alpha)100\%$ de confianza para $\hatbeta_{j}$ es:
 \[
-\hatbeta_{j} \pm t_{1-\alpha/2,n-p}\sqrt{MS_{res}C_{jj}}.
+\hatbeta_{j} \pm t_{1-\alpha/2,n-p}\sqrt{MS_{res}c_{jj}}.
 \]
 
 
@@ -632,7 +633,7 @@ Por esta razón, en algunas ocasiones es útil escalar los valores de las covari
 #### Escalamiento de longitud unitaria
 Una opción es hacer un **escalamiento de longitud unitaria** a las covariables:
 \[
-z_{ij} = \frac{x_{ij}-\bar{x}}{\sqrt{S_{jj}}}, i=1,2,\ldots,n \quad j=1,2,\ldots,k,
+z_{ij} = \frac{x_{ij}-\bar{x}}{\sqrt{S_{jj}}}, i=1,2,\ldots,n \quad j=1,2,\ldots,p-1,
 \]
 y la variable respuesta:
 \[
