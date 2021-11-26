@@ -800,17 +800,16 @@ donde <span class="math inline">\(\mbox{motherage}_{i}\)</span> y <span class="m
 H_{0}: \beta_{2} = \beta_{3} = 0 \qquad H_{0}: \beta_{j} \neq 0 \mbox{ para algún }j=2,3.
 \]</span>
 En R podemos hacer esto a través de la función <code>anova</code>:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="modelo-lineal-múltiple.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod,mod.completo)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="modelo-lineal-múltiple.html#cb12-1" aria-hidden="true" tabindex="-1"></a>mod.reducido <span class="ot">=</span> <span class="fu">lm</span>(weight<span class="sc">~</span>age <span class="sc">+</span> mnocig,<span class="at">data=</span>birthweight)</span>
+<span id="cb12-2"><a href="modelo-lineal-múltiple.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod.reducido,mod.completo)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
-## Model 1: weight ~ age + mppwt
+## Model 1: weight ~ age + mnocig
 ## Model 2: weight ~ age + mppwt + motherage + mnocig
-##   Res.Df    RSS Df Sum of Sq      F  Pr(&gt;F)  
-## 1     39 7.4010                              
-## 2     37 6.1386  2    1.2624 3.8043 0.03144 *
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-Aquí vemos que <span class="math inline">\(F_{0}= 3.804\)</span> con un valor-<span class="math inline">\(p\)</span> asociado de <span class="math inline">\(0.0314\)</span>. Por lo tanto, no tenemos evidencia suficiente para rechazar <span class="math inline">\(H_{0}\)</span> y podemos retirar las dos covariables del modelo.
+##   Res.Df    RSS Df Sum of Sq      F Pr(&gt;F)
+## 1     39 6.5912                           
+## 2     37 6.1386  2   0.45258 1.3639 0.2682</code></pre>
+Aquí vemos que <span class="math inline">\(F_{0}= 1.364\)</span> con un valor-<span class="math inline">\(p\)</span> asociado de <span class="math inline">\(0.2682\)</span>. Por lo tanto, no tenemos evidencia suficiente para rechazar <span class="math inline">\(H_{0}\)</span> y podemos retirar las dos covariables del modelo.
 </div>
 </div>
 <div id="intervalos-de-confianza-1" class="section level2" number="2.5">
@@ -834,7 +833,7 @@ donde <span class="math inline">\(c_{jj}\)</span> es la entrada <span class="mat
 <span class="math display">\[
 \widehat{\mu}_{Y|\boldsymbol x_0} = \boldsymbol x_{0}&#39;\widehat{\boldsymbol \beta}.
 \]</span>
-Además, tenemos que <span class="math inline">\(\widehat{\mu}_{Y|\boldsymbol x_0} \sim N[\boldsymbol x_{0}\boldsymbol \beta, V(\widehat{\mu}_{Y|\boldsymbol x_0})]\)</span> con:
+Además, tenemos que <span class="math inline">\(\widehat{\mu}_{Y|\boldsymbol x_0} \sim N[\boldsymbol x_{0}&#39;\boldsymbol \beta, V(\widehat{\mu}_{Y|\boldsymbol x_0})]\)</span> con:
 <span class="math display">\[
 V(\widehat{\mu}_{Y|\boldsymbol x_0}) = \sigma^{2}\boldsymbol x_{0}&#39;(\boldsymbol X&#39;\boldsymbol X)^{-1}\boldsymbol x_{0}.
 \]</span>

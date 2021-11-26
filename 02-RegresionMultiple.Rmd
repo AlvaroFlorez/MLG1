@@ -481,12 +481,14 @@ H_{0}: \beta_{2} = \beta_{3} = 0 \qquad H_{0}: \beta_{j} \neq 0 \mbox{ para alg�
 \]
 En R podemos hacer esto a través de la función `anova`:
 ```{r,echo=FALSE}
-ANOVA1= anova(mod,mod.completo)
+mod.reducido = lm(weight~age + mnocig,data=birthweight)
+ANOVA1= anova(mod.reducido,mod.completo)
 ANOVA1vp = round(ANOVA1$"Pr(>F)"[2],4)
 ANOVA1vpF = round(ANOVA1$F[2],3)
 ```
 ```{r}
-anova(mod,mod.completo)
+mod.reducido = lm(weight~age + mnocig,data=birthweight)
+anova(mod.reducido,mod.completo)
 ```
 Aquí vemos que $F_{0}= `r ANOVA1vpF`$ con un valor-$p$ asociado de $`r ANOVA1vp`$. Por lo tanto, no tenemos evidencia suficiente para rechazar $H_{0}$ y podemos retirar las dos covariables del modelo.
 \rule{\textwidth}{0.4pt}
@@ -512,7 +514,7 @@ Ahora queremos construir un intervalo de confianza para la respuesta media de $Y
 \[
 \hatmu_{Y|\bx_0} = \bx_{0}'\hatbbeta.
 \]
-Además, tenemos que $\hatmu_{Y|\bx_0} \sim N[\bx_{0}\bbeta, V(\hatmu_{Y|\bx_0})]$ con:
+Además, tenemos que $\hatmu_{Y|\bx_0} \sim N[\bx_{0}'\bbeta, V(\hatmu_{Y|\bx_0})]$ con:
 \[
 V(\hatmu_{Y|\bx_0}) = \sigma^{2}\bx_{0}'(\bX'\bX)^{-1}\bx_{0}.
 \]
