@@ -24,7 +24,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2021-11-23" />
+<meta name="date" content="2021-11-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -462,7 +462,7 @@ Por lo tanto, <span class="math inline">\(E(MS_{res}) = E(SS_{res})/(n-p) = \sig
 <h3><span class="header-section-number">2.2.2</span> Bajo peso al nacer - estimación de parámetros</h3>
 <p>Para ajustar el modelo:
 <span class="math display">\[
-\mbox{weight}_{i} = \beta_{0} + \beta_{1}\mbox{weight}_{i} + \beta_{2}\mbox{mppwt}_{i} + \varepsilon_{i}, \mbox{ para }i=1,\ldots,42,
+\mbox{weight}_{i} = \beta_{0} + \beta_{1}\mbox{age}_{i} + \beta_{2}\mbox{mppwt}_{i} + \varepsilon_{i}, \mbox{ para }i=1,\ldots,42,
 \]</span>
 con <span class="math inline">\(\varepsilon_{i}\sim N(0,\sigma^{2})\)</span>, y <span class="math inline">\(cov(\varepsilon_{j},\varepsilon_{k})=0\)</span> para todo <span class="math inline">\(j\neq k\)</span>, usamos la función <code>lm</code> de R:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="modelo-lineal-múltiple.html#cb4-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">=</span> <span class="fu">lm</span>(weight <span class="sc">~</span> age <span class="sc">+</span> mppwt, <span class="at">data=</span>birthweight)</span>
@@ -887,7 +887,7 @@ h_{00} = \boldsymbol x&#39;_{0}(\boldsymbol X&#39;\boldsymbol X)^{-1}\boldsymbol
 \]</span></p>
 <div id="bajo-peso-al-nacer---interpolación" class="section level3 unnumbered">
 <h3>Bajo peso al nacer - interpolación</h3>
-<p>Suponga que se quiere hacer una predicción para recién nacidos con las características que muestra la Tabla @ref(tab:puntosPrediccion}.</p>
+<p>Suponga que se quiere hacer una predicción para recién nacidos con las características que muestra la Tabla <a href="modelo-lineal-múltiple.html#tab:puntosPrediccion">2.1</a>.</p>
 <table>
 <caption><span id="tab:puntosPrediccion">Table 2.1: </span>Bajo peso al nacer. Punto de predicción.</caption>
 <thead>

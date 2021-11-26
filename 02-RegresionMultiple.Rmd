@@ -157,7 +157,7 @@ Por lo tanto, $E(MS_{res}) = E(SS_{res})/(n-p) = \sigma^{2}$.
 ### Bajo peso al nacer - estimación de parámetros
 Para ajustar el modelo:
 \[
-\mbox{weight}_{i} = \beta_{0} + \beta_{1}\mbox{weight}_{i} + \beta_{2}\mbox{mppwt}_{i} + \varepsilon_{i}, \mbox{ para }i=1,\ldots,42,
+\mbox{weight}_{i} = \beta_{0} + \beta_{1}\mbox{age}_{i} + \beta_{2}\mbox{mppwt}_{i} + \varepsilon_{i}, \mbox{ para }i=1,\ldots,42,
 \]
 con $\varepsilon_{i}\sim N(0,\sigma^{2})$, y $cov(\varepsilon_{j},\varepsilon_{k})=0$ para todo $j\neq k$, usamos la función `lm` de R:
 ```{r fitBirthweight, echo=TRUE}
@@ -589,7 +589,7 @@ h_{00} = \bx'_{0}(\bX'\bX)^{-1}\bx_{0}.
 
 \rule{\textwidth}{0.4pt}
 ### Bajo peso al nacer - interpolación {-}
-Suponga que se quiere hacer una predicción para recién nacidos con las características que muestra la Tabla \@ref(tab:puntosPrediccion}. 
+Suponga que se quiere hacer una predicción para recién nacidos con las características que muestra la Tabla \@ref(tab:puntosPrediccion). 
 
 ```{r puntosPrediccion, echo=FALSE }
 PredPoints = data.frame(x01 = c(34,75),x02 = c(36,50),x03 = c(38,60),x04 = c(46,55))
