@@ -349,7 +349,7 @@ Entonces, la suma de cuadrados debido a $\bbeta_{2}$ dado que $\bbeta_{1}$ ya es
 \[
 SS_{R}(\bbeta_{2}| \bbeta_{1}) = SS_{R}(\bbeta) - SS_{R}(\bbeta_{1}),
 \]
-con $p-(p-r)=r$ grados de libertad. Esta suma de cuadrados es llamada la suma de cuadrados extra debido a $\bbeta$ puesto que mide el incremento en la suma de cuadrados de la regresión como resultado de adicionar los regresores $\bX_{2}$ en el modelo que ya contiene $\bX_{1}$.  
+con $p-(p-r)=r$ grados de libertad. Esta suma de cuadrados es llamada la suma de cuadrados extra debido a $\bbeta_2$ puesto que mide el incremento en la suma de cuadrados de la regresión como resultado de adicionar los regresores $\bX_{2}$ en el modelo que ya contiene $\bX_{1}$.  
 
 Dado que $SS_{R}(\bbeta_{2}| \bbeta_{1})$ y $MS_{res}$ son independientes, podemos utilizar el siguiente estadístico de prueba:
 \[
