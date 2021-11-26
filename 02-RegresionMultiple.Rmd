@@ -17,7 +17,7 @@ cor(birthweight[,c(3,4,8)])
 ```
 Por lo tanto, junto con la edad gestacional, vamos a incluir peso de la madre antes del embarazo (en kgs, `mppwt`) como covariable. Por lo tanto, el modelo propuesto es:
 \[
-\mbox{weight}_{i} = \beta_{0} + \beta_{1}\mbox{weight}_{i} + \beta_{2}\mbox{mppwt}_{i} + \varepsilon_{i}, \mbox{ para }i=1,\ldots,42,
+\mbox{weight}_{i} = \beta_{0} + \beta_{1}\mbox{age}_{i} + \beta_{2}\mbox{mppwt}_{i} + \varepsilon_{i}, \mbox{ para }i=1,\ldots,42,
 \]
 con $\varepsilon_{i}\sim N(0,\sigma^{2})$, y $cov(\varepsilon_{j},\varepsilon_{k})=0$ para todo $j\neq k$.
 \rule{\textwidth}{0.4pt}
