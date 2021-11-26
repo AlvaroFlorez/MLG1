@@ -328,7 +328,7 @@ Figure 2.1: Gráfico de dispersion del peso del recien nacido y la edad gestacio
 ## weight 1.0000000 0.7311334 0.3048027
 ## age    0.7311334 1.0000000 0.2505155
 ## mppwt  0.3048027 0.2505155 1.0000000</code></pre>
-Por lo tanto, junto con la edad gestacional, vamos a incluir peso de la madre antes del embarazo (en kgs, <code>mppwt</code>) como covariable. Por lo tanto, el modelo propuesto es:
+Por lo tanto, junto con la edad gestacional, ahora vamos a incluir peso de la madre antes del embarazo (en kgs, <code>mppwt</code>) como covariable. Por lo tanto, el modelo propuesto es:
 <span class="math display">\[
 \mbox{weight}_{i} = \beta_{0} + \beta_{1}\mbox{age}_{i} + \beta_{2}\mbox{mppwt}_{i} + \varepsilon_{i}, \mbox{ para }i=1,\ldots,42,
 \]</span>
@@ -336,7 +336,7 @@ con <span class="math inline">\(\varepsilon_{i}\sim N(0,\sigma^{2})\)</span>, y 
 </div>
 <div id="modelo-lineal-múltiple-1" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> Modelo lineal múltiple</h2>
-<p>En general, se puede relacionar la variable respuesta (<span class="math inline">\(y\)</span>), con <span class="math inline">\(p-1\)</span> covariables o variables predictoras. El modelo lineal múltiple se expresa de la siguiente forma:</p>
+<p>En general, se puede relacionar la variable respuesta (<span class="math inline">\(y\)</span>), con <span class="math inline">\(p-1\)</span> covariables (o variables predictoras). El modelo lineal múltiple se expresa de la siguiente forma:</p>
 <p><span class="math display" id="eq:modMultiple">\[\begin{equation}
 \begin{split}
 y_{i} =&amp; \beta_{0} + \beta_{1}x_{i1} + \beta_{2}x_{i2} + \ldots + \beta_{p-1} x_{i,p-1} + \varepsilon_{i} \\
