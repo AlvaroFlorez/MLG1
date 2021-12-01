@@ -483,7 +483,7 @@ Aquí vemos que ambas covariables tienen un efecto positivo sobre el peso del be
 <li>Si la edad gestacional aumenta en una semana y el peso de la madre se mantiene constante, el valor esperado del peso al nacer crece 167 gramos.</li>
 <li>Por cada incremento de un kilogramo en el peso de la madre y manteniendo la edad gestacional constante, el peso al nacer medio aumenta 11 gramos.</li>
 </ul>
-<p>La estimación de <span class="math inline">\(\sigma^{2}\)</span> es:</p>
+<p>Además, la estimación de <span class="math inline">\(\sigma^{2}\)</span> es:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="modelo-lineal-múltiple.html#cb6-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">sqrt</span>(<span class="fu">sum</span>(mod<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="dv">39</span>)</span></code></pre></div>
 <pre><code>## [1] 0.4356247</code></pre>
 Note que al adicionar la covariable <code>mppwt</code> se redujo el <span class="math inline">\(MS_{res}\)</span>.
