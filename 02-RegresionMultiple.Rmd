@@ -173,7 +173,7 @@ Aquí vemos que ambas covariables tienen un efecto positivo sobre el peso del be
 - Si la edad gestacional aumenta en una semana y el peso de la madre se mantiene constante, el valor esperado del peso al nacer crece `r round(mod$coefficients[2],3)*1000` gramos.
 - Por cada incremento de un kilogramo en el peso de la madre y manteniendo la edad gestacional constante, el peso al nacer medio aumenta `r round(mod$coefficients[3],3)*1000` gramos.
 
-Además, la estimación de $\sigma^{2}$ es:
+La estimación de $\sigma^{2}$ es:
 ```{r fitBirthweight2}
  sqrt(sum(mod$residuals^2)/39)
 ```
