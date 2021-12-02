@@ -23,11 +23,11 @@ La edad gestacional y el número de cigarrillos consumidos por la madre tienen e
 
 ## Ejemplo 2. Ventas de helados {-}
 La base de datos `icecream` (del paquete `orcutt` de R) recopila la siguiente información tomada cada cuatro semanas durante dos años (marzo 1951 a julio 1953):
-\begin{itemize}
-\item **price**: precio promedio del helado (dolares por bote)
-\item **cons**: consumo medio de helado (botes por persona)
-\item **temp**: temperatura promedio (en Fahrenheit)
-\end{itemize}
+
+- **price**: precio promedio del helado (dolares por bote)
+- **cons**: consumo medio de helado (botes por persona)
+- **temp**: temperatura promedio (en Fahrenheit)
+
 La Figura \ref{fig:icecream} muestra la relación entre las variables. Aquí podemos observar que a mayor temperatura, el consumo de helado se incrementa. Por otro lado, la relación con el precio no es tan fuerte.
 
 ```{r Icecream, echo=T, fig.height = 4, fig.width = 5,fig.align = "center",fig.cap = "\\label{fig:icecream} Relación entre las variables de los datos de ventas de helados.",warning=FALSE,message = FALSE}
@@ -59,7 +59,7 @@ data("wblake")
 plot(Length~Age,data=wblake,xlab='edad (años)',ylab='longitud (mm)')
 ```
 
-La Figura \ref{fig:bassFig} muestra que la relación entre estas dos variables se puede aproximar a una recta, por lo cuál se propone el siguiente:
+La Figura \ref{fig:bassFig} muestra que la relación entre estas dos variables se puede aproximar a una recta, por lo cuál se propone el siguiente modelo:
 \[
 \mbox{length}_{i} = \beta_{0} + \beta_{1}\mbox{age}_{i} + \varepsilon_{i}
 \]
@@ -83,9 +83,9 @@ y_{i}=\beta_{0} + \beta_{1} x_{i1}+\beta_{2} x_{i2}+\ldots + \beta_{p-1} x_{i,p-
 asumimos que la relación entre la variable respuesta y las covariables es lineal, al menos de forma aproximada. Además,
 
 a. $E(\varepsilon_{i})=0$, para $i=1,\ldots,n$,
-b. $Var(\varepsilon_{j})=\sigma^{2}$. Homogeneidad de varianza en los errores,
+b. $Var(\varepsilon_{i})=\sigma^{2}$. Homogeneidad de varianza en los errores,
 c. $Cov(\varepsilon_{i},\varepsilon_{j})=0$ para todo $i\neq j$. Los errores están incorrelacionados,
-d. $\varepsilon_{j} \sim Normal(0, \sigma^{2})$. Los errores se distribuyen de forma normal.
+d. $\varepsilon_{i} \sim Normal(0, \sigma^{2})$. Los errores se distribuyen de forma normal.
 
 La importancia de realizar procedimientos para validar los supuestos, radica en que ellos inciden en las cualidades de los estimadores por MCO. En caso de no cumplirse se pueden perder propiedades importantes. Si no se cumple el supuesto (a) se obtienen estimaciones sesgadas. Si no se cumplen (b) y (c) los estimadores MCO pierden la condición de optimalidad. Si no se cumple (d) se pierde eficiencia e imposibilita la aplicación de inferencias basadas en normalidad.
 
@@ -126,7 +126,7 @@ El valor esperado de $\hatsigma^{2}_{1}$ es:
 \[
 E(\hatsigma^{2}_{1}) = \sigma^{2} + \frac{\bbeta_{2}'\bX'_{2}(\bI_{n} - \bH_{1})\bX_{2}\bbeta_{2}}{n-p_{1}}.
 \]
-Dado que $(\bI - \bH_{1})$ es idempotente y, por lo tanto, positiva semi-definida, entonces $E(\hatsigma_{1}^{2}) > \sigma^{2}$. Esto quiere decir que $\hatsigma^{2}_{1}$ es un estimador sesgado de $\sigma^{2}$
+Dado que $(\bI - \bH_{1})$ es idempotente y, por lo tanto, positiva semi-definida, entonces $E(\hatsigma_{1}^{2}) > \sigma^{2}$. Esto quiere decir que $\hatsigma^{2}_{1}$ es un estimador sesgado de $\sigma^{2}$.
 
 Ahora veamos el efecto de omitir covariables relevantes sobre las predicciones de $y$ en el punto $\bx_{0} = (\bx_{01}', \bx_{02}')'$. Tenemos que:
 \[
@@ -136,7 +136,7 @@ El valor esperado de $\hatby_{0}$ es:
 \[
 E(\hatby_{0}) = \bx_{01}'E(\hatbbeta_{1}) = \bx_{01}'\left[ \bbeta_{1} +  (\bX_{1}'\bX_{1})^{-1}\bX_{1}'\bX_{2}\bbeta_{2} \right]. 
 \]
-Por lo tanto las predicciones también son sesgadas, $E(\hatby_{0}) \neq \bx_{01}\bbeta_{1} + \bx_{02}\bbeta_{2}$.
+Por lo tanto las predicciones también son sesgadas, $E(\hatby_{0}) \neq \bx_{01}'\bbeta_{1} + \bx_{02}'\bbeta_{2}$.
 
 ### Incorrecta matriz de varianzas de los errores
 Cuando $V(\bvarepsi) = \sigma^{2}\bV$, pero asumimos erroneamente que $V(\bvarepsi) = \sigma^{2}\bI_{n}$, el estimador $\hatbbeta$ sigue siendo insesgado. Pero, tenemos que:
@@ -223,7 +223,7 @@ t_{i} = \frac{e_{i}}{\sqrt{\hatsigma^{2}_{(i)}(1-h_{ii})}},
 \]
 donde $\hatsigma^{2}_{(i)}$ es la estimación de $\sigma$ usando todas las observaciones excepto la $i$-ésima. Se puede demostrar que:
 \[
-\hatsigma^{2}_{(i)} = \frac{(n-p)\hatsigma^{2} - \epsilon^{2}_{i}/(1-h_{ii})}{n-p-1}.
+\hatsigma^{2}_{(i)} = \frac{(n-p)\hatsigma^{2} - e^{2}_{i}/(1-h_{ii})}{n-p-1}.
 \]
 
 ## Evaluación del cumplimiento de los supuestos
@@ -232,7 +232,7 @@ En esta sección mostramos la evaluación de los supuestos a través del anális
 ### Gráficos de residuos
 Un gráfico de los residuos es una forma efectiva de investigar posibles alejamientos de los supuestos. Generalmente, se grafican los residuos estudentizados $(r_{i})$ contra los valores ajustados $\haty_{i}$ (o contra alguna de las covariables $x_{ij}$). Este tipo de gráfico es de gran ayuda para detectar la correcta especificación del modelo y homocedasticidad. Algunos patrones de residuos se pueden observar en la Figura \@ref(fig:PatronesResiduos). 
 
-```{r PatronesResiduos, echo=F, fig.height = 4, fig.width = 8,fig.align = "center",fig.cap = "Ejemplos de posibles patrones de residuos",warning=FALSE,message = FALSE}
+```{r PatronesResiduos, echo=F, fig.height = 6, fig.width = 9,fig.align = "center",fig.cap = "Ejemplos de posibles patrones de residuos",warning=FALSE,message = FALSE}
 set.seed(1)
 x1= runif(100,0,1)
 e1 = rnorm(100)
@@ -295,7 +295,7 @@ plot(mod.fit.birthweight,abs(res.stud.birthweight),
      xlab='valores ajustados',main='(b)')
 lines(lowess(abs(res.stud.birthweight)~mod.fit.birthweight), col = 2)
 ```
-La Figura \@ref(fig:residuosBWdata})(a) muestra que los residuos están alrededor de cero sin mostrar ningún patrón. Note que este gráfico es similar a la Figura \@ref(fig:PatronesResiduos)(a). La línea roja es una suaviación LOWESS (Locally weighted scatterplot smoothing, más detalle ver Apéndice A.5 de @weisberg_applied_2014). Estas suavizaciones permiten ver fácilmente patrones de comportamiento. Aquí vemos que la suavización está cerca de la recta en cero sin mostrar ninguna tendencia o curvatura muy marcada. Por lo tanto, podemos afirmar que la relación entre el peso del recién nacido y las covariables propuesta es lineal. Además, no se observa un problema notorio de heterocedasticidad en ninguno de los dos gráficos de residuos. 
+La Figura \@ref(fig:residuosBWdata)(a) muestra que los residuos están alrededor de cero sin mostrar ningún patrón. Note que este gráfico es similar a la Figura \@ref(fig:PatronesResiduos)(a). La línea roja es una suaviación LOWESS (Locally weighted scatterplot smoothing, más detalle ver Apéndice A.5 de @weisberg_applied_2014). Estas suavizaciones permiten ver fácilmente patrones de comportamiento. Aquí vemos que la suavización está cerca de la recta en cero sin mostrar ninguna tendencia o curvatura muy marcada. Por lo tanto, podemos afirmar que la relación entre el peso del recién nacido y las covariables propuesta es lineal. Además, no se observa un problema notorio de heterocedasticidad en ninguno de los dos gráficos de residuos. 
 \rule{\textwidth}{0.4pt}
 
 ### Gráficos de residuos parciales
@@ -307,7 +307,7 @@ y_{i} = \beta_{0} +\beta_{1}x_{i1}+\beta_{2}x_{i2} + \ldots + \beta_{p-1}x_{i,p-
 \]
 Para calcular los residuos parciales, primero estimamos los parámetros $(\hatbeta_{1},\ldots,\hatbeta_{p-1})$ y los residuos ordinarios $(e_{1},\ldots,e_{n})$. Luego, los residuos parciales para la covariable $x_{j}$ se obtienen de la siguiente forma:
 \[
-e^{*}_{i}(y|x_{j}) = e_{i} - \hatbeta_{j}x_{ij}, \mbox{ para } i=1,\ldots,n.
+e^{*}_{i}(y|x_{j}) = e_{i} - \hatbeta_{j}x_{ij}.
 \]
 El gráfico de residuos parciales para la covariable $x_{j}$ se obtiene graficando $e^{*}_{i}(y|x_{j})$ contra $x_{j}$. Si la covariable $x_{j}$ entra al modelo linealmente, entonces el gráfico de residuos parciales debe mostrar una tendencia lineal. Por el contrario, si se observa una curva, $x_{j}$ no entra al modelo de forma lineal.
 

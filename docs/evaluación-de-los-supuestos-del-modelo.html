@@ -24,7 +24,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2021-08-13" />
+<meta name="date" content="2021-12-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -318,9 +318,9 @@ div.csl-indent {
 \]</span>
 con <span class="math inline">\(\varepsilon_{i} \sim N\left(0,\sigma^{2} \right)\)</span> y <span class="math inline">\(cov(\varepsilon_{j},\varepsilon_{k})=0\)</span>, para todo <span class="math inline">\(j \neq k\)</span>.</p>
 <p>El ajuste del modelo es:</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb44-1" aria-hidden="true" tabindex="-1"></a>Birthweight <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&#39;birthweight.csv&#39;</span>)</span>
-<span id="cb44-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb44-2" aria-hidden="true" tabindex="-1"></a>mod.birthweight <span class="ot">=</span> <span class="fu">lm</span>(weight <span class="sc">~</span> age <span class="sc">+</span> motherage <span class="sc">+</span> mnocig <span class="sc">+</span> mppwt, <span class="at">data=</span>Birthweight)</span>
-<span id="cb44-3"><a href="evaluación-de-los-supuestos-del-modelo.html#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.birthweight)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb1-1" aria-hidden="true" tabindex="-1"></a>Birthweight <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&#39;birthweight.csv&#39;</span>)</span>
+<span id="cb1-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb1-2" aria-hidden="true" tabindex="-1"></a>mod.birthweight <span class="ot">=</span> <span class="fu">lm</span>(weight <span class="sc">~</span> age <span class="sc">+</span> motherage <span class="sc">+</span> mnocig <span class="sc">+</span> mppwt, <span class="at">data=</span>Birthweight)</span>
+<span id="cb1-3"><a href="evaluación-de-los-supuestos-del-modelo.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.birthweight)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = weight ~ age + motherage + mnocig + mppwt, data = Birthweight)
@@ -346,11 +346,16 @@ con <span class="math inline">\(\varepsilon_{i} \sim N\left(0,\sigma^{2} \right)
 </div>
 <div id="ejemplo-2.-ventas-de-helados" class="section level2 unnumbered">
 <h2>Ejemplo 2. Ventas de helados</h2>
-La base de datos <code>icecream</code> (del paquete <code>orcutt</code> de R) recopila la siguiente información tomada cada cuatro semanas durante dos años (marzo 1951 a julio 1953):
+<p>La base de datos <code>icecream</code> (del paquete <code>orcutt</code> de R) recopila la siguiente información tomada cada cuatro semanas durante dos años (marzo 1951 a julio 1953):</p>
+<ul>
+<li><strong>price</strong>: precio promedio del helado (dolares por bote)</li>
+<li><strong>cons</strong>: consumo medio de helado (botes por persona)</li>
+<li><strong>temp</strong>: temperatura promedio (en Fahrenheit)</li>
+</ul>
 <p>La Figura  muestra la relación entre las variables. Aquí podemos observar que a mayor temperatura, el consumo de helado se incrementa. Por otro lado, la relación con el precio no es tan fuerte.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(orcutt)</span>
-<span id="cb46-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;icecream&quot;</span>)</span>
-<span id="cb46-3"><a href="evaluación-de-los-supuestos-del-modelo.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(icecream[,<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">4</span>)])</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(orcutt)</span>
+<span id="cb3-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;icecream&quot;</span>)</span>
+<span id="cb3-3"><a href="evaluación-de-los-supuestos-del-modelo.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(icecream[,<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">4</span>)])</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:Icecream"></span>
 <img src="MLGI_files/figure-html/Icecream-1.png" alt="\label{fig:icecream} Relación entre las variables de los datos de ventas de helados." width="480" />
 <p class="caption">
@@ -363,8 +368,8 @@ Figure 3.1:  Relación entre las variables de los datos de ventas de helados.
 \]</span>
 con <span class="math inline">\(\varepsilon_{i} \sim N\left(0,\sigma^{2} \right)\)</span> y <span class="math inline">\(cov(\varepsilon_{j},\varepsilon_{k})=0\)</span>, para todo <span class="math inline">\(j \neq k\)</span>.</p>
 <p>El resumen del modelo es el siguiente:</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb47-1" aria-hidden="true" tabindex="-1"></a>  mod.icecream <span class="ot">=</span> <span class="fu">lm</span>(cons<span class="sc">~</span>price<span class="sc">+</span>temp,<span class="at">data=</span>icecream)</span>
-<span id="cb47-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.icecream)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb4-1" aria-hidden="true" tabindex="-1"></a>  mod.icecream <span class="ot">=</span> <span class="fu">lm</span>(cons<span class="sc">~</span>price<span class="sc">+</span>temp,<span class="at">data=</span>icecream)</span>
+<span id="cb4-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.icecream)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = cons ~ price + temp, data = icecream)
@@ -389,23 +394,23 @@ De aquí podemos concluir que alrededor del 70% de la variabilidad del consumo d
 <div id="ejemplo-3.-longitud-del-pez-lobina-boca-chica" class="section level2 unnumbered">
 <h2>Ejemplo 3. Longitud del pez lobina boca chica</h2>
 <p>La base de datos <code>wblake</code> (de la librería <code>alr4</code>) contiene la edad (en años) y longitud (en mm) de 439 peces lobina boca chica del lago West Bearskin en el nordeste de Minnesota en 1999. El objetivo del estudio es determinar los patrones de crecimiento de este tipo de pez.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(alr4)</span>
-<span id="cb49-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;wblake&quot;</span>)</span>
-<span id="cb49-3"><a href="evaluación-de-los-supuestos-del-modelo.html#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Length<span class="sc">~</span>Age,<span class="at">data=</span>wblake,<span class="at">xlab=</span><span class="st">&#39;edad (años)&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;longitud (mm)&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(alr4)</span>
+<span id="cb6-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;wblake&quot;</span>)</span>
+<span id="cb6-3"><a href="evaluación-de-los-supuestos-del-modelo.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Length<span class="sc">~</span>Age,<span class="at">data=</span>wblake,<span class="at">xlab=</span><span class="st">&#39;edad (años)&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;longitud (mm)&#39;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:bassFig"></span>
 <img src="MLGI_files/figure-html/bassFig-1.png" alt="\label{fig:bass} Relación entre la edad y la longitud de los peces lobina boca chica." width="480" />
 <p class="caption">
 Figure 3.2:  Relación entre la edad y la longitud de los peces lobina boca chica.
 </p>
 </div>
-<p>La Figura  muestra que la relación entre estas dos variables se puede aproximar a una recta, por lo cuál se propone el siguiente:
+<p>La Figura  muestra que la relación entre estas dos variables se puede aproximar a una recta, por lo cuál se propone el siguiente modelo:
 <span class="math display">\[
 \mbox{length}_{i} = \beta_{0} + \beta_{1}\mbox{age}_{i} + \varepsilon_{i}
 \]</span>
 con <span class="math inline">\(\varepsilon_{i} \sim N\left(0,\sigma^{2} \right)\)</span> y <span class="math inline">\(cov(\varepsilon_{j},\varepsilon_{k})=0\)</span>, para todo <span class="math inline">\(j \neq k\)</span>.</p>
 <p>El resumen del ajuste es el siguiente:</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb50-1" aria-hidden="true" tabindex="-1"></a>mod.bass <span class="ot">=</span> <span class="fu">lm</span>(Length<span class="sc">~</span>Age,<span class="at">data=</span>wblake)</span>
-<span id="cb50-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.bass)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb7-1" aria-hidden="true" tabindex="-1"></a>mod.bass <span class="ot">=</span> <span class="fu">lm</span>(Length<span class="sc">~</span>Age,<span class="at">data=</span>wblake)</span>
+<span id="cb7-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.bass)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Length ~ Age, data = wblake)
@@ -436,9 +441,9 @@ y_{i}=\beta_{0} + \beta_{1} x_{i1}+\beta_{2} x_{i2}+\ldots + \beta_{p-1} x_{i,p-
 asumimos que la relación entre la variable respuesta y las covariables es lineal, al menos de forma aproximada. Además,</p>
 <ol style="list-style-type: lower-alpha">
 <li><span class="math inline">\(E(\varepsilon_{i})=0\)</span>, para <span class="math inline">\(i=1,\ldots,n\)</span>,</li>
-<li><span class="math inline">\(Var(\varepsilon_{j})=\sigma^{2}\)</span>. Homogeneidad de varianza en los errores,</li>
+<li><span class="math inline">\(Var(\varepsilon_{i})=\sigma^{2}\)</span>. Homogeneidad de varianza en los errores,</li>
 <li><span class="math inline">\(Cov(\varepsilon_{i},\varepsilon_{j})=0\)</span> para todo <span class="math inline">\(i\neq j\)</span>. Los errores están incorrelacionados,</li>
-<li><span class="math inline">\(\varepsilon_{j} \sim Normal(0, \sigma^{2})\)</span>. Los errores se distribuyen de forma normal.</li>
+<li><span class="math inline">\(\varepsilon_{i} \sim Normal(0, \sigma^{2})\)</span>. Los errores se distribuyen de forma normal.</li>
 </ol>
 <p>La importancia de realizar procedimientos para validar los supuestos, radica en que ellos inciden en las cualidades de los estimadores por MCO. En caso de no cumplirse se pueden perder propiedades importantes. Si no se cumple el supuesto (a) se obtienen estimaciones sesgadas. Si no se cumplen (b) y (c) los estimadores MCO pierden la condición de optimalidad. Si no se cumple (d) se pierde eficiencia e imposibilita la aplicación de inferencias basadas en normalidad.</p>
 <p>En general, no se puede detectar una violación a los supuestos a partir de estadísticos del ajuste del modelo (<span class="math inline">\(R^2\)</span>, <span class="math inline">\(F_0\)</span>, valores-<span class="math inline">\(t\)</span>, etc). El diagnostico se puede hacer por métodos gráficos y pruebas formales (pruebas de hipótesis). Ambos métodos son complementarios, los gráficos sugieren formas particulares de incumplimiento del supuesto, mientras las pruebas formales evalúan su importancia <span class="citation">(<a href="#ref-behar_validacion_2002" role="doc-biblioref">Behar 2002</a>)</span>.</p>
@@ -477,7 +482,7 @@ Evidentemente, el sesgo de <span class="math inline">\(\widehat{\boldsymbol \bet
 <span class="math display">\[
 E(\widehat{\sigma}^{2}_{1}) = \sigma^{2} + \frac{\boldsymbol \beta_{2}&#39;\boldsymbol X&#39;_{2}(\boldsymbol I_{n} - \boldsymbol H_{1})\boldsymbol X_{2}\boldsymbol \beta_{2}}{n-p_{1}}.
 \]</span>
-Dado que <span class="math inline">\((\boldsymbol I- \boldsymbol H_{1})\)</span> es idempotente y, por lo tanto, positiva semi-definida, entonces <span class="math inline">\(E(\widehat{\sigma}_{1}^{2}) &gt; \sigma^{2}\)</span>. Esto quiere decir que <span class="math inline">\(\widehat{\sigma}^{2}_{1}\)</span> es un estimador sesgado de <span class="math inline">\(\sigma^{2}\)</span></p>
+Dado que <span class="math inline">\((\boldsymbol I- \boldsymbol H_{1})\)</span> es idempotente y, por lo tanto, positiva semi-definida, entonces <span class="math inline">\(E(\widehat{\sigma}_{1}^{2}) &gt; \sigma^{2}\)</span>. Esto quiere decir que <span class="math inline">\(\widehat{\sigma}^{2}_{1}\)</span> es un estimador sesgado de <span class="math inline">\(\sigma^{2}\)</span>.</p>
 <p>Ahora veamos el efecto de omitir covariables relevantes sobre las predicciones de <span class="math inline">\(y\)</span> en el punto <span class="math inline">\(\boldsymbol x_{0} = (\boldsymbol x_{01}&#39;, \boldsymbol x_{02}&#39;)&#39;\)</span>. Tenemos que:
 <span class="math display">\[
 \widehat{\boldsymbol y}_{0} = \boldsymbol x_{01}&#39;\widehat{\boldsymbol \beta}_{1} = \boldsymbol x_{01}&#39;(\boldsymbol X_{1}&#39;\boldsymbol X_{1})^{-1}\boldsymbol X_{1}&#39;\boldsymbol y.
@@ -486,7 +491,7 @@ El valor esperado de <span class="math inline">\(\widehat{\boldsymbol y}_{0}\)</
 <span class="math display">\[
 E(\widehat{\boldsymbol y}_{0}) = \boldsymbol x_{01}&#39;E(\widehat{\boldsymbol \beta}_{1}) = \boldsymbol x_{01}&#39;\left[ \boldsymbol \beta_{1} +  (\boldsymbol X_{1}&#39;\boldsymbol X_{1})^{-1}\boldsymbol X_{1}&#39;\boldsymbol X_{2}\boldsymbol \beta_{2} \right]. 
 \]</span>
-Por lo tanto las predicciones también son sesgadas, <span class="math inline">\(E(\widehat{\boldsymbol y}_{0}) \neq \boldsymbol x_{01}\boldsymbol \beta_{1} + \boldsymbol x_{02}\boldsymbol \beta_{2}\)</span>.</p>
+Por lo tanto las predicciones también son sesgadas, <span class="math inline">\(E(\widehat{\boldsymbol y}_{0}) \neq \boldsymbol x_{01}&#39;\boldsymbol \beta_{1} + \boldsymbol x_{02}&#39;\boldsymbol \beta_{2}\)</span>.</p>
 </div>
 <div id="incorrecta-matriz-de-varianzas-de-los-errores" class="section level3" number="3.2.2">
 <h3><span class="header-section-number">3.2.2</span> Incorrecta matriz de varianzas de los errores</h3>
@@ -572,7 +577,7 @@ t_{i} = \frac{e_{i}}{\sqrt{\widehat{\sigma}^{2}_{(i)}(1-h_{ii})}},
 \]</span>
 donde <span class="math inline">\(\widehat{\sigma}^{2}_{(i)}\)</span> es la estimación de <span class="math inline">\(\sigma\)</span> usando todas las observaciones excepto la <span class="math inline">\(i\)</span>-ésima. Se puede demostrar que:
 <span class="math display">\[
-\widehat{\sigma}^{2}_{(i)} = \frac{(n-p)\widehat{\sigma}^{2} - \epsilon^{2}_{i}/(1-h_{ii})}{n-p-1}.
+\widehat{\sigma}^{2}_{(i)} = \frac{(n-p)\widehat{\sigma}^{2} - e^{2}_{i}/(1-h_{ii})}{n-p-1}.
 \]</span></p>
 </div>
 </div>
@@ -583,7 +588,7 @@ donde <span class="math inline">\(\widehat{\sigma}^{2}_{(i)}\)</span> es la esti
 <h3><span class="header-section-number">3.4.1</span> Gráficos de residuos</h3>
 <p>Un gráfico de los residuos es una forma efectiva de investigar posibles alejamientos de los supuestos. Generalmente, se grafican los residuos estudentizados <span class="math inline">\((r_{i})\)</span> contra los valores ajustados <span class="math inline">\(\widehat{y}_{i}\)</span> (o contra alguna de las covariables <span class="math inline">\(x_{ij}\)</span>). Este tipo de gráfico es de gran ayuda para detectar la correcta especificación del modelo y homocedasticidad. Algunos patrones de residuos se pueden observar en la Figura <a href="evaluación-de-los-supuestos-del-modelo.html#fig:PatronesResiduos">3.3</a>.</p>
 <div class="figure" style="text-align: center"><span id="fig:PatronesResiduos"></span>
-<img src="MLGI_files/figure-html/PatronesResiduos-1.png" alt="Ejemplos de posibles patrones de residuos" width="768" />
+<img src="MLGI_files/figure-html/PatronesResiduos-1.png" alt="Ejemplos de posibles patrones de residuos" width="864" />
 <p class="caption">
 Figure 3.3: Ejemplos de posibles patrones de residuos
 </p>
@@ -599,25 +604,25 @@ Figure 3.4: Ejemplos de posibles patrones de residuos (graficando el valor absol
 <div id="bajo-peso-al-nacer---gráfico-de-residuos" class="section level4 unnumbered">
 <h4>Bajo peso al nacer - gráfico de residuos</h4>
 <p>Para el modelo ajustado para los datos de peso al nacer, el gráfico de los residuos contra los valores ajustados se obtienen de la siguiente forma:</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb52-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb52-2" aria-hidden="true" tabindex="-1"></a>res.stud.birthweight <span class="ot">=</span> <span class="fu">studres</span>(mod.birthweight)</span>
-<span id="cb52-3"><a href="evaluación-de-los-supuestos-del-modelo.html#cb52-3" aria-hidden="true" tabindex="-1"></a>mod.fit.birthweight <span class="ot">=</span> mod.birthweight<span class="sc">$</span>fitted.values</span>
-<span id="cb52-4"><a href="evaluación-de-los-supuestos-del-modelo.html#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb52-5"><a href="evaluación-de-los-supuestos-del-modelo.html#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.fit.birthweight,res.stud.birthweight, <span class="at">ylab=</span><span class="st">&#39;residuos estudentizados&#39;</span>,</span>
-<span id="cb52-6"><a href="evaluación-de-los-supuestos-del-modelo.html#cb52-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;valores ajustados&#39;</span>,<span class="at">main=</span><span class="st">&#39;(a)&#39;</span>)</span>
-<span id="cb52-7"><a href="evaluación-de-los-supuestos-del-modelo.html#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
-<span id="cb52-8"><a href="evaluación-de-los-supuestos-del-modelo.html#cb52-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(res.stud.birthweight<span class="sc">~</span>mod.fit.birthweight), <span class="at">col =</span> <span class="dv">2</span>)</span>
-<span id="cb52-9"><a href="evaluación-de-los-supuestos-del-modelo.html#cb52-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.fit.birthweight,<span class="fu">abs</span>(res.stud.birthweight), </span>
-<span id="cb52-10"><a href="evaluación-de-los-supuestos-del-modelo.html#cb52-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&#39;valor absoluto de los residuos estudentizados&#39;</span>,</span>
-<span id="cb52-11"><a href="evaluación-de-los-supuestos-del-modelo.html#cb52-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;valores ajustados&#39;</span>,<span class="at">main=</span><span class="st">&#39;(b)&#39;</span>)</span>
-<span id="cb52-12"><a href="evaluación-de-los-supuestos-del-modelo.html#cb52-12" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(<span class="fu">abs</span>(res.stud.birthweight)<span class="sc">~</span>mod.fit.birthweight), <span class="at">col =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb9-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb9-2" aria-hidden="true" tabindex="-1"></a>res.stud.birthweight <span class="ot">=</span> <span class="fu">studres</span>(mod.birthweight)</span>
+<span id="cb9-3"><a href="evaluación-de-los-supuestos-del-modelo.html#cb9-3" aria-hidden="true" tabindex="-1"></a>mod.fit.birthweight <span class="ot">=</span> mod.birthweight<span class="sc">$</span>fitted.values</span>
+<span id="cb9-4"><a href="evaluación-de-los-supuestos-del-modelo.html#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb9-5"><a href="evaluación-de-los-supuestos-del-modelo.html#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.fit.birthweight,res.stud.birthweight, <span class="at">ylab=</span><span class="st">&#39;residuos estudentizados&#39;</span>,</span>
+<span id="cb9-6"><a href="evaluación-de-los-supuestos-del-modelo.html#cb9-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;valores ajustados&#39;</span>,<span class="at">main=</span><span class="st">&#39;(a)&#39;</span>)</span>
+<span id="cb9-7"><a href="evaluación-de-los-supuestos-del-modelo.html#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb9-8"><a href="evaluación-de-los-supuestos-del-modelo.html#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(res.stud.birthweight<span class="sc">~</span>mod.fit.birthweight), <span class="at">col =</span> <span class="dv">2</span>)</span>
+<span id="cb9-9"><a href="evaluación-de-los-supuestos-del-modelo.html#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.fit.birthweight,<span class="fu">abs</span>(res.stud.birthweight), </span>
+<span id="cb9-10"><a href="evaluación-de-los-supuestos-del-modelo.html#cb9-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&#39;valor absoluto de los residuos estudentizados&#39;</span>,</span>
+<span id="cb9-11"><a href="evaluación-de-los-supuestos-del-modelo.html#cb9-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;valores ajustados&#39;</span>,<span class="at">main=</span><span class="st">&#39;(b)&#39;</span>)</span>
+<span id="cb9-12"><a href="evaluación-de-los-supuestos-del-modelo.html#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(<span class="fu">abs</span>(res.stud.birthweight)<span class="sc">~</span>mod.fit.birthweight), <span class="at">col =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:residuosBWdata"></span>
 <img src="MLGI_files/figure-html/residuosBWdata-1.png" alt="Datos de peso al nacer. Gráfico de los residuos estudentizados contra los valores ajustados." width="768" />
 <p class="caption">
 Figure 3.5: Datos de peso al nacer. Gráfico de los residuos estudentizados contra los valores ajustados.
 </p>
 </div>
-La Figura @ref(fig:residuosBWdata})(a) muestra que los residuos están alrededor de cero sin mostrar ningún patrón. Note que este gráfico es similar a la Figura <a href="evaluación-de-los-supuestos-del-modelo.html#fig:PatronesResiduos">3.3</a>(a). La línea roja es una suaviación LOWESS (Locally weighted scatterplot smoothing, más detalle ver Apéndice A.5 de <span class="citation"><a href="#ref-weisberg_applied_2014" role="doc-biblioref">Weisberg</a> (<a href="#ref-weisberg_applied_2014" role="doc-biblioref">2014</a>)</span>). Estas suavizaciones permiten ver fácilmente patrones de comportamiento. Aquí vemos que la suavización está cerca de la recta en cero sin mostrar ninguna tendencia o curvatura muy marcada. Por lo tanto, podemos afirmar que la relación entre el peso del recién nacido y las covariables propuesta es lineal. Además, no se observa un problema notorio de heterocedasticidad en ninguno de los dos gráficos de residuos.
+La Figura <a href="evaluación-de-los-supuestos-del-modelo.html#fig:residuosBWdata">3.5</a>(a) muestra que los residuos están alrededor de cero sin mostrar ningún patrón. Note que este gráfico es similar a la Figura <a href="evaluación-de-los-supuestos-del-modelo.html#fig:PatronesResiduos">3.3</a>(a). La línea roja es una suaviación LOWESS (Locally weighted scatterplot smoothing, más detalle ver Apéndice A.5 de <span class="citation"><a href="#ref-weisberg_applied_2014" role="doc-biblioref">Weisberg</a> (<a href="#ref-weisberg_applied_2014" role="doc-biblioref">2014</a>)</span>). Estas suavizaciones permiten ver fácilmente patrones de comportamiento. Aquí vemos que la suavización está cerca de la recta en cero sin mostrar ninguna tendencia o curvatura muy marcada. Por lo tanto, podemos afirmar que la relación entre el peso del recién nacido y las covariables propuesta es lineal. Además, no se observa un problema notorio de heterocedasticidad en ninguno de los dos gráficos de residuos.
 </div>
 </div>
 <div id="gráficos-de-residuos-parciales" class="section level3" number="3.4.2">
@@ -629,18 +634,18 @@ y_{i} = \beta_{0} +\beta_{1}x_{i1}+\beta_{2}x_{i2} + \ldots + \beta_{p-1}x_{i,p-
 \]</span>
 Para calcular los residuos parciales, primero estimamos los parámetros <span class="math inline">\((\widehat{\beta}_{1},\ldots,\widehat{\beta}_{p-1})\)</span> y los residuos ordinarios <span class="math inline">\((e_{1},\ldots,e_{n})\)</span>. Luego, los residuos parciales para la covariable <span class="math inline">\(x_{j}\)</span> se obtienen de la siguiente forma:
 <span class="math display">\[
-e^{*}_{i}(y|x_{j}) = e_{i} - \widehat{\beta}_{j}x_{ij}, \mbox{ para } i=1,\ldots,n.
+e^{*}_{i}(y|x_{j}) = e_{i} - \widehat{\beta}_{j}x_{ij}.
 \]</span>
 El gráfico de residuos parciales para la covariable <span class="math inline">\(x_{j}\)</span> se obtiene graficando <span class="math inline">\(e^{*}_{i}(y|x_{j})\)</span> contra <span class="math inline">\(x_{j}\)</span>. Si la covariable <span class="math inline">\(x_{j}\)</span> entra al modelo linealmente, entonces el gráfico de residuos parciales debe mostrar una tendencia lineal. Por el contrario, si se observa una curva, <span class="math inline">\(x_{j}\)</span> no entra al modelo de forma lineal.</p>
 <div id="bajo-peso-al-nacer---gráfico-de-residuos-parciales" class="section level4 unnumbered">
 <h4>Bajo peso al nacer - gráfico de residuos parciales</h4>
 <p>El gráfico de residuos parciales se obtiene así:</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb53-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb53-3"><a href="evaluación-de-los-supuestos-del-modelo.html#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="fu">crPlots</span>(mod.birthweight,<span class="st">&#39;age&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;edad gestacional&#39;</span>)</span>
-<span id="cb53-4"><a href="evaluación-de-los-supuestos-del-modelo.html#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="fu">crPlots</span>(mod.birthweight,<span class="st">&#39;motherage&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;edad de la madre&#39;</span>)</span>
-<span id="cb53-5"><a href="evaluación-de-los-supuestos-del-modelo.html#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="fu">crPlots</span>(mod.birthweight,<span class="st">&#39;mnocig&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;número de cigarrillos por mes&#39;</span>)</span>
-<span id="cb53-6"><a href="evaluación-de-los-supuestos-del-modelo.html#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="fu">crPlots</span>(mod.birthweight,<span class="st">&#39;mppwt&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;peso de la madre&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb10-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb10-3"><a href="evaluación-de-los-supuestos-del-modelo.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">crPlots</span>(mod.birthweight,<span class="st">&#39;age&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;edad gestacional&#39;</span>)</span>
+<span id="cb10-4"><a href="evaluación-de-los-supuestos-del-modelo.html#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">crPlots</span>(mod.birthweight,<span class="st">&#39;motherage&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;edad de la madre&#39;</span>)</span>
+<span id="cb10-5"><a href="evaluación-de-los-supuestos-del-modelo.html#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">crPlots</span>(mod.birthweight,<span class="st">&#39;mnocig&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;número de cigarrillos por mes&#39;</span>)</span>
+<span id="cb10-6"><a href="evaluación-de-los-supuestos-del-modelo.html#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">crPlots</span>(mod.birthweight,<span class="st">&#39;mppwt&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;peso de la madre&#39;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:residuosBWdata2"></span>
 <img src="MLGI_files/figure-html/residuosBWdata2-1.png" alt="Datos de peso al nacer. Gráfico de los residuos parciales para cada covariable." width="672" />
 <p class="caption">
@@ -668,8 +673,8 @@ Figure 3.7: Gráficos de normalidad para datos aleatorios generados a partir de 
 <div id="bajo-peso-al-nacer---gráfico-de-normalidad" class="section level4 unnumbered">
 <h4>Bajo peso al nacer - gráfico de normalidad</h4>
 <p>El gráfico cuartil-cuartil de los residuos estudentizados se obtiene así:</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb54-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">qqPlot</span>(mod.birthweight,<span class="at">xlab=</span><span class="st">&#39;cuantiles teóricos&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;residuos estudentizados&#39;</span>,</span>
-<span id="cb54-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb54-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">distribution =</span> <span class="st">&#39;norm&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb11-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">qqPlot</span>(mod.birthweight,<span class="at">xlab=</span><span class="st">&#39;cuantiles teóricos&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;residuos estudentizados&#39;</span>,</span>
+<span id="cb11-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb11-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">distribution =</span> <span class="st">&#39;norm&#39;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:qqnormBWdata1"></span>
 <img src="MLGI_files/figure-html/qqnormBWdata1-1.png" alt="Datos de peso al nacer. Gráfico cuantil-cuantil para normalidad." width="480" />
 <p class="caption">
@@ -695,15 +700,15 @@ Figure 3.9: Patrones de correlación temporal de los residuos. En la columna (a)
 <div id="consumo-de-helado---gráfico-de-los-residuos-contra-el-tiempo" class="section level4 unnumbered">
 <h4>Consumo de helado - gráfico de los residuos contra el tiempo</h4>
 <p>Los gráficos de los residuos para el modelo ajustado a los datos de consumo de helado se observan en la Figura <a href="evaluación-de-los-supuestos-del-modelo.html#fig:heladosResiduos1">3.10</a>. Aquí vemos que la relación entre la variable respuesta y las covariables es aproximadamente lineal, no hay problemas de heterocedasticidad, y que los residuos siguen una distribución normal. Aunque se ve la presencia de un punto atípico.</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb56-1" aria-hidden="true" tabindex="-1"></a>res.stud.icecream <span class="ot">=</span> <span class="fu">studres</span>(mod.icecream)</span>
-<span id="cb56-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb56-2" aria-hidden="true" tabindex="-1"></a>mod.fit.icecream <span class="ot">=</span> mod.icecream<span class="sc">$</span>fitted.values</span>
-<span id="cb56-3"><a href="evaluación-de-los-supuestos-del-modelo.html#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb56-4"><a href="evaluación-de-los-supuestos-del-modelo.html#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.fit.icecream,res.stud.icecream, <span class="at">ylab=</span><span class="st">&#39;residuos estudentizados&#39;</span>,</span>
-<span id="cb56-5"><a href="evaluación-de-los-supuestos-del-modelo.html#cb56-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;valores ajustados&#39;</span>)</span>
-<span id="cb56-6"><a href="evaluación-de-los-supuestos-del-modelo.html#cb56-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
-<span id="cb56-7"><a href="evaluación-de-los-supuestos-del-modelo.html#cb56-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(res.stud.icecream<span class="sc">~</span>mod.fit.icecream), <span class="at">col =</span> <span class="dv">2</span>)</span>
-<span id="cb56-8"><a href="evaluación-de-los-supuestos-del-modelo.html#cb56-8" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">qqPlot</span>(mod.icecream,<span class="at">xlab=</span><span class="st">&#39;cuantiles teóricos&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;residuos estudentizados&#39;</span>,</span>
-<span id="cb56-9"><a href="evaluación-de-los-supuestos-del-modelo.html#cb56-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">distribution =</span> <span class="st">&#39;norm&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb13-1" aria-hidden="true" tabindex="-1"></a>res.stud.icecream <span class="ot">=</span> <span class="fu">studres</span>(mod.icecream)</span>
+<span id="cb13-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb13-2" aria-hidden="true" tabindex="-1"></a>mod.fit.icecream <span class="ot">=</span> mod.icecream<span class="sc">$</span>fitted.values</span>
+<span id="cb13-3"><a href="evaluación-de-los-supuestos-del-modelo.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb13-4"><a href="evaluación-de-los-supuestos-del-modelo.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.fit.icecream,res.stud.icecream, <span class="at">ylab=</span><span class="st">&#39;residuos estudentizados&#39;</span>,</span>
+<span id="cb13-5"><a href="evaluación-de-los-supuestos-del-modelo.html#cb13-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;valores ajustados&#39;</span>)</span>
+<span id="cb13-6"><a href="evaluación-de-los-supuestos-del-modelo.html#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb13-7"><a href="evaluación-de-los-supuestos-del-modelo.html#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(res.stud.icecream<span class="sc">~</span>mod.fit.icecream), <span class="at">col =</span> <span class="dv">2</span>)</span>
+<span id="cb13-8"><a href="evaluación-de-los-supuestos-del-modelo.html#cb13-8" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">qqPlot</span>(mod.icecream,<span class="at">xlab=</span><span class="st">&#39;cuantiles teóricos&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;residuos estudentizados&#39;</span>,</span>
+<span id="cb13-9"><a href="evaluación-de-los-supuestos-del-modelo.html#cb13-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">distribution =</span> <span class="st">&#39;norm&#39;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:heladosResiduos1"></span>
 <img src="MLGI_files/figure-html/heladosResiduos1-1.png" alt="Datos de consumo de helado. Gráfico de los residuos estudentizados contra los valores ajustados (izquierda) y gráfico de normalidad (derecha)." width="864" />
 <p class="caption">
@@ -712,13 +717,13 @@ Figure 3.10: Datos de consumo de helado. Gráfico de los residuos estudentizados
 </div>
 <pre><code>## [1]  6 30</code></pre>
 <p>Dado que las observaciones del consumo de helado tienen un orden temporal (fueron tomadas cada 4 semanas), se pueden graficar los residuos contra el tiempo y de los residuos rezagados. Estos se pueden observar en la Figura <a href="evaluación-de-los-supuestos-del-modelo.html#fig:heladosResiduos2">3.11</a>. Aquí podemos ver que hay una correlación temporal positiva. Además, se tiene que <span class="math inline">\(cor(e_{t},e_{t-1}) = 0.605\)</span>.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb58-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(res.stud.icecream, <span class="at">ylab=</span><span class="st">&#39;residuos estudentizados&#39;</span>,</span>
-<span id="cb58-3"><a href="evaluación-de-los-supuestos-del-modelo.html#cb58-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;tiempo&#39;</span>,<span class="at">type=</span><span class="st">&#39;b&#39;</span>)</span>
-<span id="cb58-4"><a href="evaluación-de-los-supuestos-del-modelo.html#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
-<span id="cb58-5"><a href="evaluación-de-los-supuestos-del-modelo.html#cb58-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(res.stud.icecream[<span class="sc">-</span><span class="dv">30</span>],res.stud.icecream[<span class="sc">-</span><span class="dv">1</span>], <span class="at">ylab=</span><span class="st">&#39;residuos estudentizados (t)&#39;</span>,</span>
-<span id="cb58-6"><a href="evaluación-de-los-supuestos-del-modelo.html#cb58-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;residuos estudentizados (t-1)&#39;</span>)</span>
-<span id="cb58-7"><a href="evaluación-de-los-supuestos-del-modelo.html#cb58-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(res.stud.icecream[<span class="sc">-</span><span class="dv">1</span>] <span class="sc">~</span> res.stud.icecream[<span class="sc">-</span><span class="dv">30</span>]),<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb15-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(res.stud.icecream, <span class="at">ylab=</span><span class="st">&#39;residuos estudentizados&#39;</span>,</span>
+<span id="cb15-3"><a href="evaluación-de-los-supuestos-del-modelo.html#cb15-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;tiempo&#39;</span>,<span class="at">type=</span><span class="st">&#39;b&#39;</span>)</span>
+<span id="cb15-4"><a href="evaluación-de-los-supuestos-del-modelo.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb15-5"><a href="evaluación-de-los-supuestos-del-modelo.html#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(res.stud.icecream[<span class="sc">-</span><span class="dv">30</span>],res.stud.icecream[<span class="sc">-</span><span class="dv">1</span>], <span class="at">ylab=</span><span class="st">&#39;residuos estudentizados (t)&#39;</span>,</span>
+<span id="cb15-6"><a href="evaluación-de-los-supuestos-del-modelo.html#cb15-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;residuos estudentizados (t-1)&#39;</span>)</span>
+<span id="cb15-7"><a href="evaluación-de-los-supuestos-del-modelo.html#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(res.stud.icecream[<span class="sc">-</span><span class="dv">1</span>] <span class="sc">~</span> res.stud.icecream[<span class="sc">-</span><span class="dv">30</span>]),<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:heladosResiduos2"></span>
 <img src="MLGI_files/figure-html/heladosResiduos2-1.png" alt="Datos de consumo de helado. Gráfico de los residuos estudentizados contra el tiempo (izquierda) y gráfico de residuos rezagados (derecha)." width="672" />
 <p class="caption">
@@ -779,12 +784,12 @@ Si <span class="math inline">\(H_{0}\)</span> es cierta, <span class="math inlin
 <div id="base-de-datos-de-la-longitud-de-los-peces---prueba-de-falta-de-ajuste" class="section level4" number="3.5.1.1">
 <h4><span class="header-section-number">3.5.1.1</span> Base de datos de la longitud de los peces - prueba de falta de ajuste</h4>
 <p>La Figura <a href="evaluación-de-los-supuestos-del-modelo.html#fig:pecesResiduos1">3.12</a> muestra los gráficos de los residuos para el modelo ajustado a los datos de la longitud de los peces.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb59-1" aria-hidden="true" tabindex="-1"></a>res.stud.bass <span class="ot">=</span> <span class="fu">studres</span>(mod.bass)</span>
-<span id="cb59-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb59-2" aria-hidden="true" tabindex="-1"></a>mod.fit.bass <span class="ot">=</span> mod.bass<span class="sc">$</span>fitted.values</span>
-<span id="cb59-3"><a href="evaluación-de-los-supuestos-del-modelo.html#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.fit.bass,res.stud.bass, <span class="at">ylab=</span><span class="st">&#39;residuos estudentizados&#39;</span>,</span>
-<span id="cb59-4"><a href="evaluación-de-los-supuestos-del-modelo.html#cb59-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;valores ajustados&#39;</span>)</span>
-<span id="cb59-5"><a href="evaluación-de-los-supuestos-del-modelo.html#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
-<span id="cb59-6"><a href="evaluación-de-los-supuestos-del-modelo.html#cb59-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(res.stud.bass<span class="sc">~</span>mod.fit.bass), <span class="at">col =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb16-1" aria-hidden="true" tabindex="-1"></a>res.stud.bass <span class="ot">=</span> <span class="fu">studres</span>(mod.bass)</span>
+<span id="cb16-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb16-2" aria-hidden="true" tabindex="-1"></a>mod.fit.bass <span class="ot">=</span> mod.bass<span class="sc">$</span>fitted.values</span>
+<span id="cb16-3"><a href="evaluación-de-los-supuestos-del-modelo.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.fit.bass,res.stud.bass, <span class="at">ylab=</span><span class="st">&#39;residuos estudentizados&#39;</span>,</span>
+<span id="cb16-4"><a href="evaluación-de-los-supuestos-del-modelo.html#cb16-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;valores ajustados&#39;</span>)</span>
+<span id="cb16-5"><a href="evaluación-de-los-supuestos-del-modelo.html#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb16-6"><a href="evaluación-de-los-supuestos-del-modelo.html#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(res.stud.bass<span class="sc">~</span>mod.fit.bass), <span class="at">col =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:pecesResiduos1"></span>
 <img src="MLGI_files/figure-html/pecesResiduos1-1.png" alt="Datos de la longitud de los peces. Gráfico de los residuos estudentizados contra los valores ajustados." width="480" />
 <p class="caption">
@@ -792,8 +797,8 @@ Figure 3.12: Datos de la longitud de los peces. Gráfico de los residuos estuden
 </p>
 </div>
 <p>La prueba de falta se ajuste se puede hacer usando la función <code>anovaPE</code> de la librería <code>EnvStats</code>:</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(EnvStats)</span>
-<span id="cb60-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaPE</span>(mod.bass)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(EnvStats)</span>
+<span id="cb17-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anovaPE</span>(mod.bass)</span></code></pre></div>
 <pre><code>##                 Df  Sum Sq Mean Sq   F value Pr(&gt;F)    
 ## Age              1 1595359 1595359 1973.0736 &lt;2e-16 ***
 ## Lack of Fit      6   10104    1684    2.0827 0.0541 .  
@@ -873,11 +878,11 @@ H_{1}:&amp; \gamma_{j}\neq 0 \mbox{ para algún }j=1,\ldots,8 \mbox{ (heteroceda
 \nonumber
 \end{equation}\]</span>
 El ajuste del modelo auxiliar es:</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb62-1" aria-hidden="true" tabindex="-1"></a>res.stud.birthweight<span class="ot">=</span>mod.birthweight<span class="sc">$</span>residuals</span>
-<span id="cb62-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb62-2" aria-hidden="true" tabindex="-1"></a>mod.res.birthweight <span class="ot">=</span> <span class="fu">lm</span>(res.stud.birthweight<span class="sc">^</span><span class="dv">2</span> <span class="sc">~</span> age <span class="sc">+</span> motherage <span class="sc">+</span> mnocig <span class="sc">+</span> mppwt <span class="sc">+</span></span>
-<span id="cb62-3"><a href="evaluación-de-los-supuestos-del-modelo.html#cb62-3" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">I</span>(age<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(motherage<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(mnocig<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(mppwt<span class="sc">^</span><span class="dv">2</span>), </span>
-<span id="cb62-4"><a href="evaluación-de-los-supuestos-del-modelo.html#cb62-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data=</span>birthweight)</span>
-<span id="cb62-5"><a href="evaluación-de-los-supuestos-del-modelo.html#cb62-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.res.birthweight)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb19-1" aria-hidden="true" tabindex="-1"></a>res.stud.birthweight<span class="ot">=</span>mod.birthweight<span class="sc">$</span>residuals</span>
+<span id="cb19-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb19-2" aria-hidden="true" tabindex="-1"></a>mod.res.birthweight <span class="ot">=</span> <span class="fu">lm</span>(res.stud.birthweight<span class="sc">^</span><span class="dv">2</span> <span class="sc">~</span> age <span class="sc">+</span> motherage <span class="sc">+</span> mnocig <span class="sc">+</span> mppwt <span class="sc">+</span></span>
+<span id="cb19-3"><a href="evaluación-de-los-supuestos-del-modelo.html#cb19-3" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">I</span>(age<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(motherage<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(mnocig<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(mppwt<span class="sc">^</span><span class="dv">2</span>), </span>
+<span id="cb19-4"><a href="evaluación-de-los-supuestos-del-modelo.html#cb19-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data=</span>birthweight)</span>
+<span id="cb19-5"><a href="evaluación-de-los-supuestos-del-modelo.html#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.res.birthweight)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = res.stud.birthweight^2 ~ age + motherage + mnocig + 
@@ -907,9 +912,9 @@ El ajuste del modelo auxiliar es:</p>
 ## F-statistic: 1.301 on 8 and 33 DF,  p-value: 0.2772</code></pre>
 <p>Note que el estadístico <span class="math inline">\(F_{0}\)</span> es pequeño y que las pruebas individuales sobre los coeficientes no son significativas. Esto es un indicio que <span class="math inline">\(H_{0}\)</span> es cierta. El coeficiente de determinación es <span class="math inline">\(R_{e}^{2} = 0.24\)</span>. Entonces, <span class="math inline">\(W= 10.069\)</span>, con un valor-<span class="math inline">\(p\)</span> asociado de <span class="math inline">\(0.2602\)</span>. Por lo tanto, no tenemos evidencia suficiente para determinar que hay heterocedasticidad.</p>
 <p>La prueba se puede implementar directamente usando la función <code>bptest</code> de la librería <code>lmtest</code> llegando a los mismos resultados:</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bptest</span>(mod.birthweight, <span class="sc">~</span> age <span class="sc">+</span> motherage <span class="sc">+</span> mnocig <span class="sc">+</span> mppwt <span class="sc">+</span></span>
-<span id="cb64-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb64-2" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">I</span>(age<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(motherage<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(mnocig<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(mppwt<span class="sc">^</span><span class="dv">2</span>), </span>
-<span id="cb64-3"><a href="evaluación-de-los-supuestos-del-modelo.html#cb64-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data=</span>birthweight)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bptest</span>(mod.birthweight, <span class="sc">~</span> age <span class="sc">+</span> motherage <span class="sc">+</span> mnocig <span class="sc">+</span> mppwt <span class="sc">+</span></span>
+<span id="cb21-2"><a href="evaluación-de-los-supuestos-del-modelo.html#cb21-2" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">I</span>(age<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(motherage<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(mnocig<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(mppwt<span class="sc">^</span><span class="dv">2</span>), </span>
+<span id="cb21-3"><a href="evaluación-de-los-supuestos-del-modelo.html#cb21-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data=</span>birthweight)</span></code></pre></div>
 <pre><code>## 
 ##  studentized Breusch-Pagan test
 ## 
@@ -941,7 +946,7 @@ donde <span class="math inline">\((x_{[1]},x_{[2]},\ldots,x_{[n]})\)</span> son 
 <h4>Bajo peso al nacer - prueba de normalidad</h4>
 <p>La prueba de Shapiro-Wilks para ajuste de los datos de peso al nacer es:
 <code>lmtest</code>:</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(res.stud.birthweight)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(res.stud.birthweight)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -979,7 +984,7 @@ La distribución de probabilidad de <span class="math inline">\(d\)</span>, bajo
 <div id="ventas-de-helado---prueba-de-correlación-temporal" class="section level4 unnumbered">
 <h4>Ventas de helado - prueba de correlación temporal</h4>
 <p>La prueba de Durbin-Watson para ajuste de los datos de ventas de helado se puede hacer a través de la función <code>durbinWatsonTest</code> de la librería <code>car</code>:</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">durbinWatsonTest</span>(mod.icecream,<span class="at">method=</span><span class="st">&#39;resample&#39;</span>,<span class="at">reps=</span><span class="dv">1000</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="evaluación-de-los-supuestos-del-modelo.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">durbinWatsonTest</span>(mod.icecream,<span class="at">method=</span><span class="st">&#39;resample&#39;</span>,<span class="at">reps=</span><span class="dv">1000</span>)</span></code></pre></div>
 <pre><code>##  lag Autocorrelation D-W Statistic p-value
 ##    1       0.5412411      0.655856       0
 ##  Alternative hypothesis: rho != 0</code></pre>
