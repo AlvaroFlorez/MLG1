@@ -124,7 +124,7 @@ Evidentemente, el sesgo de $\hatbbeta_{1}$ depende de la magnitud de $\bbeta_{2}
 
 El valor esperado de $\hatsigma^{2}_{1}$ es:
 \[
-E(\hatsigma^{2}_{1}) = \sigma^{2} + \frac{\bbeta_{2}'\bX'_{2}(\bI_{n} - \bH_{1})\bX_{2}\bbeta_{2}}{n-p_{1}}.
+E(\hatsigma^{2}_{1}) = \sigma^{2} + \frac{\bbeta_{2}'\bX'_{2}(\bI_{n} - \bH_{1})\bX_{2}\bbeta_{2}}{n-(p-r)}.
 \]
 Dado que $(\bI - \bH_{1})$ es idempotente y, por lo tanto, positiva semi-definida, entonces $E(\hatsigma_{1}^{2}) > \sigma^{2}$. Esto quiere decir que $\hatsigma^{2}_{1}$ es un estimador sesgado de $\sigma^{2}$.
 
