@@ -100,9 +100,9 @@ Recordemos que el modelo lineal asume que la relación entre la media y las cova
 
 Algunas de estas funciones linealizables y su representación gráfica, se muestran en la Tabla \@ref(tab:funciones) y Figura \@ref(fig:linealPat), respectivamente. Por ejemplo, considere que el modelo generador de los datos es:
 \[
-y_{i} = \beta_{0}\exp\left(\beta_{1}x_{i1} \right)\varepsilon_{i} \mbox{ [ver figura \ref{fig:linealPat}(b)]}.
+y_{i} = \beta_{0}\exp\left(\beta_{1}x_{i1} \right)\varepsilon_{i}.
 \]
-Esta relación no lineal se puede linealizar aplicando una transformación logaritmica a ambos lados:
+Ver figura \@ref(fig:linealPat)(b). Esta relación no lineal se puede linealizar aplicando una transformación logaritmica a ambos lados:
 
 \[
 \log y_{i} = y_{i}^{*} = \log \left[ \beta_{0}\exp\left(\beta_{1}x_{i} \right)\varepsilon_{i} \right] = \log \beta_{0} + \beta_{1}x_{i} + \log\varepsilon_{i}.
@@ -460,5 +460,5 @@ Por medio del estimador de MCP obtenemos el siguiente intervalo del 95\% de conf
 \rule{\textwidth}{0.4pt}
 
 ---
-nocite: @montgomery_introduction_2012, @fox_applied_2016
+nocite: | @montgomery_introduction_2012, @fox_applied_2016
 ---
