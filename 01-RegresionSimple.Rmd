@@ -34,9 +34,7 @@ Con este conjunto de datos podemos plantear las siguientes preguntas:
 Estas preguntas se pueden resolver a partir de un análisis de regresión lineal.
 
 ## Regresion lineal simple
-En una análisis de regresión simple estamos interesados en modelar la relación entre una variable de entrada (regresor, variable independiente o covariable) $X$ y una variable de salida (respuesta o variable dependiente) $Y$. 
-
-El modelo de regresión nos permite:
+En un análisis de regresión simple estamos interesados en modelar la relación entre una variable de entrada (regresor, variable independiente o covariable) $X$ y una variable de salida (respuesta o variable dependiente) $Y$. Este modelo nos permite:
 
 - Evaluar cuanto cambia el valor esperado de $Y$ debido a cambios en $X$,
 - Predecir $Y$ (o su valor esperado) en función de $X$.
@@ -44,7 +42,7 @@ El modelo de regresión nos permite:
 ## Modelo lineal simple
 Sea $(y_{i},x_{i})$ la i-ésima observación de la variable respuesta $(y)$ y la covariable $(x)$, para $i=1,\ldots,n$, con $n$ igual al número total de observaciones. **El modelo lineal simple** se puede expresar de la forma:
 \[
-y_{i} = \beta_{0} + \beta_{1}x_{i}+\varepsilon_{i},
+y_{i} = \beta_{0} + x_{i}\beta_{1}+\varepsilon_{i},
 \]
 donde $\beta_{0}$ es el intercepto, $\beta_{1}$ es la pendiente y $\varepsilon_{i}$ es el componente de error. Generalmente, los supuestos que acompañan este modelo son:
 
@@ -57,11 +55,11 @@ Por lo tanto, $\varepsilon_{i} \sim N(0,\sigma^{2})$.
 
 A partir de (a) se tiene que:
 \[
-E(Y|X=x_i) = \beta_{0} + \beta_{1}x_i.
+E(Y|X=x_i) = \beta_{0} + x_i\beta_{1}.
 \]
 Entonces, para $x=0$, el valor esperado de $Y$ es igual a $\beta_0$. Cuando $X$ incrementa en una unidad (de $x$ a $x+1$), el valor esperado de $Y$ incrementa en:
 \[
-E(Y|X=x+1) - E(Y|X=x) = \beta_{0} + \beta_{1}(x+1) - (\beta_{0} + \beta_{1}x) = \beta_{1}.
+E(Y|X=x+1) - E(Y|X=x) = \beta_{0} + (x+1)\beta_{1} - (\beta_{0} + x\beta_{1}) = \beta_{1}.
 \]
 Lo que indica que $\beta_{1}$ representa el cambio en el valor esperado de $Y$ por un cambio unitario en $X$.
 
@@ -105,12 +103,12 @@ S(\beta_{0},\beta_{1}) = \sum_{i=1}^{n} \left( y_{i} - \beta_{0} - \beta_{1}x_{i
 \end{equation}
 Entonces, tenemos que encontrar la combinación de $\beta_{0}$ y $\beta_{1}$ que minimizan \@ref(eq:rss). Para esto, primero debemos derivar $S(\beta_{0},\beta_{1})$ con respecto a $\beta_{0}$ y $\beta_{1}$, e igualar estas ecuación a cero. De esta forma obtenemos las **ecuaciones normales**:
 \begin{equation}
-\frac{\partial S(\beta_{0},\beta_{1})}{\partial \beta_{0}} = - \frac{2}{n}\sum_{i=1}^{n}\left(y_{i}-\beta_{0}-\beta_{1}x_{i} \right),
+\frac{\partial S(\beta_{0},\beta_{1})}{\partial \beta_{0}} = - 2\sum_{i=1}^{n}\left(y_{i}-\beta_{0}-\beta_{1}x_{i} \right),
 (\#eq:normeq1)
 \end{equation}
 y
 \begin{equation}
-\frac{\partial S(\beta_{0},\beta_{1})}{\partial \beta_{1}} = - \frac{2}{n}\sum_{i=1}^{n}\left(y_{i}-\beta_{0}-\beta_{1}x_{i} \right)x_{i}.
+\frac{\partial S(\beta_{0},\beta_{1})}{\partial \beta_{1}} = - 2\sum_{i=1}^{n}\left(y_{i}-\beta_{0}-\beta_{1}x_{i} \right)x_{i}.
 (\#eq:normeq2)
 \end{equation}
 
@@ -301,7 +299,8 @@ text(1.7,predict(m)[3],expression(y[3]-bar(y)),pos=2,cex=0.9)
 Ahora evelavamos al cuadrado \@ref(eq:decomposion)  y sumamos todos los componentes:
 \begin{equation}
 \begin{split}
-\sum_{i=1}^{n} (y_{i} - \bar{y})^{2} &= \sum_{i=1}^{n} (y_{i} - \haty_{i})^{2} + \sum_{i=1}^{n}(\haty_{i} - \bar{y})^{2} + 2 \sum_{i=1}^{n}(y_{i} - \haty_{i})(\haty_{i} - \bar{y}) \\
+SSY &= \sum_{i=1}^{n} (y_{i} - \bar{y})^{2} \\
+&= \sum_{i=1}^{n} (y_{i} - \haty_{i})^{2} + \sum_{i=1}^{n}(\haty_{i} - \bar{y})^{2} + 2 \sum_{i=1}^{n}(y_{i} - \haty_{i})(\haty_{i} - \bar{y}) \\
 &= \sum_{i=1}^{n} (y_{i} - \haty_{i})^{2} + \sum_{i=1}^{n}(\haty_{i} - \bar{y})^{2} \\
 SST &=  SS_{res} + SS_{R},
 \end{split}
@@ -531,7 +530,6 @@ Por lo general, los estimadores por máxima verosimilitud tienen mejores propied
 
 
 ## Algunas consideraciones finales
-
 
 - Las conclusiones sobre los modelos de regresión se hacen sobre el rango de valores observados de las covariables (interpolación). Por ejemplo, en los datos de los recién nacidos, se pueden hacer inferencias sobre el peso al nacer para bebés que nacen en entre las semanas `r min(birthweight$age)` y `r max(birthweight$age)`. Cuando hacemos predicciones fuera de este rango estaríamos extrapolando.
 
