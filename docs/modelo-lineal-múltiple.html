@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 2 Modelo lineal múltiple | Notas de clase: Modelo lineal general I</title>
   <meta name="description" content="Capítulo 2 Modelo lineal múltiple | Notas de clase: Modelo lineal general I" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 2 Modelo lineal múltiple | Notas de clase: Modelo lineal general I" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2021-12-01" />
+<meta name="date" content="2024-02-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 <link rel="prev" href="modelo-lineal-simple.html"/>
 <link rel="next" href="evaluación-de-los-supuestos-del-modelo.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,9 +49,9 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -93,7 +92,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -106,7 +105,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -120,6 +119,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -253,23 +256,23 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#comentarios-finales"><i class="fa fa-check"></i><b>3.6</b> Comentarios finales</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html"><i class="fa fa-check"></i><b>4</b> Transformaciones y mínimos cuadrados ponderados</a>
+<li class="chapter" data-level="4" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html"><i class="fa fa-check"></i><b>4</b> Transformaciones y mínimos cuadrados ordinarios</a>
 <ul>
-<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#ejemplo-1.-datos-de-la-onu"><i class="fa fa-check"></i>Ejemplo 1. Datos de la ONU</a></li>
-<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#ejemplo-2.-datos-de-educación"><i class="fa fa-check"></i>Ejemplo 2. Datos de educación</a></li>
-<li class="chapter" data-level="4.1" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#transformación-de-los-datos"><i class="fa fa-check"></i><b>4.1</b> Transformación de los datos</a>
+<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#ejemplo-1.-datos-de-la-onu"><i class="fa fa-check"></i>Ejemplo 1. Datos de la ONU</a></li>
+<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#ejemplo-2.-datos-de-educación"><i class="fa fa-check"></i>Ejemplo 2. Datos de educación</a></li>
+<li class="chapter" data-level="4.1" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#transformación-de-los-datos"><i class="fa fa-check"></i><b>4.1</b> Transformación de los datos</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#transformaciones-para-linealizar-el-modelo"><i class="fa fa-check"></i><b>4.1.1</b> Transformaciones para linealizar el modelo</a></li>
-<li class="chapter" data-level="4.1.2" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#transformaciones-para-estabilizar-la-varianza"><i class="fa fa-check"></i><b>4.1.2</b> Transformaciones para estabilizar la varianza</a></li>
-<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#datos-de-la-onu.-transformación-para-linealizar-los-datos"><i class="fa fa-check"></i>Datos de la ONU. Transformación para linealizar los datos</a></li>
+<li class="chapter" data-level="4.1.1" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#transformaciones-para-linealizar-el-modelo"><i class="fa fa-check"></i><b>4.1.1</b> Transformaciones para linealizar el modelo</a></li>
+<li class="chapter" data-level="4.1.2" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#transformaciones-para-estabilizar-la-varianza"><i class="fa fa-check"></i><b>4.1.2</b> Transformaciones para estabilizar la varianza</a></li>
+<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#datos-de-la-onu.-transformación-para-linealizar-los-datos"><i class="fa fa-check"></i>Datos de la ONU. Transformación para linealizar los datos</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#método-de-box-cox"><i class="fa fa-check"></i><b>4.2</b> Método de Box-Cox</a>
+<li class="chapter" data-level="4.2" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#método-de-box-cox"><i class="fa fa-check"></i><b>4.2</b> Método de Box-Cox</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#datos-de-educación.-transformación-de-box-cox"><i class="fa fa-check"></i><b>4.2.1</b> Datos de educación. Transformación de Box-Cox</a></li>
+<li class="chapter" data-level="4.2.1" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#datos-de-educación.-transformación-de-box-cox"><i class="fa fa-check"></i><b>4.2.1</b> Datos de educación. Transformación de Box-Cox</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#mínimos-cuadrados-ponderados"><i class="fa fa-check"></i><b>4.3</b> Mínimos cuadrados ponderados</a>
+<li class="chapter" data-level="4.3" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#mínimos-cuadrados-ponderados"><i class="fa fa-check"></i><b>4.3</b> Mínimos cuadrados ponderados</a>
 <ul>
-<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#datos-de-educación.-minímos-cuadrados-ponderados"><i class="fa fa-check"></i>Datos de educación. Minímos cuadrados ponderados</a></li>
+<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#datos-de-educación.-minímos-cuadrados-ponderados"><i class="fa fa-check"></i>Datos de educación. Minímos cuadrados ponderados</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="evaluación-de-puntos-influyentes-y-atípicos.html"><a href="evaluación-de-puntos-influyentes-y-atípicos.html"><i class="fa fa-check"></i><b>5</b> Evaluación de puntos influyentes y atípicos</a>
@@ -308,22 +311,22 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="modelo-lineal-múltiple" class="section level1" number="2">
-<h1><span class="header-section-number">Capítulo 2</span> Modelo lineal múltiple</h1>
-<div id="bajo-peso-al-nacer" class="section level2 unnumbered">
-<h2>Bajo peso al nacer</h2>
+<div id="modelo-lineal-múltiple" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Capítulo 2</span> Modelo lineal múltiple<a href="modelo-lineal-múltiple.html#modelo-lineal-múltiple" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="bajo-peso-al-nacer" class="section level2 unnumbered hasAnchor">
+<h2>Bajo peso al nacer<a href="modelo-lineal-múltiple.html#bajo-peso-al-nacer" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Retomemos la base de datos de bajo peso al nacer. Aparte de la edad gestacional, el peso del recién nacido puede estar explicado con otros factores. Por ejemplo, el peso de los padres, salud de la madre, entre otros. A parte de la edad gestacional y el peso del recién nacido, vamos a observar también la variable peso de la madre antes del embarazo.</p>
 <p>La Figura <a href="modelo-lineal-múltiple.html#fig:BWdataFig">2.1</a> muestra la relación entre las variables de estudio. Aquí podemos observar una relación lineal positiva fuerte entre el peso al nacer y la edad gestacional (correlación igual a 0.73). La relación entre el peso al nacer y el peso de la madre es lineal positiva, aunque no tan fuerte como la anterior (correlación igual a 0.3).</p>
 <p>La Figura <a href="modelo-lineal-múltiple.html#fig:BWdataFig">2.1</a> y la matriz de correlación se pueden hacer con los siguientes códigos:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="modelo-lineal-múltiple.html#cb1-1" aria-hidden="true" tabindex="-1"></a>birthweight <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;birthweight.csv&quot;</span>,<span class="at">header =</span> T)</span>
-<span id="cb1-2"><a href="modelo-lineal-múltiple.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(birthweight[,<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">8</span>)])</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:BWdataFig"></span>
-<img src="MLGI_files/figure-html/BWdataFig-1.png" alt="Gráfico de dispersion del peso del recien nacido y la edad gestacional." width="480" />
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="modelo-lineal-múltiple.html#cb19-1" tabindex="-1"></a>birthweight <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;birthweight.csv&quot;</span>,<span class="at">header =</span> T)</span>
+<span id="cb19-2"><a href="modelo-lineal-múltiple.html#cb19-2" tabindex="-1"></a><span class="fu">pairs</span>(birthweight[,<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">8</span>)])</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:BWdataFig"></span>
+<img src="MLG1_files/figure-html/BWdataFig-1.png" alt="Gráfico de dispersion del peso del recien nacido y la edad gestacional." width="480" />
 <p class="caption">
 Figure 2.1: Gráfico de dispersion del peso del recien nacido y la edad gestacional.
 </p>
 </div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="modelo-lineal-múltiple.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(birthweight[,<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">8</span>)])</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="modelo-lineal-múltiple.html#cb20-1" tabindex="-1"></a><span class="fu">cor</span>(birthweight[,<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">8</span>)])</span></code></pre></div>
 <pre><code>##           weight       age     mppwt
 ## weight 1.0000000 0.7311334 0.3048027
 ## age    0.7311334 1.0000000 0.2505155
@@ -334,8 +337,8 @@ Por lo tanto, junto con la edad gestacional, ahora vamos a incluir peso de la ma
 \]</span>
 con <span class="math inline">\(\varepsilon_{i}\sim N(0,\sigma^{2})\)</span>, y <span class="math inline">\(cov(\varepsilon_{j},\varepsilon_{k})=0\)</span> para todo <span class="math inline">\(j\neq k\)</span>.
 </div>
-<div id="modelo-lineal-múltiple-1" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Modelo lineal múltiple</h2>
+<div id="modelo-lineal-múltiple-1" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Modelo lineal múltiple<a href="modelo-lineal-múltiple.html#modelo-lineal-múltiple-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>En general, se puede relacionar la variable respuesta (<span class="math inline">\(y\)</span>), con <span class="math inline">\(p-1\)</span> covariables (o variables predictoras). El modelo lineal múltiple se expresa de la siguiente forma:</p>
 <p><span class="math display" id="eq:modMultiple">\[\begin{equation}
 \begin{split}
@@ -386,8 +389,8 @@ y_{1} \\ y_{2} \\ \vdots \\ y_{n}
 \end{gather}\]</span>
 Además, los supuestos sobre los errores se pueden expresar como <span class="math inline">\(\boldsymbol \varepsilon\sim N(\boldsymbol 0, \sigma^{2}\boldsymbol I)\)</span>, donde <span class="math inline">\(\boldsymbol 0\)</span> es un vector con todas las entradas iguales a cero, y <span class="math inline">\(\boldsymbol I\)</span> es la matriz identidad.</p>
 </div>
-<div id="estimación-de-los-parámetros-de-regresión" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Estimación de los parámetros de regresión</h2>
+<div id="estimación-de-los-parámetros-de-regresión" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Estimación de los parámetros de regresión<a href="modelo-lineal-múltiple.html#estimación-de-los-parámetros-de-regresión" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>La estimación de <span class="math inline">\(\boldsymbol \beta\)</span> se hace a través del método de mínimos cuadrados ordinarios. Por lo tanto, debemos encontrar el vector <span class="math inline">\(\widehat{\boldsymbol \beta}\)</span> que minimice:
 <span class="math display">\[
 S(\boldsymbol \beta) =  \sum_{i=1}^{n}\left(y_{i} - \boldsymbol x_{i}&#39;\boldsymbol \beta\right)^2 = \sum_{i=1}^{n}e_{i}^2.
@@ -437,8 +440,8 @@ La matriz <span class="math inline">\((n\times n)\)</span> <span class="math inl
 <span class="math display">\[
 \boldsymbol e= \boldsymbol y- \boldsymbol X&#39;\widehat{\beta}= \boldsymbol y- \boldsymbol X(\boldsymbol X&#39;\boldsymbol X)^{-1}\boldsymbol X&#39;\boldsymbol y= \boldsymbol y- \boldsymbol H\boldsymbol y= (\boldsymbol I_{n} - \boldsymbol H)\boldsymbol y.
 \]</span></p>
-<div id="estimación-de-sigma2-1" class="section level3" number="2.2.1">
-<h3><span class="header-section-number">2.2.1</span> Estimación de <span class="math inline">\(\sigma^{2}\)</span></h3>
+<div id="estimación-de-sigma2-1" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Estimación de <span class="math inline">\(\sigma^{2}\)</span><a href="modelo-lineal-múltiple.html#estimación-de-sigma2-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Al igual que en la regresión simple, el estimador de <span class="math inline">\(\sigma^{2}\)</span> es el cuadrado medio del error, definido como:
 <span class="math display">\[
 MS_{res} = \frac{SS_{res}}{n-p},
@@ -458,15 +461,15 @@ E(SS_{res}) = E\left[\boldsymbol y&#39;(\boldsymbol I_{n} - \boldsymbol H)\bolds
 \]</span>
 Por lo tanto, <span class="math inline">\(E(MS_{res}) = E(SS_{res})/(n-p) = \sigma^{2}\)</span>.</p>
 </div>
-<div id="bajo-peso-al-nacer---estimación-de-parámetros" class="section level3" number="2.2.2">
-<h3><span class="header-section-number">2.2.2</span> Bajo peso al nacer - estimación de parámetros</h3>
+<div id="bajo-peso-al-nacer---estimación-de-parámetros" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Bajo peso al nacer - estimación de parámetros<a href="modelo-lineal-múltiple.html#bajo-peso-al-nacer---estimación-de-parámetros" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Para ajustar el modelo:
 <span class="math display">\[
 \mbox{weight}_{i} = \beta_{0} + \beta_{1}\mbox{age}_{i} + \beta_{2}\mbox{mppwt}_{i} + \varepsilon_{i}, \mbox{ para }i=1,\ldots,42,
 \]</span>
 con <span class="math inline">\(\varepsilon_{i}\sim N(0,\sigma^{2})\)</span>, y <span class="math inline">\(cov(\varepsilon_{j},\varepsilon_{k})=0\)</span> para todo <span class="math inline">\(j\neq k\)</span>, usamos la función <code>lm</code> de R:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="modelo-lineal-múltiple.html#cb4-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">=</span> <span class="fu">lm</span>(weight <span class="sc">~</span> age <span class="sc">+</span> mppwt, <span class="at">data=</span>birthweight)</span>
-<span id="cb4-2"><a href="modelo-lineal-múltiple.html#cb4-2" aria-hidden="true" tabindex="-1"></a>mod</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="modelo-lineal-múltiple.html#cb22-1" tabindex="-1"></a>mod <span class="ot">=</span> <span class="fu">lm</span>(weight <span class="sc">~</span> age <span class="sc">+</span> mppwt, <span class="at">data=</span>birthweight)</span>
+<span id="cb22-2"><a href="modelo-lineal-múltiple.html#cb22-2" tabindex="-1"></a>mod</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = weight ~ age + mppwt, data = birthweight)
@@ -484,12 +487,12 @@ Aquí vemos que ambas covariables tienen un efecto positivo sobre el peso del be
 <li>Por cada incremento de un kilogramo en el peso de la madre y manteniendo la edad gestacional constante, el peso al nacer medio aumenta 11 gramos.</li>
 </ul>
 <p>Además, la estimación de <span class="math inline">\(\sigma^{2}\)</span> es:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="modelo-lineal-múltiple.html#cb6-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">sqrt</span>(<span class="fu">sum</span>(mod<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="dv">39</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="modelo-lineal-múltiple.html#cb24-1" tabindex="-1"></a> <span class="fu">sqrt</span>(<span class="fu">sum</span>(mod<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="dv">39</span>)</span></code></pre></div>
 <pre><code>## [1] 0.4356247</code></pre>
 Note que al adicionar la covariable <code>mppwt</code> se redujo el <span class="math inline">\(MS_{res}\)</span>.
 </div>
-<div id="propiedades-de-los-estimadores-por-mco-1" class="section level3" number="2.2.3">
-<h3><span class="header-section-number">2.2.3</span> Propiedades de los estimadores por MCO</h3>
+<div id="propiedades-de-los-estimadores-por-mco-1" class="section level3 hasAnchor" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Propiedades de los estimadores por MCO<a href="modelo-lineal-múltiple.html#propiedades-de-los-estimadores-por-mco-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>El valor esperado de <span class="math inline">\(\widehat{\boldsymbol \beta}\)</span> es:
 <span class="math display">\[\begin{equation}
 \begin{split}
@@ -508,23 +511,23 @@ V(\widehat{\boldsymbol \beta}) &amp;= V\left[ (\boldsymbol X&#39;\boldsymbol X)^
 \nonumber
 \end{equation}\]</span>
 Si <span class="math inline">\(\boldsymbol C=(\boldsymbol X&#39;\boldsymbol X)^{-1}\)</span>, entonces <span class="math inline">\(V(\widehat{\beta}_{j}) = \sigma^{2}c_{jj}\)</span> y <span class="math inline">\(Cov(\widehat{\beta}_{j},\widehat{\beta}_{k})=\sigma^{2}c_{jk}\)</span>, donde <span class="math inline">\(c_{jk}\)</span> es la entrada <span class="math inline">\((j,k)\)</span> de la matriz <span class="math inline">\(\boldsymbol C\)</span>.</p>
-<div id="teorema-de-gauss-markov" class="section level4 unnumbered">
-<h4>Teorema de Gauss-Markov</h4>
-<p>Si, <span class="math inline">\(E(\boldsymbol \varepsilon) = \boldsymbol 0\)</span> y <span class="math inline">\(V(\boldsymbol \varepsilon) = \sigma^{2}\boldsymbol I_{n}\)</span>, el estimador por MCO, <span class="math inline">\(\widehat{\boldsymbol \beta}= (\boldsymbol X&#39;\boldsymbol X)\boldsymbol X&#39;\boldsymbol y\)</span>, es el mejor estimador lineal insesgado de <span class="math inline">\(\boldsymbol \beta\)</span>. Esto quiere decir que es el estimador con menor varianza entre la clase de estimador insesgados que son combinaciones lineales de <span class="math inline">\(y\)</span>. Para la demostración, ver Sección C4 de <span class="citation"><a href="#ref-montgomery_introduction_2012" role="doc-biblioref">Montgomery, Peck, and Vining</a> (<a href="#ref-montgomery_introduction_2012" role="doc-biblioref">2012</a>)</span>.</p>
+<div id="teorema-de-gauss-markov" class="section level4 unnumbered hasAnchor">
+<h4>Teorema de Gauss-Markov<a href="modelo-lineal-múltiple.html#teorema-de-gauss-markov" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Si, <span class="math inline">\(E(\boldsymbol \varepsilon) = \boldsymbol 0\)</span> y <span class="math inline">\(V(\boldsymbol \varepsilon) = \sigma^{2}\boldsymbol I_{n}\)</span>, el estimador por MCO, <span class="math inline">\(\widehat{\boldsymbol \beta}= (\boldsymbol X&#39;\boldsymbol X)\boldsymbol X&#39;\boldsymbol y\)</span>, es el mejor estimador lineal insesgado de <span class="math inline">\(\boldsymbol \beta\)</span>. Esto quiere decir que es el estimador con menor varianza entre la clase de estimador insesgados que son combinaciones lineales de <span class="math inline">\(y\)</span>. Para la demostración, ver Sección C4 de <span class="citation">Montgomery, Peck, and Vining (<a href="#ref-montgomery_introduction_2012">2012</a>)</span>.</p>
 <p>Además, si <span class="math inline">\(\boldsymbol \varepsilon\sim N(\boldsymbol 0, \sigma^{2}\boldsymbol I_{n})\)</span>, el estimador por MCO coincide con el estimador por máxima verosimilitud.</p>
 </div>
 </div>
 </div>
-<div id="pruebas-de-hipótesis-1" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Pruebas de hipótesis</h2>
+<div id="pruebas-de-hipótesis-1" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Pruebas de hipótesis<a href="modelo-lineal-múltiple.html#pruebas-de-hipótesis-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Después de estimar el modelo podemos preguntarnos:</p>
 <ul>
 <li>¿el modelo hace un buen ajuste de los datos?</li>
 <li>¿cuales regresores específicos parecen importantes?</li>
 </ul>
 <p>Para resolver estas preguntas podemos realizar pruebas de hipótesis. Generalmente, estos test requieren que <span class="math inline">\(\boldsymbol \varepsilon\sim N(\boldsymbol 0,\sigma^{2}\boldsymbol I_{n})\)</span>.</p>
-<div id="análisis-de-varianza-1" class="section level3" number="2.3.1">
-<h3><span class="header-section-number">2.3.1</span> Análisis de varianza</h3>
+<div id="análisis-de-varianza-1" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Análisis de varianza<a href="modelo-lineal-múltiple.html#análisis-de-varianza-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Para probar la significancia del modelo (determinar si que la relación entre <span class="math inline">\(y\)</span> y algunas de las covariables es lineal) se plantean las siguientes hipótesis:
 <span class="math display" id="eq:HANOVA">\[\begin{equation}
 \begin{split}
@@ -560,12 +563,12 @@ E(MS_{res}) =  \sigma^{2} \mbox{ y }E(MS_{R}) =  \sigma^{2} + \frac{\boldsymbol 
 donde <span class="math inline">\(\boldsymbol \beta^{*} = (\beta_{1},\beta_{2},\ldots,\beta_{p-1})&#39;\)</span> y
 <span class="math display">\[
 \boldsymbol X_{c} = \begin{pmatrix}
-x_{11} - \bar{x}_{1} &amp; x_{12} - \bar{x}_{2} &amp; \ldots &amp; x_{1,p-1} - \bar{x}_{p-1} \\ 
-x_{21} - \bar{x}_{1} &amp; x_{22} - \bar{x}_{2} &amp; \ldots &amp; x_{2,p-1} - \bar{x}_{p-1} \\ 
+x_{11} - \bar{x}_{1} &amp; x_{12} - \bar{x}_{2} &amp; \ldots &amp; x_{1,p-1} - \bar{x}_{p-1} \\
+x_{21} - \bar{x}_{1} &amp; x_{22} - \bar{x}_{2} &amp; \ldots &amp; x_{2,p-1} - \bar{x}_{p-1} \\
 \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-x_{i1} - \bar{x}_{1} &amp; x_{i2} - \bar{x}_{2} &amp; \ldots &amp; x_{i,p-1} - \bar{x}_{p-1} \\ 
+x_{i1} - \bar{x}_{1} &amp; x_{i2} - \bar{x}_{2} &amp; \ldots &amp; x_{i,p-1} - \bar{x}_{p-1} \\
 \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-x_{n1} - \bar{x}_{1} &amp; x_{n2} - \bar{x}_{2} &amp; \ldots &amp; x_{n,p-1} - \bar{x}_{p-1} \\ 
+x_{n1} - \bar{x}_{1} &amp; x_{n2} - \bar{x}_{2} &amp; \ldots &amp; x_{n,p-1} - \bar{x}_{p-1} \\
 \end{pmatrix}.
 \]</span></p>
 <p>Si <span class="math inline">\(H_{0}\)</span> no es cierta, tenemos que <span class="math inline">\(F_{0}\)</span> sigue una distribución <span class="math inline">\(F\)</span> no-central con <span class="math inline">\(p-1\)</span> y <span class="math inline">\(n-p\)</span> grados de libertad y parámetro de no centralidad:
@@ -584,8 +587,8 @@ R^{2}_{adj} = 1-\frac{SS_{res}/(n-p)}{SS_{T}/(n-1)} = 1 - \frac{MS_{res}}{SS_T/(
 \]</span>
 Aunque no tiene interpretación, el <span class="math inline">\(R^{2}_{adj}\)</span> puede usarse para comparar modelos al agregar covariables. Dado que <span class="math inline">\(SS_{T}/(n-1)\)</span> es constante, el <span class="math inline">\(R^{2}_{adj}\)</span> solo aumentará al agregar una covariable nueva al modelo si la adición de la covariable reduce el <span class="math inline">\(MS_{res}\)</span>.</p>
 </div>
-<div id="pruebas-individuales-sobre-los-coeficientes" class="section level3" number="2.3.2">
-<h3><span class="header-section-number">2.3.2</span> Pruebas individuales sobre los coeficientes</h3>
+<div id="pruebas-individuales-sobre-los-coeficientes" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Pruebas individuales sobre los coeficientes<a href="modelo-lineal-múltiple.html#pruebas-individuales-sobre-los-coeficientes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Al rechazar <span class="math inline">\(H_{0}\)</span> de la prueba de hipótesis <a href="modelo-lineal-múltiple.html#eq:HANOVA">(2.3)</a> concluimos que al menos un coeficiente es diferente de cero. Por lo tanto, una o más covariables tienen un aporte significativo en el modelo. El paso que sigue es identificar estas covariables.</p>
 <p>Para esto podemos plantear las siguientes hipótesis individuales sobre los coeficientes del modelo:
 <span class="math display">\[
@@ -598,8 +601,8 @@ t_{0} = \frac{\widehat{\beta}_{j}}{se(\widehat{\beta}_{j})} = \frac{\widehat{\be
 donde <span class="math inline">\(c_{jj}\)</span> es la entrada <span class="math inline">\((j,j)\)</span> de la matriz <span class="math inline">\(\boldsymbol C= (\boldsymbol X&#39;\boldsymbol X)^{-1}\)</span>. Rechazamos <span class="math inline">\(H_{0}\)</span> si <span class="math inline">\(|t_{0}| &gt; t_{1-\alpha/2,n-p}\)</span>.</p>
 <p>Este es una prueba parcial, puesto que estamos evaluando la significancia de <span class="math inline">\(x_{j}\)</span> cuando las demás covariables <span class="math inline">\(x_{k}\)</span>, para <span class="math inline">\(k\neq j\)</span>, ya están incluidas en el modelo. Por lo tanto, si no rechazamos <span class="math inline">\(H_{0}\)</span>, podemos concluir que, cuando los demás regresores están en el modelo, la covariable <span class="math inline">\(x_{j}\)</span> no tiene un aporte significativo. Por lo tanto, podríamos retirarla del modelo.</p>
 </div>
-<div id="pruebas-sobre-subconjuntos-de-coeficientes" class="section level3" number="2.3.3">
-<h3><span class="header-section-number">2.3.3</span> Pruebas sobre subconjuntos de coeficientes</h3>
+<div id="pruebas-sobre-subconjuntos-de-coeficientes" class="section level3 hasAnchor" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> Pruebas sobre subconjuntos de coeficientes<a href="modelo-lineal-múltiple.html#pruebas-sobre-subconjuntos-de-coeficientes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Para probar la significancia de un subconjunto de coeficientes del modelo hacemos uso de la <strong>suma de cuadrados extra</strong>. Primero, consideremos el siguiente modelo de regresión:
 <span class="math display">\[
 \boldsymbol y= \boldsymbol X\boldsymbol \beta+ \boldsymbol \varepsilon,
@@ -663,8 +666,8 @@ Si <span class="math inline">\(H_{0}\)</span> es cierta entonces <span class="ma
 \]</span>
 Note que si hay una relación casi colineal entre <span class="math inline">\(\boldsymbol X_{1}\)</span> y <span class="math inline">\(\boldsymbol X_{2}\)</span> (multicolinealidad), <span class="math inline">\(\lambda\)</span> es cercano a cero pesar que <span class="math inline">\(\boldsymbol \beta_{2}\)</span> sea marcadamente distinto de cero. Es decir, que la prueba tiene poca capacidad de indicar diferencias (poco poder) en presencia de multicolinealidad. Caso contrario, el máximo poder se alcanza cuando <span class="math inline">\(\boldsymbol X_{1}\)</span> y <span class="math inline">\(\boldsymbol X_{2}\)</span> son ortogonales (es decir <span class="math inline">\(\boldsymbol X_{2}&#39;\boldsymbol X_{1} = \boldsymbol 0\)</span>).</p>
 <p>Entonces, si <span class="math inline">\(F_{0} &gt; F_{1-\alpha,r,n-p}\)</span> rechazamos <span class="math inline">\(H_{0}\)</span> y concluimos que al menos un coeficiente en <span class="math inline">\(\boldsymbol \beta_{2}\)</span> es diferente de cero. Consecuentemente, al menos una de las covariables en <span class="math inline">\(\boldsymbol X_{2}\)</span> tiene un aporte significativo dentro del modelo.</p>
-<div id="ejemplo" class="section level4 unnumbered">
-<h4>Ejemplo</h4>
+<div id="ejemplo" class="section level4 unnumbered hasAnchor">
+<h4>Ejemplo<a href="modelo-lineal-múltiple.html#ejemplo" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Considere el modelo:
 <span class="math display">\[
 y_{i} = \beta_{0} + \beta_{1}x_{i1} + \beta_{2}x_{i2} + \beta_{3}x_{i3} + \varepsilon_{i}.
@@ -684,8 +687,8 @@ SS_{R}(\beta_{1},\beta_{2},\beta_{3}| \beta_{0})\neq SS_{R}(\beta_{1}|\beta_{0},
 </div>
 </div>
 </div>
-<div id="prueba-de-hipótesis-lineal-general" class="section level2" number="2.4">
-<h2><span class="header-section-number">2.4</span> Prueba de hipótesis lineal general</h2>
+<div id="prueba-de-hipótesis-lineal-general" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Prueba de hipótesis lineal general<a href="modelo-lineal-múltiple.html#prueba-de-hipótesis-lineal-general" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Suponga que estamos interesados en las siguientes hipótesis:
 <span class="math display" id="eq:hipGeneral1">\[\begin{equation}
 H_{0}: \boldsymbol T\boldsymbol \beta=\boldsymbol 0\qquad H_{1}: \boldsymbol T\boldsymbol \beta\neq \boldsymbol 0,
@@ -721,8 +724,8 @@ Para este caso, el estadístico de prueba es:
 F_{0} = \frac{(\boldsymbol T\widehat{\boldsymbol \beta}-\boldsymbol c)&#39;[\boldsymbol T(\boldsymbol X&#39;\boldsymbol X)\boldsymbol T&#39;]^{-1}(\boldsymbol T\widehat{\boldsymbol \beta}-\boldsymbol c)/r}{SS_{res}(FM)/(n-p)}.
 \]</span>
 Si <span class="math inline">\(H_{0}\)</span> es cierta, <span class="math inline">\(F_{0}\sim F_{r,n-p}\)</span>. Por lo tanto, rechazamos <span class="math inline">\(H_{0}\)</span> si <span class="math inline">\(F_{0} &gt; F_{1-\alpha,r,n-p}\)</span>.</p>
-<div id="ejemplo-1" class="section level4 unnumbered">
-<h4>ejemplo</h4>
+<div id="ejemplo-1" class="section level4 unnumbered hasAnchor">
+<h4>ejemplo<a href="modelo-lineal-múltiple.html#ejemplo-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Considere el modelo:
 <span class="math display">\[
 y_{i} = \beta_{0} + \beta_{1}x_{i1}+ \beta_{2}x_{i2}+ \beta_{3}x_{i3}+ \beta_{3}x_{i3} + \varepsilon_{i},
@@ -741,10 +744,10 @@ De aquí tenemos que:
 \]</span>
 Si no rechazamos <span class="math inline">\(H_{0}\)</span>, podríamos estimar <span class="math inline">\(\boldsymbol \beta\)</span> sujo a las restricciones impuestar por la hipótesis nula (usando mínimos cuadrados restringidos).</p>
 </div>
-<div id="bajo-peso-al-nacer---pruebas-de-hipótesis" class="section level3 unnumbered">
-<h3>Bajo peso al nacer - pruebas de hipótesis</h3>
+<div id="bajo-peso-al-nacer---pruebas-de-hipótesis" class="section level3 unnumbered hasAnchor">
+<h3>Bajo peso al nacer - pruebas de hipótesis<a href="modelo-lineal-múltiple.html#bajo-peso-al-nacer---pruebas-de-hipótesis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Los resultados de las pruebas de hipótesis individuales sobre los coeficientes, análisis de varianza y coeficientes de determianción se obtiene a partir del resumen del modelo:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="modelo-lineal-múltiple.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="modelo-lineal-múltiple.html#cb26-1" tabindex="-1"></a><span class="fu">summary</span>(mod)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = weight ~ age + mppwt, data = birthweight)
@@ -771,8 +774,8 @@ Si no rechazamos <span class="math inline">\(H_{0}\)</span>, podríamos estimar 
 y_{i} = \beta_{0} + \beta_{1}\mbox{age}_{i} + \beta_{2}\mbox{mppwt}_{i} + \beta_{3}\mbox{motherage}_{i} + \beta_{2}\mbox{mnocig}_{i} + \varepsilon_{i},
 \]</span>
 donde <span class="math inline">\(\mbox{motherage}_{i}\)</span> y <span class="math inline">\(\mbox{mnocig}_{i}\)</span> es la edad (en años) y el número medio de cigarrillos fumados por mes de la <span class="math inline">\(i\)</span>-ésima madre, respectivamente. El resumen del modelo ajustado es:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="modelo-lineal-múltiple.html#cb10-1" aria-hidden="true" tabindex="-1"></a>mod.completo <span class="ot">=</span> <span class="fu">lm</span>(weight<span class="sc">~</span>age <span class="sc">+</span> mppwt <span class="sc">+</span> motherage <span class="sc">+</span> mnocig,<span class="at">data=</span>birthweight)</span>
-<span id="cb10-2"><a href="modelo-lineal-múltiple.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.completo)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="modelo-lineal-múltiple.html#cb28-1" tabindex="-1"></a>mod.completo <span class="ot">=</span> <span class="fu">lm</span>(weight<span class="sc">~</span>age <span class="sc">+</span> mppwt <span class="sc">+</span> motherage <span class="sc">+</span> mnocig,<span class="at">data=</span>birthweight)</span>
+<span id="cb28-2"><a href="modelo-lineal-múltiple.html#cb28-2" tabindex="-1"></a><span class="fu">summary</span>(mod.completo)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = weight ~ age + mppwt + motherage + mnocig, data = birthweight)
@@ -800,8 +803,8 @@ donde <span class="math inline">\(\mbox{motherage}_{i}\)</span> y <span class="m
 H_{0}: \beta_{2} = \beta_{3} = 0 \qquad H_{0}: \beta_{j} \neq 0 \mbox{ para algún }j=2,3.
 \]</span>
 En R podemos hacer esto a través de la función <code>anova</code>:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="modelo-lineal-múltiple.html#cb12-1" aria-hidden="true" tabindex="-1"></a>mod.reducido <span class="ot">=</span> <span class="fu">lm</span>(weight<span class="sc">~</span>age <span class="sc">+</span> mnocig,<span class="at">data=</span>birthweight)</span>
-<span id="cb12-2"><a href="modelo-lineal-múltiple.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod.reducido,mod.completo)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="modelo-lineal-múltiple.html#cb30-1" tabindex="-1"></a>mod.reducido <span class="ot">=</span> <span class="fu">lm</span>(weight<span class="sc">~</span>age <span class="sc">+</span> mnocig,<span class="at">data=</span>birthweight)</span>
+<span id="cb30-2"><a href="modelo-lineal-múltiple.html#cb30-2" tabindex="-1"></a><span class="fu">anova</span>(mod.reducido,mod.completo)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Model 1: weight ~ age + mnocig
@@ -812,12 +815,12 @@ En R podemos hacer esto a través de la función <code>anova</code>:</p>
 Aquí vemos que <span class="math inline">\(F_{0}= 1.364\)</span> con un valor-<span class="math inline">\(p\)</span> asociado de <span class="math inline">\(0.2682\)</span>. Por lo tanto, no tenemos evidencia suficiente para rechazar <span class="math inline">\(H_{0}\)</span> y podemos retirar las dos covariables del modelo.
 </div>
 </div>
-<div id="intervalos-de-confianza-1" class="section level2" number="2.5">
-<h2><span class="header-section-number">2.5</span> Intervalos de confianza</h2>
+<div id="intervalos-de-confianza-1" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Intervalos de confianza<a href="modelo-lineal-múltiple.html#intervalos-de-confianza-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Al igual que en caso del modelo lineal simple, también podemos hacer estimaciones por intervalos de confianza para los coeficientes del modelo, valor esperado de <span class="math inline">\(Y\)</span> y observaciones futuras.</p>
 <p>Para que los intervalos de confianza sean válidos se requiere que se cumplan todos los supuestos del modelo, esto es <span class="math inline">\(\boldsymbol \varepsilon\sim N(\boldsymbol 0, \sigma^{2}\boldsymbol I_{n})\)</span>.</p>
-<div id="intervalos-de-confianza-para-beta_j" class="section level3" number="2.5.1">
-<h3><span class="header-section-number">2.5.1</span> Intervalos de confianza para <span class="math inline">\(\beta_{j}\)</span></h3>
+<div id="intervalos-de-confianza-para-beta_j" class="section level3 hasAnchor" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> Intervalos de confianza para <span class="math inline">\(\beta_{j}\)</span><a href="modelo-lineal-múltiple.html#intervalos-de-confianza-para-beta_j" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>El intervalo de confianza de <span class="math inline">\(\beta_{j}\)</span> parte de:
 <span class="math display">\[
 \frac{\widehat{\beta}_{j} - \beta_{j}}{\sqrt{V(\widehat{\beta}_{j})}} =  \frac{\widehat{\beta}_{j} - \beta_{j}}{\sqrt{MS_{res}c_{jj}}} \sim t_{n-p},
@@ -827,8 +830,8 @@ donde <span class="math inline">\(c_{jj}\)</span> es la entrada <span class="mat
 \widehat{\beta}_{j} \pm t_{1-\alpha/2,n-p}\sqrt{MS_{res}c_{jj}}.
 \]</span></p>
 </div>
-<div id="intervalos-de-confianza-para-el-valor-esperado-de-y-y-una-observación-futura" class="section level3" number="2.5.2">
-<h3><span class="header-section-number">2.5.2</span> Intervalos de confianza para el valor esperado de <span class="math inline">\(Y\)</span> y una observación futura</h3>
+<div id="intervalos-de-confianza-para-el-valor-esperado-de-y-y-una-observación-futura" class="section level3 hasAnchor" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> Intervalos de confianza para el valor esperado de <span class="math inline">\(Y\)</span> y una observación futura<a href="modelo-lineal-múltiple.html#intervalos-de-confianza-para-el-valor-esperado-de-y-y-una-observación-futura" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Ahora queremos construir un intervalo de confianza para la respuesta media de <span class="math inline">\(Y\)</span> para un punto particular <span class="math inline">\(\boldsymbol x_{0}=(1,x_{01},x_{02},\ldots,x_{0,p-1})\)</span>. La estimación puntual en <span class="math inline">\(\boldsymbol x_{0}\)</span> es:
 <span class="math display">\[
 \widehat{\mu}_{Y|\boldsymbol x_0} = \boldsymbol x_{0}&#39;\widehat{\boldsymbol \beta}.
@@ -846,35 +849,35 @@ De igual forma, el intervalo del <span class="math inline">\((1-\alpha)100\%\)</
 \widehat{\mu}_{Y|\boldsymbol x_0} \pm t_{1-\alpha/2,n-p}\sqrt{MS_{res}\left[1+ \boldsymbol x_{0}&#39;(\boldsymbol X&#39;\boldsymbol X)^{-1}\boldsymbol x_{0}\right]}.
 \]</span></p>
 </div>
-<div id="bajo-peso-al-nacer---intervalos-de-confianza" class="section level3 unnumbered">
-<h3>Bajo peso al nacer - intervalos de confianza</h3>
+<div id="bajo-peso-al-nacer---intervalos-de-confianza" class="section level3 unnumbered hasAnchor">
+<h3>Bajo peso al nacer - intervalos de confianza<a href="modelo-lineal-múltiple.html#bajo-peso-al-nacer---intervalos-de-confianza" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Siguiendo con el modelo inicial <span class="math inline">\(y_{i}=\beta_{0}+\beta_{1}\mbox{age}_{i}+\beta_{2}\mbox{mppwt}_{i}+\varepsilon_{i}\)</span>, los intervalos del 95% de confianza para los coeficientes son:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="modelo-lineal-múltiple.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="modelo-lineal-múltiple.html#cb32-1" tabindex="-1"></a><span class="fu">confint</span>(mod)</span></code></pre></div>
 <pre><code>##                    2.5 %     97.5 %
 ## (Intercept) -6.108074493 -1.8469278
 ## age          0.113682140  0.2212300
 ## mppwt       -0.008317269  0.0311501</code></pre>
 <p>Si peso de la madre permance constante, por cada aumento de una semana en la edad gestacional, el peso medio del recién nacido incrementa entre <span class="math inline">\(114\)</span> y <span class="math inline">\(221\)</span> gramos con un nivel de confianza del 95%. Note que el intervalo de confianza para el coeficiente asociado al peso de la madre contiene el valor <span class="math inline">\(0\)</span> (recordemos que no rechazamos la hipótesis nula de la prueba <span class="math inline">\(t\)</span> sobre <span class="math inline">\(\beta_{2}\)</span>).</p>
 <p>Queremos determinar el peso medio de los recién nacidos en la semana gestacional <span class="math inline">\(36\)</span> y de madres que pesan 50 kilogramos. Es decir <span class="math inline">\(E(Y|\mbox{age}=36, \mbox{mppwt}=50)\)</span>. Para esto podemos contruir un intervalo del 95% de confianza:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="modelo-lineal-múltiple.html#cb16-1" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">age=</span><span class="dv">36</span>,<span class="at">mppwt=</span><span class="dv">50</span>)</span>
-<span id="cb16-2"><a href="modelo-lineal-múltiple.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(mod,x0,<span class="at">interval=</span><span class="st">&#39;confidence&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="modelo-lineal-múltiple.html#cb34-1" tabindex="-1"></a>x0 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">age=</span><span class="dv">36</span>,<span class="at">mppwt=</span><span class="dv">50</span>)</span>
+<span id="cb34-2"><a href="modelo-lineal-múltiple.html#cb34-2" tabindex="-1"></a><span class="fu">predict</span>(mod,x0,<span class="at">interval=</span><span class="st">&#39;confidence&#39;</span>)</span></code></pre></div>
 <pre><code>##        fit      lwr      upr
 ## 1 2.621739 2.386238 2.857239</code></pre>
 <p>Por lo tanto, el peso medio de los recién nacidos en la semana gestacional 36 y de madres que pesan 50 kilogramos está entre <span class="math inline">\(2.39\)</span> y <span class="math inline">\(2.86\)</span> kilogramos con un nivel de confianza del 95%.</p>
 <p>Ahora, estamos interesados en predecir el peso de un recién nacido en la semana <span class="math inline">\(38\)</span> y cuya madre peso <span class="math inline">\(65\)</span> kilogramos. Por lo cuál construimos un intervalo del 95% de predicción:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="modelo-lineal-múltiple.html#cb18-1" aria-hidden="true" tabindex="-1"></a>x0pred <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">age=</span><span class="dv">38</span>,<span class="at">mppwt=</span><span class="dv">65</span>)</span>
-<span id="cb18-2"><a href="modelo-lineal-múltiple.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(mod,x0pred,<span class="at">interval=</span><span class="st">&#39;prediction&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="modelo-lineal-múltiple.html#cb36-1" tabindex="-1"></a>x0pred <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">age=</span><span class="dv">38</span>,<span class="at">mppwt=</span><span class="dv">65</span>)</span>
+<span id="cb36-2"><a href="modelo-lineal-múltiple.html#cb36-2" tabindex="-1"></a><span class="fu">predict</span>(mod,x0pred,<span class="at">interval=</span><span class="st">&#39;prediction&#39;</span>)</span></code></pre></div>
 <pre><code>##        fit     lwr      upr
 ## 1 3.127897 2.21775 4.038044</code></pre>
 El peso del recién nacido con estas caracteristica está entre <span class="math inline">\(2.22\)</span> y <span class="math inline">\(4.04\)</span> kilogramos con un nivel de confianza del 95%.
 </div>
 </div>
-<div id="extrapolación-oculta-en-regresión-múltiple" class="section level2" number="2.6">
-<h2><span class="header-section-number">2.6</span> Extrapolación oculta en regresión múltiple</h2>
+<div id="extrapolación-oculta-en-regresión-múltiple" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Extrapolación oculta en regresión múltiple<a href="modelo-lineal-múltiple.html#extrapolación-oculta-en-regresión-múltiple" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Al igual que en regresión simple, al pronosticar una nueva respuesta en un punto dado <span class="math inline">\(\boldsymbol x_{0}\)</span> se debe tener cuidado de no extrapolar fuera de la región de los datos originales. En regresión múltiple es fácil extrapolar inadvertidamente, puesto que la región que contiene los datos está definida de forma conjunta por los valores que toman las covariables y no por el rango individual de cada covariable.</p>
 <p>La Figura <a href="modelo-lineal-múltiple.html#fig:extrapolacionOculta">2.2</a> muestra un ejemplo de extrapolación en el caso de un modelo de regresión con dos covariables. Se quiere hacer una predicción en el punto <span class="math inline">\((x_{01},x_{02})\)</span> que está dentro del rango de ambos regresores, pero que fuera de la región conjunta de los datos (región roja en la figura). Por lo tanto, al realizar la predicción en este punto estaríamos extrapolando.</p>
-<div class="figure" style="text-align: center"><span id="fig:extrapolacionOculta"></span>
-<img src="MLGI_files/figure-html/extrapolacionOculta-1.png" alt="Ejemplo de extrapolación en regresión múltiple" width="480" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:extrapolacionOculta"></span>
+<img src="MLG1_files/figure-html/extrapolacionOculta-1.png" alt="Ejemplo de extrapolación en regresión múltiple" width="480" />
 <p class="caption">
 Figure 2.2: Ejemplo de extrapolación en regresión múltiple
 </p>
@@ -884,8 +887,8 @@ Figure 2.2: Ejemplo de extrapolación en regresión múltiple
 <span class="math display">\[
 h_{00} = \boldsymbol x&#39;_{0}(\boldsymbol X&#39;\boldsymbol X)^{-1}\boldsymbol x_{0}.
 \]</span></p>
-<div id="bajo-peso-al-nacer---interpolación" class="section level3 unnumbered">
-<h3>Bajo peso al nacer - interpolación</h3>
+<div id="bajo-peso-al-nacer---interpolación" class="section level3 unnumbered hasAnchor">
+<h3>Bajo peso al nacer - interpolación<a href="modelo-lineal-múltiple.html#bajo-peso-al-nacer---interpolación" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Suponga que se quiere hacer una predicción para recién nacidos con las características que muestra la Tabla <a href="modelo-lineal-múltiple.html#tab:puntosPrediccion">2.1</a>.</p>
 <table>
 <caption><span id="tab:puntosPrediccion">Table 2.1: </span>Bajo peso al nacer. Punto de predicción.</caption>
@@ -916,32 +919,32 @@ h_{00} = \boldsymbol x&#39;_{0}(\boldsymbol X&#39;\boldsymbol X)^{-1}\boldsymbol
 </tbody>
 </table>
 <p>La Figura <a href="modelo-lineal-múltiple.html#fig:birthweightExtrapolacion">2.3</a> muestra el gráfico de dispersión de las covariables, donde los puntos rojos indican los valores donde se quieren hacer predicciones. Aquí vemos que en los puntos <span class="math inline">\(\boldsymbol x_{02}\)</span> y <span class="math inline">\(\boldsymbol x_{03}\)</span> no estaríamos extrapolando. Pero, es difícil de determinar para los puntos <span class="math inline">\(\boldsymbol x_{01}\)</span> y <span class="math inline">\(\boldsymbol x_{04}\)</span>. Para esto vamos a calcular las aproximaciones de la RVH y verificar si en estos puntos estaríamos extrapolando.</p>
-<div class="figure" style="text-align: center"><span id="fig:birthweightExtrapolacion"></span>
-<img src="MLGI_files/figure-html/birthweightExtrapolacion-1.png" alt="Bajo peso al nacer. Gráfico de dispersion de la edad gestacional y el peso de la madre antes del embarazo. Los puntos donde se quiere hacer predicción están en rojo." width="384" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:birthweightExtrapolacion"></span>
+<img src="MLG1_files/figure-html/birthweightExtrapolacion-1.png" alt="Bajo peso al nacer. Gráfico de dispersion de la edad gestacional y el peso de la madre antes del embarazo. Los puntos donde se quiere hacer predicción están en rojo." width="384" />
 <p class="caption">
 Figure 2.3: Bajo peso al nacer. Gráfico de dispersion de la edad gestacional y el peso de la madre antes del embarazo. Los puntos donde se quiere hacer predicción están en rojo.
 </p>
 </div>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="modelo-lineal-múltiple.html#cb20-1" aria-hidden="true" tabindex="-1"></a>newPoints <span class="ot">=</span> <span class="fu">cbind</span>(<span class="at">x0=</span><span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">4</span>),<span class="at">x1=</span><span class="fu">c</span>(<span class="dv">34</span>,<span class="dv">36</span>,<span class="dv">38</span>,<span class="dv">46</span>),<span class="at">x2=</span><span class="fu">c</span>(<span class="dv">75</span>,<span class="dv">50</span>,<span class="dv">60</span>,<span class="dv">55</span>))</span>
-<span id="cb20-2"><a href="modelo-lineal-múltiple.html#cb20-2" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">model.matrix</span>(mod)</span>
-<span id="cb20-3"><a href="modelo-lineal-múltiple.html#cb20-3" aria-hidden="true" tabindex="-1"></a>XtX.inv <span class="ot">=</span> <span class="fu">solve</span>(<span class="fu">t</span>(X)<span class="sc">%*%</span>X)</span>
-<span id="cb20-4"><a href="modelo-lineal-múltiple.html#cb20-4" aria-hidden="true" tabindex="-1"></a>h.values <span class="ot">=</span> <span class="fu">hatvalues</span>(mod)</span>
-<span id="cb20-5"><a href="modelo-lineal-múltiple.html#cb20-5" aria-hidden="true" tabindex="-1"></a>hmax <span class="ot">=</span> <span class="fu">max</span>(h.values)</span>
-<span id="cb20-6"><a href="modelo-lineal-múltiple.html#cb20-6" aria-hidden="true" tabindex="-1"></a>h0 <span class="ot">=</span> <span class="fu">apply</span>(newPoints,<span class="dv">1</span>,<span class="cf">function</span>(x){<span class="fu">t</span>(x)<span class="sc">%*%</span>XtX.inv<span class="sc">%*%</span>x})</span>
-<span id="cb20-7"><a href="modelo-lineal-múltiple.html#cb20-7" aria-hidden="true" tabindex="-1"></a>h0 <span class="sc">&gt;</span>hmax</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="modelo-lineal-múltiple.html#cb38-1" tabindex="-1"></a>newPoints <span class="ot">=</span> <span class="fu">cbind</span>(<span class="at">x0=</span><span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">4</span>),<span class="at">x1=</span><span class="fu">c</span>(<span class="dv">34</span>,<span class="dv">36</span>,<span class="dv">38</span>,<span class="dv">46</span>),<span class="at">x2=</span><span class="fu">c</span>(<span class="dv">75</span>,<span class="dv">50</span>,<span class="dv">60</span>,<span class="dv">55</span>))</span>
+<span id="cb38-2"><a href="modelo-lineal-múltiple.html#cb38-2" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">model.matrix</span>(mod)</span>
+<span id="cb38-3"><a href="modelo-lineal-múltiple.html#cb38-3" tabindex="-1"></a>XtX.inv <span class="ot">=</span> <span class="fu">solve</span>(<span class="fu">t</span>(X)<span class="sc">%*%</span>X)</span>
+<span id="cb38-4"><a href="modelo-lineal-múltiple.html#cb38-4" tabindex="-1"></a>h.values <span class="ot">=</span> <span class="fu">hatvalues</span>(mod)</span>
+<span id="cb38-5"><a href="modelo-lineal-múltiple.html#cb38-5" tabindex="-1"></a>hmax <span class="ot">=</span> <span class="fu">max</span>(h.values)</span>
+<span id="cb38-6"><a href="modelo-lineal-múltiple.html#cb38-6" tabindex="-1"></a>h0 <span class="ot">=</span> <span class="fu">apply</span>(newPoints,<span class="dv">1</span>,<span class="cf">function</span>(x){<span class="fu">t</span>(x)<span class="sc">%*%</span>XtX.inv<span class="sc">%*%</span>x})</span>
+<span id="cb38-7"><a href="modelo-lineal-múltiple.html#cb38-7" tabindex="-1"></a>h0 <span class="sc">&gt;</span>hmax</span></code></pre></div>
 <pre><code>## [1]  TRUE FALSE FALSE FALSE</code></pre>
 Para la predicción en el punto <span class="math inline">\(\boldsymbol x_{01}\)</span>, tenemos que <span class="math inline">\(h_{0} = (1, 34, 77)(\boldsymbol X&#39;\boldsymbol X)^{-1}(1, 34, 77)&#39; = 0.3487\)</span> <span class="math inline">\(&gt;\)</span> <span class="math inline">\(h_{max} = 0.2276\)</span>. Por lo tanto, aquí se estaría extrapolando. Para el resto de punto no hay problemas de extrapolación.
 </div>
-<div id="coeficientes-normalizados-de-regresión" class="section level3" number="2.6.1">
-<h3><span class="header-section-number">2.6.1</span> Coeficientes normalizados de regresión</h3>
+<div id="coeficientes-normalizados-de-regresión" class="section level3 hasAnchor" number="2.6.1">
+<h3><span class="header-section-number">2.6.1</span> Coeficientes normalizados de regresión<a href="modelo-lineal-múltiple.html#coeficientes-normalizados-de-regresión" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Los coeficientes de regresión están influenciados por las unidades de medida de las covariables. Exactamente las unidades de medida de <span class="math inline">\(\beta_{j}\)</span> es:
 <span class="math display">\[
 \frac{\mbox{la unidad de medida de }y }{\mbox{la unidad de medida de }x_{j}}.
 \]</span>
 Dado que, por lo general, las covariables están medidas en unidades diferenes, la comparación de los coeficientes es complicada. En el ejemplo de los datos de los recién nacidos, la edad gestacional está en semanas y el peso de la madre en kilogramos.</p>
 <p>Por esta razón, en algunas ocasiones es útil escalar los valores de las covariables y la respuesta para calcular los coeficientes de regresión adimensionales. Hay varias formas de hacer este escalamiento, aquí nos centraremos en el escalamiento de longitud unitaria.</p>
-<div id="escalamiento-de-longitud-unitaria" class="section level4" number="2.6.1.1">
-<h4><span class="header-section-number">2.6.1.1</span> Escalamiento de longitud unitaria</h4>
+<div id="escalamiento-de-longitud-unitaria" class="section level4 hasAnchor" number="2.6.1.1">
+<h4><span class="header-section-number">2.6.1.1</span> Escalamiento de longitud unitaria<a href="modelo-lineal-múltiple.html#escalamiento-de-longitud-unitaria" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Una opción es hacer un <strong>escalamiento de longitud unitaria</strong> a las covariables:
 <span class="math display">\[
 z_{ij} = \frac{x_{ij}-\bar{x}}{\sqrt{S_{jj}}}, i=1,2,\ldots,n \quad j=1,2,\ldots,p-1,
@@ -978,15 +981,15 @@ donde <span class="math inline">\(r_{jk}\)</span> es la correlación entre las c
 donde <span class="math inline">\(r_{jy}\)</span> es la correlación entre la variable respuesta y la covariable <span class="math inline">\(x_j\)</span>.</p>
 </div>
 </div>
-<div id="bajo-peso-al-nacer---coeficientes-de-regresión-con-variables-escaladas" class="section level3 unnumbered">
-<h3>Bajo peso al nacer - coeficientes de regresión con variables escaladas</h3>
+<div id="bajo-peso-al-nacer---coeficientes-de-regresión-con-variables-escaladas" class="section level3 unnumbered hasAnchor">
+<h3>Bajo peso al nacer - coeficientes de regresión con variables escaladas<a href="modelo-lineal-múltiple.html#bajo-peso-al-nacer---coeficientes-de-regresión-con-variables-escaladas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Para estimar los coeficientes de regresión escalados, primero debemos escalar las variables:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="modelo-lineal-múltiple.html#cb22-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> birthweight<span class="sc">$</span>weight</span>
-<span id="cb22-2"><a href="modelo-lineal-múltiple.html#cb22-2" aria-hidden="true" tabindex="-1"></a>Z <span class="ot">=</span> <span class="fu">apply</span>(X[,<span class="sc">-</span><span class="dv">1</span>],<span class="dv">2</span>,<span class="cf">function</span>(x){(x<span class="sc">-</span><span class="fu">mean</span>(x))<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">sum</span>((x<span class="sc">-</span><span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span>))})</span>
-<span id="cb22-3"><a href="modelo-lineal-múltiple.html#cb22-3" aria-hidden="true" tabindex="-1"></a>ys <span class="ot">=</span> (y<span class="sc">-</span><span class="fu">mean</span>(y))<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">sum</span>((y<span class="sc">-</span><span class="fu">mean</span>(y))<span class="sc">^</span><span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="modelo-lineal-múltiple.html#cb40-1" tabindex="-1"></a>y <span class="ot">=</span> birthweight<span class="sc">$</span>weight</span>
+<span id="cb40-2"><a href="modelo-lineal-múltiple.html#cb40-2" tabindex="-1"></a>Z <span class="ot">=</span> <span class="fu">apply</span>(X[,<span class="sc">-</span><span class="dv">1</span>],<span class="dv">2</span>,<span class="cf">function</span>(x){(x<span class="sc">-</span><span class="fu">mean</span>(x))<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">sum</span>((x<span class="sc">-</span><span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span>))})</span>
+<span id="cb40-3"><a href="modelo-lineal-múltiple.html#cb40-3" tabindex="-1"></a>ys <span class="ot">=</span> (y<span class="sc">-</span><span class="fu">mean</span>(y))<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">sum</span>((y<span class="sc">-</span><span class="fu">mean</span>(y))<span class="sc">^</span><span class="dv">2</span>))</span></code></pre></div>
 <p>Ahora procedemos a estimar el modelo con las variables escaladas:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="modelo-lineal-múltiple.html#cb23-1" aria-hidden="true" tabindex="-1"></a>mod.std <span class="ot">=</span> <span class="fu">lm</span>(ys<span class="sc">~</span>Z<span class="dv">-1</span>)</span>
-<span id="cb23-2"><a href="modelo-lineal-múltiple.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.std)</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="modelo-lineal-múltiple.html#cb41-1" tabindex="-1"></a>mod.std <span class="ot">=</span> <span class="fu">lm</span>(ys<span class="sc">~</span>Z<span class="dv">-1</span>)</span>
+<span id="cb41-2"><a href="modelo-lineal-múltiple.html#cb41-2" tabindex="-1"></a><span class="fu">summary</span>(mod.std)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = ys ~ Z - 1)
@@ -1008,8 +1011,8 @@ donde <span class="math inline">\(r_{jy}\)</span> es la correlación entre la va
 Las estimaciones de los coeficientes son ahora adimensionales y podemos comparar sus magnitudes. Por lo tanto, parece que la covariable edad gestacional es más importante para determinar el peso al nacer que la covariable peso de la madre. Note que, al escalar las variables, los resultados de las pruebas de hipótesis, estimación de <span class="math inline">\(\sigma^{2}\)</span>, y los coeficientes de determinación no se ven alterados.
 </div>
 </div>
-<div id="multicolinealidad" class="section level2" number="2.7">
-<h2><span class="header-section-number">2.7</span> Multicolinealidad</h2>
+<div id="multicolinealidad" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> Multicolinealidad<a href="modelo-lineal-múltiple.html#multicolinealidad" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Un problema que puede afectar enormente el ajuste de un modelo de regresión es la multicolinealidad. Este se presenta cuando hay una dependencia casi lineal entre las covariables.</p>
 <p>Recordemos que el estimador por MCO es <span class="math inline">\(\widehat{\boldsymbol \beta}=(\boldsymbol X&#39;\boldsymbol X)^{-1}\boldsymbol X&#39;\boldsymbol y\)</span>. Por lo tanto es necesario que la matriz <span class="math inline">\(\boldsymbol X&#39;\boldsymbol X\)</span> sea no singular. En caso contrario, no es posible encontrar la inversa y las ecuaciones normales no tendrán una única solución. Cuando sucede esto se debe a que hay al menos una columna de <span class="math inline">\(\boldsymbol X\)</span> linealmente dependiente.</p>
 <p>En regresión se utiliza las palabras multicolinealidad cuando hay una dependencia aproximada en las columnas de <span class="math inline">\(\boldsymbol X\)</span>. Es decir que al menos una covariable puede representarse, de forma aproximada, como una relación lineal de las otras:
@@ -1018,8 +1021,8 @@ x_{ij} \approx c_{0} + c_{1}x_{i1} + \ldots + c_{j-1}x_{i,j-1} + c_{j+1}x_{i,j+1
 \]</span>
 para <span class="math inline">\(i=1,\ldots,n\)</span>.</p>
 <p>Hay que aclarar que la falta de ortogonalidad no es necesariamente un inconveniente, el problema es cuando la relación lineal entre los regresores es casi perfecta, lo que provoca problemas en las inferencias que se hagan. Uno de estos problemas se ilustra a continuación con un ejemplo.</p>
-<div id="ejemplo-2" class="section level3 unnumbered">
-<h3>ejemplo</h3>
+<div id="ejemplo-2" class="section level3 unnumbered hasAnchor">
+<h3>ejemplo<a href="modelo-lineal-múltiple.html#ejemplo-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Considere el siguiente modelo de regresión:
 <span class="math display">\[
 y_{i} = \beta_{0} + \beta_{1}x_{i1} + \beta_{2}x_{i2} + \varepsilon_{i}, \mbox{ con }\varepsilon_{i}\sim N(0,\sigma^{2}),
@@ -1027,15 +1030,15 @@ y_{i} = \beta_{0} + \beta_{1}x_{i1} + \beta_{2}x_{i2} + \varepsilon_{i}, \mbox{ 
 y se plantean dos posibles matrices de diseño:
 <span class="math display">\[
 \boldsymbol X_{1} = \begin{pmatrix}
-1&amp; 1 \\ 
-1 &amp; 5 \\ 
-2 &amp; 1 \\ 
+1&amp; 1 \\
+1 &amp; 5 \\
+2 &amp; 1 \\
 2 &amp; 5 \\
 \end{pmatrix} \mbox{ y }
 \boldsymbol X_{2} = \begin{pmatrix}
-1&amp; 1 \\ 
-1 &amp; 2 \\ 
-2 &amp; 4 \\ 
+1&amp; 1 \\
+1 &amp; 2 \\
+2 &amp; 4 \\
 2 &amp; 5 \\
 \end{pmatrix}.
 \]</span>
@@ -1073,11 +1076,11 @@ Aquí podemos ver que la varianza de <span class="math inline">\(\widehat{\bolds
 donde <span class="math inline">\(R^{2}_{j}\)</span> es el coeficiente de determinación obtenido ajustado una regresión de <span class="math inline">\(x_{j}\)</span> sobre las demás covariables. Si <span class="math inline">\(x_{j}\)</span> es casi linealmente dependiente de algunos de los otros regresores, entonces <span class="math inline">\(R^{2}_{j}\)</span> será cercano a uno y el <span class="math inline">\(VIF_{j}\)</span> será muy alto. Generalmente, un VIF mayor de 10 indica problemas graves de multicolinealidad.</p>
 En un capítulo posterior ahondaremos más en este problema.
 </div>
-<div id="bajo-peso-al-nacer---factores-de-inflación-de-varianza" class="section level3" number="2.7.1">
-<h3><span class="header-section-number">2.7.1</span> Bajo peso al nacer - factores de inflación de varianza</h3>
+<div id="bajo-peso-al-nacer---factores-de-inflación-de-varianza" class="section level3 hasAnchor" number="2.7.1">
+<h3><span class="header-section-number">2.7.1</span> Bajo peso al nacer - factores de inflación de varianza<a href="modelo-lineal-múltiple.html#bajo-peso-al-nacer---factores-de-inflación-de-varianza" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>En el caso del peso de los recién nacidos, tenemos que los VIFs son:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="modelo-lineal-múltiple.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb25-2"><a href="modelo-lineal-múltiple.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="modelo-lineal-múltiple.html#cb43-1" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb43-2"><a href="modelo-lineal-múltiple.html#cb43-2" tabindex="-1"></a><span class="fu">vif</span>(mod)</span></code></pre></div>
 <pre><code>##     age   mppwt 
 ## 1.06696 1.06696</code></pre>
 Lo que nos indica que la varianza de las estimaciones de los coeficientes no se inflan debido a multicolinealidad. Recordemos que la correlación entre las dos covariables no es alta (0.2505155).
@@ -1085,7 +1088,7 @@ Lo que nos indica que la varianza de las estimaciones de los coeficientes no se 
 </div>
 </div>
 </div>
-<h3>References</h3>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-montgomery_introduction_2012" class="csl-entry">
 Montgomery, Douglas C., Elizabeth A. Peck, and G. Geoffrey Vining. 2012. <em>Introduction to Linear Regression Analysis</em>. 5th ed. Wiley.
@@ -1101,7 +1104,6 @@ Montgomery, Douglas C., Elizabeth A. Peck, and G. Geoffrey Vining. 2012. <em>Int
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1140,7 +1142,11 @@ gitbook.start({
 "link": "https://github.com/AlvaroFlorez/MLG1/blob/master/02-RegresionMultiple.Rmd",
 "text": null
 },
-"download": ["MLGI.pdf"],
+"download": ["MLG1.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
@@ -1154,7 +1160,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

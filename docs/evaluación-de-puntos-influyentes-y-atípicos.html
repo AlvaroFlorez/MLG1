@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 5 Evaluación de puntos influyentes y atípicos | Notas de clase: Modelo lineal general I</title>
   <meta name="description" content="Capítulo 5 Evaluación de puntos influyentes y atípicos | Notas de clase: Modelo lineal general I" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 5 Evaluación de puntos influyentes y atípicos | Notas de clase: Modelo lineal general I" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -24,17 +23,17 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2021-08-13" />
+<meta name="date" content="2024-02-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="transformaciones-y-mínimos-cuadrados-ponderados.html"/>
+<link rel="prev" href="transformaciones-y-mínimos-cuadrados-ordinarios.html"/>
 <link rel="next" href="references.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,9 +49,9 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -93,7 +92,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -106,7 +105,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -120,6 +119,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -253,23 +256,23 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#comentarios-finales"><i class="fa fa-check"></i><b>3.6</b> Comentarios finales</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html"><i class="fa fa-check"></i><b>4</b> Transformaciones y mínimos cuadrados ponderados</a>
+<li class="chapter" data-level="4" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html"><i class="fa fa-check"></i><b>4</b> Transformaciones y mínimos cuadrados ordinarios</a>
 <ul>
-<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#ejemplo-1.-datos-de-la-onu"><i class="fa fa-check"></i>Ejemplo 1. Datos de la ONU</a></li>
-<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#ejemplo-2.-datos-de-educación"><i class="fa fa-check"></i>Ejemplo 2. Datos de educación</a></li>
-<li class="chapter" data-level="4.1" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#transformación-de-los-datos"><i class="fa fa-check"></i><b>4.1</b> Transformación de los datos</a>
+<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#ejemplo-1.-datos-de-la-onu"><i class="fa fa-check"></i>Ejemplo 1. Datos de la ONU</a></li>
+<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#ejemplo-2.-datos-de-educación"><i class="fa fa-check"></i>Ejemplo 2. Datos de educación</a></li>
+<li class="chapter" data-level="4.1" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#transformación-de-los-datos"><i class="fa fa-check"></i><b>4.1</b> Transformación de los datos</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#transformaciones-para-linealizar-el-modelo"><i class="fa fa-check"></i><b>4.1.1</b> Transformaciones para linealizar el modelo</a></li>
-<li class="chapter" data-level="4.1.2" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#transformaciones-para-estabilizar-la-varianza"><i class="fa fa-check"></i><b>4.1.2</b> Transformaciones para estabilizar la varianza</a></li>
-<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#datos-de-la-onu.-transformación-para-linealizar-los-datos"><i class="fa fa-check"></i>Datos de la ONU. Transformación para linealizar los datos</a></li>
+<li class="chapter" data-level="4.1.1" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#transformaciones-para-linealizar-el-modelo"><i class="fa fa-check"></i><b>4.1.1</b> Transformaciones para linealizar el modelo</a></li>
+<li class="chapter" data-level="4.1.2" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#transformaciones-para-estabilizar-la-varianza"><i class="fa fa-check"></i><b>4.1.2</b> Transformaciones para estabilizar la varianza</a></li>
+<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#datos-de-la-onu.-transformación-para-linealizar-los-datos"><i class="fa fa-check"></i>Datos de la ONU. Transformación para linealizar los datos</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#método-de-box-cox"><i class="fa fa-check"></i><b>4.2</b> Método de Box-Cox</a>
+<li class="chapter" data-level="4.2" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#método-de-box-cox"><i class="fa fa-check"></i><b>4.2</b> Método de Box-Cox</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#datos-de-educación.-transformación-de-box-cox"><i class="fa fa-check"></i><b>4.2.1</b> Datos de educación. Transformación de Box-Cox</a></li>
+<li class="chapter" data-level="4.2.1" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#datos-de-educación.-transformación-de-box-cox"><i class="fa fa-check"></i><b>4.2.1</b> Datos de educación. Transformación de Box-Cox</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#mínimos-cuadrados-ponderados"><i class="fa fa-check"></i><b>4.3</b> Mínimos cuadrados ponderados</a>
+<li class="chapter" data-level="4.3" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#mínimos-cuadrados-ponderados"><i class="fa fa-check"></i><b>4.3</b> Mínimos cuadrados ponderados</a>
 <ul>
-<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#datos-de-educación.-minímos-cuadrados-ponderados"><i class="fa fa-check"></i>Datos de educación. Minímos cuadrados ponderados</a></li>
+<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#datos-de-educación.-minímos-cuadrados-ponderados"><i class="fa fa-check"></i>Datos de educación. Minímos cuadrados ponderados</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="evaluación-de-puntos-influyentes-y-atípicos.html"><a href="evaluación-de-puntos-influyentes-y-atípicos.html"><i class="fa fa-check"></i><b>5</b> Evaluación de puntos influyentes y atípicos</a>
@@ -308,10 +311,10 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="evaluación-de-puntos-influyentes-y-atípicos" class="section level1" number="5">
-<h1><span class="header-section-number">Capítulo 5</span> Evaluación de puntos influyentes y atípicos</h1>
-<div id="datos-de-la-onu" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Datos de la ONU</h2>
+<div id="evaluación-de-puntos-influyentes-y-atípicos" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Capítulo 5</span> Evaluación de puntos influyentes y atípicos<a href="evaluación-de-puntos-influyentes-y-atípicos.html#evaluación-de-puntos-influyentes-y-atípicos" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="datos-de-la-onu" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Datos de la ONU<a href="evaluación-de-puntos-influyentes-y-atípicos.html#datos-de-la-onu" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Retomemos los datos de la ONU (<code>UN11</code> de la librería <code>alr4</code>). El modelo propuesto es:
 <span class="math display" id="eq:modUN">\[\begin{equation}
 \log \mbox{fertility}_{i} = \beta_{0} + \log \mbox{ppgdp}_{i}\beta_{1} + \mbox{pctUrban}_{i}\beta_{2} + \varepsilon_{i},
@@ -319,15 +322,15 @@ div.csl-indent {
 \end{equation}\]</span>
 donde <span class="math inline">\(\varepsilon_{i}\sim N(0,\sigma^{2})\)</span> y <span class="math inline">\(cov(\varepsilon_{j},\varepsilon_{k})=0\)</span>.</p>
 <p>El análisis de los residuos (ver Figura <a href="evaluación-de-puntos-influyentes-y-atípicos.html#fig:Un11resFig">5.1</a>) muestra que el modelo está bien especificado y no hay problemas de heterocedasticidad. Sin embargo, podemos observar que algunos residuos presentan valores muy altos. La estimación de la <span class="math inline">\(\log \mbox{fertility}\)</span> para Guinea Ecuatorial es considerablemente baja en comparación con el valor observado. Caso contrario pasa con Corea del Norte, Bosnia y Herzegovina, y Moldavia.</p>
-<div class="figure" style="text-align: center"><span id="fig:Un11resFig"></span>
-<img src="MLGI_files/figure-html/Un11resFig-1.png" alt="Datos de la ONU. Gráfico de los residuos estudentizados." width="576" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:Un11resFig"></span>
+<img src="MLG1_files/figure-html/Un11resFig-1.png" alt="Datos de la ONU. Gráfico de los residuos estudentizados." width="576" />
 <p class="caption">
 Figure 5.1: Datos de la ONU. Gráfico de los residuos estudentizados.
 </p>
 </div>
 </div>
-<div id="importancia-de-detectar-valores-influyentes-y-atípicos" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Importancia de detectar valores influyentes y atípicos</h2>
+<div id="importancia-de-detectar-valores-influyentes-y-atípicos" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Importancia de detectar valores influyentes y atípicos<a href="evaluación-de-puntos-influyentes-y-atípicos.html#importancia-de-detectar-valores-influyentes-y-atípicos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>En el análisis de datos pueden observarse algunos valores atípicos. Como atípicas nos referimos a las observaciones que no siguen el patrón de la mayoría de los datos. En un análisis de regresión, pueden presentarse valores atípicos sobre la variable respuesta y/o sobre algunas covariables. Por lo tanto, se podría identificar diferentes tipos de puntos ``atípicos’’. Estos se pueden identificar en la Figura <a href="evaluación-de-puntos-influyentes-y-atípicos.html#fig:puntosAI">5.2</a> para el caso de una regresión simple:</p>
 <ul>
 <li><strong><span class="math inline">\(A\)</span> es un punto atípico:</strong> valor que no se ajusta bien en <span class="math inline">\(Y\)</span>, pero regular en <span class="math inline">\(X\)</span>.</li>
@@ -335,23 +338,23 @@ Figure 5.1: Datos de la ONU. Gráfico de los residuos estudentizados.
 <li><strong><span class="math inline">\(C\)</span> es un punto de influyente:</strong> medición que no se ajusta bien en <span class="math inline">\(Y\)</span> y es inusual en <span class="math inline">\(X\)</span>.</li>
 </ul>
 <p>Estos puntos inusuales pueden ser problemáticos a la hora de ajustar un modelo lineal por MCO, ya que pueden tener mucha influencia en los resultados, y su presencia puede ser una señal de que el modelo no captura caraterísticas importantes de los datos.</p>
-<div class="figure" style="text-align: center"><span id="fig:puntosAI"></span>
-<img src="MLGI_files/figure-html/puntosAI-1.png" alt="Diferentes tipos de datos. A: Punto atípico, B: punto de balanceo, C: punto influyente." width="480" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:puntosAI"></span>
+<img src="MLG1_files/figure-html/puntosAI-1.png" alt="Diferentes tipos de datos. A: Punto atípico, B: punto de balanceo, C: punto influyente." width="480" />
 <p class="caption">
 Figure 5.2: Diferentes tipos de datos. A: Punto atípico, B: punto de balanceo, C: punto influyente.
 </p>
 </div>
-<p>En la Figura <a href="evaluación-de-puntos-influyentes-y-atípicos.html#fig:puntosAIw">5.3</a>(a) vemos que un punto atípico no tiene un efecto grande en la estimación de la recta de regresión. Sin embargo, dado que los puntos atípicos generan valores altos (en valor absoluto) para los residuos, estas observaciones inflan la varianza de las estimaciones y afectan las inferencias. En este caso, la estimación de la varianza con todos los datos es de <span class="math inline">\(\widehat{\sigma}^{2}=6.37\)</span>, y si se omite el dato <span class="math inline">\(A\)</span>, tenemos que <span class="math inline">\(\widehat{\sigma}^{2}=1.55\)</span>. Como vemos en la Figura (b) los puntos de balanceo tampoco tienen mucha influencia sobre las estimaciones por MCO ya que estos están en línea con el resto de los datos.</p>
+<p>En la Figura <a href="evaluación-de-puntos-influyentes-y-atípicos.html#fig:puntosAIw">5.3</a>(a) vemos que un punto atípico no tiene un efecto grande en la estimación de la recta de regresión. Sin embargo, dado que los puntos atípicos generan valores altos (en valor absoluto) para los residuos, estas observaciones inflan la varianza de las estimaciones y afectan las inferencias. En este caso, la estimación de la varianza con todos los datos es de <span class="math inline">\(\widehat{\sigma}^{2}=6.37\)</span>, y si se omite el dato <span class="math inline">\(A\)</span>, tenemos que <span class="math inline">\(\widehat{\sigma}^{2}=1.55\)</span>. Como vemos en la Figura @ref{fig:puntosAIw}(b) los puntos de balanceo tampoco tienen mucha influencia sobre las estimaciones por MCO ya que estos están en línea con el resto de los datos.</p>
 <p>Por el otro lado, en la Figura <a href="evaluación-de-puntos-influyentes-y-atípicos.html#fig:puntosAIw">5.3</a>(c) vemos que los puntos influyentes afectan notablemente las estimaciones por MCO. Además, también inflan considerablemente la variabilidad. Con todos los datos tenemos que <span class="math inline">\(\widehat{\sigma}^{2}=3.09\)</span>. Mientras que <span class="math inline">\(\widehat{\sigma}^{2}=1.55\)</span> al eliminar la observación C.</p>
-<div class="figure" style="text-align: center"><span id="fig:puntosAIw"></span>
-<img src="MLGI_files/figure-html/puntosAIw-1.png" alt="Efecto de los puntos inusuales. En cada gráfico, la línea continua es la estimación por MCO con todos los datos, mientras que la línea discontinua es la estimación por MCO omitiendo el punto inusual (circulo rojo). Izquierda: efecto de un punto atípico. Centro: efecto de un punto de balanceo. Derecha: efecto de un punto influyente." width="864" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:puntosAIw"></span>
+<img src="MLG1_files/figure-html/puntosAIw-1.png" alt="Efecto de los puntos inusuales. En cada gráfico, la línea continua es la estimación por MCO con todos los datos, mientras que la línea discontinua es la estimación por MCO omitiendo el punto inusual (circulo rojo). Izquierda: efecto de un punto atípico. Centro: efecto de un punto de balanceo. Derecha: efecto de un punto influyente." width="864" />
 <p class="caption">
 Figure 5.3: Efecto de los puntos inusuales. En cada gráfico, la línea continua es la estimación por MCO con todos los datos, mientras que la línea discontinua es la estimación por MCO omitiendo el punto inusual (circulo rojo). Izquierda: efecto de un punto atípico. Centro: efecto de un punto de balanceo. Derecha: efecto de un punto influyente.
 </p>
 </div>
 </div>
-<div id="valores-atípicos" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> Valores atípicos</h2>
+<div id="valores-atípicos" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Valores atípicos<a href="evaluación-de-puntos-influyentes-y-atípicos.html#valores-atípicos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Para identificar valores atípicos podemos hacer uso de los residuos del ajuste. Recordemos que, aunque los errores tenga varianza constante y sean incorrelacionados, los residuos no cumplen con estas propiedades. Por lo tanto, es recomendado usar los residuos estudentizados (o los residuos R-Student):
 <span class="math display">\[
 r_{i} = \frac{e_{i}}{\sqrt{\widehat{\sigma}^{2}(1-h_{ii})}}, i=1,\ldots,n,
@@ -363,19 +366,19 @@ t_{i} = \frac{e_{i}}{\sqrt{\widehat{\sigma}^{2}_{(i)}(1-h_{ii})}} = r_{i} \sqrt{
 donde <span class="math inline">\(\widehat{\sigma}^{2}_{(i)}\)</span> es la estimación de <span class="math inline">\(\sigma\)</span> usando todas las observaciones excepto la <span class="math inline">\(i\)</span>-ésima.</p>
 <p>Si se cumplen los supuestos del modelo, se puede demostrar que <span class="math inline">\(r_{i}\sim t_{n-p-1}\)</span>. Los residuos estudentizados siguen también está distribución pero de forma aproximada. Por lo tanto, se pueden identificar posibles valores atípicos haciendo un gráfico de los R-Student (o residuos estudentizados) contra los valores ajustados y trazar líneas de referencia en los percentiles <span class="math inline">\(0.025\)</span> y <span class="math inline">\(0.975\)</span> de la distribución <span class="math inline">\(t\)</span> con <span class="math inline">\(n-p-1\)</span> grados de libertad.</p>
 <p>Esta verificación no es estrictamente una prueba de hipótesis. Puesto que estamos haciendo múltiplescomparaciones de los residuos R-Student con los valores criticos de la distribución <span class="math inline">\(t\)</span>. Por lo que es necesario hacer una corrección utilizando el método de Bonferroni.</p>
-<div id="datos-de-la-onu---valores-atípicos" class="section level3 unnumbered">
-<h3>Datos de la ONU - valores atípicos</h3>
-En la Figura <a href="transformaciones-y-mínimos-cuadrados-ponderados.html#fig:Un11res">4.2</a> podemos observar que hay varios residuos que sobrepasan los puntos de corte. Particularmente, la observación de Guinea Ecuatorial presenta un residuo muy alto.
+<div id="datos-de-la-onu---valores-atípicos" class="section level3 unnumbered hasAnchor">
+<h3>Datos de la ONU - valores atípicos<a href="evaluación-de-puntos-influyentes-y-atípicos.html#datos-de-la-onu---valores-atípicos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+En la Figura <a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#fig:Un11res">4.2</a> podemos observar que hay varios residuos que sobrepasan los puntos de corte. Particularmente, la observación de Guinea Ecuatorial presenta un residuo muy alto.
 </div>
 </div>
-<div id="puntos-de-balanceo" class="section level2" number="5.4">
-<h2><span class="header-section-number">5.4</span> Puntos de balanceo</h2>
+<div id="puntos-de-balanceo" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Puntos de balanceo<a href="evaluación-de-puntos-influyentes-y-atípicos.html#puntos-de-balanceo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Recordemos que la estimación de la recta de regresión es un promedio ponderado de las observaciones:
 <span class="math display">\[
 \widehat{\boldsymbol y}= \boldsymbol X\widehat{\boldsymbol \beta}= \boldsymbol X(\boldsymbol X&#39;\boldsymbol X)^{-1}\boldsymbol X&#39;\boldsymbol y= \boldsymbol H\boldsymbol y.
 \]</span>
 Para la observación <span class="math inline">\(y_{i}\)</span> tenemos que <span class="math inline">\(\widehat{y}_{i} = h_{ii}y_{i} + \sum_{k\neq i}h_{ik}y_{j}\)</span>. Particularmente, el elemento <span class="math inline">\(h_{ij}\)</span> pueden ser visto como la cantidad de balanceo o palanqueo ejercido por la j-ésima observación <span class="math inline">\((y_i)\)</span> sobre el <span class="math inline">\(i\)</span>-ésimo valor ajustado (<span class="math inline">\(\widehat{y}_{i}\)</span>).</p>
-Entonces, para detectar valores influyentes vamos a centrarnos en la matriz  <span class="math inline">\((\boldsymbol H)\)</span>. El elemento <span class="math inline">\(h_{ij}\)</span> de esta matriz se calcula como:
+Entonces, para detectar valores influyentes vamos a centrarnos en la matriz <span class="math inline">\((\boldsymbol H)\)</span>. El elemento <span class="math inline">\(h_{ij}\)</span> de esta matriz se calcula como:
 <span class="math display" id="eq:hij">\[\begin{equation}
 h_{ij} = \boldsymbol x_{i}&#39;(\boldsymbol X&#39;\boldsymbol X)\boldsymbol x_{j}.
 \tag{5.2}
@@ -383,72 +386,72 @@ h_{ij} = \boldsymbol x_{i}&#39;(\boldsymbol X&#39;\boldsymbol X)\boldsymbol x_{j
 Algunas propiedades de la matriz <span class="math inline">\(\boldsymbol H\)</span> son:
 <p>Además, la diagonal de la matriz <span class="math inline">\(\boldsymbol H\)</span> es una medida estandarizada de la distancia de las observaciones al centro (centroide) del espacio de <span class="math inline">\(\boldsymbol x\)</span>. Por lo tanto, valores altos en la diagonal de <span class="math inline">\(\boldsymbol H\)</span> pueden indicarnos observaciones que son potencialmente influyentes porque están alejadas en el espacio de las covariables. Viendo <a href="evaluación-de-puntos-influyentes-y-atípicos.html#eq:hij">(5.2)</a>, si <span class="math inline">\(h_{ii}\)</span> es muy cercano a uno, <span class="math inline">\(\widehat{y}_{i}\)</span> estará muy cerca de <span class="math inline">\(y_{i}\)</span> (dado que el peso de las demás observaciones será casi cero).</p>
 <p>Dado que <span class="math inline">\(\bar{h} = p/n\)</span>, observaciones con <span class="math inline">\(h_{ii}\)</span> superiores a <span class="math inline">\(2p/n\)</span> son considerados <strong>puntos de balanceo</strong> (y posibles puntos influyentes). Note que, si <span class="math inline">\(2p/n &gt; 1\)</span>, el punto de corte no aplica.</p>
-<div id="datos-de-la-onu---diagonal-de-la-matrix-hat" class="section level3 unnumbered">
-<h3>Datos de la ONU - diagonal de la matrix hat</h3>
+<div id="datos-de-la-onu---diagonal-de-la-matrix-hat" class="section level3 unnumbered hasAnchor">
+<h3>Datos de la ONU - diagonal de la matrix hat<a href="evaluación-de-puntos-influyentes-y-atípicos.html#datos-de-la-onu---diagonal-de-la-matrix-hat" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>La Figura <a href="evaluación-de-puntos-influyentes-y-atípicos.html#fig:Un11Hdiag">5.4</a>(a) muestra los valores de la diagonal de la matrix <span class="math inline">\(\boldsymbol H\)</span>. Aquí podemos observar que algunos países presentan valores más altos del punto de corte (<span class="math inline">\(2\frac{p}{n} = 0.0302\)</span>). Comparado con los demás valores, el valor asociado a Trinidad y Tobago es muy alto. Por lo cuál este país lo podemos considerar como un punto de balanceo.</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(alr4)</span>
-<span id="cb95-2"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(UN11)</span>
-<span id="cb95-3"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb95-3" aria-hidden="true" tabindex="-1"></a>Names <span class="ot">=</span> <span class="fu">rownames</span>(UN11)</span>
-<span id="cb95-4"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb95-4" aria-hidden="true" tabindex="-1"></a>mod.UN11 <span class="ot">=</span> <span class="fu">lm</span>(<span class="fu">log</span>(fertility)<span class="sc">~</span><span class="fu">log</span>(ppgdp)<span class="sc">+</span>pctUrban,<span class="at">data=</span>UN11)</span>
-<span id="cb95-5"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb95-5" aria-hidden="true" tabindex="-1"></a>hii <span class="ot">=</span> <span class="fu">hatvalues</span>(mod.UN11)</span>
-<span id="cb95-6"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb95-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb95-7"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb95-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hii,<span class="at">type=</span><span class="st">&#39;h&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;índice&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;valores de la diagonal de la matrix hat&#39;</span>)</span>
-<span id="cb95-8"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb95-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">2</span><span class="sc">*</span><span class="dv">3</span><span class="sc">/</span><span class="dv">199</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
-<span id="cb95-9"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb95-9" aria-hidden="true" tabindex="-1"></a>hii[hii<span class="sc">&gt;</span><span class="dv">2</span><span class="sc">*</span><span class="dv">3</span><span class="sc">/</span><span class="dv">199</span>]</span></code></pre></div>
-<pre><code>##            Djibouti             Liberia               Nauru         North Korea             Somalia 
-##          0.03105290          0.03747901          0.03708513          0.03105839          0.04390710 
-##           Sri Lanka Trinidad and Tobago 
-##          0.03334886          0.07590435</code></pre>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">log</span>(UN11<span class="sc">$</span>ppgdp),UN11<span class="sc">$</span>pctUrban,<span class="at">xlab=</span><span class="st">&#39;log del PNB per cápita&#39;</span>,</span>
-<span id="cb97-2"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb97-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&#39;% de población urbanas&#39;</span>)</span>
-<span id="cb97-3"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fu">log</span>(UN11<span class="sc">$</span>ppgdp)[Names<span class="sc">==</span><span class="st">&#39;Trinidad and Tobago&#39;</span>],</span>
-<span id="cb97-4"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb97-4" aria-hidden="true" tabindex="-1"></a>       UN11<span class="sc">$</span>pctUrban[Names<span class="sc">==</span><span class="st">&#39;Trinidad and Tobago&#39;</span>],<span class="at">col=</span><span class="dv">2</span>,<span class="at">pch=</span><span class="dv">19</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:Un11Hdiag"></span>
-<img src="MLGI_files/figure-html/Un11Hdiag-1.png" alt="Datos de la ONU. (a) Valores de la diagonal de lam matriz hat. (b) Diagrama de dispersión de las covariables (derecha). El punto rojo indica a Trinidad y Tobago." width="768" />
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb96-1" tabindex="-1"></a><span class="fu">library</span>(alr4)</span>
+<span id="cb96-2"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb96-2" tabindex="-1"></a><span class="fu">data</span>(UN11)</span>
+<span id="cb96-3"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb96-3" tabindex="-1"></a>Names <span class="ot">=</span> <span class="fu">rownames</span>(UN11)</span>
+<span id="cb96-4"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb96-4" tabindex="-1"></a>mod.UN11 <span class="ot">=</span> <span class="fu">lm</span>(<span class="fu">log</span>(fertility)<span class="sc">~</span><span class="fu">log</span>(ppgdp)<span class="sc">+</span>pctUrban,<span class="at">data=</span>UN11)</span>
+<span id="cb96-5"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb96-5" tabindex="-1"></a>hii <span class="ot">=</span> <span class="fu">hatvalues</span>(mod.UN11)</span>
+<span id="cb96-6"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb96-6" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb96-7"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb96-7" tabindex="-1"></a><span class="fu">plot</span>(hii,<span class="at">type=</span><span class="st">&#39;h&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;índice&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;valores de la diagonal de la matrix hat&#39;</span>)</span>
+<span id="cb96-8"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb96-8" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">2</span><span class="sc">*</span><span class="dv">3</span><span class="sc">/</span><span class="dv">199</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb96-9"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb96-9" tabindex="-1"></a>hii[hii<span class="sc">&gt;</span><span class="dv">2</span><span class="sc">*</span><span class="dv">3</span><span class="sc">/</span><span class="dv">199</span>]</span></code></pre></div>
+<pre><code>##            Djibouti             Liberia               Nauru         North Korea 
+##          0.03105290          0.03747901          0.03708513          0.03105839 
+##             Somalia           Sri Lanka Trinidad and Tobago 
+##          0.04390710          0.03334886          0.07590435</code></pre>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb98-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">log</span>(UN11<span class="sc">$</span>ppgdp),UN11<span class="sc">$</span>pctUrban,<span class="at">xlab=</span><span class="st">&#39;log del PNB per cápita&#39;</span>,</span>
+<span id="cb98-2"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb98-2" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&#39;% de población urbanas&#39;</span>)</span>
+<span id="cb98-3"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb98-3" tabindex="-1"></a><span class="fu">points</span>(<span class="fu">log</span>(UN11<span class="sc">$</span>ppgdp)[Names<span class="sc">==</span><span class="st">&#39;Trinidad and Tobago&#39;</span>],</span>
+<span id="cb98-4"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb98-4" tabindex="-1"></a>       UN11<span class="sc">$</span>pctUrban[Names<span class="sc">==</span><span class="st">&#39;Trinidad and Tobago&#39;</span>],<span class="at">col=</span><span class="dv">2</span>,<span class="at">pch=</span><span class="dv">19</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:Un11Hdiag"></span>
+<img src="MLG1_files/figure-html/Un11Hdiag-1.png" alt="Datos de la ONU. (a) Valores de la diagonal de lam matriz hat. (b) Diagrama de dispersión de las covariables (derecha). El punto rojo indica a Trinidad y Tobago." width="768" />
 <p class="caption">
 Figure 5.4: Datos de la ONU. (a) Valores de la diagonal de lam matriz hat. (b) Diagrama de dispersión de las covariables (derecha). El punto rojo indica a Trinidad y Tobago.
 </p>
 </div>
 <p>En laFigura <a href="evaluación-de-puntos-influyentes-y-atípicos.html#fig:Un11Hdiag">5.4</a>(b) podemos observar que Trinidad y Tobago tiene un porcentaje muy pequeño de población en áreas urbanas y valor del PNB per cápita relativamente alto. Por esta razón el valor <span class="math inline">\(h_{ii}\)</span> asociado es alto.</p>
 <p>La Figura <a href="evaluación-de-puntos-influyentes-y-atípicos.html#fig:Un11valAtip">5.5</a> muestra los valores de la diagonal de <span class="math inline">\(\boldsymbol H\)</span> contra los residuos estudentizados. Aquí vemos que aunque Trinidad y Tobago tiene un valor <span class="math inline">\(h_{ii}\)</span> alto, el R-Student asociado es bajo. Por lo que no se puede considerar como un punto influyente. Por el contrario, Guinea Ecuatorial y Corea del Norte presentan ambos valores altos (residuos y <span class="math inline">\(h_{ii}\)</span>), por lo que se pueden considerar como puntos influyentes. Las observaciones que tienen residuos altos pero valores <span class="math inline">\(h_{ii}\)</span> bajos se consideran como atípicos.</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb98-1" aria-hidden="true" tabindex="-1"></a>rstud.UN11 <span class="ot">=</span> res.UN11<span class="sc">*</span><span class="fu">sqrt</span>( (<span class="dv">199-3-1</span>)<span class="sc">/</span>(<span class="dv">199-3</span><span class="sc">-</span>res.UN11<span class="sc">^</span><span class="dv">2</span>) )</span>
-<span id="cb98-2"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hii,rstud.UN11,<span class="at">ylab=</span><span class="st">&#39;r Student&#39;</span>,</span>
-<span id="cb98-3"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb98-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;valores de la diagonal de la matrix hat&#39;</span>)</span>
-<span id="cb98-4"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb98-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
-<span id="cb98-5"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb98-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="sc">*</span><span class="fu">qt</span>(<span class="fl">0.975</span>,<span class="dv">199-3-1</span>),<span class="at">lty=</span><span class="dv">2</span>)</span>
-<span id="cb98-6"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb98-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="dv">2</span><span class="sc">*</span><span class="dv">3</span><span class="sc">/</span><span class="dv">199</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
-<span id="cb98-7"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb98-7" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(hii[Names<span class="sc">==</span><span class="st">&quot;Trinidad and Tobago&quot;</span>],</span>
-<span id="cb98-8"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb98-8" aria-hidden="true" tabindex="-1"></a>     rstud.UN11[Names<span class="sc">==</span><span class="st">&#39;Trinidad and Tobago&#39;</span>],<span class="st">&#39;Trinidad y Tobago&#39;</span>,<span class="at">pos=</span><span class="dv">2</span>,<span class="at">cex=</span><span class="fl">0.8</span>)</span>
-<span id="cb98-9"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb98-9" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(hii[Names<span class="sc">==</span><span class="st">&quot;Equatorial Guinea&quot;</span>],</span>
-<span id="cb98-10"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb98-10" aria-hidden="true" tabindex="-1"></a>     rstud.UN11[Names<span class="sc">==</span><span class="st">&#39;Equatorial Guinea&#39;</span>],<span class="st">&#39;Guinea Ecuatorial&#39;</span>,<span class="at">pos=</span><span class="dv">4</span>,<span class="at">cex=</span><span class="fl">0.8</span>)</span>
-<span id="cb98-11"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb98-11" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(hii[Names<span class="sc">==</span><span class="st">&quot;North Korea&quot;</span>],</span>
-<span id="cb98-12"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb98-12" aria-hidden="true" tabindex="-1"></a>     rstud.UN11[Names<span class="sc">==</span><span class="st">&#39;North Korea&#39;</span>],<span class="st">&#39;Corea del Norte&#39;</span>,<span class="at">pos=</span><span class="dv">4</span>,<span class="at">cex=</span><span class="fl">0.8</span>)</span>
-<span id="cb98-13"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb98-13" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(hii[Names<span class="sc">==</span><span class="st">&quot;Somalia&quot;</span>],</span>
-<span id="cb98-14"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb98-14" aria-hidden="true" tabindex="-1"></a>     rstud.UN11[Names<span class="sc">==</span><span class="st">&#39;Somalia&#39;</span>],<span class="st">&#39;Somalia&#39;</span>,<span class="at">pos=</span><span class="dv">4</span>,<span class="at">cex=</span><span class="fl">0.8</span>)</span>
-<span id="cb98-15"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb98-15" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(hii[Names<span class="sc">==</span><span class="st">&quot;Bosnia and Herzegovina&quot;</span>],</span>
-<span id="cb98-16"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb98-16" aria-hidden="true" tabindex="-1"></a>     rstud.UN11[Names<span class="sc">==</span><span class="st">&#39;Bosnia and Herzegovina&#39;</span>],<span class="st">&#39;Bosnia y Herz.&#39;</span>,<span class="at">pos=</span><span class="dv">4</span>,<span class="at">cex=</span><span class="fl">0.8</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:Un11valAtip"></span>
-<img src="MLGI_files/figure-html/Un11valAtip-1.png" alt="Datos de la ONU. Gráfico de valores influyentes" width="480" />
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb99-1" tabindex="-1"></a>rstud.UN11 <span class="ot">=</span> res.UN11<span class="sc">*</span><span class="fu">sqrt</span>( (<span class="dv">199-3-1</span>)<span class="sc">/</span>(<span class="dv">199-3</span><span class="sc">-</span>res.UN11<span class="sc">^</span><span class="dv">2</span>) )</span>
+<span id="cb99-2"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb99-2" tabindex="-1"></a><span class="fu">plot</span>(hii,rstud.UN11,<span class="at">ylab=</span><span class="st">&#39;r Student&#39;</span>,</span>
+<span id="cb99-3"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb99-3" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;valores de la diagonal de la matrix hat&#39;</span>)</span>
+<span id="cb99-4"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb99-4" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb99-5"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb99-5" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="sc">*</span><span class="fu">qt</span>(<span class="fl">0.975</span>,<span class="dv">199-3-1</span>),<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb99-6"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb99-6" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="dv">2</span><span class="sc">*</span><span class="dv">3</span><span class="sc">/</span><span class="dv">199</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb99-7"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb99-7" tabindex="-1"></a><span class="fu">text</span>(hii[Names<span class="sc">==</span><span class="st">&quot;Trinidad and Tobago&quot;</span>],</span>
+<span id="cb99-8"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb99-8" tabindex="-1"></a>     rstud.UN11[Names<span class="sc">==</span><span class="st">&#39;Trinidad and Tobago&#39;</span>],<span class="st">&#39;Trinidad y Tobago&#39;</span>,<span class="at">pos=</span><span class="dv">2</span>,<span class="at">cex=</span><span class="fl">0.8</span>)</span>
+<span id="cb99-9"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb99-9" tabindex="-1"></a><span class="fu">text</span>(hii[Names<span class="sc">==</span><span class="st">&quot;Equatorial Guinea&quot;</span>],</span>
+<span id="cb99-10"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb99-10" tabindex="-1"></a>     rstud.UN11[Names<span class="sc">==</span><span class="st">&#39;Equatorial Guinea&#39;</span>],<span class="st">&#39;Guinea Ecuatorial&#39;</span>,<span class="at">pos=</span><span class="dv">4</span>,<span class="at">cex=</span><span class="fl">0.8</span>)</span>
+<span id="cb99-11"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb99-11" tabindex="-1"></a><span class="fu">text</span>(hii[Names<span class="sc">==</span><span class="st">&quot;North Korea&quot;</span>],</span>
+<span id="cb99-12"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb99-12" tabindex="-1"></a>     rstud.UN11[Names<span class="sc">==</span><span class="st">&#39;North Korea&#39;</span>],<span class="st">&#39;Corea del Norte&#39;</span>,<span class="at">pos=</span><span class="dv">4</span>,<span class="at">cex=</span><span class="fl">0.8</span>)</span>
+<span id="cb99-13"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb99-13" tabindex="-1"></a><span class="fu">text</span>(hii[Names<span class="sc">==</span><span class="st">&quot;Somalia&quot;</span>],</span>
+<span id="cb99-14"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb99-14" tabindex="-1"></a>     rstud.UN11[Names<span class="sc">==</span><span class="st">&#39;Somalia&#39;</span>],<span class="st">&#39;Somalia&#39;</span>,<span class="at">pos=</span><span class="dv">4</span>,<span class="at">cex=</span><span class="fl">0.8</span>)</span>
+<span id="cb99-15"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb99-15" tabindex="-1"></a><span class="fu">text</span>(hii[Names<span class="sc">==</span><span class="st">&quot;Bosnia and Herzegovina&quot;</span>],</span>
+<span id="cb99-16"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb99-16" tabindex="-1"></a>     rstud.UN11[Names<span class="sc">==</span><span class="st">&#39;Bosnia and Herzegovina&#39;</span>],<span class="st">&#39;Bosnia y Herz.&#39;</span>,<span class="at">pos=</span><span class="dv">4</span>,<span class="at">cex=</span><span class="fl">0.8</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:Un11valAtip"></span>
+<img src="MLG1_files/figure-html/Un11valAtip-1.png" alt="Datos de la ONU. Gráfico de valores influyentes" width="480" />
 <p class="caption">
 Figure 5.5: Datos de la ONU. Gráfico de valores influyentes
 </p>
 </div>
 </div>
-<div id="medidas-de-influencia" class="section level3" number="5.4.1">
-<h3><span class="header-section-number">5.4.1</span> Medidas de influencia</h3>
+<div id="medidas-de-influencia" class="section level3 hasAnchor" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> Medidas de influencia<a href="evaluación-de-puntos-influyentes-y-atípicos.html#medidas-de-influencia" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>El procedimiento para determinar si un punto es influyente se puede hacer evaluando los cambios que ocurren en el modelo ajustado cuando se elimina dicha observación.</p>
 Por ejemplo, la Figura <a href="evaluación-de-puntos-influyentes-y-atípicos.html#fig:Un11valAtipElim">5.6</a> muestra cuanto cambian las estimaciones de <span class="math inline">\(\beta_{1}\)</span> y <span class="math inline">\(\beta_{2}\)</span> al eliminar un país a la vez. Aquí vemos que los cambios mas grandes ocurren cuando se eliminan a Guinea Ecuatorial o a Corea del Norte. Mientras que los países que identificamos como puntos de balanceo (Trinidad y Tobago y Somalia) o atípicos (Bosnia y Herzegovina) no tienen mucha influencia sobre las estimaciones.
 ….
-<div class="figure" style="text-align: center"><span id="fig:Un11valAtipElim"></span>
-<img src="MLGI_files/figure-html/Un11valAtipElim-1.png" alt="Datos de la ONU. Diferencias entre las estimaciones con todos los datos y las estimaciones obtenidas al eliminar una observación a la vez" width="480" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:Un11valAtipElim"></span>
+<img src="MLG1_files/figure-html/Un11valAtipElim-1.png" alt="Datos de la ONU. Diferencias entre las estimaciones con todos los datos y las estimaciones obtenidas al eliminar una observación a la vez" width="480" />
 <p class="caption">
 Figure 5.6: Datos de la ONU. Diferencias entre las estimaciones con todos los datos y las estimaciones obtenidas al eliminar una observación a la vez
 </p>
 </div>
 <p>De igual forma se podría evaluar cuanto cambian las estimaciones de <span class="math inline">\(E(y|\boldsymbol x_{i})\)</span> o las varianzas de los coeficientes <span class="math inline">\(V(\beta_{j})\)</span> al eliminar observaciones una a una.</p>
 <p>A continuación se presentan algunos indicadores estadísticos para detectar puntos influyentes:</p>
-<div id="distancia-de-cook" class="section level4" number="5.4.1.1">
-<h4><span class="header-section-number">5.4.1.1</span> Distancia de Cook</h4>
+<div id="distancia-de-cook" class="section level4 hasAnchor" number="5.4.1.1">
+<h4><span class="header-section-number">5.4.1.1</span> Distancia de Cook<a href="evaluación-de-puntos-influyentes-y-atípicos.html#distancia-de-cook" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Esta es una medida de la distancia entre las estimaciones por MCO basado en los <span class="math inline">\(n\)</span> puntos (<span class="math inline">\(\hat{\boldsymbol \beta}\)</span>), y el estimado obtenido eliminando el <span class="math inline">\(i\)</span>-ésimo punto (<span class="math inline">\(\hat{\boldsymbol \beta}_{(i)}\)</span>). Es decir que es un indicador global de cuanto cambian todas las estimaciones de los coeficientes de regresión en conjunto. Esta medida se expresa de la siguiente forma:</p>
 <p><span class="math display">\[\begin{equation}
 \begin{split}
@@ -459,8 +462,8 @@ D_{i} &amp;= \frac{(\hat{\boldsymbol \beta}_{(i)}-\hat{\boldsymbol \beta})&#39;\
 <p>Aquí podemos observar que <span class="math inline">\(D_{i}\)</span> consta de dos componentes, uno asociado a el residuo <span class="math inline">\((r_{i})\)</span> y otro a la distancia del vector <span class="math inline">\(\boldsymbol x_{i}\)</span> al centroide de la matriz de las covariables. Ambos (o alguno de ellos) puede contribuir a valores altos de este indicador.</p>
 <p>Entonces, los puntos asociados a valores altos de <span class="math inline">\(D_{i}\)</span> tienen gran influencia sobre la estimación de <span class="math inline">\(\boldsymbol \beta\)</span> por MCO. Se considera como un punto influyente si tiene asociado un <span class="math inline">\(D_{i} &gt; 4/n\)</span> (algunos textos sugieren <span class="math inline">\(D_{i} &gt; 1\)</span>).</p>
 </div>
-<div id="dfbetas" class="section level4" number="5.4.1.2">
-<h4><span class="header-section-number">5.4.1.2</span> DFBETAS</h4>
+<div id="dfbetas" class="section level4 hasAnchor" number="5.4.1.2">
+<h4><span class="header-section-number">5.4.1.2</span> DFBETAS<a href="evaluación-de-puntos-influyentes-y-atípicos.html#dfbetas" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Esta medida indica cuánto cambia el coeficiente de regresión <span class="math inline">\(\hat{\beta}_{j}\)</span>, en unidades de desviaciones estándar, si se omitiera la <span class="math inline">\(i\)</span>-ésima observación. Se calcula como:
 <span class="math display">\[
 DFBETAS_{(i,j)} = \frac{\hat{\beta}_{j} - \hat{\beta}_{j(i)}}{\hat{\sigma}^{2}_{(i)}C_{jj}} = \frac{r_{(j,i)}}{\sqrt{\boldsymbol r_{j}&#39;\boldsymbol r_{j}}}\frac{t_{i}}{\sqrt{1-h_{ii}}},
@@ -468,16 +471,16 @@ DFBETAS_{(i,j)} = \frac{\hat{\beta}_{j} - \hat{\beta}_{j(i)}}{\hat{\sigma}^{2}_{
 <p>donde <span class="math inline">\(C_{jj}\)</span> es el <span class="math inline">\(j\)</span>-ésimo valor de la diagonal de <span class="math inline">\((\boldsymbol X&#39;\boldsymbol X)^{2}\)</span>. <span class="math inline">\(\boldsymbol r_{j}\)</span> es la <span class="math inline">\(j\)</span>-ésima fila de <span class="math inline">\(\boldsymbol R=(\boldsymbol X&#39;\boldsymbol X)^{-1}\boldsymbol X\)</span>.</p>
 <p>Un valor grande de <span class="math inline">\(DFBETAS_{(j,i)}\)</span> indica que la observación <span class="math inline">\(i\)</span> tiene gran influencia sobre el <span class="math inline">\(j\)</span>-ésimo coeficiente de regresión. Se sugiere que si <span class="math inline">\(|DFBETAS_{(j,i)}| &gt; 2/\sqrt{n}\)</span> es necesario examinar la <span class="math inline">\(i\)</span>-ésima observación.</p>
 </div>
-<div id="dffits" class="section level4" number="5.4.1.3">
-<h4><span class="header-section-number">5.4.1.3</span> DFFITS</h4>
+<div id="dffits" class="section level4 hasAnchor" number="5.4.1.3">
+<h4><span class="header-section-number">5.4.1.3</span> DFFITS<a href="evaluación-de-puntos-influyentes-y-atípicos.html#dffits" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Una medida que indica la influencia de la observación <span class="math inline">\(i\)</span>-ésima sobre el valor ajustado (<span class="math inline">\(\hat{y}_{i}\)</span>). Esta se calcula así:</p>
 <p><span class="math display">\[
 DFFITS_{i} = \frac{\hat{y}_{i} - \hat{y}_{(i)}}{\hat{\sigma}_{(i)}^{2}h_{ii}} = \sqrt{ \frac{h_{ii}}{1-h_{ii}} }t_{i}.
 \]</span></p>
 <p>El <span class="math inline">\(DFFITS_{i}\)</span> puede ser grande si el dato es atípico (<span class="math inline">\(t_{i}\)</span> grande) o si el dato tiene gran balanceo (<span class="math inline">\(h_{ii}\)</span> grande). Se sugiere que si <span class="math inline">\(|DFFITS_{(j,i)}| &gt; 2\sqrt{p/n}\)</span> es necesario examinar la <span class="math inline">\(i\)</span>-ésima observación.</p>
 </div>
-<div id="covratio" class="section level4" number="5.4.1.4">
-<h4><span class="header-section-number">5.4.1.4</span> COVRATIO</h4>
+<div id="covratio" class="section level4 hasAnchor" number="5.4.1.4">
+<h4><span class="header-section-number">5.4.1.4</span> COVRATIO<a href="evaluación-de-puntos-influyentes-y-atípicos.html#covratio" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Los diagnósticos anteriores permiten ver el efecto de las observaciones sobre <span class="math inline">\(\hat{\boldsymbol \beta}\)</span> o <span class="math inline">\(\hat{\boldsymbol y}\)</span>. Pero no proporcionan información sobre la precisión general de la estimación. Una medida global de la precisión es la varianza generalizada:</p>
 <p><span class="math display">\[ GV(\hat{\boldsymbol \beta}) = | Var(\hat {\boldsymbol \beta}) | = |\sigma^{2}(\boldsymbol X&#39;\boldsymbol X)^{-1}|.\]</span></p>
 <p>Para determinar la influencia de la <span class="math inline">\(i\)</span>-ésima observación en la precisión de la estimación se define la razón de covarianzas:</p>
@@ -486,57 +489,57 @@ COVRATIO_{i} = \frac{|(\boldsymbol X&#39;_{(i)}\boldsymbol X_{(i)})^{-1}\hat{\si
 \]</span></p>
 <p>Si <span class="math inline">\(COVRATIO_{i} &gt; 1 + 3p/n\)</span> o <span class="math inline">\(COVRATIO_{i} &gt; 1 - 3p/n\)</span> se debería considerar a la <span class="math inline">\(i\)</span>-ésima observación como influyente para la precisión de <span class="math inline">\(\widehat{\boldsymbol \beta}\)</span>.</p>
 </div>
-<div id="datos-de-la-onu---medidas-de-influencia" class="section level4 unnumbered">
-<h4>Datos de la ONU - medidas de influencia</h4>
+<div id="datos-de-la-onu---medidas-de-influencia" class="section level4 unnumbered hasAnchor">
+<h4>Datos de la ONU - medidas de influencia<a href="evaluación-de-puntos-influyentes-y-atípicos.html#datos-de-la-onu---medidas-de-influencia" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>En R las medidas de influencia se pueden calcular usando la función <code>influence.measures</code>. Aunque también se pueden calcular cada indicador de forma independiente.</p>
 <p>La distancia de Cook se observa en la Figura <a href="evaluación-de-puntos-influyentes-y-atípicos.html#fig:Un11Cook">5.7</a>. Aquí vemos que Guinea Ecuatorial y Corea del Norte son los países que más influyen en las estimaciones de los parámetros del modelo. Lo demás países presentan valores de la distancia de Cook mucho más bajos. Note que aunque observamos que Trinidad y Tobago es un punto de balanceo, este país no es influyente (valor de la distancia de Cook de <span class="math inline">\(0.0082\)</span>).</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb99-1" aria-hidden="true" tabindex="-1"></a>CD.UN11 <span class="ot">=</span> <span class="fu">cooks.distance</span>(mod.UN11)</span>
-<span id="cb99-2"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb99-2" aria-hidden="true" tabindex="-1"></a>OrderCD.UN11 <span class="ot">=</span> <span class="fu">order</span>(CD.UN11,<span class="at">decreasing =</span> T)</span>
-<span id="cb99-3"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CD.UN11,<span class="at">type=</span><span class="st">&#39;h&#39;</span>,<span class="at">ylab =</span> <span class="st">&#39;distancia de Cook&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;índice&#39;</span>)</span>
-<span id="cb99-4"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb99-4" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(OrderCD.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],CD.UN11[OrderCD.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]],Names[OrderCD.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]],<span class="at">pos=</span><span class="dv">4</span>,<span class="at">cex=</span><span class="fl">0.6</span>)</span>
-<span id="cb99-5"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb99-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">4</span><span class="sc">/</span><span class="dv">199</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:Un11Cook"></span>
-<img src="MLGI_files/figure-html/Un11Cook-1.png" alt="Datos de la ONU. Distancia de Cook." width="480" />
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb100-1" tabindex="-1"></a>CD.UN11 <span class="ot">=</span> <span class="fu">cooks.distance</span>(mod.UN11)</span>
+<span id="cb100-2"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb100-2" tabindex="-1"></a>OrderCD.UN11 <span class="ot">=</span> <span class="fu">order</span>(CD.UN11,<span class="at">decreasing =</span> T)</span>
+<span id="cb100-3"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb100-3" tabindex="-1"></a><span class="fu">plot</span>(CD.UN11,<span class="at">type=</span><span class="st">&#39;h&#39;</span>,<span class="at">ylab =</span> <span class="st">&#39;distancia de Cook&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;índice&#39;</span>)</span>
+<span id="cb100-4"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb100-4" tabindex="-1"></a><span class="fu">text</span>(OrderCD.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],CD.UN11[OrderCD.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]],Names[OrderCD.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]],<span class="at">pos=</span><span class="dv">4</span>,<span class="at">cex=</span><span class="fl">0.6</span>)</span>
+<span id="cb100-5"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb100-5" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">4</span><span class="sc">/</span><span class="dv">199</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:Un11Cook"></span>
+<img src="MLG1_files/figure-html/Un11Cook-1.png" alt="Datos de la ONU. Distancia de Cook." width="480" />
 <p class="caption">
 Figure 5.7: Datos de la ONU. Distancia de Cook.
 </p>
 </div>
 <p>Ya identificamos que Guinea Ecuatorial y Corea del Norte son influyentes y pueden afectar considerablemente las estimaciones de los coeficientes de regresión. Pero esta influencia puede ser solamente sobre algún o algunos parámetros. Para ver la influencia sobre cada parámetro, la Figura <a href="evaluación-de-puntos-influyentes-y-atípicos.html#fig:UNdataDfBetas">5.8</a> muestra los DFBETAS para los coeficientes <span class="math inline">\(\beta_{1}\)</span> y <span class="math inline">\(\beta_{2}\)</span>. En ambos gráficos podemos ver que estos dos países son influyentes para ambos parámetros. También se pude observar que otros pocos países tienen cierta influencia en la estimación de <span class="math inline">\(\beta_{2}\)</span>, aunque los valores de los DFBETAS están muy cerca de los puntos de corte.</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb100-1" aria-hidden="true" tabindex="-1"></a>DFBetas.UN11 <span class="ot">=</span> <span class="fu">dfbetas</span>(mod.UN11)</span>
-<span id="cb100-2"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb100-2" aria-hidden="true" tabindex="-1"></a>OrderDB1.UN11 <span class="ot">=</span> <span class="fu">order</span>(<span class="fu">abs</span>(DFBetas.UN11[,<span class="dv">2</span>]),<span class="at">decreasing =</span> T)</span>
-<span id="cb100-3"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb100-3" aria-hidden="true" tabindex="-1"></a>OrderDB2.UN11 <span class="ot">=</span> <span class="fu">order</span>(<span class="fu">abs</span>(DFBetas.UN11[,<span class="dv">3</span>]),<span class="at">decreasing =</span> T)</span>
-<span id="cb100-4"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb100-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb100-5"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb100-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(DFBetas.UN11[,<span class="dv">2</span>],<span class="at">ylab=</span><span class="fu">quote</span>(<span class="st">&#39;DFBETA&#39;</span><span class="sc">~</span>(beta[<span class="dv">1</span>])),<span class="at">xlab=</span><span class="st">&#39;índice&#39;</span>,<span class="at">main=</span><span class="st">&#39;(a)&#39;</span>)</span>
-<span id="cb100-6"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb100-6" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(OrderDB1.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],DFBetas.UN11[OrderDB1.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],<span class="dv">2</span>],</span>
-<span id="cb100-7"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb100-7" aria-hidden="true" tabindex="-1"></a>     Names[OrderDB1.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]],<span class="at">pos=</span><span class="dv">4</span>,<span class="at">cex=</span><span class="fl">0.6</span>)</span>
-<span id="cb100-8"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb100-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">199</span>),<span class="at">lty=</span><span class="dv">2</span>)</span>
-<span id="cb100-9"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb100-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(DFBetas.UN11[,<span class="dv">3</span>],<span class="at">ylab =</span> <span class="fu">quote</span>(<span class="st">&#39;DFBETA&#39;</span><span class="sc">~</span>(beta[<span class="dv">2</span>])),<span class="at">xlab=</span><span class="st">&#39;índice&#39;</span>,<span class="at">main=</span><span class="st">&#39;(b)&#39;</span>)</span>
-<span id="cb100-10"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb100-10" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(OrderDB2.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],DFBetas.UN11[OrderDB2.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],<span class="dv">3</span>],</span>
-<span id="cb100-11"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb100-11" aria-hidden="true" tabindex="-1"></a>     Names[OrderDB2.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]],<span class="at">pos=</span><span class="dv">4</span>,<span class="at">cex=</span><span class="fl">0.6</span>)</span>
-<span id="cb100-12"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb100-12" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">199</span>),<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:UNdataDfBetas"></span>
-<img src="MLGI_files/figure-html/UNdataDfBetas-1.png" alt="Datos de la ONU. DFBetas." width="768" />
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb101-1" tabindex="-1"></a>DFBetas.UN11 <span class="ot">=</span> <span class="fu">dfbetas</span>(mod.UN11)</span>
+<span id="cb101-2"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb101-2" tabindex="-1"></a>OrderDB1.UN11 <span class="ot">=</span> <span class="fu">order</span>(<span class="fu">abs</span>(DFBetas.UN11[,<span class="dv">2</span>]),<span class="at">decreasing =</span> T)</span>
+<span id="cb101-3"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb101-3" tabindex="-1"></a>OrderDB2.UN11 <span class="ot">=</span> <span class="fu">order</span>(<span class="fu">abs</span>(DFBetas.UN11[,<span class="dv">3</span>]),<span class="at">decreasing =</span> T)</span>
+<span id="cb101-4"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb101-4" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb101-5"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb101-5" tabindex="-1"></a><span class="fu">plot</span>(DFBetas.UN11[,<span class="dv">2</span>],<span class="at">ylab=</span><span class="fu">quote</span>(<span class="st">&#39;DFBETA&#39;</span><span class="sc">~</span>(beta[<span class="dv">1</span>])),<span class="at">xlab=</span><span class="st">&#39;índice&#39;</span>,<span class="at">main=</span><span class="st">&#39;(a)&#39;</span>)</span>
+<span id="cb101-6"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb101-6" tabindex="-1"></a><span class="fu">text</span>(OrderDB1.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],DFBetas.UN11[OrderDB1.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],<span class="dv">2</span>],</span>
+<span id="cb101-7"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb101-7" tabindex="-1"></a>     Names[OrderDB1.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]],<span class="at">pos=</span><span class="dv">4</span>,<span class="at">cex=</span><span class="fl">0.6</span>)</span>
+<span id="cb101-8"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb101-8" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">199</span>),<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb101-9"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb101-9" tabindex="-1"></a><span class="fu">plot</span>(DFBetas.UN11[,<span class="dv">3</span>],<span class="at">ylab =</span> <span class="fu">quote</span>(<span class="st">&#39;DFBETA&#39;</span><span class="sc">~</span>(beta[<span class="dv">2</span>])),<span class="at">xlab=</span><span class="st">&#39;índice&#39;</span>,<span class="at">main=</span><span class="st">&#39;(b)&#39;</span>)</span>
+<span id="cb101-10"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb101-10" tabindex="-1"></a><span class="fu">text</span>(OrderDB2.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],DFBetas.UN11[OrderDB2.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],<span class="dv">3</span>],</span>
+<span id="cb101-11"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb101-11" tabindex="-1"></a>     Names[OrderDB2.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]],<span class="at">pos=</span><span class="dv">4</span>,<span class="at">cex=</span><span class="fl">0.6</span>)</span>
+<span id="cb101-12"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb101-12" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="sc">*</span><span class="dv">2</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">199</span>),<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:UNdataDfBetas"></span>
+<img src="MLG1_files/figure-html/UNdataDfBetas-1.png" alt="Datos de la ONU. DFBetas." width="768" />
 <p class="caption">
 Figure 5.8: Datos de la ONU. DFBetas.
 </p>
 </div>
 <p>Los DFFITS y COVRATIO se observan en la Figura <a href="evaluación-de-puntos-influyentes-y-atípicos.html#fig:UNdataOtros">5.9</a>. A partir de los DFFITS se puede concluir que Guinea Ecuatorial y Corea del Norte también tienen gran influencia sobre las predicciones. A partir de los COVRATIO vemos que Trinidad y Tobago, Guinea Ecuatorial, Bosnia y Herzegovina, y Moldavia tienen gran influencia en la varianza de las estimaciones de los coeficientes de regresión. Note que aunque Corea del Norte fue influyente para las estimaciones, este país no influye en la varianza de estas.</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb101-1" aria-hidden="true" tabindex="-1"></a>DFfits.UN11 <span class="ot">=</span> <span class="fu">dffits</span>(mod.UN11)</span>
-<span id="cb101-2"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb101-2" aria-hidden="true" tabindex="-1"></a>OrderDFF.UN11 <span class="ot">=</span> <span class="fu">order</span>(<span class="fu">abs</span>(DFfits.UN11),<span class="at">decreasing =</span> T)</span>
-<span id="cb101-3"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb101-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-4"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb101-4" aria-hidden="true" tabindex="-1"></a>Covratio.UN11 <span class="ot">=</span> <span class="fu">covratio</span>(mod.UN11)</span>
-<span id="cb101-5"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb101-5" aria-hidden="true" tabindex="-1"></a>OrderCR.UN11 <span class="ot">=</span> <span class="fu">order</span>(<span class="fu">abs</span>(<span class="dv">1</span><span class="sc">-</span>Covratio.UN11),<span class="at">decreasing =</span> T)</span>
-<span id="cb101-6"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb101-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb101-7"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb101-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(DFfits.UN11,<span class="at">ylab=</span><span class="st">&#39;DFFITS&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;índice&#39;</span>,<span class="at">main=</span><span class="st">&#39;(a)&#39;</span>)</span>
-<span id="cb101-8"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb101-8" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(OrderDFF.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],DFfits.UN11[OrderDFF.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]],</span>
-<span id="cb101-9"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb101-9" aria-hidden="true" tabindex="-1"></a>     Names[OrderDFF.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]],<span class="at">pos=</span><span class="dv">4</span>,<span class="at">cex=</span><span class="fl">0.6</span>)</span>
-<span id="cb101-10"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb101-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="sc">*</span><span class="dv">2</span><span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">3</span><span class="sc">/</span><span class="dv">199</span>),<span class="at">lty=</span><span class="dv">2</span>)</span>
-<span id="cb101-11"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb101-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Covratio.UN11,<span class="at">ylab =</span> <span class="st">&#39;COVRATIO&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;índice&#39;</span>,<span class="at">main=</span><span class="st">&#39;(b)&#39;</span>)</span>
-<span id="cb101-12"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb101-12" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(OrderCR.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>],Covratio.UN11[OrderCR.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]],</span>
-<span id="cb101-13"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb101-13" aria-hidden="true" tabindex="-1"></a>     Names[OrderCR.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]],<span class="at">pos=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">4</span>),<span class="at">cex=</span><span class="fl">0.6</span>)</span>
-<span id="cb101-14"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb101-14" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">1</span><span class="sc">+</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="sc">*</span><span class="dv">3</span><span class="sc">*</span><span class="dv">3</span><span class="sc">/</span><span class="dv">199</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:UNdataOtros"></span>
-<img src="MLGI_files/figure-html/UNdataOtros-1.png" alt="Datos de la ONU. DFFITS y COVRATIO." width="768" />
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb102-1" tabindex="-1"></a>DFfits.UN11 <span class="ot">=</span> <span class="fu">dffits</span>(mod.UN11)</span>
+<span id="cb102-2"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb102-2" tabindex="-1"></a>OrderDFF.UN11 <span class="ot">=</span> <span class="fu">order</span>(<span class="fu">abs</span>(DFfits.UN11),<span class="at">decreasing =</span> T)</span>
+<span id="cb102-3"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb102-3" tabindex="-1"></a></span>
+<span id="cb102-4"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb102-4" tabindex="-1"></a>Covratio.UN11 <span class="ot">=</span> <span class="fu">covratio</span>(mod.UN11)</span>
+<span id="cb102-5"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb102-5" tabindex="-1"></a>OrderCR.UN11 <span class="ot">=</span> <span class="fu">order</span>(<span class="fu">abs</span>(<span class="dv">1</span><span class="sc">-</span>Covratio.UN11),<span class="at">decreasing =</span> T)</span>
+<span id="cb102-6"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb102-6" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb102-7"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb102-7" tabindex="-1"></a><span class="fu">plot</span>(DFfits.UN11,<span class="at">ylab=</span><span class="st">&#39;DFFITS&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;índice&#39;</span>,<span class="at">main=</span><span class="st">&#39;(a)&#39;</span>)</span>
+<span id="cb102-8"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb102-8" tabindex="-1"></a><span class="fu">text</span>(OrderDFF.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],DFfits.UN11[OrderDFF.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]],</span>
+<span id="cb102-9"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb102-9" tabindex="-1"></a>     Names[OrderDFF.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]],<span class="at">pos=</span><span class="dv">4</span>,<span class="at">cex=</span><span class="fl">0.6</span>)</span>
+<span id="cb102-10"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb102-10" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="sc">*</span><span class="dv">2</span><span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">3</span><span class="sc">/</span><span class="dv">199</span>),<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb102-11"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb102-11" tabindex="-1"></a><span class="fu">plot</span>(Covratio.UN11,<span class="at">ylab =</span> <span class="st">&#39;COVRATIO&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;índice&#39;</span>,<span class="at">main=</span><span class="st">&#39;(b)&#39;</span>)</span>
+<span id="cb102-12"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb102-12" tabindex="-1"></a><span class="fu">text</span>(OrderCR.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>],Covratio.UN11[OrderCR.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]],</span>
+<span id="cb102-13"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb102-13" tabindex="-1"></a>     Names[OrderCR.UN11[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]],<span class="at">pos=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">4</span>),<span class="at">cex=</span><span class="fl">0.6</span>)</span>
+<span id="cb102-14"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb102-14" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">1</span><span class="sc">+</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="sc">*</span><span class="dv">3</span><span class="sc">*</span><span class="dv">3</span><span class="sc">/</span><span class="dv">199</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:UNdataOtros"></span>
+<img src="MLG1_files/figure-html/UNdataOtros-1.png" alt="Datos de la ONU. DFFITS y COVRATIO." width="768" />
 <p class="caption">
 Figure 5.9: Datos de la ONU. DFFITS y COVRATIO.
 </p>
@@ -546,8 +549,8 @@ Para disminuir la influencia de estos países se pueden incorporar nuevas covari
 </div>
 </div>
 </div>
-<div id="comentarios-finales-1" class="section level2" number="5.5">
-<h2><span class="header-section-number">5.5</span> Comentarios finales</h2>
+<div id="comentarios-finales-1" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> Comentarios finales<a href="evaluación-de-puntos-influyentes-y-atípicos.html#comentarios-finales-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Dentro de la literatura hay muchos puntos de corte diferentes para los indicadores de observaciones influyentes. Esto es porque es difícil de determinar las distribuciones muestrales. Por lo que se recomienda verificar si hay algunas observaciones que tenga valores muy altos con respecto a los demás.</li>
 <li>Las observaciones influyentes o atípicas se deben descartar si estas corresponden a errores de medición o si son inválidas (por ejemplo, si pertenecen a otra población).</li>
@@ -561,12 +564,11 @@ Para disminuir la influencia de estos países se pueden incorporar nuevas covari
           </div>
         </div>
       </div>
-<a href="transformaciones-y-mínimos-cuadrados-ponderados.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="transformaciones-y-mínimos-cuadrados-ordinarios.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -605,7 +607,11 @@ gitbook.start({
 "link": "https://github.com/AlvaroFlorez/MLG1/blob/master/05-PuntosInfluyentes.Rmd",
 "text": null
 },
-"download": ["MLGI.pdf"],
+"download": ["MLG1.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
@@ -619,7 +625,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

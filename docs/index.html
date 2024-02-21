@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Notas de clase: Modelo lineal general I</title>
   <meta name="description" content="Notas de clase: Modelo lineal general I" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Notas de clase: Modelo lineal general I" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2021-08-13" />
+<meta name="date" content="2024-02-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 
 <link rel="next" href="modelo-lineal-simple.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,9 +49,9 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -93,7 +92,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -106,7 +105,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -120,6 +119,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -253,23 +256,23 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#comentarios-finales"><i class="fa fa-check"></i><b>3.6</b> Comentarios finales</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html"><i class="fa fa-check"></i><b>4</b> Transformaciones y mínimos cuadrados ponderados</a>
+<li class="chapter" data-level="4" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html"><i class="fa fa-check"></i><b>4</b> Transformaciones y mínimos cuadrados ordinarios</a>
 <ul>
-<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#ejemplo-1.-datos-de-la-onu"><i class="fa fa-check"></i>Ejemplo 1. Datos de la ONU</a></li>
-<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#ejemplo-2.-datos-de-educación"><i class="fa fa-check"></i>Ejemplo 2. Datos de educación</a></li>
-<li class="chapter" data-level="4.1" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#transformación-de-los-datos"><i class="fa fa-check"></i><b>4.1</b> Transformación de los datos</a>
+<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#ejemplo-1.-datos-de-la-onu"><i class="fa fa-check"></i>Ejemplo 1. Datos de la ONU</a></li>
+<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#ejemplo-2.-datos-de-educación"><i class="fa fa-check"></i>Ejemplo 2. Datos de educación</a></li>
+<li class="chapter" data-level="4.1" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#transformación-de-los-datos"><i class="fa fa-check"></i><b>4.1</b> Transformación de los datos</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#transformaciones-para-linealizar-el-modelo"><i class="fa fa-check"></i><b>4.1.1</b> Transformaciones para linealizar el modelo</a></li>
-<li class="chapter" data-level="4.1.2" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#transformaciones-para-estabilizar-la-varianza"><i class="fa fa-check"></i><b>4.1.2</b> Transformaciones para estabilizar la varianza</a></li>
-<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#datos-de-la-onu.-transformación-para-linealizar-los-datos"><i class="fa fa-check"></i>Datos de la ONU. Transformación para linealizar los datos</a></li>
+<li class="chapter" data-level="4.1.1" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#transformaciones-para-linealizar-el-modelo"><i class="fa fa-check"></i><b>4.1.1</b> Transformaciones para linealizar el modelo</a></li>
+<li class="chapter" data-level="4.1.2" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#transformaciones-para-estabilizar-la-varianza"><i class="fa fa-check"></i><b>4.1.2</b> Transformaciones para estabilizar la varianza</a></li>
+<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#datos-de-la-onu.-transformación-para-linealizar-los-datos"><i class="fa fa-check"></i>Datos de la ONU. Transformación para linealizar los datos</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#método-de-box-cox"><i class="fa fa-check"></i><b>4.2</b> Método de Box-Cox</a>
+<li class="chapter" data-level="4.2" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#método-de-box-cox"><i class="fa fa-check"></i><b>4.2</b> Método de Box-Cox</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#datos-de-educación.-transformación-de-box-cox"><i class="fa fa-check"></i><b>4.2.1</b> Datos de educación. Transformación de Box-Cox</a></li>
+<li class="chapter" data-level="4.2.1" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#datos-de-educación.-transformación-de-box-cox"><i class="fa fa-check"></i><b>4.2.1</b> Datos de educación. Transformación de Box-Cox</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#mínimos-cuadrados-ponderados"><i class="fa fa-check"></i><b>4.3</b> Mínimos cuadrados ponderados</a>
+<li class="chapter" data-level="4.3" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#mínimos-cuadrados-ponderados"><i class="fa fa-check"></i><b>4.3</b> Mínimos cuadrados ponderados</a>
 <ul>
-<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#datos-de-educación.-minímos-cuadrados-ponderados"><i class="fa fa-check"></i>Datos de educación. Minímos cuadrados ponderados</a></li>
+<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#datos-de-educación.-minímos-cuadrados-ponderados"><i class="fa fa-check"></i>Datos de educación. Minímos cuadrados ponderados</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="evaluación-de-puntos-influyentes-y-atípicos.html"><a href="evaluación-de-puntos-influyentes-y-atípicos.html"><i class="fa fa-check"></i><b>5</b> Evaluación de puntos influyentes y atípicos</a>
@@ -311,10 +314,10 @@ div.csl-indent {
 <div id="header">
 <h1 class="title">Notas de clase: Modelo lineal general I</h1>
 <p class="author"><em>Alvaro J. Flórez</em></p>
-<p class="date" style="margin-top: 1.5em;"><em>2021-08-13</em></p>
+<p class="date"><em>2024-02-21</em></p>
 </div>
-<div id="introducción" class="section level1 unnumbered">
-<h1>Introducción</h1>
+<div id="introducción" class="section level1 unnumbered hasAnchor">
+<h1>Introducción<a href="index.html#introducción" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Estas son las notas de clase del curso Modelo Lineal General I. Las temáticas que se tratan son:</p>
 <ol style="list-style-type: decimal">
 <li>Modelo lineal simple</li>
@@ -345,7 +348,6 @@ div.csl-indent {
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -384,7 +386,11 @@ gitbook.start({
 "link": "https://github.com/AlvaroFlorez/MLG1/blob/master/index.Rmd",
 "text": null
 },
-"download": ["MLGI.pdf"],
+"download": ["MLG1.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
@@ -398,7 +404,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

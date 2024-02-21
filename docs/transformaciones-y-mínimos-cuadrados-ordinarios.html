@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 4 Transformaciones y mínimos cuadrados ordinarios | Notas de clase: Modelo lineal general I</title>
+  <meta name="description" content="Capítulo 4 Transformaciones y mínimos cuadrados ordinarios | Notas de clase: Modelo lineal general I" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 4 Transformaciones y mínimos cuadrados ordinarios | Notas de clase: Modelo lineal general I" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 4 Transformaciones y mínimos cuadrados ordinarios | Notas de clase: Modelo lineal general I" />
+  
+  
+  
+
+<meta name="author" content="Alvaro J. Flórez" />
+
+
+<meta name="date" content="2024-02-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="evaluación-de-los-supuestos-del-modelo.html"/>
+<link rel="next" href="evaluación-de-puntos-influyentes-y-atípicos.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Notas de clase MLGI</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introducción</a></li>
+<li class="chapter" data-level="1" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html"><i class="fa fa-check"></i><b>1</b> Modelo lineal simple</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#datos-de-peso-al-nacer"><i class="fa fa-check"></i>Datos de peso al nacer</a></li>
+<li class="chapter" data-level="1.1" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#regresion-lineal-simple"><i class="fa fa-check"></i><b>1.1</b> Regresion lineal simple</a></li>
+<li class="chapter" data-level="1.2" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#modelo-lineal-simple-1"><i class="fa fa-check"></i><b>1.2</b> Modelo lineal simple</a></li>
+<li class="chapter" data-level="1.3" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#estimación-de-los-parámetros"><i class="fa fa-check"></i><b>1.3</b> Estimación de los parámetros</a></li>
+<li class="chapter" data-level="1.4" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#estimación-de-sigma2"><i class="fa fa-check"></i><b>1.4</b> Estimación de <span class="math inline">\(\sigma^{2}\)</span></a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#datos-de-peso-al-nacer.-modelo-y-estimación-de-parametros"><i class="fa fa-check"></i>Datos de peso al nacer. Modelo y estimación de parametros</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#propiedades-de-los-estimadores-por-mco"><i class="fa fa-check"></i><b>1.5</b> Propiedades de los estimadores por MCO</a></li>
+<li class="chapter" data-level="1.6" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#inferencia"><i class="fa fa-check"></i><b>1.6</b> Inferencia</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#pruebas-de-hipótesis"><i class="fa fa-check"></i><b>1.6.1</b> Pruebas de hipótesis</a></li>
+<li class="chapter" data-level="1.6.2" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#análisis-de-varianza"><i class="fa fa-check"></i><b>1.6.2</b> Análisis de varianza</a></li>
+<li class="chapter" data-level="" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#datos-de-peso-al-nacer.-pruebas-de-hipótesis-y-anova"><i class="fa fa-check"></i>Datos de peso al nacer. Pruebas de hipótesis y ANOVA</a></li>
+<li class="chapter" data-level="1.6.3" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#intervalos-de-confianza"><i class="fa fa-check"></i><b>1.6.3</b> Intervalos de confianza</a></li>
+<li class="chapter" data-level="" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#datos-de-peso-al-nacer.-intervalos-de-confianza"><i class="fa fa-check"></i>Datos de peso al nacer. Intervalos de confianza</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#estimador-por-máxima-verosimilitud"><i class="fa fa-check"></i><b>1.7</b> Estimador por máxima verosimilitud</a></li>
+<li class="chapter" data-level="1.8" data-path="modelo-lineal-simple.html"><a href="modelo-lineal-simple.html#algunas-consideraciones-finales"><i class="fa fa-check"></i><b>1.8</b> Algunas consideraciones finales</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html"><i class="fa fa-check"></i><b>2</b> Modelo lineal múltiple</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#bajo-peso-al-nacer"><i class="fa fa-check"></i>Bajo peso al nacer</a></li>
+<li class="chapter" data-level="2.1" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#modelo-lineal-múltiple-1"><i class="fa fa-check"></i><b>2.1</b> Modelo lineal múltiple</a></li>
+<li class="chapter" data-level="2.2" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#estimación-de-los-parámetros-de-regresión"><i class="fa fa-check"></i><b>2.2</b> Estimación de los parámetros de regresión</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#estimación-de-sigma2-1"><i class="fa fa-check"></i><b>2.2.1</b> Estimación de <span class="math inline">\(\sigma^{2}\)</span></a></li>
+<li class="chapter" data-level="2.2.2" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#bajo-peso-al-nacer---estimación-de-parámetros"><i class="fa fa-check"></i><b>2.2.2</b> Bajo peso al nacer - estimación de parámetros</a></li>
+<li class="chapter" data-level="2.2.3" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#propiedades-de-los-estimadores-por-mco-1"><i class="fa fa-check"></i><b>2.2.3</b> Propiedades de los estimadores por MCO</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#pruebas-de-hipótesis-1"><i class="fa fa-check"></i><b>2.3</b> Pruebas de hipótesis</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#análisis-de-varianza-1"><i class="fa fa-check"></i><b>2.3.1</b> Análisis de varianza</a></li>
+<li class="chapter" data-level="2.3.2" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#pruebas-individuales-sobre-los-coeficientes"><i class="fa fa-check"></i><b>2.3.2</b> Pruebas individuales sobre los coeficientes</a></li>
+<li class="chapter" data-level="2.3.3" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#pruebas-sobre-subconjuntos-de-coeficientes"><i class="fa fa-check"></i><b>2.3.3</b> Pruebas sobre subconjuntos de coeficientes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#prueba-de-hipótesis-lineal-general"><i class="fa fa-check"></i><b>2.4</b> Prueba de hipótesis lineal general</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#bajo-peso-al-nacer---pruebas-de-hipótesis"><i class="fa fa-check"></i>Bajo peso al nacer - pruebas de hipótesis</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#intervalos-de-confianza-1"><i class="fa fa-check"></i><b>2.5</b> Intervalos de confianza</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#intervalos-de-confianza-para-beta_j"><i class="fa fa-check"></i><b>2.5.1</b> Intervalos de confianza para <span class="math inline">\(\beta_{j}\)</span></a></li>
+<li class="chapter" data-level="2.5.2" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#intervalos-de-confianza-para-el-valor-esperado-de-y-y-una-observación-futura"><i class="fa fa-check"></i><b>2.5.2</b> Intervalos de confianza para el valor esperado de <span class="math inline">\(Y\)</span> y una observación futura</a></li>
+<li class="chapter" data-level="" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#bajo-peso-al-nacer---intervalos-de-confianza"><i class="fa fa-check"></i>Bajo peso al nacer - intervalos de confianza</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#extrapolación-oculta-en-regresión-múltiple"><i class="fa fa-check"></i><b>2.6</b> Extrapolación oculta en regresión múltiple</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#bajo-peso-al-nacer---interpolación"><i class="fa fa-check"></i>Bajo peso al nacer - interpolación</a></li>
+<li class="chapter" data-level="2.6.1" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#coeficientes-normalizados-de-regresión"><i class="fa fa-check"></i><b>2.6.1</b> Coeficientes normalizados de regresión</a></li>
+<li class="chapter" data-level="" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#bajo-peso-al-nacer---coeficientes-de-regresión-con-variables-escaladas"><i class="fa fa-check"></i>Bajo peso al nacer - coeficientes de regresión con variables escaladas</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#multicolinealidad"><i class="fa fa-check"></i><b>2.7</b> Multicolinealidad</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#ejemplo-2"><i class="fa fa-check"></i>ejemplo</a></li>
+<li class="chapter" data-level="2.7.1" data-path="modelo-lineal-múltiple.html"><a href="modelo-lineal-múltiple.html#bajo-peso-al-nacer---factores-de-inflación-de-varianza"><i class="fa fa-check"></i><b>2.7.1</b> Bajo peso al nacer - factores de inflación de varianza</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html"><i class="fa fa-check"></i><b>3</b> Evaluación de los supuestos del modelo</a>
+<ul>
+<li class="chapter" data-level="" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#ejemplo-1.-datos-de-peso-al-nacer"><i class="fa fa-check"></i>Ejemplo 1. Datos de peso al nacer</a></li>
+<li class="chapter" data-level="" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#ejemplo-2.-ventas-de-helados"><i class="fa fa-check"></i>Ejemplo 2. Ventas de helados</a></li>
+<li class="chapter" data-level="" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#ejemplo-3.-longitud-del-pez-lobina-boca-chica"><i class="fa fa-check"></i>Ejemplo 3. Longitud del pez lobina boca chica</a></li>
+<li class="chapter" data-level="3.1" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#supuestos-del-modelo-linea-múltiple"><i class="fa fa-check"></i><b>3.1</b> Supuestos del modelo linea múltiple</a></li>
+<li class="chapter" data-level="3.2" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#efectos-del-incumplimiento-de-los-supuestos"><i class="fa fa-check"></i><b>3.2</b> Efectos del incumplimiento de los supuestos</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#sesgo-por-omisión-de-variables-relevantes"><i class="fa fa-check"></i><b>3.2.1</b> Sesgo por omisión de variables relevantes</a></li>
+<li class="chapter" data-level="3.2.2" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#incorrecta-matriz-de-varianzas-de-los-errores"><i class="fa fa-check"></i><b>3.2.2</b> Incorrecta matriz de varianzas de los errores</a></li>
+<li class="chapter" data-level="3.2.3" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#distribución-no-normal-de-los-errores"><i class="fa fa-check"></i><b>3.2.3</b> Distribución no normal de los errores</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#residuos-del-modelo"><i class="fa fa-check"></i><b>3.3</b> Residuos del modelo</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#residuos-estudentizados"><i class="fa fa-check"></i><b>3.3.1</b> Residuos estudentizados</a></li>
+<li class="chapter" data-level="3.3.2" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#residuos-press-y-r-student"><i class="fa fa-check"></i><b>3.3.2</b> Residuos PRESS y R-student</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#evaluación-del-cumplimiento-de-los-supuestos"><i class="fa fa-check"></i><b>3.4</b> Evaluación del cumplimiento de los supuestos</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#gráficos-de-residuos"><i class="fa fa-check"></i><b>3.4.1</b> Gráficos de residuos</a></li>
+<li class="chapter" data-level="3.4.2" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#gráficos-de-residuos-parciales"><i class="fa fa-check"></i><b>3.4.2</b> Gráficos de residuos parciales</a></li>
+<li class="chapter" data-level="3.4.3" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#gráficos-de-normalidad"><i class="fa fa-check"></i><b>3.4.3</b> Gráficos de normalidad</a></li>
+<li class="chapter" data-level="3.4.4" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#gráfico-de-residuos-frente-a-el-tiempo"><i class="fa fa-check"></i><b>3.4.4</b> Gráfico de residuos frente a el tiempo</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#pruebas-de-hipótesis-para-evaluar-los-supuestos"><i class="fa fa-check"></i><b>3.5</b> Pruebas de hipótesis para evaluar los supuestos</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#prueba-de-falta-de-ajuste"><i class="fa fa-check"></i><b>3.5.1</b> Prueba de falta de ajuste</a></li>
+<li class="chapter" data-level="3.5.2" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#prueba-de-heterocedasticidad"><i class="fa fa-check"></i><b>3.5.2</b> Prueba de heterocedasticidad</a></li>
+<li class="chapter" data-level="3.5.3" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#prueba-de-normalidad"><i class="fa fa-check"></i><b>3.5.3</b> Prueba de normalidad</a></li>
+<li class="chapter" data-level="3.5.4" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#prueba-de-correlación-temporal-de-los-errores"><i class="fa fa-check"></i><b>3.5.4</b> Prueba de correlación temporal de los errores</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#comentarios-finales"><i class="fa fa-check"></i><b>3.6</b> Comentarios finales</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html"><i class="fa fa-check"></i><b>4</b> Transformaciones y mínimos cuadrados ordinarios</a>
+<ul>
+<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#ejemplo-1.-datos-de-la-onu"><i class="fa fa-check"></i>Ejemplo 1. Datos de la ONU</a></li>
+<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#ejemplo-2.-datos-de-educación"><i class="fa fa-check"></i>Ejemplo 2. Datos de educación</a></li>
+<li class="chapter" data-level="4.1" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#transformación-de-los-datos"><i class="fa fa-check"></i><b>4.1</b> Transformación de los datos</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#transformaciones-para-linealizar-el-modelo"><i class="fa fa-check"></i><b>4.1.1</b> Transformaciones para linealizar el modelo</a></li>
+<li class="chapter" data-level="4.1.2" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#transformaciones-para-estabilizar-la-varianza"><i class="fa fa-check"></i><b>4.1.2</b> Transformaciones para estabilizar la varianza</a></li>
+<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#datos-de-la-onu.-transformación-para-linealizar-los-datos"><i class="fa fa-check"></i>Datos de la ONU. Transformación para linealizar los datos</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#método-de-box-cox"><i class="fa fa-check"></i><b>4.2</b> Método de Box-Cox</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#datos-de-educación.-transformación-de-box-cox"><i class="fa fa-check"></i><b>4.2.1</b> Datos de educación. Transformación de Box-Cox</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#mínimos-cuadrados-ponderados"><i class="fa fa-check"></i><b>4.3</b> Mínimos cuadrados ponderados</a>
+<ul>
+<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#datos-de-educación.-minímos-cuadrados-ponderados"><i class="fa fa-check"></i>Datos de educación. Minímos cuadrados ponderados</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="evaluación-de-puntos-influyentes-y-atípicos.html"><a href="evaluación-de-puntos-influyentes-y-atípicos.html"><i class="fa fa-check"></i><b>5</b> Evaluación de puntos influyentes y atípicos</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="evaluación-de-puntos-influyentes-y-atípicos.html"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#datos-de-la-onu"><i class="fa fa-check"></i><b>5.1</b> Datos de la ONU</a></li>
+<li class="chapter" data-level="5.2" data-path="evaluación-de-puntos-influyentes-y-atípicos.html"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#importancia-de-detectar-valores-influyentes-y-atípicos"><i class="fa fa-check"></i><b>5.2</b> Importancia de detectar valores influyentes y atípicos</a></li>
+<li class="chapter" data-level="5.3" data-path="evaluación-de-puntos-influyentes-y-atípicos.html"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#valores-atípicos"><i class="fa fa-check"></i><b>5.3</b> Valores atípicos</a>
+<ul>
+<li class="chapter" data-level="" data-path="evaluación-de-puntos-influyentes-y-atípicos.html"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#datos-de-la-onu---valores-atípicos"><i class="fa fa-check"></i>Datos de la ONU - valores atípicos</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="evaluación-de-puntos-influyentes-y-atípicos.html"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#puntos-de-balanceo"><i class="fa fa-check"></i><b>5.4</b> Puntos de balanceo</a>
+<ul>
+<li class="chapter" data-level="" data-path="evaluación-de-puntos-influyentes-y-atípicos.html"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#datos-de-la-onu---diagonal-de-la-matrix-hat"><i class="fa fa-check"></i>Datos de la ONU - diagonal de la matrix hat</a></li>
+<li class="chapter" data-level="5.4.1" data-path="evaluación-de-puntos-influyentes-y-atípicos.html"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#medidas-de-influencia"><i class="fa fa-check"></i><b>5.4.1</b> Medidas de influencia</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="evaluación-de-puntos-influyentes-y-atípicos.html"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#comentarios-finales-1"><i class="fa fa-check"></i><b>5.5</b> Comentarios finales</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Notas de clase: Modelo lineal general I</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="transformaciones-y-mínimos-cuadrados-ordinarios" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Capítulo 4</span> Transformaciones y mínimos cuadrados ordinarios<a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#transformaciones-y-mínimos-cuadrados-ordinarios" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="ejemplo-1.-datos-de-la-onu" class="section level2 unnumbered hasAnchor">
+<h2>Ejemplo 1. Datos de la ONU<a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#ejemplo-1.-datos-de-la-onu" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La base de datos <code>UN11</code> de la librería <code>alr4</code> contiene las siguientes estadísticas de varios miembros de las naciones unidas (y otras regiones independientes) durante los años 2009-2011:</p>
+<ul>
+<li><strong>fertility</strong>: Número esperado de nacidos vivos por mujer.</li>
+<li><strong>ppgdp</strong>: producto nacional bruto per cápita (PNB, en dólares).</li>
+<li><strong>Purban</strong>: el porcentaje de la población que vive en un área urbana.</li>
+<li><strong>lifeExpF</strong>: esperanza de vida femenina (años).</li>
+</ul>
+<p>El objetivo del estudio es ver la relación entre la fertilidad con las
+otras variables. Por ahora, empecemos con un modelo de la fertilidad en función del producto nacional bruto y el porcentaje de población urbana.</p>
+<p>La Figura <a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#fig:UNdataFig">4.1</a> muestra la relación entre las variables. Aquí vemos que ambas covariables tienen una relación negativa con la fertilidad. Note, además, que la relación con el producto nacional bruto no es lineal. Esto último podría traer problemas a la hora de ajustar un modelo lineal.</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb71-1" tabindex="-1"></a><span class="fu">library</span>(alr4)</span>
+<span id="cb71-2"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb71-2" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;UN11&quot;</span>)</span>
+<span id="cb71-3"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb71-3" tabindex="-1"></a><span class="fu">pairs</span>(UN11[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,<span class="dv">5</span>)])</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:UNdataFig"></span>
+<img src="MLG1_files/figure-html/UNdataFig-1.png" alt="Datos de la ONU. Relación entre las variables." width="576" />
+<p class="caption">
+Figure 4.1: Datos de la ONU. Relación entre las variables.
+</p>
+</div>
+<p>Por ahora consideremos solamente el PNB y el % de población en área urbana como covariables. Por lo tanto, el modelo propuesto es el siguiente:
+<span class="math display">\[
+\mbox{fertility}_{i} = \beta_{0} + \beta_{1}\mbox{ppgdp}_{i} + \beta_{2}\mbox{pctUrban}_{i} + \varepsilon_{i},
+\]</span>
+donde <span class="math inline">\(\varepsilon_{i}\sim N(0,\sigma^{2})\)</span> y <span class="math inline">\(cov(\varepsilon_{j},\varepsilon_{k})=0\)</span>.</p>
+<p>Luego de ajustar el modelo se procede a hacer un análisis de residuos. El gráfico de los residuos estudentizados (Figura <a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#fig:Un11res">4.2</a> muestra que el ajuste presenta problemas de no linealidad y heterocedasticidad. En la Figura <a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#fig:Un11resPartial">4.3</a> de los residuos parciales podemos observar que estos problemas se deben a la covariable PNB.</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb72-1" tabindex="-1"></a>mod.UN11 <span class="ot">=</span> <span class="fu">lm</span>(fertility<span class="sc">~</span>ppgdp<span class="sc">+</span>pctUrban,<span class="at">data=</span>UN11)</span>
+<span id="cb72-2"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb72-2" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb72-3"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb72-3" tabindex="-1"></a>res.UN11 <span class="ot">=</span> <span class="fu">studres</span>(mod.UN11)</span>
+<span id="cb72-4"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb72-4" tabindex="-1"></a><span class="fu">plot</span>(mod.UN11<span class="sc">$</span>fitted.values,res.UN11,</span>
+<span id="cb72-5"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb72-5" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;valores ajustados&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;residuos estudentizados&#39;</span>)</span>
+<span id="cb72-6"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb72-6" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(res.UN11<span class="sc">~</span>mod.UN11<span class="sc">$</span>fitted.values),<span class="at">col=</span><span class="dv">2</span>)</span>
+<span id="cb72-7"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb72-7" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:Un11res"></span>
+<img src="MLG1_files/figure-html/Un11res-1.png" alt="Datos de la ONU. Gráfico de los residuos estudentizados." width="480" />
+<p class="caption">
+Figure 4.2: Datos de la ONU. Gráfico de los residuos estudentizados.
+</p>
+</div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb73-1" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb73-2"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb73-2" tabindex="-1"></a><span class="fu">crPlots</span>(mod.UN11,<span class="at">main=</span><span class="st">&#39;&#39;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:Un11resPartial"></span>
+<img src="MLG1_files/figure-html/Un11resPartial-1.png" alt="Datos de la ONU. Gráfico de los residuos  parciales." width="768" />
+<p class="caption">
+Figure 4.3: Datos de la ONU. Gráfico de los residuos parciales.
+</p>
+</div>
+</div>
+<div id="ejemplo-2.-datos-de-educación" class="section level2 unnumbered hasAnchor">
+<h2>Ejemplo 2. Datos de educación<a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#ejemplo-2.-datos-de-educación" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La base de datos <code>education</code> de la librería <code>robustbase</code> contiene información sobre gastos en educación de 50 estados de los EEUU en el año 1975. Las variables observadas son:</p>
+<ul>
+<li><strong>Y</strong>: gasto per cápita en educación pública (dólares, proyectado para 1975).</li>
+<li><strong>X1</strong>: número de residentes en áreas urbanas en 1970 (en miles).</li>
+<li><strong>X2</strong>: ingreso per cápita en 1973 (en miles dolares).</li>
+<li><strong>X3</strong>: número de residentes menores de 18 años en 1974 (en miles)</li>
+</ul>
+<p>La relación entre las variables se observa en la Figura <a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#fig:Educdata">4.4</a>. Se observa una relación positiva aproximadamente lineal entre la variable respuesta y las covariables, aunque no es tan fuerte con la covariable número de residentes menores de 18 años. Además, vemos que hay por lo menos un posible valor atípico.</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb74-1" tabindex="-1"></a><span class="fu">library</span>(robustbase)</span>
+<span id="cb74-2"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb74-2" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;education&quot;</span>)</span>
+<span id="cb74-3"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb74-3" tabindex="-1"></a>education<span class="sc">$</span>X2 <span class="ot">=</span> education<span class="sc">$</span>X2<span class="sc">/</span><span class="dv">1000</span> <span class="co"># cambio de unidad de medida (miles de dolares)</span></span>
+<span id="cb74-4"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb74-4" tabindex="-1"></a><span class="fu">pairs</span>(education[,<span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>)])</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:Educdata"></span>
+<img src="MLG1_files/figure-html/Educdata-1.png" alt="Datos de educación. Relación entre las variables." width="672" />
+<p class="caption">
+Figure 4.4: Datos de educación. Relación entre las variables.
+</p>
+</div>
+<p>El objetivo es ajustar un modelo de regresión para el gasto per cápita en educación pública en función de las demás variables:
+<span class="math display">\[
+Y_{i} = \beta_{0} + \beta_{1}\mbox{X1}_{i} + \beta_{2}\mbox{X2}_{i}+ \beta_{3}\mbox{X3}_{i} + \varepsilon_{i},
+\]</span>
+donde <span class="math inline">\(\varepsilon_{i}\sim N(0,\sigma^{2})\)</span> y <span class="math inline">\(cov(\varepsilon_{j},\varepsilon_{k})=0\)</span>.</p>
+<p>Antes de hacer inferencias sobre el modelo hacemos un análisis de los residuos. La Figura <a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#fig:Educres">4.5</a> exhibe el gráfico de los residuos estudentizados. Aunque la relación entre la variable respuesta y covariables es aproximadamente lineal, hay presencia de heterocedasticidad. La variabilidad de los residuos aumenta con los valores ajustados.</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb75-1" tabindex="-1"></a>mod.educ <span class="ot">=</span> <span class="fu">lm</span>(Y<span class="sc">~</span>X1<span class="sc">+</span>X2<span class="sc">+</span>X3,<span class="at">data=</span>education)</span>
+<span id="cb75-2"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb75-2" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb75-3"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb75-3" tabindex="-1"></a>res.educ <span class="ot">=</span> <span class="fu">studres</span>(mod.educ)</span>
+<span id="cb75-4"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb75-4" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb75-5"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb75-5" tabindex="-1"></a><span class="fu">plot</span>(mod.educ<span class="sc">$</span>fitted.values,res.educ,</span>
+<span id="cb75-6"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb75-6" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;valores ajustados&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;residuos estudentizados&#39;</span>)</span>
+<span id="cb75-7"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb75-7" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(res.educ<span class="sc">~</span>mod.educ<span class="sc">$</span>fitted.values),<span class="at">col=</span><span class="dv">2</span>)</span>
+<span id="cb75-8"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb75-8" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb75-9"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb75-9" tabindex="-1"></a><span class="fu">plot</span>(mod.educ<span class="sc">$</span>fitted.values,<span class="fu">abs</span>(res.educ),</span>
+<span id="cb75-10"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb75-10" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;valores ajustados&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;| residuos estudentizados |&#39;</span>)</span>
+<span id="cb75-11"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb75-11" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(<span class="fu">abs</span>(res.educ)<span class="sc">~</span>mod.educ<span class="sc">$</span>fitted.values),<span class="at">col=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:Educres"></span>
+<img src="MLG1_files/figure-html/Educres-1.png" alt="Datos de educación. Gráficos de los residuos estudentizados." width="768" />
+<p class="caption">
+Figure 4.5: Datos de educación. Gráficos de los residuos estudentizados.
+</p>
+</div>
+<p>Dado que los modelos ajustados presentan desviaciones considerables de los supuestos asumidos, las inferencias que se hagan pueden ser invalidas. Por lo tanto, en este capítulo presentaremos dos herramientas para la corrección de estos problemas: (1) transformación de variables (incluyendo la transformación de Box-Cox) y (2) mínimos cuadrados ponderados.</p>
+</div>
+<div id="transformación-de-los-datos" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Transformación de los datos<a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#transformación-de-los-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Los objetivos de realizar transformaciones sobre los datos son:</p>
+<ul>
+<li>linealizar la relación de las variables,</li>
+<li>estabilizar la varianza,</li>
+<li>y corregir la normalidad.</li>
+</ul>
+<p>Las transformaciones pueden hacerse sobre la variable respuesta, las covariables, o ambas.</p>
+<p>La desventaja de hacer transformaciones es que la interpretación del modelo estimado, así como las inferencias, se hacen sobre las variables transformadas, y no en su escala original.</p>
+<div id="transformaciones-para-linealizar-el-modelo" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Transformaciones para linealizar el modelo<a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#transformaciones-para-linealizar-el-modelo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Recordemos que el modelo lineal asume que la relación entre la media y las covariables es aproximadamente lineal. En algunos casos, dada la naturaleza de los datos, este supuesto puede ser violado. Por lo tanto, para seguir utilizando la metodología de los modelos lineales, es posible linealizar funciones no-lineales por medio de transformaciones.</p>
+<p>Algunas de estas funciones linealizables y su representación gráfica, se muestran en la Tabla <a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#tab:funciones">4.1</a> y Figura <a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#fig:linealPat">4.6</a>, respectivamente. Por ejemplo, considere que el modelo generador de los datos es:
+<span class="math display">\[
+y_{i} = \beta_{0}\exp\left(\beta_{1}x_{i1} \right)\varepsilon_{i}.
+\]</span>
+Ver figura <a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#fig:linealPat">4.6</a>(b). Esta relación no lineal se puede linealizar aplicando una transformación logaritmica a ambos lados:</p>
+<p><span class="math display">\[
+\log y_{i} = y_{i}^{*} = \log \left[ \beta_{0}\exp\left(\beta_{1}x_{i} \right)\varepsilon_{i} \right] = \log \beta_{0} + \beta_{1}x_{i} + \log\varepsilon_{i}.
+\]</span>
+Note que estaríamos asumiendo que <span class="math inline">\(\log\varepsilon_{i}\)</span> está normalmente distribuido. Para que esto sea cierto, <span class="math inline">\(\varepsilon_{i}\)</span> debe seguir una distribución log-normal.</p>
+<table>
+<caption><span id="tab:funciones">Table 4.1: </span>Funciones linealizables</caption>
+<colgroup>
+<col width="3%" />
+<col width="29%" />
+<col width="32%" />
+<col width="35%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Función</th>
+<th align="left">Transformación</th>
+<th align="left">Forma lineal</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(a)</td>
+<td align="left"><span class="math inline">\(y = \beta_{0}x^{\beta_{1}}\)</span></td>
+<td align="left"><span class="math inline">\(y^{*}= \log(y), x^{*} = \log(x)\)</span></td>
+<td align="left"><span class="math inline">\(y^{*} = \log(\beta_{0}) + \beta_{1} x^{*}\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">(b)</td>
+<td align="left"><span class="math inline">\(y = \beta_{0}e^{\beta_{1}x}\)</span></td>
+<td align="left"><span class="math inline">\(y^{*}= \log(y)\)</span></td>
+<td align="left"><span class="math inline">\(y^{*} = \log(\beta_{0}) + \beta_{1} x\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">(c)</td>
+<td align="left"><span class="math inline">\(y = \beta_{0}+\beta_{1}ln(x)\)</span></td>
+<td align="left"><span class="math inline">\(x^{*}= \log(x)\)</span></td>
+<td align="left"><span class="math inline">\(y^{*} = \beta_{0} + \beta_{1} x^{*}\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">(d)</td>
+<td align="left"><span class="math inline">\(y = \frac{x}{\beta_{0}x+\beta_{1}}\)</span></td>
+<td align="left"><span class="math inline">\(x^{*}= \frac{1}{x}, y^{*}= \frac{1}{y}\)</span></td>
+<td align="left"><span class="math inline">\(y^{*} = \beta_{0} - \beta_{1} x^{*}\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:linealPat"></span>
+<img src="MLG1_files/figure-html/linealPat-1.png" alt="Diferentes patrones linealizables." width="672" />
+<p class="caption">
+Figure 4.6: Diferentes patrones linealizables.
+</p>
+</div>
+</div>
+<div id="transformaciones-para-estabilizar-la-varianza" class="section level3 hasAnchor" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Transformaciones para estabilizar la varianza<a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#transformaciones-para-estabilizar-la-varianza" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Un caso frecuente es que la variable respuesta sigue una distribución de probabilidad en la que la varianza se relaciona en forma funcional con la media:
+<span class="math display">\[
+V(Y|X=x) = \sigma^2 g[E(Y|X=x)].
+\]</span>
+Por ejemplo, en la distribución Poisson, la varianza es igual a la media. Algunas transformaciones comunes para estabilizar varianza se muestran en la Tabla <a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#tab:funcionesVar">4.2</a> <span class="citation">(<a href="#ref-behar_validacion_2002">Behar 2002</a>)</span>.</p>
+<table>
+<caption><span id="tab:funcionesVar">Table 4.2: </span>Algunas transformaciones para estabilizar la varianza</caption>
+<colgroup>
+<col width="37%" />
+<col width="62%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Relación entre <span class="math inline">\(\sigma^{2}\)</span> y <span class="math inline">\(E(Y)\)</span></th>
+<th align="left">Transformación</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\sigma^{2} \propto C\)</span></td>
+<td align="left"><span class="math inline">\(y^{*}=y\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\sigma^{2} \propto E(y)\)</span></td>
+<td align="left"><span class="math inline">\(y^{*}=\sqrt{y}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\sigma^{2} \propto E(y)[1-E(y)]\)</span></td>
+<td align="left"><span class="math inline">\(y^{*}=\sin^{-1}\sqrt{y} (0 \leq y_{i} \leq 1)\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\sigma^{2} \propto E(y)^{2}\)</span></td>
+<td align="left"><span class="math inline">\(y^{*}=\log y\)</span> o también <span class="math inline">\(y^{*}=\log (y+1)\)</span> (si <span class="math inline">\(y \geq 0\)</span>)</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\sigma^{2} \propto E(y)^{3}\)</span></td>
+<td align="left"><span class="math inline">\(y^{*}=\frac{1}{\sqrt{y}}\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\sigma^{2} \propto E(y)^{4}\)</span></td>
+<td align="left"><span class="math inline">\(y^{*}=\frac{1}{y}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Algunas consideraciones cuando se hacen transformaciones sobre las variables:</p>
+<ul>
+<li>Transformaciones pueden ser sugeridas por experiencia (o teoría).
+En otros casos, la selección se hace empíricamente.</li>
+<li>Luego de realizar las transformaciones se debe verificar si el modelo transformado cumple los supuestos.</li>
+<li>El estimador de MCO tiene propiedades de mínimos cuadrados con
+respecto a los datos transformados.</li>
+<li>Las predicciones son sobre las respuestas transformadas, no las
+originales. Devolverse a la variable respuesta original no es fácil. Recordemos que
+<span class="math display">\[
+E[g(y)] \neq g[E(y)].
+\]</span>
+Al aplicar la transformación inversa a las predicciones de la respuesta transformada estamos estimando la mediana, y no la media. Por otro lado, a las estimaciones por intervalos de confianza si se les puede aplicar la transformación inversa. Esto porque los percentiles no se ven afectados por transformaciones.</li>
+</ul>
+</div>
+<div id="datos-de-la-onu.-transformación-para-linealizar-los-datos" class="section level3 unnumbered hasAnchor">
+<h3>Datos de la ONU. Transformación para linealizar los datos<a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#datos-de-la-onu.-transformación-para-linealizar-los-datos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Al realizar un análisis de residuos del ajuste del modelo para los datos de la ONU, vimos que hay una relación no-lineal entre la fertilidad y las dos covariables propuestas. Particularmente, esto se debe a la covariable producto nacional bruto.</p>
+<p>Por lo tanto, podemos aplicar una transformación logarítmica tanto a la variable respuesta, así como la covariable producto nacional bruto. En la Figura <a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#fig:UNtransFig">4.7</a> vemos como al aplicar esta transformación se linealiza la relación.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:UNtransFig"></span>
+<img src="MLG1_files/figure-html/UNtransFig-1.png" alt="Datos de la ONU. Relación entre las variables." width="768" />
+<p class="caption">
+Figure 4.7: Datos de la ONU. Relación entre las variables.
+</p>
+</div>
+<p>Producto de esta transformación, se propone el siguiente modelo:
+<span class="math display">\[
+\log \mbox{fertility}_{i} = \beta_{0} + \beta_{1}\log \mbox{ppgdp}_{i} + \beta_{2}\mbox{pctUrban}_{i} + \varepsilon_{i},
+\]</span>
+donde <span class="math inline">\(\varepsilon_{i}\sim N(0,\sigma^{2})\)</span> y <span class="math inline">\(cov(\varepsilon_{j},\varepsilon_{k})=0\)</span>.</p>
+<p>La Figura <a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#fig:UNtrans2Fig">4.8</a> muestra el gráfico de los residuos para este ajuste. Aquí vemos que los problemas de no linealidad y heterocedasticidad se corrigieron al realizar la transformación logarítmica.</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb76-1" tabindex="-1"></a>mod.UN11.trans <span class="ot">=</span> <span class="fu">lm</span>(<span class="fu">log</span>(fertility)<span class="sc">~</span><span class="fu">log</span>(ppgdp)<span class="sc">+</span>pctUrban,<span class="at">data =</span> UN11)</span>
+<span id="cb76-2"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb76-2" tabindex="-1"></a>res.UN11.trans <span class="ot">=</span> <span class="fu">studres</span>(mod.UN11.trans)</span>
+<span id="cb76-3"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb76-3" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb76-4"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb76-4" tabindex="-1"></a><span class="fu">plot</span>(mod.UN11.trans<span class="sc">$</span>fitted.values,res.UN11.trans,<span class="at">xlab=</span><span class="st">&#39;valores ajustados&#39;</span>,</span>
+<span id="cb76-5"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb76-5" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&#39;residuos estudentizados&#39;</span>)</span>
+<span id="cb76-6"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb76-6" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(res.UN11.trans<span class="sc">~</span>mod.UN11.trans<span class="sc">$</span>fitted.values),<span class="at">col=</span><span class="dv">2</span>)</span>
+<span id="cb76-7"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb76-7" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb76-8"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb76-8" tabindex="-1"></a><span class="fu">plot</span>(mod.UN11.trans<span class="sc">$</span>fitted.values,<span class="fu">abs</span>(res.UN11.trans),<span class="at">xlab=</span><span class="st">&#39;valores ajustados&#39;</span>,</span>
+<span id="cb76-9"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb76-9" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&#39;| residuos estudentizados |&#39;</span>)</span>
+<span id="cb76-10"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb76-10" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(<span class="fu">abs</span>(res.UN11.trans)<span class="sc">~</span>mod.UN11.trans<span class="sc">$</span>fitted.values),<span class="at">col=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:UNtrans2Fig"></span>
+<img src="MLG1_files/figure-html/UNtrans2Fig-1.png" alt="Datos de la ONU. Gráficos de los residuos para el modelo transformado." width="768" />
+<p class="caption">
+Figure 4.8: Datos de la ONU. Gráficos de los residuos para el modelo transformado.
+</p>
+</div>
+</div>
+</div>
+<div id="método-de-box-cox" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Método de Box-Cox<a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#método-de-box-cox" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Para la corrección del supuesto de normalidad y varianza constante, es posible implementar transformaciones en potencia para la variable respuesta. Esto es, <span class="math inline">\(y^{*}=y^{\lambda}\)</span>. Dado que el valor de <span class="math inline">\(\lambda\)</span> es desconocido, la idea del <strong>método de Box-Cox</strong> es estimar el modelo lineal para diferentes valores de <span class="math inline">\(\lambda\)</span> y determinar el valor que proporciona el mejor ajuste. Sin embargo, aquí encontramos dos problemas.</p>
+<p>Primero, la transformación en potencia tiene un problema de discontinuidad en <span class="math inline">\(\lambda=0\)</span>. Puesto que cuando <span class="math inline">\(\lambda\)</span> tiende a cero, <span class="math inline">\(y^{*}\)</span> se acerca a <span class="math inline">\(1\)</span>. Para resolver esto, se puede utilizar <span class="math inline">\(y^{*} = (y^{\lambda}-1)/\lambda\)</span>. De esta forma, cuando <span class="math inline">\(\lambda\)</span> tiende a cero, <span class="math inline">\(y^{*}\)</span> se acerca a <span class="math inline">\(\log y\)</span>. Segundo, cuando <span class="math inline">\(\lambda\)</span> cambia, los valores <span class="math inline">\(y^{*}\)</span> varía drásticamente. Esto hace que los modelos ajustados no se puedan comparar fácilmente.</p>
+<p>La transformación que permite que los modelos ajustados sean comparables es:
+<span class="math display" id="eq:boxcoxtrans">\[\begin{equation}
+y^{(\lambda)} = \begin{cases}
+\frac{y^{\lambda}-1}{\lambda \dot{y}^{\lambda-1}}, &amp; \mbox{si }\lambda \neq 0, \\
+\dot{y}\log y &amp; \mbox{si } \lambda=0,
+\end{cases}
+\tag{4.1}
+\end{equation}\]</span>
+donde <span class="math inline">\(\dot{y} = \log \left[1/n \sum_{i=1}^{n}\log y_{i}\right]\)</span> es la media geométrica de la variable respuesta.</p>
+<p>Entonces, el método de Box-Cox es el siguiente:</p>
+<ol style="list-style-type: decimal">
+<li>Determinar una secuencia de valores para <span class="math inline">\(\lambda\)</span>, <span class="math inline">\((\lambda_{1},\lambda_{2},\ldots,\lambda_{K})\)</span>. Por lo general, se seleccionan valores en el intervalo <span class="math inline">\([-2,2]\)</span>.</li>
+<li>Ajustar el modelo:
+<span class="math display">\[
+y_{ij}^{(\lambda_k)} = \beta_{0} + \beta_{1}x_{i1} + \beta_{2}x_{i2} + \ldots + \beta_{p-1}x_{i,p-1} + \varepsilon_{i},
+\]</span>
+para cada valor de <span class="math inline">\(\lambda_{k}\)</span>, <span class="math inline">\(k=1,\ldots,K\)</span>. Al utilizar la transformación <a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#eq:boxcoxtrans">(4.1)</a>, las sumas de cuadrados para modelos con diferentes valores de <span class="math inline">\(\lambda\)</span> son comparables.</li>
+<li>Seleccionar el modelo que minimiza la suma de cuadrados de los residuos, <span class="math inline">\(SS_{res}(\lambda)\)</span>. Equivalentemente, el <span class="math inline">\(\lambda\)</span> que maximiza la verosimilitud.</li>
+<li>Luego de encontrar el valor de <span class="math inline">\(\lambda\)</span> óptimo, se ajusta el modelo transformando la variable respuesta <span class="math inline">\(y^{\lambda}\)</span>, si <span class="math inline">\(\lambda\neq 0\)</span>, o <span class="math inline">\(\log y\)</span> si <span class="math inline">\(\lambda =0\)</span>. Es decir que (@ref{eq:boxcoxtrans}) se utiliza solo en el paso de comparación de modelos ajustados.</li>
+</ol>
+<p>Puesto que <span class="math inline">\(\lambda\)</span> es una variable aleatoria, también se puede hacer una estimación por intervalos de confianza. Para esto primero consideremos la función de log-verosimilitud:
+<span class="math display">\[
+\ell(\boldsymbol \beta,\sigma^{2} | \lambda) = -\frac{2}{n}\log \left( 2\pi\sigma^{2}\right) - \frac{1}{2\sigma^{2}}\sum_{i=1}^{n}\left( y_{i}^{\lambda} - \boldsymbol x_{i}&#39;\boldsymbol \beta\right)^{2} = -\frac{2}{n}\log \left( 2\pi\sigma^{2}\right) - \frac{1}{2\sigma^{2}}SS_{res}(\lambda).
+\]</span>
+Aquí vemos que el valor de <span class="math inline">\(\lambda\)</span> que maximiza la verosimilitud es el mismo que minimiza la suma de cuadrados de los residuos.</p>
+<p>Un intervalo de confianza se puede construir a partir del siguiente estadístico de prueba:
+<span class="math display">\[
+G_{0}^{2} = -2\left[ \ell(\boldsymbol \beta,\sigma^{2} | \lambda=1) - \ell(\boldsymbol \beta,\sigma^{2} | \lambda=\widehat{\lambda}) \right].
+\]</span>
+Si <span class="math inline">\(\lambda=1\)</span>, entonces asintóticamente <span class="math inline">\(G_{0}^{2} \sim \chi^{2}_{1}\)</span>. Por lo tanto, el intervalo del <span class="math inline">\((1-\alpha)\times 100\)</span>% de confianza para <span class="math inline">\(\lambda\)</span> está definido por los valores de <span class="math inline">\(\lambda\)</span> que cumplen con la condición:
+<span class="math display">\[
+\ell(\boldsymbol \beta,\sigma^{2} | \lambda) \geq  \ell(\boldsymbol \beta,\sigma^{2} | \lambda=\widehat{\lambda}) - \frac{1}{2}\chi^{2}_{1,1-\alpha}.
+\]</span></p>
+<div id="datos-de-educación.-transformación-de-box-cox" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Datos de educación. Transformación de Box-Cox<a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#datos-de-educación.-transformación-de-box-cox" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Dado que el análisis de residuso para el ajuste del modelo para los datos de educación mostró que hay problemas de heterocedasticidad, vamos a encontrar una transformación que resuelva de problema usando el método de Box-Cox. Para esto usamos la función <code>boxcox</code> de la librería <code>MASS</code>:</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb77-1" tabindex="-1"></a>boxcox.educ <span class="ot">=</span> MASS<span class="sc">::</span><span class="fu">boxcox</span>(mod.educ,<span class="at">lambda=</span><span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>,<span class="dv">3</span>,<span class="at">length.out =</span> <span class="dv">1000</span>),</span>
+<span id="cb77-2"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb77-2" tabindex="-1"></a>                               <span class="at">ylab=</span><span class="st">&#39;log-verosimilitud&#39;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:educLambda"></span>
+<img src="MLG1_files/figure-html/educLambda-1.png" alt="\label{fig:EducBC} Datos de educación. Perfiles de verosimilitud para $\lambda$." width="480" />
+<p class="caption">
+Figure 4.9:  Datos de educación. Perfiles de verosimilitud para <span class="math inline">\(\lambda\)</span>.
+</p>
+</div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb78-1" tabindex="-1"></a>boxcox.educ<span class="sc">$</span>x[boxcox.educ<span class="sc">$</span>y <span class="sc">==</span><span class="fu">max</span>(boxcox.educ<span class="sc">$</span>y)] <span class="co"># valor que maximiza la log-verosimilitud</span></span></code></pre></div>
+<pre><code>## [1] -1.09009</code></pre>
+<p>Estos resultados nos indican que <span class="math inline">\(\widehat{\lambda}= -1.09\)</span>. Por lo cuál, podemos utilizar una transformación inversa <span class="math inline">\((\lambda=-1)\)</span>. Entonces, el modelo propuesto es:
+<span class="math display">\[
+1/y_{i} = \beta_{0} + \beta_{1}\mbox{X1}_{i}+ \beta_{2}\mbox{X2}_{i} + \beta_{3}\mbox{X3}_{i} + \varepsilon_{i},
+\]</span>
+donde <span class="math inline">\(\varepsilon_{i}\sim N(0,\sigma^{2})\)</span> y <span class="math inline">\(cov(\varepsilon_{j},\varepsilon_{k})=0\)</span>.</p>
+<p>Ahora procedemos a hacer el análisis de los residuos del modelo transformado:</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb80-1" tabindex="-1"></a>mod.educ.trans <span class="ot">=</span> <span class="fu">lm</span>(<span class="dv">1</span><span class="sc">/</span>Y<span class="sc">~</span>X1<span class="sc">+</span>X2<span class="sc">+</span>X3,<span class="at">data=</span>education)</span>
+<span id="cb80-2"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb80-2" tabindex="-1"></a>res.educ.trans <span class="ot">=</span> <span class="fu">studres</span>(mod.educ.trans)</span>
+<span id="cb80-3"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb80-3" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb80-4"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb80-4" tabindex="-1"></a><span class="fu">plot</span>(mod.educ.trans<span class="sc">$</span>fitted.values,res.educ.trans,</span>
+<span id="cb80-5"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb80-5" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;valores ajustados&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;residuos estudentizados&#39;</span>)</span>
+<span id="cb80-6"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb80-6" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(res.educ.trans<span class="sc">~</span>mod.educ.trans<span class="sc">$</span>fitted.values),<span class="at">col=</span><span class="dv">2</span>)</span>
+<span id="cb80-7"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb80-7" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb80-8"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb80-8" tabindex="-1"></a><span class="fu">plot</span>(mod.educ.trans<span class="sc">$</span>fitted.values,<span class="fu">abs</span>(res.educ.trans),</span>
+<span id="cb80-9"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb80-9" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;valores ajustados&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;| residuos estudentizados |&#39;</span>)</span>
+<span id="cb80-10"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb80-10" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(<span class="fu">abs</span>(res.educ.trans)<span class="sc">~</span>mod.educ.trans<span class="sc">$</span>fitted.values),<span class="at">col=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:EducBC2Fig"></span>
+<img src="MLG1_files/figure-html/EducBC2Fig-1.png" alt="Datos de educación. Graficos de los residuos para el modelo transformado." width="768" />
+<p class="caption">
+Figure 4.10: Datos de educación. Graficos de los residuos para el modelo transformado.
+</p>
+</div>
+<p>En la Figura <a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#fig:EducBC2Fig">4.10</a> vemos que la transformación propuesta corrigió el problema de heterocedasticidad. Adicionalmente, por medio de la Figura <a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#fig:EducBC3Fig">4.11</a> podemos verificar que el supuesto de normalidad se cumple.</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb81-1" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">qqPlot</span>(mod.educ.trans,<span class="at">distribution =</span> <span class="st">&#39;norm&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;residuos estudentizados&#39;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:EducBC3Fig"></span>
+<img src="MLG1_files/figure-html/EducBC3Fig-1.png" alt="Datos de educación. Graficos de normalidad de los residuos para el modelo transformado." width="480" />
+<p class="caption">
+Figure 4.11: Datos de educación. Graficos de normalidad de los residuos para el modelo transformado.
+</p>
+</div>
+<pre><code>## [1] 10 47</code></pre>
+<p>Puesto que se cumplen los supuestos del modelo transformado, ahora procedemos a interpretar los resultados.</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb83-1" tabindex="-1"></a><span class="fu">summary</span>(mod.educ.trans)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = 1/Y ~ X1 + X2 + X3, data = education)
+## 
+## Residuals:
+##        Min         1Q     Median         3Q        Max 
+## -7.609e-04 -3.732e-04 -1.640e-06  3.468e-04  1.158e-03 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  1.220e-02  1.366e-03   8.934 1.29e-11 ***
+## X1          -6.613e-07  5.698e-07  -1.161 0.251816    
+## X2          -7.302e-04  1.286e-04  -5.676 8.83e-07 ***
+## X3          -1.444e-05  3.489e-06  -4.139 0.000147 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.0004487 on 46 degrees of freedom
+## Multiple R-squared:  0.5897, Adjusted R-squared:  0.5629 
+## F-statistic: 22.04 on 3 and 46 DF,  p-value: 5.417e-09</code></pre>
+<p>A partir de estos resultados podemos concluir que la población en áreas urbanas no tiene un aporte signficativo en el modelo cuando las otras dos covariables ya están incluidas. Mientras que, el ingreso per cápita y la población menor de 18 años tienen un efecto positivo significativo sobre el gasto en educación pública (recordemos que se hizo una transformación inversa).</p>
+<p>Puesto que hicimos transformaciones, la interpretación de los coeficientes se hace sobre la variable respuesta transformada.</p>
+<p>Ahora, supogamos que queremos hacer la predicción del gasto medio en educación pública para los estados que tengan una población de <span class="math inline">\(\mbox{X1}=650\)</span>, un ingreso per cápita de <span class="math inline">\(\mbox{X2=4.5}\)</span> y una población menor de 18 años de <span class="math inline">\(\mbox{X3}=320\)</span>. A partir del modelo ajustado tenemos que:</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb85-1" tabindex="-1"></a>x0.educ <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">X1=</span><span class="dv">650</span>,<span class="at">X2=</span><span class="fl">4.5</span>,<span class="at">X3=</span><span class="dv">320</span>)</span>
+<span id="cb85-2"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb85-2" tabindex="-1"></a>pred.educ.trans <span class="ot">=</span> <span class="fu">predict</span>(mod.educ.trans,x0.educ,<span class="at">interval=</span><span class="st">&#39;confidence&#39;</span>) </span>
+<span id="cb85-3"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb85-3" tabindex="-1"></a><span class="dv">1</span><span class="sc">/</span>pred.educ.trans</span></code></pre></div>
+<pre><code>##        fit      lwr      upr
+## 1 258.6228 268.5117 249.4364</code></pre>
+Por lo que intervalo del 95% de confianza para el gasto medio en educación pública para los estados con las características expresadas anteriormente es (249.44, 268.51).
+</div>
+</div>
+<div id="mínimos-cuadrados-ponderados" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Mínimos cuadrados ponderados<a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#mínimos-cuadrados-ponderados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>El método de mínimos cuadrados ponderados (MCP) es una alternativa para estimar un modelo lineal en presencia de heterocedasticidad. La idea de esta técnica es calcular las desviaciones entre las observaciones <span class="math inline">\((y_{i})\)</span> y los valores ajustados <span class="math inline">\((\widehat{y}_{i})\)</span> usando pesos <span class="math inline">\((w_{i})\)</span> inversamente proporcionales a la varianza de <span class="math inline">\(y_{i}\)</span>.</p>
+<p>Asumamos que el modelo generador de los datos es:
+<span class="math display" id="eq:modV">\[\begin{equation}
+\boldsymbol y= \boldsymbol X\boldsymbol \beta+ \boldsymbol \varepsilon, \mbox{ donde }\boldsymbol \varepsilon\sim N(\boldsymbol 0,\sigma^{2}\boldsymbol V),
+\tag{4.2}
+\end{equation}\]</span>
+donde <span class="math inline">\(\boldsymbol V\)</span> es una matriz diagonal <span class="math inline">\((n \times n)\)</span>:
+<span class="math display">\[
+\boldsymbol V= \begin{pmatrix}
+v_{11} &amp; 0 &amp; 0 &amp; \ldots &amp; 0 \\
+0 &amp; v_{22} &amp; 0 &amp; \ldots &amp; 0 \\
+0 &amp; 0 &amp; v_{33} &amp; \ldots &amp; 0 \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; 0 &amp; \ldots &amp; v_{nn}
+\end{pmatrix}.
+\]</span>
+Esto quiere decir que tenemos presencia de hetorocedasticidad, donde <span class="math inline">\(V(\varepsilon_{i}) = \sigma^{2}v_{ii}\)</span>. Recordemos que si aplicamos el estimador por MCO, las estimaciones siguen siendo insesgadas pero son ineficientes. Además, las varianzas estimadas de <span class="math inline">\(\widehat{\boldsymbol \beta}\)</span>, y de las predicciones, están mal calculadas. Lo que puede afectar la cobertura de los intervalos de confianza y el nivel de signficancia de las pruebas de hipótesis.</p>
+<p>La función de verosimilitud del modelo <a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#eq:modV">(4.2)</a>, asumiendo que <span class="math inline">\(\boldsymbol V\)</span> es conocida, es:
+<span class="math display">\[
+L(\boldsymbol \beta,\sigma^{2} | \boldsymbol V) =  \frac{1}{(2\pi)^{n/2}|\sigma^{2}\boldsymbol V|^{1/2}}\exp \left[-\frac{1}{2\sigma^{2}}(\boldsymbol y- \boldsymbol X&#39;\boldsymbol \beta)&#39;\boldsymbol V^{-1}(\boldsymbol y- \boldsymbol X&#39;\boldsymbol \beta) \right].
+\]</span>
+Por lo que para encontrar el estimador de <span class="math inline">\(\boldsymbol \beta\)</span> debemos minimizar la suma de cuadrados ponderada:
+<span class="math display" id="eq:SSWE">\[\begin{equation}
+SS_{Wres} = (\boldsymbol y- \boldsymbol X&#39;\boldsymbol \beta)&#39;\boldsymbol W(\boldsymbol y- \boldsymbol X&#39;\boldsymbol \beta) = \sum_{i=1}^{n} w_{ii}(y_{i} - \boldsymbol x_{i}&#39;\boldsymbol \beta)^{2},
+\tag{4.3}
+\end{equation}\]</span>
+donde <span class="math inline">\(\boldsymbol W= \boldsymbol V^{-1}\)</span>, es decir que <span class="math inline">\(w_{ii}= \frac{1}{v_{ii}}\)</span>. Note que las observaciones con mayor varianza tienen menor peso en la estimación de <span class="math inline">\(\boldsymbol \beta\)</span>.</p>
+<p>Al minimizar <a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#eq:SSWE">(4.3)</a> se obtiene el estimador por MCP:
+<span class="math display">\[
+\widehat{\boldsymbol \beta}_{W} = (\boldsymbol X&#39;\boldsymbol W\boldsymbol X)^{-1}\boldsymbol X&#39;\boldsymbol W\boldsymbol y.
+\]</span>
+Además,
+<span class="math display" id="eq:VarBetaW">\[\begin{equation}
+V(\widehat{\boldsymbol \beta}_{W}) = \sigma^{2}(\boldsymbol X&#39;\boldsymbol W\boldsymbol X)^{-1}.
+\tag{4.4}
+\end{equation}\]</span>
+Si <span class="math inline">\(\boldsymbol V\)</span> está correctamente especificada, se puede probar que <span class="math inline">\(\widehat{\boldsymbol \beta}_{W}\)</span> es el mejor estimador insesgado de <span class="math inline">\(\boldsymbol \beta\)</span>.</p>
+<p>Los residuos del ajuste del modelo son:
+<span class="math display">\[
+e_{Wi} = \sqrt{w_{ii}}(y_{i} - \widehat{y}_{i}), \mbox{ de forma matricial }\boldsymbol e_{W} = \boldsymbol W^{1/2}(\boldsymbol y- \boldsymbol X\widehat{\boldsymbol \beta}_{W}),
+\]</span>
+donde <span class="math inline">\(\boldsymbol W= \boldsymbol W^{1/2}\boldsymbol W^{1/2}\)</span>. De este resultado obtenemos el estimador insesgado de <span class="math inline">\(\sigma^{2}\)</span>:
+<span class="math display">\[
+\widehat{\sigma}^{2} = \frac{1}{n-p}\sum_{i=1}^{n}w_{ii}(y_{i}-\boldsymbol x_{i}&#39;\widehat{\boldsymbol \beta})^{2} = \frac{1}{n-p}(\boldsymbol y- \boldsymbol X\widehat{\boldsymbol \beta})&#39;\boldsymbol W(\boldsymbol y- \boldsymbol X\widehat{\boldsymbol \beta}).
+\]</span></p>
+<p>Aqui estamos asumiendo que los pesos <span class="math inline">\((w_{ii})\)</span> son conocidos. Lo que en la práctica es poco común. Estos pesos pueden ser determinados por conocimiento de los datos, experiencia, o información teórica del modelo. Alternativamente, estos se pueden calcular a partir de los residuos obtenidos por el estimador MCO.</p>
+<p>Es común que <span class="math inline">\(\sigma^{2}_{i}\)</span> varíe de acuerdo a una o varias covariables, o con respecto <span class="math inline">\(E(y_{i}|\boldsymbol x_{i})\)</span>. Por ejemplo, en los datos de educación parece que la varianza incrementa con <span class="math inline">\(E(y_{i}| \boldsymbol x_{i})\)</span>. En este caso podemos aplicar el siguiente procedimiento:</p>
+<ol style="list-style-type: decimal">
+<li>Ajustar el modelo por MCO y analizar los residuos.</li>
+<li>Ajustar un modelo para el valor absoluto de los residuos <span class="math inline">\((|e_{i}|)\)</span>, o los residuso al cuadrado <span class="math inline">\((e^{2}_{i})\)</span>, en función de las covariables:
+<span class="math display">\[
+|e_{i}| = \gamma_{0} + \gamma_{1}x_{i1}+ \ldots + \gamma_{p-1}x_{i,p-1} + \varepsilon_{ei}.
+\]</span>
+De esta ajuste obtenemos una estimación para la desviación estándar <span class="math inline">\((\sigma_{i})\)</span>. Si ajustamos un modelo para los residuos al cuadrado, estamos estimando la varianza <span class="math inline">\((\sigma^{2})\)</span>.</li>
+<li>Usar los valores ajustados el modelo anterior para estimar los pesos <span class="math inline">\((w_{ii})\)</span>.</li>
+</ol>
+<p>Si <span class="math inline">\(\widehat{\boldsymbol \beta}_{W}\)</span> difiere mucho de <span class="math inline">\(\widehat{\boldsymbol \beta}\)</span>, es posible repetir el proceso anterior una vez más (mínimos cuadrados iterativamente ponderados).</p>
+<p>Dado que estamos estimando los pesos, la varianza de los coeficientes <a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#eq:VarBetaW">(4.4)</a> es aproximada. Sin embargo, esta aproximación es muy buena si el tamaño de muestra no es muy pequeño.</p>
+<div id="datos-de-educación.-minímos-cuadrados-ponderados" class="section level3 unnumbered hasAnchor">
+<h3>Datos de educación. Minímos cuadrados ponderados<a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#datos-de-educación.-minímos-cuadrados-ponderados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Retomemos el modelo para los datos de educación. En la Figura @ref{fig:Educres} vemos que hay heterocedasticidad. Particularmente vemos que la variabilidad crece a medida que aumentan los valores ajustados. Ya vimos que por medio de una transformación inversa sobre la variable respuesta se corrige el problema.</p>
+<p>El problema de hacer transformaciones es que los coeficientes estimados pierden interpretación. Así que, alternativamente, vamos a implementar el método de minímos cuadrados ponderados. Dado que desconocemos los pesos, vamos a estimarlos usando el procedimiento que se explicó anteriormente.</p>
+<p>Primero vamos a ajustar el siguiente modelo para el valor absoluto de los residuos:
+<span class="math display">\[
+|e_{i}| = \gamma_{0} + \gamma_{1}\mbox{X1}_{i}+ \gamma_{2}\mbox{X2}_{i} + \gamma_{3}\mbox{X3}_{i} + \varepsilon_{ei}.
+\]</span></p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb87-1" tabindex="-1"></a>mod.stdev.educ <span class="ot">=</span> <span class="fu">lm</span>(<span class="fu">abs</span>(res.educ)<span class="sc">~</span>X1<span class="sc">+</span>X2<span class="sc">+</span>X3,<span class="at">data =</span> education)</span>
+<span id="cb87-2"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb87-2" tabindex="-1"></a><span class="fu">summary</span>(mod.stdev.educ)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = abs(res.educ) ~ X1 + X2 + X3, data = education)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.23416 -0.38164 -0.00938  0.32668  1.37892 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -4.6137734  1.7454477  -2.643   0.0112 *  
+## X1          -0.0014511  0.0007281  -1.993   0.0522 .  
+## X2           0.7274821  0.1643850   4.425 5.87e-05 ***
+## X3           0.0092325  0.0044583   2.071   0.0440 *  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.5734 on 46 degrees of freedom
+## Multiple R-squared:  0.3199, Adjusted R-squared:  0.2756 
+## F-statistic: 7.214 on 3 and 46 DF,  p-value: 0.0004565</code></pre>
+<p>Por lo tanto, las estimaciones de las desviaciones estándar de los errores son:
+<span class="math display">\[
+\widetilde{\sigma}_{i} = s_{i} = -4.614  -0.001\mbox{X1}_{i} + 0.727\mbox{X2}_{i} + 0.009\mbox{X3}_{i}.
+\]</span>
+De este ajuste obtenemos los pesos <span class="math inline">\(w_{ii} = \frac{1}{s_{i}^{2}}\)</span>, y luego, estimamos el modelo por MCP:</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb89-1" tabindex="-1"></a>w <span class="ot">=</span> <span class="dv">1</span><span class="sc">/</span>mod.stdev.educ<span class="sc">$</span>fitted.values<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb89-2"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb89-2" tabindex="-1"></a>mod.educ.mcp <span class="ot">=</span> <span class="fu">lm</span>(Y<span class="sc">~</span>X1<span class="sc">+</span>X2<span class="sc">+</span>X3,<span class="at">data=</span>education,<span class="at">weights =</span> w)</span>
+<span id="cb89-3"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb89-3" tabindex="-1"></a><span class="fu">summary</span>(mod.educ.mcp)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Y ~ X1 + X2 + X3, data = education, weights = w)
+## 
+## Weighted Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -93.670 -32.522  -9.149  31.582  86.742 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -404.85597   84.79548  -4.774 1.87e-05 ***
+## X1             0.05062    0.03778   1.340    0.187    
+## X2            62.43586   10.29479   6.065 2.32e-07 ***
+## X3             1.11736    0.20099   5.559 1.32e-06 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 44.98 on 46 degrees of freedom
+## Multiple R-squared:  0.6528, Adjusted R-squared:  0.6302 
+## F-statistic: 28.83 on 3 and 46 DF,  p-value: 1.219e-10</code></pre>
+<p>La Figura <a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#fig:EducMCPFig">4.12</a> muestra los gráficos de los residuos ponderados. Aquí podemos observar que los residuos ponderados no muestra heterocedasticidad.</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb91-1" tabindex="-1"></a>res.educ.mcp <span class="ot">=</span> mod.educ.mcp<span class="sc">$</span>residuals<span class="sc">*</span><span class="fu">sqrt</span>(w)</span>
+<span id="cb91-2"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb91-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb91-3"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb91-3" tabindex="-1"></a><span class="fu">plot</span>(mod.educ.mcp<span class="sc">$</span>fitted.values,res.educ.mcp,</span>
+<span id="cb91-4"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb91-4" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;valores ajustados&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;residuos ponderados&#39;</span>)</span>
+<span id="cb91-5"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb91-5" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(res.educ.mcp<span class="sc">~</span>mod.educ.mcp<span class="sc">$</span>fitted.values),<span class="at">col=</span><span class="dv">2</span>)</span>
+<span id="cb91-6"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb91-6" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb91-7"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb91-7" tabindex="-1"></a><span class="fu">plot</span>(mod.educ.mcp<span class="sc">$</span>fitted.values,<span class="fu">abs</span>(res.educ.mcp),</span>
+<span id="cb91-8"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb91-8" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;valores ajustados&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;| residuos ponderados |&#39;</span>)</span>
+<span id="cb91-9"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb91-9" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">lowess</span>(<span class="fu">abs</span>(res.educ.mcp)<span class="sc">~</span>mod.educ.mcp<span class="sc">$</span>fitted.values),<span class="at">col=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:EducMCPFig"></span>
+<img src="MLG1_files/figure-html/EducMCPFig-1.png" alt="Datos de educación. Graficos de los residuos ponderados." width="864" />
+<p class="caption">
+Figure 4.12: Datos de educación. Graficos de los residuos ponderados.
+</p>
+</div>
+<p>El ajuste por mínimos cuadrados ponderados es:</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb92-1" tabindex="-1"></a><span class="fu">summary</span>(mod.educ.mcp)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Y ~ X1 + X2 + X3, data = education, weights = w)
+## 
+## Weighted Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -93.670 -32.522  -9.149  31.582  86.742 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -404.85597   84.79548  -4.774 1.87e-05 ***
+## X1             0.05062    0.03778   1.340    0.187    
+## X2            62.43586   10.29479   6.065 2.32e-07 ***
+## X3             1.11736    0.20099   5.559 1.32e-06 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 44.98 on 46 degrees of freedom
+## Multiple R-squared:  0.6528, Adjusted R-squared:  0.6302 
+## F-statistic: 28.83 on 3 and 46 DF,  p-value: 1.219e-10</code></pre>
+<p>Aquí llegamos a conclusiones similares a las obtenidas por medio del modelo transformado. El efecto de la población en áreas urbanas no es significativo. Las otras dos covariables si aportan significativamente al modelo. En este caso, dado que no aplicamos transformaciones, los coeficientes si tienen interpretación. Por ejemplo de la estimación de <span class="math inline">\(\beta_{3}\)</span> podemos concluir que: el gasto per cápita medio en educación pública aumenta en 1.117 USD por cada 1000 personas menores de 18 años.</p>
+<p>Ahora, hagamos la predicción del gasto medio en educación pública para las características: <span class="math inline">\(\mbox{X1}=650\)</span>, <span class="math inline">\(\mbox{X2=4.5}\)</span> y <span class="math inline">\(\mbox{X3}=320\)</span>:</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#cb94-1" tabindex="-1"></a><span class="fu">predict</span>(mod.educ.mcp,x0.educ,<span class="at">interval=</span><span class="st">&#39;confidence&#39;</span>)</span></code></pre></div>
+<pre><code>##        fit      lwr      upr
+## 1 266.5599 257.8442 275.2755</code></pre>
+<p>Por medio del estimador de MCP obtenemos el siguiente intervalo del 95% de confianza: (257.844, 275.275). Este intervalo es parecido al calculado usando el modelo transformado, aunque tiene una longitud un poco más pequeña.</p>
+
+</div>
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-behar_validacion_2002" class="csl-entry">
+Behar, Roberto. 2002. <em>Validación de Supuestos En El Modelo de Regresión</em>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="evaluación-de-los-supuestos-del-modelo.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="evaluación-de-puntos-influyentes-y-atípicos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/AlvaroFlorez/MLG1/blob/master/04-Transformaciones.Rmd",
+"text": null
+},
+"download": ["MLG1.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

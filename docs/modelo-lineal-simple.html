@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 1 Modelo lineal simple | Notas de clase: Modelo lineal general I</title>
   <meta name="description" content="Capítulo 1 Modelo lineal simple | Notas de clase: Modelo lineal general I" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 1 Modelo lineal simple | Notas de clase: Modelo lineal general I" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2021-11-18" />
+<meta name="date" content="2024-02-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="modelo-lineal-múltiple.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,9 +49,9 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -93,7 +92,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -106,7 +105,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -120,6 +119,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -253,23 +256,23 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="evaluación-de-los-supuestos-del-modelo.html"><a href="evaluación-de-los-supuestos-del-modelo.html#comentarios-finales"><i class="fa fa-check"></i><b>3.6</b> Comentarios finales</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html"><i class="fa fa-check"></i><b>4</b> Transformaciones y mínimos cuadrados ponderados</a>
+<li class="chapter" data-level="4" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html"><i class="fa fa-check"></i><b>4</b> Transformaciones y mínimos cuadrados ordinarios</a>
 <ul>
-<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#ejemplo-1.-datos-de-la-onu"><i class="fa fa-check"></i>Ejemplo 1. Datos de la ONU</a></li>
-<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#ejemplo-2.-datos-de-educación"><i class="fa fa-check"></i>Ejemplo 2. Datos de educación</a></li>
-<li class="chapter" data-level="4.1" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#transformación-de-los-datos"><i class="fa fa-check"></i><b>4.1</b> Transformación de los datos</a>
+<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#ejemplo-1.-datos-de-la-onu"><i class="fa fa-check"></i>Ejemplo 1. Datos de la ONU</a></li>
+<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#ejemplo-2.-datos-de-educación"><i class="fa fa-check"></i>Ejemplo 2. Datos de educación</a></li>
+<li class="chapter" data-level="4.1" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#transformación-de-los-datos"><i class="fa fa-check"></i><b>4.1</b> Transformación de los datos</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#transformaciones-para-linealizar-el-modelo"><i class="fa fa-check"></i><b>4.1.1</b> Transformaciones para linealizar el modelo</a></li>
-<li class="chapter" data-level="4.1.2" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#transformaciones-para-estabilizar-la-varianza"><i class="fa fa-check"></i><b>4.1.2</b> Transformaciones para estabilizar la varianza</a></li>
-<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#datos-de-la-onu.-transformación-para-linealizar-los-datos"><i class="fa fa-check"></i>Datos de la ONU. Transformación para linealizar los datos</a></li>
+<li class="chapter" data-level="4.1.1" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#transformaciones-para-linealizar-el-modelo"><i class="fa fa-check"></i><b>4.1.1</b> Transformaciones para linealizar el modelo</a></li>
+<li class="chapter" data-level="4.1.2" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#transformaciones-para-estabilizar-la-varianza"><i class="fa fa-check"></i><b>4.1.2</b> Transformaciones para estabilizar la varianza</a></li>
+<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#datos-de-la-onu.-transformación-para-linealizar-los-datos"><i class="fa fa-check"></i>Datos de la ONU. Transformación para linealizar los datos</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#método-de-box-cox"><i class="fa fa-check"></i><b>4.2</b> Método de Box-Cox</a>
+<li class="chapter" data-level="4.2" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#método-de-box-cox"><i class="fa fa-check"></i><b>4.2</b> Método de Box-Cox</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#datos-de-educación.-transformación-de-box-cox"><i class="fa fa-check"></i><b>4.2.1</b> Datos de educación. Transformación de Box-Cox</a></li>
+<li class="chapter" data-level="4.2.1" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#datos-de-educación.-transformación-de-box-cox"><i class="fa fa-check"></i><b>4.2.1</b> Datos de educación. Transformación de Box-Cox</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#mínimos-cuadrados-ponderados"><i class="fa fa-check"></i><b>4.3</b> Mínimos cuadrados ponderados</a>
+<li class="chapter" data-level="4.3" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#mínimos-cuadrados-ponderados"><i class="fa fa-check"></i><b>4.3</b> Mínimos cuadrados ponderados</a>
 <ul>
-<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ponderados.html"><a href="transformaciones-y-mínimos-cuadrados-ponderados.html#datos-de-educación.-minímos-cuadrados-ponderados"><i class="fa fa-check"></i>Datos de educación. Minímos cuadrados ponderados</a></li>
+<li class="chapter" data-level="" data-path="transformaciones-y-mínimos-cuadrados-ordinarios.html"><a href="transformaciones-y-mínimos-cuadrados-ordinarios.html#datos-de-educación.-minímos-cuadrados-ponderados"><i class="fa fa-check"></i>Datos de educación. Minímos cuadrados ponderados</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="evaluación-de-puntos-influyentes-y-atípicos.html"><a href="evaluación-de-puntos-influyentes-y-atípicos.html"><i class="fa fa-check"></i><b>5</b> Evaluación de puntos influyentes y atípicos</a>
@@ -308,22 +311,22 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="modelo-lineal-simple" class="section level1" number="1">
-<h1><span class="header-section-number">Capítulo 1</span> Modelo lineal simple</h1>
-<div id="datos-de-peso-al-nacer" class="section level2 unnumbered">
-<h2>Datos de peso al nacer</h2>
+<div id="modelo-lineal-simple" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Capítulo 1</span> Modelo lineal simple<a href="modelo-lineal-simple.html#modelo-lineal-simple" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="datos-de-peso-al-nacer" class="section level2 unnumbered hasAnchor">
+<h2>Datos de peso al nacer<a href="modelo-lineal-simple.html#datos-de-peso-al-nacer" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Los datos <code>birthweight</code> (Disponible <a href="https://raw.githubusercontent.com/AlvaroFlorez/MLG1/master/Birthweight.csv" target="_blank">aquí</a>) contienen el peso y la edad gestacional de <span class="math inline">\(42\)</span> recién nacidos. El objetivo del estudio es investigar cómo la edad gestational del feto influyen en el peso al nacer durante las últimas semanas del embarazo. Aunque la base de datos contiene otras variables, por ahora solo consideramos el peso y la edad gestacional.</p>
 <p>La Figura <a href="modelo-lineal-simple.html#fig:birthweightFigure">1.1</a> muestra la relación entre el peso (en kilogramos) y la edad gestacional (en semanas) del recién nacido. Por medio de este gráfico vemos que hay una relación aproximadamente lineal positiva (la correlación es igual a 0.73). Es decir que cuando la edad gestacional aumenta, el peso del recién nacido también lo hace. Por lo tanto, sería razonable describir el valor esperado del peso al nacer como una función lineal de la edad gestacional:
 <span class="math display">\[
 E(\mbox{weight}|\mbox{age}=x) = \beta_{0} + \beta_{1}x.
 \]</span></p>
 <p>La Figura <a href="modelo-lineal-simple.html#fig:birthweightFigure">1.1</a> se puede hacer con el siguiente código:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="modelo-lineal-simple.html#cb1-1" aria-hidden="true" tabindex="-1"></a>birthweight <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;birthweight.csv&quot;</span>,<span class="at">header =</span> T)</span>
-<span id="cb1-2"><a href="modelo-lineal-simple.html#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="modelo-lineal-simple.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(weight<span class="sc">~</span>age,<span class="at">data=</span>birthweight,<span class="at">pch=</span><span class="dv">20</span>,<span class="at">xlab=</span><span class="st">&quot;Edad gestacional(semanas)&quot;</span>,</span>
-<span id="cb1-4"><a href="modelo-lineal-simple.html#cb1-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&#39;Peso(kilogramos)&#39;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:birthweightFigure"></span>
-<img src="MLGI_files/figure-html/birthweightFigure-1.png" alt="Gráfico de dispersion del peso del recien nacido y la edad gestacional." width="480" />
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="modelo-lineal-simple.html#cb1-1" tabindex="-1"></a>birthweight <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;birthweight.csv&quot;</span>,<span class="at">header =</span> T)</span>
+<span id="cb1-2"><a href="modelo-lineal-simple.html#cb1-2" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="modelo-lineal-simple.html#cb1-3" tabindex="-1"></a><span class="fu">plot</span>(weight<span class="sc">~</span>age,<span class="at">data=</span>birthweight,<span class="at">pch=</span><span class="dv">20</span>,<span class="at">xlab=</span><span class="st">&quot;Edad gestacional(semanas)&quot;</span>,</span>
+<span id="cb1-4"><a href="modelo-lineal-simple.html#cb1-4" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&#39;Peso(kilogramos)&#39;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:birthweightFigure"></span>
+<img src="MLG1_files/figure-html/birthweightFigure-1.png" alt="Gráfico de dispersion del peso del recien nacido y la edad gestacional." width="480" />
 <p class="caption">
 Figure 1.1: Gráfico de dispersion del peso del recien nacido y la edad gestacional.
 </p>
@@ -336,20 +339,19 @@ Figure 1.1: Gráfico de dispersion del peso del recien nacido y la edad gestacio
 </ul>
 <p>Estas preguntas se pueden resolver a partir de un análisis de regresión lineal.</p>
 </div>
-<div id="regresion-lineal-simple" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> Regresion lineal simple</h2>
-<p>En una análisis de regresión simple estamos interesados en modelar la relación entre una variable de entrada (regresor, variable independiente o covariable) <span class="math inline">\(X\)</span> y una variable de salida (respuesta o variable dependiente) <span class="math inline">\(Y\)</span>.</p>
-<p>El modelo de regresión nos permite:</p>
+<div id="regresion-lineal-simple" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Regresion lineal simple<a href="modelo-lineal-simple.html#regresion-lineal-simple" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En un análisis de regresión simple estamos interesados en modelar la relación entre una variable de entrada (regresor, variable independiente o covariable) <span class="math inline">\(X\)</span> y una variable de salida (respuesta o variable dependiente) <span class="math inline">\(Y\)</span>. Este modelo nos permite:</p>
 <ul>
 <li>Evaluar cuanto cambia el valor esperado de <span class="math inline">\(Y\)</span> debido a cambios en <span class="math inline">\(X\)</span>,</li>
 <li>Predecir <span class="math inline">\(Y\)</span> (o su valor esperado) en función de <span class="math inline">\(X\)</span>.</li>
 </ul>
 </div>
-<div id="modelo-lineal-simple-1" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> Modelo lineal simple</h2>
+<div id="modelo-lineal-simple-1" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Modelo lineal simple<a href="modelo-lineal-simple.html#modelo-lineal-simple-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Sea <span class="math inline">\((y_{i},x_{i})\)</span> la i-ésima observación de la variable respuesta <span class="math inline">\((y)\)</span> y la covariable <span class="math inline">\((x)\)</span>, para <span class="math inline">\(i=1,\ldots,n\)</span>, con <span class="math inline">\(n\)</span> igual al número total de observaciones. <strong>El modelo lineal simple</strong> se puede expresar de la forma:
 <span class="math display">\[
-y_{i} = \beta_{0} + \beta_{1}x_{i}+\varepsilon_{i},
+y_{i} = \beta_{0} + x_{i}\beta_{1}+\varepsilon_{i},
 \]</span>
 donde <span class="math inline">\(\beta_{0}\)</span> es el intercepto, <span class="math inline">\(\beta_{1}\)</span> es la pendiente y <span class="math inline">\(\varepsilon_{i}\)</span> es el componente de error. Generalmente, los supuestos que acompañan este modelo son:</p>
 <ol style="list-style-type: lower-alpha">
@@ -361,39 +363,39 @@ donde <span class="math inline">\(\beta_{0}\)</span> es el intercepto, <span cla
 <p>Por lo tanto, <span class="math inline">\(\varepsilon_{i} \sim N(0,\sigma^{2})\)</span>.</p>
 <p>A partir de (a) se tiene que:
 <span class="math display">\[
-E(Y|X=x_i) = \beta_{0} + \beta_{1}x_i.
+E(Y|X=x_i) = \beta_{0} + x_i\beta_{1}.
 \]</span>
 Entonces, para <span class="math inline">\(x=0\)</span>, el valor esperado de <span class="math inline">\(Y\)</span> es igual a <span class="math inline">\(\beta_0\)</span>. Cuando <span class="math inline">\(X\)</span> incrementa en una unidad (de <span class="math inline">\(x\)</span> a <span class="math inline">\(x+1\)</span>), el valor esperado de <span class="math inline">\(Y\)</span> incrementa en:
 <span class="math display">\[
-E(Y|X=x+1) - E(Y|X=x) = \beta_{0} + \beta_{1}(x+1) - (\beta_{0} + \beta_{1}x) = \beta_{1}.
+E(Y|X=x+1) - E(Y|X=x) = \beta_{0} + (x+1)\beta_{1} - (\beta_{0} + x\beta_{1}) = \beta_{1}.
 \]</span>
 Lo que indica que <span class="math inline">\(\beta_{1}\)</span> representa el cambio en el valor esperado de <span class="math inline">\(Y\)</span> por un cambio unitario en <span class="math inline">\(X\)</span>.</p>
 <p>Dado (b), tenemos que <span class="math inline">\(V(Y|X=x_{i}) = \sigma^{2}\)</span>. Es decir que para cualquier valor de <span class="math inline">\(x\)</span>, la varianza de <span class="math inline">\(Y\)</span> es la misma (homocedasticidad). Puesto que los errores están incorrelacionados (c), entonces las observaciones de <span class="math inline">\(Y\)</span> también lo están.</p>
 <p>Debido a (d), tenemos que la variable respuesta se distribuye de forma normal. Específicamente, tenemos que: <span class="math inline">\(y_{i} \sim N(\beta_{0} + \beta_{1}x_i, \sigma^{2})\)</span>.</p>
 <p>El proceso de generación de datos del modelo de regresión lineal se ilustra en la Figura <a href="modelo-lineal-simple.html#fig:gendataFigure">1.2</a>. El valor esperado de <span class="math inline">\(Y|X\)</span> está representado por la linea negra. Tenemos que, cada observación de <span class="math inline">\(y\)</span> (puntos negros) es una realización de la distribución de <span class="math inline">\(Y|X=x_{i} \sim N(\beta_{0}+\beta_{1}x_{i},\sigma^{2})\)</span> (curvas rojas). En esté ejemplo, suponemos que <span class="math inline">\(\beta_{0}=0\)</span>, <span class="math inline">\(\beta_{1}=1\)</span>, y <span class="math inline">\(\sigma=0.1\)</span>.</p>
-<div class="figure" style="text-align: center"><span id="fig:gendataFigure"></span>
-<img src="MLGI_files/figure-html/gendataFigure-1.png" alt="Proceso generador datos del modelo lineal simple." width="480" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:gendataFigure"></span>
+<img src="MLG1_files/figure-html/gendataFigure-1.png" alt="Proceso generador datos del modelo lineal simple." width="480" />
 <p class="caption">
 Figure 1.2: Proceso generador datos del modelo lineal simple.
 </p>
 </div>
 </div>
-<div id="estimación-de-los-parámetros" class="section level2" number="1.3">
-<h2><span class="header-section-number">1.3</span> Estimación de los parámetros</h2>
+<div id="estimación-de-los-parámetros" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Estimación de los parámetros<a href="modelo-lineal-simple.html#estimación-de-los-parámetros" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Los parámetros <span class="math inline">\(\beta_{0}\)</span> y <span class="math inline">\(\beta_{1}\)</span> son desconocidos y deben estimarse a partir de los datos. Para esto utilizamos el método de <strong>mínimos cuadrados ordinarios (MCO)</strong>.</p>
 <p>La función objetivo es la siguiente:
 <span class="math display" id="eq:rss">\[\begin{equation}
 S(\beta_{0},\beta_{1}) = \sum_{i=1}^{n} \left( y_{i} - \beta_{0} - \beta_{1}x_{i} \right)^{2} = \sum_{i=1}^{n} e_{i}^{2}.
- \tag{1.1}
+\tag{1.1}
 \end{equation}\]</span>
 Entonces, tenemos que encontrar la combinación de <span class="math inline">\(\beta_{0}\)</span> y <span class="math inline">\(\beta_{1}\)</span> que minimizan <a href="modelo-lineal-simple.html#eq:rss">(1.1)</a>. Para esto, primero debemos derivar <span class="math inline">\(S(\beta_{0},\beta_{1})\)</span> con respecto a <span class="math inline">\(\beta_{0}\)</span> y <span class="math inline">\(\beta_{1}\)</span>, e igualar estas ecuación a cero. De esta forma obtenemos las <strong>ecuaciones normales</strong>:
 <span class="math display" id="eq:normeq1">\[\begin{equation}
-\frac{\partial S(\beta_{0},\beta_{1})}{\partial \beta_{0}} = - \frac{2}{n}\sum_{i=1}^{n}\left(y_{i}-\beta_{0}-\beta_{1}x_{i} \right),
+\frac{\partial S(\beta_{0},\beta_{1})}{\partial \beta_{0}} = - 2\sum_{i=1}^{n}\left(y_{i}-\beta_{0}-\beta_{1}x_{i} \right),
 \tag{1.2}
 \end{equation}\]</span>
 y
 <span class="math display" id="eq:normeq2">\[\begin{equation}
-\frac{\partial S(\beta_{0},\beta_{1})}{\partial \beta_{1}} = - \frac{2}{n}\sum_{i=1}^{n}\left(y_{i}-\beta_{0}-\beta_{1}x_{i} \right)x_{i}.
+\frac{\partial S(\beta_{0},\beta_{1})}{\partial \beta_{1}} = - 2\sum_{i=1}^{n}\left(y_{i}-\beta_{0}-\beta_{1}x_{i} \right)x_{i}.
 \tag{1.3}
 \end{equation}\]</span></p>
 <p>Los estimadores por MCO (<span class="math inline">\(\widehat{\beta}_{0}\)</span> y <span class="math inline">\(\widehat{\beta}_{1}\)</span>) se obtienen resolviendo el sistema de ecuaciones <a href="modelo-lineal-simple.html#eq:normeq1">(1.2)</a> y <a href="modelo-lineal-simple.html#eq:normeq2">(1.3)</a>:
@@ -410,26 +412,26 @@ donde <span class="math inline">\(s_{X}\)</span> y <span class="math inline">\(s
 e_{i}= y_{i} - (\widehat{\beta}_{0} + \widehat{\beta}_{1}x_{i}) = y_{i}-\widehat{y}_{i}, \mbox{ para }i=1,\ldots,n.
 \]</span>
 La Figura <a href="modelo-lineal-simple.html#fig:Figresiduos">1.3</a> presenta los residuos de forma gráfica. Estos juegan un papel importante para la evaluar la bondad del ajuste del modelo (detectar posibles desviaciones a los supuestos asumidos).</p>
-<div class="figure" style="text-align: center"><span id="fig:Figresiduos"></span>
-<img src="MLGI_files/figure-html/Figresiduos-1.png" alt="Diagrama gráfico de un ajuste por MCO. La recta representa la estimación por MCO, y las lineas discontinuas verticales entre los puntos observados y la recta estimada son los residuos." width="480" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:Figresiduos"></span>
+<img src="MLG1_files/figure-html/Figresiduos-1.png" alt="Diagrama gráfico de un ajuste por MCO. La recta representa la estimación por MCO, y las lineas discontinuas verticales entre los puntos observados y la recta estimada son los residuos." width="480" />
 <p class="caption">
 Figure 1.3: Diagrama gráfico de un ajuste por MCO. La recta representa la estimación por MCO, y las lineas discontinuas verticales entre los puntos observados y la recta estimada son los residuos.
 </p>
 </div>
 </div>
-<div id="estimación-de-sigma2" class="section level2" number="1.4">
-<h2><span class="header-section-number">1.4</span> Estimación de <span class="math inline">\(\sigma^{2}\)</span></h2>
+<div id="estimación-de-sigma2" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Estimación de <span class="math inline">\(\sigma^{2}\)</span><a href="modelo-lineal-simple.html#estimación-de-sigma2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>La estimación de <span class="math inline">\(\sigma^{2}\)</span> se hace a partir de la suma de cuadrados de los residuos:
 <span class="math display">\[
 SS_{res} = \sum_{i=1}^{n}e^{2}_{i} = \sum_{i=1}^{n} (y_{i}-\widehat{\beta}_{0} - \widehat{\beta}_{1}x_{i})^{2}.
 \]</span>
-El valor esperado de <span class="math inline">\(SS_{res}\)</span> es <span class="math inline">\(E(SS_{res})=(n-2)\sigma^{2}\)</span> (Para el caso de regresión múltiple, ver Sección C.3 de <span class="citation"><a href="#ref-montgomery_introduction_2012" role="doc-biblioref">Montgomery, Peck, and Vining</a> (<a href="#ref-montgomery_introduction_2012" role="doc-biblioref">2012</a>)</span>). Por lo tanto, un estimador insesgado de <span class="math inline">\(\sigma^{2}\)</span> es:
+El valor esperado de <span class="math inline">\(SS_{res}\)</span> es <span class="math inline">\(E(SS_{res})=(n-2)\sigma^{2}\)</span> (Para el caso de regresión múltiple, ver Sección C.3 de <span class="citation">Montgomery, Peck, and Vining (<a href="#ref-montgomery_introduction_2012">2012</a>)</span>). Por lo tanto, un estimador insesgado de <span class="math inline">\(\sigma^{2}\)</span> es:
 <span class="math display">\[
 \widehat{\sigma}^{2} = \frac{SS_{res}}{n-2} = MS_{res}.
 \]</span>
 La cantidad <span class="math inline">\(MS_{res}\)</span> es llamada <strong>cuadrado medio de los residuos</strong>.</p>
-<div id="datos-de-peso-al-nacer.-modelo-y-estimación-de-parametros" class="section level3 unnumbered">
-<h3>Datos de peso al nacer. Modelo y estimación de parametros</h3>
+<div id="datos-de-peso-al-nacer.-modelo-y-estimación-de-parametros" class="section level3 unnumbered hasAnchor">
+<h3>Datos de peso al nacer. Modelo y estimación de parametros<a href="modelo-lineal-simple.html#datos-de-peso-al-nacer.-modelo-y-estimación-de-parametros" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Para los datos de peso al nacer se propone el siguiente modelo:
 <span class="math display" id="eq:modBirthweight">\[\begin{equation}
 \mbox{weight}_{i}= \beta_{0} + \beta_{1}\mbox{age}_{i} + \varepsilon_{i},
@@ -437,8 +439,8 @@ La cantidad <span class="math inline">\(MS_{res}\)</span> es llamada <strong>cua
 \end{equation}\]</span>
 donde <span class="math inline">\(\varepsilon_{i} \sim N(0,\sigma^{2})\)</span>.</p>
 <p>En R, la estimación por MCO se realiza a través de la función <code>lm</code>:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="modelo-lineal-simple.html#cb2-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">=</span> <span class="fu">lm</span>(weight<span class="sc">~</span>age, <span class="at">data=</span>birthweight)</span>
-<span id="cb2-2"><a href="modelo-lineal-simple.html#cb2-2" aria-hidden="true" tabindex="-1"></a>mod</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="modelo-lineal-simple.html#cb2-1" tabindex="-1"></a>mod <span class="ot">=</span> <span class="fu">lm</span>(weight<span class="sc">~</span>age, <span class="at">data=</span>birthweight)</span>
+<span id="cb2-2"><a href="modelo-lineal-simple.html#cb2-2" tabindex="-1"></a>mod</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = weight ~ age, data = birthweight)
@@ -449,22 +451,22 @@ donde <span class="math inline">\(\varepsilon_{i} \sim N(0,\sigma^{2})\)</span>.
 <p>De aquí obtenemos que <span class="math inline">\(\widehat{\beta}_{0} =-3.63\)</span> y <span class="math inline">\(\widehat{\beta}_{1} =0.18\)</span>. Note que la estimación del intercepto es negativa, lo que es físicamente imposible. Además tampoco tiene sentido una edad gestacional igual a cero. Por lo cual, este parámetro no tiene interpretación en este caso. <span class="math inline">\(\beta_{0}\)</span> solo tiene interpretación cuando las observaciones de <span class="math inline">\(x\)</span> están alrededor de cero.</p>
 <p>A partir de <span class="math inline">\(\widehat{\beta}_{1}\)</span>, podemos concluir que la edad gestacional tiene un efecto positivo sobre el peso del recién nacido (el coeficiente estimado es positivo). Por cada incremento de una semana en la edad gestacional, el valor esperado del peso del recién nacido aumenta 0.18 kilogramos.</p>
 <p>La representación gráfica del modelo estimado se presenta en la Figura <a href="modelo-lineal-simple.html#fig:FigMCO2">1.4</a>.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="modelo-lineal-simple.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(weight<span class="sc">~</span>age,<span class="at">data=</span>birthweight,<span class="at">pch=</span><span class="dv">20</span>,<span class="at">xlab=</span><span class="st">&quot;edad gestacional(semanas)&quot;</span>,</span>
-<span id="cb4-2"><a href="modelo-lineal-simple.html#cb4-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&#39;peso(kilogramos)&#39;</span>)</span>
-<span id="cb4-3"><a href="modelo-lineal-simple.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(mod,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:FigMCO2"></span>
-<img src="MLGI_files/figure-html/FigMCO2-1.png" alt="Gráfico de dispersion del peso del recien nacido y la edad gestacional. La linea representa la estimación por MCO." width="384" />
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="modelo-lineal-simple.html#cb4-1" tabindex="-1"></a><span class="fu">plot</span>(weight<span class="sc">~</span>age,<span class="at">data=</span>birthweight,<span class="at">pch=</span><span class="dv">20</span>,<span class="at">xlab=</span><span class="st">&quot;edad gestacional(semanas)&quot;</span>,</span>
+<span id="cb4-2"><a href="modelo-lineal-simple.html#cb4-2" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&#39;peso(kilogramos)&#39;</span>)</span>
+<span id="cb4-3"><a href="modelo-lineal-simple.html#cb4-3" tabindex="-1"></a><span class="fu">abline</span>(mod,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:FigMCO2"></span>
+<img src="MLG1_files/figure-html/FigMCO2-1.png" alt="Gráfico de dispersion del peso del recien nacido y la edad gestacional. La linea representa la estimación por MCO." width="384" />
 <p class="caption">
 Figure 1.4: Gráfico de dispersion del peso del recien nacido y la edad gestacional. La linea representa la estimación por MCO.
 </p>
 </div>
 <p>La estimación de <span class="math inline">\(\sigma\)</span> es:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="modelo-lineal-simple.html#cb5-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">sqrt</span>(<span class="fu">sum</span>(mod<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="dv">40</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="modelo-lineal-simple.html#cb5-1" tabindex="-1"></a> <span class="fu">sqrt</span>(<span class="fu">sum</span>(mod<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="dv">40</span>)</span></code></pre></div>
 <pre><code>## [1] 0.4376311</code></pre>
 </div>
 </div>
-<div id="propiedades-de-los-estimadores-por-mco" class="section level2" number="1.5">
-<h2><span class="header-section-number">1.5</span> Propiedades de los estimadores por MCO</h2>
+<div id="propiedades-de-los-estimadores-por-mco" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> Propiedades de los estimadores por MCO<a href="modelo-lineal-simple.html#propiedades-de-los-estimadores-por-mco" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Los estimadores de <span class="math inline">\(\widehat{\beta}_{0}\)</span> y <span class="math inline">\(\widehat{\beta}_{1}\)</span> son una combinación lineal de las observaciones:
 <span class="math display" id="eq:beta1cl">\[\begin{equation}
 \widehat{\beta}_{1} = \sum_{i=1}^{n} \frac{(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sum_{i=1}^{n}(x_{i}-\bar{x})^2} = \sum_{i=1}^{n} \frac{(x_{i}-\bar{x})}{\sum_{i=1}^{n}(x_{i}-\bar{x})^2}y_{i} = \sum_{i=1}^{n}c_{i}y_{i}.
@@ -516,14 +518,14 @@ Cov(\widehat{\beta}_{0},\widehat{\beta}_{1}) &amp;= Cov\left(\bar{y} - \widehat{
 \end{split}
 \nonumber
 \end{equation}\]</span></p>
-<p>Si se cumple que <span class="math inline">\(E(\varepsilon_{i}) = 0\)</span>, <span class="math inline">\(V(\varepsilon_{i}) = \sigma^{2}\)</span> y <span class="math inline">\(Cov(\varepsilon_{i},\varepsilon_{j})=0\)</span>, se puede probar que los estimadores por MCO son insesgado y de varianza mínima (<strong>teorema de Gauss-Markov</strong>). Para la demostración en el caso de regresión múltiple, ver Sección C4 de <span class="citation"><a href="#ref-montgomery_introduction_2012" role="doc-biblioref">Montgomery, Peck, and Vining</a> (<a href="#ref-montgomery_introduction_2012" role="doc-biblioref">2012</a>)</span>. Esto quiere decir que, comparado con todos los posibles estimadores insesgados que son combinación lineal de las observaciones, <span class="math inline">\(\widehat{\beta}_{0}\)</span> y <span class="math inline">\(\widehat{\beta}_{1}\)</span> tienen las varianzas más pequeñas. Por esto los estimadores por MCO son considerados los <strong>mejores estimadores lineales insesgados</strong>.</p>
+<p>Si se cumple que <span class="math inline">\(E(\varepsilon_{i}) = 0\)</span>, <span class="math inline">\(V(\varepsilon_{i}) = \sigma^{2}\)</span> y <span class="math inline">\(Cov(\varepsilon_{i},\varepsilon_{j})=0\)</span>, se puede probar que los estimadores por MCO son insesgado y de varianza mínima (<strong>teorema de Gauss-Markov</strong>). Para la demostración en el caso de regresión múltiple, ver Sección C4 de <span class="citation">Montgomery, Peck, and Vining (<a href="#ref-montgomery_introduction_2012">2012</a>)</span>. Esto quiere decir que, comparado con todos los posibles estimadores insesgados que son combinación lineal de las observaciones, <span class="math inline">\(\widehat{\beta}_{0}\)</span> y <span class="math inline">\(\widehat{\beta}_{1}\)</span> tienen las varianzas más pequeñas. Por esto los estimadores por MCO son considerados los <strong>mejores estimadores lineales insesgados</strong>.</p>
 </div>
-<div id="inferencia" class="section level2" number="1.6">
-<h2><span class="header-section-number">1.6</span> Inferencia</h2>
+<div id="inferencia" class="section level2 hasAnchor" number="1.6">
+<h2><span class="header-section-number">1.6</span> Inferencia<a href="modelo-lineal-simple.html#inferencia" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>También podemos hacer pruebas de hipótesis e intervalos de confianza para los parámetros del modelo y/o pronósticos.</p>
 <p>Por ejemplo, en los datos del peso al nacer podemos estar interesados en evaluar si la edad gestacional tiene un efecto positivo sobre el peso al nacer. Por lo tanto, debemos probar si <span class="math inline">\(\beta_{1} &gt; 0\)</span>. También podríamos estar interesados en el valor esperado de un recién nacido para cierto valor especifico de edad gestacional, por ejemplo 38 semanas. Entonces, podemos calcular un intervalo de confianza para <span class="math inline">\(E(Y|x=38)\)</span>.</p>
-<div id="pruebas-de-hipótesis" class="section level3" number="1.6.1">
-<h3><span class="header-section-number">1.6.1</span> Pruebas de hipótesis</h3>
+<div id="pruebas-de-hipótesis" class="section level3 hasAnchor" number="1.6.1">
+<h3><span class="header-section-number">1.6.1</span> Pruebas de hipótesis<a href="modelo-lineal-simple.html#pruebas-de-hipótesis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Suponga la siguiente hipótesis:
 <span class="math display" id="eq:H0beta1">\[\begin{equation}
 H_{0}: \beta_{1} = \beta_{10} \mbox{  } H_{1}: \beta_{1} \neq \beta_{10}.
@@ -546,19 +548,19 @@ H_{0}: \beta_{0} = \beta_{00} \mbox{  } H_{1}: \beta_{0} \neq \beta_{00},
 el estadístico de prueba es:
 <span class="math display" id="eq:distB0">\[\begin{equation}
 t_{0} = \frac{\widehat{\beta}_{0}-\beta_{00}}{\sqrt{MS_{res}\left(\frac{1}{n}+\frac{\bar{x}^{2}}{S_{xx}} \right)}} \sim t_{n-2}.
- \tag{1.8}
+\tag{1.8}
 \end{equation}\]</span></p>
 </div>
-<div id="análisis-de-varianza" class="section level3" number="1.6.2">
-<h3><span class="header-section-number">1.6.2</span> Análisis de varianza</h3>
+<div id="análisis-de-varianza" class="section level3 hasAnchor" number="1.6.2">
+<h3><span class="header-section-number">1.6.2</span> Análisis de varianza<a href="modelo-lineal-simple.html#análisis-de-varianza" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 El análisis de varianza se basa en la partición de la variabilidad total de la variable respuesta <span class="math inline">\(y\)</span> en dos componentes, uno debido al modelo ajustado y otro al error. Primero, empecemos con la siguiente identidad:
 <span class="math display" id="eq:decomposion">\[\begin{equation}
 y_{i} - \bar{y} = (y_{i} - \widehat{y}_{i}) + (\widehat{y}_{i} - \bar{y}).
 \tag{1.9}
 \end{equation}\]</span>
 La Figura <a href="modelo-lineal-simple.html#fig:anovafig">1.5</a> muestra la partición <a href="modelo-lineal-simple.html#eq:decomposion">(1.9)</a> en el punto <span class="math inline">\(i=3\)</span>. Aquí vemos que una parte de la diferencia entre <span class="math inline">\(y_{3}\)</span> y <span class="math inline">\(\bar{y}\)</span> es explicada por el modelo (línea discontinua roja).
-<div class="figure" style="text-align: center"><span id="fig:anovafig"></span>
-<img src="MLGI_files/figure-html/anovafig-1.png" alt="Representación gráfica de la descompocisión \@ref(eq:decomposion)." width="960" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:anovafig"></span>
+<img src="MLG1_files/figure-html/anovafig-1.png" alt="Representación gráfica de la descompocisión \@ref(eq:decomposion)." width="960" />
 <p class="caption">
 Figure 1.5: Representación gráfica de la descompocisión <a href="modelo-lineal-simple.html#eq:decomposion">(1.9)</a>.
 </p>
@@ -566,7 +568,8 @@ Figure 1.5: Representación gráfica de la descompocisión <a href="modelo-linea
 <p>Ahora evelavamos al cuadrado <a href="modelo-lineal-simple.html#eq:decomposion">(1.9)</a> y sumamos todos los componentes:
 <span class="math display" id="eq:ss">\[\begin{equation}
 \begin{split}
-\sum_{i=1}^{n} (y_{i} - \bar{y})^{2} &amp;= \sum_{i=1}^{n} (y_{i} - \widehat{y}_{i})^{2} + \sum_{i=1}^{n}(\widehat{y}_{i} - \bar{y})^{2} + 2 \sum_{i=1}^{n}(y_{i} - \widehat{y}_{i})(\widehat{y}_{i} - \bar{y}) \\
+SSY &amp;= \sum_{i=1}^{n} (y_{i} - \bar{y})^{2} \\
+&amp;= \sum_{i=1}^{n} (y_{i} - \widehat{y}_{i})^{2} + \sum_{i=1}^{n}(\widehat{y}_{i} - \bar{y})^{2} + 2 \sum_{i=1}^{n}(y_{i} - \widehat{y}_{i})(\widehat{y}_{i} - \bar{y}) \\
 &amp;= \sum_{i=1}^{n} (y_{i} - \widehat{y}_{i})^{2} + \sum_{i=1}^{n}(\widehat{y}_{i} - \bar{y})^{2} \\
 SST &amp;=  SS_{res} + SS_{R},
 \end{split}
@@ -631,14 +634,14 @@ R^{2} = \frac{SS_{R}}{SST} = 1 - \frac{SS_{res}}{SST},
 \]</span>
 es llamada <strong>coeficiente de determinación</strong>, y cuantifica la cantidad de variabilidad de <span class="math inline">\(y\)</span> que es explicada por <span class="math inline">\(x\)</span>. Dado que <span class="math inline">\(0 \leq SS_{res} \leq SST\)</span>, se tiene que <span class="math inline">\(0 \leq R^{2} \leq 1\)</span>. Por lo tanto, valores cercanos a <span class="math inline">\(1\)</span> implican que el modelo explica gran parte de la variabilidad de <span class="math inline">\(y\)</span>.</p>
 </div>
-<div id="datos-de-peso-al-nacer.-pruebas-de-hipótesis-y-anova" class="section level3 unnumbered">
-<h3>Datos de peso al nacer. Pruebas de hipótesis y ANOVA</h3>
+<div id="datos-de-peso-al-nacer.-pruebas-de-hipótesis-y-anova" class="section level3 unnumbered hasAnchor">
+<h3>Datos de peso al nacer. Pruebas de hipótesis y ANOVA<a href="modelo-lineal-simple.html#datos-de-peso-al-nacer.-pruebas-de-hipótesis-y-anova" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Se quiere probar que la edad gestacional tiene influencia sobre el peso al nacer del recién nacido. Esto es:
 <span class="math display">\[
-H_{0}: \beta_{1} = 0 \qquad H_{1}: \beta_{1} \neq 0. 
+H_{0}: \beta_{1} = 0 \qquad H_{1}: \beta_{1} \neq 0.
 \]</span>
 Tanto la prueba de hipótesis basada en <span class="math inline">\(t_{0}\)</span>, el valor <span class="math inline">\(F_{0}\)</span> del ANOVA, y el <span class="math inline">\(R^{2}\)</span> se pueden observar usando la función <code>summary</code>:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="modelo-lineal-simple.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="modelo-lineal-simple.html#cb7-1" tabindex="-1"></a><span class="fu">summary</span>(mod)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = weight ~ age, data = birthweight)
@@ -664,10 +667,10 @@ Tanto la prueba de hipótesis basada en <span class="math inline">\(t_{0}\)</spa
 <li><span class="math inline">\(R^{2} = 0.535\)</span>, lo que indica que el 53.5% de la variabilidad del peso al nacer es explicada por la edad gestacional.</li>
 </ul>
 </div>
-<div id="intervalos-de-confianza" class="section level3" number="1.6.3">
-<h3><span class="header-section-number">1.6.3</span> Intervalos de confianza</h3>
-<div id="intervalos-de-confianza-para-beta_0-beta_1-y-sigma2" class="section level4 unnumbered">
-<h4>Intervalos de confianza para <span class="math inline">\(\beta_{0}\)</span>, <span class="math inline">\(\beta_{1}\)</span> y <span class="math inline">\(\sigma^{2}\)</span></h4>
+<div id="intervalos-de-confianza" class="section level3 hasAnchor" number="1.6.3">
+<h3><span class="header-section-number">1.6.3</span> Intervalos de confianza<a href="modelo-lineal-simple.html#intervalos-de-confianza" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="intervalos-de-confianza-para-beta_0-beta_1-y-sigma2" class="section level4 unnumbered hasAnchor">
+<h4>Intervalos de confianza para <span class="math inline">\(\beta_{0}\)</span>, <span class="math inline">\(\beta_{1}\)</span> y <span class="math inline">\(\sigma^{2}\)</span><a href="modelo-lineal-simple.html#intervalos-de-confianza-para-beta_0-beta_1-y-sigma2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Los intervalos de confianza para <span class="math inline">\(\beta_{0}\)</span> y <span class="math inline">\(\beta_{1}\)</span> se construyen a partir de las distribuciones de probabilidad de <span class="math inline">\(\widehat{\beta}_{0}\)</span> y <span class="math inline">\(\widehat{\beta}_{1}\)</span>. Esto es, <a href="modelo-lineal-simple.html#eq:distB0">(1.8)</a> y <a href="modelo-lineal-simple.html#eq:distB1">(1.7)</a>, respectivamente.</p>
 <p>Por lo tanto, el intervalo del <span class="math inline">\(100(1-\alpha)\%\)</span> de confianza para <span class="math inline">\(\beta_{j}\)</span> es:
 <span class="math display">\[
@@ -682,8 +685,8 @@ Entonces, el intervalo del <span class="math inline">\(100(1-\alpha)\%\)</span> 
 \left\{ \frac{(n-2)MS_{res}}{\chi^{2}_{1-\alpha/2,n-2}}; \frac{(n-2)MS_{res}}{\chi^{2}_{\alpha/2,n-2}} \right\}.
 \]</span></p>
 </div>
-<div id="intervalos-de-confianza-para-ey_i-y-una-predicción-futura" class="section level4 unnumbered">
-<h4>Intervalos de confianza para <span class="math inline">\(E(y_{i})\)</span> y una predicción futura</h4>
+<div id="intervalos-de-confianza-para-ey_i-y-una-predicción-futura" class="section level4 unnumbered hasAnchor">
+<h4>Intervalos de confianza para <span class="math inline">\(E(y_{i})\)</span> y una predicción futura<a href="modelo-lineal-simple.html#intervalos-de-confianza-para-ey_i-y-una-predicción-futura" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Cuando el objetivo de ajustar un modelo de regresión es hacer predicciones, es posible hacer intervalos de confianza para la respuesta media, esto es <span class="math inline">\(E(Y|x_{0})=\mu_{Y|x_{0}}\)</span>, donde <span class="math inline">\(x_{0}\)</span> es un valor de la covariable dentro del rango de valores observados de <span class="math inline">\(x\)</span> en los datos.</p>
 <p>Una estimación insesgada de <span class="math inline">\(\mu_{Y|x_{0}}\)</span> es:
 <span class="math display">\[
@@ -727,59 +730,59 @@ El primer término a la derecha de <a href="modelo-lineal-simple.html#eq:varpred
 \]</span></p>
 </div>
 </div>
-<div id="datos-de-peso-al-nacer.-intervalos-de-confianza" class="section level3 unnumbered">
-<h3>Datos de peso al nacer. Intervalos de confianza</h3>
+<div id="datos-de-peso-al-nacer.-intervalos-de-confianza" class="section level3 unnumbered hasAnchor">
+<h3>Datos de peso al nacer. Intervalos de confianza<a href="modelo-lineal-simple.html#datos-de-peso-al-nacer.-intervalos-de-confianza" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>El intervalo del 95% de confianza para los parámetros del modelo <a href="modelo-lineal-simple.html#eq:modBirthweight">(1.4)</a> son:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="modelo-lineal-simple.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="modelo-lineal-simple.html#cb9-1" tabindex="-1"></a><span class="fu">confint</span>(mod)</span></code></pre></div>
 <pre><code>##                  2.5 %     97.5 %
 ## (Intercept) -5.6837190 -1.5786621
 ## age          0.1229923  0.2275067</code></pre>
 <p>Para <span class="math inline">\(\beta_{1}\)</span>, con un nivel de confianza del 95% podemos decir que cuando la edad gestacional aumenta en una unidad, el peso medio del recién nacido aumenta entre 123 y 228 gramos. Como mencionamos antes, <span class="math inline">\(\beta_{0}\)</span> no tiene interpretación en este modelo.</p>
 <p>El intervalo del 95% de confianza para <span class="math inline">\(\sigma\)</span> se calcula “a pie” de la siguiente forma:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="modelo-lineal-simple.html#cb11-1" aria-hidden="true" tabindex="-1"></a>var.limInf <span class="ot">=</span> <span class="fu">sum</span>(mod<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="fu">qchisq</span>(<span class="fl">0.975</span>,<span class="at">df=</span>mod<span class="sc">$</span>df.residual)</span>
-<span id="cb11-2"><a href="modelo-lineal-simple.html#cb11-2" aria-hidden="true" tabindex="-1"></a>var.limSup <span class="ot">=</span> <span class="fu">sum</span>(mod<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="fu">qchisq</span>(<span class="fl">0.025</span>,<span class="at">df=</span>mod<span class="sc">$</span>df.residual)</span>
-<span id="cb11-3"><a href="modelo-lineal-simple.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">c</span>(var.limInf,var.limSup))</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="modelo-lineal-simple.html#cb11-1" tabindex="-1"></a>var.limInf <span class="ot">=</span> <span class="fu">sum</span>(mod<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="fu">qchisq</span>(<span class="fl">0.975</span>,<span class="at">df=</span>mod<span class="sc">$</span>df.residual)</span>
+<span id="cb11-2"><a href="modelo-lineal-simple.html#cb11-2" tabindex="-1"></a>var.limSup <span class="ot">=</span> <span class="fu">sum</span>(mod<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="fu">qchisq</span>(<span class="fl">0.025</span>,<span class="at">df=</span>mod<span class="sc">$</span>df.residual)</span>
+<span id="cb11-3"><a href="modelo-lineal-simple.html#cb11-3" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">c</span>(var.limInf,var.limSup))</span></code></pre></div>
 <pre><code>## [1] 0.3593008 0.5599503</code></pre>
 <p>Se quiere predecir el peso medio de los recién nacidos en la semana gestacional 36. La estimación puntual es:
 <span class="math display">\[
 \widehat{\mu}_{Y|x_{0}=36} = \widehat{\beta}_{0} + \widehat{\beta}_{1}(36) = -3.6312 + 0.1751*36 = 2.672.
 \]</span>
 El intervalo del 95% de confianza para <span class="math inline">\(\widehat{\mu}_{Y|x_{0}=36}\)</span> se puede calcular de la siguiente forma:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="modelo-lineal-simple.html#cb13-1" aria-hidden="true" tabindex="-1"></a>x.nuevo <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">age=</span><span class="dv">36</span>)</span>
-<span id="cb13-2"><a href="modelo-lineal-simple.html#cb13-2" aria-hidden="true" tabindex="-1"></a>pred.media <span class="ot">=</span> <span class="fu">predict</span>(mod,x.nuevo,<span class="at">interval =</span> <span class="st">&#39;confidence&#39;</span>)</span>
-<span id="cb13-3"><a href="modelo-lineal-simple.html#cb13-3" aria-hidden="true" tabindex="-1"></a>pred.media</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="modelo-lineal-simple.html#cb13-1" tabindex="-1"></a>x.nuevo <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">age=</span><span class="dv">36</span>)</span>
+<span id="cb13-2"><a href="modelo-lineal-simple.html#cb13-2" tabindex="-1"></a>pred.media <span class="ot">=</span> <span class="fu">predict</span>(mod,x.nuevo,<span class="at">interval =</span> <span class="st">&#39;confidence&#39;</span>)</span>
+<span id="cb13-3"><a href="modelo-lineal-simple.html#cb13-3" tabindex="-1"></a>pred.media</span></code></pre></div>
 <pre><code>##        fit     lwr      upr
 ## 1 2.677792 2.46233 2.893254</code></pre>
 <p>Esto quiere decir que, con un nivel de confianza del 95%, el peso medio de los recién nacidos en la semana gestacional 36 está entre 2.46 y 2.89 kilogramos.</p>
 <p>Ahora, se quiere predecir el peso de un recién nacido en la semana gestacional 38, para esto calculamos un intervalo de predicción del 95%:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="modelo-lineal-simple.html#cb15-1" aria-hidden="true" tabindex="-1"></a>x.nuevo <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">age=</span><span class="dv">38</span>)</span>
-<span id="cb15-2"><a href="modelo-lineal-simple.html#cb15-2" aria-hidden="true" tabindex="-1"></a>pred.nuevaObs <span class="ot">=</span> <span class="fu">predict</span>(mod,x.nuevo,<span class="at">interval =</span> <span class="st">&#39;prediction&#39;</span>)</span>
-<span id="cb15-3"><a href="modelo-lineal-simple.html#cb15-3" aria-hidden="true" tabindex="-1"></a>pred.nuevaObs</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="modelo-lineal-simple.html#cb15-1" tabindex="-1"></a>x.nuevo <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">age=</span><span class="dv">38</span>)</span>
+<span id="cb15-2"><a href="modelo-lineal-simple.html#cb15-2" tabindex="-1"></a>pred.nuevaObs <span class="ot">=</span> <span class="fu">predict</span>(mod,x.nuevo,<span class="at">interval =</span> <span class="st">&#39;prediction&#39;</span>)</span>
+<span id="cb15-3"><a href="modelo-lineal-simple.html#cb15-3" tabindex="-1"></a>pred.nuevaObs</span></code></pre></div>
 <pre><code>##        fit      lwr      upr
 ## 1 3.028291 2.131178 3.925404</code></pre>
 <p>Por lo tanto, con un nivel de confianza del 95% el peso de un recién nacido en la semana gestacional 38 está entre 2.13 y 3.93 kilogramos.</p>
 <p>Gráficamente, podemos ver los intervalos de confianza y predicción de la siguiente forma. Primero hacemos la predicciones para edades gestacionales entre 33 y 45 semanas:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="modelo-lineal-simple.html#cb17-1" aria-hidden="true" tabindex="-1"></a>x.nuevo <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">age=</span><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">33</span>,<span class="at">to=</span><span class="dv">45</span>,<span class="at">length.out =</span> <span class="dv">100</span>))</span>
-<span id="cb17-2"><a href="modelo-lineal-simple.html#cb17-2" aria-hidden="true" tabindex="-1"></a>pred.media <span class="ot">=</span> <span class="fu">predict</span>(mod,x.nuevo,<span class="at">interval =</span> <span class="st">&#39;confidence&#39;</span>)</span>
-<span id="cb17-3"><a href="modelo-lineal-simple.html#cb17-3" aria-hidden="true" tabindex="-1"></a>pred.nuevaObs <span class="ot">=</span> <span class="fu">predict</span>(mod,x.nuevo,<span class="at">interval =</span> <span class="st">&#39;prediction&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="modelo-lineal-simple.html#cb17-1" tabindex="-1"></a>x.nuevo <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">age=</span><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">33</span>,<span class="at">to=</span><span class="dv">45</span>,<span class="at">length.out =</span> <span class="dv">100</span>))</span>
+<span id="cb17-2"><a href="modelo-lineal-simple.html#cb17-2" tabindex="-1"></a>pred.media <span class="ot">=</span> <span class="fu">predict</span>(mod,x.nuevo,<span class="at">interval =</span> <span class="st">&#39;confidence&#39;</span>)</span>
+<span id="cb17-3"><a href="modelo-lineal-simple.html#cb17-3" tabindex="-1"></a>pred.nuevaObs <span class="ot">=</span> <span class="fu">predict</span>(mod,x.nuevo,<span class="at">interval =</span> <span class="st">&#39;prediction&#39;</span>)</span></code></pre></div>
 <p>Luego hacemos el gráfico:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="modelo-lineal-simple.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(weight<span class="sc">~</span>age,<span class="at">data=</span>birthweight,<span class="at">pch=</span><span class="dv">20</span>,<span class="at">xlab=</span><span class="st">&quot;Edad gestacional(semanas)&quot;</span>,</span>
-<span id="cb18-2"><a href="modelo-lineal-simple.html#cb18-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&#39;Peso(kilogramos)&#39;</span>)</span>
-<span id="cb18-3"><a href="modelo-lineal-simple.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(mod)</span>
-<span id="cb18-4"><a href="modelo-lineal-simple.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x.nuevo<span class="sc">$</span>age,pred.media[,<span class="dv">2</span>],<span class="at">lty=</span><span class="dv">2</span>)</span>
-<span id="cb18-5"><a href="modelo-lineal-simple.html#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x.nuevo<span class="sc">$</span>age,pred.media[,<span class="dv">3</span>],<span class="at">lty=</span><span class="dv">2</span>)</span>
-<span id="cb18-6"><a href="modelo-lineal-simple.html#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x.nuevo<span class="sc">$</span>age,pred.nuevaObs[,<span class="dv">2</span>],<span class="at">lty=</span><span class="dv">3</span>)</span>
-<span id="cb18-7"><a href="modelo-lineal-simple.html#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x.nuevo<span class="sc">$</span>age,pred.nuevaObs[,<span class="dv">3</span>],<span class="at">lty=</span><span class="dv">3</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:birthweightIC"></span>
-<img src="MLGI_files/figure-html/birthweightIC-1.png" alt="\label{fig:BWdata2} Intervalos del 95\% de confianza (línea discontinua) y predicción (línea punteada) para el peso del recien nacido en función de la edad gestacional." width="480" />
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="modelo-lineal-simple.html#cb18-1" tabindex="-1"></a><span class="fu">plot</span>(weight<span class="sc">~</span>age,<span class="at">data=</span>birthweight,<span class="at">pch=</span><span class="dv">20</span>,<span class="at">xlab=</span><span class="st">&quot;Edad gestacional(semanas)&quot;</span>,</span>
+<span id="cb18-2"><a href="modelo-lineal-simple.html#cb18-2" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&#39;Peso(kilogramos)&#39;</span>)</span>
+<span id="cb18-3"><a href="modelo-lineal-simple.html#cb18-3" tabindex="-1"></a><span class="fu">abline</span>(mod)</span>
+<span id="cb18-4"><a href="modelo-lineal-simple.html#cb18-4" tabindex="-1"></a><span class="fu">lines</span>(x.nuevo<span class="sc">$</span>age,pred.media[,<span class="dv">2</span>],<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb18-5"><a href="modelo-lineal-simple.html#cb18-5" tabindex="-1"></a><span class="fu">lines</span>(x.nuevo<span class="sc">$</span>age,pred.media[,<span class="dv">3</span>],<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb18-6"><a href="modelo-lineal-simple.html#cb18-6" tabindex="-1"></a><span class="fu">lines</span>(x.nuevo<span class="sc">$</span>age,pred.nuevaObs[,<span class="dv">2</span>],<span class="at">lty=</span><span class="dv">3</span>)</span>
+<span id="cb18-7"><a href="modelo-lineal-simple.html#cb18-7" tabindex="-1"></a><span class="fu">lines</span>(x.nuevo<span class="sc">$</span>age,pred.nuevaObs[,<span class="dv">3</span>],<span class="at">lty=</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:birthweightIC"></span>
+<img src="MLG1_files/figure-html/birthweightIC-1.png" alt="\label{fig:BWdata2} Intervalos del 95\% de confianza (línea discontinua) y predicción (línea punteada) para el peso del recien nacido en función de la edad gestacional." width="480" />
 <p class="caption">
 Figure 1.6:  Intervalos del 95% de confianza (línea discontinua) y predicción (línea punteada) para el peso del recien nacido en función de la edad gestacional.
 </p>
 </div>
 </div>
 </div>
-<div id="estimador-por-máxima-verosimilitud" class="section level2" number="1.7">
-<h2><span class="header-section-number">1.7</span> Estimador por máxima verosimilitud</h2>
+<div id="estimador-por-máxima-verosimilitud" class="section level2 hasAnchor" number="1.7">
+<h2><span class="header-section-number">1.7</span> Estimador por máxima verosimilitud<a href="modelo-lineal-simple.html#estimador-por-máxima-verosimilitud" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Si consideramos que <span class="math inline">\(\varepsilon_{i}\sim N(0,\sigma^{2})\)</span>, entonces las observación también se distribuyen de forma normal <span class="math inline">\(y_{i}\sim N(\beta_{0}+\beta_{1}x_{i},\sigma^{2})\)</span>. Si además asumimos que las observaciones <span class="math inline">\((y_{i},x_{i})\)</span> son independientes, entonces la función de verosimilitud es:
 <span class="math display">\[\begin{equation}
 \begin{split}
@@ -790,7 +793,7 @@ L(\boldsymbol \theta) =&amp; \prod_{i=1}^{n} \left(\sqrt{2\pi\sigma^{2}} \right)
 \end{equation}\]</span>
 para <span class="math inline">\(\boldsymbol \theta=(\beta_{0},\beta_{1},\sigma^{2})&#39;\)</span>. La log-verosimilitud es:
 <span class="math display">\[
-\ell (\boldsymbol \theta) = - \left(\frac{n}{2}\right)\left[ \log (2 \pi) - \log \sigma^{2}\right] - \frac{1}{2\sigma^{2}}\sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i})^{2}. 
+\ell (\boldsymbol \theta) = - \left(\frac{n}{2}\right)\left[ \log (2 \pi) - \log \sigma^{2}\right] - \frac{1}{2\sigma^{2}}\sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i})^{2}.
 \]</span>
 El estimador de máxima verosimilitud de <span class="math inline">\(\boldsymbol \theta\)</span> debe satisfacer:
 <span class="math display">\[
@@ -818,14 +821,14 @@ y
 Aquí observamos que los estimadores por máxima verosimilitud para <span class="math inline">\(\beta_{0}\)</span> y <span class="math inline">\(\beta_{1}\)</span> son equivalente a los estimadores por MCO. El estimador de <span class="math inline">\(\sigma^{2}\)</span> es sesgado, sin embargo el sesgo disminuye a medida que <span class="math inline">\(n\)</span> crece.</p>
 <p>Por lo general, los estimadores por máxima verosimilitud tienen mejores propiedades que los estimadores por MCO. Son asintoticamente insesgados, consistentes y asintoticamente de mínima varianza. Sin embargo, estos requieren de supuestos distribucionales completos. Recordemos que los estimadores por MCO solo requieren de una correcta especificación de los dos primeros momentos (valor esperado, varianza y covarianza).</p>
 </div>
-<div id="algunas-consideraciones-finales" class="section level2" number="1.8">
-<h2><span class="header-section-number">1.8</span> Algunas consideraciones finales</h2>
+<div id="algunas-consideraciones-finales" class="section level2 hasAnchor" number="1.8">
+<h2><span class="header-section-number">1.8</span> Algunas consideraciones finales<a href="modelo-lineal-simple.html#algunas-consideraciones-finales" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Las conclusiones sobre los modelos de regresión se hacen sobre el rango de valores observados de las covariables (interpolación). Por ejemplo, en los datos de los recién nacidos, se pueden hacer inferencias sobre el peso al nacer para bebés que nacen en entre las semanas 33 y 45. Cuando hacemos predicciones fuera de este rango estaríamos extrapolando.</li>
 </ul>
 <p>Por extrapolación nos referimos a hacer predicciones fuera del rango observado de <span class="math inline">\(x\)</span>. La Figura <a href="modelo-lineal-simple.html#fig:extrapolacion">1.7</a> muestra el problema que se puede cometer cuando extrapolamos. Si tenemos datos en el rango <span class="math inline">\(x_{min} \leq x \leq x_{max}\)</span>, un modelo lineal es una buena aproximación de <span class="math inline">\(E(Y|x)\)</span>. Pero, esa aproximación no es buena para <span class="math inline">\(x&gt;x_{max}\)</span>. Por lo tanto, se estaría cometiendo errores graves cuando hacemos predicciones de <span class="math inline">\(Y\)</span> para valores de <span class="math inline">\(x\)</span> mayores a <span class="math inline">\(x_{max}\)</span> (por ejemplo en el punto <span class="math inline">\(x_{0}\)</span>).</p>
-<div class="figure" style="text-align: center"><span id="fig:extrapolacion"></span>
-<img src="MLGI_files/figure-html/extrapolacion-1.png" alt="Peligro de extrapolar. La curva negra representa $E(Y|x)$ y la línea roja es el ajuste del modelo lineal con los datos observados de $x$. La predicción en el punto $x_{0}$ es bastante sesgada." width="480" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:extrapolacion"></span>
+<img src="MLG1_files/figure-html/extrapolacion-1.png" alt="Peligro de extrapolar. La curva negra representa $E(Y|x)$ y la línea roja es el ajuste del modelo lineal con los datos observados de $x$. La predicción en el punto $x_{0}$ es bastante sesgada." width="480" />
 <p class="caption">
 Figure 1.7: Peligro de extrapolar. La curva negra representa <span class="math inline">\(E(Y|x)\)</span> y la línea roja es el ajuste del modelo lineal con los datos observados de <span class="math inline">\(x\)</span>. La predicción en el punto <span class="math inline">\(x_{0}\)</span> es bastante sesgada.
 </p>
@@ -834,8 +837,8 @@ Figure 1.7: Peligro de extrapolar. La curva negra representa <span class="math i
 <li><p>La posición de los valores de <span class="math inline">\(x\)</span> tienen una influencia sobre el ajuste por MCO. Particularmente, la estimación de <span class="math inline">\(\beta_{1}\)</span> está fuertemente influenciada por los valores alejados de <span class="math inline">\(x\)</span> y <span class="math inline">\(y\)</span>. A estos puntos se les denomina <strong>puntos influyentes</strong>. En la Figura <a href="modelo-lineal-simple.html#fig:influyentes">1.8</a>(a) podemos ver como un solo punto tiene una influencia alta en la estimación de los parámetros del modelo.</p></li>
 <li><p>Los <strong>valores atípicos</strong> son observaciones que difieren considerablemente del resto de los datos (generalmente en <span class="math inline">\(y\)</span>). Un punto atípico puede afectar la estimación de <span class="math inline">\(\beta_{0}\)</span> (ver Figura <a href="modelo-lineal-simple.html#fig:influyentes">1.8</a>(b) y la estimación de <span class="math inline">\(\sigma^{2}\)</span>.</p></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:influyentes"></span>
-<img src="MLGI_files/figure-html/influyentes-1.png" alt="(a) Efecto de un punto influyente, la línea negra  es la estimación sin el punto A y la linea roja es la estimación incluyento el punto A. (b) Efecto de un punto atípico, la línea negra  es la estimación sin el punto B y la linea roja es la estimación incluyento el punto B." width="768" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:influyentes"></span>
+<img src="MLG1_files/figure-html/influyentes-1.png" alt="(a) Efecto de un punto influyente, la línea negra  es la estimación sin el punto A y la linea roja es la estimación incluyento el punto A. (b) Efecto de un punto atípico, la línea negra  es la estimación sin el punto B y la linea roja es la estimación incluyento el punto B." width="768" />
 <p class="caption">
 Figure 1.8: (a) Efecto de un punto influyente, la línea negra es la estimación sin el punto A y la linea roja es la estimación incluyento el punto A. (b) Efecto de un punto atípico, la línea negra es la estimación sin el punto B y la linea roja es la estimación incluyento el punto B.
 </p>
@@ -847,7 +850,7 @@ Figure 1.8: (a) Efecto de un punto influyente, la línea negra es la estimación
 
 </div>
 </div>
-<h3>References</h3>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-montgomery_introduction_2012" class="csl-entry">
 Montgomery, Douglas C., Elizabeth A. Peck, and G. Geoffrey Vining. 2012. <em>Introduction to Linear Regression Analysis</em>. 5th ed. Wiley.
@@ -863,7 +866,6 @@ Montgomery, Douglas C., Elizabeth A. Peck, and G. Geoffrey Vining. 2012. <em>Int
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -902,7 +904,11 @@ gitbook.start({
 "link": "https://github.com/AlvaroFlorez/MLG1/blob/master/01-RegresionSimple.Rmd",
 "text": null
 },
-"download": ["MLGI.pdf"],
+"download": ["MLG1.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
@@ -916,7 +922,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
