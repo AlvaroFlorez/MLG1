@@ -1,5 +1,6 @@
-# Transformaciones y mínimos cuadrados ponderados
+# Transformaciones y mínimos cuadrados ordinarios
 \rule{\textwidth}{0.4pt}
+
 ## Ejemplo 1. Datos de la ONU {-}
 La base de datos `UN11` de la librería `alr4` contiene las siguientes estadísticas de varios miembros de las naciones unidas (y otras regiones independientes) durante los años 2009-2011:
 
@@ -265,7 +266,7 @@ y_{ij}^{(\lambda_k)} = \beta_{0} + \beta_{1}x_{i1} + \beta_{2}x_{i2} + \ldots + 
 \]
 para cada valor de $\lambda_{k}$, $k=1,\ldots,K$. Al utilizar la transformación \@ref(eq:boxcoxtrans), las sumas de cuadrados para modelos con diferentes valores de $\lambda$ son comparables.
 3. Seleccionar el modelo que minimiza la suma de cuadrados de los residuos, $SS_{res}(\lambda)$. Equivalentemente, el $\lambda$ que maximiza la verosimilitud.
-4. Luego de encontrar el valor de $\lambda$ óptimo, se ajusta el modelo transformando la variable respuesta $y^{\lambda}$, si $\lambda\neq 0$, o $\log y$ si $\lambda =0$. Es decir que (\ref{eq:boxcoxtrans}) se utiliza solo en el paso de comparación de modelos ajustados.
+4. Luego de encontrar el valor de $\lambda$ óptimo, se ajusta el modelo transformando la variable respuesta $y^{\lambda}$, si $\lambda\neq 0$, o $\log y$ si $\lambda =0$. Es decir que (\@ref{eq:boxcoxtrans}) se utiliza solo en el paso de comparación de modelos ajustados.
 
 Puesto que $\lambda$ es una variable aleatoria, también se puede hacer una estimación por intervalos de confianza. Para esto primero consideremos la función de log-verosimilitud:
 \[
@@ -402,7 +403,7 @@ Dado que estamos estimando los pesos, la varianza de los coeficientes \@ref(eq:V
 
 \rule{\textwidth}{0.4pt}
 ### Datos de educación. Minímos cuadrados ponderados {-}
-Retomemos el modelo para los datos de educación. En la Figura \ref{fig:Educres} vemos que hay heterocedasticidad. Particularmente vemos que la variabilidad crece a medida que aumentan los valores ajustados. Ya vimos que por medio de una transformación inversa sobre la variable respuesta se corrige el problema. 
+Retomemos el modelo para los datos de educación. En la Figura \@ref{fig:Educres} vemos que hay heterocedasticidad. Particularmente vemos que la variabilidad crece a medida que aumentan los valores ajustados. Ya vimos que por medio de una transformación inversa sobre la variable respuesta se corrige el problema. 
 
 El problema de hacer transformaciones es que los coeficientes estimados pierden interpretación. Así que, alternativamente, vamos a implementar el método de minímos cuadrados ponderados. Dado que desconocemos los pesos, vamos a estimarlos usando el procedimiento que se explicó anteriormente.
 
@@ -457,8 +458,3 @@ pred.mcp = predict(mod.educ.mcp,x0.educ,interval='confidence')
 
 ```
 Por medio del estimador de MCP obtenemos el siguiente intervalo del 95\% de confianza: (`r round(pred.mcp[2],3)`, `r round(pred.mcp[3],3)`). Este intervalo es parecido al calculado usando el modelo transformado, aunque tiene una longitud un poco más pequeña.
-\rule{\textwidth}{0.4pt}
-
----
-nocite: | @montgomery_introduction_2012, @fox_applied_2016
----

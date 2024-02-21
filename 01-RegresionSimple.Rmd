@@ -492,25 +492,25 @@ lines(x.nuevo$age,pred.nuevaObs[,3],lty=3)
 Si consideramos que $\varepsilon_{i}\sim N(0,\sigma^{2})$, entonces las observación también se distribuyen de forma normal $y_{i}\sim N(\beta_{0}+\beta_{1}x_{i},\sigma^{2})$. Si además asumimos que las observaciones $(y_{i},x_{i})$ son independientes, entonces la función de verosimilitud es:
 \begin{equation}
 \begin{split}
-L(\boldtheta) =& \prod_{i=1}^{n} \left(\sqrt{2\pi\sigma^{2}} \right)^{-1/2}\exp\left[ - \frac{1}{2\sigma^{2}}(y_{i}-\beta_{0}-\beta_{1}x_{i})^{2} \right] \\
+L(\btheta) =& \prod_{i=1}^{n} \left(\sqrt{2\pi\sigma^{2}} \right)^{-1/2}\exp\left[ - \frac{1}{2\sigma^{2}}(y_{i}-\beta_{0}-\beta_{1}x_{i})^{2} \right] \\
 =& \left( \sqrt{2\pi\sigma^{2}} \right)^{-n/2}\exp\left[ - \frac{1}{2\sigma^{2}} \sum_{i=1}^{n}(y_{i}-\beta_{0}-\beta_{1}x_{i})^{2}\right],
 \end{split}
 \nonumber
 \end{equation}
-para $\boldtheta=(\beta_{0},\beta_{1},\sigma^{2})'$. La log-verosimilitud es:
+para $\btheta=(\beta_{0},\beta_{1},\sigma^{2})'$. La log-verosimilitud es:
 \[
-\ell (\boldtheta) = - \left(\frac{n}{2}\right)\left[ \log (2 \pi) - \log \sigma^{2}\right] - \frac{1}{2\sigma^{2}}\sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i})^{2}. 
+\ell (\btheta) = - \left(\frac{n}{2}\right)\left[ \log (2 \pi) - \log \sigma^{2}\right] - \frac{1}{2\sigma^{2}}\sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i})^{2}. 
 \]
-El estimador de máxima verosimilitud de $\boldtheta$ debe satisfacer:
+El estimador de máxima verosimilitud de $\btheta$ debe satisfacer:
 \[
-\left. \frac{\partial \ell(\boldtheta)}{\partial \beta_{0}} \right|_{\widetilde{\boldtheta}} = \frac{1}{\widetilde{\sigma}^{2}}\sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i}) = 0,
+\left. \frac{\partial \ell(\btheta)}{\partial \beta_{0}} \right|_{\widetilde{\btheta}} = \frac{1}{\widetilde{\sigma}^{2}}\sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i}) = 0,
 \]
 \[
-\left. \frac{\partial \ell(\boldtheta)}{\partial \beta_{1}} \right|_{\widetilde{\boldtheta}} = \frac{1}{\widetilde{\sigma}^{2}}\sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i})x_{i} = 0,
+\left. \frac{\partial \ell(\btheta)}{\partial \beta_{1}} \right|_{\widetilde{\btheta}} = \frac{1}{\widetilde{\sigma}^{2}}\sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i})x_{i} = 0,
 \]
 y
 \[
-\left. \frac{\partial \ell(\boldtheta)}{\partial \sigma^{2}} \right|_{\widetilde{\boldtheta}} = -\frac{n}{2\widetilde{\sigma}^{2}} + \frac{n}{2\widetilde{\sigma}^{4}}
+\left. \frac{\partial \ell(\btheta)}{\partial \sigma^{2}} \right|_{\widetilde{\btheta}} = -\frac{n}{2\widetilde{\sigma}^{2}} + \frac{n}{2\widetilde{\sigma}^{4}}
 \sum_{i=1}^{n}(y_{i} - \beta_{0}-\beta_{1}x_{i})^{2} = 0,
 \]
 Luego de solucionar las ecuaciones anteriores se obtienen los estimadores por máxima verosimilitud:
