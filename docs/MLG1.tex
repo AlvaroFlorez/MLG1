@@ -1285,8 +1285,14 @@ Igual que en la regresión simple, el estadístico de prueba se encuentra a part
 SS_{T}  = SS_{R} + SS_{res},
 \]
 donde:
-- \(SS_{R} = \sum_{i=1}^{n}(\widehat{y}_{i}-\bar{y})^{2} = (\boldsymbol H\boldsymbol y- \frac{1}{n}\boldsymbol 1\boldsymbol 1'\boldsymbol y)'(\boldsymbol H\boldsymbol y- \frac{1}{n}\boldsymbol 1\boldsymbol 1'\boldsymbol y)=\boldsymbol y'(\boldsymbol H\boldsymbol y- \frac{1}{n}\boldsymbol 1\boldsymbol 1')\boldsymbol y\),
-- \(SS_{res} = \sum_{i=1}^{n}(y_{i}-\widehat{y}_{i})^{2} = (\boldsymbol y- \boldsymbol H\boldsymbol y)'(\boldsymbol y- \boldsymbol H\boldsymbol y)=\boldsymbol y'(\boldsymbol I-\boldsymbol H)\boldsymbol y\),
+
+\begin{itemize}
+\tightlist
+\item
+  \(SS_{R} = \sum_{i=1}^{n}(\widehat{y}_{i}-\bar{y})^{2} = (\boldsymbol H\boldsymbol y- \frac{1}{n}\boldsymbol 1\boldsymbol 1'\boldsymbol y)'(\boldsymbol H\boldsymbol y- \frac{1}{n}\boldsymbol 1\boldsymbol 1'\boldsymbol y)=\boldsymbol y'(\boldsymbol H- \frac{1}{n}\boldsymbol 1\boldsymbol 1')\boldsymbol y\),
+\item
+  \(SS_{res} = \sum_{i=1}^{n}(y_{i}-\widehat{y}_{i})^{2} = (\boldsymbol y- \boldsymbol H\boldsymbol y)'(\boldsymbol y- \boldsymbol H\boldsymbol y)=\boldsymbol y'(\boldsymbol I-\boldsymbol H)\boldsymbol y\),
+\end{itemize}
 
 y \(\boldsymbol 1\) es un vector cuyas entradas son iguales a \(1\).
 
@@ -1385,7 +1391,7 @@ Para el modelo completo tenemos:
 \item
   Suma de cuadrados del modelo:
   \[
-  SS_{R}(\boldsymbol \beta) = \boldsymbol y'(\boldsymbol H\boldsymbol y- \frac{1}{n}\boldsymbol 1\boldsymbol 1')\boldsymbol y.
+  SS_{R}(\boldsymbol \beta) = \boldsymbol y'(\boldsymbol H- \frac{1}{n}\boldsymbol 1\boldsymbol 1')\boldsymbol y.
   \]
 \item
   Cuadrado medio del error:
@@ -1410,8 +1416,9 @@ Para el modelo reducido tenemos:
 \item
   Suma de cuadrados del modelo:
   \[
-  SS_{R}(\boldsymbol \beta_{1}) = \boldsymbol y'(\boldsymbol H\boldsymbol y- \frac{1}{n}\boldsymbol 1\boldsymbol 1')\boldsymbol y.
+  SS_{R}(\boldsymbol \beta_{1}) = \boldsymbol y'(\boldsymbol H_1 - \frac{1}{n}\boldsymbol 1\boldsymbol 1')\boldsymbol y,
   \]
+  con \(\boldsymbol H_1 = \boldsymbol X_1(\boldsymbol X_1'\boldsymbol X_1)^{-1}\boldsymbol X_1'\).
 \end{itemize}
 
 Entonces, la suma de cuadrados debido a \(\boldsymbol \beta_{2}\) dado que \(\boldsymbol \beta_{1}\) ya está en el modelo es:
@@ -1420,7 +1427,7 @@ SS_{R}(\boldsymbol \beta_{2}| \boldsymbol \beta_{1}) = SS_{R}(\boldsymbol \beta)
 \]
 Esta suma de cuadrados es llamada la suma de cuadrados extra debido a \(\boldsymbol \beta_2\) puesto que mide el incremento en la suma de cuadrados de la regresión como resultado de adicionar los regresores \(\boldsymbol X_{2}\) en el modelo que ya contiene \(\boldsymbol X_{1}\).
 
-Dado que \(SS_{R}(\boldsymbol \beta_{2}| \boldsymbol \beta_{1})\) y \(MS_{res}\) son independientes, podemos utilizar el siguiente estadístico de prueba:
+Se puede probar que \(SS_{R}(\boldsymbol \beta_{2}| \boldsymbol \beta_{1})\) y \(MS_{res}\) son independientes. Por lo tanto, podemos utilizar el siguiente estadístico de prueba:
 \[
 F_{0} = \frac{SS_{R}(\boldsymbol \beta_{2}|\boldsymbol \beta_{1})/r}{MS_{res}}.
 \]

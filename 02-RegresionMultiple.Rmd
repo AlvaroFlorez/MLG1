@@ -230,7 +230,8 @@ Igual que en la regresión simple, el estadístico de prueba se encuentra a part
 SS_{T}  = SS_{R} + SS_{res},
 \]
 donde:
-- $SS_{R} = \sum_{i=1}^{n}(\haty_{i}-\bar{y})^{2} = (\bH\by - \frac{1}{n}\bONE\bONE'\by)'(\bH\by - \frac{1}{n}\bONE\bONE'\by)=\by'(\bH\by - \frac{1}{n}\bONE\bONE')\by$,
+
+- $SS_{R} = \sum_{i=1}^{n}(\haty_{i}-\bar{y})^{2} = (\bH\by - \frac{1}{n}\bONE\bONE'\by)'(\bH\by - \frac{1}{n}\bONE\bONE'\by)=\by'(\bH - \frac{1}{n}\bONE\bONE')\by$,
 - $SS_{res} = \sum_{i=1}^{n}(y_{i}-\haty_{i})^{2} = (\by  - \bH\by)'(\by  - \bH\by)=\by'(\bI-\bH)\by$,
 
 y $\bONE$ es un vector cuyas entradas son iguales a $1$.
@@ -323,7 +324,7 @@ Para el modelo completo tenemos:
 \]
 - Suma de cuadrados del modelo: 
 \[
-SS_{R}(\bbeta) = \by'(\bH\by - \frac{1}{n}\bONE\bONE')\by.
+SS_{R}(\bbeta) = \by'(\bH - \frac{1}{n}\bONE\bONE')\by.
 \]
 - Cuadrado medio del error: 
 \[
@@ -342,8 +343,9 @@ Para el modelo reducido tenemos:
 \]
 - Suma de cuadrados del modelo: 
 \[
-SS_{R}(\bbeta_{1}) = \by'(\bH\by - \frac{1}{n}\bONE\bONE')\by.
+SS_{R}(\bbeta_{1}) = \by'(\bH_1 - \frac{1}{n}\bONE\bONE')\by,
 \]
+con $\bH_1 = \bX_1(\bX_1'\bX_1)^{-1}\bX_1'$. 
 
 Entonces, la suma de cuadrados debido a $\bbeta_{2}$ dado que $\bbeta_{1}$ ya está en el modelo es:
 \[
@@ -351,7 +353,7 @@ SS_{R}(\bbeta_{2}| \bbeta_{1}) = SS_{R}(\bbeta) - SS_{R}(\bbeta_{1}),
 \]
 Esta suma de cuadrados es llamada la suma de cuadrados extra debido a $\bbeta_2$ puesto que mide el incremento en la suma de cuadrados de la regresión como resultado de adicionar los regresores $\bX_{2}$ en el modelo que ya contiene $\bX_{1}$.  
 
-Dado que $SS_{R}(\bbeta_{2}| \bbeta_{1})$ y $MS_{res}$ son independientes, podemos utilizar el siguiente estadístico de prueba:
+Se puede probar que $SS_{R}(\bbeta_{2}| \bbeta_{1})$ y $MS_{res}$ son independientes. Por lo tanto, podemos utilizar el siguiente estadístico de prueba:
 \[
 F_{0} = \frac{SS_{R}(\bbeta_{2}|\bbeta_{1})/r}{MS_{res}}.
 \]
