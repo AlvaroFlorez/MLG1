@@ -198,7 +198,7 @@
 
 \title{Notas de clase: Modelo lineal general I}
 \author{Alvaro J. Flórez}
-\date{2024-02-21}
+\date{2024-02-27}
 
 \begin{document}
 \maketitle
@@ -1285,32 +1285,16 @@ Igual que en la regresión simple, el estadístico de prueba se encuentra a part
 SS_{T}  = SS_{R} + SS_{res},
 \]
 donde:
-
-\begin{itemize}
-\tightlist
-\item
-  \(SS_{T} = \sum_{i=1}^{n}(y_{i}-\bar{y})^{2} = (\boldsymbol y- \frac{1}{n}\boldsymbol 1'\boldsymbol y)'(\boldsymbol y- \frac{1}{n}\boldsymbol 1'\boldsymbol y)\),
-\item
-  \(SS_{R} = \sum_{i=1}^{n}(\widehat{y}_{i}-\bar{y})^{2} = (\boldsymbol H\boldsymbol y- \frac{1}{n}\boldsymbol 1'\boldsymbol y)'(\boldsymbol H\boldsymbol y- \frac{1}{n}\boldsymbol 1'\boldsymbol y)\),
-\item
-  \(SS_{res} = \sum_{i=1}^{n}(y_{i}-\widehat{y}_{i})^{2} = (\boldsymbol y- \boldsymbol H\boldsymbol y)'(\boldsymbol y- \boldsymbol H\boldsymbol y)\),
-\end{itemize}
+- \(SS_{R} = \sum_{i=1}^{n}(\widehat{y}_{i}-\bar{y})^{2} = (\boldsymbol H\boldsymbol y- \frac{1}{n}\boldsymbol 1\boldsymbol 1'\boldsymbol y)'(\boldsymbol H\boldsymbol y- \frac{1}{n}\boldsymbol 1\boldsymbol 1'\boldsymbol y)=\boldsymbol y'(\boldsymbol H\boldsymbol y- \frac{1}{n}\boldsymbol 1\boldsymbol 1')\boldsymbol y\),
+- \(SS_{res} = \sum_{i=1}^{n}(y_{i}-\widehat{y}_{i})^{2} = (\boldsymbol y- \boldsymbol H\boldsymbol y)'(\boldsymbol y- \boldsymbol H\boldsymbol y)=\boldsymbol y'(\boldsymbol I-\boldsymbol H)\boldsymbol y\),
 
 y \(\boldsymbol 1\) es un vector cuyas entradas son iguales a \(1\).
 
-Si \(H_{0}\) es cierta, tenemos que:
+Se tiene que, \(\frac{SS_{R}}{\sigma^2} \sim \chi^2_{r,\lambda}\), con:
 \[
-\frac{SS_{res}}{\sigma^{2}}\sim\chi^{2}_{n-p} \mbox{ y } \frac{SS_{R}}{\sigma^{2}} \sim \chi^{2}_{p-1},
+\frac{\boldsymbol \beta^{*'}\boldsymbol X_{c}'\boldsymbol X_{c}\boldsymbol \beta^{*}}{\sigma^{2}},
 \]
-además, \(SS_{res}\) y \(SS_{R}\) son independientes. Por lo tanto,
-\[
-F_{0} = \frac{SS_{R}/(p-1)}{SS_{res}/(n-p)} = \frac{MS_{R}}{MS_{res}} \sim F_{p-1,n-p}.
-\]
-También se puede probar que:
-\[
-E(MS_{res}) =  \sigma^{2} \mbox{ y }E(MS_{R}) =  \sigma^{2} + \frac{\boldsymbol \beta^{*'}\boldsymbol X_{c}'\boldsymbol X_{c}\boldsymbol \beta^{*}}{(p-1)\sigma^{2}},
-\]
-donde \(\boldsymbol \beta^{*} = (\beta_{1},\beta_{2},\ldots,\beta_{p-1})'\) y
+donde donde \(\boldsymbol \beta^{*} = (\beta_{1},\beta_{2},\ldots,\beta_{p-1})'\) y
 \[
 \boldsymbol X_{c} = \begin{pmatrix}
 x_{11} - \bar{x}_{1} & x_{12} - \bar{x}_{2} & \ldots & x_{1,p-1} - \bar{x}_{p-1} \\ 
@@ -1320,6 +1304,16 @@ x_{i1} - \bar{x}_{1} & x_{i2} - \bar{x}_{2} & \ldots & x_{i,p-1} - \bar{x}_{p-1}
 \vdots & \vdots & \ddots & \vdots \\
 x_{n1} - \bar{x}_{1} & x_{n2} - \bar{x}_{2} & \ldots & x_{n,p-1} - \bar{x}_{p-1} \\ 
 \end{pmatrix}.
+\]
+De igual forma, \(\frac{SS_{res}}{\sigma^2} \sim \chi^2_{n-p}\). Finalmente, se puede probar que \(SS_{R}\) y \(SS_{res}\) son independientes.
+
+Si \(H_{0}\) es cierta, tenemos que:
+\[
+\frac{SS_{res}}{\sigma^{2}}\sim\chi^{2}_{n-p} \mbox{ y } \frac{SS_{R}}{\sigma^{2}} \sim \chi^{2}_{p-1}.
+\]
+Por lo tanto,
+\[
+F_{0} = \frac{SS_{R}/(p-1)}{SS_{res}/(n-p)} = \frac{MS_{R}}{MS_{res}} \sim F_{p-1,n-p}.
 \]
 
 Si \(H_{0}\) no es cierta, tenemos que \(F_{0}\) sigue una distribución \(F\) no-central con \(p-1\) y \(n-p\) grados de libertad y parámetro de no centralidad:
@@ -1391,12 +1385,12 @@ Para el modelo completo tenemos:
 \item
   Suma de cuadrados del modelo:
   \[
-  SS_{R}(\boldsymbol \beta) = \widehat{\beta}'\boldsymbol X'\boldsymbol y\mbox{ (con }p\mbox{ grados de libertad)}.
+  SS_{R}(\boldsymbol \beta) = \boldsymbol y'(\boldsymbol H\boldsymbol y- \frac{1}{n}\boldsymbol 1\boldsymbol 1')\boldsymbol y.
   \]
 \item
   Cuadrado medio del error:
   \[
-  MS_{res} = \frac{\boldsymbol y'\boldsymbol y- \widehat{\boldsymbol \beta}'\boldsymbol X'\boldsymbol y}{n-p}.
+  MS_{res} = \frac{\boldsymbol y'(\boldsymbol I- \boldsymbol H)\boldsymbol y}{n-p}.
   \]
 \end{itemize}
 
@@ -1416,7 +1410,7 @@ Para el modelo reducido tenemos:
 \item
   Suma de cuadrados del modelo:
   \[
-  SS_{R}(\boldsymbol \beta_{1}) = \widehat{\boldsymbol \beta}_{1}'\boldsymbol X_{1}'\boldsymbol y\mbox{ (con $p-r$ grados de libertad)}.
+  SS_{R}(\boldsymbol \beta_{1}) = \boldsymbol y'(\boldsymbol H\boldsymbol y- \frac{1}{n}\boldsymbol 1\boldsymbol 1')\boldsymbol y.
   \]
 \end{itemize}
 
@@ -1424,7 +1418,7 @@ Entonces, la suma de cuadrados debido a \(\boldsymbol \beta_{2}\) dado que \(\bo
 \[
 SS_{R}(\boldsymbol \beta_{2}| \boldsymbol \beta_{1}) = SS_{R}(\boldsymbol \beta) - SS_{R}(\boldsymbol \beta_{1}),
 \]
-con \(p-(p-r)=r\) grados de libertad. Esta suma de cuadrados es llamada la suma de cuadrados extra debido a \(\boldsymbol \beta_2\) puesto que mide el incremento en la suma de cuadrados de la regresión como resultado de adicionar los regresores \(\boldsymbol X_{2}\) en el modelo que ya contiene \(\boldsymbol X_{1}\).
+Esta suma de cuadrados es llamada la suma de cuadrados extra debido a \(\boldsymbol \beta_2\) puesto que mide el incremento en la suma de cuadrados de la regresión como resultado de adicionar los regresores \(\boldsymbol X_{2}\) en el modelo que ya contiene \(\boldsymbol X_{1}\).
 
 Dado que \(SS_{R}(\boldsymbol \beta_{2}| \boldsymbol \beta_{1})\) y \(MS_{res}\) son independientes, podemos utilizar el siguiente estadístico de prueba:
 \[
