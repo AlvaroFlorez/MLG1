@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2024-02-27" />
+<meta name="date" content="2024-02-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -398,10 +398,10 @@ Algunas propiedades de la matriz <span class="math inline">\(\boldsymbol H\)</sp
 <span id="cb96-7"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb96-7" tabindex="-1"></a><span class="fu">plot</span>(hii,<span class="at">type=</span><span class="st">&#39;h&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;índice&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;valores de la diagonal de la matrix hat&#39;</span>)</span>
 <span id="cb96-8"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb96-8" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">2</span><span class="sc">*</span><span class="dv">3</span><span class="sc">/</span><span class="dv">199</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
 <span id="cb96-9"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb96-9" tabindex="-1"></a>hii[hii<span class="sc">&gt;</span><span class="dv">2</span><span class="sc">*</span><span class="dv">3</span><span class="sc">/</span><span class="dv">199</span>]</span></code></pre></div>
-<pre><code>##            Djibouti             Liberia               Nauru         North Korea 
-##          0.03105290          0.03747901          0.03708513          0.03105839 
-##             Somalia           Sri Lanka Trinidad and Tobago 
-##          0.04390710          0.03334886          0.07590435</code></pre>
+<pre><code>##            Djibouti             Liberia               Nauru         North Korea             Somalia           Sri Lanka 
+##          0.03105290          0.03747901          0.03708513          0.03105839          0.04390710          0.03334886 
+## Trinidad and Tobago 
+##          0.07590435</code></pre>
 <div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb98-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">log</span>(UN11<span class="sc">$</span>ppgdp),UN11<span class="sc">$</span>pctUrban,<span class="at">xlab=</span><span class="st">&#39;log del PNB per cápita&#39;</span>,</span>
 <span id="cb98-2"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb98-2" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&#39;% de población urbanas&#39;</span>)</span>
 <span id="cb98-3"><a href="evaluación-de-puntos-influyentes-y-atípicos.html#cb98-3" tabindex="-1"></a><span class="fu">points</span>(<span class="fu">log</span>(UN11<span class="sc">$</span>ppgdp)[Names<span class="sc">==</span><span class="st">&#39;Trinidad and Tobago&#39;</span>],</span>

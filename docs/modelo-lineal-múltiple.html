@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2024-02-27" />
+<meta name="date" content="2024-02-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -435,10 +435,10 @@ Note que es necesario que <span class="math inline">\(\boldsymbol X\)</span> sea
 <span class="math display">\[
 \widehat{\boldsymbol y}= \boldsymbol X\widehat{\boldsymbol \beta}= \boldsymbol X(\boldsymbol X&#39;\boldsymbol X)^{-1}\boldsymbol X&#39;\boldsymbol y= \boldsymbol H\boldsymbol y.
 \]</span>
-La matriz <span class="math inline">\((n\times n)\)</span> <span class="math inline">\(\boldsymbol H= \boldsymbol X(\boldsymbol X&#39;\boldsymbol X)^{-1}\boldsymbol X&#39;\)</span> es llamada <strong>matriz hat</strong> (sombrero) y desempeña un papel importante en el análisis de regresión.</p>
-<p>Los residuos del modelo <span class="math inline">\((e_{i}=y_{i}-\widehat{y}_{i})\)</span> también se pueden expresar en forma matricial:
+La matriz <span class="math inline">\(\boldsymbol H= \boldsymbol X(\boldsymbol X&#39;\boldsymbol X)^{-1}\boldsymbol X&#39;\)</span> es llamada <strong>matriz hat</strong> (sombrero) y desempeña un papel importante en el análisis de regresión.</p>
+<p>Los residuos del modelo <span class="math inline">\((e_{i}=y_{i}-\widehat{y}_{i})\)</span> también se pueden expresar en forma matricial como:
 <span class="math display">\[
-\boldsymbol e= \boldsymbol y- \boldsymbol X&#39;\widehat{\beta}= \boldsymbol y- \boldsymbol X(\boldsymbol X&#39;\boldsymbol X)^{-1}\boldsymbol X&#39;\boldsymbol y= \boldsymbol y- \boldsymbol H\boldsymbol y= (\boldsymbol I_{n} - \boldsymbol H)\boldsymbol y.
+\boldsymbol e= \boldsymbol y- \boldsymbol X&#39;\widehat{\boldsymbol \beta}= \boldsymbol y- \boldsymbol X(\boldsymbol X&#39;\boldsymbol X)^{-1}\boldsymbol X&#39;\boldsymbol y= \boldsymbol y- \boldsymbol H\boldsymbol y= (\boldsymbol I_{n} - \boldsymbol H)\boldsymbol y.
 \]</span></p>
 <div id="estimación-de-sigma2-1" class="section level3 hasAnchor" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> Estimación de <span class="math inline">\(\sigma^{2}\)</span><a href="modelo-lineal-múltiple.html#estimación-de-sigma2-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -544,13 +544,14 @@ SS_{T}  = SS_{R} + SS_{res},
 donde:</p>
 <ul>
 <li><span class="math inline">\(SS_{R} = \sum_{i=1}^{n}(\widehat{y}_{i}-\bar{y})^{2} = (\boldsymbol H\boldsymbol y- \frac{1}{n}\boldsymbol 1\boldsymbol 1&#39;\boldsymbol y)&#39;(\boldsymbol H\boldsymbol y- \frac{1}{n}\boldsymbol 1\boldsymbol 1&#39;\boldsymbol y)=\boldsymbol y&#39;(\boldsymbol H- \frac{1}{n}\boldsymbol 1\boldsymbol 1&#39;)\boldsymbol y\)</span>,</li>
-<li><span class="math inline">\(SS_{res} = \sum_{i=1}^{n}(y_{i}-\widehat{y}_{i})^{2} = (\boldsymbol y- \boldsymbol H\boldsymbol y)&#39;(\boldsymbol y- \boldsymbol H\boldsymbol y)=\boldsymbol y&#39;(\boldsymbol I-\boldsymbol H)\boldsymbol y\)</span>,</li>
+<li><span class="math inline">\(SS_{res} = \sum_{i=1}^{n}(y_{i}-\widehat{y}_{i})^{2} = (\boldsymbol y- \boldsymbol H\boldsymbol y)&#39;(\boldsymbol y- \boldsymbol H\boldsymbol y)=\boldsymbol y&#39;(\boldsymbol I_n-\boldsymbol H)\boldsymbol y\)</span>,</li>
 </ul>
 <p>y <span class="math inline">\(\boldsymbol 1\)</span> es un vector cuyas entradas son iguales a <span class="math inline">\(1\)</span>.</p>
 <p>Se tiene que, <span class="math inline">\(\frac{SS_{R}}{\sigma^2} \sim \chi^2_{r,\lambda}\)</span>, con:
-<span class="math display">\[
-\frac{\boldsymbol \beta^{*&#39;}\boldsymbol X_{c}&#39;\boldsymbol X_{c}\boldsymbol \beta^{*}}{\sigma^{2}},
-\]</span>
+<span class="math display" id="eq:lambda">\[\begin{equation}
+\lambda = \frac{\boldsymbol \beta^{*&#39;}\boldsymbol X_{c}&#39;\boldsymbol X_{c}\boldsymbol \beta^{*}}{\sigma^{2}},
+\tag{2.4}
+\end{equation}\]</span>
 donde donde <span class="math inline">\(\boldsymbol \beta^{*} = (\beta_{1},\beta_{2},\ldots,\beta_{p-1})&#39;\)</span> y
 <span class="math display">\[
 \boldsymbol X_{c} = \begin{pmatrix}
@@ -571,11 +572,8 @@ Por lo tanto,
 <span class="math display">\[
 F_{0} = \frac{SS_{R}/(p-1)}{SS_{res}/(n-p)} = \frac{MS_{R}}{MS_{res}} \sim F_{p-1,n-p}.
 \]</span></p>
-<p>Si <span class="math inline">\(H_{0}\)</span> no es cierta, tenemos que <span class="math inline">\(F_{0}\)</span> sigue una distribución <span class="math inline">\(F\)</span> no-central con <span class="math inline">\(p-1\)</span> y <span class="math inline">\(n-p\)</span> grados de libertad y parámetro de no centralidad:
-<span class="math display">\[
-\lambda = \frac{\boldsymbol \beta&#39;\boldsymbol X_{c}&#39;\boldsymbol X_{c}\boldsymbol \beta}{\sigma^{2}}.
-\]</span>
-Estos nos resultados nos indican que si el valor <span class="math inline">\(F_{0}\)</span> es grande, entonces al menos un <span class="math inline">\(\beta_{j}\)</span> es diferente de cero.</p>
+<p>Si <span class="math inline">\(H_{0}\)</span> no es cierta, tenemos que <span class="math inline">\(F_{0}\)</span> sigue una distribución <span class="math inline">\(F\)</span> no-central con <span class="math inline">\(p-1\)</span> y <span class="math inline">\(n-p\)</span> grados de libertad y parámetro de no centralidad <a href="modelo-lineal-múltiple.html#eq:lambda">(2.4)</a>.</p>
+<p>Estos nos resultados nos indican que si el valor <span class="math inline">\(F_{0}\)</span> es grande, entonces al menos un <span class="math inline">\(\beta_{j}\)</span> es diferente de cero.</p>
 <p>Por lo tanto, para probar las hipótesis <a href="modelo-lineal-múltiple.html#eq:HANOVA">(2.3)</a> calculamos el estadístico de prueba <span class="math inline">\(F_{0} = \frac{MS_{R}}{MS_{res}}\)</span>, y rechazamos <span class="math inline">\(H_{0}\)</span> si <span class="math inline">\(F_{0} &gt; F_{1-\alpha,p-1,n-p}\)</span>.</p>
 <p>A partir de las sumas de cuadrados podemos calcular el coeficiente de determinación:
 <span class="math display">\[
@@ -614,7 +612,7 @@ donde <span class="math inline">\(\boldsymbol X\)</span> es una matrix <span cla
 donde <span class="math inline">\(\boldsymbol \beta_{1}\)</span> y <span class="math inline">\(\boldsymbol \beta_{2}\)</span> son vector de dimensión <span class="math inline">\((p-r)\)</span> y <span class="math inline">\((r)\)</span>, respectivamente. Por lo tanto, queremos realizar la siguiente prueba de hipótesis:
 <span class="math display" id="eq:Hsubset">\[\begin{equation}
 H_{0}:  \boldsymbol \beta_{2} = \boldsymbol 0\qquad H_{1}:  \boldsymbol \beta_{2} \neq \boldsymbol 0.
-\tag{2.4}
+\tag{2.5}
 \end{equation}\]</span>
 El modelo anterior se puede re-escribir de la siguiente forma:
 <span class="math display">\[
@@ -693,7 +691,7 @@ SS_{R}(\beta_{1},\beta_{2},\beta_{3}| \beta_{0})\neq SS_{R}(\beta_{1}|\beta_{0},
 <p>Suponga que estamos interesados en las siguientes hipótesis:
 <span class="math display" id="eq:hipGeneral1">\[\begin{equation}
 H_{0}: \boldsymbol T\boldsymbol \beta=\boldsymbol 0\qquad H_{1}: \boldsymbol T\boldsymbol \beta\neq \boldsymbol 0,
-\tag{2.5}
+\tag{2.6}
 \end{equation}\]</span>
 donde <span class="math inline">\(\boldsymbol T\)</span> es una matriz <span class="math inline">\(m \times p\)</span> de constantes, tal que <span class="math inline">\(r\)</span> de las <span class="math inline">\(m\)</span> ecuaciones de <span class="math inline">\(\boldsymbol T\boldsymbol \beta=\boldsymbol 0\)</span> son independientes.</p>
 <p>El <strong>modelo completo (FM)</strong> es:
@@ -706,7 +704,7 @@ El estimador de <span class="math inline">\(\boldsymbol \beta\)</span> es <span 
 \boldsymbol y=\boldsymbol Z\boldsymbol \gamma+\boldsymbol \varepsilon,
 \]</span>
 donde <span class="math inline">\(\boldsymbol Z\)</span> es una matriz <span class="math inline">\(n\times (p-r)\)</span> y <span class="math inline">\(\boldsymbol \gamma\)</span> es un vector de dimiensión <span class="math inline">\((p-r)\)</span> de coeficientes de regresión. La suma de cuadrados de los residuos de este modelo es <span class="math inline">\(SS_{res}(RM)\)</span> (con <span class="math inline">\(n-p+r\)</span> grados de libertad).</p>
-<p>Dado que el modelo reducido tiene menos parámetros que el modelo completo, <span class="math inline">\(SS_{res}(RM) \geq SS_{res}(FM)\)</span>. Para probar <a href="modelo-lineal-múltiple.html#eq:hipGeneral1">(2.5)</a> usamos la diferencia entre las sumas de cuadrados de los residuos:
+<p>Dado que el modelo reducido tiene menos parámetros que el modelo completo, <span class="math inline">\(SS_{res}(RM) \geq SS_{res}(FM)\)</span>. Para probar <a href="modelo-lineal-múltiple.html#eq:hipGeneral1">(2.6)</a> usamos la diferencia entre las sumas de cuadrados de los residuos:
 <span class="math display">\[
 SS_{H} = SS_{res}(RM) - SS_{res}(FM),
 \]</span>
@@ -718,7 +716,7 @@ Rechazamos <span class="math inline">\(H_{0}\)</span> si <span class="math inlin
 <p>La hipótesis anterior se puede generalizar de la siguiente forma:
 <span class="math display" id="eq:hipGeneral2">\[\begin{equation}
 H_{0}: \boldsymbol T\boldsymbol \beta=\boldsymbol c\qquad H_{1}: \boldsymbol T\boldsymbol \beta\neq \boldsymbol c,
-\tag{2.6}
+\tag{2.7}
 \end{equation}\]</span>
 Para este caso, el estadístico de prueba es:
 <span class="math display">\[

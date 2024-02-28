@@ -124,11 +124,11 @@ El valor ajustado de $y$ para el vector de covariables $\bx_{i}$ es $\haty_{i}= 
 \[
 \hatby = \bX\hatbbeta = \bX(\bX'\bX)^{-1}\bX'\by = \bH\by.
 \]
-La matriz $(n\times n)$ $\bH = \bX(\bX'\bX)^{-1}\bX'$ es llamada **matriz hat** (sombrero) y desempeña un papel importante en el análisis de regresión. 
+La matriz $\bH = \bX(\bX'\bX)^{-1}\bX'$ es llamada **matriz hat** (sombrero) y desempeña un papel importante en el análisis de regresión. 
 
-Los residuos del modelo $(e_{i}=y_{i}-\haty_{i})$ también se pueden expresar en forma matricial:
+Los residuos del modelo $(e_{i}=y_{i}-\haty_{i})$ también se pueden expresar en forma matricial como:
 \[
-\be = \by - \bX'\hatbeta = \by - \bX(\bX'\bX)^{-1}\bX'\by = \by - \bH\by = (\bI_{n} - \bH)\by.
+\be = \by - \bX'\hatbbeta = \by - \bX(\bX'\bX)^{-1}\bX'\by = \by - \bH\by = (\bI_{n} - \bH)\by.
 \]
 
 ### Estimación de $\sigma^{2}$
@@ -232,14 +232,15 @@ SS_{T}  = SS_{R} + SS_{res},
 donde:
 
 - $SS_{R} = \sum_{i=1}^{n}(\haty_{i}-\bar{y})^{2} = (\bH\by - \frac{1}{n}\bONE\bONE'\by)'(\bH\by - \frac{1}{n}\bONE\bONE'\by)=\by'(\bH - \frac{1}{n}\bONE\bONE')\by$,
-- $SS_{res} = \sum_{i=1}^{n}(y_{i}-\haty_{i})^{2} = (\by  - \bH\by)'(\by  - \bH\by)=\by'(\bI-\bH)\by$,
+- $SS_{res} = \sum_{i=1}^{n}(y_{i}-\haty_{i})^{2} = (\by  - \bH\by)'(\by  - \bH\by)=\by'(\bI_n-\bH)\by$,
 
 y $\bONE$ es un vector cuyas entradas son iguales a $1$.
 
 Se tiene que, $\frac{SS_{R}}{\sigma^2} \sim \chi^2_{r,\lambda}$, con:
-\[
-\frac{\bbeta^{*'}\bX_{c}'\bX_{c}\bbeta^{*}}{\sigma^{2}},
-\]
+\begin{equation}
+\lambda = \frac{\bbeta^{*'}\bX_{c}'\bX_{c}\bbeta^{*}}{\sigma^{2}},
+(\#eq:lambda)
+\end{equation}
 donde donde $\bbeta^{*} = (\beta_{1},\beta_{2},\ldots,\beta_{p-1})'$ y
 \[
 \bX_{c} = \begin{pmatrix}
@@ -262,10 +263,8 @@ Por lo tanto,
 F_{0} = \frac{SS_{R}/(p-1)}{SS_{res}/(n-p)} = \frac{MS_{R}}{MS_{res}} \sim F_{p-1,n-p}.
 \]
 
-Si $H_{0}$ no es cierta, tenemos que $F_{0}$ sigue una distribución $F$ no-central con $p-1$ y $n-p$ grados de libertad y parámetro de no centralidad:
-\[
-\lambda = \frac{\bbeta'\bX_{c}'\bX_{c}\bbeta}{\sigma^{2}}.
-\]
+Si $H_{0}$ no es cierta, tenemos que $F_{0}$ sigue una distribución $F$ no-central con $p-1$ y $n-p$ grados de libertad y parámetro de no centralidad \@ref(eq:lambda).
+
 Estos nos resultados nos indican que si el valor $F_{0}$ es grande, entonces al menos un $\beta_{j}$ es diferente de cero.
 
 Por lo tanto, para probar las hipótesis \@ref(eq:HANOVA) calculamos el estadístico de prueba $F_{0} = \frac{MS_{R}}{MS_{res}}$, y rechazamos $H_{0}$ si $F_{0} > F_{1-\alpha,p-1,n-p}$.

@@ -198,7 +198,7 @@
 
 \title{Notas de clase: Modelo lineal general I}
 \author{Alvaro J. Flórez}
-\date{2024-02-27}
+\date{2024-02-28}
 
 \begin{document}
 \maketitle
@@ -1133,11 +1133,11 @@ El valor ajustado de \(y\) para el vector de covariables \(\boldsymbol x_{i}\) e
 \[
 \widehat{\boldsymbol y}= \boldsymbol X\widehat{\boldsymbol \beta}= \boldsymbol X(\boldsymbol X'\boldsymbol X)^{-1}\boldsymbol X'\boldsymbol y= \boldsymbol H\boldsymbol y.
 \]
-La matriz \((n\times n)\) \(\boldsymbol H= \boldsymbol X(\boldsymbol X'\boldsymbol X)^{-1}\boldsymbol X'\) es llamada \textbf{matriz hat} (sombrero) y desempeña un papel importante en el análisis de regresión.
+La matriz \(\boldsymbol H= \boldsymbol X(\boldsymbol X'\boldsymbol X)^{-1}\boldsymbol X'\) es llamada \textbf{matriz hat} (sombrero) y desempeña un papel importante en el análisis de regresión.
 
-Los residuos del modelo \((e_{i}=y_{i}-\widehat{y}_{i})\) también se pueden expresar en forma matricial:
+Los residuos del modelo \((e_{i}=y_{i}-\widehat{y}_{i})\) también se pueden expresar en forma matricial como:
 \[
-\boldsymbol e= \boldsymbol y- \boldsymbol X'\widehat{\beta}= \boldsymbol y- \boldsymbol X(\boldsymbol X'\boldsymbol X)^{-1}\boldsymbol X'\boldsymbol y= \boldsymbol y- \boldsymbol H\boldsymbol y= (\boldsymbol I_{n} - \boldsymbol H)\boldsymbol y.
+\boldsymbol e= \boldsymbol y- \boldsymbol X'\widehat{\boldsymbol \beta}= \boldsymbol y- \boldsymbol X(\boldsymbol X'\boldsymbol X)^{-1}\boldsymbol X'\boldsymbol y= \boldsymbol y- \boldsymbol H\boldsymbol y= (\boldsymbol I_{n} - \boldsymbol H)\boldsymbol y.
 \]
 
 \hypertarget{estimaciuxf3n-de-sigma2-1}{%
@@ -1291,15 +1291,16 @@ donde:
 \item
   \(SS_{R} = \sum_{i=1}^{n}(\widehat{y}_{i}-\bar{y})^{2} = (\boldsymbol H\boldsymbol y- \frac{1}{n}\boldsymbol 1\boldsymbol 1'\boldsymbol y)'(\boldsymbol H\boldsymbol y- \frac{1}{n}\boldsymbol 1\boldsymbol 1'\boldsymbol y)=\boldsymbol y'(\boldsymbol H- \frac{1}{n}\boldsymbol 1\boldsymbol 1')\boldsymbol y\),
 \item
-  \(SS_{res} = \sum_{i=1}^{n}(y_{i}-\widehat{y}_{i})^{2} = (\boldsymbol y- \boldsymbol H\boldsymbol y)'(\boldsymbol y- \boldsymbol H\boldsymbol y)=\boldsymbol y'(\boldsymbol I-\boldsymbol H)\boldsymbol y\),
+  \(SS_{res} = \sum_{i=1}^{n}(y_{i}-\widehat{y}_{i})^{2} = (\boldsymbol y- \boldsymbol H\boldsymbol y)'(\boldsymbol y- \boldsymbol H\boldsymbol y)=\boldsymbol y'(\boldsymbol I_n-\boldsymbol H)\boldsymbol y\),
 \end{itemize}
 
 y \(\boldsymbol 1\) es un vector cuyas entradas son iguales a \(1\).
 
 Se tiene que, \(\frac{SS_{R}}{\sigma^2} \sim \chi^2_{r,\lambda}\), con:
-\[
-\frac{\boldsymbol \beta^{*'}\boldsymbol X_{c}'\boldsymbol X_{c}\boldsymbol \beta^{*}}{\sigma^{2}},
-\]
+\begin{equation}
+\lambda = \frac{\boldsymbol \beta^{*'}\boldsymbol X_{c}'\boldsymbol X_{c}\boldsymbol \beta^{*}}{\sigma^{2}},
+\label{eq:lambda}
+\end{equation}
 donde donde \(\boldsymbol \beta^{*} = (\beta_{1},\beta_{2},\ldots,\beta_{p-1})'\) y
 \[
 \boldsymbol X_{c} = \begin{pmatrix}
@@ -1322,10 +1323,8 @@ Por lo tanto,
 F_{0} = \frac{SS_{R}/(p-1)}{SS_{res}/(n-p)} = \frac{MS_{R}}{MS_{res}} \sim F_{p-1,n-p}.
 \]
 
-Si \(H_{0}\) no es cierta, tenemos que \(F_{0}\) sigue una distribución \(F\) no-central con \(p-1\) y \(n-p\) grados de libertad y parámetro de no centralidad:
-\[
-\lambda = \frac{\boldsymbol \beta'\boldsymbol X_{c}'\boldsymbol X_{c}\boldsymbol \beta}{\sigma^{2}}.
-\]
+Si \(H_{0}\) no es cierta, tenemos que \(F_{0}\) sigue una distribución \(F\) no-central con \(p-1\) y \(n-p\) grados de libertad y parámetro de no centralidad \eqref{eq:lambda}.
+
 Estos nos resultados nos indican que si el valor \(F_{0}\) es grande, entonces al menos un \(\beta_{j}\) es diferente de cero.
 
 Por lo tanto, para probar las hipótesis \eqref{eq:HANOVA} calculamos el estadístico de prueba \(F_{0} = \frac{MS_{R}}{MS_{res}}\), y rechazamos \(H_{0}\) si \(F_{0} > F_{1-\alpha,p-1,n-p}\).
@@ -3897,10 +3896,10 @@ La Figura \ref{fig:Un11Hdiag}(a) muestra los valores de la diagonal de la matrix
 \end{Shaded}
 
 \begin{verbatim}
-##            Djibouti             Liberia               Nauru         North Korea 
-##          0.03105290          0.03747901          0.03708513          0.03105839 
-##             Somalia           Sri Lanka Trinidad and Tobago 
-##          0.04390710          0.03334886          0.07590435
+##            Djibouti             Liberia               Nauru         North Korea             Somalia           Sri Lanka 
+##          0.03105290          0.03747901          0.03708513          0.03105839          0.04390710          0.03334886 
+## Trinidad and Tobago 
+##          0.07590435
 \end{verbatim}
 
 \begin{Shaded}
