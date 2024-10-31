@@ -283,7 +283,7 @@ Adicionalmente, para detectar más facilmente heterocedasticidad, se pueden graf
 Para el modelo ajustado para los datos de peso al nacer, el gráfico de los residuos contra los valores ajustados se obtienen de la siguiente forma:
 ```{r residuosBWdata, message=FALSE, warning=FALSE, fig.height = 4, fig.width = 8,fig.align = "center",fig.cap = "Datos de peso al nacer. Gráfico de los residuos estudentizados contra los valores ajustados."}
 library(MASS)
-res.stud.birthweight = studres(mod.birthweight)
+res.stud.birthweight = stdres(mod.birthweight)
 mod.fit.birthweight = mod.birthweight$fitted.values
 par(mfrow=c(1,2))
 plot(mod.fit.birthweight,res.stud.birthweight, ylab='residuos estudentizados',
@@ -401,7 +401,7 @@ abline(lm(e3[-50]~e3[-1]),lty=2)
 #### Consumo de helado - gráfico de los residuos contra el tiempo {-}
 Los gráficos de los residuos para el modelo ajustado a los datos de consumo de helado se observan en la Figura \@ref(fig:heladosResiduos1). Aquí vemos que la relación entre la variable respuesta y las covariables es aproximadamente lineal, no hay problemas de heterocedasticidad, y que los residuos siguen una distribución normal. Aunque se ve la presencia de un punto atípico.
 ```{r heladosResiduos1, message=FALSE, warning=FALSE, fig.height = 4, fig.width = 9,fig.align = "center",fig.cap = "Datos de consumo de helado. Gráfico de los residuos estudentizados contra los valores ajustados (izquierda) y gráfico de normalidad (derecha)."}
-res.stud.icecream = studres(mod.icecream)
+res.stud.icecream = stdres(mod.icecream)
 mod.fit.icecream = mod.icecream$fitted.values
 par(mfrow=c(1,2))
 plot(mod.fit.icecream,res.stud.icecream, ylab='residuos estudentizados',
@@ -486,7 +486,7 @@ Como se mencionó antes, la prueba exige que se tenga múltiples observaciones p
 #### Base de datos de la longitud de los peces - prueba de falta de ajuste
 La Figura \@ref(fig:pecesResiduos1) muestra los gráficos de los residuos para el modelo ajustado a los datos de la longitud de los peces.
 ```{r pecesResiduos1, message=FALSE, warning=FALSE, fig.height =4, fig.width = 5,fig.align = "center",fig.cap = "Datos de la longitud de los peces. Gráfico de los residuos estudentizados contra los valores ajustados."}
-res.stud.bass = studres(mod.bass)
+res.stud.bass = stdres(mod.bass)
 mod.fit.bass = mod.bass$fitted.values
 plot(mod.fit.bass,res.stud.bass, ylab='residuos estudentizados',
      xlab='valores ajustados')

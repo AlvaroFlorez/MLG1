@@ -30,7 +30,7 @@ Luego de ajustar el modelo se procede a hacer un análisis de residuos. El gráf
 ```{r Un11res, echo=T, fig.height = 4, fig.width = 5,fig.align = "center",fig.cap = "Datos de la ONU. Gráfico de los residuos estudentizados.",warning=FALSE,message = FALSE}
 mod.UN11 = lm(fertility~ppgdp+pctUrban,data=UN11)
 library(MASS)
-res.UN11 = studres(mod.UN11)
+res.UN11 = stdres(mod.UN11)
 plot(mod.UN11$fitted.values,res.UN11,
      xlab='valores ajustados',ylab='residuos estudentizados')
 lines(lowess(res.UN11~mod.UN11$fitted.values),col=2)
@@ -70,7 +70,7 @@ Antes de hacer inferencias sobre el modelo hacemos un análisis de los residuos.
 ```{r Educres, echo=T, fig.height = 4, fig.width = 8,fig.align = "center",fig.cap = "Datos de educación. Gráficos de los residuos estudentizados.",warning=FALSE,message = FALSE}
 mod.educ = lm(Y~X1+X2+X3,data=education)
 library(MASS)
-res.educ = studres(mod.educ)
+res.educ = stdres(mod.educ)
 par(mfrow=c(1,2))
 plot(mod.educ$fitted.values,res.educ,
      xlab='valores ajustados',ylab='residuos estudentizados')
@@ -230,7 +230,7 @@ donde $\varepsilon_{i}\sim N(0,\sigma^{2})$ y $cov(\varepsilon_{j},\varepsilon_{
 La Figura \@ref(fig:UNtrans2Fig) muestra el gráfico de los residuos para este ajuste. Aquí vemos que los problemas de no linealidad y heterocedasticidad se corrigieron al realizar la transformación logarítmica.
 ```{r UNtrans2Fig, echo=TRUE, fig.height = 4, fig.width = 8,fig.align = "center",fig.cap = "Datos de la ONU. Gráficos de los residuos para el modelo transformado.",warning=FALSE,message = FALSE}
 mod.UN11.trans = lm(log(fertility)~log(ppgdp)+pctUrban,data = UN11)
-res.UN11.trans = studres(mod.UN11.trans)
+res.UN11.trans = stdres(mod.UN11.trans)
 par(mfrow=c(1,2))
 plot(mod.UN11.trans$fitted.values,res.UN11.trans,xlab='valores ajustados',
      ylab='residuos estudentizados')
@@ -300,7 +300,7 @@ donde $\varepsilon_{i}\sim N(0,\sigma^{2})$ y $cov(\varepsilon_{j},\varepsilon_{
 Ahora procedemos a hacer el análisis de los residuos del modelo transformado:
 ```{r EducBC2Fig, echo=TRUE, fig.height = 4, fig.width = 8,fig.align = "center",fig.cap = "Datos de educación. Graficos de los residuos para el modelo transformado.",warning=FALSE,message = FALSE}
 mod.educ.trans = lm(1/Y~X1+X2+X3,data=education)
-res.educ.trans = studres(mod.educ.trans)
+res.educ.trans = stdres(mod.educ.trans)
 par(mfrow=c(1,2))
 plot(mod.educ.trans$fitted.values,res.educ.trans,
      xlab='valores ajustados',ylab='residuos estudentizados')
@@ -316,14 +316,12 @@ En la Figura \@ref(fig:EducBC2Fig) vemos que la transformación propuesta corrig
 ```{r EducBC3Fig, echo=TRUE, fig.height = 4, fig.width = 5,fig.align = "center",fig.cap = "Datos de educación. Graficos de normalidad de los residuos para el modelo transformado.",warning=FALSE,message = FALSE}
 car::qqPlot(mod.educ.trans,distribution = 'norm',ylab='residuos estudentizados')
 ```
-Puesto que se cumplen los supuestos del modelo transformado, ahora procedemos a interpretar los resultados.
+Puesto que se cumplen los supuestos del modelo transformado, podemos procedemr a la interpretación de los resultados.
 
 ```{r , echo=TRUE,warning=FALSE,message = FALSE}
 summary(mod.educ.trans)
 ```
-A partir de estos resultados podemos concluir que la población en áreas urbanas no tiene un aporte signficativo en el modelo cuando las otras dos covariables ya están incluidas. Mientras que, el ingreso per cápita y la población menor de 18 años tienen un efecto positivo significativo sobre el gasto en educación pública (recordemos que se hizo una transformación inversa). 
-
-Puesto que hicimos transformaciones, la interpretación de los coeficientes se hace sobre la variable respuesta transformada.
+A partir de estos podemos concluir que la población en áreas urbanas no tiene un aporte signficativo en el modelo cuando las otras dos covariables ya están incluidas. Mientras que, el ingreso per cápita y la población menor de 18 años tienen un efecto positivo significativo sobre el gasto en educación pública (recordemos que se hizo una transformación inversa). 
 
 Ahora, supogamos que queremos hacer la predicción del gasto medio en educación pública para los estados que tengan una población de $\mbox{X1}=650$, un ingreso per cápita de $\mbox{X2=4.5}$ y una población menor de 18 años de $\mbox{X3}=320$. A partir del modelo ajustado tenemos que:
 ```{r}
@@ -412,6 +410,7 @@ Primero vamos a ajustar el siguiente modelo para el valor absoluto de los residu
 |e_{i}| = \gamma_{0} + \gamma_{1}\mbox{X1}_{i}+ \gamma_{2}\mbox{X2}_{i} + \gamma_{3}\mbox{X3}_{i} + \varepsilon_{ei}.
 \]
 ```{r, echo=TRUE}
+res.educ = mod.educ$residuals
 mod.stdev.educ = lm(abs(res.educ)~X1+X2+X3,data = education)
 summary(mod.stdev.educ)
 ```
@@ -455,6 +454,5 @@ predict(mod.educ.mcp,x0.educ,interval='confidence')
 
 ```{r,echo=FALSE}
 pred.mcp = predict(mod.educ.mcp,x0.educ,interval='confidence')
-
 ```
 Por medio del estimador de MCP obtenemos el siguiente intervalo del 95\% de confianza: (`r round(pred.mcp[2],3)`, `r round(pred.mcp[3],3)`). Este intervalo es parecido al calculado usando el modelo transformado, aunque tiene una longitud un poco más pequeña.

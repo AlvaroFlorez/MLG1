@@ -198,7 +198,7 @@
 
 \title{Notas de clase: Modelo lineal general I}
 \author{Alvaro J. Flórez}
-\date{2024-02-28}
+\date{2024-10-31}
 
 \begin{document}
 \maketitle
@@ -2411,7 +2411,7 @@ Para el modelo ajustado para los datos de peso al nacer, el gráfico de los resi
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(MASS)}
-\NormalTok{res.stud.birthweight }\OtherTok{=} \FunctionTok{studres}\NormalTok{(mod.birthweight)}
+\NormalTok{res.stud.birthweight }\OtherTok{=} \FunctionTok{stdres}\NormalTok{(mod.birthweight)}
 \NormalTok{mod.fit.birthweight }\OtherTok{=}\NormalTok{ mod.birthweight}\SpecialCharTok{$}\NormalTok{fitted.values}
 \FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
 \FunctionTok{plot}\NormalTok{(mod.fit.birthweight,res.stud.birthweight, }\AttributeTok{ylab=}\StringTok{\textquotesingle{}residuos estudentizados\textquotesingle{}}\NormalTok{,}
@@ -2568,7 +2568,7 @@ Los gráficos de los residuos para el modelo ajustado a los datos de consumo de 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{res.stud.icecream }\OtherTok{=} \FunctionTok{studres}\NormalTok{(mod.icecream)}
+\NormalTok{res.stud.icecream }\OtherTok{=} \FunctionTok{stdres}\NormalTok{(mod.icecream)}
 \NormalTok{mod.fit.icecream }\OtherTok{=}\NormalTok{ mod.icecream}\SpecialCharTok{$}\NormalTok{fitted.values}
 \FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
 \FunctionTok{plot}\NormalTok{(mod.fit.icecream,res.stud.icecream, }\AttributeTok{ylab=}\StringTok{\textquotesingle{}residuos estudentizados\textquotesingle{}}\NormalTok{,}
@@ -2593,7 +2593,7 @@ Los gráficos de los residuos para el modelo ajustado a los datos de consumo de 
 ## [1]  6 30
 \end{verbatim}
 
-Dado que las observaciones del consumo de helado tienen un orden temporal (fueron tomadas cada 4 semanas), se pueden graficar los residuos contra el tiempo y de los residuos rezagados. Estos se pueden observar en la Figura \ref{fig:heladosResiduos2}. Aquí podemos ver que hay una correlación temporal positiva. Además, se tiene que \(cor(e_{t},e_{t-1}) = 0.605\).
+Dado que las observaciones del consumo de helado tienen un orden temporal (fueron tomadas cada 4 semanas), se pueden graficar los residuos contra el tiempo y de los residuos rezagados. Estos se pueden observar en la Figura \ref{fig:heladosResiduos2}. Aquí podemos ver que hay una correlación temporal positiva. Además, se tiene que \(cor(e_{t},e_{t-1}) = 0.617\).
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2686,7 +2686,7 @@ La Figura \ref{fig:pecesResiduos1} muestra los gráficos de los residuos para el
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{res.stud.bass }\OtherTok{=} \FunctionTok{studres}\NormalTok{(mod.bass)}
+\NormalTok{res.stud.bass }\OtherTok{=} \FunctionTok{stdres}\NormalTok{(mod.bass)}
 \NormalTok{mod.fit.bass }\OtherTok{=}\NormalTok{ mod.bass}\SpecialCharTok{$}\NormalTok{fitted.values}
 \FunctionTok{plot}\NormalTok{(mod.fit.bass,res.stud.bass, }\AttributeTok{ylab=}\StringTok{\textquotesingle{}residuos estudentizados\textquotesingle{}}\NormalTok{,}
      \AttributeTok{xlab=}\StringTok{\textquotesingle{}valores ajustados\textquotesingle{}}\NormalTok{)}
@@ -3063,7 +3063,7 @@ Luego de ajustar el modelo se procede a hacer un análisis de residuos. El gráf
 \begin{Highlighting}[]
 \NormalTok{mod.UN11 }\OtherTok{=} \FunctionTok{lm}\NormalTok{(fertility}\SpecialCharTok{\textasciitilde{}}\NormalTok{ppgdp}\SpecialCharTok{+}\NormalTok{pctUrban,}\AttributeTok{data=}\NormalTok{UN11)}
 \FunctionTok{library}\NormalTok{(MASS)}
-\NormalTok{res.UN11 }\OtherTok{=} \FunctionTok{studres}\NormalTok{(mod.UN11)}
+\NormalTok{res.UN11 }\OtherTok{=} \FunctionTok{stdres}\NormalTok{(mod.UN11)}
 \FunctionTok{plot}\NormalTok{(mod.UN11}\SpecialCharTok{$}\NormalTok{fitted.values,res.UN11,}
      \AttributeTok{xlab=}\StringTok{\textquotesingle{}valores ajustados\textquotesingle{}}\NormalTok{,}\AttributeTok{ylab=}\StringTok{\textquotesingle{}residuos estudentizados\textquotesingle{}}\NormalTok{)}
 \FunctionTok{lines}\NormalTok{(}\FunctionTok{lowess}\NormalTok{(res.UN11}\SpecialCharTok{\textasciitilde{}}\NormalTok{mod.UN11}\SpecialCharTok{$}\NormalTok{fitted.values),}\AttributeTok{col=}\DecValTok{2}\NormalTok{)}
@@ -3146,7 +3146,7 @@ Antes de hacer inferencias sobre el modelo hacemos un análisis de los residuos.
 \begin{Highlighting}[]
 \NormalTok{mod.educ }\OtherTok{=} \FunctionTok{lm}\NormalTok{(Y}\SpecialCharTok{\textasciitilde{}}\NormalTok{X1}\SpecialCharTok{+}\NormalTok{X2}\SpecialCharTok{+}\NormalTok{X3,}\AttributeTok{data=}\NormalTok{education)}
 \FunctionTok{library}\NormalTok{(MASS)}
-\NormalTok{res.educ }\OtherTok{=} \FunctionTok{studres}\NormalTok{(mod.educ)}
+\NormalTok{res.educ }\OtherTok{=} \FunctionTok{stdres}\NormalTok{(mod.educ)}
 \FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
 \FunctionTok{plot}\NormalTok{(mod.educ}\SpecialCharTok{$}\NormalTok{fitted.values,res.educ,}
      \AttributeTok{xlab=}\StringTok{\textquotesingle{}valores ajustados\textquotesingle{}}\NormalTok{,}\AttributeTok{ylab=}\StringTok{\textquotesingle{}residuos estudentizados\textquotesingle{}}\NormalTok{)}
@@ -3310,7 +3310,7 @@ La Figura \ref{fig:UNtrans2Fig} muestra el gráfico de los residuos para este aj
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{mod.UN11.trans }\OtherTok{=} \FunctionTok{lm}\NormalTok{(}\FunctionTok{log}\NormalTok{(fertility)}\SpecialCharTok{\textasciitilde{}}\FunctionTok{log}\NormalTok{(ppgdp)}\SpecialCharTok{+}\NormalTok{pctUrban,}\AttributeTok{data =}\NormalTok{ UN11)}
-\NormalTok{res.UN11.trans }\OtherTok{=} \FunctionTok{studres}\NormalTok{(mod.UN11.trans)}
+\NormalTok{res.UN11.trans }\OtherTok{=} \FunctionTok{stdres}\NormalTok{(mod.UN11.trans)}
 \FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
 \FunctionTok{plot}\NormalTok{(mod.UN11.trans}\SpecialCharTok{$}\NormalTok{fitted.values,res.UN11.trans,}\AttributeTok{xlab=}\StringTok{\textquotesingle{}valores ajustados\textquotesingle{}}\NormalTok{,}
      \AttributeTok{ylab=}\StringTok{\textquotesingle{}residuos estudentizados\textquotesingle{}}\NormalTok{)}
@@ -3427,7 +3427,7 @@ Ahora procedemos a hacer el análisis de los residuos del modelo transformado:
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{mod.educ.trans }\OtherTok{=} \FunctionTok{lm}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\NormalTok{Y}\SpecialCharTok{\textasciitilde{}}\NormalTok{X1}\SpecialCharTok{+}\NormalTok{X2}\SpecialCharTok{+}\NormalTok{X3,}\AttributeTok{data=}\NormalTok{education)}
-\NormalTok{res.educ.trans }\OtherTok{=} \FunctionTok{studres}\NormalTok{(mod.educ.trans)}
+\NormalTok{res.educ.trans }\OtherTok{=} \FunctionTok{stdres}\NormalTok{(mod.educ.trans)}
 \FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
 \FunctionTok{plot}\NormalTok{(mod.educ.trans}\SpecialCharTok{$}\NormalTok{fitted.values,res.educ.trans,}
      \AttributeTok{xlab=}\StringTok{\textquotesingle{}valores ajustados\textquotesingle{}}\NormalTok{,}\AttributeTok{ylab=}\StringTok{\textquotesingle{}residuos estudentizados\textquotesingle{}}\NormalTok{)}
@@ -3469,7 +3469,7 @@ En la Figura \ref{fig:EducBC2Fig} vemos que la transformación propuesta corrigi
 ## [1] 10 47
 \end{verbatim}
 
-Puesto que se cumplen los supuestos del modelo transformado, ahora procedemos a interpretar los resultados.
+Puesto que se cumplen los supuestos del modelo transformado, podemos procedemr a la interpretación de los resultados.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3500,9 +3500,7 @@ Puesto que se cumplen los supuestos del modelo transformado, ahora procedemos a 
 ## F-statistic: 22.04 on 3 and 46 DF,  p-value: 5.417e-09
 \end{verbatim}
 
-A partir de estos resultados podemos concluir que la población en áreas urbanas no tiene un aporte signficativo en el modelo cuando las otras dos covariables ya están incluidas. Mientras que, el ingreso per cápita y la población menor de 18 años tienen un efecto positivo significativo sobre el gasto en educación pública (recordemos que se hizo una transformación inversa).
-
-Puesto que hicimos transformaciones, la interpretación de los coeficientes se hace sobre la variable respuesta transformada.
+A partir de estos podemos concluir que la población en áreas urbanas no tiene un aporte signficativo en el modelo cuando las otras dos covariables ya están incluidas. Mientras que, el ingreso per cápita y la población menor de 18 años tienen un efecto positivo significativo sobre el gasto en educación pública (recordemos que se hizo una transformación inversa).
 
 Ahora, supogamos que queremos hacer la predicción del gasto medio en educación pública para los estados que tengan una población de \(\mbox{X1}=650\), un ingreso per cápita de \(\mbox{X2=4.5}\) y una población menor de 18 años de \(\mbox{X3}=320\). A partir del modelo ajustado tenemos que:
 
@@ -3616,6 +3614,7 @@ Primero vamos a ajustar el siguiente modelo para el valor absoluto de los residu
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\NormalTok{res.educ }\OtherTok{=}\NormalTok{ mod.educ}\SpecialCharTok{$}\NormalTok{residuals}
 \NormalTok{mod.stdev.educ }\OtherTok{=} \FunctionTok{lm}\NormalTok{(}\FunctionTok{abs}\NormalTok{(res.educ)}\SpecialCharTok{\textasciitilde{}}\NormalTok{X1}\SpecialCharTok{+}\NormalTok{X2}\SpecialCharTok{+}\NormalTok{X3,}\AttributeTok{data =}\NormalTok{ education)}
 \FunctionTok{summary}\NormalTok{(mod.stdev.educ)}
 \end{Highlighting}
@@ -3627,26 +3626,26 @@ Primero vamos a ajustar el siguiente modelo para el valor absoluto de los residu
 ## lm(formula = abs(res.educ) ~ X1 + X2 + X3, data = education)
 ## 
 ## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -1.23416 -0.38164 -0.00938  0.32668  1.37892 
+##    Min     1Q Median     3Q    Max 
+## -42.41 -12.93  -1.46  13.05  49.73 
 ## 
 ## Coefficients:
 ##               Estimate Std. Error t value Pr(>|t|)    
-## (Intercept) -4.6137734  1.7454477  -2.643   0.0112 *  
-## X1          -0.0014511  0.0007281  -1.993   0.0522 .  
-## X2           0.7274821  0.1643850   4.425 5.87e-05 ***
-## X3           0.0092325  0.0044583   2.071   0.0440 *  
+## (Intercept) -106.99457   61.24071  -1.747 0.087291 .  
+## X1            -0.03937    0.02555  -1.541 0.130109    
+## X2            22.22566    5.76761   3.854 0.000359 ***
+## X3             0.18641    0.15642   1.192 0.239497    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 0.5734 on 46 degrees of freedom
-## Multiple R-squared:  0.3199, Adjusted R-squared:  0.2756 
-## F-statistic: 7.214 on 3 and 46 DF,  p-value: 0.0004565
+## Residual standard error: 20.12 on 46 degrees of freedom
+## Multiple R-squared:  0.2552, Adjusted R-squared:  0.2066 
+## F-statistic: 5.254 on 3 and 46 DF,  p-value: 0.003349
 \end{verbatim}
 
 Por lo tanto, las estimaciones de las desviaciones estándar de los errores son:
 \[
-\widetilde{\sigma}_{i} = s_{i} = -4.614  -0.001\mbox{X1}_{i} + 0.727\mbox{X2}_{i} + 0.009\mbox{X3}_{i}.
+\widetilde{\sigma}_{i} = s_{i} = -106.995  -0.039\mbox{X1}_{i} + 22.226\mbox{X2}_{i} + 0.186\mbox{X3}_{i}.
 \]
 De este ajuste obtenemos los pesos \(w_{ii} = \frac{1}{s_{i}^{2}}\), y luego, estimamos el modelo por MCP:
 
@@ -3665,20 +3664,20 @@ De este ajuste obtenemos los pesos \(w_{ii} = \frac{1}{s_{i}^{2}}\), y luego, es
 ## 
 ## Weighted Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -93.670 -32.522  -9.149  31.582  86.742 
+## -2.4767 -0.9047 -0.1546  0.8512  2.2834 
 ## 
 ## Coefficients:
 ##               Estimate Std. Error t value Pr(>|t|)    
-## (Intercept) -404.85597   84.79548  -4.774 1.87e-05 ***
-## X1             0.05062    0.03778   1.340    0.187    
-## X2            62.43586   10.29479   6.065 2.32e-07 ***
-## X3             1.11736    0.20099   5.559 1.32e-06 ***
+## (Intercept) -423.72122   96.88295  -4.374 6.94e-05 ***
+## X1             0.05191    0.04045   1.283    0.206    
+## X2            62.03815   10.69956   5.798 5.81e-07 ***
+## X3             1.17825    0.23131   5.094 6.41e-06 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 44.98 on 46 degrees of freedom
-## Multiple R-squared:  0.6528, Adjusted R-squared:  0.6302 
-## F-statistic: 28.83 on 3 and 46 DF,  p-value: 1.219e-10
+## Residual standard error: 1.164 on 46 degrees of freedom
+## Multiple R-squared:  0.6276, Adjusted R-squared:  0.6033 
+## F-statistic: 25.84 on 3 and 46 DF,  p-value: 6.009e-10
 \end{verbatim}
 
 La Figura \ref{fig:EducMCPFig} muestra los gráficos de los residuos ponderados. Aquí podemos observar que los residuos ponderados no muestra heterocedasticidad.
@@ -3721,20 +3720,20 @@ El ajuste por mínimos cuadrados ponderados es:
 ## 
 ## Weighted Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -93.670 -32.522  -9.149  31.582  86.742 
+## -2.4767 -0.9047 -0.1546  0.8512  2.2834 
 ## 
 ## Coefficients:
 ##               Estimate Std. Error t value Pr(>|t|)    
-## (Intercept) -404.85597   84.79548  -4.774 1.87e-05 ***
-## X1             0.05062    0.03778   1.340    0.187    
-## X2            62.43586   10.29479   6.065 2.32e-07 ***
-## X3             1.11736    0.20099   5.559 1.32e-06 ***
+## (Intercept) -423.72122   96.88295  -4.374 6.94e-05 ***
+## X1             0.05191    0.04045   1.283    0.206    
+## X2            62.03815   10.69956   5.798 5.81e-07 ***
+## X3             1.17825    0.23131   5.094 6.41e-06 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 44.98 on 46 degrees of freedom
-## Multiple R-squared:  0.6528, Adjusted R-squared:  0.6302 
-## F-statistic: 28.83 on 3 and 46 DF,  p-value: 1.219e-10
+## Residual standard error: 1.164 on 46 degrees of freedom
+## Multiple R-squared:  0.6276, Adjusted R-squared:  0.6033 
+## F-statistic: 25.84 on 3 and 46 DF,  p-value: 6.009e-10
 \end{verbatim}
 
 Aquí llegamos a conclusiones similares a las obtenidas por medio del modelo transformado. El efecto de la población en áreas urbanas no es significativo. Las otras dos covariables si aportan significativamente al modelo. En este caso, dado que no aplicamos transformaciones, los coeficientes si tienen interpretación. Por ejemplo de la estimación de \(\beta_{3}\) podemos concluir que: el gasto per cápita medio en educación pública aumenta en 1.117 USD por cada 1000 personas menores de 18 años.
@@ -3749,10 +3748,10 @@ Ahora, hagamos la predicción del gasto medio en educación pública para las ca
 
 \begin{verbatim}
 ##        fit      lwr      upr
-## 1 266.5599 257.8442 275.2755
+## 1 266.2274 256.8625 275.5922
 \end{verbatim}
 
-Por medio del estimador de MCP obtenemos el siguiente intervalo del 95\% de confianza: (257.844, 275.275). Este intervalo es parecido al calculado usando el modelo transformado, aunque tiene una longitud un poco más pequeña.
+Por medio del estimador de MCP obtenemos el siguiente intervalo del 95\% de confianza: (256.863, 275.592). Este intervalo es parecido al calculado usando el modelo transformado, aunque tiene una longitud un poco más pequeña.
 
 \hypertarget{evaluaciuxf3n-de-puntos-influyentes-y-atuxedpicos}{%
 \section{Evaluación de puntos influyentes y atípicos}\label{evaluaciuxf3n-de-puntos-influyentes-y-atuxedpicos}}
@@ -3896,8 +3895,10 @@ La Figura \ref{fig:Un11Hdiag}(a) muestra los valores de la diagonal de la matrix
 \end{Shaded}
 
 \begin{verbatim}
-##            Djibouti             Liberia               Nauru         North Korea             Somalia           Sri Lanka 
-##          0.03105290          0.03747901          0.03708513          0.03105839          0.04390710          0.03334886 
+##            Djibouti             Liberia               Nauru 
+##          0.03105290          0.03747901          0.03708513 
+##         North Korea             Somalia           Sri Lanka 
+##          0.03105839          0.04390710          0.03334886 
 ## Trinidad and Tobago 
 ##          0.07590435
 \end{verbatim}
